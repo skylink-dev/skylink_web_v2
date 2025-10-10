@@ -1,0 +1,30 @@
+@keyframes emergeFromBehind {
+  0% { transform: translate(-50%, 60px) scale(0.9); opacity: 0; }
+  70% { transform: translate(-50%, -15px) scale(1.02); opacity: 0.9; }
+  100% { transform: translate(-50%, -10px) scale(1); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-emerge {
+  animation: emergeFromBehind 1s ease-out forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  --tw-ring-color: #E91A2F !important;
+  --tw-ring-opacity: 0.5 !important;
+}
+
+.glass-effect {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}

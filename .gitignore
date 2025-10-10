@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Build output
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Keep all files in public/assets/
+# Ignore only unnecessary files if any
+public/assets/*.tmp
+public/assets/**/*.bak
+public/assets/**/cache/
+
+
+# Ignore video assets
+/public/assets/
