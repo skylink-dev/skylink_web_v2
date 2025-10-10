@@ -1,0 +1,3668 @@
+.App-header {
+    display: block;
+    margin-top: 0px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mpbs-tabs {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-top: 0px;
+    padding: 0px 15px 15px 15px;
+}
+
+.App-header>h1 {
+    font-size: 30px;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+    background-color: #e91a2f;
+    margin: 0px;
+    font-size: 30px;
+    color: white;
+    padding: 15px 15px;
+    border-bottom: unset;
+    font-weight: 600;
+}
+
+td {
+    font-family: "Inter", sans-serif;
+}
+
+/* Tab Wrappers */
+.mbps-wrap,
+.plans-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+tr.speed-tabs-wrapper td {
+    border-bottom: 0px !important;
+}
+
+.mpbstab {
+    width: 100% !important;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mpbstab:first-child {
+    margin-left: 0px;
+}
+
+tr.benefitswrap td {
+    border-bottom: unset !important;
+}
+
+.mpbstab:last-child {
+    margin-right: 0px;
+}
+
+.mbps-wrap .mpbstab {
+    width: 100%;
+}
+
+.mbps-wrap {
+    flex-flow: nowrap;
+    margin-top: 0px;
+}
+
+/* Tab Buttons */
+.mpbstab,
+.plan-tab {
+    cursor: pointer;
+    padding: 12px;
+    background: #fee;
+    border: 0px solid #ccc;
+    margin: 0px 10px 0px 0px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    align-content: space-evenly;
+    font-weight: 400;
+}
+
+i.fas.fa-rupee-sign {
+    font-size: 22px;
+    padding-left: 9px;
+}
+
+.tab-wrap tbody tr td:nth-child(1) {
+    background-color: white;
+    border-bottom: 1px solid #787878;
+}
+
+.tab-wrap thead td:nth-child(1),
+.tab-wrap tbody td:nth-child(1) {
+    width: 50%;
+}
+
+.tab-wrap thead td:not(:nth-child(1)),
+.tab-wrap tbody td:not(:nth-child(1)) {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding-left: 25px;
+    text-align: left;
+}
+
+.plans-tabs {
+    margin-top: 0px;
+    flex-flow: nowrap;
+    border-radius: 5px;
+}
+
+.plans-tabs .plan-tab {
+    width: 100%;
+    height: 50px;
+}
+
+/* Active Tab */
+.mbps-active,
+.plan-tab.plan-active {
+    background: #e91a2f;
+    color: white;
+    font-weight: 600;
+}
+
+/* Hover Effects */
+.mpbstab:hover,
+.plan-tab:hover {
+    background: #e91a2f;
+    transform: scale(1);
+    color: white;
+}
+
+/* Table Styling */
+.tab-wrap table {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.tab-wrap thead tr {
+    background-color: #e91a2f;
+    color: white;
+    font-size: 18px;
+}
+
+.tab-wrap thead td {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    width: 33.3%;
+}
+
+.tab-wrap td {
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.benifts-tabs h3 {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #e91a2f;
+}
+
+.table-wrap .download-times li {
+    flex-direction: row;
+}
+
+.benifts-tabs li {
+    list-style-type: none;
+    text-align: center;
+}
+
+.download-times {
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+/* Download Times Title */
+.download-times h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin: 0px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Download Times List */
+.download-times ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.download-times li {
+    font-size: 16px;
+    color: #444;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease-in-out;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.download-times li:last-child {
+    border-bottom: none;
+    margin-bottom: 0px;
+}
+
+/* Hover Effect */
+.download-times li:hover {
+    background: #e9ecef;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Highlighted Time */
+.download-times strong {
+    color: #e91a2f;
+    font-size: 18px;
+    font-weight: 700;
+    background: rgba(233, 26, 47, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.yes-or-no-div {
+    padding: 0px;
+    box-sizing: border-box;
+    border-radius: 100px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.subscribe {
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: initial;
+    background: #0F9D58;
+    border: unset;
+    padding: 9px 50px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    width: auto;
+    letter-spacing: 0px;
+    margin-bottom: 25px;
+    border-radius: 10px !important;
+    margin: 15px auto 20px auto;
+    display: block;
+}
+
+.table-wrap {
+    width: 75%;
+}
+
+tr.benefitswrap {
+    position: relative;
+}
+
+tr.benefitswrap td {
+    width: auto;
+    background-color: #dbdbdb !important;
+    padding: 0px 0px;
+    border: unset;
+    line-height: 13px;
+    border-radius: 0px;
+    border: unset;
+}
+
+tr.benefitswrap td h3 {
+    color: black;
+    margin-top: 0px;
+    padding: 14px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.yes-no-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.pricing-features {
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 0px;
+}
+
+.custom-plans {
+    background-color: white;
+    border-radius: 0px;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    width: 25%;
+    overflow: hidden;
+    box-shadow: 0px 0px 4px rgb(2 2 2 / 60%);
+    font-family: "Inter", sans-serif;
+}
+
+.custom-plans .mpbs-tabs {
+    padding: 0px;
+}
+
+label {
+    display: block;
+    font-size: px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.mbps-range {
+    width: 100% !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    height: 8px !important;
+    border-radius: 10px !important;
+    background: white !important;
+    outline: none !important;
+    transition: background 0.3sease;
+    padding: 0px !important;
+}
+
+table td,
+table th {
+    border: unset;
+}
+
+.yes-or-no-div.yes span {
+    color: green;
+}
+
+.yes-or-no-div.no span {
+    color: red;
+}
+
+.mbps-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #e91a2f;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.mbps-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: orange;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.mbps-range:hover {
+    background: black;
+}
+
+.mbps-range:active::-webkit-slider-thumb,
+.mbps-range:active::-moz-range-thumb {
+    background: blue;
+}
+
+.mpbs-input-tabs {
+    margin-top: 20px;
+}
+
+.mbps-input-wrap {
+    margin-bottom: 11px;
+}
+
+.custom-plans .download-times {
+    margin-top: 20px;
+}
+
+span.price {
+    font-size: 30px;
+    font-weight: 700;
+    color: #e91a2f;
+    margin-bottom: 0px;
+    margin-top: 25px;
+}
+
+.mbps-input-wrap {
+    position: relative;
+}
+
+.speed-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.custom-plans .mpbs-input-tabs {
+    margin: 0px !important;
+}
+
+.speed-value {
+    text-align: center;
+    margin-top: 0px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+ul.benifits-list {
+    padding: 0px;
+}
+
+.speed-labels span {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.custom-plan-inner-wrap {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+tbody td:not(:nth-child(1)) {
+    border-bottom: 1px solid #979797;
+    padding: 0px;
+}
+
+.plan-spcial-features span {
+    font-weight: 800;
+    font-size: 22px;
+    font-family: 'Roboto';
+}
+
+.tv-channels img,
+.ott-list img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2px;
+    margin-bottom: 10px;
+}
+
+.tv-channels .tv-channel-image-wrap,
+.ott-list .ott-channel-image-wrap {
+    display: flex;
+    column-gap: 8px;
+    justify-content: left;
+    margin-right: 10px;
+    flex-wrap: nowrap;
+}
+
+.tv-channels button,
+.ott-list button {
+    border-radius: 0px;
+    background: transparent;
+    border-top: unset;
+    border-right: unset;
+    border-bottom: 1px solid black;
+    border-left: unset;
+    border-image: unset;
+    color: black;
+    padding: 0px;
+    margin-top: 5px;
+    border-radius: 0px;
+}
+
+.table-channel img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 0px;
+    background-color: white;
+    border-radius: 100px;
+    box-shadow: 0px 0px 4px 0px #b1b1b1;
+}
+
+.table-channel {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.tv-channel-image-wrap p {
+    margin: 0px;
+}
+
+.table-channel .tv-channel-image-wrap {
+    align-items: center;
+}
+
+.yes-no-wrap p {
+    color: black;
+}
+
+.plan-tab.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.disble-box .mpbstab,
+.disble-box .plan-tab {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+.disble-box .mpbstab:hover,
+.disble-box .plan-tab:hover {
+    background: #d1d1d1;
+}
+
+.tab-wrap h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 400;
+    margin-top: 0px;
+    width: auto;
+    margin-bottom: 5px;
+    font-family: "Inter", sans-serif;
+}
+
+.plan-spcial-features {
+    display: none;
+}
+
+.tab-wrap table .subscribe {
+    border-radius: 0px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+}
+
+td.pricing-features-wrap {
+    padding: 0px;
+    position: relative;
+}
+
+td.pricing-features-wrap span.price {
+    margin-top: 0px;
+}
+
+td.pricing-features-wrap {
+    padding-bottom: 46px !important;
+}
+
+.custom-plans span.price {
+    margin-top: 0px;
+    text-align: center;
+    padding: 0px 0px;
+}
+
+.tab-wrap .custom-plans h3 {
+    font-weight: 400;
+    margin-top: 0px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.custom-plans {
+    position: relative;
+}
+
+.custom-plans button.subscribe {
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.custom-plans .pricing-features {
+    margin-top: 15px;
+}
+
+.plan-details-features {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+}
+
+.plan-details-features span.plan-details-feature-list {
+    padding: 15px 0px;
+    border-bottom: 1px solid #bfbfbf;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.custom-plans .pricing-features {
+    padding: 0px 0px;
+}
+
+.addon-price-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 15px 0px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+span.Installation-fee {
+    display: block;
+}
+
+td.padding-0 {
+    padding: 0px;
+}
+
+.custom-plans a {
+    color: black;
+    text-decoration: underline;
+}
+
+.tv-wrap img {
+    margin-left: -19px;
+}
+
+@media screen and (max-width: 768px) {
+    td.highlights-page-image {
+        display: none;
+    }
+
+    td.pricing-features-wrap {
+        padding-bottom: 0px !important;
+    }
+
+    .download-times {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    tbody td:not(:first-child) {
+        border-bottom: 1px solid #ccc;
+        padding: 0;
+        text-align: left;
+        background-color: #f1f1f1;
+        padding-left: 12px;
+    }
+
+    .download-times li {
+        font-size: 16px;
+        flex-direction: column;
+        text-align: left;
+        padding: 10px 0;
+    }
+
+    .download-times strong {
+        font-size: 18px;
+        margin-top: 5px;
+        display: inline-block;
+    }
+
+    .mpbs-tabs,
+    .plans-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mpbstab,
+    .plan-tab {
+        width: 80%;
+        text-align: center;
+    }
+
+    .mobile-wrap {
+        display: block !important;
+    }
+
+    .mobile-wrap .mbps-wrap {
+        flex-flow: wrap;
+        justify-content: flex-start;
+    }
+
+    .mpbs-tabs {
+        flex-direction: column;
+        padding: 0px 0px;
+        align-items: flex-start;
+        align-items: flex-start;
+        margin-bottom: 0px;
+    }
+
+    .plans-tabs {
+        flex-direction: row;
+        align-items: stretch;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .mobile-wrap .mpbs-tabs .mbps-wrap .mpbstab {
+        width: auto !important;
+        height: auto;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .mobile-wrap h3 {
+        font-size: 18px;
+        margin: 0px 0px 10px 0px !important;
+    }
+
+    .plans {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .plans button {
+        width: 100%;
+        border-radius: 0px;
+        margin-top: 0px;
+    }
+
+    .mobile-wrap .plans-tabs .plan-tab {
+        width: calc(50% - 10px);
+        font-size: 14px;
+        white-space: prewrap;
+        margin-bottom: 5px;
+    }
+
+    .mpbstab:last-child,
+    .plan-tab:last-child {
+        margin-bottom: 5px !important;
+    }
+
+    .mobile-wrap table {
+        width: 100%;
+        border: 3px solid #d5d5d5;
+        border-radius: 14px;
+        border-collapse: separate;
+        overflow: hidden;
+    }
+
+    tbody td.pricing-features-wrap {
+        padding-left: 0px;
+    }
+
+    .pricing-plan-price .pricing-features {
+        padding: 15px;
+    }
+
+    .mobile-wrap .plan-spcial-features {
+        display: none;
+    }
+
+    .mobile-wrap .tv-channels img,
+    .ott-list img {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 0px !important;
+    }
+
+    .mobile-wrap tbody tr td:nth-child(1) {
+        border-bottom: 1px solid #ccc;
+        text-align: left;
+    }
+
+    tbody td:not(:first-child) {
+        text-align: left;
+        padding-left: 12px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    td.pricing-features-wrap {
+        padding: 0px !important;
+    }
+
+    .custom-plan-mobile .custom-plans {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 20px;
+    }
+
+    .tab-wrap {
+        display: none !important;
+    }
+
+    .table-channel {
+        flex-direction: column;
+    }
+
+    td.pricing-features-wrap {
+        padding-left: 0px !important;
+    }
+
+    .table-channel {
+        align-items: flex-start;
+    }
+
+    div.redWrap {
+        margin-top: 0px;
+    }
+
+    div.yellowWrap {
+        margin-top: 0px;
+    }
+
+    div.greenWrap {
+        margin-top: 0px;
+    }
+
+    .mobile-wrap .mpbs-tabs .mbps-wrap .mpbstab {
+        width: calc(25% - 10px) !important;
+        margin: 0px;
+        height: 58px;
+    }
+
+    .mobile-wrap .mbps-wrap {
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+
+    div.featuresContainer,
+    div.redWrap,
+    div.redWrap,
+    div.greenWrap {
+        padding: 10px;
+    }
+
+    div.featuresContainer {
+        margin: 0px;
+        border-radius: 0px;
+        padding: 10px;
+    }
+
+    div.featuresWrap {
+        width: calc(50% - 8px);
+    }
+
+    .App-header>h1 {
+        font-size: 24px;
+        padding: 10px 15px;
+    }
+
+    .mobile-wrap table {
+        border: unset;
+        border-radius: 0px;
+    }
+
+    .mobile-wrap .custom-plan-inner-wrap h1 {
+        background-color: #d5cfcf;
+        padding: 10px;
+        margin: -3px 0px 0px 0px;
+    }
+
+    .addon-price-wrap h3 {
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .pricing-features {
+        text-align: right;
+        padding: 15px;
+    }
+
+    .mobile-wrap .plans-tabs .plan-tab .offer {
+        display: block;
+    }
+
+    .pricing-features .plan-details-features {
+        padding: 0px;
+    }
+
+    .addon-price-wrap h3 {
+        font-weight: normal;
+        margin: 0px !important;
+    }
+
+    span.price {
+        text-align: center;
+    }
+
+    .addon-price-wrap {
+        border-bottom: 1px solid #818181;
+    }
+
+    .pricing-features {
+        padding-top: 0px;
+    }
+
+    div.pricing-plan-innovative-tags-wrap {
+        margin-top: 0px;
+        display: flex;
+        flex-direction: row;
+        row-gap: 0px;
+        justify-content: left;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .desktop-tab {
+        display: none;
+    }
+
+    div.pricing-plan-innovative-tag {
+        width: 50%;
+        min-width: auto;
+    }
+
+    section.pricing-plan-innovative-section .container {
+        max-width: none !important;
+        box-sizing: border-box;
+        padding: 0 15px !important;
+    }
+
+    div.mobile-tab {
+        display: flex;
+        justify-content: center;
+        column-gap: 8px;
+    }
+
+    div.mobile-tab img {
+        object-fit: contain;
+    }
+
+    div.pricing-plan-innovative-tag {
+        border-radius: 5px;
+        box-shadow: 0 0 4px 3px #e7e7e7;
+        margin-bottom: 0px;
+        margin-top: 6px;
+    }
+
+    div.pricing-plan-package-wrap {
+        margin-top: 20px;
+    }
+
+    .slick-slide.slick-active:nth-of-type(5) div.gradient-color,
+    div.slick-slide.slick-active.slick-current .gradient-color {
+        border-radius: 20px;
+    }
+
+    div.gradient-color {
+        height: calc(100% + 50px);
+    }
+
+    section.pricing-plan-innovative-section h1 {
+        font-size: 26px;
+        color: black;
+    }
+
+    .pricing-plan-innovative-tag.active img {
+        filter: invert(1);
+    }
+
+    .pricing-plan-package-wrap .slick-slide:first-child {
+        display: none;
+    }
+
+    div.pricing-plan-package-item:after {
+        left: 0px;
+        border-radius: 0px 0px 6px 6px !important;
+    }
+
+    div.pricing-plan-package-wrap .slick-next {
+        right: -27px;
+    }
+
+    div.pricing-plan-package-wrap .slick-prev {
+        left: -27px;
+    }
+
+    div.pricing-plan-package-wrap .slick-slider {
+        padding: 0px 0px;
+    }
+
+    div.pricing-plan-package-wrap .slick-next,
+    div.pricing-plan-package-wrap .slick-next:hover,
+    div.pricing-plan-package-wrap .slick-prev,
+    div.pricing-plan-package-wrap .slick-prev:hover {
+        width: 25px;
+        height: 25px;
+    }
+
+    .pricing-plan-innovative-section div.inside-div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    div.pricing-plan-package-item {
+        max-width: 100%;
+        min-width: 100%;
+        margin: 16px 0px 0px 0px;
+    }
+
+    div.pricing-plan-package-item.active:after {
+        top: 0px;
+        height: 100%;
+        border-radius: 15px;
+    }
+
+    section.pricing-plan-innovative-section .accordion-body {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    div.gradient-color {
+        height: 100%;
+        display: none;
+    }
+
+    .pricing-plan-package-item:last-child {
+        margin-bottom: 0px;
+    }
+
+    div.pricing-plan-package-item {
+        background-color: white;
+        border-radius: 0px 3px 3px 3px;
+        overflow: hidden;
+    }
+
+    div.ad-card {
+        right: 5px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        padding: 4px;
+    }
+
+    .pricing-plan-package-item {
+        padding: 15px 15px;
+    }
+
+    .pricing-separate-files div.pricing-plan-package-details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pricing-plan-package-details {
+        display: none;
+    }
+
+    .pricing-plan-package-item hr {
+        display: none;
+    }
+
+    .pricing-separate-files {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        position: relative;
+        z-index: 9;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header {
+        font-size: 16px;
+        font-weight: normal !important;
+        padding: 14px 15px;
+    }
+
+    span.multiply-symbol {
+        font-size: 16px;
+        margin: 0px 1px;
+    }
+
+    .pricing-plan-innovative-tag span {
+        font-size: 12px;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header {
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        padding: 14px 15px !important;
+    }
+
+    div.tab-section-wrap {
+        margin-top: 0px;
+    }
+
+    div.pricing-plan-package-item {
+        padding: 15px 15px;
+    }
+
+    div.speed-texts {
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: -.72px;
+        text-wrap-mode: nowrap;
+        display: flex;
+    }
+
+    .speed-icon img {
+        width: 20px;
+    }
+
+    .speed-icon {
+        display: flex;
+    }
+
+    .pricing-plan-package-item button.details-link {
+        font-size: 14px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        width: auto;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 15px !important;
+        padding-right: 5px !important;
+    }
+
+    .pricing-plan-package-item.active button.subscribe-button svg {
+        width: 18px;
+    }
+
+    .pricing-separate-files div.pricing-plan-package-details {
+        margin-top: 0px;
+    }
+
+    .subscribe-button {
+        display: none !important;
+    }
+
+    .pricing-separate-files div.pricing-plan-package-details .subscribe-button {
+        display: block !important;
+        font-size: 12px;
+        margin-top: 0 !important;
+        padding: 7px 10px;
+        font-weight: 800;
+        background-color: #5cd990 !important;
+        color: black !important;
+        border-radius: 5px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        font-size: 12px !important;
+        margin: 0px;
+        margin-top: 0px;
+    }
+
+    .mobile-alignmentfor-planname {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    section.pricing-plan-innovative-section {
+        padding: 1px 0 !important;
+    }
+
+    button.subscribe-button {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+
+    .custom-plan-inner-wrap {
+        background-color: #e9e6e6;
+    }
+
+    section.pricing-plan-innovative-section button.generate-pdf-button,
+    button.view-all-button {
+        min-width: 204px !important;
+        padding: 6px !important;
+        font-size: 13px;
+        margin: 12px auto !important;
+    }
+
+    .accordion-specification-wrap {
+        border-radius: 0 !important;
+        bottom: 0px;
+        left: 0 !important;
+        position: fixed;
+        z-index: 99999;
+        width: 100vw;
+        max-width: 100vw;
+        min-width: 100vw;
+        background-color: white;
+        padding: 20px !important;
+        box-sizing: border-box;
+    }
+
+    .pricing-plan-package-item {
+        z-index: unset !important;
+    }
+
+    .pricing-plan-package-item:after {
+        z-index: 0 !important;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header {
+        border-radius: 5px !important;
+    }
+
+    .accordion-specification-wrap.overflow-hidden ul {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 10px;
+    }
+
+    div.accordion-specification-wrap .info-details h2 {
+        margin: 0px;
+        font-weight: 600;
+    }
+
+    div.accordion-specification-wrap div,
+    div.accordion-specification-wrap div.info-details h2 {
+        font-size: 14px;
+        padding: 0px;
+    }
+
+    div.accordion-specification-wrap img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .accordion-specification-wrap li {
+        width: 50%;
+    }
+
+    .mobile-only .close-icon {
+        font-size: 17px !important;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    div.accordion-specification-wrap div.actual-price {
+        font-size: 34px;
+        margin-bottom: 12px;
+        font-weight: bolder;
+    }
+
+    .accordion-specification-wrap div.mobile-only {
+        display: block;
+        width: 100%;
+    }
+
+    div.accordion-specification-wrap div h4 {
+        margin: 0px 0px 10px 0px;
+        font-weight: 400;
+    }
+
+    .accordion-specification-wrap div.mobile-only table td {
+        background-color: #f0f0f0;
+        width: 50%;
+        border-radius: 2px;
+        padding: 15px 10px;
+        font-size: 14px;
+        text-align: left;
+        border: unset !important;
+    }
+
+    .accordion-specification-wrap div.mobile-only table {
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 8px;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: revert;
+    }
+
+    .accordion-specification-wrap .info-details {
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .accordion-specification-wrap .info-details a {
+        background-color: #ff0000;
+    }
+
+    .close-icon {
+        cursor: pointer;
+    }
+
+    .accordion-specification-wrap button.view-all-button {
+        margin: 10px auto 10px auto;
+    }
+
+    div.accordion-specification-wrap .mobile-only h4 {
+        font-size: 18px;
+    }
+
+    .accordion-specification-wrap .info-details>div {
+        line-height: normal;
+    }
+
+    .accordion-specification-wrap div.mobile-only {
+        display: block !important;
+    }
+
+    .pricing-plan-package-item.active .mobile-only h4 {
+        color: white;
+    }
+
+    .pricing-plan-package-item.active .accordion-specification-wrap div.mobile-only table td {
+        color: black;
+    }
+
+    div.pricing-plan-package-item.active .accordion-specification-wrap .info-details h2 {
+        color: black;
+    }
+
+    div.pricing-plan-package-item.active .accordion-specification-wrap .info-details>div {
+        color: black;
+        font-weight: 600;
+    }
+
+    .popup-section-wrap {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    body div#drawyer-01 {
+        z-index: 99999999;
+        padding: 10px;
+    }
+
+    .popup-section-wrap {
+        flex-direction: column;
+    }
+
+    section.pricing-plan-innovative-section div#drawyer-01 .container {
+        padding: 0px !important;
+    }
+
+    .popup-section-wrap {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    div.active .accordion-specification-wrap.overflow-hidden {
+        bottom: 0px !important;
+    }
+
+    .accordion-specification-wrap div.mobile-only table th {
+        display: none;
+    }
+
+    .pricing-plan-innovative-tag:after {
+        background: #5cd990 !important;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap {
+        display: flex !important;
+        margin: 8px 0px 0px 0px !important;
+    }
+
+    .container-wrap>.flex.pricing-plan-innovative-tags-wrap {
+        column-gap: 10px !important;
+        align-items: center;
+    }
+
+    .container-wrap>.flex.pricing-plan-innovative-tags-wrap .pricing-plan-innovative-tag {
+        background-color: #878787;
+        color: white !important;
+        padding: 10px 12px;
+    }
+
+    .container-wrap>.flex.pricing-plan-innovative-tags-wrap .pricing-plan-innovative-tag.active {
+        color: black !important;
+        background: #5cd990;
+        font-weight: 700;
+    }
+
+    div.background-light.get-started-popup.active div#drawyer-01 {
+        bottom: 0px !important;
+        font-family: 'Inter', sans-serif;
+    }
+
+    div.pricing-plan-package-item {
+        box-shadow: 0px 0px 4px 3px #e7e7e7;
+    }
+
+    button.subscribe-button {
+        width: auto !important;
+        background: #0F9D58 !important;
+    }
+
+    .pricing-plan-package-item.active button.subscribe-button {
+        background-color: #5cd990 !important;
+        color: black !important;
+    }
+
+    .pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag {
+        background: transparent !important;
+        width: 25%;
+    }
+
+    div.flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag.active {
+        background: #f9dcdc !important;
+        color: black !important;
+        font-weight: 800;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap {
+        padding-right: 5px;
+    }
+
+    .accordion-specification-wrap .mobile-only button.view-all-button {
+        margin: 0px !important;
+        position: relative;
+        bottom: -20px;
+        width: calc(100% + 44px);
+        left: -23px;
+        border-radius: 0px;
+        background-color: #0F9D58 !important;
+        color: white;
+        padding: 12px !important;
+    }
+
+    .accordion-specification-wrap .info-details a svg {
+        width: 20px;
+    }
+
+    section div.background-light.get-started-popup.active div#drawyer-01 .close-icon {
+        position: absolute;
+        right: 3px;
+        top: 3px;
+        z-index: 99;
+    }
+
+    div.pricing-section {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .contact-section svg {
+        font-size: 31px;
+    }
+
+    div.right-wrap-section .button-section a {
+        font-size: 14px;
+        line-height: 31px;
+    }
+
+    div.contact-section {
+        margin: 1px 15px 10px 0px;
+    }
+
+    .contact-details-wrap {
+        margin-left: 6px;
+    }
+
+    div.accordion-specification-wrap.overflow-hidden .special-notes {
+        display: block;
+    }
+
+    div.accordion-specification-wrap.overflow-hidden .special-notes ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.accordion-specification-wrap.overflow-hidden .special-notes ul li {
+        width: 100%;
+        font-weight: 400;
+        font-size: 14px;
+        margin-bottom: 5px;
+        line-height: 22px;
+    }
+
+    div.right-wrap-section .button-section a {
+        border-radius: 0px !important;
+        width: calc(100% + 21px);
+    }
+
+    .right-wrap-section {
+        width: 100%;
+        left: -10px;
+        position: relative;
+        bottom: -10px;
+    }
+
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .mobile-hide {
+        display: none;
+    }
+
+    div.mobile-only {
+        display: block;
+    }
+
+    div.accordion-specification-wrap.overflow-hidden .special-notes p {
+        margin-top: 14px;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    section.pricing-plan-innovative-section.active:after {
+        z-index: 999;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(191 191 191 / 40%);
+        top: 0px;
+        left: 0px;
+        border-radius: 0px;
+        backdrop-filter: blur(5px) contrast(0.8);
+    }
+
+    section.pricing-plan-innovative-section {
+        background-color: white !important;
+    }
+
+    .specialInfocontainer {
+        display: flex !important;
+        column-gap: 12px;
+    }
+
+    .specialInfowrap {
+        display: flex;
+        flex-direction: column;
+        margin-right: 10px;
+    }
+
+    .specialInfowrap .specialInfowraptitle {
+        font-size: 11px;
+        font-family: 'Inter', sans-serif;
+        opacity: 0.7;
+        margin-bottom: 2px;
+        line-height: 12px;
+        font-weight: 500;
+    }
+
+    .specialInfowrapvalue {
+        font-size: 11px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+    }
+
+    .speed-wrap {
+        justify-content: space-between;
+        padding-bottom: 13px;
+        border-bottom: 1px solid #efcdcd;
+        margin-bottom: 13px;
+    }
+
+    .details-link.mobile-only {
+        display: block !important;
+    }
+
+    .iconslist .info-details .image-wrap img {
+        background-color: #fff;
+        border-radius: 100px;
+        width: 24px;
+        height: 24px;
+        margin-bottom: 0;
+        margin-right: 0px;
+        padding: 0px;
+        box-shadow: 0 0 4px #b1b1b1;
+        object-fit: contain;
+        margin-left: -10px;
+    }
+
+    .iconslist {
+        align-items: center;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header {
+        justify-content: center;
+    }
+
+    div.pricing-plan-package-item {
+        background-color: #ffe9e9;
+        box-shadow: unset;
+    }
+
+    div.pricing-plan-package-item::after {
+        background: #ffe9e9;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header {
+        justify-content: center !important;
+    }
+
+    div.pricing-plan-innovative-tag {
+        box-shadow: unset !important;
+    }
+
+    .pricing-plan-package-item.active {
+        color: black !important;
+    }
+
+    .pricing-plan-innovative-tags-wrap {
+        row-gap: 0px !important;
+        column-gap: 0px !important;
+    }
+
+    button.details-link svg {
+        color: black;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag:first-child {
+        background: #292929 !important;
+        color: white !important;
+        border-radius: 3px 0px 0px 3px;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag:nth-child(2) {
+        background: #474747 !important;
+        color: white !important;
+        border-radius: 0px;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag:nth-child(3) {
+        background: #6d6d6d !important;
+        color: white !important;
+        border-radius: 0px;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag:last-child {
+        background: #878787 !important;
+        color: white !important;
+        border-radius: 0px 3px 3px 0px;
+    }
+
+    div.pricing-plan-innovative-tag {
+        padding: 8px 5px;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header svg {
+        font-size: 14px;
+        display: none;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header>span {
+        min-width: 119px;
+        font-weight: 800 !important;
+        font-size: 12px;
+        letter-spacing: 0.2px;
+    }
+
+    .pricing-plan-package-item.active .font-color {
+        color: black;
+    }
+
+    button.view-all-button,
+    button.generate-pdf-button {
+        border: unset !important;
+    }
+
+    .table-channel {
+        padding-left: 0px;
+    }
+
+    div.featuresDescription {
+        font-size: 16px;
+    }
+
+    .ott-channel-image-wrap {
+        padding-left: 23px;
+    }
+
+    .featuresTitle {
+        font-size: 10px;
+    }
+
+    div.accordion-specification-wrap .plan-details-features span.plan-details-feature-list {
+        font-size: 14px;
+        padding: 9px 0;
+    }
+
+    button.view-all-button,
+    section.pricing-plan-innovative-section button.generate-pdf-button {
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+
+    div.accordion-specification-wrap span.price {
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+        color: black;
+    }
+
+    div.accordion-specification-wrap span.price i.fas.fa-rupee-sign {
+        font-size: 18px;
+    }
+
+    .plan-details-features span.plan-details-feature-list {
+        border-bottom: 1px solid #bfbfbf !important;
+    }
+
+    .pricing-plan-innovative-section div.inside-div {
+        counter-reset: plan-counter;
+    }
+
+    div.pricing-plan-package-item::before {
+        counter-increment: plan-counter;
+        content: counter(plan-counter) !important;
+        top: -10px !important;
+        opacity: 1 !important;
+        background-color: #f9dcdc !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black !important;
+        z-index: 999 !important;
+        position: relative;
+        background-image: unset !important;
+        position: absolute;
+        height: 21px !important;
+        padding: 0px !important;
+        width: 30px;
+        border-radius: 3px 3px 0px 0px;
+        margin: 0px;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        right: unset;
+        left: 0px;
+    }
+
+    div.pricing-plan-package-item {
+        overflow: visible;
+        margin-top: 45px;
+    }
+
+    span.count-of-logo {
+        font-size: 10px;
+    }
+
+    .info-details.tv-container .image-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    .ott-counts.mobile-only {
+        top: -36px !important;
+        background-color: #f9dcdc !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black !important;
+        z-index: 999 !important;
+        position: relative;
+        background-image: unset !important;
+        position: absolute;
+        height: 21px !important;
+        padding: 0px 10px !important;
+        border-radius: 3px 3px 0px 0px;
+        margin: 0px;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+        right: unset;
+        left: 20px;
+        text-transform: uppercase;
+    }
+
+    div.active .accordion-specification-wrap.overflow-hidden {
+        background: white !important;
+    }
+
+    .pricing-plan-innovative-section button.accordion-header {
+        box-shadow: 0px 0px 4px 3px #e7e7e763;
+        margin-top: 15px;
+    }
+
+    .accordion-specification-wrap h1 {
+        color: black;
+    }
+
+    section.pricing-plan-innovative-section .accordion-body .pricing-plan-innovative-tag.active:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 130%;
+        background-color: #5cd990 !important;
+        left: 0px;
+        top: -6px;
+        border-radius: 5px;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag {
+        overflow: unset;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap div.pricing-plan-innovative-tags-wrap {
+        overflow: hidden;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag:after {
+        width: 100%;
+        height: 100%;
+    }
+
+    section.pricing-plan-innovative-section .accordion-body div.pricing-plan-innovative-tags-wrap {
+        overflow: hidden;
+        padding-bottom: 6px;
+    }
+
+    .icon-list {
+        display: none;
+    }
+
+    .plan-details-features {
+        width: 100%;
+    }
+
+    .accordion-left-bg.tab-active h2 {
+        display: none;
+    }
+
+    .pricing-plan-package-wrap.custom-plan {
+        flex-direction: column;
+    }
+
+    .tab-active h2 {
+        font-family: Inter, sans-serif;
+        font-size: 24px;
+        margin: 10px;
+    }
+
+    .destop-subscribe-style {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .accordion-specification-wrap .info-details h2 {
+        display: block;
+    }
+
+    .iconslist {
+        margin-left: 7px;
+        column-gap: 22px !important;
+    }
+
+    .or-section {
+        display: none;
+    }
+
+    .red-line-wrap {
+        display: none !important;
+    }
+
+    div.ad-card {
+        display: none;
+    }
+
+    div.accordion-specification-wrap .info-details {
+        flex-direction: column !important;
+    }
+
+    div.plans-tabs .plan-tab {
+        height: 60px;
+        font-size: 12px !important;
+        line-height: 16px;
+    }
+
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap.mbps-wrap-for-header {
+        display: none !important;
+    }
+
+    .wrap-for-header .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag:after {
+        border-radius: 0px !important;
+    }
+    .pricing-plan-innovative-section .accordion-container .accordion-left-bg h3 {
+        font-size: 16px;
+        margin: 9px 0px;
+        color: black;
+        font-family: 'Inter', sans-serif;
+    }
+    .leftside-content-wrap {
+    display: none;
+    }
+    .pricing-plan-innovative-section .accordion-container .accordion-left-bg h3
+    {
+        display: none;
+    }
+    .this-or-that-image-wrap{
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width:7680px) {
+    section.pricing-plan-innovative-section button.accordion-header{
+        display: none;
+    }
+    .leftside-content-wrap .firstset h2.title-class {
+    background-color: #ededed;
+    margin: 0;
+    padding: 0px;
+    border-radius: 6px;
+    color: red;
+}
+.leftside-content-wrap  span.plan-title {
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px !important;
+    font-family: 'Inter', sans-serif;
+}
+    section.pricing-plan-innovative-section div.container {
+        max-width: 1600px;
+    }
+    .pricing-plan-innovative-section .accordion-container .accordion-left-bg h3 {
+        font-size: 16px;
+        margin: 13px 0px;
+        color: black;
+    }
+    .phone-number.left-side-styling h3 a {
+    text-decoration: unset;
+    font-size: 30px;
+    font-weight: 800;
+    color: #000000 !important;
+    font-family: 'Inter', sans-serif;
+    }   
+    .pricing-plan-innovative-section .accordion-container .accordion-left-bg .phone-number.left-side-styling h3 {
+        margin: 0px !important;
+    }
+    div.pricing-plan-innovative-tag {
+        box-shadow: unset !important;
+    }
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag {
+        padding: 5px 10px !important;
+    }
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag {
+        width: 25% !important;
+    }
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag {
+        text-wrap-mode: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        font-family: 'Inter', sans-serif;
+    }
+    .wrap-for-header {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        margin-bottom: 13px;
+    }
+    .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap {
+        margin: 0px 0px 15px 0px !important;
+        background-color: white;
+        padding: 7px;
+        margin-top: 14px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 4px 2px #eed6d6;
+        min-height: 50px;
+        width: 100%;
+    }
+
+    .mbps-wrap .mpbstab {
+        min-height: 50px;
+    
+    }
+    .redBorder .plans-tabs .plan-tab.plan-active .offer {
+        background-image: url(https://www.skylink.net.in/wp-content/uploads/2025/07/offer-badge-white.png) !important;
+        color: red;
+    }
+    .redBorder .plans-tabs .plan-tab .offer {
+        background-color: initial;
+        background-image: url(https://www.skylink.net.in/wp-content/uploads/2025/07/offer-badge.png);
+        background-position: -4px -8px;
+        background-repeat: no-repeat;
+        background-size: 50px 50px;
+        color: #fff;
+        font-size: 13px !important;
+        height: 50px;
+        left: 0;
+        line-height: 7px;
+        margin-left: 0px;
+        padding: 11px 4px 0;
+        position: absolute;
+        top: 0;
+        width: 43px;
+        box-sizing: border-box;
+    }
+
+    .colorful .wrapforplans.blue .mpbstab,
+    .colorful .wrapforplans.redBorder .plan-tab,
+    .colorful .wrapforplans.yellow .plan-tab,
+    .colorful .wrapforplans.green .plan-tab {
+        position: relative;
+    }
+
+    .colorful .wrapforplans.blue .mpbstab.mbps-active::after,
+    .colorful .wrapforplans.redBorder .plan-tab.plan-active:after,
+    .colorful .wrapforplans.yellow .plan-tab.plan-active:after,
+    .colorful .wrapforplans.green .plan-tab.plan-active:after {
+        content: "✔";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 2px;
+        top: 2px;
+        border-radius: 20px;
+        color: white;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 11px;
+    }
+
+    .colorful .wrapforplans.redBorder .plan-tab.plan-active:after {
+        color: white;
+    }
+
+    .colorful .wrapforplans.yellow .plan-tab.plan-active:after {
+        color: white;
+        top: 2px
+    }
+
+    .colorful .wrapforplans.green .plan-tab.plan-active:after {
+        color: white;
+    }
+
+    .phone-number {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        row-gap: 4px;
+    }
+
+    .phone-number h6,
+    .phone-number h3,
+    .phone-number h5 {
+        margin: 0px;
+    }
+
+    .phone-number h5 {
+        font-size: 20px;
+        font-weight: 400;
+        font-family: 'Inter', sans-serif;
+        color: #606060;
+    }
+
+    .phone-number h6 {
+        font-size: 16px;
+        font-weight: 400;
+        font-family: 'Inter', sans-serif;
+        color: #606060;
+    }
+
+    body div.tab-wrap div.phone-number h3 {
+        font-size: 30px;
+        font-weight: 800;
+        color: #ff0000 !important;
+        font-family: 'Inter', sans-serif;
+        text-decoration: unset;
+    }
+
+    body div.tab-wrap div.phone-number h3 a {
+        text-decoration: unset;
+        color: #000000 !important;
+    }
+
+    .speed-container .speed-container-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .plan-count-hide {
+        display: none;
+    }
+
+    .speed-container-title {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+
+    .pricing-plan-package-item.active .speed-container-price,
+    .speed-container-title {
+        color: white;
+    }
+
+    .speed-container-price {
+        font-size: 22px;
+        font-weight: 700;
+        display: flex;
+        column-gap: 5px;
+        color: #f00;
+    }
+
+    .speed-container-title {
+        color: #ff0000;
+    }
+
+    .speed-container {
+        display: flex;
+        align-items: end;
+        column-gap: 5px;
+    }
+
+    .speed-container .data-limit {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        line-height: 8px;
+    }
+
+    section.pricing-plan-innovative-section button.accordion-header {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    section.pricing-plan-innovative-section .pricing-plan-innovative-tag {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    div.accordion-specification-wrap .info-details h2,
+    div.accordion-specification-wrap div {
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 0px;
+    }
+
+    div.accordion-specification-wrap div .channel-number {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+
+    div.accordion-specification-wrap .ott-text-icons {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    div.accordion-specification-wrap .channel-label {
+        font-size: 12px;
+        font-weight: initial;
+    }
+
+    div.accordion-specification-wrap {
+        background: transparent !important;
+        box-shadow: unset;
+        padding: 0px;
+    }
+
+    div.pricing-plan-package-details {
+        margin-top: 25px;
+        padding-bottom: 10px;
+    }
+
+    .star {
+        animation: rotateStar 2s linear forwards;
+        display: inline-block;
+    }
+
+    @keyframes rotateStar {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .pricing-plan-package-item.active .speed-container-title {
+        color: white;
+    }
+
+    .gray .speed-tabs-wrapper h3,
+    .gray div.tab-wrap h3,
+    .gray .custom-plans .firstset h1,
+    .gray .custom-plans span.price,
+    .gray .custom-plans span.price span,
+    .gray .pricing-plan-package-item .speed-container-price,
+    .gray .speed-container-title,
+    .gray .pricing-plan-package-item .special_price_wrap,
+    .gray .pricing-plan-package-item.active .speed-container-title, 
+    .gray .leftside-content-wrap, .gray .leftside-content-wrap .price {
+        color: gray !important;
+    }
+
+    .gray .pricing-plan-package-item.active .special_price_wrap,
+    .gray div.pricing-plan-package-item.active .speed-container-price,
+    .gray .pricing-plan-package-item.active .speed-container-title,
+    .gray .pricing-plan-package-item.active .accordion-specification-wrap .info-details h2 {
+        color: rgba(0, 0, 0, 0.63) !important;
+    }
+
+    .gray .pricing-plan-package-item.active {
+        color: black;
+    }
+
+    .gray div.wrapforplans.blue .mpbstab,
+    .gray div.redBorder .plans-tabs .plan-tab,
+    .gray div.wrapforplans.yellow .plan-tab,
+    .gray div.wrapforplans.green .plan-tab {
+        border-color: gray;
+        color: gray;
+        box-shadow: unset;
+    }
+
+    .gray div.wrapforplans.blue .mpbstab.mbps-active,
+    .gray div.wrapforplans.blue .mpbstab:hover,
+    .gray div.wrapforplans.blue .mpbstab.mbps-active:hover,
+    .gray div.redBorder .plans-tabs .plan-tab.plan-active,
+    .gray div.redBorder .plans-tabs .plan-tab:hover,
+    .gray div.wrapforplans.yellow .plan-tab.plan-active,
+    .gray div.wrapforplans.yellow .plan-tab:hover,
+    .gray div.wrapforplans.green .plan-tab.plan-active,
+    .gray div.wrapforplans.green .plan-tab:hover,
+    .gray .custom-plans button.subscribe, 
+    .gray .leftside-content-wrap .subscribe {
+        background-color: gray;
+        color: white;
+    }
+
+    .gray .table-channel img,
+    .gray .accordion-specification-wrap img {
+        filter: grayscale(100%);
+    }
+    .gray .redBorder .plans-tabs .plan-tab .offer{
+        filter: grayscale(100%);
+    }
+    .gray .star,
+    .gray .recommend {
+        filter: grayscale(100);
+    }
+
+    .gray button.subscribe-button {
+        background: gray !important;
+    }
+
+    .gray .accordion-item.border-b.mbps-accordion-item:nth-child(-n+4) button.accordion-header,
+    .gray .accordion-item.border-b.mbps-accordion-item:nth-child(n+5) button.accordion-header {
+        background-color: #e8e7e7;
+    }
+
+    .gray.tab-active>h2 {
+        background: #d0d0d0 !important;
+        color: rgba(0, 0, 0, 0.568) !important;
+    }
+
+    .gray .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag.active {
+        background: #e8e7e7;
+        color: #b9b9b9;
+    }
+
+    .gray .pricing-plan-package-item::after {
+        background: gray;
+    }
+
+    .gray .flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag {
+        background: #f2f2f2;
+    }
+
+    .pricing-plan-innovative-section .gray button.accordion-header.active,
+    .pricing-plan-innovative-section .gray button.accordion-header {
+        color: #978b8b !important;
+    }
+
+    .gray div.blueWrap,
+    .gray div.redWrap,
+    .gray div.yellowWrap,
+    .gray div.greenWrap,
+    .gray div.featuresContainer {
+        background-color: #e7e5e5;
+        border-radius: 0px;
+    }
+
+    div.accordion-specification-wrap .image-wrap {
+        margin-top: 0px;
+    }
+
+    div.pricing-plan-package-item .order-change {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pricing-plan-package-details {
+        order: -2;
+    }
+
+    img.red-line-wrap {
+        order: -1;
+    }
+
+    .or-section {
+        font-weight: bold;
+        top: 25px;
+        position: relative;
+        height: 100%;
+        z-index: 99;
+    }
+
+    .or-text {
+        background-color: white;
+        padding: 20px 0px;
+        position: relative;
+        z-index: 99;
+    }
+
+    button.subscribe-button {
+        font-size: 14px;
+    }
+
+    .offer.hide {
+        display: none;
+    }
+
+    .accordion-container {
+        display: flex;
+        column-gap: 20px;
+        align-items: flex-start;
+    }
+
+    .pricing-plan-innovative-section .accordion-container .tab-active {
+        width: 50%;
+        margin-top: 0px;
+        height: 100%;
+    }
+
+    div.pricing-plan-package-item {
+        max-width: unset;
+        min-width: unset;
+        max-width: 33.3%;
+    }
+
+    .tab-wrap td {
+        padding: 0px;
+    }
+
+    div.featuresWrap {
+        width: calc(33.3% - 10px);
+        padding: 15px;
+        min-height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 10px;
+        box-sizing: border-box;
+    }
+    .table-channel img {
+        width: 25px;
+        height: 25px;
+    }
+
+    div.featuresDescription {
+        font-size: 14px;
+    }
+
+    div.featuresTitle {
+        margin-top: 0px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 15px;
+    }
+
+    .subscribe-wrap img {
+        display: none !important;
+    }
+
+    div.featuresContainer {
+        margin: 0px;
+    }
+
+    div.mpbstab,
+    div.plan-tab {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .plan-details-features span.plan-details-feature-list {
+        font-size: 14px;
+        padding: 10px 0px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .custom-plans {
+        box-shadow: unset;
+    }
+
+    div.table-wrap {
+        width: 70%;
+    }
+
+    div.custom-plans {
+        width: 30%;
+    }
+
+    div.table-channel {
+        padding-left: 0px;
+        margin-bottom: 10px;
+    }
+
+    div.tab-wrap .custom-plans h3 {
+        font-size: 14px;
+    }
+
+    div.blueWrap,
+    div.redWrap,
+    div.yellowWrap,
+    div.greenWrap,
+    div.featuresContainer {
+        padding: 12px;
+        margin-top: 0px;
+    }
+
+    .table-channel .tv-channel-image-wrap,
+    .ott-list .ott-channel-image-wrap {
+        padding-left: 37px;
+    }
+
+    span.price {
+        font-size: 22px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .custom-plans button.subscribe {
+        padding: 12px 20px;
+    }
+
+    .addon-price-wrap {
+        padding: 10px 0px;
+    }
+
+    .custom-plans .pricing-features {
+        margin-top: 0px;
+    }
+
+    .custom-plans .firstset h1 {
+        font-size: 18px !important;
+    }
+
+    .accordion-item.border-b.mbps-accordion-item:nth-child(-n+4) button.accordion-header {
+        background-color: #ff051e1c;
+        box-shadow: unset;
+    }
+
+    .accordion-item.border-b.mbps-accordion-item:nth-child(n+5) button.accordion-header {
+        background-color: #0f9d582e;
+        box-shadow: unset;
+    }
+
+    .accordion-item.border-b.mbps-accordion-item button.accordion-header.active {
+        background-color: white;
+    }
+
+    .tab-wrap h3 {
+        font-size: 16px;
+    }
+
+    span.include-wrap,
+    span.offer {
+        font-size: 10px;
+        white-space: nowrap;
+        font-size: 10px !important;
+        padding: 3px 3px;
+    }
+
+    /* .redBorder .plans-tabs .plan-tab span.offer{ border: 1px solid #e91a2f;color:#e91a2f;} */
+    .wrapforplans.yellow .plan-tab,
+    .redBorder .plans-tabs .plan-tab {
+        position: relative;
+    }
+
+    .yellowWrap div.plan-tab,
+    .redBorder .plans-tabs .plan-tab {
+        padding: 8px 5px 8px 5px;
+    }
+
+    .yellowWrap {
+        padding-bottom: 20px !important;
+    }
+
+    .wrapforplans.yellow,
+    .wrapforplans.redBorder {
+        margin-top: 10px;
+    }
+
+    div.tab-wrap {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    div.table-wrap {
+        width: 100%;
+    }
+
+    div.custom-plans {
+        width: 100%;
+    }
+
+    span.include-wrap:empty,
+    span.offer:empty {
+        display: none;
+    }
+
+    .destop-subscribe-style {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 10px;
+        align-items: center;
+    }
+
+    .plan-details-features.hide {
+        display: none;
+    }
+
+    .tv-channels.tv-wrap {
+        padding: 0px !important;
+    }
+
+    .subscribe {
+        margin: 15px 0px;
+        padding: 10px 20px;
+    }
+
+    .pricing-plan-innovative-section h1.title-class {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .icon-list {
+        font-size: 12px;
+    }
+
+    span.price {
+        text-align: left;
+    }
+
+    .custom-plans span.price {
+        text-align: left;
+    }
+
+    .custom-plans .pricing-features {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .pricing-plan-innovative-section h1.title-class .icon-list {
+        font-size: 20px;
+    }
+
+    .plan-details-features {
+        width: 100%;
+    }
+
+    .pricing-plan-package-wrap.custom-plan.tab-active {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .tab-active>h2 {
+        font-size: 24px;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(90deg, #ab0000 0%, red 100%);
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0px;
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .accordion-left-bg.tab-active {
+        border-radius: 15px;
+        overflow: hidden;
+        background-color: #fff7f7;
+        padding: 10px;
+        margin-top: 12px;
+    }
+
+    .special_price_wrap {
+        font-size: 44px;
+        font-weight: 800;
+    }
+
+    .after-price-special-font-styling {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .pricing-plan-package-item hr {
+        display: none;
+    }
+
+    .pricing-plan-package-item button.details-link {
+        display: none;
+    }
+
+    .accordion-specification-wrap.overflow-hidden ul {
+        margin-top: 0px !important;
+    }
+}
+
+.custom-plans .tv-channels p {
+    display: none;
+}
+
+.hd-mention-text {
+    font-size: 12px;
+    color: #e91a2f;
+    font-weight: 800;
+}
+
+.tv-channels a {
+    margin-bottom: 10px;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.gst-text {
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 3px;
+    display: block;
+    color: black
+}
+
+.wrapforplans.blue .mpbstab.mbps-active,
+.wrapforplans.blue .mpbstab:hover,
+.wrapforplans.blue .mpbstab.mbps-active:hover {
+    background: #4285F4;
+    color: white;
+}
+
+.wrapforplans.blue .mpbstab {
+    border: 1px solid #4285F4;
+    background-color: white;
+    color: #4285F4;
+    box-shadow: 0 0 4px 1px #4285f452;
+    line-height: 16px;
+}
+
+.wrapforplans.yellow .plan-tab.plan-active,
+.wrapforplans.yellow .plan-tab:hover {
+    background-color: #C49000;
+    color: white;
+}
+
+.wrapforplans.yellow .plan-tab {
+    background-color: white;
+    border: 1px solid #C49000;
+    color: #C49000;
+    box-shadow: 0px 0px 4px 1px #C4900057;
+}
+
+.wrapforplans.green .plan-tab.plan-active,
+.wrapforplans.green .plan-tab:hover {
+    background: #0F9D58;
+    color: white;
+}
+
+.wrapforplans.green .plan-tab {
+    background: white;
+    border: 1px solid #0f9d58;
+    color: #0f9d58;
+    box-shadow: 0px 0px 4px 1px #0f9d5870;
+}
+
+.speed-tabs-wrapper h3 {
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.custom-plans .firstset h1 {
+    background-color: #ededed;
+    padding: 10px 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+.redBorder .plans-tabs .plan-tab {
+    background-color: white;
+    border: 1px solid #e91a2f;
+    color: #e91a2f;
+    box-shadow: 0px 0px 4px 1px #e91a2f59;
+}
+
+.redBorder .plans-tabs .plan-tab.plan-active,
+.redBorder .plans-tabs .plan-tab:hover {
+    background-color: #e91a2f;
+    color: white;
+}
+
+.plan-tab:last-child {
+    margin-right: 0px;
+}
+
+.featuresWrap {
+    background-color: white;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px 2px #ddd;
+    margin-bottom: 10px;
+    width: calc(25% - 11px);
+    align-items: center;
+    border-radius: 5px;
+    min-height: 90px;
+    justify-content: flex-start;
+}
+
+.features {
+    display: flex;
+    width: 100%;
+    column-gap: 14px;
+    flex-wrap: wrap;
+}
+
+tr.features-row td {
+    padding: 0px;
+    border: unset !important;
+}
+
+.featuresTitle {
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+.featuresContainer {
+    margin: 0px 15px 15px 15px;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+tr.features-row h3 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.custom-plans {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.custom-plan-inner-wrap {
+    justify-content: space-between;
+    height: 100%;
+}
+
+.blueWrap {
+    padding: 20px;
+    background-color: #4285f414;
+    border-radius: 5px;
+}
+
+.redWrap {
+    padding: 20px;
+    background-color: #e91a2f0f;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.yellowWrap {
+    padding: 20px;
+    background-color: #c490001f;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.greenWrap {
+    padding: 20px;
+    background-color: #0f9d5814;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.bluefont {
+    color: #4285F4;
+}
+
+.redFont {
+    color: #e91a2f;
+}
+
+h3.yellowFont {
+    color: #C49000;
+}
+
+h3.greenFont {
+    color: #0F9D58;
+}
+
+.firstset img {
+    margin-bottom: -4px;
+}
+
+.table-channel {
+    padding-left: 25px;
+}
+
+.featuresDescription {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.accordion-specification-wrap.overflow-hidden .special-notes {
+    display: none;
+}
+
+.accordion-specification-wrap div.mobile-only {
+    display: none;
+}
+
+.specialInfocontainer {
+    display: none;
+}
+
+.details-link.mobile-only {
+    display: none;
+}
+
+.accordion-specification-wrap.overflow-hidden {
+    display: none !important;
+}
+
+.accordion-specification-wrap.overflow-hidden.accordion-specification-active {
+    display: block !important;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.pricing-plan-innovative-tag.active {
+    color: #fff;
+    background: linear-gradient(90deg, red, #ab0000);
+}
+
+.pricing-separate-files .pricing-plan-package-details {
+    display: none;
+}
+
+.pricing-plan- .mobile-tab {
+    display: none;
+}
+
+.pricing-plan-innovative-tag {
+    color: #000;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 25px;
+    width: 215px;
+    padding: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+}
+
+.pricing-plan-innovative-tags-wrap {
+    justify-content: center;
+    column-gap: 10px;
+    margin-top: 25px;
+    display: flex;
+}
+
+section.pricing-plan-innovative-section {
+    z-index: 1;
+    background-color: white;
+    padding: 25px 0;
+    position: relative;
+    margin: 0 !important;
+}
+
+.pricing-plan-innovative-section h1 {
+    text-align: center;
+    color: red;
+    margin-bottom: 0px;
+    font-size: 50px;
+    font-weight: 600;
+    margin-top: 0px;
+    font-family: "Inter", sans-serif;
+}
+
+div.pricing-plan-innovative-tag {
+    box-shadow: 0 0 4px 3px #e7e7e7;
+}
+
+.pricing-plan-package-wrap {
+    background-color: transparent;
+    border-radius: 22px;
+    margin-top: 40px;
+}
+
+.pricing-plan-innovative-section .slick-slider,
+.pricing-plan-innovative-section .slick-slide>div {
+    width: auto;
+}
+
+section.pricing-plan-innovative-section .slick-list {
+    overflow: hidden;
+    padding: 40px 0px;
+}
+
+.pricing-plan-package-item {
+    z-index: 0;
+    padding: 15px 15px 0px 15px;
+    position: relative;
+    width: 100%;
+    margin: 15px 0px 15px 0px;
+    max-width: 280px;
+    min-width: 280px;
+}
+
+div.accordion-specification-wrap .info-details {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 10px;
+}
+
+div.pricing-plan-package-item .order-change>div {
+    display: flex;
+}
+
+.pricing-plan-innovative-section .inside-div {
+    display: flex;
+    width: auto;
+    position: relative;
+    align-items: center;
+}
+
+.pricing-plan-package-item .accordion-container {
+    width: 100%;
+}
+
+.pricing-plan-package-item .accordion-body {
+    width: 100%;
+}
+
+.pricing-plan-package-item:last-child {
+    border-right: unset;
+}
+
+.gradient-color {
+    z-index: -2;
+    background: linear-gradient(100deg, #f1f1f1, #e5e5e5 100% 100%);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0;
+    position: absolute;
+    border-radius: 22px;
+}
+
+.pricing-plan-package-item h3.plan-name {
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+}
+
+.speed-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+}
+
+button.details-link {
+    text-transform: initial;
+    color: red;
+    text-decoration: unset;
+    border: unset;
+    background-color: #0000;
+    align-items: center;
+    margin-top: 12px;
+    font-size: 16px;
+    display: flex;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    background: transparent !important;
+    padding: 0px !important;
+}
+
+.pricing-plan-package-details {
+    font-family: "Inter", sans-serif;
+}
+
+button.subscribe-button {
+    border: unset;
+    color: #fff;
+    background: linear-gradient(90deg, red, #ab0000);
+    border-radius: 12px 12px 0px 0px;
+    width: 100%;
+    padding: 6px 12px;
+    display: block;
+    max-width: 110px;
+    margin: 5px auto 0px auto;
+    font-family: "Inter", sans-serif;
+}
+
+.speed-texts {
+    margin-left: 0px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+section.pricing-plan-innovative-section .container {
+    padding: 0 30px;
+}
+
+section.pricing-plan-innovative-section .container {
+    width: 100%;
+    margin: auto;
+    max-width: 1400px;
+    padding: 0 16px;
+}
+
+.ad-card {
+    color: #000;
+    height: 35px;
+    display: flex;
+    float: right;
+    margin-top: -18px;
+}
+
+.pricing-plan-package-item.active:before {
+    opacity: .8;
+}
+
+.pricing-plan-package-item:before {
+    content: "";
+    z-index: -1;
+    background-image: url("https://www.skylink.net.in/wp-content/uploads/2025/07/tri.png");
+    background-size: contain;
+    width: 100%;
+    height: 75%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-position: right center;
+    background-repeat: no-repeat;
+    transform: translateY(-50%);
+}
+
+.pricing-plan-package-item.active:after {
+    opacity: 1;
+    height: calc(100% + 27px);
+    transition: all .2s linear;
+}
+
+.pricing-plan-package-item.active button.subscribe-button {
+    color: #000;
+    background-color: #fff;
+    background: white;
+    position: relative;
+    bottom: -13px;
+    font-size: 16px;
+    font-weight: bold;
+    max-width: 150px;
+}
+
+.pricing-plan-package-item.active {
+    color: #fff;
+}
+
+.pricing-plan-package-item:after {
+    content: "";
+    opacity: 0;
+    z-index: -2;
+    background: linear-gradient(90deg, red 0%, #ab0000 100%);
+    border-radius: 22px;
+    width: 100%;
+    height: 0;
+    transition: all .2s linear;
+    position: absolute;
+    top: -14px;
+    left: 0px;
+}
+
+.pricing-plan-package-item.active {
+    color: #fff;
+}
+
+.pricing-plan-package-item {
+    box-sizing: border-box;
+}
+
+.pricing-plan-package-wrap.custom-plan {
+    padding: 0px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #e9e9e9;
+    padding: 10px;
+    margin-top: 12px;
+
+}
+
+.pricing-plan-package-item.active button.details-link {
+    color: #fff;
+}
+
+button.subscribe-button {
+    cursor: pointer;
+}
+
+button.view-all-button,
+button.generate-pdf-button {
+    color: #000;
+    background-color: #fff;
+    background: white;
+    border: 2px solid red;
+    border-radius: 100px;
+    min-width: 300px;
+    margin: 30px auto 0;
+    padding: 10px;
+    display: block;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+
+button.generate-pdf-button {
+    background-color: red;
+    background: red;
+    color: white;
+}
+
+.pricing-plan-package-item.active .speed-icon img {
+    filter: brightness(0) invert();
+}
+
+.mbps-wrap .mpbstab {
+    font-family: "Inter", sans-serif;
+}
+
+.recommend {
+    height: 20px !important;
+    position: relative;
+    top: 9px;
+    right: -3px;
+}
+
+.accordion-specification-wrap {
+    background: #fff;
+    border-radius: 9px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    box-shadow: 0 0 5px 1px #dddada;
+}
+
+.pricing-plan-package-item.active img.red-line-wrap {
+    filter: brightness(0) invert(1);
+}
+
+.accordion-specification-wrap.overflow-hidden ul {
+    width: 100%;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.accordion-specification-wrap li {
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+}
+
+.accordion-specification-wrap div {
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    font-family: "Inter", sans-serif;
+}
+
+.accordion-specification-wrap .info-details {
+    flex-direction: column;
+    padding-bottom: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+}
+
+.accordion-specification-wrap .image-wrap {
+    column-gap: 5px;
+    margin-top: 12px;
+    margin-left: 12px;
+    display: flex;
+}
+
+.accordion-specification-wrap img {
+    background-color: #fff;
+    border-radius: 100px;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 0;
+    margin-left: -12px;
+    padding: 3px;
+    box-shadow: 0 0 4px #b1b1b1;
+    object-fit: contain;
+}
+
+.accordion-specification-wrap a {
+    color: #000;
+    text-align: center;
+    background-color: #ff0000;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -12px;
+    font-weight: 400;
+    text-decoration: unset !important;
+}
+
+.accordion-specification-wrap span.tick-icon {
+    background: #f1f1f1;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    display: none;
+}
+
+div.active .accordion-specification-wrap.overflow-hidden {
+    background: linear-gradient(90deg, red 0%, #ab0000 100%);
+    width: 100%;
+    height: calc(100% + 60px);
+    bottom: -20px;
+}
+
+.pricing-plan-package-item hr {
+    background-color: rgb(221, 221, 221);
+}
+
+.pricing-plan-package-item.active h3.plan-name {
+    color: white;
+}
+
+.pricing-plan-package-wrap .slick-prev,
+.pricing-plan-package-wrap .slick-prev:hover {
+    z-index: 999;
+    background-color: red;
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 40px;
+    font-size: 0px;
+    padding: 0px;
+    margin-top: 0px;
+    left: -60px;
+}
+
+.pricing-plan-package-wrap .slick-prev:before,
+.pricing-plan-package-wrap .slick-next:before {
+    opacity: 1;
+}
+
+.pricing-plan-package-wrap .slick-next,
+.pricing-plan-package-wrap .slick-next:hover {
+    background-color: red;
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 40px;
+    font-size: 0px;
+    padding: 0px;
+    margin-top: 0px;
+    right: -60px;
+}
+
+.pricing-plan-package-wrap .slick-prev:hover,
+.pricing-plan-package-wrap .slick-prev:focus,
+.pricing-plan-package-wrap .slick-next:hover,
+.pricing-plan-package-wrap .slick-next:focus {
+    background: red !important;
+}
+
+.custom-slider button {
+    color: #000;
+    border-radius: 5px;
+    padding: 2px 6px;
+    line-height: 25px;
+    display: flex;
+    background-color: #fbe0e0 !important;
+}
+
+.accordion-specification-wrap div .action-wrap {
+    align-items: center;
+    margin-top: 15px;
+}
+
+.accordion-specification-wrap div .action-wrap a {
+    margin-top: 0px;
+}
+
+.accordion-specification-wrap .info-details h2 {
+    font-size: 16px;
+    margin: 0px 0px 5px 0px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+.accordion-specification-wrap li:empty {
+    display: none;
+}
+
+.accordion-specification-wrap li {
+    margin-bottom: 0px;
+}
+
+.pricing-plan-package-item.active .accordion-specification-wrap .info-details h2 {
+    color: white;
+}
+
+.accordion-specification-wrap .channel-count {
+    color: #000;
+    background-color: #fff;
+    border-radius: 45px;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    position: relative;
+    left: -15px;
+    box-shadow: 0 0 5px 1px #b1b1b1;
+}
+
+button.details-link svg {
+    width: 21px;
+    height: 21px;
+    margin-left: 5px;
+}
+
+.pricing-plan-package-wrap.custom-plan table {
+    border-radius: 0px;
+}
+
+.pricing-plan-innovative-tag {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    transition: all 0.2s linear;
+}
+
+.pricing-plan-innovative-tag>div {
+    z-index: 1;
+    position: relative;
+}
+
+.pricing-plan-innovative-tag:after {
+    content: '';
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 1000px;
+    background-color: red;
+    left: 50%;
+    top: 50%;
+    z-index: 0;
+    transition: all 0.5s linear;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.pricing-plan-innovative-tag:hover {
+    color: white;
+    transition: all 0.2s linear;
+}
+
+.pricing-plan-innovative-tag:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.5s linear;
+}
+
+.pricing-plan-innovative-tag span {
+    position: relative;
+    z-index: 1;
+}
+
+.mbps-tabs-wrap .pricing-plan-innovative-tag {
+    width: 150px;
+}
+
+.tab-section-wrap {
+    display: flex;
+    margin-top: 30px;
+}
+
+.pricing-plan-package-wrap {
+    display: flex;
+    column-gap: 20px;
+}
+
+.pricing-plan-innovative-section .slick-slider {
+    background-color: transparent;
+    border-radius: 20px;
+}
+
+.slider-and-banner-section {
+    position: relative;
+}
+
+.slider-and-banner-section {
+    width: 100%;
+    display: flex;
+}
+
+.pricing-plan-package-wrap .gradient-color {
+    border-radius: 20px;
+}
+
+div#drawyer-01 {
+    color: #000;
+    background-color: #fff;
+    background-position: 100% 100%;
+    background-size: cover;
+    border-top: 5px solid red;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+    padding: 25px;
+    overflow: hidden;
+    position: fixed;
+    left: 0px;
+    z-index: 99999999999;
+    bottom: -100%;
+}
+
+.background-light.get-started-popup.active div#drawyer-01 {
+    bottom: 0px !important;
+}
+
+.contact-section {
+    box-sizing: border-box;
+    text-align: left;
+    border: none;
+    flex-direction: row;
+    place-content: center flex-start;
+    align-items: center;
+    margin: 10px 15px 10px 0;
+    padding-right: 15px;
+    display: flex;
+    border-right: 1px solid #c2c2c2 !important;
+}
+
+.popup-section-wrap {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+section.pricing-plan-innovative-section .container {
+    padding: 0 30px;
+}
+
+.contact-details-wrap {
+    text-align: left;
+    text-align: left;
+    border: none;
+    flex-direction: column;
+    margin-left: 15px;
+    font-size: 15px;
+    line-height: 20px;
+    display: flex;
+}
+
+.contact-section svg {
+    font-size: 45px;
+}
+
+.contact-details-wrap>a {
+    color: #000;
+    text-decoration: underline;
+}
+
+a.form-popup {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0 !important;
+    text-decoration: unset !important;
+    color: #ff0000;
+}
+
+.left-wrap-section {
+    display: flex;
+}
+
+.pricing-section {
+    align-items: center;
+    font-size: 34px;
+    font-weight: 500;
+    display: flex;
+}
+
+.right-wrap-section .button-section a {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+    vertical-align: baseline;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    min-width: 64px;
+    height: fit-content;
+    margin: 0;
+    padding: 0 16px;
+    font-size: 17px;
+    line-height: 36px;
+    text-decoration: none;
+    transition: background .4s cubic-bezier(.25, .8, .25, 1), box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+    transform: translate3d(0, 0, 0);
+    color: #fff !important;
+    background-color: red !important;
+    border-radius: 30px !important;
+    outline: none !important;
+    box-shadow: 0 1px 2px 1px #0003 !important;
+}
+
+.pricing-plan-package-item.first-div .gradient-color {
+    background-image: url('https://www.skylink.net.in/wp-content/uploads/2025/06/skyplay-fire-tv-stick-3.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.pricing-plan-package-item.first-div>div {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    transition: all 0.2s linear;
+}
+
+.pricing-plan-package-item.first-div>div {
+    transition: all 0.2s linear;
+}
+
+.pricing-plan-innovative-section .accordion-body {
+    display: flex;
+    margin-top: 13px;
+    position: relative;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+
+.pricing-plan-innovative-section .accordion-container {
+    width: 100%;
+}
+
+.pricing-plan-innovative-section button.accordion-header {
+    background: white;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 11px 14px;
+    border: unset;
+    border-bottom: unset;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    box-shadow: 0px 0px 4px 3px #e7e7e7;
+    border-radius: 5px;
+}
+
+.pricing-plan-innovative-section button.accordion-header.active {
+    background: white;
+    color: #ff0000;
+    font-weight: 500 !important;
+}
+
+.flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag.active {
+    background: linear-gradient(90deg, red, #ab0000);
+}
+
+.flex.pricing-plan-innovative-tags-wrap.inside-price-wrap .pricing-plan-innovative-tag {
+    background: #efefef;
+    width: 25%;
+    border-radius: 3px;
+}
+
+.pricing-plan-package-item.active button.subscribe-button>span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex.pricing-plan-innovative-tags-wrap.inside-price-wrap {
+    margin: 0px 0px 30px 0px;
+    justify-content: left;
+    box-sizing: border-box;
+}
+
+div.background-light.get-started-popup.active div#drawyer-01 .close-icon {
+    position: absolute;
+    right: 38px;
+    top: -18px;
+    z-index: 99;
+    cursor: pointer;
+}
+
+section.pricing-plan-innovative-section .get-started-popup .container {
+    position: relative;
+}
+
+.tab-nonactive {
+    display: none;
+}
+
+.accordion-body {
+    display: none !important;
+}
+
+.accordion-body.accordion-active {
+    display: block !important;
+}
