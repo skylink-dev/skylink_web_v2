@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const generatePricing = (
-  basePrice,
+  price, dataLimit, channels, otts, billingCycle, installationFee,
+  routerCost, speed, duration, categories, tax1, tax2, planName, ottaddon, iptvaddon, hot, simultaneousUsers, basePrice
+) => ({
+  price,
   dataLimit,
   channels,
   otts,
@@ -10,131 +13,144 @@ const generatePricing = (
   routerCost,
   speed,
   duration,
-  planName,
+    categories,
   tax1,
   tax2,
-  categories,
-  planname,
+    planName,
   ottaddon,
   iptvaddon,
   hot,
-  simultaneousUsers
-) => {
-  const billingCycles = {
-    Monthly: 1,
-    Quarterly: 3,
-    HalfYearly: 6,
-    Annual: 12
-  };
+  simultaneousUsers,
+  basePrice
+});
 
-  const generateCyclePlan = (cycle, months) => ({
-    price: basePrice * months,
+const createBillingCyclePlans = (
+  basePrice, dataLimit, channels, otts,  billingCycle, installationFee, routerCost,
+  speed, duration, categories,tax1, tax2, planName,  ottaddon, iptvaddon, hot, simultaneousUsers
+) => {  
+  const is399Plan = basePrice === 399;
+  const finalInstallationFee = is399Plan ? 1500 : installationFee;
+  return{
+  Monthly: generatePricing(
+    basePrice,
     dataLimit,
     channels,
     otts,
-    billingCycle: cycle,
+    "Monthly",
     installationFee,
     routerCost,
     speed,
-    duration: `${months} Month${months > 1 ? "s" : ""}`,
-    planName,
+    1,
+        categories,
     tax1,
     tax2,
-    categories,
-    planname,
+        planName,
     ottaddon,
     iptvaddon,
     hot,
-    simultaneousUsers
-  });
-
-  const pricing = {};
-  for (const [cycle, months] of Object.entries(billingCycles)) {
-    pricing[cycle] = generateCyclePlan(cycle, months);
-  }
-
-  return pricing;
-};
-
-
+    simultaneousUsers,
+    basePrice
+  ),
+  Quarterly: generatePricing(
+    basePrice * 3,
+    dataLimit,
+    channels,
+    otts,
+    "Quarterly",
+    finalInstallationFee,
+    routerCost,
+    speed,
+    3,
+    categories,
+    tax1,
+    tax2,
+        planName,
+    ottaddon,
+    iptvaddon,
+    hot,
+    simultaneousUsers,
+    basePrice
+  ),
+  "Half-Yearly": generatePricing(
+    basePrice * 6,
+    dataLimit,
+    channels,
+    otts,
+    "Half-Yearly",
+    finalInstallationFee,
+    routerCost,
+    speed,
+    6,
+        categories,
+    tax1,
+    tax2,
+    planName,
+    ottaddon,
+    iptvaddon,
+    hot,
+    simultaneousUsers,
+    basePrice
+  ),
+  Annual: generatePricing(
+    basePrice * 12,
+    dataLimit,
+    channels,
+    otts,
+    "Annual",
+    finalInstallationFee,
+    routerCost,
+    speed,
+    12,
+    categories,
+    tax1,
+    tax2,
+    planName,
+    ottaddon,
+    iptvaddon,
+    hot,
+    simultaneousUsers,
+    basePrice
+  )
+}};
+//   price, dataLimit, channels, otts, billingCycle, installationFee,
+//   routerCost, speed, duration,  categories, tax1, tax2, planName,
+//  ottaddon, iptvaddon, hot, simultaneousUsers, basePrice
+        // "399": createBillingCyclePlans(399, "500GB", "350+ Channels", "21+ OTTs", "Monthly", 1499, 1499, "30 Mbps", "1 Month",  ["All", "Popular"],  "Skylink399", 179, 211,"", "",  "", "3 - 5",),
 const pricingByZone = {
   "Tamil Nadu": {
-    "Broadband": {
-      "199": generatePricing(199, "500GB", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "10 Mbps", "1 Months", "Medium", 100, 118, ["All"], "SKYPLAY199", "", "", "", "2 - 3"),
-      "399": generatePricing(399, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "40 Mbps", "1 Months", "Total", 179, 211, ["All", "Popular"], "SKYPLAY399", "", "", "", "3 - 5"),
-      "499": generatePricing(499, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "50 Mbps", "1 Months", "Energy", 240, 283, ["All"], "SKYPLAY499", "", "", "yes", "3 - 5"),
-      "599": generatePricing(599, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "75 Mbps", "1 Months", "Ultra", 240, 283, ["All", "Popular"], "SKYPLAY599", "", "", "", "4 - 7"),
-      "699": generatePricing(699, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "100 Mbps", "1 Months", "", 240, 283, ["All", "Popular"], "SKYPLAY699", "", "", "", "4 - 7"),
-      "899": generatePricing(899, "Unlimited", "", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "150 Mbps", "1 Months", "Medium", 100, 118, ["All"], "SKYPLAY899", "", "Skyplay Premium", "yes", "", "5 - 10"),
-      "999": generatePricing(999, "Unlimited", "", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "200 Mbps", "1 Months", "Total", 179, 211, ["All", "Popular"], "SKYPLAY999", "", "Skyplay Premium", "", "5 - 10"),
-      "1299": generatePricing(1299, "Unlimited", "", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "300 Mbps", "1 Months", "Energy", 240, 283, ["All"], "SKYPLAY1299", "", "Skyplay Premium", "", "5 - 10"),
-    },
-    "Broadband + IPTV": {
-      "199": generatePricing(199, "500GB", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "10 Mbps", "1 Months", "Medium", 100, 118, ["All"], "SKYPLAY199", "", ["Skyplay Mini", "Skyplay Pro", "Skyplay Premium"], "", "2 - 3"),
-      "399": generatePricing(399, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "40 Mbps", "1 Months", "Total", 179, 211, ["All", "Popular"], "SKYPLAY399", "", ["Skyplay Mini", "Skyplay Pro", "Skyplay Premium"], "", "3 - 5"),
-      "499": generatePricing(499, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "50 Mbps", "1 Months", "Energy", 240, 283, ["All"], "SKYPLAY499", "", ["Skyplay Mini", "Skyplay Pro", "Skyplay Premium"], "yes", "3 - 5"),
-      "599": generatePricing(599, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "75 Mbps", "1 Months", "Ultra", 240, 283, ["All", "Popular"], "SKYPLAY599", "", ["Skyplay Mini", "Skyplay Pro", "Skyplay Premium"], "", "4 - 7"),
-      "699": generatePricing(699, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "100 Mbps", "1 Months", "", 240, 283, ["All", "Popular"], "SKYPLAY699", "", ["Skyplay Mini", "Skyplay Pro", "Skyplay Premium"], "", "4 - 7"),
-      "899": generatePricing(899, "Unlimited", "", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "150 Mbps", "1 Months", "Medium", 100, 118, ["All"], "SKYPLAY899", "", "Skyplay Premium", "yes", "", "5 - 10"),
-      "999": generatePricing(999, "Unlimited", "", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "200 Mbps", "1 Months", "Total", 179, 211, ["All", "Popular"], "SKYPLAY999", "", "Skyplay Premium", "", "5 - 10"),
-      "1299": generatePricing(1299, "Unlimited", "", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "300 Mbps", "1 Months", "Energy", 240, 283, ["All"], "SKYPLAY1299", "", "Skyplay Premium", "", "5 - 10"),
-    },
-    "Broadband + OTT": {
-      "199": generatePricing(199, "500GB", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "10 Mbps", "1 Months", "Medium", 100, 118, ["All"], "Skylink99", ["OTTplay Basic Pack", "OTTplay Lite Pack", "OTTplay Flexi Pack", "OTTplay Mega Pack", "PlayBoxIPTV Lite Pack", "PlayBoxIPTV Flexi Pack", "PlayBoxIPTV Mega Pack", "PlayBoxIPTV Flexi Plus Pack", "PlayBoxIPTV Mega Plus Pack", "Watcho Basic Pack"], "", "", "2 - 3"),
-      "399": generatePricing(399, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "40 Mbps", "1 Months", "Total", 179, 211, ["All", "Popular"], "Skylink399", ["OTTplay Basic Pack", "OTTplay Lite Pack", "OTTplay Flexi Pack", "OTTplay Mega Pack", "PlayBoxIPTV Lite Pack", "PlayBoxIPTV Flexi Pack", "PlayBoxIPTV Mega Pack", "PlayBoxIPTV Flexi Plus Pack", "PlayBoxIPTV Mega Plus Pack", "Watcho Basic Pack"], "", "", "3 - 5"),
-      "499": generatePricing(499, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "50 Mbps", "1 Months", "Energy", 240, 283, ["All"], "Skylink499", ["OTTplay Basic Pack", "OTTplay Lite Pack", "OTTplay Flexi Pack", "OTTplay Mega Pack", "PlayBoxIPTV Lite Pack", "PlayBoxIPTV Flexi Pack", "PlayBoxIPTV Mega Pack", "PlayBoxIPTV Flexi Plus Pack", "PlayBoxIPTV Mega Plus Pack", "Watcho Basic Pack"], "", "yes", "3 - 5"),
-      "599": generatePricing(599, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "75 Mbps", "1 Months", "Ultra", 240, 283, ["All", "Popular"], "Skylink599", ["OTTplay Basic Pack", "OTTplay Lite Pack", "OTTplay Flexi Pack", "OTTplay Mega Pack", "PlayBoxIPTV Lite Pack", "PlayBoxIPTV Flexi Pack", "PlayBoxIPTV Mega Pack", "PlayBoxIPTV Flexi Plus Pack", "PlayBoxIPTV Mega Plus Pack", "Watcho Basic Pack"], "", "", "4 - 7"),
-      "599": generatePricing(599, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "75 Mbps", "1 Months", "Ultra", 240, 283, ["All", "Popular"], "Skylink599", ["OTTplay Basic Pack", "OTTplay Lite Pack", "OTTplay Flexi Pack", "OTTplay Mega Pack", "PlayBoxIPTV Lite Pack", "PlayBoxIPTV Flexi Pack", "PlayBoxIPTV   Mega Pack", "PlayBoxIPTV Flexi Plus Pack", "PlayBoxIPTV Mega Plus Pack", "Watcho Basic Pack"], "", "", "4 - 7"),
-      "699": generatePricing(699, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "100 Mbps", "1 Months", "", 240, 283, ["All", "Popular"], "Skylink 699", "PlayBoxIPTV Mega Pack", "", "", "4 - 7"),
-      "899": generatePricing(899, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "150 Mbps", "1 Months", "Medium", 100, 118, ["All"], "Skylink 899", "PlayBoxIPTV Mega Pack", "", "yes", "", "5 - 10"),
-      "999": generatePricing(999, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "200 Mbps", "1 Months", "Total", 179, 211, ["All", "Popular"], "Skylink 999", "PlayBoxIPTV Mega Pack", "", "", "5 - 10"),
-      "1299": generatePricing(1299, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "300 Mbps", "1 Months", "Energy", 240, 283, ["All"], "Skylink 1299", "PlayBoxIPTV Mega Pack", "", "", "5 - 10"),
-    },
-    "Broadband + IPTV + OTT": {
-      "299": generatePricing(499, "1000GB", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "25 Mbps", "1 Months", "Ultra", 240, 283, ["All", "Popular"], "Skylink 423", "", "", "", "2 - 4"),
-      "666": generatePricing(666, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "40 Mbps", "1 Months", "", 240, 283, ["All", "Popular"], "Skylink 564", "", "", "yes", "", "3 - 5"),
-      "899": generatePricing(899, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband + IPTV", 1499, 1499, "50 Mbps", "1 Months", "Medium", 100, 118, ["All"], "Skylink 762", "", "", "", "3 - 5"),
-    }
-  },
-  "Pondicherry": {},
-  "Delhi": {
-    "Broadband": {
-      "648": generatePricing(648, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "30 Mbps", "1 Month", "Starter", 100, 118, ["All"], "North 549", "", ["Skylink Mini Hindi pack"], "", "2 - 3"),
-      "766": generatePricing(766, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "50 Mbps", "1 Month", "Value", 179, 211, ["All", "Popular"], "North 649", "", ["Skylink Mini Hindi pack"], "", "3 - 5"),
-      "825": generatePricing(825, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "100 Mbps", "1 Month", "Pro", 240, 283, ["All"], "North 749", "", ["Skylink Mini Hindi pack"], "yes", "4 - 6"),
-      "1061": generatePricing(1061, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "200 Mbps", "1 Month", "Pro", 240, 283, ["All"], "Noth 849", "", ["Skylink Mini Hindi pack"], "", "4 - 6"),
-      "1533": generatePricing(1533, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "300 Mbps", "1 Month", "Pro", 240, 283, ["All"], "North 999", "", ["Skylink Mini Hindi pack"], "", "4 - 6"),
-    },
-    "Broadband + IPTV": {
-      "648": generatePricing(648, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "30 Mbps", "1 Month", "Starter", 100, 118, ["All"], "North 549", "", ["Skylink Mini Hindi pack"], "", "2 - 3"),
-      "766": generatePricing(766, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "50 Mbps", "1 Month", "Value", 179, 211, ["All", "Popular"], "North 649", "", ["Skylink Mini Hindi pack"], "", "3 - 5"),
-      "825": generatePricing(825, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "100 Mbps", "1 Month", "Pro", 240, 283, ["All"], "North 749", "", ["Skylink Mini Hindi pack"], "yes", "4 - 6"),
-      "1061": generatePricing(1061, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "200 Mbps", "1 Month", "Pro", 240, 283, ["All"], "Noth 849", "", ["Skylink Mini Hindi pack"], "", "4 - 6"),
-      "1533": generatePricing(1533, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "300 Mbps", "1 Month", "Pro", 240, 283, ["All"], "North 999", "", ["Skylink Mini Hindi pack"], "", "4 - 6"),
-    },
-    "Broadband + OTT": {
-      "648": generatePricing(648, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "30 Mbps", "1 Month", "Starter", 100, 118, ["All"], "North 549", "", ["Skylink Mini Hindi pack"], "", "2 - 3"),
-      "766": generatePricing(766, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "50 Mbps", "1 Month", "Value", 179, 211, ["All", "Popular"], "North 649", "", ["Skylink Mini Hindi pack"], "", "3 - 5"),
-      "825": generatePricing(825, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "100 Mbps", "1 Month", "Pro", 240, 283, ["All"], "North 749", "", ["Skylink Mini Hindi pack"], "yes", "4 - 6"),
-      "1061": generatePricing(1061, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "200 Mbps", "1 Month", "Pro", 240, 283, ["All"], "Noth 849", "", ["Skylink Mini Hindi pack"], "", "4 - 6"),
-      "1533": generatePricing(1533, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "300 Mbps", "1 Month", "Pro", 240, 283, ["All"], "North 999", "", ["Skylink Mini Hindi pack"], "", "4 - 6"),
-    },
-    "Broadband + IPTV + OTT": {
-      "499": generatePricing(499, "1000 GB", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "25 Mbps", "1 Month", "Starter", 100, 118, ["All"], "North 499", "", ["Skylink Hindi Combo SD"], "", "2 - 3"),
-      "666": generatePricing(666, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "40 Mbps", "1 Month", "Value", 179, 211, ["All", "Popular"], "North 666", "", ["Skylink Hindi Combo HD"], "yes", "3 - 5"),
-      "899": generatePricing(899, "Unlimited", "450+ Channels", "18+ OTTs", "Broadband", 1499, 1499, "50 Mbps", "1 Month", "Pro", 240, 283, ["All"], "North 999", "", ["Skylink Hindi Combo HD"], "North 499", "4 - 6"),
+    "Fixed Plan": {
+      "30mbps": {
+        "399": createBillingCyclePlans(399, "Unlimited", "350+ Channels", "21+ OTTs", "Monthly", 1000, 1499, "30 Mbps", "1 Month", ["All", "Popular"],179,  211, "Skylink399", "ottaddon", "350+ Channels", "", "3-5"),
+        "599": createBillingCyclePlans(599, "Unlimited", "550+ Channels", "24+ OTTs", "Monthly", "Free", 1499, "30 Mbps", "1 Month", ["All"],  240, 283, "Skylink599", "", "550+ Channels", "yes", "3 - 5"),
+        "799": createBillingCyclePlans(799, "Unlimited", "750+ Channels", "27+ OTTs", "Monthly", "Free" , 1499, "30 Mbps", "1 Month",["All", "Popular"],  240, 283, "Skylink799", "", "750+ Channels", "", "4 - 7")
+      },
+      "50mbps": {
+        "499": createBillingCyclePlans(499, "Unlimited", "350+ Channels", "21+ OTTs", "Monthly", "Free" , 1499, "50 Mbps", "1 Month",  ["All", "Popular"],179, 211,  "Skylink499", "", "350+ Channels", "", "3 - 5"),
+        "699": createBillingCyclePlans(699, "Unlimited", "550+ Channels", "24+ OTTs", "Monthly", "Free", 1499, "50 Mbps", "1 Month", ["All"], 240, 283,  "Skylink699", "", "550+ Channels", "yes", "3 - 5"),
+        "899": createBillingCyclePlans(899, "Unlimited", "750+ Channels", "27+ OTTs", "Monthly", "Free", 1499, "50 Mbps", "1 Month", ["All", "Popular"], 240, 283,  "Skylink899", "", "750+ Channels", "", "4 - 7")
+      },
+      "100mbps": {
+        "699": createBillingCyclePlans(699, "Unlimited", "350+ Channels", "21+ OTTs", "Broadband", "Free", 1499, "100 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink699", "", "350+ Channels", "", "3 - 5"),
+        "899": createBillingCyclePlans(899, "Unlimited", "550+ Channels", "24+ OTTs", "Broadband", "Free" , 1499, "100 Mbps", "1 Month", 240, 283, ["All"], "Skylink899", "", "550+ Channels", "yes", "3 - 5"),
+        "1099": createBillingCyclePlans(1099, "Unlimited", "750+ Channels", "27+ OTTs", "Broadband", "Free", 1499, "100 Mbps", "1 Month", 240, 283, ["All", "Popular"], "Skylink1099", "", "750+ Channels", "", "4 - 7")
+      },
+      "200mbps": {
+        "999": createBillingCyclePlans(999, "Unlimited", "550+ Channels", "27+ OTTs", "Broadband", "Free", 1499, "200 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink999", "", "550+ Channels", "yes", "3 - 5"), 
+          "1199": createBillingCyclePlans(1199, "Unlimited", "750+ Channels", "27+ OTTs", "Broadband", "Free", 1499, "200 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink999", "", "550+ Channels", "", "3 - 5")
+      },
+      "300mbps": {
+        "1299": createBillingCyclePlans(1299, "Unlimited", "750+ Channels", "27+ OTTs", "Broadband", "Free", 1499, "300 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink1299", "", "750+ Channels", "yes", "3 - 5")
+      },
+      "500mbps": {
+        "2499": createBillingCyclePlans(2499, "Unlimited", "750+ Channels", "27+ OTTs", "Broadband","Free", 1499, "500 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink2499", "", "750+ Channels", "yes", "3 - 5")
+      },
+      "1000mbps": {
+        "3999": createBillingCyclePlans(3999, "Unlimited", "750+ Channels", "27+ OTTs", "Broadband","Free", 1499, "1000 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink3999", "", "750+ Channels", "yes", "3 - 5")
+      },
     },
   },
-    "Punjab": {},
-  "Haryana": {},
-  "Chandigarh": {},
-  "Himachal Pradesh": {},
-  "Jammu & Kashmir": {}
 };
-pricingByZone["Pondicherry"] = pricingByZone["Tamil Nadu"];
-["Punjab", "Haryana", "Chandigarh", "Himachal Pradesh", "Jammu & Kashmir"].forEach(state => {
-  pricingByZone[state] = pricingByZone["Delhi"];
-});
+
 const initialPlanOptions = {
   zones: [
     "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar",
@@ -169,47 +185,79 @@ const plansSlice = createSlice({
     activeZoneIndex: initialTamilNaduIndex >= 0 ? initialTamilNaduIndex : 0,
     activeBundleIndex: 0,
     activePlanNameIndex: 0,
-    activeBundle: 'Broadband',
-    activePlanPricing: pricingByZone["Tamil Nadu"]["Broadband"]["199"]
+    activeMbpsIndex: "30mbps",
+    activeBundle: 'Fixed Plan',
+    activeBillingCycle: 'Monthly',
+    activePrice:699,
+    activePlanPricing: pricingByZone["Tamil Nadu"]["Fixed Plan"]["50mbps"]["699"]["Monthly"]
   },
   reducers: {
     setActiveZoneIndex(state, action) {
-      const newIndex = action.payload;
+       const newIndex = action.payload;
       if (newIndex >= 0 && newIndex < state.planOptions.zones.length) {
         state.activeZoneIndex = newIndex;
         state.activeBundleIndex = 0;
         state.activePlanNameIndex = 0;
         const zoneName = state.planOptions.zones[newIndex];
         const defaultBundle = state.planOptions.bundleplans[zoneName]?.[0];
-        const defaultPlanName = state.planOptions.plansname[zoneName]?.[defaultBundle]?.[0];
+        const defaultMbps = "30mbps";
+        const defaultPlanId = Object.keys(state.planOptions.actualPrizeByZone[zoneName]?.[defaultBundle]?.[defaultMbps] || {})[0];
         state.activeBundle = defaultBundle;
-        state.activePlanPricing = state.planOptions.actualPrizeByZone[zoneName]?.[defaultBundle]?.[defaultPlanName] || null;
+        state.activeMbpsIndex = defaultMbps;
+        state.activePlanPricing =
+          state.planOptions.actualPrizeByZone[zoneName]?.[defaultBundle]?.[defaultMbps]?.[defaultPlanId]?.[state.activeBillingCycle] || null;
       }
     },
 
     setActiveBundleIndex(state, action) {
-      state.activeBundle = action.payload;
+      const bundle = action.payload;
       const zoneName = state.planOptions.zones[state.activeZoneIndex];
-      const planNames = Object.keys(state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle] || {});
-      const firstPlan = planNames[0];
-      state.activePlanPricing = state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle]?.[firstPlan] || null;
+      state.activeBundle = bundle;
+      const mbpsList = Object.keys(state.planOptions.actualPrizeByZone[zoneName]?.[bundle] || {});
+      const firstMbps = mbpsList[0];
+      const planKeys = Object.keys(state.planOptions.actualPrizeByZone[zoneName]?.[bundle]?.[firstMbps] || {});
+      const selectedPlan = planKeys[0];
+      state.activeMbpsIndex = firstMbps;
+      state.activePlanNameIndex = 0;
+      state.activePlanPricing =
+      state.planOptions.actualPrizeByZone[zoneName]?.[bundle]?.[firstMbps]?.[selectedPlan]?.[state.activeBillingCycle] || null;
     },
-
+    setActiveMbpsIndex(state, action) {
+const newMbps = action.payload;
+      state.activeMbpsIndex = newMbps;
+      const zoneName = state.planOptions.zones[state.activeZoneIndex];
+      const planGroup = state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle]?.[newMbps];
+      const firstPlanKey = Object.keys(planGroup || {})[0];
+      state.activePlanPricing = planGroup?.[firstPlanKey]?.[state.activeBillingCycle] || null;
+      state.activePlanNameIndex = 0;
+    },
     setActivePlanNameIndex(state, action) {
       const newIndex = action.payload;
       const zoneName = state.planOptions.zones[state.activeZoneIndex];
-      const planNames = Object.keys(state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle] || {});
-      const planName = planNames[newIndex];
+      const planList = Object.keys(state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle]?.[state.activeMbpsIndex] || {});
+      const selectedPlan = planList[newIndex];
       state.activePlanNameIndex = newIndex;
-      state.activePlanPricing = state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle]?.[planName] || null;
+      state.activePlanPricing =
+        state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle]?.[state.activeMbpsIndex]?.[selectedPlan]?.[state.activeBillingCycle] || null;
     },
+  setActiveBillingCycle(state, action) {
+      const newCycle = action.payload;
+      state.activeBillingCycle = newCycle;
+      const zoneName = state.planOptions.zones[state.activeZoneIndex];
+      const planList = Object.keys(state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle]?.[state.activeMbpsIndex] || {});
+      const selectedPlan = planList[state.activePlanNameIndex] || planList[0];
+      state.activePlanPricing =
+        state.planOptions.actualPrizeByZone[zoneName]?.[state.activeBundle]?.[state.activeMbpsIndex]?.[selectedPlan]?.[newCycle] || null;
+    },
+
   },
 });
 
 export const {
   setActiveZoneIndex,
-  setActiveBundleIndex,
-  setActivePlanNameIndex
+  setActiveBundleIndex, setActiveMbpsIndex,
+  setActivePlanNameIndex, 
+  setActiveBillingCycle
 } = plansSlice.actions;
 
 export default plansSlice.reducer;
