@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Skylink",
-  description: "The Magic of Digital Entertainment",
+  description: "Speed You Need. Connection You Trust. Entertainment You Love",
 };
 
 export default function RootLayout({children}) {

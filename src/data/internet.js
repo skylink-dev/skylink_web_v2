@@ -250,7 +250,7 @@ export const contentData = {
     "Business-Class Wi-Fi Gateway – Secure & stable"
   ]
 };
-export const HeroContent = { image: "assets/broadband-family.jpg", title: "Internet for the entire household", description: "Enjoy consistent speeds, reliability, guaranteed simple, straightforward pricing, and complete Wi-Fi coverage.", additionaldescription: "Limited availability/areas. Based on wired connection to the gateway.", subcta: "Shop Skylink Fiber", maincta: "Call (+91) 99441 99448" };
+export const HeroContent = { image: "assets/broadband-family.jpg", title: "Internet for the entire household", description: "Enjoy consistent speeds, reliability, guaranteed simple, straightforward pricing, and complete Wi-Fi coverage.", additionaldescription: "Limited availability/areas. Based on wired connection to the gateway.", subcta: "Shop Skylink Fiber", maincta: "Call (+91)  99441 99445" };
 export const SpeedContent = {
   headingTop: "Join the Skylink Family",
   headingMain: "Grow with us.<br/>Shape the future.",

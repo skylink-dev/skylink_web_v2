@@ -54,7 +54,7 @@ export default function Page() {
                 <>
                     <p>Subscribers can request account cancellation through:</p>
                     <ul className="list-disc list-inside space-y-2 pl-4" style={{ margin: '10px 0px 30px 0px' }}>
-                        <li>Phone: Call the helpline at 9944199448.</li>
+                        <li>Phone: Call the helpline at 9944199445.</li>
                         <li>Email: Send a request to support@Skylink.in</li>
                         <li>Online Chat: Visit Skylink assist and use the chat option.</li>
                     </ul>

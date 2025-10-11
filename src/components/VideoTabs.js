@@ -58,7 +58,7 @@ const tabsData = [
       <TabContent
         videoSrc="/assets/video/your-partner-connectivity.mp4"
         title="Great deals and pricing for you"
-        description="Our best deals on any smartphone don't require the most expensive plan. Plus, enjoy Skyplay Fiber® with no hidden fees or equipment charges, guaranteed."
+        description="Our best deals on any smartphone don't require the most expensive plan. Plus, enjoy Skylink Fiber® with no hidden fees or equipment charges, guaranteed."
         legalText="Offers vary by device. Restrictions may apply."
       />
     ),

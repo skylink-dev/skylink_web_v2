@@ -2,8 +2,7 @@
 import dynamic from 'next/dynamic';
 import { cardData, slidesData, slidesData2, iconCard, dynamicImageContent, IconContent, contentNewsletter, bannerContent, iconMenuData, IcontitleData, dynamicSlidesData, flexCardData, rightContentFlexData, faqData } from "../../data/Home";
 
-
-const HomeContactForm = dynamic(() => import("@/components/HomeContactForm"));
+import HomeContactForm from '@/components/contact/ContactForm';
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -33,10 +32,10 @@ export default function Home() {
     <>
       <IconMenu onSelect={dummy} content={iconMenuData} />
     
-      <Banner content={bannerContent} />
+      {/* <Banner content={bannerContent} /> */}
       <HomeContactForm onSubmit={handleFormSubmit} />
       <FlexCard 
-        title="Magic Of Digital Entertainment" 
+        title="Speed You Need. Connection You Trust. Entertainment You Love" 
         rightImage="/assets/skyplay-card-right.jpg" 
         leftImage="/assets/skyplay-flex-card-left.jpg" 
         mobileleftImage="/assets/skyplay-banner-mobile.jpg"

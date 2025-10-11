@@ -4,8 +4,8 @@
   firstcta: "Claim OTT Access",
   offercontent: "Limited Time Offer — Stream blockbuster movies, binge-hit series, live sports, and more on 18+ top OTT platforms. Terms apply.",
   offercta: "",
-  secondcta: "Call(+91)9944199448",
-  href: "tel:(+91)9944199448"}
+  secondcta: "Call(+91)9944199445",
+  href: "tel:(+91)9944199445"}
   export const iconMenuData = [{
     id: 1,
     icon: (<svg aria-label="Deals" data-testid="svgicon" className="height-md-all width-md-all mar-b-xxxs " aria-hidden="true" focusable="false" height="32" width="32" viewBox="0 0 32 32"><path className="svg-base" d="M29.16 12.54A6.39 6.39 0 0128 11a7.08 7.08 0 01-.29-2 5.28 5.28 0 00-1.11-3.66A5.28 5.28 0 0023 4.28 7.08 7.08 0 0121 4a6.39 6.39 0 01-1.52-1.15A5.38 5.38 0 0016 1a5.38 5.38 0 00-3.46 1.84A6.39 6.39 0 0111 4a7.08 7.08 0 01-2 .29 5.28 5.28 0 00-3.61 1.1 5.28 5.28 0 00-1.11 3.66A7.08 7.08 0 014 11a6.39 6.39 0 01-1.15 1.52A5.38 5.38 0 001 16a5.38 5.38 0 001.84 3.46A6.39 6.39 0 014 21a7.08 7.08 0 01.29 2 5.28 5.28 0 001.11 3.66 5.28 5.28 0 003.66 1.11A7.08 7.08 0 0111 28a6.39 6.39 0 011.52 1.15A5.38 5.38 0 0016 31a5.38 5.38 0 003.46-1.84A6.39 6.39 0 0121 28a7.08 7.08 0 012-.29 5.28 5.28 0 003.66-1.11 5.28 5.28 0 001.06-3.6 7.08 7.08 0 01.28-2 6.39 6.39 0 011.15-1.52A5.38 5.38 0 0031 16a5.38 5.38 0 00-1.84-3.46zm-1.48 5.58a7.42 7.42 0 00-1.51 2.09 8 8 0 00-.44 2.63 4 4 0 01-.54 2.35 4 4 0 01-2.35.54 8 8 0 00-2.63.44 7.42 7.42 0 00-2.09 1.51C17.37 28.36 16.66 29 16 29s-1.37-.64-2.12-1.32a7.42 7.42 0 00-2.09-1.51 8 8 0 00-2.63-.44 4 4 0 01-2.35-.54 4 4 0 01-.54-2.35 8 8 0 00-.44-2.63 7.42 7.42 0 00-1.51-2.09C3.64 17.37 3 16.66 3 16s.64-1.37 1.32-2.12a7.42 7.42 0 001.51-2.09 8 8 0 00.44-2.63 4 4 0 01.54-2.35 4 4 0 012.35-.54 8 8 0 002.63-.44 7.42 7.42 0 002.09-1.51C14.63 3.64 15.34 3 16 3s1.37.64 2.12 1.32a7.42 7.42 0 002.09 1.51 8 8 0 002.63.44 4 4 0 012.35.54 4 4 0 01.54 2.35 8 8 0 00.44 2.63 7.42 7.42 0 001.51 2.09c.68.75 1.32 1.46 1.32 2.12s-.64 1.37-1.32 2.12zm-6.68.37A3.59 3.59 0 0117.34 22H17v2h-2v-2h-3v-2h5.34a1.51 1.51 0 100-3h-2.68A3.58 3.58 0 0111 13.51 3.52 3.52 0 0114.52 10H15V8h2v2h3v2h-5.48A1.51 1.51 0 0013 13.49 1.59 1.59 0 0014.66 15h2.68A3.58 3.58 0 0121 18.49z"></path></svg>),
@@ -165,18 +165,18 @@ export const flexCardDataNorth = [
 export const rightContentFlexData = {
   subheading: "Skylink OTT for Everyone",
   heading: "Stream your favorite OTT platforms seamlessly",
-  description: "Access Zee5, Prime, Hotstar & more in one OTT bundle.",
+  description: "Access Zee5, Prime, Jio Hotstar & more in one OTT bundle.",
   legal: "Get Playbox Mega Max 29 OTT pack (₹199 value) free. If claimed free, IPTV Premium Pack is unavailable.",
   smaallcta: "Explore OTT packages.",
-  mainCta: "Call +91 9944199448"
+  mainCta: "Call +91 9944199445"
 }
 export const rightContentFlexDataNorth = {
   subheading: "One Pack. All OTTs.",
   heading: "Stream. Anytime. Anywhere.",
-  description: "Prime, Hotstar, Zee5 & more — in one simple plan.",
+  description: "Prime, Jio Hotstar, Zee5 & more — in one simple plan.",
   legal: "Free Playbox Max Pack. IPTV Premium not included if claimed.",
   smaallcta: "View packs.",
-  mainCta: "Call +91 9944199448"
+  mainCta: "Call +91 9944199445"
 }
   export const dynamicSlidesData = [
     {

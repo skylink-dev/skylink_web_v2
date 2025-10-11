@@ -80,7 +80,7 @@ export default function ProductSingle() {
                                     <div className="device-header">
                                         <div className="mar-t-xxs mar-r-xxs DeviceHeader_displayName__IxA3u">
                                             <span className="color-ui-black DeviceHeader_displayName__IxA3u">
-                                                <h1 className="mar-b-none heading-md color-ui-black">Skyplay Fire tv</h1>
+                                                <h1 className="mar-b-none heading-md color-ui-black">Skylink Fire tv</h1>
                                             </span>
                                         </div>
                                         <p className="DeviceHeader_deviceCompatibleHeader__Skrko">Compatible with Apple iPhone 16 Pro Max</p>
@@ -118,7 +118,7 @@ export default function ProductSingle() {
                                                             <h2 className="jsx-3239c2f9467760f5 font-bold type-15">Earn up to $440 back</h2>
                                                             <div className="jsx-3239c2f9467760f5 type-sm line-h-md">
                                                                 <span className="jsx-3239c2f9467760f5 letter-spacing-3">
-                                                                    Skyplay Wire customers enjoy an exclusive benefit with the Skyplay Points Plus® Card from Citi. Terms apply.
+                                                                    Skylink Wire customers enjoy an exclusive benefit with the Skylink Points Plus® Card from Citi. Terms apply.
                                                                 </span>
                                                                 <br />
                                                                 <Link href="/" className="jsx-3239c2f9467760f5 cursor underline  type-legal">Learn how</Link>

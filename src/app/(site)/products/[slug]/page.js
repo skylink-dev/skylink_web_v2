@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 const productListData = [
   {
     id: 1,
-    title: "Skyplay Fire Tv",
+    title: "SkyLink Fire Tv",
     price: "₹2000",
     rating: 3.5,
     reviews: 17,
@@ -46,7 +46,7 @@ const productListData = [
   },
   {
     id: 6,
-    title: "SkyPlay OTT Streaming",
+    title: "SkyLink OTT Streaming",
     price: "₹1999",
     rating: 4.4,
     reviews: 50,
@@ -66,7 +66,7 @@ const productListData = [
   },
   {
     id: 8,
-    title: "SkyPlay OTT Android Box",
+    title: "SkyLink OTT Android Box",
     price: "₹2399",
     rating: 4.5,
     reviews: 43,
@@ -76,7 +76,7 @@ const productListData = [
   },
   {
     id: 9,
-    title: "SkyPlay Dual Band Router",
+    title: "SkyLink Dual Band Router",
     price: "₹1999",
     rating: 4.3,
     reviews: 50,
@@ -106,7 +106,7 @@ const productListData = [
   },
   {
     id: 12,
-    title: "SkyPlay Wi-Fi Signal Booster",
+    title: "SkyLink Wi-Fi Signal Booster",
     price: "₹899",
     rating: 4.3,
     reviews: 22,
@@ -196,7 +196,7 @@ const productListData = [
   },
   {
     id: 21,
-    title: "SkyPlay Fire TV Carrying Case",
+    title: "SkyLink Fire TV Carrying Case",
     price: "₹599",
     rating: 4.6,
     reviews: 14,
@@ -206,7 +206,7 @@ const productListData = [
   },
   {
     id: 22,
-    title: "SkyPlay HDMI Splitter (1 Input, 2 Output)",
+    title: "SkyLink HDMI Splitter (1 Input, 2 Output)",
     price: "₹699",
     rating: 4.5,
     reviews: 18,

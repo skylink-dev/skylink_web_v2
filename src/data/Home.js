@@ -7,75 +7,81 @@ export const cardData = [
     legalText: 'Offer available for new and existing customers. Fire TV deposit refundable as per plan. Regional availability may vary. Terms and conditions apply.',
     link: '/'
   },
-{
-  image: '/assets/smart-tv.jpg',
-  subtitle: 'Smart TV? You’re already set!',
-  title: 'Just tap. Stream everything.',
-  description: 'Watch TV & OTT on Smart TV or Fire TV. ₹399 in South, ₹599 in North.',
-  legalText: 'Pricing varies by region. No dish or additional hardware required for Smart TVs. Internet connection needed. Terms apply.',
-  link: '/'
-}
+  {
+    image: '/assets/smart-tv.jpg',
+    subtitle: 'Smart TV? You’re already set!',
+    title: 'Just tap. Stream everything.',
+    description: 'Enjoy unlimited 350+ channels & 19 OTT apps — just ₹399/month!',
+    legalText: 'No additional hardware needed. Internet connection required. Offer valid for South India only. Terms apply.',
+    link: '/south-plans'
+  }
+
 ];
 export const slidesData = [
-  {
-    id: 'slide-1',
-    heading: 'TriplePlay ₹899/m',
-    eyebrow: 'South India’s Best',
-    description: 'Broadband. 1000+ channels and Sun Tv, Vijay Tv, Zee 5. One simple plan.',
-    legal: 'No set-top box. Free install TN, Telangana, Karnataka.',
-    ctaLabel: 'Get the South Plan',
-    ctaHref: '/',
-    image: '/assets/iptv-offer.jpg',
-  },
-  {
-  id: 'slide-2',
-  heading: 'Stream South ₹499/m',
-  eyebrow: 'Movies & More',
-  description: '450+ FTA & PLC channels at zero cost, plus 18 OTT apps free with Skylink & Playbox Basic Plan.',
-  legal: 'No hardware. Internet only.',
-  ctaLabel: 'Explore South OTT',
-  ctaHref: '/',
-  image: '/assets/skyplay-ott-image.jpg',
-  },
   {
     id: 'slide-3',
     heading: 'Ultra-Fast @ ₹399/m',
     eyebrow: 'Buffer-Free Streaming',
-    description: 'Up to 40 mbps broadband. Designed for you.',
+    description: 'Up to 30 Mbps broadband. Designed for you.',
     legal: 'Speed varies. Fair usage applies.',
     ctaLabel: 'Check Coverage',
     ctaHref: '/',
     image: '/assets/ultra-fast-broadband.jpg',
+    speed: '30 Mbps',
+    tvChannels: 350,
+    ottApps: 15,
+  },
+ {
+    id: 'slide-2',
+    heading: 'Stream ₹599/m',
+    eyebrow: 'Movies & More',
+    description: '550+ FTA & PLC channels at zero cost, plus 19 OTT apps free with Skylink & OTTs Basic Plan.',
+    legal: 'No hardware. Internet only.',
+    ctaLabel: 'Explore  OTT',
+    ctaHref: '/',
+    image: '/assets/skyplay-ott-image.jpg',
+    speed: '30 Mbps',
+    tvChannels: 550,
+    ottApps: 19,
+  },
+  {
+    id: 'slide-1',
+    heading: 'TriplePlay ₹799/m',
+    eyebrow: 'India’s Best',
+    description: 'Broadband. 750+ channels and Sun Tv, Vijay Tv, Zee 5. One simple plan.',
+    legal: 'No set-top box. Free install TN, Telangana, Karnataka.',
+    ctaLabel: 'Get the Plan',
+    ctaHref: '/',
+    image: '/assets/iptv-offer.jpg',
+    speed: '30 Mbps',
+    tvChannels: 750,
+    ottApps: 20,
   },
   {
     id: 'slide-4',
-    heading: 'All-in-One ₹899/mo',
-    eyebrow: 'North India’s Choice',
-    description: 'Broadband + 1000+ TV channels + Hotstar, SonyLIV, Zee5.',
-    legal: 'No device needed. Delhi, Punjab, Haryana, UP.',
-    ctaLabel: 'Get the North Plan',
+    heading: 'All-in-One ₹899/m',
+    eyebrow: 'Best Value',
+    description: 'Broadband + 1000+ TV channels +Jio Hotstar, SonyLIV, Zee5.',
+    legal: 'No device needed.',
+    ctaLabel: 'Get Plan',
     ctaHref: '/',
     image: '/assets/all-in-one-tv.jpg',
+    speed: '50 Mbps',
+    tvChannels: 750,
+    ottApps: 20,
   },
   {
-    id: 'north-slide-2',
-    heading: 'Unlimited OTT ₹199/mo',
+    id: 'slide-5',
+    heading: 'Unlimited OTT ₹999/m',
     eyebrow: 'Hindi Hits & Series',
-    description: 'Addon - Hotstar, Zee5 — streaming redefined. Playbox Mega Max 29 OTT pack worth ₹199/- Free.',
+    description: 'Addon -Jio Hotstar, Zee5 — streaming redefined. Mega Max 29 OTT pack worth ₹299/- Free.',
     legal: 'If Mega Max pack is claimed as free, then IPTV Premium Pack can’t be claimed by customer. Internet required. No set-top box.',
-    ctaLabel: 'Explore North OTT',
+    ctaLabel: 'Explore OTT',
     ctaHref: '/',
     image: '/assets/unlimited-ott.jpg',
-  }, 
-  {
-    id: 'north-slide-3',
-    heading: 'Fast Broadband ₹599/mo',
-    eyebrow: 'Reliable Speeds',
-    description: 'Up to 1 Gbps in Delhi NCR and beyond.',
-    legal: 'Speed depends on location. FUP applies.',
-    ctaLabel: 'Check Coverage',
-    ctaHref: '/',
-    image: '/assets/fast-broadband.jpg',
+    speed: '200 Mbps',
+    tvChannels: 550,
+    ottApps: 20,
   },
 ];
 
@@ -143,7 +149,7 @@ export const iconCard = [
   {
     icon: ("/assets/stream-all-ott-apps.png"),
     title: "Stream All OTT Apps",
-    description: "Zee5, Amazon Prime, Hotstar, Aha, Sun NXT and more in one app.",
+    description: "Zee5, Amazon Prime, Jio Hotstar, Aha, Sun NXT and more in one app.",
     legal: "Content availability may vary. Terms apply.",
   },
 ];
@@ -188,7 +194,7 @@ export const IconContent = [{
   cta: "Visit a store"
 }];
 export const contentNewsletter = { title: "Want to stay in the loop?", description: "Sign up for the latest deals, product news, and more from Skylink.", terms: "By submitting your email address, you agree to receive future emails from Skylink and its family of companies. We'll email you offers and promotions about Skylink products and services. Offers vary by device. Restrictions may apply." }
-export const bannerContent = { subtitle: "Think Big, Stream Bigger", title: "Router @ ₹1499/- + Skylink Fire TV — FREE device, refundable deposit applies.", firstcta: "", offercontent: "First time ever — Skylink Firestick available on refundable deposit! No one else offers this. Refundable deposit applies based on your chosen plan.", offercta: "", secondcta: "Call +919944199448", href: "tel:+919944199448" }
+export const bannerContent = { subtitle: "Think Big, Stream Bigger", title: "Router @ ₹1499/- + Skylink Fire TV — FREE device, refundable deposit applies.", firstcta: "", offercontent: "First time ever — Skylink Firestick available on refundable deposit! No one else offers this. Refundable deposit applies based on your chosen plan.", offercta: "", secondcta: "Call +919944199445", href: "tel:+919944199445" }
 export const iconMenuData = [{
   id: 1,
   icon: ("/assets/earth-globe.svg"),
@@ -331,7 +337,7 @@ export const flexCardData = [
     subtitle: '500+ channels. Zero cables.',
     description:
       'From Chennai to Chandigarh, live TV is reimagined. No cables. No clutter. Just flawless HD clarity.',
-    details: 'Setup-free. 30-day free experience.',
+    details: 'Setup-free.',
     leftImage: "/assets/skyplay-flex-card-left.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile.jpg", 
     link: '/',
@@ -353,7 +359,7 @@ export const flexCardData = [
     subtitle: '4K clarity. Voice control.',
     description:
       'No remotes. No rules. Just your voice—and every show you love—in any language you choose.',
-    details: 'Experience 4K clarity with zero setup. 30-day free start.',
+    details: 'Experience 4K clarity with zero setup. ',
     leftImage: "/assets/skyplay-flex-card-left.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile-banner.jpg",
     link: '/',
@@ -364,7 +370,7 @@ export const flexCardData = [
     subtitle: 'Kids. Parents. All together.',
     description:
       'From bedtime cartoons to early-morning bhajans—this is entertainment crafted for the Indian family.',
-    details: 'Safe. Simple. Sensational. 30-day free trial.',
+    details: 'Safe. Simple. Sensational.',
     leftImage: "/assets/skyplay-flex-card-left-hindi.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile.jpg",
     link: '/',
@@ -385,7 +391,7 @@ export const flexCardData = [
     title: 'Cinema, Rewritten.',
     subtitle: 'Big screen. No theatre.',
     description:'Blockbusters in 4K. From Rajinikanth to Ranbir. Watch what you love, when you want.',
-    details: 'No setup box. Just the story. 30 days free.',
+    details: 'No setup box. Just the story. ',
     leftImage: "/assets/skyplay-flex-card-left-hindi.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile.jpg",
     link: '/',
@@ -399,8 +405,8 @@ export const rightContentFlexData = {
   description: "Bring friends. Grab ₹200 rewards. Enjoy Skylink together.",
   legal: "T&Cs apply. Referral credited post activation.",
   smaallcta: "View full offer details",
-  mainCta: "Call Now: +91 99441 99448",
-  href: "tel:+919944199448",
+  mainCta: "Call Now: +91  99441 99445",
+  href: "tel:+919944199445",
 };
 
 export const faqData = [

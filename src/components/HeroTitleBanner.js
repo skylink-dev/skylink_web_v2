@@ -5,7 +5,7 @@ export default function HeroTitleBanner() {
         <>
             <div className="hero">
                 <div className="hero--text">
-                    <h1>The Magic Of Digital Entertainment</h1>
+                    <h1>Speed You Need. Connection You Trust. Entertainment You Love</h1>
                 </div>
             </div>
             <div className="section--intro">

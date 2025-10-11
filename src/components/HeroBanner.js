@@ -38,10 +38,10 @@ export default function HeroBanner({content}) {
                                                 <div className="cta-container">
                                                     <div className=" flex-row inline-flex flex-wrap gap16">
                                                         <div data-testid="marketing-copy-primary-cta">
-                                                            <Link id="marketing-copy-btn-:Rck9jmH1:-0" aria-label="Shop Skyplay Fiber plans" href="/plans" className="jsx-1196099039 btn-primary ">{content.subcta}</Link>
+                                                            <Link id="marketing-copy-btn-:Rck9jmH1:-0" aria-label="Shop Skylink Fiber plans" href="/plans" className="jsx-1196099039 btn-primary ">{content.subcta}</Link>
                                                         </div>
                                                         <div data-testid="marketing-copy-secondary-cta">
-                                                            <Link id="marketing-copy-secondary-btn-:Rck9jmH1:-0" aria-label="Call 844.886.4258 to order Skyplay Fiber" href="tel:+919944199448" className="jsx-1196099039 btn-secondary ">{content.maincta}</Link>
+                                                            <Link id="marketing-copy-secondary-btn-:Rck9jmH1:-0" aria-label="Call 844.886.4258 to order Skylink Fiber" href="tel:+919944199445" className="jsx-1196099039 btn-secondary ">{content.maincta}</Link>
                                                         </div>
                                                     </div>
                                                 </div>

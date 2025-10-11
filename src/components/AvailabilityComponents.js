@@ -197,7 +197,7 @@ export default function AvailabilityComponents() {
                                         </h3>
                                         <p className="text-lg text-gray-800 mb-6 font-semibold drop-shadow-sm">Service is available in your area.</p>
                                         <p className="flex gap-2">
-                                        <Link href="tel:+9199441 99448" className="btn-primary" style={{}}>Call (+91) 99441 99448</Link>
+                                        <Link href="tel:+91 99441 99445" className="btn-primary" style={{}}>Call (+91)  99441 99445</Link>
                                         <Link href="mailto:support@skyplay.in" className="btn-secondary">support@skyplay.in</Link>
                                         </p>
 
@@ -211,7 +211,7 @@ export default function AvailabilityComponents() {
                                     <h3>Sorry, service is not available in your area.</h3>
                                     <p>Please contact customer support for more information.</p>
                                     <p>
-                                        Phone: <Link href="tel:(+91) 99441 99448">(+91) 99441 99448</Link>
+                                        Phone: <Link href="tel:(+91)  99441 99445">(+91)  99441 99445</Link>
                                     </p>
                                 </>
                             )}
