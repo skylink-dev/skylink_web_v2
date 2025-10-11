@@ -344,7 +344,7 @@ export const flexCardData = [
   },
   {
     id: 2,
-    title: 'All Your OTT. One Skylink.',
+    title: 'All Your OTT. One Skyplay.',
     subtitle: 'One login. Every platform.',
     description:
       'Everything you love. In one seamless place. Made for every home—from Kochi to Kanpur.',

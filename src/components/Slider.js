@@ -73,6 +73,7 @@ export default function Slider({ slides = [], title, color }) {
                             <div data-testid="filmstrip_reel_wrapper" className="jsx-2137253706 film-strip-reel-container mar-none rel overflow-x-hidden scrollbar-hidden">
                                 <div data-testid="filmstrip_reel" className="jsx-2137253706 film-strip-reel flex height-auto flex-items-stretch" >
                                     {reorderedSlides.map((slide, index) => (
+                                        
                                         <div
                                             key={`${slide.id}-${index}`}
                                             id={slide.id}
@@ -86,6 +87,7 @@ export default function Slider({ slides = [], title, color }) {
                                                 transition: 'all 0.8s ease-in-out'
                                             }}
                                         >
+                                            {slide.image}
                                             <div
                                                 className="jsx-1181136068 jsx-2300775981 card flex-card radius-lg rel bgcolor theme-light-bg-img flex-card-background"
                                                
