@@ -16,6 +16,7 @@ import CustomSliderOtt from '@/components/CustomSliderOtt';
 import Tab from './component/Tab';
 import { Providers } from '../Providers';
 import { PlanProvider } from './context/PlansContext';
+import ContactPopup from './component/ContactPopup';
 
 
 const ReactSelectWithSearch = dynamic(
@@ -28,7 +29,7 @@ export default function Page() {
     return (
         <Providers>
           <PlanProvider>
-
+            
             <><Tab></Tab></>
         </PlanProvider>
         </Providers>

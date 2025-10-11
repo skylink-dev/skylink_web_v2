@@ -8,6 +8,7 @@ import PlanHighlights from '../../../../components/plans/PlanHighlights';
 import CustomPlans from '../../../../components/plans/CustomPlans';
 import CustomPlansMobile from '../../../../components/plans/CustomPlansMobile';
 import { AnimatePresence, motion } from 'framer-motion';
+import { FaStar } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -18,6 +19,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { usePlans } from '../context/PlansContext';
 import "./Tab.css"
+import ContactPopup from './ContactPopup';
 export default function Tab() {
     const plans = useSelector(state => state.plans);
     const tags = ["Fixed Plan"];
@@ -36,6 +38,7 @@ export default function Tab() {
     const [basePrice, setBasePrice] = useState(699);
     const [isMobile,setIsMobile] = useState(0);
     const detailRef = useRef(null);
+    const [isOpen, setIsOpen] = useState(false);
     // const drawerRef = useRef(null);
     const sectionRef = useRef(null);
     // const exitY = typeof window !== "undefined" ? window.innerHeight + 43 : '100%';
@@ -128,14 +131,15 @@ export default function Tab() {
     const fixedPlanTotal = activePrice + gst + installationCost;
     return (
         <section ref={sectionRef} className={`pricing-plan-innovative-section ${insideAccordionIndex !== false ? 'active' : ''}`} style={{ margin: "20px 0px" }}>
+            <ContactPopup isMobile={isMobile} activeMbps={activeMbps} activePrice={activePrice} activeCycle={activeCycle} isOpen={isOpen} setIsOpen={setIsOpen}/>
             <div className="container">
                 <div className="container-wrap">
                     <h1>Broadband + TV + OTT</h1>
                     <div className="this-or-that-image-wrap">
-                        <img style={{width:"250px", margin:"20px auto 0px auto", display:"block"}} src="https://www.skylink.net.in/wp-content/uploads/2025/07/or-character-with-no-space.png" />
+                        {/* <img style={{width:"250px", margin:"20px auto 0px auto", display:"block"}} src="https://www.skylink.net.in/wp-content/uploads/2025/07/or-character-with-no-space.png" /> */}
                     </div>
                     {isMobile ? (
-                        <div className="flex pricing-plan-innovative-tags-wrap">
+                        <div className="flex  pricing-plan-innovative-tags-wrap" style={{ alignItems: "center", justifyContent: "center",margin:"8px" }}>
                             {[...tags, 'Customize Plan'].flatMap((tag, tdx, arr) => [
                                 <div
                                     key={`tag-${tdx}`}
@@ -144,9 +148,9 @@ export default function Tab() {
                                         setActiveTag(tag);
                                         setOpenChannelAccordionIndex(false);
                                     }}
-                                    style={{ cursor: 'pointer' }}
+                                    style={{ alignItems: "center", justifyContent: "center" ,cursor: 'pointer' }}
                                 >
-                                    <span>{tag === 'Fixed Plan' ? 'Fixed Our Plan' : tag === 'Customize Plan' ? 'Customize Your Plan' : tag}</span>
+                                    <span className=''>{tag === 'Fixed Plan' ? 'Fixed Plans' : tag === 'Customize Plan' ? 'Customize Your Plan' : tag}</span>
                                 </div>,
                                 tdx < arr.length - 1 && (
                                     <span key={`or-${tdx}`} className="mx-2 text-gray-500">or</span>
@@ -174,7 +178,7 @@ export default function Tab() {
                                         </div>
                                     ))}
                                 </div>
-                                    <h3 style={{ marginTop: "0px;" }}>Choose Your BandWidth</h3>
+                                    <h3 style={{ marginTop: "0px" }}>Choose Your BandWidth</h3>
                                     <div className="flex pricing-plan-innovative-tags-wrap inside-price-wrap mbps-wrap-for-header">
                                         {Object.entries(plans?.planOptions?.actualPrizeByZone?.[activeState]?.["Fixed Plan"] || {}).map(
                                             ([mbps, plansArray], idx) => {
@@ -249,7 +253,7 @@ export default function Tab() {
                                                                             isMobile
                                                                                 ? () => {
                                                                                     setInsideAccordionIndex(prev => (prev === key ? false : key));
-                                                                                    setDrawerOpen(false);
+                                                                                    // setDrawerOpen(false);
                                                                                     setActiveMbps(planInfo.speed)
                                                                                     setActivePrice(planInfo.price)
                                                                                     setBasePrice(planInfo.basePrice)
@@ -262,8 +266,13 @@ export default function Tab() {
                                                                         <div className="gradient-color"></div>
                                                                         {planInfo.hot === "yes" && (
                                                                             <div className="ad-card">
-                                                                                <img alt="recommened" className="recommend" src="https://www.skylink.net.in/wp-content/uploads/2025/07/skylink-recommened.png" />
-                                                                                <img alt="star" className="star" src="https://www.skylink.net.in/wp-content/uploads/2025/07/skylink-star.png" />
+                                                                                <p className='font-extrabold mt-4 text-white text-xl uppercase tracking-widest drop-shadow-md'>Recommended</p>
+                                                                                {/* <img alt="recommened" className="recommend" src="https://www.skylink.net.in/wp-content/uploads/2025/07/skylink-recommened.png" /> */}
+                                                                                {/* <img alt="star" className="star" src="https://www.skylink.net.in/wp-content/uploads/2025/07/skylink-star.png" /> */}
+                                                                                <div className='m-2 ml-4'>
+                                                                                <FaStar className="star text-white w-6 h-6" />
+                                                                                </div>
+                                                                                
                                                                             </div>
                                                                         )}
                                                                         <div className="pricing-separate-files">
@@ -399,6 +408,7 @@ export default function Tab() {
                                                                                                     setActiveInstallation(planInfo.installationFee)
                                                                                                     setBasePrice(planInfo.basePrice)
                                                                                                     setActiveCycle(planInfo.billingCycle)
+                                                                                                    setIsOpen(!isOpen)
                                                                                                     
                                                                                                 }}
                                                                                             >
@@ -482,6 +492,7 @@ export default function Tab() {
                                                                                     setActiveCycle(planInfo.billingCycle)
                                                                                     setActiveTag("Fixed Plan")
                                                                                     setActiveInstallation(planInfo.installationFee)
+                                                                                    setIsOpen(!isOpen)
                                                                                 }}
                                                                             >
                                                                                 {isSelected(key) ? (
@@ -515,7 +526,13 @@ export default function Tab() {
                                     </div>
                                     <div className="destop-subscribe-style">
                                         <span className="price" style={{ marginTop: "10px" }}>Total: <i className="fas fa-rupee-sign"></i>{fixedPlanTotal}</span>
-                                        <div className="subscribe-wrap"><button className="subscribe" data-price={activePrice} data-active-tab={activeMbps} data-active-nested-tab={activeCycle}>Subscribe Now</button></div>
+                                        <div className="subscribe-wrap"><button className="subscribe" onClick={()=>{
+                                            setIsOpen(!isOpen)
+                                            console.log(activePrice)
+                                            console.log(activeMbps)
+                                            console.log(activeCycle)
+
+                                        }} data-price={activePrice} data-active-tab={activeMbps} data-active-nested-tab={activeCycle}>Subscribe Now</button></div>
                                     </div>
                                 </div>
                             </div>
@@ -539,7 +556,7 @@ export default function Tab() {
                                         </table>
                                     </div>
                                     <div className="custom-plans">
-                                        <CustomPlans />
+                                        <CustomPlans/>
                                     </div>
                                     <div className="phone-number">
                                         <h5>Get in touch with our experts</h5>
