@@ -1,6 +1,7 @@
 // ContactForm.jsx
 import { useState, useEffect } from "react";
 import "./ContactForm.css";
+import { apiService } from "@/backend/apiservice";
 
 export default function ContactFormModern() {
   const [activeTab, setActiveTab] = useState("home");
@@ -85,6 +86,11 @@ export default function ContactFormModern() {
     }
 
     if (!hasError) {
+      apiService.submitContactForm(formData).then((resp)=>{
+        console.log(res);
+      }).catch((err)=>{
+        console.log(err)
+      })
       console.log("Form submitted:", formData);
       // Submit form logic here
     }

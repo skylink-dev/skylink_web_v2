@@ -1,5 +1,6 @@
 'use client';
 
+import { apiService } from '@/backend/apiservice';
 import { useState } from 'react';
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaPaperPlane } from 'react-icons/fa';
 
@@ -56,37 +57,29 @@ export default function ContactForm() {
     e.preventDefault();
     const newErrors = {};
 
-    if (!formData.service || formData.service === 'How we can help you?') {
-      newErrors.service = 'Please select a service';
-    }
+   
     if (!formData.firstName.trim()) {
       newErrors.firstName = 'First name is required';
     }
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = 'Last name is required';
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
+    
     if (!formData.mobile.trim()) {
       newErrors.mobile = 'Mobile number is required';
     } else if (!validateMobile(formData.mobile)) {
       newErrors.mobile = 'Please enter a valid 10-digit Indian mobile number';
-    }
-    if (!formData.address.trim()) {
-      newErrors.address = 'Address is required';
-    }
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
+    else{
+      apiService.submitContactForm(formData).then((res)=>{
+        console.log(res)
+      }).catch((err)=>{
+        console.log(res)
 
+      })
+    }
     setIsSubmitting(true);
     setSubmitStatus(null);
 
@@ -132,6 +125,15 @@ export default function ContactForm() {
   const headerContainerStyle = {
     marginBottom: '32px'
   };
+  const contactStyle = {
+  fontSize: 'clamp(32px, 5vw, 42px)',
+  fontWeight: 'bold',
+  color: '#e41d1dff',
+  textAlign: 'center',
+  marginBottom: 'clamp(24px, 4vw, 32px)',
+  letterSpacing: '-0.02em',
+  lineHeight: '1.2'
+};
 
  const badgeStyle = {
     display: 'inline-block',
@@ -184,7 +186,8 @@ export default function ContactForm() {
     padding: '24px',
     boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
     transition: 'all 0.3s ease-in-out',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    textDecoration: 'none'
   };
 
   const cardHoverStyle = {
@@ -230,14 +233,14 @@ export default function ContactForm() {
   };
 
   const linkStyle = {
-    color: '#dc2626',
+    color: '#2926dcff',
     fontWeight: '500',
     textDecoration: 'none',
     transition: 'color 0.2s ease-in-out'
   };
 
   const linkHoverStyle = {
-    color: '#b91c1c'
+    color: '#1cb93eff'
   };
 
   // Form Styles
@@ -422,11 +425,19 @@ export default function ContactForm() {
             {/* Contact Info Cards */}
             <div style={cardsContainerStyle}>
               {/* Address Card */}
+              
               <div 
                 style={cardStyle}
                 onMouseEnter={(e) => Object.assign(e.currentTarget.style, cardHoverStyle)}
                 onMouseLeave={(e) => Object.assign(e.currentTarget.style, cardStyle)}
               >
+                <a 
+            href="https://maps.google.com/maps?q=Skylink%20Fibernet%20Private%20Limited"
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1d4ed8'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+          >
                 <div style={cardContentStyle}>
                   <div 
                     style={{
@@ -448,6 +459,7 @@ export default function ContactForm() {
                     </p>
                   </div>
                 </div>
+                </a>
               </div>
 
               {/* Email Card */}
@@ -517,6 +529,7 @@ export default function ContactForm() {
           {/* Right Section - Form */}
           <div>
             <div style={formContainerStyle}>
+              <div style={contactStyle} >Contact US</div>
               <form onSubmit={handleSubmit} style={formStyle}>
                 {/* Service Dropdown */}
                 <div>
@@ -589,7 +602,7 @@ export default function ContactForm() {
                 </div>
 
                 {/* Email and Mobile */}
-                <div style={{...grid2ColStyle}} className="contact-grid-2">
+                <div style={{...grid2ColStyle}} >
                   <div>
                     <input
                       type="email"

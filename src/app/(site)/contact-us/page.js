@@ -2,6 +2,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import ContactForm from '@/components/contacts/ContactForm';
+import LocationMap from '@/components/contacts/LocationMap';
 
 const ContactSection = dynamic(() => import('@/components/ContactSection'));
 const ContactFormNew = dynamic(() => import('@/components/ContactFormNew'));
@@ -12,10 +13,11 @@ export default function Page() {
   return (
     <>
     <ContactForm/>
-      <ContactSection />
+    <LocationMap/>
+      {/* <ContactSection />
       <ContactFormNew />
       <CustomSearch />
-      <ContactDetails />
+      <ContactDetails /> */}
     </>
   );
 }

@@ -4,17 +4,24 @@ export const apiService = {
   // Submit contact form
   submitContactForm: (formData) => {
     const payload = {
-      "first_name": formData.name || "",
-      "last_name": formData.lastName || "",
-      "phone": formData.phone || "",
+      "first_name": formData.name || ""||formData.firstName,
+      "last_name": formData.lastName || ""||formData.lastName,
+      "phone": formData.phone || ""||formData.mobile,
       "email": formData.email || "",
-      "message": formData.message || "",
+      "message": formData.message || ""|| formData.info,
       "service": formData.subject || "",
+      "address":formData.address 
     };
     
     return axiosApi.post("contacts/", payload);
   },
-
+  submitSubscribe :(formData)=>{
+    const payload = {
+      "email": formData.email||""
+    };
+    
+    return axiosApi.post("subscription/subscribe/", payload);
+  },
   // Get all contacts (if needed)
   getContacts: () => {
     return axiosApi.get("contacts/");

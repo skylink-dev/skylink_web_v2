@@ -33,10 +33,10 @@ export default function Header() {
         </div>
         <div id="z1_right_zone" className="flex flex-items-center pull-right justify-end">
           <div className="custom-button-wrap">
-            <Link href="https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk" className="btn-primary bg-gray-500" download>Download IPTV App</Link>
-            <Link href="https://activations.skyplay.in/ott_subscription/login/" target='_blank' className="btn-primary bg-gray-600">Claim Your TV/OTT</Link>
-            <Link href="https://www.skylinknet.in/customer_portal/account/sn" target="_blank" className="btn-primary bg-gray-800">Quick <br/> Pay</Link>
-            <Link href="/plans" className="btn-primary bg-black">View Our Plans</Link>
+            <Link href="https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk" className="btn-primary bg-gray-500" style={{backgroundColor:' #DB4437'}} download>Download IPTV App</Link>
+            <Link href="https://activations.skyplay.in/ott_subscription/login/" target='_blank' className="btn-primary bg-gray-600" style={{backgroundColor:' #F4B400'}} >Claim Your TV/OTT</Link>
+            <Link href="https://www.skylinknet.in/customer_portal/account/sn" target="_blank" className="btn-primary bg-gray-800" style={{backgroundColor:' #0F9D58'}} >Quick <br/> Pay</Link>
+            <Link href="/plans" className="btn-primary bg-black" style={{backgroundColor:' #4285F4'}} >View Our Plans</Link>
           </div>
         </div>
       </nav>
