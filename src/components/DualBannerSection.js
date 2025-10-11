@@ -54,7 +54,7 @@ export default function DualBannerSection() {
                                                     </div>
                                                     <div data-testid="overlay-legal" className="jsx-1736972233 false">
                                                         <div id="overlay-legal-:r1:-0_Legal" className=" type-legal mar-b-sm-all">
-                                                            <span className=" ">₹50 with 300Mbps; ₹100 with 500Mpbs; ₹150 with 1 GIG+. Redemption reqd. Skyplay Fiber: Limited availability in select areas.</span>
+                                                            <span className=" ">₹50 with 300Mbps; ₹100 with 500Mpbs; ₹150 with 1 GIG+. Redemption reqd. Skylink Fiber: Limited availability in select areas.</span>
                                                             <button className="btn-reset nowrap" aria-label="See Skylink Fiber offer details">
                                                                 See offer details
                                                             </button>

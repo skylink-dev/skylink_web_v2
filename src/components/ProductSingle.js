@@ -118,7 +118,7 @@ export default function ProductSingle() {
                                                             <h2 className="jsx-3239c2f9467760f5 font-bold type-15">Earn up to $440 back</h2>
                                                             <div className="jsx-3239c2f9467760f5 type-sm line-h-md">
                                                                 <span className="jsx-3239c2f9467760f5 letter-spacing-3">
-                                                                    Skyplay Wire customers enjoy an exclusive benefit with the Skyplay Points Plus® Card from Citi. Terms apply.
+                                                                    Skylink Wire customers enjoy an exclusive benefit with the Skylink Points Plus® Card from Citi. Terms apply.
                                                                 </span>
                                                                 <br />
                                                                 <Link href="/" className="jsx-3239c2f9467760f5 cursor underline  type-legal">Learn how</Link>

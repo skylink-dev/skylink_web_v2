@@ -26,7 +26,7 @@ export default function page() {
                         <div className="list-svg line-h-normal type-base rte-checkmark-att-blue">
                             <ul className="list-disc list-inside space-y-2 pl-4" style={{ "margin": "10px 0px 30px 0px" }}>
                                 <li>Temporary suspension of a service at the subscribers request.</li>
-                                <li>Suspension of service by Skyplay for:</li>
+                                <li>Suspension of service by Skylink for:</li>
                                 <ul className="list-disc list-inside ml-6 mt-1 space-y-1" style={{ "marginLeft": "25px" }}>
                                     <li>Maintenance or testing purposes</li>
                                     <li>Ensuring service security and integrity or for technical reasons.</li>
@@ -42,8 +42,8 @@ export default function page() {
                         <div className="list-svg line-h-normal type-base rte-checkmark-att-blue">
                             <ul className="list-disc list-inside space-y-2 pl-4" style={{ "margin": "10px 0px 30px 0px" }}>
                                 <li>Phone: Call the helpline at 9944199445.</li>
-                                <li>Email: Send a request to support@skyplay.in</li>
-                                <li>Online Chat: Visit Skyplay assist and use the chat option.</li>
+                                <li>Email: Send a request to support@Skylink.net.in</li>
+                                <li>Online Chat: Visit Skylink assist and use the chat option.</li>
                             </ul>
                         </div>
                         <hr style={{ "marginBottom": "25px" }}></hr>
@@ -54,9 +54,9 @@ export default function page() {
                         <div className="list-svg line-h-normal type-base rte-checkmark-att-blue">
                             <ul className="list-disc list-inside space-y-2 pl-4" style={{ "margin": "20px 0px" }}>
                                 <li>Submit a cancellation request via one of the methods mentioned above.</li>
-                                <li>If the Skyplay connection was obtained under a Refundable Deposit or Entrustment Scheme, return the Customer Premises Equipment (CPE) promptly, adhering to the companys return policy and the Subscription Contract terms.</li>
+                                <li>If the Skylink connection was obtained under a Refundable Deposit or Entrustment Scheme, return the Customer Premises Equipment (CPE) promptly, adhering to the companys return policy and the Subscription Contract terms.</li>
                                 <li>Provide a scanned copy of a cancelled cheque and any other required documents to facilitate a NEFT refund to your bank account.</li>
-                                <li>Skyplay will process the refund within 20 business days after receiving the cancellation request, necessary documents, and, if applicable, the returned CPE.</li>
+                                <li>Skylink will process the refund within 20 business days after receiving the cancellation request, necessary documents, and, if applicable, the returned CPE.</li>
                             </ul>
                         </div>
                         <hr style={{ "marginBottom": "25px" }}></hr>
@@ -75,7 +75,7 @@ export default function page() {
                         <h2 className="text-xl font-semibold mb-3" style={{ "margin": "15px 0px 15px 0px", "fontWeight": "bold", "fontSize": "24px" }}>F. Terms and Conditions</h2>
                         <div className="list-svg line-h-normal type-base rte-checkmark-att-blue">
                             <ul className="list-disc list-inside space-y-2 pl-4" style={{ "margin": "20px 0px" }}>
-                                <li>Refunds will cover only the unutilized account balance, after deducting any applicable costs, charges, or expenses incurred by Skyplay.</li>
+                                <li>Refunds will cover only the unutilized account balance, after deducting any applicable costs, charges, or expenses incurred by Skylink.</li>
                                 <li>The refund excludes charges related to:</li>
                                 <ul className="list-disc list-inside space-y-2 pl-4" style={{ "margin": "0px 40px" }}>
                                     <li>Purchased CPE</li>
@@ -84,14 +84,14 @@ export default function page() {
                                     <li>Installation fees</li>
                                     <li>Activation charges</li>
                                     <li>Subscription fees</li>
-                                    <li>Taxes collected or payable, unless otherwise agreed by Skyplay.</li>
+                                    <li>Taxes collected or payable, unless otherwise agreed by Skylink.</li>
                                 </ul>
                                 <li>All refunds are processed exclusively via NEFT; cash refunds are not available.</li>
                                 <li>Subscribers who have cancelled their accounts and received refunds cannot reactivate their connections.</li>
                                 <li>Subscribers must provide a scanned copy of a cancelled cheque to initiate the NEFT process.</li>
-                                <li>Skyplay may request additional information or documents to process the cancellation and determine refund eligibility; subscribers are obliged to comply.</li>
-                                <li>This Refund Policy is subject to the terms outlined in the Subscription Contract and other related documents available on www.skyplay.in.</li>
-                                <li>Skyplay reserves the right to modify or replace this Refund Policy, in whole or in part, at any time without prior notice or liability.</li>
+                                <li>Skylink may request additional information or documents to process the cancellation and determine refund eligibility; subscribers are obliged to comply.</li>
+                                <li>This Refund Policy is subject to the terms outlined in the Subscription Contract and other related documents available on www.Skylink.net.in</li>
+                                <li>Skylink reserves the right to modify or replace this Refund Policy, in whole or in part, at any time without prior notice or liability.</li>
                                 <li>Capitalized terms used herein have the meanings assigned to them in the Subscription Contract.</li>
                                 <li>In the event of any inconsistency between the Subscription Contract and these terms and conditions, in so far as this Refund Policy is concerned, the latter shall prevail.</li>
                                 <li>Headings used herein are for reference purposes only and do not affect the interpretation of the policy.</li>
@@ -156,8 +156,8 @@ export default function page() {
                             <ul>
                                 <li>All prices are excluding taxes (GST)</li>
                                 <li>The above recovery charges are applicable for customers who are on “ZERO installation/ Refundable Deposit/ Installation charges</li>
-                                <li>Customer to return the CSE and request for refundable deposit if any as per the refund policy shared by Skyplay</li>
-                                <li>Non-Returning of CSE which is part of Skyplay and provided on subsidy will be recovered from partners on proportionate basis</li>
+                                <li>Customer to return the CSE and request for refundable deposit if any as per the refund policy shared by Skylink</li>
+                                <li>Non-Returning of CSE which is part of Skylink and provided on subsidy will be recovered from partners on proportionate basis</li>
                                 <li>Recovery from partners will be either through debit note/adjustments on monthly commission</li>
                             </ul>
                         </div>
@@ -166,7 +166,7 @@ export default function page() {
                     <div className="policywrap">
                         <h2 className="text-xl font-semibold mb-3" style={{ "margin": "15px 0px 15px 0px", "fontWeight": "bold", "fontSize": "24px" }}>Dispute Resolution:</h2>
                         <div className="list-svg line-h-normal type-base rte-checkmark-att-blue">
-                            <p>Any disputes between Skyplay and the subscriber regarding this policy should first be resolved amicably within 30 days of written communication. Failing resolution, disputes will be referred to a sole arbitrator appointed by the Indian Council of Arbitration (ICA), following the Arbitration and Conciliation Act, 1996. Arbitration will take place in Chennai, in English, and the decision will be binding. The courts in Chennai will have exclusive jurisdiction over arbitration proceedings and related matters.</p>
+                            <p>Any disputes between Skylink and the subscriber regarding this policy should first be resolved amicably within 30 days of written communication. Failing resolution, disputes will be referred to a sole arbitrator appointed by the Indian Council of Arbitration (ICA), following the Arbitration and Conciliation Act, 1996. Arbitration will take place in Chennai, in English, and the decision will be binding. The courts in Chennai will have exclusive jurisdiction over arbitration proceedings and related matters.</p>
                         </div>
                         <hr style={{ "margin": "25px 0px 25px 0px" }}></hr>
                     </div>

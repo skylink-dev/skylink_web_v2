@@ -5,12 +5,12 @@ import React, { useState } from 'react'
 export default function SliderBanner() {
     const sliderMessages = [
         {
-          text: `Prompt, friendly service you deserve backed by the Skyplay Guarante. Speak to a tech expert within five minutes or schedule a callback at a time you prefer.`,
-          linkText: 'Learn more about the Skyplay Guarantee',
+          text: `Prompt, friendly service you deserve backed by the Skylink Guarante. Speak to a tech expert within five minutes or schedule a callback at a time you prefer.`,
+          linkText: 'Learn more about the Skylink Guarantee',
           link: '#',
         },
         {
-          text: `Avoid scams: Skyplay will never call you for a one-time PIN.`,
+          text: `Avoid scams: Skylink will never call you for a one-time PIN.`,
           linkText: 'Learn safety tips',
           link: '#',
         },

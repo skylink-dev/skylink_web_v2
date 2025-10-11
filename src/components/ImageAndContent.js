@@ -24,7 +24,7 @@ export default function ImageAndContent({ image, content, row="row" }) {
                                     ))}
                                 </div>
                                 <div id="storyoffer-0-panel-1-2_Legal" className="type-legal mar-b-xs">
-                                    <span className="" style={{"display":"none"}}>Limited availability in select areas. Savings based on ₹40/mo. discount on Skyplay Business Fiber 1 GIG and ₹20/mo. off Managed Internet Backup. With purchase of an eligible business internet service. Ltd availability/areas.</span>
+                                    <span className="" style={{"display":"none"}}>Limited availability in select areas. Savings based on ₹40/mo. discount on Skylink Business Fiber 1 GIG and ₹20/mo. off Managed Internet Backup. With purchase of an eligible business internet service. Ltd availability/areas.</span>
                                     <button className="btn-reset nowrap" aria-label="Learn more about our home business bundle deal"></button>
                                 </div>
                                 <div className="flex flex-wrap gap16 ">

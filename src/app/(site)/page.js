@@ -35,7 +35,7 @@ export default function Home() {
       {/* <Banner content={bannerContent} /> */}
       <HomeContactForm onSubmit={handleFormSubmit} />
       <FlexCard 
-        title="Magic Of Digital Entertainment" 
+        title="Speed You Need. Connection You Trust. Entertainment You Love" 
         rightImage="/assets/skyplay-card-right.jpg" 
         leftImage="/assets/skyplay-flex-card-left.jpg" 
         mobileleftImage="/assets/skyplay-banner-mobile.jpg"

@@ -158,7 +158,7 @@ const faqContent = [
   },
   {
     title: "Does Skylink Fire TV come preloaded with OTT apps?",
-    content: "Yes, it comes with a wide range of preloaded OTT apps including Netflix, Prime Video, Disney+ Hotstar, Zee5, Sony LIV, and many others. Some apps may require separate subscriptions."
+    content: "Yes, it comes with a wide range of preloaded OTT apps including Netflix, Prime Video, Jio Hotstar, Zee5, Sony LIV, and many others. Some apps may require separate subscriptions."
   },
   {
     title: "Can I use voice control on Skylink Fire TV?",

@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 const productListData = [
   {
     id: 1,
-    title: "Skyplay Fire Tv",
+    title: "SkyLink Fire Tv",
     price: "₹2000",
     rating: 3.5,
     reviews: 17,

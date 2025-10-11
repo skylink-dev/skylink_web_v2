@@ -23,7 +23,7 @@ const tabsData = [
         },
         {
           heading: "Endless Entertainment",
-          description: "Stream thousands of movies and shows from Netflix, Prime Video, Disney+Hotstar, and more.",
+          description: "Stream thousands of movies and shows from  Prime Video, Jio Hotstar, and more.",
           iconPath1: "/assets/endless-entertainment.png",
           iconPath2: ""
         },
@@ -35,7 +35,7 @@ const tabsData = [
         },
         {
           heading: "Watch Live",
-          description: "Watch live TV, news, and sports with subscriptions to SonyLIV, Zee5, Hotstar, and more.",
+          description: "Watch live TV, news, and sports with subscriptions to SonyLIV, Zee5, Jio Hotstar, and more.",
           iconPath1: "/assets/watch-live.png",
           iconPath2: ""
         }

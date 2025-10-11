@@ -165,7 +165,7 @@ export const flexCardDataNorth = [
 export const rightContentFlexData = {
   subheading: "Skylink OTT for Everyone",
   heading: "Stream your favorite OTT platforms seamlessly",
-  description: "Access Zee5, Prime, Hotstar & more in one OTT bundle.",
+  description: "Access Zee5, Prime, Jio Hotstar & more in one OTT bundle.",
   legal: "Get Playbox Mega Max 29 OTT pack (₹199 value) free. If claimed free, IPTV Premium Pack is unavailable.",
   smaallcta: "Explore OTT packages.",
   mainCta: "Call +91 9944199445"
@@ -173,7 +173,7 @@ export const rightContentFlexData = {
 export const rightContentFlexDataNorth = {
   subheading: "One Pack. All OTTs.",
   heading: "Stream. Anytime. Anywhere.",
-  description: "Prime, Hotstar, Zee5 & more — in one simple plan.",
+  description: "Prime, Jio Hotstar, Zee5 & more — in one simple plan.",
   legal: "Free Playbox Max Pack. IPTV Premium not included if claimed.",
   smaallcta: "View packs.",
   mainCta: "Call +91 9944199445"
