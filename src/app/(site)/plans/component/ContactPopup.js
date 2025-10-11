@@ -1,4 +1,5 @@
 import axiosApi from '@/axios/api';
+import { apiService } from '@/backend/apiservice';
 import { useEffect, useState } from 'react';
 import { FaTimes, FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
@@ -13,7 +14,6 @@ export default function ContactPopup({isOpen,setIsOpen,activeMbps,activePrice,ac
     name: '',
     phone: ''
   });
-  const [currselectedPlan,setSelectedPlan]=useState({})
   
   useEffect(()=>{
     setFormData({name:'',phone:'+91 ', subject:`${activeMbps} - ${activeCycle} ( ₹ ${activePrice}/- +GST applicable)`})
@@ -114,28 +114,14 @@ export default function ContactPopup({isOpen,setIsOpen,activeMbps,activePrice,ac
     }
     
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    axiosApi.post("contacts/",{
-        "first_name": formData.name,
-        "last_name": "",
-        "phone": formData.phone ,
-        "email": "",
-        "message": "",
-        "service": formData.subject,
-    }).then(()=>{
-      console.log('Form submitted:', formData);
-      alert('Thank you! We will contact you soon.');
-    }).catch(err=>{
-      console.log(err);
-      alert("Unexpected Error Occured")
-    })
-    
-    
-    
-    setFormData({ name: '', phone: '+91 ', subject: '' });
+     try {
+    await apiService.submitContactForm(formData);
+    console.log('Form submitted:', formData);
+    alert('Thank you! We will contact you soon.');
+  } catch (err) {
+    console.log(err);
+    alert("Unexpected Error Occurred");
+  }
     setErrors({ name: '', phone: '' });
     setIsSubmitting(false);
     setIsOpen(false);
@@ -221,7 +207,7 @@ export default function ContactPopup({isOpen,setIsOpen,activeMbps,activePrice,ac
                     type="text"
                     name="subject"
                     value={formData.subject}
-                    onChange={handleChange}
+                    disabled={true}
                     style={{
                       ...inputStyle,
                       borderColor: errors.phone ? '#ef4444' : '#d1d5db'
