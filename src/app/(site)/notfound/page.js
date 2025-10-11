@@ -9,7 +9,7 @@ export default function page() {
         {
             imgSrc: '/assets/blogs-01.png',
             title: '',
-            subtitle: 'Skyplay Broadband',
+            subtitle: 'Skylink Broadband',
             description: "Blazing-fast internet up to 1 Gbps to get you back online. Reliable, smooth, and perfect for your connected home.",
             normaltext: "",
             legalText: "",
@@ -18,7 +18,7 @@ export default function page() {
         {
             imgSrc: '/assets/blogs-02.png',
             title: '',
-            subtitle: 'Skyplay Premium OTTs',
+            subtitle: 'Skylink Premium OTTs',
             description: "Access Zee5, Amazon Prime, Disney+ and more in one subscription. Start streaming again in seconds.",
             normaltext: "",
             legalText: "",
@@ -27,7 +27,7 @@ export default function page() {
         {
             imgSrc: '/assets/blogs-03.png',
             title: '',
-            subtitle: 'Skyplay IPTV',
+            subtitle: 'Skylink IPTV',
             description: "Watch 1000+ live channels and regional content in HD. The entertainment you were looking for is right here.",
             normaltext: "",
             legalText: "",
@@ -36,7 +36,7 @@ export default function page() {
         {
             imgSrc: '/assets/blogs-04.png',
             subtitle: 'Go Back Home',
-            description: "Explore Skyplay’s full range of services — IPTV, OTT, broadband, and more. Let’s get you back where you belong.",
+            description: "Explore Skylink’s full range of services — IPTV, OTT, broadband, and more. Let’s get you back where you belong.",
             normaltext: "",
             legalText: "",
             link: '/',

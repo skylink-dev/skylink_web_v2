@@ -19,6 +19,7 @@ export default function ContactFormModern() {
 
   const [phoneError, setPhoneError] = useState("");
   const [captchaError, setCaptchaError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const homeServices = ["Sales/Support", "Tech Support"];
   const businessServices = [
@@ -86,13 +87,26 @@ export default function ContactFormModern() {
     }
 
     if (!hasError) {
+      setIsLoading(true);
       apiService.submitContactForm(formData).then((resp)=>{
-        console.log(res);
+        alert("Thank You we will Reach out Soon");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          date: "",
+          service: "",
+          address: "",
+          info: "",
+          captcha: false,
+        });
       }).catch((err)=>{
-        console.log(err)
-      })
+        alert("Unknown error expected please submit again");
+        console.log(err);
+      }).finally(()=>{
+        setIsLoading(false);
+      });
       console.log("Form submitted:", formData);
-      // Submit form logic here
     }
   };
 
@@ -110,15 +124,49 @@ export default function ContactFormModern() {
       <div className="contact-form-container">
         {/* Heading Content */}
         <div className="contact-form-heading animate-fadeInUp">
-          <h1 className="contact-form-title">
+          <h1 className="contact-form-title animate-slideInDown" style={{
+            background: 'linear-gradient(135deg, #ff0000, #cc0000, #ff3333)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: 'gradientShift 3s ease infinite'
+          }}>
             GET CONNECTED... STAY CONNECTED
           </h1>
           <div className="contact-form-subtitle-container">
-            <p className="contact-form-subtitle">
+            <p className="contact-form-subtitle animate-slideInUp" style={{
+              color: '#ff4444',
+              animation: 'fadeInPulse 2s ease-in-out infinite'
+            }}>
               Linking Possibilities With Seamless Connections!
             </p>
           </div>
         </div>
+        <style>{`
+          @keyframes gradientShift {
+            0%, 100% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+          }
+          
+          @keyframes fadeInPulse {
+            0%, 100% {
+              opacity: 0.8;
+              transform: scale(1);
+            }
+            50% {
+              opacity: 1;
+              transform: scale(1.02);
+            }
+          }
+          
+          .contact-form-title {
+            background-size: 200% auto;
+          }
+        `}</style>
 
         {/* Form Section */}
         <div className="contact-form-section">
@@ -256,8 +304,9 @@ export default function ContactFormModern() {
                   <button
                     type="submit"
                     className="contact-form-submit"
+                    disabled={isLoading}
                   >
-                    Submit
+                    {isLoading ? "Submitting..." : "Submit"}
                   </button>
                 </div>
               </div>
