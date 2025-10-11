@@ -34,7 +34,7 @@ export default function IconCard({ titleData, cardData }) {
                                         key={index} 
                                         className="pad-b-xs grid-col-6 grid-col-6-md grid-col-6-sm"
                                         whileHover={{ scale: 1.03 }}
-                                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                                        transition={{ type: 'keyframes', stiffness: 300, damping: 20 }}
                                     >
                                         <div className="flex flex-row height-full">
                                             <motion.div 

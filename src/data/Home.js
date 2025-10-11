@@ -26,7 +26,7 @@ export const slidesData = [
     legal: 'Speed varies. Fair usage applies.',
     ctaLabel: 'Check Coverage',
     ctaHref: '/',
-    image: '/assets/ultra-fast-broadband.jpg',
+    image: '/assets/iptv-offer.jpg',
     speed: '30 Mbps',
     tvChannels: 350,
     ottApps: 15,
