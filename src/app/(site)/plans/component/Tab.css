@@ -3401,7 +3401,7 @@ button.details-link svg {
     left: 50%;
     top: 50%;
     z-index: 0;
-    transition: all 0.5s linear;
+    transition: all 0.2s linear;
     transform: translate(-50%, -50%) scale(0);
 }
 

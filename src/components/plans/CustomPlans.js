@@ -4,6 +4,7 @@ import CurrentChannel from "./CurrentChannel";
 import CurrentOTT from "./CurrentOTT";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ContactPopup from '@/app/(site)/plans/component/ContactPopup';
 
 export default function CustomPlans() {
     const {
@@ -34,6 +35,7 @@ export default function CustomPlans() {
     const billingAddonCycleMultiplier = billingAddonMultipliers[activeNestedTab] || 1;
     const staticBasePrice = pricing?.[activeTab]?.["Monthly"]?.price || price;
     const basePrice = pricing?.[activeTab]?.[activeNestedTab]?.price || price;
+
     const getInstallationFee = (speed, billingCycle) => {
         if (speed === "30 Mbps") return 1500;
         if (speed === "50 Mbps" && ["Monthly", "Quarterly"].includes(billingCycle)) return 1000;
@@ -136,6 +138,7 @@ export default function CustomPlans() {
     const totalPrice = Number(basePrice) + installationCost + channelPrice + ottPrice;
     const gstAmount = Math.round(totalPrice * 0.18);
     const getFinalPriceWithGst = () => {
+        
     const gstAmount = totalPrice * 0.18;
     const priceWithGst = totalPrice + gstAmount;
 
@@ -171,6 +174,10 @@ export default function CustomPlans() {
     const planMessage = planMessages[activeNestedTab] || "";
     const [isOpen, isOpenChange] = useState(false);
     const [isMobile,setIsMobile] = useState(0);
+    const [activeMbps,setActiveMbps]=useState("");
+    const [activePrice,setActivePrice]=useState("");
+    const [activeCycle,setActiveCycle]=useState("");
+    const [isContactOpen,setIsContactOpen]=useState(false);
     
     useEffect(() => {
     const checkIsMobile = () => {
@@ -191,6 +198,12 @@ export default function CustomPlans() {
         }
     }
     return (
+        <>
+         <ContactPopup isMobile={isMobile} activeMbps={activeTab} activePrice={totalPrice} activeCycle={
+            
+            billingCycleMultiplier==1?"Monthly":(billingCycleMultipliers==3?"Quaterly":(billingCycleMultiplier==6?"Half Yearly":"Yearly"))
+            } isOpen={isContactOpen} setIsOpen={setIsContactOpen}/>
+         
         <div className="custom-plan-inner-wrap">
             <div className="firstset">
                 <h1 style={{ fontSize: "24px", cursor: "pointer" }} className="title-class" onClick={() => {
@@ -293,7 +306,13 @@ export default function CustomPlans() {
                         data-active-tab={activeTab}
                         data-active-nested-tab={activeNestedTab}
                         data-active-channel={activeChannel}
-                        data-active-otts={activeOtts}>Subscribe Now</button>
+                        data-active-otts={activeOtts}
+                        onClick={
+                            ()=>{
+                                setIsContactOpen(!isContactOpen)
+                            }
+                        }
+                        >Subscribe Now</button>
                     <img style={{ "width": "100%", "display": "block", "height": "360px", "objectFit": "cover", "objectPosition": "top" }}
                         src="https://skylink.net.in/wp-content/uploads/2025/03/plan-webupdates.jpg"
                         alt="Plan Update"
@@ -301,5 +320,6 @@ export default function CustomPlans() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
