@@ -43,7 +43,7 @@ export default function Banner({ content }) {
                   {content.title}{" "}
                   <motion.span
                     whileHover={{ scale: 1.1, color: "#1D4ED8" }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    transition={{ type: "keyframes", stiffness: 300 }}
                   >
                     <Link href="/" className="underline">
                       {content.firstcta}
@@ -58,7 +58,7 @@ export default function Banner({ content }) {
                 <motion.button
                   className="btn-reset nowrap ml-2"
                   whileHover={{ scale: 1.05, backgroundColor: "#E0F2FE" }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  transition={{ type: "keyframes", stiffness: 300 }}
                   aria-label="See offer details"
                 >
                   {content.offercta}
@@ -69,7 +69,7 @@ export default function Banner({ content }) {
               <motion.div variants={itemVariants} className="mt-3">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: [0, 2, -2, 0] }}
-                  transition={{ type: "spring", stiffness: 250 }}
+                  transition={{ type: "keyframes", stiffness: 250 }}
                 >
                   <Link href={content.href} className="btn-reset nowrap link-text3">
                     {content.secondcta}

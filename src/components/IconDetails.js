@@ -43,7 +43,7 @@ export default function IconDetails({ iconslist, title }) {
                   className="flex-column false rel flex-items-center inline-flex row-gap16"
                   variants={itemVariants}
                   whileHover={{ scale: 1.1, y: -5 }}
-                  transition={{ type: 'spring', stiffness: 250 }}
+                  transition={{ type: 'keyframes', stiffness: 250 }}
                 >
                   <div className="row-gap16 flex-column flex-grow rel flex-items-center">
                     {item.icon}
