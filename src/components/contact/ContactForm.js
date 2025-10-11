@@ -16,6 +16,9 @@ export default function ContactFormModern() {
     captcha: false,
   });
 
+  const [phoneError, setPhoneError] = useState("");
+  const [captchaError, setCaptchaError] = useState("");
+
   const homeServices = ["Sales/Support", "Tech Support"];
   const businessServices = [
     "Sales/Support",
@@ -27,21 +30,64 @@ export default function ContactFormModern() {
 
   const services = activeTab === "home" ? homeServices : businessServices;
 
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(phone);
+  };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
+   
+    const updatedFormData = {
+      ...formData,
       [name]: type === "checkbox" ? checked : value,
-    }));
+    };
+   
+    setFormData(updatedFormData);
+   
+    if (name === "phone") {
+      if (value === "") {
+        setPhoneError("Please enter a valid 10-digit phone number");
+      } else if (validatePhone(value)) {
+        setPhoneError("");
+      } else {
+        setPhoneError("Please enter a valid 10-digit phone number");
+      }
+    }
+
+    if (name === "captcha" && checked) {
+      setCaptchaError("");
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.captcha) {
-      alert("Please verify that you're not a robot");
-      return;
+   
+    let hasError = false;
+
+    // Validate phone number
+    if (!formData.phone) {
+      setPhoneError("Please enter a valid 10-digit phone number");
+      hasError = true;
+    } else if (!validatePhone(formData.phone)) {
+      setPhoneError("Please enter a valid 10-digit phone number");
+      hasError = true;
+    } else {
+      setPhoneError("");
     }
-    console.log("Form submitted:", formData);
+
+    // Validate captcha
+    if (!formData.captcha) {
+      setCaptchaError("Please verify that you are not a robot");
+      hasError = true;
+    } else {
+      setCaptchaError("");
+    }
+
+    if (!hasError) {
+      console.log("Form submitted:", formData);
+      // Submit form logic here
+    }
   };
 
   useEffect(() => {
@@ -65,9 +111,6 @@ export default function ContactFormModern() {
             <p className="contact-form-subtitle">
               Linking Possibilities With Seamless Connections!
             </p>
-            {/* <span className="contact-form-brand">
-              Skylink
-            </span> */}
           </div>
         </div>
 
@@ -102,52 +145,57 @@ export default function ContactFormModern() {
 
           {/* Professional Form Container */}
           <div className="contact-form-main">
-            <div className="contact-form-content">
+            <form className="contact-form-content" onSubmit={handleSubmit}>
               {/* Row 1 */}
               <div className="contact-form-grid">
-                <input 
-                  type="text" 
-                  name="name" 
-                  placeholder="Name" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  required 
-                  className="contact-form-input" 
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="contact-form-input"
                 />
-                <input 
-                  type="email" 
-                  name="email" 
-                  placeholder="Email Id" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  required 
-                  className="contact-form-input" 
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Id"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="contact-form-input"
                 />
-                <input 
-                  type="tel" 
-                  name="phone" 
-                  placeholder="Phone Number" 
-                  value={formData.phone} 
-                  onChange={handleChange} 
-                  required 
-                  className="contact-form-input" 
-                />
+                <div className="phone-input-container">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number *"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="contact-form-input"
+                    pattern="[0-9]{10}"
+                    maxLength="10"
+                  />
+                  {phoneError && (
+                    <div className="phone-error-message">
+                      {phoneError}
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Row 2 */}
               <div className="contact-form-grid">
-                <input 
-                  type="date" 
-                  name="date" 
-                  value={formData.date} 
-                  onChange={handleChange} 
-                  className="contact-form-input" 
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  className="contact-form-input"
                 />
-                <select 
-                  name="service" 
-                  value={formData.service} 
-                  onChange={handleChange} 
-                  required 
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
                   className="contact-form-input"
                 >
                   <option value="">Select Service</option>
@@ -155,57 +203,64 @@ export default function ContactFormModern() {
                     <option key={idx} value={service}>{service}</option>
                   ))}
                 </select>
-                <input 
-                  type="text" 
-                  name="address" 
-                  placeholder="Address" 
-                  value={formData.address} 
-                  onChange={handleChange} 
-                  className="contact-form-input" 
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  className="contact-form-input"
                 />
               </div>
 
               {/* Row 3 */}
               <div className="contact-form-grid">
-                <input 
-                  type="text" 
-                  name="info" 
-                  placeholder="Additional Information" 
-                  value={formData.info} 
-                  onChange={handleChange} 
-                  className="contact-form-input" 
+                <input
+                  type="text"
+                  name="info"
+                  placeholder="Additional Information"
+                  value={formData.info}
+                  onChange={handleChange}
+                  className="contact-form-input"
                 />
-                <div className="contact-form-captcha">
-                  <label className="contact-form-captcha-label">
-                    <input 
-                      type="checkbox" 
-                      name="captcha" 
-                      checked={formData.captcha} 
-                      onChange={handleChange} 
-                      className="contact-form-captcha-checkbox" 
-                    />
-                    <span className="contact-form-captcha-text">I'm not a robot</span>
-                  </label>
-                  <div className="contact-form-captcha-brand">
-                    <span>reCAPTCHA</span>
-                    <span>Privacy • Terms</span>
+                <div className="captcha-container">
+                  <div className="contact-form-captcha">
+                    <label className="contact-form-captcha-label">
+                      <input
+                        type="checkbox"
+                        name="captcha"
+                        checked={formData.captcha}
+                        onChange={handleChange}
+                        className="contact-form-captcha-checkbox"
+                      />
+                      <span className="contact-form-captcha-text">I'm not a robot *</span>
+                    </label>
+                    <div className="contact-form-captcha-brand">
+                      <span>reCAPTCHA</span>
+                      <span>Privacy • Terms</span>
+                    </div>
                   </div>
+                  {captchaError && (
+                    <div className="captcha-error-message">
+                      {captchaError}
+                    </div>
+                  )}
                 </div>
-                <button 
-                  type="button" 
-                  onClick={handleSubmit} 
-                  className="contact-form-submit"
-                  disabled={!formData.captcha}
-                >
-                  Submit
-                </button>
+                <div className="contact-form-submit-container">
+                  <button
+                    type="submit"
+                    className="contact-form-submit"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
-            </div>
+            </form>
 
-            {/* Footer */}
+            {/* Footer - Removed terms and conditions text */}
             <div className="contact-form-footer">
               <p className="contact-form-footer-text">
-                By submitting this form, you agree to our terms and conditions.
+                {/* Text removed as requested */}
               </p>
             </div>
           </div>

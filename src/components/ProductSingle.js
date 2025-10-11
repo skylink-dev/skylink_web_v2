@@ -80,7 +80,7 @@ export default function ProductSingle() {
                                     <div className="device-header">
                                         <div className="mar-t-xxs mar-r-xxs DeviceHeader_displayName__IxA3u">
                                             <span className="color-ui-black DeviceHeader_displayName__IxA3u">
-                                                <h1 className="mar-b-none heading-md color-ui-black">Skyplay Fire tv</h1>
+                                                <h1 className="mar-b-none heading-md color-ui-black">Skylink Fire tv</h1>
                                             </span>
                                         </div>
                                         <p className="DeviceHeader_deviceCompatibleHeader__Skrko">Compatible with Apple iPhone 16 Pro Max</p>

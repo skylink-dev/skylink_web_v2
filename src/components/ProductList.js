@@ -184,7 +184,7 @@ const productListData = [
   {
     id: 20,
     title: "Dual Power Adapter for Fire TV",
-    brand: "SkyPlay",
+    brand: "Skylink",
     category: "Accessories",
     price: "₹199",
     rating: 4.0,
@@ -193,8 +193,8 @@ const productListData = [
   },
   {
     id: 21,
-    title: "SkyPlay Fire TV Carrying Case",
-    brand: "SkyPlay",
+    title: "Skylink Fire TV Carrying Case",
+    brand: "Skylink",
     category: "Accessories",
     price: "₹599",
     rating: 4.6,
@@ -203,8 +203,8 @@ const productListData = [
   },
   {
   id: 22,
-  title: "SkyPlay HDMI Splitter (1 Input, 2 Output)",
-  brand: "SkyPlay",
+  title: "Skylink HDMI Splitter (1 Input, 2 Output)",
+  brand: "Skylink",
   category: "Accessories",
   price: "₹699",
   rating: 4.5,

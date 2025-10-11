@@ -88,8 +88,9 @@ export default function Slider({ slides = [], title, color }) {
                                         >
                                             <div
                                                 className="jsx-1181136068 jsx-2300775981 card flex-card radius-lg rel bgcolor theme-light-bg-img flex-card-background"
-                                                style={{ backgroundImage: `url(${slide.image})` }}
+                                               
                                             >
+                                            <div   style={{ backgroundImage: `url(${slide.image})` }}> </div>
                                                 <div className="jsx-1181136068 jsx-2300775981 row flex card-height-base rel flex-column">
                                                     <div className="jsx-1181136068 jsx-2300775981 flex-1 grid-col-6 pad-b-none pad-md-lg pad-md-md pad-lg-sm max-width">
                                                         <div className="jsx-1181136068 jsx-2300775981 ">

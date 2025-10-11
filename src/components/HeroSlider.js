@@ -29,7 +29,7 @@ export default function HeroSlider() {
                 backgroundImage: '/assets/slider-4.png',
                 heading: 'All-in-One Entertainment & Connectivity',
                 subtitle:'Stream. Surf. Watch.',
-                description: 'Skyplay brings it all together—stream shows, surf the web, and explore OTT content with a single subscription.'
+                description: 'Skylink brings it all together—stream shows, surf the web, and explore OTT content with a single subscription.'
             }
         ]
         
