@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 export default function MainMenu() {
     const pathname = usePathname();
-    const [menu, setMenu] = useState([{title:"Internet", url:"/internet"}, {title:"TV", url:"/tv"}, {title:"OTT", url:"/ott"}, {title:"Support", url:"/support"}, {title:"Plans", url:"/plans"},  {title:"Contact Us", url:"/contact-us"} ]);
+    const [menu, setMenu] = useState([{title:"Home", url:"/"},{title:"Internet", url:"/internet"}, {title:"TV", url:"/tv"}, {title:"OTT", url:"/ott"}, {title:"Support", url:"/support"}, {title:"Plans", url:"/plans"},  {title:"Contact Us", url:"/contact-us"} ]);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 

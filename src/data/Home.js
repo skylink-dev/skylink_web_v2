@@ -7,14 +7,15 @@ export const cardData = [
     legalText: 'Offer available for new and existing customers. Fire TV deposit refundable as per plan. Regional availability may vary. Terms and conditions apply.',
     link: '/'
   },
-{
-  image: '/assets/smart-tv.jpg',
-  subtitle: 'Smart TV? You’re already set!',
-  title: 'Just tap. Stream everything.',
-  description: 'Watch TV & OTT on Smart TV or Fire TV. ₹399 in South, ₹599 in North.',
-  legalText: 'Pricing varies by region. No dish or additional hardware required for Smart TVs. Internet connection needed. Terms apply.',
-  link: '/'
-}
+  {
+    image: '/assets/smart-tv.jpg',
+    subtitle: 'Smart TV? You’re already set!',
+    title: 'Just tap. Stream everything.',
+    description: 'Enjoy unlimited 350+ channels & 19 OTT apps — just ₹399/month!',
+    legalText: 'No additional hardware needed. Internet connection required. Offer valid for South India only. Terms apply.',
+    link: '/south-plans'
+  }
+
 ];
 export const slidesData = [
   {
@@ -60,7 +61,7 @@ export const slidesData = [
     id: 'slide-4',
     heading: 'All-in-One ₹899/m',
     eyebrow: 'Best Value',
-    description: 'Broadband + 750+ TV channels + Hotstar, SonyLIV, Zee5.',
+    description: 'Broadband + 1000+ TV channels + Hotstar, SonyLIV, Zee5.',
     legal: 'No device needed.',
     ctaLabel: 'Get Plan',
     ctaHref: '/',
@@ -193,7 +194,7 @@ export const IconContent = [{
   cta: "Visit a store"
 }];
 export const contentNewsletter = { title: "Want to stay in the loop?", description: "Sign up for the latest deals, product news, and more from Skylink.", terms: "By submitting your email address, you agree to receive future emails from Skylink and its family of companies. We'll email you offers and promotions about Skylink products and services. Offers vary by device. Restrictions may apply." }
-export const bannerContent = { subtitle: "Think Big, Stream Bigger", title: "Router @ ₹1499/- + Skylink Fire TV — FREE device, refundable deposit applies.", firstcta: "", offercontent: "First time ever — Skylink Firestick available on refundable deposit! No one else offers this. Refundable deposit applies based on your chosen plan.", offercta: "", secondcta: "Call +919944199448", href: "tel:+919944199448" }
+export const bannerContent = { subtitle: "Think Big, Stream Bigger", title: "Router @ ₹1499/- + Skylink Fire TV — FREE device, refundable deposit applies.", firstcta: "", offercontent: "First time ever — Skylink Firestick available on refundable deposit! No one else offers this. Refundable deposit applies based on your chosen plan.", offercta: "", secondcta: "Call +919944199445", href: "tel:+919944199445" }
 export const iconMenuData = [{
   id: 1,
   icon: ("/assets/earth-globe.svg"),
@@ -404,8 +405,8 @@ export const rightContentFlexData = {
   description: "Bring friends. Grab ₹200 rewards. Enjoy Skylink together.",
   legal: "T&Cs apply. Referral credited post activation.",
   smaallcta: "View full offer details",
-  mainCta: "Call Now: +91 99441 99448",
-  href: "tel:+919944199448",
+  mainCta: "Call Now: +91  99441 99445",
+  href: "tel:+919944199445",
 };
 
 export const faqData = [

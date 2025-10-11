@@ -13,7 +13,7 @@ const HeroContent = {
   description: "Don't leave your internet behind.",
   additionaldescription: "Skylink makes broadband relocation smooth and hassle-free. Stay connected when you move — we’ll handle the transfer.",
   subcta: "Relocate with Skylink",
-  maincta: "Call (+91) 99441 99448"
+  maincta: "Call (+91)  99441 99445"
 };
 const stepsData = [
   {

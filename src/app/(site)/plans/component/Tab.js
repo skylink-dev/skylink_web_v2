@@ -157,7 +157,7 @@ export default function Tab() {
                         <div className="accordion-container">
                             <div className={`accordion-left-bg ${isMobile ? (activeTag === 'Fixed Plan' ? 'tab-active' : 'tab-nonactive') : `tab-active default-tab${activeTag === 'Fixed Plan' ? ' colorful' : ' gray'}`}`}>
                                 <h2 onClick={() => setActiveTag("Fixed Plan")} style={{ "curson": "pointer" }}>Choose Our Fixed Plan</h2>
-                                <h3 style={{ marginTop: "0px;" }}>Choose Your Billing Cycle</h3>
+                                <h3 style={{ marginTop: "0px" }}>Choose Your Billing Cycle</h3>
                                 <div className="wrap-for-header"><div className="flex pricing-plan-innovative-tags-wrap inside-price-wrap">
                                     {billingCycle.slice().reverse().map((cycle, cdx) => (
                                         <div
