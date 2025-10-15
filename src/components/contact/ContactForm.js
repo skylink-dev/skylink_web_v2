@@ -1,4 +1,3 @@
-// ContactForm.jsx
 import { useState, useEffect } from "react";
 import "./ContactForm.css";
 import { apiService } from "@/backend/apiservice";
@@ -10,16 +9,16 @@ export default function ContactFormModern() {
     name: "",
     email: "",
     phone: "",
-    date: "",
-    service: "",
-    address: "",
-    info: "",
     captcha: false,
   });
 
   const [phoneError, setPhoneError] = useState("");
+  const [nameError, setNameError] = useState("");
   const [captchaError, setCaptchaError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showSubmit, setShowSubmit] = useState(false);
+  const [captchaLoading, setCaptchaLoading] = useState(false);
+  const [captchaChecked, setCaptchaChecked] = useState(false);
 
   const homeServices = ["Sales/Support", "Tech Support"];
   const businessServices = [
@@ -37,16 +36,44 @@ export default function ContactFormModern() {
     return phoneRegex.test(phone);
   };
 
+  const validateName = (name) => {
+    return name.trim().length > 0;
+  };
+
+  const handleCaptchaChange = (e) => {
+    const { checked } = e.target;
+    
+    if (checked && !captchaChecked) {
+      setCaptchaLoading(true);
+      setCaptchaChecked(true);
+      
+      // Simulate loading animation for captcha
+      setTimeout(() => {
+        setCaptchaLoading(false);
+        setShowSubmit(true);
+        setFormData(prev => ({ ...prev, captcha: true }));
+        setCaptchaError("");
+      }, 800);
+    } else if (!checked) {
+      setShowSubmit(false);
+      setCaptchaChecked(false);
+      setFormData(prev => ({ ...prev, captcha: false }));
+    }
+  };
+
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-   
+    const { name, value, type } = e.target;
+  
+    // Don't handle captcha change here if it's being handled separately
+    if (name === "captcha") return;
+  
     const updatedFormData = {
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     };
-   
+  
     setFormData(updatedFormData);
-   
+  
     if (name === "phone") {
       if (value === "") {
         setPhoneError("Please enter a valid 10-digit phone number");
@@ -57,15 +84,32 @@ export default function ContactFormModern() {
       }
     }
 
-    if (name === "captcha" && checked) {
-      setCaptchaError("");
+    if (name === "name") {
+      if (value === "") {
+        setNameError("Please enter your name");
+      } else if (validateName(value)) {
+        setNameError("");
+      } else {
+        setNameError("Please enter your name");
+      }
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+  
     let hasError = false;
+
+    // Validate name
+    if (!formData.name) {
+      setNameError("Please enter your name");
+      hasError = true;
+    } else if (!validateName(formData.name)) {
+      setNameError("Please enter your name");
+      hasError = true;
+    } else {
+      setNameError("");
+    }
 
     // Validate phone number
     if (!formData.phone) {
@@ -94,12 +138,10 @@ export default function ContactFormModern() {
           name: "",
           email: "",
           phone: "",
-          date: "",
-          service: "",
-          address: "",
-          info: "",
           captcha: false,
         });
+        setShowSubmit(false);
+        setCaptchaChecked(false);
       }).catch((err)=>{
         alert("Unknown error expected please submit again");
         console.log(err);
@@ -122,205 +164,344 @@ export default function ContactFormModern() {
 
       {/* Main content */}
       <div className="contact-form-container">
-        {/* Heading Content */}
-        <div className="contact-form-heading animate-fadeInUp">
-          <h1 className="contact-form-title animate-slideInDown" style={{
-            background: 'linear-gradient(135deg, #ff0000, #cc0000, #ff3333)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            animation: 'gradientShift 3s ease infinite'
-          }}>
-            GET CONNECTED... STAY CONNECTED
-          </h1>
-          <div className="contact-form-subtitle-container">
-            <p className="contact-form-subtitle animate-slideInUp" style={{
-              color: '#ff4444',
-              animation: 'fadeInPulse 2s ease-in-out infinite'
-            }}>
-              Linking Possibilities With Seamless Connections!
-            </p>
-          </div>
-        </div>
-        <style>{`
-          @keyframes gradientShift {
-            0%, 100% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-          }
-          
-          @keyframes fadeInPulse {
-            0%, 100% {
-              opacity: 0.8;
-              transform: scale(1);
-            }
-            50% {
-              opacity: 1;
-              transform: scale(1.02);
-            }
-          }
-          
-          .contact-form-title {
-            background-size: 200% auto;
-          }
-        `}</style>
+        {/* Contact Section - Split Layout with mobile reverse order */}
+        <div className="contact-section-split mobile-reverse">
+          {/* Form Side - Will appear FIRST on mobile, SECOND on desktop */}
+          <div className="contact-form-side">
+            {/* Subtitle - Mobile only: above form */}
+            <div className="contact-form-subtitle-container mobile-only">
+              <h2
+                className="contact-form-subtitle animate-slideInUp jumping-text"
+              >
+                {"Linking Possibilities With Seamless Connections!".split(' ').map((word, index) => (
+                  <span key={index} style={{ display: 'inline-block', marginRight: '4px' }}>
+                    {word}
+                  </span>
+                ))}
+              </h2>
+            </div>
 
-        {/* Form Section */}
-        <div className="contact-form-section">
-          {/* Pop-up tab bar */}
-          <div
-            className={`contact-form-popup ${animatePopup ? "animate-emerge" : "opacity-0"}`}
-            style={{ transform: animatePopup ? "translate(-50%, 0)" : "translate(-50%, 60px)" }}
-          >
-            <div className="contact-form-popup-container">
-              <div className="contact-form-tab-container">
-                <div
-                  className={`contact-form-tab-slider ${activeTab === "home" ? "home" : "business"}`}
-                ></div>
-
-                <button
-                  onClick={() => setActiveTab("home")}
-                  className={`contact-form-tab ${activeTab === "home" ? "active" : "inactive"}`}
-                >
-                  HOME
-                </button>
-                <button
-                  onClick={() => setActiveTab("business")}
-                  className={`contact-form-tab ${activeTab === "business" ? "active" : "inactive"}`}
-                >
-                  BUSINESS
-                </button>
+            {/* Form Section */}
+            <div className="contact-form-section">
+              {/* Professional Form Container */}
+              <div className="contact-form-main">
+                <form className="contact-form-content" onSubmit={handleSubmit}>
+                  {/* Vertical Layout - Single Column */}
+                  <div className="contact-form-vertical">
+                    <div className="phone-input-container">
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone Number *"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="contact-form-input"
+                        pattern="[0-9]{10}"
+                        maxLength="10"
+                      />
+                      {phoneError && (
+                        <div className="phone-error-message">
+                          {phoneError}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="name-input-container">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Name *"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="contact-form-input"
+                      />
+                      {nameError && (
+                        <div className="name-error-message">
+                          {nameError}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email Id"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="contact-form-input"
+                    />
+                    
+                    <div className="captcha-container">
+                      {!showSubmit ? (
+                        <div className={`contact-form-captcha ${captchaLoading ? 'captcha-loading' : ''}`}>
+                          <label className="contact-form-captcha-label">
+                            <div className="captcha-checkbox-container">
+                              <input
+                                type="checkbox"
+                                name="captcha"
+                                checked={formData.captcha}
+                                onChange={handleCaptchaChange}
+                                className="contact-form-captcha-checkbox"
+                                disabled={captchaLoading}
+                              />
+                              {captchaLoading && (
+                                <div className="captcha-loading-spinner"></div>
+                              )}
+                              {captchaChecked && !captchaLoading && (
+                                <div className="captcha-checkmark">✓</div>
+                              )}
+                            </div>
+                            <span className="contact-form-captcha-text">I'm not a robot *</span>
+                          </label>
+                          <div className="contact-form-captcha-brand">
+                            <span>reCAPTCHA</span>
+                            <span>Privacy • Terms</span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="contact-form-submit-container submit-appear">
+                          <button
+                            type="submit"
+                            className="contact-form-submit"
+                            disabled={isLoading}
+                          >
+                            {isLoading ? (
+                              <>
+                                <span className="submit-loading-spinner"></span>
+                                Sending...
+                              </>
+                            ) : (
+                              "Send message"
+                            )}
+                          </button>
+                        </div>
+                      )}
+                      {captchaError && (
+                        <div className="captcha-error-message">
+                          {captchaError}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
 
-          {/* Professional Form Container */}
-          <div className="contact-form-main">
-            <form className="contact-form-content" onSubmit={handleSubmit}>
-              {/* Row 1 */}
-              <div className="contact-form-grid">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="contact-form-input"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Id"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="contact-form-input"
-                />
-                <div className="phone-input-container">
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number *"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="contact-form-input"
-                    pattern="[0-9]{10}"
-                    maxLength="10"
-                  />
-                  {phoneError && (
-                    <div className="phone-error-message">
-                      {phoneError}
-                    </div>
-                  )}
+          {/* Contact Information Side - Will appear SECOND on mobile, FIRST on desktop */}
+          <div className="contact-info-side">
+            {/* Subtitle - Desktop only: above contact section */}
+            <div className="contact-form-subtitle-container desktop-only">
+              <h2
+                className="contact-form-subtitle animate-slideInUp jumping-text"
+              >
+                {"Linking Possibilities With Seamless Connections!".split(' ').map((word, index) => (
+                  <span key={index} style={{ display: 'inline-block', marginRight: '4px' }}>
+                    {word}
+                  </span>
+                ))}
+              </h2>
+            </div>
+            
+            <div className="contact-details">
+              <div className="contact-item">
+                <div className="contact-icon">📧</div>
+                <div className="contact-text">
+                  <h3>Email</h3>
+                  <p>info@skylink.net.in</p>
                 </div>
               </div>
-
-              {/* Row 2 */}
-              <div className="contact-form-grid">
-                <input
-                  type="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  className="contact-form-input"
-                />
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="contact-form-input"
-                >
-                  <option value="">Select Service</option>
-                  {services.map((service, idx) => (
-                    <option key={idx} value={service}>{service}</option>
-                  ))}
-                </select>
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  className="contact-form-input"
-                />
-              </div>
-
-              {/* Row 3 */}
-              <div className="contact-form-grid">
-                <input
-                  type="text"
-                  name="info"
-                  placeholder="Additional Information"
-                  value={formData.info}
-                  onChange={handleChange}
-                  className="contact-form-input"
-                />
-                <div className="captcha-container">
-                  <div className="contact-form-captcha">
-                    <label className="contact-form-captcha-label">
-                      <input
-                        type="checkbox"
-                        name="captcha"
-                        checked={formData.captcha}
-                        onChange={handleChange}
-                        className="contact-form-captcha-checkbox"
-                      />
-                      <span className="contact-form-captcha-text">I'm not a robot *</span>
-                    </label>
-                    <div className="contact-form-captcha-brand">
-                      <span>reCAPTCHA</span>
-                      <span>Privacy • Terms</span>
-                    </div>
-                  </div>
-                  {captchaError && (
-                    <div className="captcha-error-message">
-                      {captchaError}
-                    </div>
-                  )}
-                </div>
-                <div className="contact-form-submit-container">
-                  <button
-                    type="submit"
-                    className="contact-form-submit"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? "Submitting..." : "Submit"}
-                  </button>
+              
+              <div className="contact-item">
+                <div className="contact-icon">📞</div>
+                <div className="contact-text">
+                  <h3>Phone</h3>
+                  <p>9944199447</p>
                 </div>
               </div>
-            </form>
-
-            {/* Footer - Removed terms and conditions text */}
-            <div className="contact-form-footer">
-              <p className="contact-form-footer-text">
-                {/* Text removed as requested */}
-              </p>
+              
+              <div className="contact-item">
+                <div className="contact-icon">📍</div>
+                <div className="contact-text">
+                  <h3>Address</h3>
+                  <p>
+                    Skylink Fibernet Private Limited<br />
+                    B6, II Floor, Vue Grande,<br />
+                    339 Chinnaswamy Road, Siddha Pudhur,<br />
+                    Coimbatore – 641044.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .contact-section-split {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          width: 100%;
+          max-width: 1200px;
+        }
+
+        /* Mobile: Form first, contact info second */
+        .contact-section-split.mobile-reverse {
+          flex-direction: column;
+        }
+
+        .contact-section-split.mobile-reverse .contact-form-side {
+          order: 1;
+        }
+
+        .contact-section-split.mobile-reverse .contact-info-side {
+          order: 2;
+        }
+
+        /* Desktop: Normal order (contact info left, form right) */
+        @media (min-width: 1024px) {
+          .contact-section-split {
+            flex-direction: row;
+            gap: 60px;
+          }
+          
+          .contact-section-split.mobile-reverse {
+            flex-direction: row;
+          }
+          
+          .contact-section-split.mobile-reverse .contact-form-side {
+            order: 2;
+          }
+          
+          .contact-section-split.mobile-reverse .contact-info-side {
+            order: 1;
+          }
+        }
+
+        .contact-info-side {
+          flex: 1;
+          color: white;
+          padding: 20px;
+        }
+
+        .contact-form-side {
+          flex: 1;
+        }
+
+        .contact-main-headline {
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin-bottom: 40px;
+          line-height: 1.2;
+          color: white;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+          .contact-main-headline {
+            font-size: 3rem;
+          }
+        }
+
+        .highlight-text {
+          color: #FFB8B8;
+          background: linear-gradient(135deg, #FFB8B8, #FF6B6B);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .contact-details {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .contact-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+          padding: 20px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+          background: rgba(255, 255, 255, 0.15);
+          transform: translateY(-2px);
+        }
+
+        .contact-icon {
+          font-size: 1.5rem;
+          margin-top: 2px;
+        }
+
+        .contact-text h3 {
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin-bottom: 5px;
+          color: #FFB8B8;
+        }
+
+        .contact-text p {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.9);
+          margin: 0;
+        }
+
+        /* Update existing styles for red theme */
+        .contact-form-modern {
+          background: #E62639;
+          position: relative;
+          width: 100%;
+          min-height: 60vh;
+          overflow: hidden;
+          font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px 0;
+        }
+
+        .contact-form-container {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+        }
+
+        .contact-form-popup-container {
+          background: linear-gradient(135deg, #E62639 0%, #FF6B6B 100%);
+        }
+
+        .contact-form-submit {
+          background: linear-gradient(135deg, #B91D23 0%, #8B0000 100%);
+        }
+
+        .contact-form-submit:hover {
+          background: linear-gradient(135deg, #CC1F26 0%, #9A0000 100%);
+        }
+
+        .contact-form-input:focus {
+          box-shadow: 0 0 0 3px rgba(230, 38, 57, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+          border-color: #E62639;
+        }
+
+        .contact-form-captcha-checkbox:checked {
+          accent-color: #E62639;
+        }
+
+        .captcha-loading-spinner {
+          border-top: 2px solid #E62639;
+        }
+
+        .captcha-checkmark {
+          color: #E62639;
+        }
+      `}</style>
     </div>
   );
 }
