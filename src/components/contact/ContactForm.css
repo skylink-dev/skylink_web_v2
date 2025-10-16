@@ -364,13 +364,138 @@
   border: 1px solid transparent;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #000000;
+  cursor: pointer;
 }
+
+/* Contact items - Default state for all items */
+.contact-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-item .contact-text h3,
+.contact-item .contact-text p {
+  color: #000000 !important;
+}
+
+.contact-item .contact-icon {
+  color: #4b5563;
+}
+
+/* Phone item - ALWAYS red by default */
+.contact-item.phone-item {
+  background: #ED2041 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-item.phone-item:hover {
+  background: #ED2041 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.contact-item.phone-item .contact-text h3,
+.contact-item.phone-item .contact-text p {
+  color: #ffffff !important;
+}
+
+.contact-item.phone-item .contact-icon {
+  color: #ffffff;
+  filter: brightness(0) invert(1);
+}
+
+/* Hover effects - When hovering any contact item */
+.contact-details:hover .contact-item.phone-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-details:hover .contact-item.phone-item .contact-text h3,
+.contact-details:hover .contact-item.phone-item .contact-text p {
+  color: #000000 !important;
+}
+
+.contact-details:hover .contact-item.phone-item .contact-icon {
+  color: #4b5563;
+  filter: none;
+}
+
+/* Individual item hover - the hovered item becomes red */
+.contact-item:hover {
+  background: #ED2041 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-item:hover .contact-text h3,
+.contact-item:hover .contact-text p {
+  color: #ffffff !important;
+}
+
+.contact-item:hover .contact-icon {
+  color:#ED2041 !important;
+  filter: brightness(0) invert(1);
+}
+
+/* When specifically hovering over phone item, keep it red */
+.contact-item.phone-item:hover {
+  background: #ED2041 !important;
+}
+
+.contact-item.phone-item:hover .contact-text h3,
+.contact-item.phone-item:hover .contact-text p {
+  color: #ffffff !important;
+}
+
+.contact-item.phone-item:hover .contact-icon {
+  color: #ffffff;
+  filter: brightness(0) invert(1);
+}
+
+/* When email or address item is hovered, remove default-active state from phone */
+.contact-details:has(.contact-item:not(.phone-item):hover) .contact-item.phone-item:not(:hover) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-details:has(.contact-item:not(.phone-item):hover) .contact-item.phone-item:not(:hover) .contact-text h3,
+.contact-details:has(.contact-item:not(.phone-item):hover) .contact-item.phone-item:not(:hover) .contact-text p {
+  color: #000000 !important;
+}
+
+.contact-details:has(.contact-item:not(.phone-item):hover) .contact-item.phone-item:not(:hover) .contact-icon {
+  color: #4b5563;
+  filter: none;
+}
+
+/* Hover effects for all items */
+.contact-item:hover,
+.contact-item.active {
+  background: #ED2041 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-item:hover .contact-text h3,
+.contact-item:hover .contact-text p,
+.contact-item.active .contact-text h3,
+.contact-item.active .contact-text p {
+  color: #ffffff !important;
+}
+
+.contact-item:hover .contact-icon,
+.contact-item.active .contact-icon {
+  color: #ffffff;
+  filter: brightness(0) invert(1);
+}
+
 
 /* Mobile-only: Animated box background */
 @media (max-width: 1023px) {
   .contact-item {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
-    border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     animation: slideInItem 0.5s ease-out forwards;
@@ -401,28 +526,12 @@
   }
 }
 
-.contact-item:hover {
-  background: #ED2041 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.contact-item:hover .contact-text h3,
-.contact-item:hover .contact-text p {
-  color: #ffffff !important;
-}
-
-.contact-item:hover .contact-icon {
-  color: #ffffff;
-  filter: brightness(0) invert(1);
-}
-
 .contact-icon {
   font-size: 1.5rem;
   margin-top: 2px;
   color: #4b5563;
   flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-text h3 {
@@ -430,6 +539,7 @@
   font-weight: 700 !important;
   margin: 0 0 5px 0;
   color: #000000 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-text p {
@@ -437,6 +547,7 @@
   line-height: 1.5;
   color: #000000 !important;
   margin: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Heading section */
@@ -1427,10 +1538,6 @@
   .contact-item {
     justify-content: flex-start;
     text-align: left;
-  }
-  
-  .contact-item:hover {
-    background: #ED2143;
   }
   
   .contact-main-headline {
