@@ -87,7 +87,6 @@ export default function Slider({ slides = [], title, color }) {
                                                 transition: 'all 0.8s ease-in-out'
                                             }}
                                         >
-                                            {slide.image}
                                             <div
                                                 className="jsx-1181136068 jsx-2300775981 card flex-card radius-lg rel bgcolor theme-light-bg-img flex-card-background"
                                                 style={{ backgroundImage: `url(${slide.image})` }}

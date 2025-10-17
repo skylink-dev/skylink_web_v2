@@ -213,10 +213,9 @@ export const iconMenuData = [{
   linkdata: "/ott"
 },
 {
-  id: 4,
-  icon: ("/assets/wifi.svg"),
-  title: "Deals",
-  linkdata: "/deals"
+  id: 4, icon: ("/assets/firestick.svg"),
+  title: "Skylink Fire Tv",
+  linkdata: "/firestick"
 },
 {
   id: 5,
@@ -225,10 +224,12 @@ export const iconMenuData = [{
   linkdata: "/partner"
 },
 {
-  id: 6, icon: ("/assets/firestick.svg"),
-  title: "Skylink Fire Tv",
-  linkdata: "/firestick"
-}, {
+  id: 6,
+  icon: ("/assets/wifi.svg"),
+  title: "Deals",
+  linkdata: "/deals"
+},
+ {
   id: 7, icon: ("/assets/moving-on-home.png"),
   title: "Moving",
   linkdata: "/moving"

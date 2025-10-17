@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-    .custom-button-wrap .btn-primary {
+    /* .custom-button-wrap .btn-primary {
         width: auto;
         min-width: inherit;
         text-align: left;
@@ -11,7 +11,7 @@
         border-radius: 5px;
         width: 150px;
         font-size: 12px;
-    }
+    } */
 
     .custom-height {
         height: 100vh;
@@ -20,9 +20,9 @@
         justify-content: center;
     }
 
-    .custom-button-wrap .btn-primary:last-child {
+    /* .custom-button-wrap .btn-primary:last-child {
         margin-right: 0px;
-    }
+    } */
 
     .tab-section {
         margin-top: 40px;
@@ -1220,22 +1220,22 @@ div#videobanner .panel-height-tall
             padding-bottom: 10px;
         }
 
-        div.custom-button-wrap .btn-primary {
+        /* div.custom-button-wrap .btn-primary {
             text-align: center;
-        }
+        } */
 
-        div.custom-button-wrap .btn-primary {
+        /* div.custom-button-wrap .btn-primary {
             margin-left: -1px;
             width: calc(25% + 1px);
-        }
+        } */
 
-        .custom-button-wrap a:last-child:after {
+        /* .custom-button-wrap a:last-child:after {
             display: none;
-        }
+        } */
 
-        div.custom-button-wrap .btn-primary br {
+        /* div.custom-button-wrap .btn-primary br {
             display: block !important;
-        }
+        } */
 
         div.pricing-plan-package-wrap {
             margin-top: 20px;
@@ -3411,9 +3411,9 @@ div#videobanner .panel-height-tall
         font-family: 'Inter', sans-serif;
         font-weight: 600;
     }
-    div.custom-button-wrap .btn-primary br {
+    /* div.custom-button-wrap .btn-primary br {
         display: none;
-    }
+    } */
     .zcwf_col_lab label {
         font-weight: 600;
         margin-bottom: 6px;
