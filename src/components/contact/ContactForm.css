@@ -22,12 +22,25 @@
   align-items: center;
   justify-content: center;
   padding: 40px 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
   margin: 0 auto;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
 
+/* Video background container */
+.contact-form-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  filter: brightness(1.1);
+}
+
+/* Overlay to ensure content readability */
 .contact-form-modern::before {
   content: '';
   position: absolute;
@@ -35,197 +48,18 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.8) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(226, 232, 240, 0.6) 0%, transparent 50%);
-  background-size: 60% 60%, 40% 40%;
-  background-attachment: fixed;
-  pointer-events: none;
-}
-
-/* Moving boxes animation for main container */
-.contact-form-modern::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    /* Small boxes */
-    linear-gradient(45deg, transparent 65%, rgba(255, 255, 255, 0.1) 65%, rgba(255, 255, 255, 0.1) 70%, transparent 70%),
-    linear-gradient(-45deg, transparent 65%, rgba(255, 255, 255, 0.1) 65%, rgba(255, 255, 255, 0.1) 70%, transparent 70%),
-    linear-gradient(135deg, transparent 65%, rgba(255, 255, 255, 0.1) 65%, rgba(255, 255, 255, 0.1) 70%, transparent 70%),
-    linear-gradient(-135deg, transparent 65%, rgba(255, 255, 255, 0.1) 65%, rgba(255, 255, 255, 0.1) 70%, transparent 70%),
-    
-    /* Medium boxes */
-    linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.08) 50%, transparent 50%),
-    linear-gradient(-45deg, transparent 45%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.08) 50%, transparent 50%),
-    linear-gradient(135deg, transparent 45%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.08) 50%, transparent 50%),
-    linear-gradient(-135deg, transparent 45%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.08) 50%, transparent 50%),
-    
-    /* Large boxes */
-    linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 30%, transparent 30%),
-    linear-gradient(-45deg, transparent 25%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 30%, transparent 30%),
-    linear-gradient(135deg, transparent 25%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 30%, transparent 30%),
-    linear-gradient(-135deg, transparent 25%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 30%, transparent 30%);
-  
-  background-size: 
-    80px 80px,  /* Small boxes */
-    80px 80px,
-    80px 80px,
-    80px 80px,
-    
-    120px 120px, /* Medium boxes */
-    120px 120px,
-    120px 120px,
-    120px 120px,
-    
-    200px 200px, /* Large boxes */
-    200px 200px,
-    200px 200px,
-    200px 200px;
-  
-  background-position: 
-    0% 0%, 20% 40%, 60% 80%, 80% 20%,  /* Small boxes */
-    40% 60%, 70% 10%, 10% 70%, 90% 90%, /* Medium boxes */
-    30% 30%, 50% 50%, 80% 80%, 10% 40%; /* Large boxes */
-  
-  animation: floatingBoxes 20s ease-in-out infinite;
-  pointer-events: none;
+  background: rgba(255, 255, 255, 0.65);
   z-index: 1;
-  opacity: 0.6;
-  mix-blend-mode: overlay;
+  pointer-events: none;
+  border-radius: 20px;
 }
 
-@keyframes floatingBoxes {
-  0%, 100% {
-    background-position: 
-      0% 0%, 20% 40%, 60% 80%, 80% 20%,
-      40% 60%, 70% 10%, 10% 70%, 90% 90%,
-      30% 30%, 50% 50%, 80% 80%, 10% 40%;
-  }
-  25% {
-    background-position: 
-      10% 10%, 30% 50%, 70% 90%, 90% 30%,
-      50% 70%, 80% 20%, 20% 80%, 100% 100%,
-      40% 40%, 60% 60%, 90% 90%, 20% 50%;
-  }
-  50% {
-    background-position: 
-      5% 15%, 25% 45%, 65% 85%, 85% 25%,
-      45% 65%, 75% 15%, 15% 75%, 95% 95%,
-      35% 35%, 55% 55%, 85% 85%, 15% 45%;
-  }
-  75% {
-    background-position: 
-      15% 5%, 35% 35%, 75% 75%, 95% 15%,
-      55% 55%, 85% 5%, 5% 85%, 85% 85%,
-      45% 25%, 65% 45%, 95% 75%, 25% 35%;
-  }
-}
-
-/* Alternative simpler box animation */
-.contact-form-modern::before {
-  /* Keep your existing radial gradients but add box patterns */
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.8) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(226, 232, 240, 0.6) 0%, transparent 50%),
-    
-    /* Add geometric box patterns */
-    linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1)),
-    linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1));
-  
-  background-size: 
-    60% 60%, 40% 40%,  /* Original radial gradients */
-    50px 50px, 50px 50px; /* New box patterns */
-  
-  animation: movingPattern 15s linear infinite;
-}
-
-@keyframes movingPattern {
-  0% {
-    background-position: 
-      20% 20%, 80% 80%,  /* Radial gradients */
-      0 0, 25px 25px;    /* Box patterns */
-  }
-  100% {
-    background-position: 
-      20% 20%, 80% 80%,  /* Radial gradients stay relatively fixed */
-      100px 100px, 125px 125px; /* Box patterns move */
-  }
-}
-
-/* Ensure content stays above the animations */
+/* Ensure content stays above the video */
 .contact-form-container {
   position: relative;
   z-index: 2;
 }
 
-/* Enhanced floating elements */
-.floating-box {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  pointer-events: none;
-  z-index: 1;
-  animation: floatAround 25s infinite linear;
-}
-
-.floating-box:nth-child(1) {
-  width: 40px;
-  height: 40px;
-  top: 10%;
-  left: 10%;
-  animation-delay: 0s;
-  animation-duration: 20s;
-}
-
-.floating-box:nth-child(2) {
-  width: 25px;
-  height: 25px;
-  top: 70%;
-  left: 80%;
-  animation-delay: -5s;
-  animation-duration: 25s;
-}
-
-.floating-box:nth-child(3) {
-  width: 60px;
-  height: 30px;
-  top: 40%;
-  left: 5%;
-  animation-delay: -10s;
-  animation-duration: 30s;
-}
-
-.floating-box:nth-child(4) {
-  width: 35px;
-  height: 35px;
-  top: 20%;
-  left: 85%;
-  animation-delay: -15s;
-  animation-duration: 22s;
-}
-
-@keyframes floatAround {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(20px, 15px) rotate(90deg);
-  }
-  50% {
-    transform: translate(10px, 25px) rotate(180deg);
-  }
-  75% {
-    transform: translate(-10px, 15px) rotate(270deg);
-  }
-  100% {
-    transform: translate(0, 0) rotate(360deg);
-  }
-}
 /* Main content container */
 .contact-form-container {
   position: relative;
@@ -233,7 +67,7 @@
   margin: 0 auto;
   min-height: auto;
   height: auto;
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(245, 242, 242, 0.842) !important;
   backdrop-filter: blur(20px) saturate(200%);
   -webkit-backdrop-filter: blur(20px) saturate(200%);
   border: solid 1px rgba(255, 255, 255, 0.4);
@@ -394,7 +228,6 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-
 .contact-item.phone-item .contact-text h3,
 .contact-item.phone-item .contact-text p {
   color: #ffffff !important;
@@ -491,7 +324,6 @@
   color: #ffffff;
   filter: brightness(0) invert(1);
 }
-
 
 /* Mobile-only: Animated box background */
 @media (max-width: 1023px) {
@@ -643,7 +475,7 @@
 
 .contact-form-subtitle {
   color: #ff4444;
-  font-size: 1.5rem !important; /* Increased to 1.5rem */
+  font-size: 2rem !important;
   font-weight: 700;
   line-height: 1.3;
   text-align: center;
@@ -654,19 +486,19 @@
 
 @media (min-width: 480px) {
   .contact-form-subtitle {
-    font-size: 1.6rem !important;
+    font-size: 2rem !important;
   }
 }
 
 @media (min-width: 768px) {
   .contact-form-subtitle {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
   }
 }
 
 @media (min-width: 1024px) {
   .contact-form-subtitle {
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
     text-align: left;
   }
 }
@@ -753,10 +585,10 @@
 
 /* Form container */
 .contact-form-main {
-  margin-top: 0; /* Reduced margin since subtitle is now above it on mobile */
+  margin-top: 0;
   width: 100%;
   height: auto;
-  min-height: 433px;
+  min-height: 350px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   box-shadow: 
@@ -767,7 +599,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   position: relative;
   z-index: 20;
-  padding: 35px 0;
+  padding: 25px 0;
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
   transform: translate3d(0, 0, 0);
@@ -795,15 +627,15 @@
 @media (min-width: 480px) {
   .contact-form-main {
     border-radius: 22px;
-    padding: 35px 0;
-    min-height: 450px;
+    padding: 30px 0;
+    min-height: 350px;
   }
 }
 
 @media (min-width: 640px) {
   .contact-form-main {
     border-radius: 24px;
-    padding: 38px 0;
+    padding: 35px 0;
     min-height: 350px;
   }
 }
@@ -831,14 +663,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 @media (min-width: 480px) {
   .contact-form-content {
     padding: 0 22px;
     gap: 18px;
-    padding-bottom: 35px;
+    padding-bottom: 20px;
   }
 }
 
@@ -846,7 +678,7 @@
   .contact-form-content {
     padding: 0 26px;
     gap: 19px;
-    padding-bottom: 38px;
+    padding-bottom: 20px;
   }
 }
 
@@ -854,7 +686,7 @@
   .contact-form-content {
     padding: 0 32px;
     gap: 22px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
 }
 
@@ -1008,17 +840,19 @@
   font-weight: 500;
 }
 
-/* Captcha container */
+/* Captcha container - FIXED */
 .captcha-container {
   position: relative;
   width: 100%;
+  min-height: 80px;
+  transition: min-height 0.3s ease-in-out;
 }
 
 .captcha-error-message {
   color: #dc2626;
   font-size: 0.875rem;
   position: absolute;
-  top: 56px;
+  top: 70px;
   left: 14px;
   font-weight: 500;
 }
@@ -1032,7 +866,7 @@
   height: auto;
   opacity: 1;
   transform: scale(1);
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 /* Mobile-only: Animated submit button */
@@ -1056,7 +890,23 @@
 
 @media (min-width: 768px) {
   .contact-form-submit-container {
-    margin-top: 40px;
+    margin-top: 30px;
+  }
+}
+
+/* Submit button appearance animation */
+.contact-form-submit-container.submit-appear {
+  animation: slideUpSubmit 0.4s ease-out forwards;
+}
+
+@keyframes slideUpSubmit {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -1128,7 +978,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* CAPTCHA section */
+/* CAPTCHA section - FIXED */
 .contact-form-captcha {
   display: flex;
   flex-direction: column;
@@ -1137,24 +987,9 @@
   gap: 10px;
   margin-top: 0;
   width: 100%;
-  transition: all 0.5s ease-in-out;
-}
-
-/* Mobile-only: Animated captcha */
-@media (max-width: 1023px) {
-  .contact-form-captcha {
-    animation: fadeIn 0.6s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  transition: all 0.3s ease-in-out;
+  min-height: 70px;
+  align-items: center;
 }
 
 .contact-form-captcha.captcha-loading {
@@ -1178,6 +1013,23 @@
 @media (min-width: 768px) {
   .contact-form-captcha {
     gap: 16px;
+  }
+}
+
+/* Mobile-only: Animated captcha */
+@media (max-width: 1023px) {
+  .contact-form-captcha {
+    animation: fadeIn 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 
@@ -1229,7 +1081,7 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Captcha checkbox */
+/* Captcha checkbox - FIXED */
 .captcha-checkbox-container {
   position: relative;
   display: flex;
@@ -1257,8 +1109,10 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
   position: relative;
-  z-index: 2;
-
+  z-index: 10;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 @media (min-width: 768px) {
@@ -1268,13 +1122,19 @@
   }
 }
 
+/* FIXED: Checkbox checked state */
 .contact-form-captcha-checkbox:checked {
   background-color: #000000 !important;
   border-color: #000000 !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='white' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='white' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 12px !important;
+}
+
+/* Hide custom checkmark when checkbox is checked */
+.contact-form-captcha-checkbox:checked ~ .captcha-checkmark {
+  display: none !important;
 }
 
 /* Loading spinner */
@@ -1289,7 +1149,8 @@
   border-top: 2px solid #4b5563;
   border-radius: 50%;
   animation: captchaSpin 0.8s linear infinite;
-  z-index: 1;
+  z-index: 5;
+  pointer-events: none;
 }
 
 @keyframes captchaSpin {
@@ -1303,11 +1164,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  color: #4b5563;
+  color: white !important;
   font-weight: bold;
   font-size: 14px;
   animation: checkmarkAppear 0.3s ease-out 0.3s forwards;
-  z-index: 1;
+  z-index: 6;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes checkmarkAppear {
@@ -1542,5 +1405,24 @@
   
   .contact-main-headline {
     text-align: left;
+  }
+}
+
+/* Mobile spacing fixes */
+@media (max-width: 767px) {
+  .contact-form-vertical {
+    gap: 16px;
+  }
+  
+  .contact-form-submit-container {
+    margin-top: 15px;
+  }
+  
+  .contact-form-content {
+    padding-bottom: 15px;
+  }
+  
+  .contact-form-main {
+    padding: 20px 0;
   }
 }

@@ -5,7 +5,6 @@ import { apiService } from "@/backend/apiservice";
 export default function ContactFormModern() {
   const [activeTab, setActiveTab] = useState("home");
   const [animatePopup, setAnimatePopup] = useState(false);
-  // Remove activeContactItem state
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,7 +20,24 @@ export default function ContactFormModern() {
   const [captchaLoading, setCaptchaLoading] = useState(false);
   const [captchaChecked, setCaptchaChecked] = useState(false);
 
-  // Remove handleContactItemClick function
+  // Function to handle phone click - redirect to phone app
+  const handlePhoneClick = () => {
+    const phoneNumber = "+919944199445";
+    window.location.href = `tel:${phoneNumber}`;
+  };
+
+  // Function to handle email click - redirect to Gmail
+  const handleEmailClick = () => {
+    const gmailUrl = `https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRmTWccqhmdnZPqNGFcWTJMDvrsnKcssBFLfkzrbbMPsgQlMzFjzClhsKJLXjBcxHXdwScQ`;
+    window.open(gmailUrl, "_blank");
+  };
+
+  // Function to handle address click - redirect to maps
+  const handleAddressClick = () => {
+    const address = "Skylink Fibernet Private Limited, B6, II Floor, Vue Grande, 339 Chinnaswamy Road, Siddha Pudhur, Coimbatore – 641044";
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    window.open(mapsUrl, '_blank');
+  };
 
   const validatePhone = (phone) => {
     const phoneRegex = /^[0-9]{10}$/;
@@ -49,12 +65,13 @@ export default function ContactFormModern() {
     } else if (!checked) {
       setShowSubmit(false);
       setCaptchaChecked(false);
+      setCaptchaLoading(false);
       setFormData(prev => ({ ...prev, captcha: false }));
     }
   };
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
   
     // Don't handle captcha change here if it's being handled separately
     if (name === "captcha") return;
@@ -87,7 +104,7 @@ export default function ContactFormModern() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   
     let hasError = false;
@@ -124,23 +141,54 @@ export default function ContactFormModern() {
 
     if (!hasError) {
       setIsLoading(true);
-      apiService.submitContactForm(formData).then((resp)=>{
-        alert("Thank You we will Reach out Soon");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          captcha: false,
-        });
-        setShowSubmit(false);
-        setCaptchaChecked(false);
-      }).catch((err)=>{
-        alert("Unknown error expected please submit again");
-        console.log(err);
-      }).finally(()=>{
+      try {
+        console.log("Submitting form data:", formData);
+        const response = await apiService.submitContactForm(formData);
+        console.log("API Response:", response);
+        
+        if (response.status === 200 || response.status === 201) {
+          alert("Thank You! We will reach out soon.");
+          // Reset form
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            captcha: false,
+          });
+          setShowSubmit(false);
+          setCaptchaChecked(false);
+        } else {
+          throw new Error(`Unexpected status code: ${response.status}`);
+        }
+      } catch (error) {
+        console.error("API Error Details:", error);
+        
+        // More specific error messages
+        if (error.response) {
+          // Server responded with error status
+          console.error("Error Response Data:", error.response.data);
+          console.error("Error Response Status:", error.response.status);
+          console.error("Error Response Headers:", error.response.headers);
+          
+          if (error.response.status === 400) {
+            alert("Please check your input data and try again.");
+          } else if (error.response.status === 500) {
+            alert("Server error. Please try again later.");
+          } else {
+            alert(`Error: ${error.response.status} - ${error.response.data?.message || 'Please try again'}`);
+          }
+        } else if (error.request) {
+          // Request was made but no response received
+          console.error("No response received:", error.request);
+          alert("Network error. Please check your connection and try again.");
+        } else {
+          // Something else happened
+          console.error("Error:", error.message);
+          alert("An unexpected error occurred. Please try again.");
+        }
+      } finally {
         setIsLoading(false);
-      });
-      console.log("Form submitted:", formData);
+      }
     }
   };
 
@@ -151,8 +199,18 @@ export default function ContactFormModern() {
 
   return (
     <div className="contact-form-modern">
-      {/* Gradient background */}
-      <div className="contact-form-bg-overlay"></div>
+      {/* Video Background */}
+      <video 
+        className="contact-form-video-bg"
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+      >
+        <source src="/assets/video/contact-form-bg.mp4" type="video/mp4" />
+        <source src="/assets/video/contact-form-bg.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
 
       {/* Main content */}
       <div className="contact-form-container">
@@ -239,7 +297,7 @@ export default function ContactFormModern() {
                               {captchaLoading && (
                                 <div className="captcha-loading-spinner"></div>
                               )}
-                              {captchaChecked && !captchaLoading && (
+                              {!captchaLoading && formData.captcha && (
                                 <div className="captcha-checkmark">✓</div>
                               )}
                             </div>
@@ -297,7 +355,11 @@ export default function ContactFormModern() {
             
             <div className="contact-details">
               {/* Phone item - always red by default */}
-              <div className="contact-item phone-item">
+              <div 
+                className="contact-item phone-item"
+                onClick={handlePhoneClick}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="contact-icon">📞</div>
                 <div className="contact-text">
                   <h3>Phone</h3>
@@ -306,7 +368,11 @@ export default function ContactFormModern() {
               </div>
               
               {/* Email item */}
-              <div className="contact-item">
+              <div 
+                className="contact-item"
+                onClick={handleEmailClick}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="contact-icon">📧</div>
                 <div className="contact-text">
                   <h3>Email</h3>
@@ -315,7 +381,11 @@ export default function ContactFormModern() {
               </div>
               
               {/* Address item */}
-              <div className="contact-item">
+              <div 
+                className="contact-item"
+                onClick={handleAddressClick}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="contact-icon">📍</div>
                 <div className="contact-text">
                   <h3>Address</h3>

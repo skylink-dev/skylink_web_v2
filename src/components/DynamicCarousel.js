@@ -66,8 +66,20 @@ export default function DynamicCarousel({ title, slidesData, color }) {
       </ul>
     ),
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 2 } },
-      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { 
+        breakpoint: 1024, 
+        settings: { 
+          slidesToShow: 2, 
+          slidesToScroll: 2 
+        } 
+      },
+      { 
+        breakpoint: 768, 
+        settings: { 
+          slidesToShow: 1, 
+          slidesToScroll: 1 
+        } 
+      },
     ],
   };
 
@@ -97,14 +109,30 @@ export default function DynamicCarousel({ title, slidesData, color }) {
                 <div className="width-full">
                   <div className="card bgcolor theme-base-bg border-shadow height-full z0 bg-white rel radius-lg flex justify-between flex-column">
                     <div className="card-img overflow-hidden">
-                      <motion.img
-                        src={item.imgSrc}
-                        alt={item.title}
-                        className="zoomable"
-                        style={{ backgroundPosition: 'center bottom', backgroundSize: 'contain' }}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.5 }}
-                      />
+                      <div className="image-container" style={{ 
+                        position: 'relative', 
+                        width: '100%', 
+                        height: '0', 
+                        paddingBottom: '56.25%', // 16:9 aspect ratio
+                        overflow: 'hidden'
+                      }}>
+                        <motion.img
+                          src={item.imgSrc}
+                          alt={item.title}
+                          className="zoomable"
+                          style={{ 
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center center'
+                          }}
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.5 }}
+                        />
+                      </div>
                       <div className="pad-sm-lg pad-md-md pad-xs-sm pad-b-xxs">
                         <p className="type-eyebrow-md">{item.title}</p>
                         <h3 className="mar-b-xs heading-md">{item.subtitle}</h3>
@@ -134,6 +162,24 @@ export default function DynamicCarousel({ title, slidesData, color }) {
           </Slider>
         </div>
       </div>
+
+      <style jsx>{`
+        .image-container {
+          aspect-ratio: 16/9;
+        }
+        
+        @media (max-width: 1024px) {
+          .image-container {
+            aspect-ratio: 4/3;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .image-container {
+            aspect-ratio: 1/1;
+          }
+        }
+      `}</style>
     </div>
   );
 }
