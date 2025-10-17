@@ -231,7 +231,7 @@ export const iconMenuData = [{
 },
  {
   id: 7, icon: ("/assets/moving-on-home.png"),
-  title: "Moving",
+  title: "Shifting ",
   linkdata: "/moving"
 },{
   id: 8, icon: ("/assets/accessories.svg"),

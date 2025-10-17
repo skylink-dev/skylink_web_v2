@@ -178,7 +178,7 @@ export default function ContactFormModern() {
                       <input
                         type="tel"
                         name="phone"
-                        placeholder="Phone Number *"
+                        placeholder="Mobile Number *"
                         value={formData.phone}
                         onChange={handleChange}
                         className="contact-form-input"
