@@ -2,7 +2,9 @@
 import dynamic from 'next/dynamic';
 import { cardData, slidesData, slidesData2, iconCard, dynamicImageContent, IconContent, contentNewsletter, bannerContent, iconMenuData, IcontitleData, dynamicSlidesData, flexCardData, rightContentFlexData, faqData } from "../../data/Home";
 
-import HomeContactForm from '@/components/contact/ContactForm';
+import HomeContactForm from '@/components/contact/ThreeBanner';
+import ContactFormModern from '@/components/contact/ContactForm';
+
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -34,8 +36,12 @@ export default function Home() {
     
       {/* <Banner content={bannerContent} /> */}
       <HomeContactForm onSubmit={handleFormSubmit} />
+      
+      {/* Add the new contact form here */}
+      <ContactFormModern />
+      
       <FlexCard 
-        title="Speed You Need. Connection You Trust. Entertainment You Love" 
+        title="Speed You Need. Connection You Trust. Entertainment You Love" 
         rightImage="/assets/skyplay-card-right.jpg" 
         leftImage="/assets/skyplay-flex-card-left.jpg" 
         mobileleftImage="/assets/skyplay-banner-mobile.jpg"
@@ -47,8 +53,8 @@ export default function Home() {
       <Slider slides={slidesData} color="bg-att-blue-000" />
       <RectangleBanner backgroundImage="/assets/skyplay-map.jpg"
   eyebrow="Introducing the Skylink Guarantee"
-  heading={`Pan-India reliable connectivity<br/>Unbeatable plans you’ll love.<br/>Support that puts you first.`}
-  description={`All guaranteed — or we’ll make it right. Available to all eligible customers across India at <span class="nowrap"> no extra cost</span>`}
+  heading={`Pan-India reliable connectivity<br/>Unbeatable plans you'll love.<br/>Support that puts you first.`}
+  description={`All guaranteed — or we'll make it right. Available to all eligible customers across India at <span class="nowrap"> no extra cost</span>`}
   buttonText="Learn More"
   buttonLink="/guarantee" />
       <HalfColumnCard items={cardData} />
