@@ -17,21 +17,7 @@ import {
   faqData,
 } from "../../data/Home";
 
-// iconMenuData.js
-import {
-  FaGlobe,
-  FaTv,
-  FaVideo,
-  FaFire,
-  FaHandshake,
-  FaWifi,
-  FaTruckMoving,
-  FaHeadphones,
-} from "react-icons/fa";
-
 import HomeContactForm from "@/components/contact/ContactForm";
-import ThreeDIconMenu from "@/components/Icons/ThreeDIconMenu";
-import { useState } from "react";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
