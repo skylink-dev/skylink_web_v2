@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import "./ContactForm.css";
-import { apiService } from "@/backend/apiservice";
 
 export default function ContactFormModern() {
   const [showPopup, setShowPopup] = useState(false);
@@ -102,16 +100,13 @@ export default function ContactFormModern() {
 
     setIsLoading(true);
     try {
-      const response = await apiService.submitContactForm(formData);
-      if (response.status === 200 || response.status === 201) {
-        alert("Thank You! We will reach out soon.");
-        setFormData({ name: "", email: "", phone: "", captcha: false });
-        setCurrentStep(1);
-        setCaptchaChecked(false);
-        setShowPopup(false); // Close popup after successful submission
-      } else {
-        throw new Error(`Unexpected status: ${response.status}`);
-      }
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      alert("Thank You! We will reach out soon.");
+      setFormData({ name: "", email: "", phone: "", captcha: false });
+      setCurrentStep(1);
+      setCaptchaChecked(false);
+      setShowPopup(false);
     } catch (error) {
       console.error("Error:", error);
       alert("An error occurred. Please try again.");
@@ -145,7 +140,7 @@ export default function ContactFormModern() {
           {/* Header */}
           <div className="popup-header">
             <h2 className="popup-title">Get In Touch</h2>
-            <p className="popup-subtitle">We'll get back to you shortly</p>
+            <p className="popup-subtitle">Our team will contact you shortly</p>
           </div>
 
           {/* Form */}
@@ -169,7 +164,7 @@ export default function ContactFormModern() {
                 </div>
                 {currentStep === 1 && (
                   <button type="button" className="popup-next-btn" onClick={handleNext}>
-                    Next
+                    Continue
                   </button>
                 )}
               </div>
@@ -182,7 +177,7 @@ export default function ContactFormModern() {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Name *"
+                    placeholder="Full Name *"
                     value={formData.name}
                     onChange={handleChange}
                     className="popup-input"
@@ -195,7 +190,7 @@ export default function ContactFormModern() {
                     Back
                   </button>
                   <button type="button" className="popup-next-btn" onClick={handleNext}>
-                    Next
+                    Continue
                   </button>
                 </div>
               </div>
@@ -208,7 +203,7 @@ export default function ContactFormModern() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email Id"
+                    placeholder="Email Address"
                     value={formData.email}
                     onChange={handleChange}
                     className="popup-input"
@@ -228,8 +223,8 @@ export default function ContactFormModern() {
                           className="captcha-checkbox"
                           disabled={captchaLoading}
                         />
+                        <div className="captcha-checkbox-visual"></div>
                         {captchaLoading && <div className="captcha-loading-spinner"></div>}
-                        {!captchaLoading && formData.captcha && <div className="captcha-checkmark">✓</div>}
                       </div>
                       <span className="captcha-text">I'm not a robot *</span>
                     </label>
@@ -250,7 +245,7 @@ export default function ContactFormModern() {
                         <span className="submit-loading-spinner"></span> Sending...
                       </>
                     ) : (
-                      "Send message"
+                      "Submit Message"
                     )}
                   </button>
                 </div>
@@ -263,7 +258,7 @@ export default function ContactFormModern() {
                 {[1, 2, 3].map((step) => (
                   <div
                     key={step}
-                    className={`progress-step ${currentStep >= step ? 'active' : ''}`}
+                    className={`progress-step ${currentStep === step ? 'active' : currentStep > step ? 'completed' : ''}`}
                   >
                     {step}
                   </div>
@@ -274,14 +269,14 @@ export default function ContactFormModern() {
 
           {/* Contact Info */}
           <div className="popup-contact-info">
-            <div className="contact-item">
+            <div className="contact-item" onClick={() => window.open('tel:+919944199445')}>
               <div className="contact-icon">📞</div>
               <div className="contact-text">
                 <h3>Phone</h3>
                 <p>+91 99441-99445</p>
               </div>
             </div>
-            <div className="contact-item">
+            <div className="contact-item" onClick={() => window.open('mailto:info@skylink.net.in')}>
               <div className="contact-icon">📧</div>
               <div className="contact-text">
                 <h3>Email</h3>

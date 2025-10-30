@@ -5,8 +5,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   z-index: 9998;
   animation: fadeIn 0.3s ease-out;
 }
@@ -18,23 +18,21 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
   background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   z-index: 9999;
-  max-width: 450px;
+  max-width: 480px;
   width: 90%;
   animation: popupAppear 0.3s ease-out forwards;
   overflow: hidden;
+  border: 1px solid #e5e5e5;
 }
 
 @keyframes popupAppear {
   0% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.9);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.02);
   }
   100% {
     opacity: 1;
@@ -50,48 +48,53 @@
 /* Close Button */
 .popup-close-btn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #f8f8f8;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   cursor: pointer;
   color: #666;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  font-weight: 300;
 }
 
 .popup-close-btn:hover {
-  background: #f1f1f1;
-  color: #333;
+  background: #dc2626;
+  color: white;
 }
 
 /* Popup Header */
 .popup-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .popup-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #1a202c;
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
 }
 
 .popup-subtitle {
-  color: #718096;
-  font-size: 0.9rem;
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 400;
 }
 
 /* Form Steps */
 .form-step {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   transition: all 0.3s ease;
 }
 
@@ -101,89 +104,103 @@
 }
 
 .completed-step {
-  opacity: 0.7;
+  opacity: 0.6;
   transform: translateX(-10px);
 }
 
 /* Input Styles */
 .popup-input {
   width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  padding: 14px 16px;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s ease;
   background: white;
+  font-family: inherit;
+  color: #333;
 }
 
 .popup-input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
 }
 
 .popup-input:disabled {
-  background: #f7fafc;
-  color: #a0aec0;
+  background: #fafafa;
+  color: #888;
   cursor: not-allowed;
+  border-color: #e5e5e5;
+}
+
+.popup-input::placeholder {
+  color: #999;
 }
 
 /* Button Styles */
 .popup-next-btn,
 .popup-back-btn,
 .popup-submit-btn {
-  padding: 12px 24px;
+  padding: 14px 24px;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   width: 100%;
   margin-top: 1rem;
+  font-family: inherit;
+  letter-spacing: 0.5px;
 }
 
 .popup-next-btn {
-  background: linear-gradient(135deg, #ea6666 0%, #ff0000 100%);
+  background: #dc2626;
   color: white;
 }
 
 .popup-back-btn {
-  background: #6c757d;
+  background: #737373;
   color: white;
 }
 
 .popup-submit-btn {
-  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  background: #dc2626;
   color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 .popup-next-btn:hover {
-  background: linear-gradient(135deg, #d85a5a 0%, #f52121 100%);
-  transform: translateY(-2px);
+  background: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 .popup-back-btn:hover {
-  background: #5a6268;
-  transform: translateY(-2px);
+  background: #525252;
+  transform: translateY(-1px);
 }
 
 .popup-submit-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #ff0000 0%, #ad0000 100%);
-  transform: translateY(-2px);
+  background: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 .popup-submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 /* Step Buttons */
 .step-buttons {
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .step-buttons button {
@@ -192,57 +209,94 @@
 
 /* Progress Indicator */
 .popup-progress {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e9ecef;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f0f0f0;
 }
 
 .progress-steps {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
+  position: relative;
+}
+
+.progress-steps::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  background: #f0f0f0;
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
 .progress-step {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #e9ecef;
+  background: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: #6c757d;
+  color: #888;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  border: 2px solid transparent;
+  font-size: 14px;
 }
 
 .progress-step.active {
-  background: linear-gradient(135deg, #ea6666 0%, #a24b4b 100%);
+  background: #dc2626;
   color: white;
-  transform: scale(1.1);
+  border-color: #dc2626;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+}
+
+.progress-step.completed {
+  background: #dc2626;
+  color: white;
 }
 
 /* Error Messages */
 .error-message {
-  color: #dc3545;
+  color: #dc2626;
   font-size: 12px;
-  margin-top: 4px;
+  margin-top: 6px;
   text-align: left;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 10px;
 }
 
 /* Captcha Styles */
 .popup-captcha {
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 1rem;
-  background: #f8f9fa;
-  margin-top: 1rem;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: #fafafa;
+  margin-top: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.popup-captcha.captcha-loading {
+  border-color: #dc2626;
 }
 
 .captcha-label {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   cursor: pointer;
 }
 
@@ -250,89 +304,113 @@
   position: relative;
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
 }
 
 .captcha-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.captcha-checkbox-visual {
   width: 20px;
   height: 20px;
-  border: 2px solid #667eea;
+  border: 2px solid #ccc;
   border-radius: 3px;
-  cursor: pointer;
+  background: white;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.captcha-checkbox:checked + .captcha-checkbox-visual {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.captcha-checkbox:checked + .captcha-checkbox-visual::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .captcha-loading-spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid #667eea;
+  border: 2px solid #dc2626;
   border-top: 2px solid transparent;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-.captcha-checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: white;
-  background: #667eea;
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-}
-
 .captcha-text {
   font-size: 14px;
-  color: #2d3748;
+  color: #333;
+  font-weight: 500;
 }
 
 .captcha-brand {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5rem;
-  font-size: 10px;
-  color: #718096;
+  margin-top: 0.75rem;
+  font-size: 11px;
+  color: #888;
 }
 
 /* Contact Info */
 .popup-contact-info {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e9ecef;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f0f0f0;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 8px;
-  transition: background 0.3s ease;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .contact-item:hover {
-  background: #f7fafc;
+  background: #fafafa;
+  border-color: #f0f0f0;
+  transform: translateY(-1px);
 }
 
 .contact-icon {
-  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  background: #fef2f2;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc2626;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .contact-text h3 {
-  font-size: 0.9rem;
-  color: #2d3748;
-  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0 0 2px 0;
+  font-weight: 600;
 }
 
 .contact-text p {
-  font-size: 0.8rem;
-  color: #718096;
+  font-size: 0.85rem;
+  color: #666;
   margin: 0;
+  font-weight: 400;
 }
 
 /* Loading Spinner */
@@ -354,8 +432,17 @@
 /* Responsive Design */
 @media (max-width: 480px) {
   .contact-popup-container {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
     width: 95%;
+    border-radius: 12px;
+  }
+  
+  .popup-header {
+    margin-bottom: 2rem;
+  }
+  
+  .popup-title {
+    font-size: 1.5rem;
   }
   
   .step-buttons {
@@ -363,12 +450,27 @@
   }
   
   .progress-steps {
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .progress-steps::before {
+    left: 20%;
+    right: 20%;
   }
   
   .progress-step {
-    width: 25px;
-    height: 25px;
-    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+  
+  .popup-input {
+    padding: 12px 14px;
+  }
+  
+  .popup-next-btn,
+  .popup-back-btn,
+  .popup-submit-btn {
+    padding: 12px 20px;
   }
 }
