@@ -18,6 +18,7 @@ import {
 } from "../../data/Home";
 
 import HomeContactForm from "@/components/contact/ContactForm";
+import { useState } from "react";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -35,21 +36,21 @@ const SingleFaq = dynamic(() => import("@/components/SingleFaq"));
 const Slider = dynamic(() => import("@/components/Slider"));
 
 export default function Home() {
-  const testiconMenuData = [
-    { id: 1, icon: FaGlobe, title: "Internet", linkdata: "/internet" },
-    { id: 2, icon: FaTv, title: "TV", linkdata: "/tv" },
-    { id: 3, icon: FaVideo, title: "OTT", linkdata: "/ott" },
-    { id: 4, icon: FaFire, title: "Skylink Fire Tv", linkdata: "/firestick" },
-    { id: 5, icon: FaHandshake, title: "Partner", linkdata: "/partner" },
-    { id: 6, icon: FaWifi, title: "Deals", linkdata: "/deals" },
-    { id: 7, icon: FaTruckMoving, title: "Shifting", linkdata: "/moving" },
-    {
-      id: 8,
-      icon: FaHeadphones,
-      title: "Accessories",
-      linkdata: "/accessories",
-    },
-  ];
+  // const testiconMenuData = [
+  //   { id: 1, icon: FaGlobe, title: "Internet", linkdata: "/internet" },
+  //   { id: 2, icon: FaTv, title: "TV", linkdata: "/tv" },
+  //   { id: 3, icon: FaVideo, title: "OTT", linkdata: "/ott" },
+  //   { id: 4, icon: FaFire, title: "Skylink Fire Tv", linkdata: "/firestick" },
+  //   { id: 5, icon: FaHandshake, title: "Partner", linkdata: "/partner" },
+  //   { id: 6, icon: FaWifi, title: "Deals", linkdata: "/deals" },
+  //   { id: 7, icon: FaTruckMoving, title: "Shifting", linkdata: "/moving" },
+  //   {
+  //     id: 8,
+  //     icon: FaHeadphones,
+  //     title: "Accessories",
+  //     linkdata: "/accessories",
+  //   },
+  // ];
   const [activeId, setActiveId] = useState(1);
   const dummy = () => {
     console.log("test");
@@ -63,11 +64,11 @@ export default function Home() {
   return (
     <>
       <IconMenu onSelect={dummy} content={iconMenuData} />
-      <ThreeDIconMenu
+      {/* <ThreeDIconMenu
         content={testiconMenuData}
         activeId={activeId}
         onSelect={(id) => setActiveId(id)}
-      />
+      /> */}
 
       {/* <Banner content={bannerContent} /> */}
       <HomeContactForm onSubmit={handleFormSubmit} />
