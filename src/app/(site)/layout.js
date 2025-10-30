@@ -7,6 +7,7 @@ import BeforeFooter from "@/components/BeforeFooter";
 import PageLoaderWrapper from "@/components/PageLoaderWrapper";
 import dynamic from "next/dynamic";
 import { Providers } from "./Providers";
+import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({children}) {
             {children}
             <BeforeFooter></BeforeFooter>
             <Footer></Footer>
+            <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>
         </PageLoaderWrapper>
       </body>

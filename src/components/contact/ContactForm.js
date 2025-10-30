@@ -2,8 +2,7 @@
 import { useState, useEffect } from "react";
 import "./ContactForm.css";
 
-export default function ContactFormModern() {
-  const [showPopup, setShowPopup] = useState(false);
+export default function ContactForm({ onClose }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -18,21 +17,21 @@ export default function ContactFormModern() {
   const [isLoading, setIsLoading] = useState(false);
   const [captchaLoading, setCaptchaLoading] = useState(false);
   const [captchaChecked, setCaptchaChecked] = useState(false);
-
-  // Show popup after 4 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, []);
+  const [showToast, setShowToast] = useState(false);
 
   const validatePhone = (phone) => /^[0-9]{10}$/.test(phone);
   const validateName = (name) => name.trim().length > 0;
   const validateEmail = (email) => {
-    if (!email) return true; // Email is optional
+    if (!email) return true;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const showToastNotification = () => {
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 4000);
   };
 
   const handleCaptchaChange = (e) => {
@@ -55,7 +54,6 @@ export default function ContactFormModern() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear errors when user starts typing
     if (name === "phone") {
       setPhoneError("");
     } else if (name === "name") {
@@ -94,58 +92,71 @@ export default function ContactFormModern() {
     }
 
     if (!formData.captcha) {
-      alert("Please verify that you are not a robot");
+      setEmailError("Please verify that you are not a robot");
       return;
     }
 
     setIsLoading(true);
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
-      alert("Thank You! We will reach out soon.");
+      showToastNotification();
       setFormData({ name: "", email: "", phone: "", captcha: false });
       setCurrentStep(1);
       setCaptchaChecked(false);
-      setShowPopup(false);
+      setTimeout(() => {
+        onClose();
+      }, 4000);
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred. Please try again.");
+      setEmailError("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
   const closePopup = () => {
-    setShowPopup(false);
+    onClose();
   };
 
-  if (!showPopup) {
-    return null;
-  }
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        closePopup();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
 
   return (
     <>
-      {/* Overlay */}
       <div className="popup-overlay" onClick={closePopup}></div>
       
-      {/* Popup Container */}
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="toast-notification">
+          <button className="toast-close" onClick={() => setShowToast(false)}>×</button>
+          <div className="toast-icon">✓</div>
+          <div className="toast-content">
+            <h4>Registration Successful!</h4>
+            <p>Thank you for contacting us. We'll reach out soon.</p>
+          </div>
+        </div>
+      )}
+
       <div className="contact-popup-container">
-        {/* Close Button */}
         <button className="popup-close-btn" onClick={closePopup}>
           ×
         </button>
 
-        {/* Popup Content */}
         <div className="popup-content">
-          {/* Header */}
           <div className="popup-header">
-            <h2 className="popup-title">Get In Touch</h2>
-            <p className="popup-subtitle">Our team will contact you shortly</p>
+            <h2 className="popup-title">Register for Premium Network</h2>
+            <p className="popup-subtitle">Experience the highest-quality connectivity with our premium support</p>
           </div>
 
-          {/* Form */}
           <form className="contact-popup-form" onSubmit={handleSubmit}>
-            {/* Step 1: Phone Number */}
             {currentStep >= 1 && (
               <div className={`form-step ${currentStep === 1 ? 'active-step' : 'completed-step'}`}>
                 <div className="input-container">
@@ -170,7 +181,6 @@ export default function ContactFormModern() {
               </div>
             )}
 
-            {/* Step 2: Name */}
             {currentStep >= 2 && (
               <div className={`form-step ${currentStep === 2 ? 'active-step' : 'completed-step'}`}>
                 <div className="input-container">
@@ -196,7 +206,6 @@ export default function ContactFormModern() {
               </div>
             )}
 
-            {/* Step 3: Email & Captcha */}
             {currentStep >= 3 && (
               <div className={`form-step ${currentStep === 3 ? 'active-step' : 'completed-step'}`}>
                 <div className="input-container">
@@ -242,17 +251,16 @@ export default function ContactFormModern() {
                   <button type="submit" className="popup-submit-btn" disabled={isLoading}>
                     {isLoading ? (
                       <>
-                        <span className="submit-loading-spinner"></span> Sending...
+                        <span className="submit-loading-spinner"></span> Registering...
                       </>
                     ) : (
-                      "Submit Message"
+                      "Register for FREE"
                     )}
                   </button>
                 </div>
               </div>
             )}
 
-            {/* Progress Indicator */}
             <div className="popup-progress">
               <div className="progress-steps">
                 {[1, 2, 3].map((step) => (
@@ -267,20 +275,32 @@ export default function ContactFormModern() {
             </div>
           </form>
 
-          {/* Contact Info */}
+          {/* Side by Side Contact Info */}
           <div className="popup-contact-info">
-            <div className="contact-item" onClick={() => window.open('tel:+919944199445')}>
-              <div className="contact-icon">📞</div>
-              <div className="contact-text">
-                <h3>Phone</h3>
-                <p>+91 99441-99445</p>
-              </div>
+            <div className="contact-info-header">
+              <h3 className="contact-info-title">📞 Get Immediate Support</h3>
+              <p className="contact-info-subtitle">Our team is ready to assist you</p>
             </div>
-            <div className="contact-item" onClick={() => window.open('mailto:info@skylink.net.in')}>
-              <div className="contact-icon">📧</div>
-              <div className="contact-text">
-                <h3>Email</h3>
-                <p>info@skylink.net.in</p>
+            <div className="contact-items-container">
+              <div className="contact-item" onClick={() => window.open('tel:+919944199445')}>
+                <div className="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 3.75v4.5m0-4.5h-4.5m4.5 0-6 6m3 12c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
+</svg>
+</div>
+                <div className="contact-text">
+                  <h3>Phone</h3>
+                  <p>+91 99441-99445</p>
+                </div>
+              </div>
+              <div className="contact-item" onClick={() => window.open('mailto:info@skylink.net.in')}>
+                <div className="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
+</svg>
+</div>
+                <div className="contact-text">
+                  <h3>Email</h3>
+                  <p>info@skylink.net.in</p>
+                </div>
               </div>
             </div>
           </div>

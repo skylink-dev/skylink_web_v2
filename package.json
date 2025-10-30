@@ -18,6 +18,7 @@
     "axios": "^1.12.2",
     "framer-motion": "^12.20.4",
     "gsap": "^3.13.0",
+    "js-cookie": "^3.0.5",
     "locomotive-scroll": "^4.1.4",
     "next": "^15.3.2",
     "postcss": "^8.5.6",
