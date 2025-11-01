@@ -8,6 +8,9 @@ import HeroBannerNew from "@/components/coimbatore/herobannernew";
 import WhyProduct from "@/components/coimbatore/WhyProduct";
 import SmartSection from "@/components/coimbatore/SmartSection";
 import SkylinkFAQ from "@/components/coimbatore/SkylinkFAQ";
+import SkylinkPlans from "@/components/coimbatore/SkylinkPlans";
+import TrustedPartners from "@/components/coimbatore/TrustPartners";
+import TvOttPartners from "@/components/coimbatore/TvOttPartners";
 
 const ContactSection = dynamic(() => import("@/components/ContactSection"));
 const ContactFormNew = dynamic(() => import("@/components/ContactFormNew"));
@@ -19,7 +22,10 @@ export default function Page() {
     <>
       <HeroBannerNew />
       <WhyProduct />
+       <TvOttPartners/>
       <SmartSection />
+      <SkylinkPlans/>
+      <TrustedPartners/>
       <SkylinkFAQ />
     </>
   );
