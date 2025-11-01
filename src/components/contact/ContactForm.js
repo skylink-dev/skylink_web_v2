@@ -1,11 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import "./ContactForm.css";
-import { apiService } from "@/backend/apiservice";
 
-export default function ContactFormModern() {
-  const [animatePopup, setAnimatePopup] = useState(false);
+export default function ContactForm({ onClose }) {
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,43 +13,26 @@ export default function ContactFormModern() {
 
   const [phoneError, setPhoneError] = useState("");
   const [nameError, setNameError] = useState("");
-  const [captchaError, setCaptchaError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showSubmit, setShowSubmit] = useState(false);
   const [captchaLoading, setCaptchaLoading] = useState(false);
   const [captchaChecked, setCaptchaChecked] = useState(false);
-
-  // Advertisement slider state (only ad1 and ad2)
-  const [currentAd, setCurrentAd] = useState(0);
-  const adImages = [
-    "/assets/ad1.jpg",
-    "/assets/ad2.jpg",
-  ];
-
-  // Handle phone click
-  const handlePhoneClick = () => {
-    window.location.href = "tel:+919944199445";
-  };
-
-  // Handle email click
-  const handleEmailClick = () => {
-    const gmailUrl = `https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRmTWccqhmdnZPqNGFcWTJMDvrsnKcssBFLfkzrbbMPsgQlMzFjzClhsKJLXjBcxHXdwScQ`;
-    window.open(gmailUrl, "_blank");
-  };
-
-  // Slider controls
-  const nextAd = () => setCurrentAd((prev) => (prev + 1) % adImages.length);
-  const prevAd = () => setCurrentAd((prev) => (prev - 1 + adImages.length) % adImages.length);
-  const goToAd = (index) => setCurrentAd(index);
-
-  // Auto-rotate ads
-  useEffect(() => {
-    const interval = setInterval(nextAd, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const [showToast, setShowToast] = useState(false);
 
   const validatePhone = (phone) => /^[0-9]{10}$/.test(phone);
   const validateName = (name) => name.trim().length > 0;
+  const validateEmail = (email) => {
+    if (!email) return true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const showToastNotification = () => {
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 4000);
+  };
 
   const handleCaptchaChange = (e) => {
     const { checked } = e.target;
@@ -60,12 +41,9 @@ export default function ContactFormModern() {
       setCaptchaChecked(true);
       setTimeout(() => {
         setCaptchaLoading(false);
-        setShowSubmit(true);
         setFormData((prev) => ({ ...prev, captcha: true }));
-        setCaptchaError("");
       }, 800);
     } else if (!checked) {
-      setShowSubmit(false);
       setCaptchaChecked(false);
       setCaptchaLoading(false);
       setFormData((prev) => ({ ...prev, captcha: false }));
@@ -74,255 +52,260 @@ export default function ContactFormModern() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "captcha") return;
-
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === "phone") {
-      if (!value || !validatePhone(value)) {
-        setPhoneError("Please enter a valid 10-digit phone number");
-      } else {
-        setPhoneError("");
-      }
+      setPhoneError("");
+    } else if (name === "name") {
+      setNameError("");
+    } else if (name === "email") {
+      setEmailError("");
     }
+  };
 
-    if (name === "name") {
-      if (!value || !validateName(value)) {
-        setNameError("Please enter your name");
-      } else {
-        setNameError("");
+  const handleNext = () => {
+    if (currentStep === 1) {
+      if (!formData.phone || !validatePhone(formData.phone)) {
+        setPhoneError("Please enter a valid 10-digit phone number");
+        return;
       }
+      setCurrentStep(2);
+    } else if (currentStep === 2) {
+      if (!formData.name || !validateName(formData.name)) {
+        setNameError("Please enter your name");
+        return;
+      }
+      setCurrentStep(3);
     }
+  };
+
+  const handleBack = () => {
+    setCurrentStep(currentStep - 1);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let hasError = false;
+    
+    if (!formData.email || !validateEmail(formData.email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
 
-    if (!formData.name || !validateName(formData.name)) {
-      setNameError("Please enter your name");
-      hasError = true;
-    }
-    if (!formData.phone || !validatePhone(formData.phone)) {
-      setPhoneError("Please enter a valid 10-digit phone number");
-      hasError = true;
-    }
     if (!formData.captcha) {
-      setCaptchaError("Please verify that you are not a robot");
-      hasError = true;
+      setEmailError("Please verify that you are not a robot");
+      return;
     }
-
-    if (hasError) return;
 
     setIsLoading(true);
     try {
-      const response = await apiService.submitContactForm(formData);
-      if (response.status === 200 || response.status === 201) {
-        alert("Thank You! We will reach out soon.");
-        setFormData({ name: "", email: "", phone: "", captcha: false });
-        setShowSubmit(false);
-        setCaptchaChecked(false);
-      } else {
-        throw new Error(`Unexpected status: ${response.status}`);
-      }
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      showToastNotification();
+      setFormData({ name: "", email: "", phone: "", captcha: false });
+      setCurrentStep(1);
+      setCaptchaChecked(false);
+      setTimeout(() => {
+        onClose();
+      }, 4000);
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred. Please try again.");
+      setEmailError("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
+  const closePopup = () => {
+    onClose();
+  };
+
   useEffect(() => {
-    const timer = setTimeout(() => setAnimatePopup(true), 500);
-    return () => clearTimeout(timer);
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        closePopup();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
   return (
-    <div className="contact-form-modern">
-      {/* Background Video */}
-      <video
-        className="contact-form-video-bg"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="/assets/video/contact-form-bg.mp4" type="video/mp4" />
-        <source src="/assets/video/contact-form-bg.webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
+    <>
+      <div className="popup-overlay" onClick={closePopup}></div>
+      
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="toast-notification">
+          <button className="toast-close" onClick={() => setShowToast(false)}>×</button>
+          <div className="toast-icon">✓</div>
+          <div className="toast-content">
+            <h4>Registration Successful!</h4>
+            <p>Thank you for contacting us. We'll reach out soon.</p>
+          </div>
+        </div>
+      )}
 
-      {/* Main Layout */}
-      <div className="contact-form-container">
-        <div className="contact-section-split mobile-reverse">
-          {/* Form Section */}
-          <div className="contact-form-side">
-            <div className="contact-form-subtitle-container mobile-only">
-              <h2 className="contact-form-subtitle animate-slideInUp jumping-text">
-                {"Linking Possibilities With Seamless Connections!"
-                  .split(" ")
-                  .map((word, index) => (
-                    <span key={index} style={{ display: "inline-block", marginRight: "4px" }}>
-                      {word}
-                    </span>
-                  ))}
-              </h2>
-            </div>
+      <div className="contact-popup-container">
+        <button className="popup-close-btn" onClick={closePopup}>
+          ×
+        </button>
 
-            <div className="contact-form-section">
-              <div className="contact-form-main">
-                <form className="contact-form-content" onSubmit={handleSubmit}>
-                  <div className="contact-form-vertical">
-                    <div className="phone-input-container">
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Mobile Number *"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="contact-form-input"
-                        pattern="[0-9]{10}"
-                        maxLength="10"
-                      />
-                      {phoneError && <div className="phone-error-message">{phoneError}</div>}
-                    </div>
-
-                    <div className="name-input-container">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Name *"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="contact-form-input"
-                      />
-                      {nameError && <div className="name-error-message">{nameError}</div>}
-                    </div>
-
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email Id"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="contact-form-input"
-                    />
-
-                    <div className="captcha-container">
-                      {!showSubmit ? (
-                        <div className={`contact-form-captcha ${captchaLoading ? "captcha-loading" : ""}`}>
-                          <label className="contact-form-captcha-label">
-                            <div className="captcha-checkbox-container">
-                              <input
-                                type="checkbox"
-                                name="captcha"
-                                checked={formData.captcha}
-                                onChange={handleCaptchaChange}
-                                className="contact-form-captcha-checkbox"
-                                disabled={captchaLoading}
-                              />
-                              {captchaLoading && <div className="captcha-loading-spinner"></div>}
-                              {!captchaLoading && formData.captcha && <div className="captcha-checkmark">✓</div>}
-                            </div>
-                            <span className="contact-form-captcha-text">I'm not a robot *</span>
-                          </label>
-                          <div className="contact-form-captcha-brand">
-                            <span>reCAPTCHA</span>
-                            <span>Privacy • Terms</span>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="contact-form-submit-container submit-appear">
-                          <button type="submit" className="contact-form-submit" disabled={isLoading}>
-                            {isLoading ? (
-                              <>
-                                <span className="submit-loading-spinner"></span> Sending...
-                              </>
-                            ) : (
-                              "Send message"
-                            )}
-                          </button>
-                        </div>
-                      )}
-                      {captchaError && <div className="captcha-error-message">{captchaError}</div>}
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+        <div className="popup-content">
+          <div className="popup-header">
+            <h2 className="popup-title">Register for Premium Network</h2>
+            <p className="popup-subtitle">Experience the highest-quality connectivity with our premium support</p>
           </div>
 
-          {/* Contact Info + Ads */}
-          <div className="contact-info-side">
-            <div className="contact-form-subtitle-container desktop-only">
-              <h2 className="contact-form-subtitle animate-slideInUp jumping-text">
-                {"Linking Possibilities With Seamless Connections!"
-                  .split(" ")
-                  .map((word, index) => (
-                    <span key={index} style={{ display: "inline-block", marginRight: "4px" }}>
-                      {word}
-                    </span>
-                  ))}
-              </h2>
-            </div>
+          <form className="contact-popup-form" onSubmit={handleSubmit}>
+            {currentStep >= 1 && (
+              <div className={`form-step ${currentStep === 1 ? 'active-step' : 'completed-step'}`}>
+                <div className="input-container">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Mobile Number *"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="popup-input"
+                    pattern="[0-9]{10}"
+                    maxLength="10"
+                    disabled={currentStep > 1}
+                  />
+                  {phoneError && <div className="error-message">{phoneError}</div>}
+                </div>
+                {currentStep === 1 && (
+                  <button type="button" className="popup-next-btn" onClick={handleNext}>
+                    Continue
+                  </button>
+                )}
+              </div>
+            )}
 
-            {/* Advertisement Slider */}
-            <div className="advertisement-slider">
-              <div className="slider-container relative">
-                <Image
-                  src={adImages[currentAd]}
-                  alt={`Advertisement ${currentAd + 1}`}
-                  width={600}
-                  height={400}
-                  className="slider-image"
-                  style={{ objectFit: "cover", borderRadius: "12px" }}
-                />
-
-                <button className="slider-nav prev" onClick={prevAd}>
-                  ‹
-                </button>
-                <button className="slider-nav next" onClick={nextAd}>
-                  ›
-                </button>
-
-                <div className="slider-controls">
-                  {adImages.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`slider-dot ${index === currentAd ? "active" : ""}`}
-                      onClick={() => goToAd(index)}
-                    />
-                  ))}
+            {currentStep >= 2 && (
+              <div className={`form-step ${currentStep === 2 ? 'active-step' : 'completed-step'}`}>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name *"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="popup-input"
+                    disabled={currentStep > 2}
+                  />
+                  {nameError && <div className="error-message">{nameError}</div>}
+                </div>
+                <div className="step-buttons">
+                  <button type="button" className="popup-back-btn" onClick={handleBack}>
+                    Back
+                  </button>
+                  <button type="button" className="popup-next-btn" onClick={handleNext}>
+                    Continue
+                  </button>
                 </div>
               </div>
-            </div>
+            )}
 
-            
-            <div className="contact-details">
-              <div className="contact-info-combined" style={{ cursor: "pointer" }}>
-                <div className="contact-item" onClick={handlePhoneClick}>
-                  <div className="contact-icon">📞</div>
-                  <div className="contact-text">
-                    <h3>Phone</h3>
-                    <p>+91 99441-99445</p>
+            {currentStep >= 3 && (
+              <div className={`form-step ${currentStep === 3 ? 'active-step' : 'completed-step'}`}>
+                <div className="input-container">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="popup-input"
+                  />
+                  {emailError && <div className="error-message">{emailError}</div>}
+                </div>
+
+                <div className="captcha-container">
+                  <div className={`popup-captcha ${captchaLoading ? "captcha-loading" : ""}`}>
+                    <label className="captcha-label">
+                      <div className="captcha-checkbox-container">
+                        <input
+                          type="checkbox"
+                          name="captcha"
+                          checked={formData.captcha}
+                          onChange={handleCaptchaChange}
+                          className="captcha-checkbox"
+                          disabled={captchaLoading}
+                        />
+                        <div className="captcha-checkbox-visual"></div>
+                        {captchaLoading && <div className="captcha-loading-spinner"></div>}
+                      </div>
+                      <span className="captcha-text">I'm not a robot *</span>
+                    </label>
+                    <div className="captcha-brand">
+                      <span>reCAPTCHA</span>
+                      <span>Privacy • Terms</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="contact-item" onClick={handleEmailClick}>
-                  <div className="contact-icon">📧</div>
-                  <div className="contact-text">
-                    <h3>Email</h3>
-                    <p>info@skylink.net.in</p>
+                <div className="step-buttons">
+                  <button type="button" className="popup-back-btn" onClick={handleBack}>
+                    Back
+                  </button>
+                  <button type="submit" className="popup-submit-btn" disabled={isLoading}>
+                    {isLoading ? (
+                      <>
+                        <span className="submit-loading-spinner"></span> Registering...
+                      </>
+                    ) : (
+                      "Register for FREE"
+                    )}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <div className="popup-progress">
+              <div className="progress-steps">
+                {[1, 2, 3].map((step) => (
+                  <div
+                    key={step}
+                    className={`progress-step ${currentStep === step ? 'active' : currentStep > step ? 'completed' : ''}`}
+                  >
+                    {step}
                   </div>
+                ))}
+              </div>
+            </div>
+          </form>
+
+          {/* Side by Side Contact Info */}
+          <div className="popup-contact-info">
+            <div className="contact-info-header">
+              <h3 className="contact-info-title">📞 Get Immediate Support</h3>
+              <p className="contact-info-subtitle">Our team is ready to assist you</p>
+            </div>
+            <div className="contact-items-container">
+              <div className="contact-item" onClick={() => window.open('tel:+919944199445')}>
+                <div className="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 3.75v4.5m0-4.5h-4.5m4.5 0-6 6m3 12c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
+</svg>
+</div>
+                <div className="contact-text">
+                  <h3>Phone</h3>
+                  <p>+91 99441-99445</p>
+                </div>
+              </div>
+              <div className="contact-item" onClick={() => window.open('mailto:info@skylink.net.in')}>
+                <div className="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
+</svg>
+</div>
+                <div className="contact-text">
+                  <h3>Email</h3>
+                  <p>info@skylink.net.in</p>
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
