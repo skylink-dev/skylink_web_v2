@@ -1,30 +1,30 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Image from "next/image"
-import { motion, AnimatePresence } from 'framer-motion';
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 
-export default function RightImageLeftContent({ title, Content, coreImage, order }) {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const sliderRef = useRef(null);
+export default function RightImageLeftContent({ title, Content, order }) {
+  const [currentImage, setCurrentImage] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+  const sliderRef = useRef(null)
 
   useEffect(() => {
-      const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-      setIsMounted(true);
-      checkMobile();
-      window.addEventListener('resize', checkMobile);
-      return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768)
+    setIsMounted(true)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     if (isMobile && sliderRef.current) {
-      setTimeout(() => sliderRef.current.slickGoTo(0), 100);
+      setTimeout(() => sliderRef.current.slickGoTo(0), 100)
     }
-  }, [isMobile]);
+  }, [isMobile])
 
   const sliderSettings = {
     dots: true,
@@ -36,106 +36,124 @@ export default function RightImageLeftContent({ title, Content, coreImage, order
     slidesToScroll: 1,
     arrows: false,
     afterChange: index => setCurrentImage(index),
-  };
+  }
 
-  if (!isMounted) return null;
+  if (!isMounted) return null
 
-  // Image animation
   const imageVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -30 }
-  };
+    exit: { opacity: 0, y: -30 },
+  }
 
   return (
-    <section className='right-image-left-content-section'>
-      <div className="max-width-background story-stack theme-base-bg bgcolor">
-        <div className="container pad-t-xl-sm pad-t-lg-lg pad-t-lg-md pad-l-none-md pad-l-none-sm pad-r-none-md pad-r-none-sm mar-b-sm pad-b-sm">
-          <div className="row flex-wrap flex-items-center justify-center">
-            <div className="text-center pad-t-none pad-b-xxs-sm pad-b-xxs-md pad-r-xl-sm pad-l-xl-sm grid-col-10">
-              <h2 className="no-default-margin heading-xxl">{title}</h2>
+    <section className="bg-white py-14">
+      <div className="max-w-7xl mx-auto px-8">
+        {/* Main Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-black">{title}</h2>
+        </div>
+
+        {!isMobile ? (
+          // Desktop - Portrait Style Layout
+          <div className={`flex flex-wrap justify-center items-stretch gap-12 ${order}`}>
+            {/* Left Image */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImage}
+                className="relative w-[45%] h-[620px] overflow-hidden rounded-2xl shadow-lg"
+                variants={imageVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ duration: 0.5 }}
+              >
+                <Image
+                  src={Content[currentImage]?.img || '/assets/default-image.webp'}
+                  alt="content"
+                  fill
+                  className="object-cover rounded-2xl transition-transform duration-700 hover:scale-105"
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Right Content */}
+            <div className="w-[45%] h-[620px] overflow-y-auto rounded-2xl bg-gray-50 shadow-md p-8 flex flex-col justify-center">
+              {Content.map((item, index) => (
+                <div
+                  key={index}
+                  className={`rounded-xl p-5 mb-5 transition-all duration-300 cursor-pointer ${
+                    currentImage === index
+                      ? 'bg-red-100 shadow-inner'
+                      : 'hover:bg-gray-200'
+                  }`}
+                  onMouseEnter={() => setCurrentImage(index)}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="bg-red-200 p-3 rounded-full flex-shrink-0">
+                      <Image
+                        src={item.icon}
+                        width={40}
+                        height={40}
+                        alt={item.title}
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          {!isMobile ? (
-            // Desktop
-            <div className={`row flex-wrap flex-row pad-t-xs-lg pad-l-xs-lg pad-r-xs-lg pad-none-md pad-l-none-sm pad-r-none-sm ${order}`}>
-              <AnimatePresence mode="wait">
+        ) : (
+          // Mobile Version
+          <div className="container px-4">
+            <Slider {...sliderSettings} ref={sliderRef}>
+              {Content.map((item, index) => (
                 <motion.div
-                  key={currentImage}
-                  className="jsx-1864732960 z1 story-stack-img-wrapper rel overflow-hidden radius-lg layoutImage image-aspect-ratio height-full mar-b-lg-md mar-b-xl-sm"
-                  variants={imageVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
+                  key={`mobile-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
+                  className="p-4"
                 >
-                  <div style={{ position: 'relative', width: '100%', height: 'auto', aspectRatio: '3 / 4' }}>
-                    <Image src={Content[currentImage]?.img || "/assets/default-image.webp"} fill style={{ objectFit: 'cover' }} alt="content" className="absolute top transition-1s width-full radius-lg fadein" />
+                  <div className="bg-gray-50 rounded-2xl overflow-hidden shadow-md">
+                    <div className="relative w-full h-[400px]">
+                      <Image
+                        src={item.img || '/assets/default-image.webp'}
+                        alt="content"
+                        fill
+                        className="object-cover rounded-t-2xl"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="bg-red-200 p-3 rounded-full">
+                          <Image
+                            src={item.icon}
+                            width={40}
+                            height={40}
+                            alt={item.title}
+                          />
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900">
+                          {item.title}
+                        </h3>
+                      </div>
+                      <p className="text-gray-600 text-sm">{item.description}</p>
+                    </div>
                   </div>
                 </motion.div>
-              </AnimatePresence>
-
-              <div className="jsx-1864732960 customOffsetWidth"></div>
-              <div className="jsx-1864732960 rollOver">
-                {Content.map((item, index) => (
-                  <div key={`desktop-${index}`}>
-                    <div className={`jsx-3293071849 hideSeparator radius-lg active mar-t-none pad-b-xxs-lg theme-accent-bg radius-lg cursor card rel block no-border-box ${currentImage === index ? 'bg-att-blue-000' : ''}`} onMouseEnter={() => setCurrentImage(index)}>
-                      <div className="flex flex-row gap16 pad-md pad-t-sm-lg pad-b-sm-lg">
-                        <div>
-                          <div className="round overflow-hidden flex-shrink-0 bg-att-blue-100 height-xxl-all width-xxl-all flex flex-centered">
-                            <Image src={item.icon} width={50} height={50} alt={item.title} />
-                          </div>
-                        </div>
-                        <div className="flex flex-column flex-grow mar-t-xxs-lg">
-                          <h3 className="mar-b-xxs-lg mar-b-md-sm mar-b-sm-md heading-sm">{item.title}</h3>
-                          <div className="type-base rte-styles">{item.description}</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="hr-seperator">
-                      <div className="jsx-2125347277 color-gray-400 hr-rule"><hr className="jsx-2125347277 font-bold color-gray-800" /></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            // Mobile
-            <div className="row flex-wrap flex-row pad-t-xs-lg pad-l-xs-lg pad-r-xs-lg pad-none-md pad-l-none-sm pad-r-none-sm container" id="mobile-slider">
-              <Slider {...sliderSettings} ref={sliderRef}>
-                {Content.map((item, index) => (
-                  <motion.div
-                    key={`mobile-${index}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="flex justify-center pad-md-md pad-b-xxs pad-sm-lg pad-l-xxs pad-r-xxs"
-                  >
-                    <div className="jsx-1864732960 story-stack-carousel width-full">
-                      <div className="jsx-994660347 rel theme-base-bg bgcolor radius-lg">
-                        <div className="jsx-1410485163 aspect-ratio-1 overflow-hidden radius-lg">
-                          <Image src={item.img || "/assets/default-image.webp"} fill style={{ objectFit: 'cover' }} alt="content" className="obj-fit-cover radius-lg radius-b-none width-full" />
-                        </div>
-                        <div className="absolute pad-l-xs-sm pad-l-sm-md bottom-offset width-full">
-                          <div className="round overflow-hidden flex-shrink-0 border bg-white height-xl-all width-xl-all flex flex-centered">
-                            <Image src={item.icon} width={50} height={50} alt={item.title} />
-                          </div>
-                        </div>
-                        <div className="flex-column flex-grow pad-t-xxs-sm pad-b-xxs-sm">
-                          <h3 className="heading-sm mar-b-xxs-lg">{item.title}</h3>
-                          <div className="type-base rte-styles">{item.description}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </Slider>
-            </div>
-          )}
-        </div>
+              ))}
+            </Slider>
+          </div>
+        )}
       </div>
     </section>
-  );
+  )
 }
