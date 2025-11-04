@@ -6,7 +6,7 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     plans: plansReducer,
-    newPlan: newPlanReducer,
+    newPlans: newPlanReducer,
   },
 });
 
