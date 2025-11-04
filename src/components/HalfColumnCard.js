@@ -1,7 +1,7 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+"use client";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function HalfColumnCard({ titlecontent, items, color }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -11,82 +11,88 @@ export default function HalfColumnCard({ titlecontent, items, color }) {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     setIsMounted(true);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  if (!isMounted) return null;
+
   return (
-    <div className="jsx-2913604578">
-      <div className="max-width-background  bgcolor mar-b-none pad-b-none mar-t-none pad-t-none theme-base-bg">
-        <div className="container rel">
-          {titlecontent && (
-            <div className="row flex-wrap justify-center">
-              <div className="text-center grid-col-10">
-                <p className="type-eyebrow-xxl">{titlecontent.sub}</p>
-                <h2 className="mar-b-xs heading-xxl">{titlecontent.title}</h2>
-                <div className="jsx-2913604578 cta-container">
+    <div className="bg-gray-50 py-14 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Title Section */}
+        {titlecontent && (
+          <div className="text-center mb-14">
+            <p className="text-sm uppercase tracking-wide text-blue-500 font-semibold">
+              {titlecontent.sub}
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {titlecontent.title}
+            </h2>
+            <Link
+              href="/plans"
+              aria-label={titlecontent.cta}
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-blue-700 transition"
+            >
+              {titlecontent.cta}
+            </Link>
+          </div>
+        )}
+
+        {/* Cards Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {items.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ scale: 1.03 }}
+              className="rounded-2xl overflow-hidden relative shadow-lg bg-white group min-h-[450px] md:min-h-[550px]"
+              style={{
+                backgroundImage: `url(${
+                  isMobile && item.mobileimage ? item.mobileimage : item.image
+                })`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* Overlay for readability */}
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500"></div>
+
+              {/* Card content */}
+              <div className="relative z-10 flex flex-col justify-between h-full p-8 sm:p-10 text-white">
+                <div>
+                  <p className="text-sm uppercase tracking-wide text-blue-300">
+                    {item.subtitle}
+                  </p>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-base sm:text-lg mb-4 opacity-90">
+                    {item.description}
+                  </p>
+                  {item.legalText && (
+                    <p className="text-xs opacity-70 mt-2">{item.legalText}</p>
+                  )}
+                </div>
+
+                <div className="mt-6">
                   <Link
-                    id="flexCardPanel-Shop-now-lnk-4651"
-                    aria-label="Shop all smartphones"
-                    href="/plans"
-                    className="jsx-1196099039 btn-secondary"
+                    href={item.link}
+                    className={`inline-block px-6 py-3 rounded-md text-sm font-medium transition ${
+                      color === "blue"
+                        ? "bg-blue-600 hover:bg-blue-700 text-white"
+                        : "bg-white text-gray-900 hover:bg-gray-200"
+                    }`}
+                    aria-label="Shop now"
                   >
-                    {titlecontent.cta}
+                    Shop now
                   </Link>
                 </div>
               </div>
-            </div>
-          )}
-
-          <div className="row flex-wrap flex-items-stretch justify-center">
-            {items.map((item, index) => (
-              <motion.div
-                className="grid-col-6"
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                whileHover={{ scale: 1.03 }}
-              >
-                <div
-                  className="jsx-1695256195 jsx-2300775981 card flex-card radius-lg rel bgcolor theme-light-bg-img flex-card-background"
-                  style={{
-                    backgroundImage: `url(${isMobile && item.mobileimage ? item.mobileimage : item.image})`,
-                  }}
-                >
-                  <div
-                    className={`jsx-1695256195 jsx-2300775981 row flex card-height-tall rel flex-column ${
-                      index === 0 ? color : ''
-                    }`}
-                  >
-                    <div className="jsx-1695256195 jsx-2300775981 flex-1 grid-col-6 pad-r-none-lg pad-b-none pad-md-lg pad-md-md pad-lg-sm pad-r-none">
-                      <div className="jsx-1695256195 jsx-2300775981">
-                        <p className="type-eyebrow-md">{item.subtitle}</p>
-                        <h3 className="heading-md">{item.title}</h3>
-                        <div className="type-base mar-t-xs rte-styles">{item.description}</div>
-                        <div id={`card-${index}-legal_Legal`} className="type-legal mar-t-xxs">
-                          <span>{item.legalText}</span>
-                          <button className="btn-reset nowrap" aria-label="See details about this offer"></button>
-                        </div>
-                        <div className="cta-container mar-t-xs">
-                          <Link
-                            className="btn-primary"
-                            id={`button-${index}`}
-                            type="button"
-                            aria-label="Order Samsung phone"
-                            href={item.link}
-                          >
-                            Shop now
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="jsx-1695256195 jsx-2300775981 flex-3 height-full width-full radius-lg radius-t-none overflow-hidden grid-col-6 pad-b-none pad-r-none hide pad-t-none-md pad-t-none-lg pad-l-none-sm pad-t-none"></div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

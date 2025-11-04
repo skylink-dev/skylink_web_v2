@@ -3,23 +3,27 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import "./ThreeBannerImage.css";
 
-// Dynamically import ContactForm with ssr: false
+// Dynamically import ContactForm (no SSR)
 const ContactForm = dynamic(() => import("./ContactForm"), {
   ssr: false,
-  loading: () => null
+  loading: () => null,
 });
 
-const ThreeBannerModern = () => {
+export default function ThreeBannerModern() {
   const router = useRouter();
   const [showContactForm, setShowContactForm] = useState(false);
-  
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const sliderRef = useRef(null);
+
   const slides = [
     {
       id: 1,
       title: "Entertainment reimagined with Skylink OTT",
-      description: "Stream blockbuster shows, exclusive movies & live sports with Skylink OTT Premium plans.",
+      description:
+        "Stream blockbuster shows, exclusive movies & live sports with Skylink OTT Premium plans.",
       buttonText: "Check Available OTTs",
       buttonLink: "/ott",
       imageLandscape: "/assets/banner1.jpg",
@@ -28,7 +32,8 @@ const ThreeBannerModern = () => {
     {
       id: 2,
       title: "We Offer The Highest-Quality Network Connections",
-      description: "Choose us for the highest-quality connections that support your digital lifestyle.",
+      description:
+        "Choose us for the highest-quality connections that support your digital lifestyle.",
       buttonText: "Register for FREE",
       buttonLink: "#register",
       imageLandscape: "/assets/banner2.png",
@@ -36,8 +41,9 @@ const ThreeBannerModern = () => {
     },
     {
       id: 3,
-      title: "Unlock the Ultimate Broadband Experience ",
-      description: "Enjoy fast, reliable connectivity for all your streaming, gaming, browsing, and work-from-home needs.",
+      title: "Unlock the Ultimate Broadband Experience",
+      description:
+        "Enjoy fast, reliable connectivity for all your streaming, gaming, browsing, and work-from-home needs.",
       buttonText: "Explore Plans",
       buttonLink: "/plans",
       imageLandscape: "/assets/banner3.jpg",
@@ -45,193 +51,128 @@ const ThreeBannerModern = () => {
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const sliderRef = useRef(null);
-
   const nextSlide = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    
-    setCurrentSlide((prev) => {
-      const nextSlideIndex = prev + 1;
-      
-      if (nextSlideIndex >= slides.length) {
-        setTimeout(() => {
-          setIsTransitioning(false);
-          setCurrentSlide(0);
-        }, 800);
-        return slides.length - 1;
-      }
-      
-      setTimeout(() => setIsTransitioning(false), 800);
-      return nextSlideIndex;
-    });
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setTimeout(() => setIsTransitioning(false), 800);
   }, [isTransitioning, slides.length]);
 
   const prevSlide = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    
-    setCurrentSlide((prev) => {
-      const prevSlideIndex = prev - 1;
-      
-      if (prevSlideIndex < 0) {
-        setTimeout(() => setIsTransitioning(false), 800);
-        return slides.length - 1;
-      }
-      
-      setTimeout(() => setIsTransitioning(false), 800);
-      return prevSlideIndex;
-    });
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setTimeout(() => setIsTransitioning(false), 800);
   }, [isTransitioning, slides.length]);
 
-  const goToSlide = useCallback((index) => {
-    if (isTransitioning || index === currentSlide) return;
+  const goToSlide = (index) => {
+    if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentSlide(index);
-    
     setTimeout(() => setIsTransitioning(false), 800);
-  }, [isTransitioning, currentSlide]);
+  };
 
-  // Handle button click
-  const handleButtonClick = useCallback((slide) => {
-    if (slide.buttonLink === "/plans") {
-      router.push("/plans");
-    } else if (slide.buttonLink === "#register") {
-      // Only set showContactForm to true - this triggers the dynamic import and rendering
-      setShowContactForm(true);
-    } else if (slide.buttonLink.startsWith("#")) {
-      const element = document.querySelector(slide.buttonLink);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      window.location.href = slide.buttonLink;
-    }
-  }, [router]);
+  const handleButtonClick = (slide) => {
+    if (slide.buttonLink === "/plans") router.push("/plans");
+    else if (slide.buttonLink === "#register") setShowContactForm(true);
+    else if (slide.buttonLink.startsWith("#")) {
+      document
+        .querySelector(slide.buttonLink)
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else window.location.href = slide.buttonLink;
+  };
 
-  // Auto-play with continuous forward scrolling only
   useEffect(() => {
     if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 6000);
-
+    const interval = setInterval(() => nextSlide(), 6000);
     return () => clearInterval(interval);
-  }, [nextSlide, isAutoPlaying]);
-
-  const handleMouseEnter = () => setIsAutoPlaying(false);
-  const handleMouseLeave = () => setIsAutoPlaying(true);
-
-  const handleKeyDown = useCallback((e) => {
-    if (e.key === 'ArrowLeft') prevSlide();
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key >= '1' && e.key <= '3') goToSlide(parseInt(e.key) - 1);
-  }, [prevSlide, nextSlide, goToSlide]);
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
+  }, [isAutoPlaying, nextSlide]);
 
   return (
     <>
-      <div 
-        className="skylink-slider-container"
+      {/* ===== Slider Container ===== */}
+      <div
         ref={sliderRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        role="region"
-        aria-label="Featured offers slider"
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
+        className="relative mx-10 w-full max-w-[1600px] mx-auto my-10 md:my-16 overflow-hidden rounded-2xl md:rounded-3xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
       >
-        <div className="skylink-slider-wrapper">
-          <div
-            className="skylink-slider-track"
-            style={{
-              transform: `translate3d(-${currentSlide * 100}%, 0, 0)`,
-              transition: isTransitioning ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
-            }}
-          >
-            {slides.map((slide, index) => (
-              <div
-                key={slide.id}
-                className={`skylink-slide ${index === currentSlide ? "active" : ""}`}
-                role="group"
-                aria-label={`Slide ${index + 1} of ${slides.length}`}
-                aria-hidden={index !== currentSlide}
-              >
-                {/* Landscape Image for Desktop/Tablet */}
-                <div className="slide-image-wrapper landscape">
-                  <Image
-                    src={slide.imageLandscape}
-                    alt={slide.title}
-                    fill
-                    priority={index === 0}
-                    className="slide-bg"
-                    quality={95}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1600px"
-                  />
-                </div>
+        {/* ===== Slider Track ===== */}
+        <div
+          className="flex h-[420px] sm:h-[520px] md:h-[600px] transition-transform duration-[800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`relative min-w-full h-full overflow-hidden ${
+                index === currentSlide ? "z-10" : "z-0"
+              }`}
+            >
+              {/* Landscape Image */}
+              <div className="absolute inset-0 hidden sm:block">
+                <Image
+                  src={slide.imageLandscape}
+                  alt={slide.title}
+                  fill
+                  className="object-fit object-center scale-110 transition-transform duration-[1200ms]"
+                />
+              </div>
 
-                {/* Portrait Image for Mobile */}
-                <div className="slide-image-wrapper portrait">
-                  <Image
-                    src={slide.imagePortrait}
-                    alt={slide.title}
-                    fill
-                    priority={index === 0}
-                    className="slide-bg"
-                    quality={95}
-                    sizes="100vw"
-                  />
-                </div>
+              {/* Portrait Image */}
+              <div className="absolute inset-0 sm:hidden">
+                <Image
+                  src={slide.imagePortrait}
+                  alt={slide.title}
+                  fill
+                  className="object-cover object-bottom "
+                />
+              </div>
 
-                {/* ===== Enhanced Overlay Content ===== */}
-                <div className="skylink-slide-overlay">
-                  <div className="skylink-slide-content">
-                    <h1 className="slide-title">{slide.title}</h1>
-                    <p className="slide-description">{slide.description}</p>
-                    <button 
-                      onClick={() => handleButtonClick(slide)}
-                      className="skylink-btn"
-                      aria-label={`Learn more about ${slide.title}`}
+              {/* ===== Overlay Content ===== */}
+              <div className="absolute inset-0 flex items-center justify-center sm:justify-start z-10 px-5 sm:px-12 md:px-24 bg-gradient-to-b sm:bg-gradient-to-r from-black/70 via-black/50 to-transparent">
+                <div className="max-w-lg sm:max-w-2xl text-white text-center sm:text-left">
+                  <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-3 sm:mb-6 leading-tight animate-fadeInUp">
+                    {slide.title}
+                  </h1>
+                  <p className="text-base sm:text-lg md:text-2xl mb-6 sm:mb-8 font-light opacity-90 animate-fadeInUp delay-200">
+                    {slide.description}
+                  </p>
+                  <button
+                    onClick={() => handleButtonClick(slide)}
+                    className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-[#e50914] via-[#ff2a35] to-[#e50914] text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-2xl font-bold shadow-[0_6px_25px_rgba(229,9,20,0.5)] hover:scale-105 hover:shadow-[0_10px_35px_rgba(229,9,20,0.7)] transition-all duration-500"
+                  >
+                    {slide.buttonText}
+                    <svg
+                      className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-1"
+                      viewBox="0 0 20 20"
+                      fill="none"
                     >
-                      <span>{slide.buttonText}</span>
-                      <svg
-                        className="btn-arrow"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M7.5 15L12.5 10L7.5 5"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
+                      <path
+                        d="M7.5 15L12.5 10L7.5 5"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Navigation Arrows */}
+        {/* ===== Navigation Buttons ===== */}
         <button
-          className="nav-btn left"
           onClick={prevSlide}
-          aria-label="Previous Slide"
-          disabled={isTransitioning}
+          className="absolute top-1/2 left-3 sm:left-6 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/90 text-black flex items-center justify-center shadow-lg hover:bg-[#e50914] hover:text-white transition-all duration-300"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg
+            className="w-5 h-5 sm:w-6 sm:h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
             <path
               d="M15 18L9 12L15 6"
               stroke="currentColor"
@@ -241,13 +182,16 @@ const ThreeBannerModern = () => {
             />
           </svg>
         </button>
+
         <button
-          className="nav-btn right"
           onClick={nextSlide}
-          aria-label="Next Slide"
-          disabled={isTransitioning}
+          className="absolute top-1/2 right-3 sm:right-6 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/90 text-black flex items-center justify-center shadow-lg hover:bg-[#e50914] hover:text-white transition-all duration-300"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg
+            className="w-5 h-5 sm:w-6 sm:h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
             <path
               d="M9 18L15 12L9 6"
               stroke="currentColor"
@@ -258,55 +202,41 @@ const ThreeBannerModern = () => {
           </svg>
         </button>
 
-        {/* Progress Dots */}
-        <div 
-          className="skylink-slider-dots"
-          role="tablist"
-          aria-label="Slide navigation"
-        >
-          {slides.map((_, index) => (
+        {/* ===== Dots ===== */}
+        <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex gap-3 sm:gap-4">
+          {slides.map((_, i) => (
             <button
-              key={index}
-              className={`dot ${index === currentSlide ? "active" : ""}`}
-              onClick={() => goToSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              aria-selected={index === currentSlide}
-              disabled={isTransitioning}
-              role="tab"
+              key={i}
+              onClick={() => goToSlide(i)}
+              className={`relative w-8 sm:w-12 h-[4px] sm:h-[6px] rounded-md overflow-hidden transition-all duration-300 ${
+                i === currentSlide ? "bg-white/30 scale-y-125" : "bg-white/20"
+              }`}
             >
-              <span className="dot-inner"></span>
+              <span
+                className={`absolute inset-0 bg-gradient-to-r from-[#e50914] to-[#ff2a35] transition-transform duration-[600ms] origin-left ${
+                  i === currentSlide ? "scale-x-100" : "scale-x-0"
+                }`}
+              ></span>
             </button>
           ))}
         </div>
 
-        {/* Progress Bar */}
-        <div className="progress-bar-container">
+        {/* ===== Progress Bar ===== */}
+        <div className="absolute bottom-0 left-0 w-full h-[3px] sm:h-[4px] bg-white/20 overflow-hidden">
           <div
-            className="progress-bar"
+            className="h-full bg-gradient-to-r from-[#e50914] via-[#ff2a35] to-[#e50914] animate-progressBar origin-left"
             style={{
-              animationPlayState: isAutoPlaying && !isTransitioning ? 'running' : 'paused',
+              animationPlayState:
+                isAutoPlaying && !isTransitioning ? "running" : "paused",
             }}
           ></div>
         </div>
-
-        {/* Screen Reader Status */}
-        <div 
-          aria-live="polite" 
-          aria-atomic="true" 
-          className="sr-only"
-        >
-          {`Slide ${currentSlide + 1} of ${slides.length}: ${slides[currentSlide].title}`}
-        </div>
       </div>
 
-      {/* Contact Form Popup - Only loads and renders when showContactForm is true */}
+      {/* ===== Contact Form ===== */}
       {showContactForm && (
-        <ContactForm 
-          onClose={() => setShowContactForm(false)} 
-        />
+        <ContactForm onClose={() => setShowContactForm(false)} />
       )}
     </>
   );
-};
-
-export default ThreeBannerModern;
+}

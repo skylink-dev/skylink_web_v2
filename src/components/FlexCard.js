@@ -4,22 +4,19 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function FlexCard({
-  auth,
   title,
   contentData,
+  rightContentData,
   rightImage,
   leftImage,
   mobileleftImage,
   mobileRightImage,
-  rightContentData,
-  additionalclass,
   toppaddingremove,
   optionalColor,
 }) {
   const [selectedId, setSelectedId] = useState(contentData?.[0]?.id || null);
   const [isMobile, setIsMobile] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-
   const selected = contentData?.find((item) => item.id === selectedId);
   const rightSelected = rightContentData;
 
@@ -48,7 +45,11 @@ export default function FlexCard({
 
   useEffect(() => {
     if (selected)
-      setLeftBg(isMobile ? selected.mobileLeftImage || selected.leftImage : selected.leftImage);
+      setLeftBg(
+        isMobile
+          ? selected.mobileLeftImage || selected.leftImage
+          : selected.leftImage
+      );
   }, [selectedId, isMobile]);
 
   useEffect(() => {
@@ -57,162 +58,127 @@ export default function FlexCard({
   }, [selectedId, isMobile]);
 
   return (
-    <div>
-      <div
-        className={`max-width-background bgcolor mar-b-none mar-t-none pad-b-md pad-t-lg theme-base-bg ${toppaddingremove}`}
-      >
-        <div className="container rel">
-          {title && (
-            <motion.div
-              className="row flex-wrap justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="text-center grid-col-10">
-                <h1 className="mar-b-xs heading-xxl color-att-blue">{title}</h1>
-              </div>
-            </motion.div>
-          )}
-
-          <div
-            className={`row flex-wrap flex-items-stretch justify-center ${additionalclass}`}
+    <section className={`bg-theme-base-bg ${toppaddingremove || ""} py-12`}>
+      <div className="container mx-auto px-4 relative">
+        {title && (
+          <motion.div
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            {/* LEFT CARD */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-600">
+              {title}
+            </h1>
+          </motion.div>
+        )}
+
+        <div className="flex flex-col lg:flex-row gap-8 justify-center items-stretch">
+          {/* LEFT CARD */}
+          <motion.div
+            className="flex-1 bg-cover bg-center relative rounded-2xl overflow-hidden min-h-[550px]"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <AnimatePresence>
+              <motion.div
+                key={leftBg}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${leftBg})` }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2 }}
+              />
+            </AnimatePresence>
+
             <motion.div
-              className="grid-col-8"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              key={selectedId}
+              className="relative z-10 p-8 sm:p-10 md:p-12 text-white  h-full pr-45 flex flex-col justify-center rounded-2xl"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
             >
-              <div
-                id="card-40"
-                className="card flex-card radius-lg rel bgcolor theme-dark-bg-img flex-card-background overflow-hidden"
-              >
-                <AnimatePresence>
+              {selected && (
+                <>
+                  <p className="uppercase tracking-wide text-sm mb-2">
+                    {selected.subtitle}
+                  </p>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-4">
+                    {selected.title}
+                  </h3>
+                  <p className="text-base mb-4">{selected.description}</p>
+                  <p className="text-sm opacity-80">{selected.details}</p>
                   <motion.div
-                    key={leftBg}
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${leftBg})` }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1.2 }}
-                  />
-                </AnimatePresence>
-
-                <motion.div
-                  className="row flex flex-column card-height-tall rel"
-                  style={{ position: "relative", zIndex: 1 }}
-                  key={selectedId}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <div className="flex-1 grid-col-6 pad-md-lg pad-lg-sm">
-                    {selected && (
-                      <>
-                        <p className="type-eyebrow-lg">{selected.subtitle}</p>
-                        <h3 className="heading-lg">{selected.title}</h3>
-                        <div className="type-base mar-t-xs rte-styles">
-                          {selected.description}
-                        </div>
-                        <div
-                          id="card-40-legal_Legal"
-                          className="type-legal mar-t-xxs"
-                        >
-                          <span>{selected.details}</span>
-                        </div>
-                        <motion.div
-                          className="cta-container mar-t-xs font-color-change"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ type: "spring", stiffness: 200 }}
-                        >
-                          <Link
-                            className="btn-primary bg-white"
-                            href={selected.link || "#"}
-                          >
-                            Subscribe now
-                          </Link>
-                        </motion.div>
-                      </>
-                    )}
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            {/* RIGHT CARD */}
-            <motion.div
-              className="grid-col-4"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div
-                id="card-41"
-                className="card flex-card radius-lg rel bgcolor theme-light-bg-img flex-card-background overflow-hidden"
-              >
-                <AnimatePresence>
-                  <motion.div
-                    key={rightBg}
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${rightBg})` }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1.2 }}
-                  />
-                </AnimatePresence>
-
-                <motion.div
-                  className={`row flex flex-column card-height-tall rel`}
-                  style={{ position: "relative", zIndex: 1 }}
-                  key={rightSelected?.heading}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <div
-                    className={`flex-1 grid-col-6 pad-b-none max-width pad-md-lg pad-md-md pad-lg-sm ${optionalColor}`}
+                    className="mt-6"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 200 }}
                   >
-                    <p className="type-eyebrow-md">
-                      {rightSelected?.subheading}
-                    </p>
-                    <h3
-                      className="heading-md"
-                      dangerouslySetInnerHTML={{
-                        __html: rightSelected?.heading,
-                      }}
-                    />
-                    <div className="type-base mar-t-xs rte-styles">
-                      {rightSelected?.description}
-                    </div>
-                    <div
-                      id="card-41-legal_Legal"
-                      className="type-legal mar-t-xxs"
+                    <Link
+                      href={selected.link || "#"}
+                      className="inline-block bg-white text-blue-600 font-semibold py-2 px-5 rounded-lg shadow hover:bg-blue-100 transition"
                     >
-                      <span>{rightSelected?.legal}</span>
-                    </div>
-                    <motion.div
-                      className="cta-container mar-t-xs"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <Link
-                        className="btn-primary"
-                        href={rightSelected?.href || "#"}
-                      >
-                        {rightSelected?.mainCta}
-                      </Link>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </div>
+                      Subscribe now
+                    </Link>
+                  </motion.div>
+                </>
+              )}
             </motion.div>
-          </div>
+          </motion.div>
+
+          {/* RIGHT CARD */}
+          <motion.div
+            className="flex-1 bg-cover bg-center relative rounded-2xl overflow-hidden min-h-[550px]"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <AnimatePresence>
+              <motion.div
+                key={rightBg}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${rightBg})` }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1.2 }}
+              />
+            </AnimatePresence>
+
+            <motion.div
+              className={`relative z-0 p-8 sm:p-10 md:p-12 bg-white/70  h-full flex flex-col justify-center rounded-2xl ${optionalColor}`}
+              key={rightSelected?.heading}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <p className="uppercase text-gray-600 text-sm mb-2">
+                {rightSelected?.subheading}
+              </p>
+              <h3
+                className="text-2xl sm:text-3xl font-bold mb-4 text-blue-700"
+                dangerouslySetInnerHTML={{ __html: rightSelected?.heading }}
+              />
+              <p className="text-gray-700 mb-4">{rightSelected?.description}</p>
+              <p className="text-xs text-gray-500">{rightSelected?.legal}</p>
+              <motion.div
+                className="mt-6"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <Link
+                  href={rightSelected?.href || "#"}
+                  className="inline-block bg-blue-600 text-white py-2 px-5 rounded-lg shadow hover:bg-blue-700 transition"
+                >
+                  {rightSelected?.mainCta}
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import "./ContactForm.css";
 
 export default function ContactForm({ onClose }) {
   const [currentStep, setCurrentStep] = useState(1);
@@ -11,39 +10,33 @@ export default function ContactForm({ onClose }) {
     captcha: false,
   });
 
-  const [phoneError, setPhoneError] = useState("");
-  const [nameError, setNameError] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [captchaLoading, setCaptchaLoading] = useState(false);
   const [captchaChecked, setCaptchaChecked] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
+  // ✅ Validation Helpers
   const validatePhone = (phone) => /^[0-9]{10}$/.test(phone);
   const validateName = (name) => name.trim().length > 0;
-  const validateEmail = (email) => {
-    if (!email) return true;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  const validateEmail = (email) =>
+    !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const showToastNotification = () => {
     setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 4000);
+    setTimeout(() => setShowToast(false), 4000);
   };
 
   const handleCaptchaChange = (e) => {
     const { checked } = e.target;
-    if (checked && !captchaChecked) {
+    if (checked) {
       setCaptchaLoading(true);
       setCaptchaChecked(true);
       setTimeout(() => {
         setCaptchaLoading(false);
         setFormData((prev) => ({ ...prev, captcha: true }));
       }, 800);
-    } else if (!checked) {
+    } else {
       setCaptchaChecked(false);
       setCaptchaLoading(false);
       setFormData((prev) => ({ ...prev, captcha: false }));
@@ -53,255 +46,292 @@ export default function ContactForm({ onClose }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-
-    if (name === "phone") {
-      setPhoneError("");
-    } else if (name === "name") {
-      setNameError("");
-    } else if (name === "email") {
-      setEmailError("");
-    }
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleNext = () => {
-    if (currentStep === 1) {
-      if (!formData.phone || !validatePhone(formData.phone)) {
-        setPhoneError("Please enter a valid 10-digit phone number");
-        return;
-      }
-      setCurrentStep(2);
-    } else if (currentStep === 2) {
-      if (!formData.name || !validateName(formData.name)) {
-        setNameError("Please enter your name");
-        return;
-      }
-      setCurrentStep(3);
-    }
+    if (currentStep === 1 && !validatePhone(formData.phone))
+      return setErrors({ phone: "Please enter a valid 10-digit phone number" });
+    if (currentStep === 2 && !validateName(formData.name))
+      return setErrors({ name: "Please enter your name" });
+    setCurrentStep(currentStep + 1);
   };
 
-  const handleBack = () => {
-    setCurrentStep(currentStep - 1);
-  };
+  const handleBack = () => setCurrentStep(currentStep - 1);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!formData.email || !validateEmail(formData.email)) {
-      setEmailError("Please enter a valid email address");
-      return;
-    }
-
-    if (!formData.captcha) {
-      setEmailError("Please verify that you are not a robot");
-      return;
-    }
+    if (!validateEmail(formData.email))
+      return setErrors({ email: "Please enter a valid email address" });
+    if (!formData.captcha)
+      return setErrors({ captcha: "Please verify that you are not a robot" });
 
     setIsLoading(true);
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      showToastNotification();
-      setFormData({ name: "", email: "", phone: "", captcha: false });
-      setCurrentStep(1);
-      setCaptchaChecked(false);
-      setTimeout(() => {
-        onClose();
-      }, 4000);
-    } catch (error) {
-      console.error("Error:", error);
-      setEmailError("An error occurred. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    await new Promise((r) => setTimeout(r, 1500));
+
+    showToastNotification();
+    setFormData({ name: "", email: "", phone: "", captcha: false });
+    setCaptchaChecked(false);
+    setCurrentStep(1);
+    setIsLoading(false);
+    setTimeout(() => onClose(), 4000);
   };
 
-  const closePopup = () => {
-    onClose();
-  };
-
+  // ✅ Escape key closes modal
   useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') {
-        closePopup();
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, []);
+    const handleEscape = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [onClose]);
 
   return (
     <>
-      <div className="popup-overlay" onClick={closePopup}></div>
-      
-      {/* Toast Notification */}
+      {/* Overlay */}
+      <div
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+        onClick={onClose}
+      ></div>
+
+      {/* ✅ Toast Notification */}
       {showToast && (
-        <div className="toast-notification">
-          <button className="toast-close" onClick={() => setShowToast(false)}>×</button>
-          <div className="toast-icon">✓</div>
-          <div className="toast-content">
-            <h4>Registration Successful!</h4>
-            <p>Thank you for contacting us. We'll reach out soon.</p>
+        <div className="fixed top-6 right-6 bg-green-600 text-white rounded-lg shadow-lg flex items-center p-4 gap-3 animate-fade-in z-50">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <div>
+            <h4 className="font-semibold">Registration Successful!</h4>
+            <p className="text-sm">We’ll reach out soon.</p>
           </div>
+          <button
+            onClick={() => setShowToast(false)}
+            className="ml-auto text-xl font-bold hover:text-gray-200"
+          >
+            ×
+          </button>
         </div>
       )}
 
-      <div className="contact-popup-container">
-        <button className="popup-close-btn" onClick={closePopup}>
-          ×
-        </button>
+      {/* ✅ Popup Container */}
+      <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
+        <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 animate-fade-in">
+          <button
+            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
+            onClick={onClose}
+          >
+            ×
+          </button>
 
-        <div className="popup-content">
-          <div className="popup-header">
-            <h2 className="popup-title">Register for Premium Network</h2>
-            <p className="popup-subtitle">Experience the highest-quality connectivity with our premium support</p>
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold text-gray-800">
+              Register for Premium Network
+            </h2>
+            <p className="text-gray-500 text-sm mt-1">
+              Experience lightning-fast connectivity with trusted support.
+            </p>
           </div>
 
-          <form className="contact-popup-form" onSubmit={handleSubmit}>
-            {currentStep >= 1 && (
-              <div className={`form-step ${currentStep === 1 ? 'active-step' : 'completed-step'}`}>
-                <div className="input-container">
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Mobile Number *"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="popup-input"
-                    pattern="[0-9]{10}"
-                    maxLength="10"
-                    disabled={currentStep > 1}
-                  />
-                  {phoneError && <div className="error-message">{phoneError}</div>}
-                </div>
-                {currentStep === 1 && (
-                  <button type="button" className="popup-next-btn" onClick={handleNext}>
-                    Continue
-                  </button>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Step 1 */}
+            {currentStep === 1 && (
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Mobile Number *"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-red-500 outline-none"
+                  maxLength="10"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                 )}
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="mt-4 w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition"
+                >
+                  Continue
+                </button>
               </div>
             )}
 
-            {currentStep >= 2 && (
-              <div className={`form-step ${currentStep === 2 ? 'active-step' : 'completed-step'}`}>
-                <div className="input-container">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Full Name *"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="popup-input"
-                    disabled={currentStep > 2}
-                  />
-                  {nameError && <div className="error-message">{nameError}</div>}
-                </div>
-                <div className="step-buttons">
-                  <button type="button" className="popup-back-btn" onClick={handleBack}>
+            {/* Step 2 */}
+            {currentStep === 2 && (
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name *"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-red-500 outline-none"
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                )}
+                <div className="flex justify-between mt-4">
+                  <button
+                    type="button"
+                    onClick={handleBack}
+                    className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300"
+                  >
                     Back
                   </button>
-                  <button type="button" className="popup-next-btn" onClick={handleNext}>
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700"
+                  >
                     Continue
                   </button>
                 </div>
               </div>
             )}
 
-            {currentStep >= 3 && (
-              <div className={`form-step ${currentStep === 3 ? 'active-step' : 'completed-step'}`}>
-                <div className="input-container">
+            {/* Step 3 */}
+            {currentStep === 3 && (
+              <div className="space-y-4">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-red-500 outline-none"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+
+                {/* Fake Captcha */}
+                <div className="flex items-center gap-3 border rounded-lg px-4 py-3">
                   <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="popup-input"
+                    type="checkbox"
+                    checked={formData.captcha}
+                    onChange={handleCaptchaChange}
+                    disabled={captchaLoading}
+                    className="w-5 h-5 accent-red-600"
                   />
-                  {emailError && <div className="error-message">{emailError}</div>}
+                  <span className="text-gray-700 text-sm">
+                    I’m not a robot *
+                  </span>
+                  {captchaLoading && (
+                    <div className="ml-auto w-5 h-5 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+                  )}
                 </div>
 
-                <div className="captcha-container">
-                  <div className={`popup-captcha ${captchaLoading ? "captcha-loading" : ""}`}>
-                    <label className="captcha-label">
-                      <div className="captcha-checkbox-container">
-                        <input
-                          type="checkbox"
-                          name="captcha"
-                          checked={formData.captcha}
-                          onChange={handleCaptchaChange}
-                          className="captcha-checkbox"
-                          disabled={captchaLoading}
-                        />
-                        <div className="captcha-checkbox-visual"></div>
-                        {captchaLoading && <div className="captcha-loading-spinner"></div>}
-                      </div>
-                      <span className="captcha-text">I'm not a robot *</span>
-                    </label>
-                    <div className="captcha-brand">
-                      <span>reCAPTCHA</span>
-                      <span>Privacy • Terms</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="step-buttons">
-                  <button type="button" className="popup-back-btn" onClick={handleBack}>
+                <div className="flex justify-between">
+                  <button
+                    type="button"
+                    onClick={handleBack}
+                    className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300"
+                  >
                     Back
                   </button>
-                  <button type="submit" className="popup-submit-btn" disabled={isLoading}>
-                    {isLoading ? (
-                      <>
-                        <span className="submit-loading-spinner"></span> Registering...
-                      </>
-                    ) : (
-                      "Register for FREE"
-                    )}
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 disabled:opacity-70"
+                  >
+                    {isLoading ? "Registering..." : "Register for FREE"}
                   </button>
                 </div>
               </div>
             )}
 
-            <div className="popup-progress">
-              <div className="progress-steps">
-                {[1, 2, 3].map((step) => (
-                  <div
-                    key={step}
-                    className={`progress-step ${currentStep === step ? 'active' : currentStep > step ? 'completed' : ''}`}
-                  >
-                    {step}
-                  </div>
-                ))}
-              </div>
+            {/* Progress Dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {[1, 2, 3].map((step) => (
+                <div
+                  key={step}
+                  className={`w-3 h-3 rounded-full ${
+                    currentStep === step ? "bg-red-600" : "bg-gray-300"
+                  }`}
+                ></div>
+              ))}
             </div>
           </form>
 
-          {/* Side by Side Contact Info */}
-          <div className="popup-contact-info">
-            <div className="contact-info-header">
-              <h3 className="contact-info-title">📞 Get Immediate Support</h3>
-              <p className="contact-info-subtitle">Our team is ready to assist you</p>
-            </div>
-            <div className="contact-items-container">
-              <div className="contact-item" onClick={() => window.open('tel:+919944199445')}>
-                <div className="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 3.75v4.5m0-4.5h-4.5m4.5 0-6 6m3 12c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
-</svg>
-</div>
-                <div className="contact-text">
-                  <h3>Phone</h3>
-                  <p>+91 99441-99445</p>
-                </div>
-              </div>
-              <div className="contact-item" onClick={() => window.open('mailto:info@skylink.net.in')}>
-                <div className="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
-</svg>
-</div>
-                <div className="contact-text">
-                  <h3>Email</h3>
-                  <p>info@skylink.net.in</p>
-                </div>
-              </div>
+          {/* ✅ Contact Info Section */}
+          <div className="mt-8 border-t pt-6">
+            <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+              {/* 📞 SVG Phone Icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 text-red-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2 5.5C2 4.12 3.12 3 4.5 3h2A1.5 1.5 0 018 4.5v2A1.5 1.5 0 016.5 8H5a11 11 0 0011 11v-1.5A1.5 1.5 0 0117.5 16h2a1.5 1.5 0 011.5 1.5v2A1.5 1.5 0 0119.5 21C10.94 21 3 13.06 3 4.5 3 3.12 4.12 2 5.5 2H8"
+                />
+              </svg>
+              Get Immediate Support
+            </h3>
+            <p className="text-gray-500 text-sm mb-4">
+              Our team is ready to assist you
+            </p>
+
+            <div className="space-y-3">
+              <button
+                onClick={() => window.open("tel:+919944199445")}
+                className="flex items-center gap-3 text-red-600 hover:underline"
+              >
+                {/* SVG Phone */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2 5.5C2 4.12 3.12 3 4.5 3h2A1.5 1.5 0 018 4.5v2A1.5 1.5 0 016.5 8H5a11 11 0 0011 11v-1.5A1.5 1.5 0 0117.5 16h2a1.5 1.5 0 011.5 1.5v2A1.5 1.5 0 0119.5 21C10.94 21 3 13.06 3 4.5 3 3.12 4.12 2 5.5 2H8"
+                  />
+                </svg>
+                +91 99441-99445
+              </button>
+
+              <button
+                onClick={() => window.open("mailto:info@skylink.net.in")}
+                className="flex items-center gap-3 text-red-600 hover:underline"
+              >
+                {/* ✉️ SVG Mail */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 8l9 6 9-6m-18 8V8a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"
+                  />
+                </svg>
+                info@skylink.net.in
+              </button>
             </div>
           </div>
         </div>
