@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { basePlans } from "../data/basePlans";
+import { basePlans } from "../data/planData";
 // import { selectivePlans } from "../data/selectivePlans";
 
 const initialState = {
