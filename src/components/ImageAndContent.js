@@ -6,25 +6,25 @@ export default function ImageAndContent({ image, content, row = "row" }) {
   return (
     <section className="bg-white py-6 md:py-8 lg:py-10">
       <div className="container mx-auto px-4">
-        {/* Mobile View - Content Over Image */}
+        {/* Mobile View - Content Over Image (moved to top) */}
         <div className="md:hidden relative w-full aspect-[4/4.5] rounded-2xl overflow-hidden shadow-lg">
           <img
             src={image}
             alt="content"
             className="object-cover w-full h-full"
           />
-          
-          {/* Gradient Overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-          
-          {/* Content Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
+
+          {/* Gradient Overlay for better readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent" />
+
+          {/* Content Overlay — moved to top */}
+          <div className="absolute inset-0 flex flex-col justify-start p-6 text-white space-y-3 pt-8">
             {content.titleBox && (
               <div className="bg-red-500 text-white px-3 py-1 rounded-md text-xs font-semibold self-start mb-2">
                 {content.titleBox}
               </div>
             )}
-            
+
             <p className="uppercase tracking-widest text-xs font-semibold text-red-400">
               {content.subtitle}
             </p>
@@ -69,7 +69,7 @@ export default function ImageAndContent({ image, content, row = "row" }) {
         </div>
 
         {/* Desktop/Tablet View - Side by Side */}
-        <div className="hidden md:flex items-center justify-between gap-6 lg:gap-10 xl:gap-12">
+        <div className="hidden md:flex items-center justify-between gap-4 lg:gap-6 xl:gap-8">
           {/* Content Section */}
           <div
             className={`flex-1 ${row === "row" ? "order-1" : "order-2"} space-y-3 lg:space-y-4`}

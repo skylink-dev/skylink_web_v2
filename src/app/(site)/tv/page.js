@@ -55,7 +55,7 @@ export default function Page() {
   description={`All guaranteed — or we’ll make it right. Available to all eligible customers across India at <span className="nowrap"> no extra cost</span>`}
   buttonText="Learn More"
   buttonLink="/guarantee" />
-      <ImageAndContent image="/assets/skyplay-tv-7.jpg" content={contentData} />
+      {/* <ImageAndContent image="/assets/skyplay-tv-7.jpg" content={contentData} /> */}
       <HalfColumnCard titlecontent={titlecontentData} items={cardData} color="color-white" />
       <CardColumn title="Get the device that gets you" repeatcontent={cartcontent} />
       <PricingPlans
@@ -69,15 +69,15 @@ export default function Page() {
         order="row-reverse justify-end"
         Content={dynamicImageContent}
       />
-      <SimpleColumnSection title="Switch and save" columns={columnSaveContent} />
-      <ImageAndContent image="/assets/ultimate-iptv-experience.jpg" content={contentData2} />
+      {/* <SimpleColumnSection title="Switch and save" columns={columnSaveContent} /> */}
+      {/* <ImageAndContent image="/assets/ultimate-iptv-experience.jpg" content={contentData2} /> */}
       <ContentBaseBanner content={contentBaseBanner} color="bg-att-blue-000" />
-      <SimpleColumnSection title="Find more plans to fit your needs" columns={columnSaveContent2} />
-      <ContentBaseBanner content={contentBaseBanner2} color="bg-gray-200" />
+      {/* <SimpleColumnSection title="Find more plans to fit your needs" columns={columnSaveContent2} /> */}
+      {/* <ContentBaseBanner content={contentBaseBanner2} color="bg-gray-200" /> */}
       <NewsLetter content={contentNewsletter} />
       <DynamicCarousel title="More articles and resources" slidesData={dynamicSlidesData} color="bg-gray-200" />
       <Faq title="More reasons to love Skylink Fiber internet" content={faqSecondContent} />
-      <SingleFaq content={faqData} />
+      {/* <SingleFaq content={faqData} /> */}
     </>
   );
 }

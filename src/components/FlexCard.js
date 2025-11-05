@@ -50,33 +50,35 @@ export default function FlexCard({
           ? selected.mobileLeftImage || selected.leftImage
           : selected.leftImage
       );
-  }, [selectedId, isMobile]);
+  }, [selected, isMobile]);
 
   useEffect(() => {
     if (rightSelected)
       setRightBg(isMobile ? mobileRightImage || rightImage : rightImage);
-  }, [selectedId, isMobile]);
+  }, [rightSelected, isMobile, mobileRightImage, rightImage]);
+
+  if (!isMounted) return null;
 
   return (
-    <section className={`bg-gradient-to-br from-gray-50 to-red-50 ${toppaddingremove || ""} py-16`}>
-      <div className="container mx-auto px-4 relative">
+    <section className={`bg-gradient-to-br from-gray-50 to-red-50 ${toppaddingremove || ""} py-8 sm:py-12 md:py-16`}>
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 relative">
         {title && (
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-6 sm:mb-8 md:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
+            <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent px-2">
               {title}
             </h1>
           </motion.div>
         )}
 
-        <div className="flex flex-col lg:flex-row gap-8 justify-center items-stretch max-w-[95rem] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-stretch max-w-[95rem] mx-auto">
           {/* LEFT CARD - LANDSCAPE (Wider) */}
           <motion.div
-            className="lg:flex-[2] bg-cover bg-center relative rounded-3xl overflow-hidden h-[500px] shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
+            className="lg:flex-[2] bg-cover bg-center relative rounded-2xl sm:rounded-3xl overflow-hidden h-[420px] min-[375px]:h-[450px] sm:h-[480px] md:h-[500px] shadow-xl sm:shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -94,11 +96,11 @@ export default function FlexCard({
             </AnimatePresence>
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-transparent z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent z-[1]" />
 
             <motion.div
               key={selectedId}
-              className="relative z-10 p-8 sm:p-10 md:p-12 lg:p-14 text-white h-full flex flex-col justify-center rounded-3xl"
+              className="relative z-10 p-5 min-[375px]:p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 text-white h-full flex flex-col justify-center rounded-2xl sm:rounded-3xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -107,7 +109,7 @@ export default function FlexCard({
               {selected && (
                 <>
                   <motion.p 
-                    className="uppercase tracking-widest text-sm mb-3 text-red-400 font-semibold"
+                    className="uppercase tracking-wider sm:tracking-widest text-xs min-[375px]:text-sm mb-2 sm:mb-3 text-red-400 font-semibold"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
@@ -115,7 +117,7 @@ export default function FlexCard({
                     {selected.subtitle}
                   </motion.p>
                   <motion.h3 
-                    className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
+                    className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
@@ -123,7 +125,7 @@ export default function FlexCard({
                     {selected.title}
                   </motion.h3>
                   <motion.p 
-                    className="text-base sm:text-lg mb-3 text-gray-100 leading-relaxed max-w-2xl"
+                    className="text-sm min-[375px]:text-base sm:text-lg mb-2 sm:mb-3 text-gray-100 leading-relaxed max-w-2xl"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 }}
@@ -131,7 +133,7 @@ export default function FlexCard({
                     {selected.description}
                   </motion.p>
                   <motion.p 
-                    className="text-sm opacity-90 text-gray-200 max-w-2xl mb-6"
+                    className="text-xs min-[375px]:text-sm opacity-90 text-gray-200 max-w-2xl mb-4 sm:mb-5 md:mb-6"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
@@ -147,7 +149,7 @@ export default function FlexCard({
                   >
                     <Link
                       href={selected.link || "#"}
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2.5 min-[375px]:py-3 px-6 min-[375px]:px-8 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-sm min-[375px]:text-base"
                     >
                       <span>Subscribe now</span>
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +164,7 @@ export default function FlexCard({
 
           {/* RIGHT CARD - PORTRAIT (Image visible, content at top) */}
           <motion.div
-            className="lg:flex-1 bg-cover bg-center relative rounded-3xl overflow-hidden h-[500px] shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
+            className="lg:flex-1 bg-cover bg-center relative rounded-2xl sm:rounded-3xl overflow-hidden h-[420px] min-[375px]:h-[450px] sm:h-[480px] md:h-[500px] shadow-xl sm:shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -179,16 +181,19 @@ export default function FlexCard({
               />
             </AnimatePresence>
 
-            {/* Content at top without container */}
+            {/* Gradient Overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent z-[1]" />
+
+            {/* Content at top */}
             <motion.div
-              className={`relative z-10 p-6 sm:p-8 md:p-10 text-white h-full flex flex-col justify-start rounded-3xl ${optionalColor}`}
+              className={`relative z-10 p-5 min-[375px]:p-6 sm:p-8 md:p-10 text-white h-full flex flex-col justify-start rounded-2xl sm:rounded-3xl ${optionalColor}`}
               key={rightSelected?.heading}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               <motion.p 
-                className="uppercase text-red-400 text-xs sm:text-sm mb-2 font-semibold tracking-widest drop-shadow-lg"
+                className="uppercase text-red-400 text-xs min-[375px]:text-sm mb-1.5 sm:mb-2 font-semibold tracking-wider sm:tracking-widest drop-shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
@@ -196,14 +201,14 @@ export default function FlexCard({
                 {rightSelected?.subheading}
               </motion.p>
               <motion.h3
-                className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-white leading-tight drop-shadow-lg"
+                className="text-lg min-[375px]:text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-white leading-tight drop-shadow-lg"
                 dangerouslySetInnerHTML={{ __html: rightSelected?.heading }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               />
               <motion.p 
-                className="text-gray-100 mb-3 text-xs sm:text-sm leading-relaxed drop-shadow-lg"
+                className="text-gray-100 mb-2 sm:mb-3 text-xs min-[375px]:text-sm leading-relaxed drop-shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
@@ -211,7 +216,7 @@ export default function FlexCard({
                 {rightSelected?.description}
               </motion.p>
               <motion.p 
-                className="text-xs text-gray-200 mb-4 drop-shadow-lg"
+                className="text-xs text-gray-200 mb-3 sm:mb-4 drop-shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
@@ -227,10 +232,10 @@ export default function FlexCard({
               >
                 <Link
                   href={rightSelected?.href || "#"}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2.5 px-6 rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-sm"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2 min-[375px]:py-2.5 px-5 min-[375px]:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-xs min-[375px]:text-sm"
                 >
                   <span>{rightSelected?.mainCta}</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
@@ -239,6 +244,26 @@ export default function FlexCard({
           </motion.div>
         </div>
       </div>
+
+      {/* Custom Styles */}
+      <style jsx global>{`
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+          .hover\\:shadow-red-500\\/20:hover,
+          .hover\\:shadow-red-500\\/50:hover {
+            box-shadow: none;
+          }
+        }
+      `}</style>
     </section>
   );
 }

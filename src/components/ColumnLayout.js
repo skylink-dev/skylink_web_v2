@@ -1,40 +1,51 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-export default function ThreeColumnLayout({content, columnCount}) {
-    return (
-        <div className='bau-flex-card'>
-            <div className="max-width-background  bgcolor pad-t-md pad-b-sm undefined">
-                <div className="container rel">
-                    <div className="row flex-wrap flex-items-stretch justify-center">
-                        {content && content.map((item, index) => (
-                            <div key={index} className={`grid-col-${columnCount}`}>
-                                <div id="card-40" className="jsx-3705208810 jsx-2300775981 card flex-card radius-lg rel bgcolor theme-dark-bg-img flex-card-background" style={{backgroundImage: `url(${item.image})`, backgroundSize: 'cover',backgroundPosition: 'center',}}>
-                                    <div className="jsx-3705208810 jsx-2300775981 row flex flex-column card-height-tall rel">
-                                        <div className="jsx-3705208810 jsx-2300775981 flex-1 grid-col-6 pad-b-none max-width pad-md-lg pad-md-md pad-lg-sm">
-                                            <div className="jsx-3705208810 jsx-2300775981 ">
-                                                <p className="type-eyebrow-md">{item.subtitle}</p>
-                                                <h3 className="heading-md">{item.title}</h3>
-                                                <div className="type-base mar-t-xs rte-styles">{item.description}</div>
-                                                <div id="card-40-legal_Legal" className="type-legal mar-t-xxs">
-                                                    <span className=" ">
-                                                        {item.subdescription}
-                                                    </span>
-                                                    <button className="btn-reset nowrap" aria-label="See iPhone 16 Pro offer details">{item.smallcta}</button>
-                                                </div>
-                                                <div className=" cta-container mar-t-xs">
-                                                    <Link className="btn-primary " id="button-:R8ad8hjmH1:" type="button" aria-label="Shop iPhone 16 Pro" href="/buy/phones/apple-iphone-16-pro.html">{item.cta}</Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="jsx-3705208810 jsx-2300775981 flex-3 height-full width-full radius-lg radius-t-none overflow-hidden grid-col-6 pad-b-none pad-r-none hide max-width pad-l-none"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+export default function ThreeColumnLayout({ content }) {
+  return (
+    <div className="bg-gray-50 py-16 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {content &&
+          content.map((item, index) => (
+            <div
+              key={index}
+              className="relative rounded-2xl overflow-hidden shadow-lg group h-[480px]"
+              style={{
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
+
+              {/* Content on top */}
+              <div className="absolute top-0 left-0 p-6 z-10 text-white">
+                <p className="text-sm uppercase tracking-wide opacity-90">
+                  {item.subtitle}
+                </p>
+                <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm leading-relaxed opacity-95 mb-4">
+                  {item.description}
+                </p>
+                <p className="text-xs opacity-80 mb-3">{item.subdescription}</p>
+
+                {/* Buttons */}
+                <div className="flex flex-col gap-3">
+
+                  {/* CTA button */}
+                  <Link
+                    href="/buy/phones/apple-iphone-16-pro.html"
+                    className="relative overflow-hidden bg-red-600 text-white text-sm px-5 py-2 rounded-md font-medium w-fit transition-all duration-300 group/link"
+                  >
+                    <span className="relative z-10">{item.cta}</span>
+                    <span className="absolute inset-0 bg-red-400 translate-x-[-100%] group-hover/link:translate-x-0 transition-transform duration-500 ease-in-out"></span>
+                  </Link>
                 </div>
+              </div>
             </div>
-        </div>
-    )
+          ))}
+      </div>
+    </div>
+  );
 }

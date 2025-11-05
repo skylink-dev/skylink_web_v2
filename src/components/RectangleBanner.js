@@ -14,11 +14,11 @@ export default function RectangleBanner({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95, y: 50 }}
+      initial={{ opacity: 0, scale: 0.95, y: 40 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      whileHover={{ scale: 1.02 }}
-      className={`relative overflow-hidden rounded-2xl shadow-lg my-8 ${
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      whileHover={{ scale: 1.01 }}
+      className={`relative overflow-hidden rounded-2xl shadow-lg my-10 mx-4 sm:mx-8 md:mx-16 ${
         darkTheme ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
       }`}
     >
@@ -38,12 +38,12 @@ export default function RectangleBanner({
       ></div>
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-between min-h-[400px] px-6 py-10 md:py-16">
+      <div className="relative z-10 container mx-auto flex flex-col md:flex-row items-center justify-between min-h-[280px] md:min-h-[320px] px-4 sm:px-8 md:px-12 py-8 md:py-10">
         {/* Left Text Section */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
           className="flex-1 max-w-xl text-center md:text-left"
         >
           {/* Eyebrow Text */}
@@ -53,13 +53,13 @@ export default function RectangleBanner({
 
           {/* Heading */}
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3"
             dangerouslySetInnerHTML={{ __html: heading }}
           ></h2>
 
           {/* Description */}
           <div
-            className="text-base sm:text-lg leading-relaxed mb-6"
+            className="text-sm sm:text-base leading-relaxed mb-5"
             dangerouslySetInnerHTML={{ __html: description }}
           ></div>
 
@@ -68,7 +68,7 @@ export default function RectangleBanner({
             <motion.div whileHover={{ scale: 1.05 }}>
               <Link
                 href={buttonLink}
-                className={`inline-block px-6 py-3 rounded-lg font-medium shadow-md transition ${
+                className={`inline-block px-5 py-2.5 rounded-lg font-medium shadow-md transition ${
                   darkTheme
                     ? "bg-white text-gray-900 hover:bg-gray-200"
                     : "bg-blue-600 text-white hover:bg-blue-700"
