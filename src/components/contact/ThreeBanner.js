@@ -112,23 +112,22 @@ export default function ThreeBannerModern() {
         onMouseLeave={() => setIsAutoPlaying(true)}
         className="relative w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 my-2 xs:my-3 sm:my-6 md:my-8"
       >
-        
         {/* ===== Slider Track - Taller for mobile portrait ===== */}
         <div className="relative w-full h-[600px] xs:h-[650px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden rounded-none sm:rounded-2xl bg-black shadow-lg sm:shadow-xl shadow-black/40">
           <div
             className="absolute inset-0 flex h-full transition-transform duration-700 ease-out will-change-transform"
-            style={{ 
+            style={{
               transform: `translateX(-${currentSlide * 100}%)`,
-              transitionDuration: currentSlide === 0 && !isTransitioning ? '0ms' : '700ms'
+              transitionDuration:
+                currentSlide === 0 && !isTransitioning ? "0ms" : "700ms",
             }}
           >
             {displaySlides.map((slide, index) => (
               <div
                 key={slide.id}
                 className="relative w-full h-full flex-shrink-0"
-                style={{ minWidth: '100%', maxWidth: '100%' }}
+                style={{ minWidth: "100%", maxWidth: "100%" }}
               >
-                
                 {/* Landscape Image Container - Desktop */}
                 <div className="absolute inset-0 hidden sm:block">
                   <div className="relative w-full h-full">
@@ -164,25 +163,39 @@ export default function ThreeBannerModern() {
                 {/* ===== Content - Top aligned on mobile, center on desktop ===== */}
                 <div className="absolute inset-0 flex items-start sm:items-center z-10 px-3 xs:px-4 sm:px-8 md:px-12 lg:px-16 pt-4 xs:pt-6 sm:pt-0">
                   <div className="w-full max-w-2xl text-white text-left">
-                    
                     {/* Title */}
-                    <h1 className={`text-base xs:text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 xs:mb-2.5 sm:mb-5 leading-tight ${
-                      index === currentSlide || index === currentSlide % slides.length ? "animate-fade-in-up" : "opacity-0"
-                    }`}>
+                    <h1
+                      className={`text-base xs:text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 xs:mb-2.5 sm:mb-5 leading-tight ${
+                        index === currentSlide ||
+                        index === currentSlide % slides.length
+                          ? "animate-fade-in-up"
+                          : "opacity-0"
+                      }`}
+                    >
                       {slide.title}
                     </h1>
-                    
+
                     {/* Description */}
-                    <p className={`text-xs xs:text-xs sm:text-lg md:text-xl mb-2.5 xs:mb-3 sm:mb-6 font-normal opacity-90 leading-snug sm:leading-relaxed max-w-lg ${
-                      index === currentSlide || index === currentSlide % slides.length ? "animate-fade-in-up animation-delay-150" : "opacity-0"
-                    }`}>
+                    <p
+                      className={`text-xs xs:text-xs sm:text-lg md:text-xl mb-2.5 xs:mb-3 sm:mb-6 font-normal opacity-90 leading-snug sm:leading-relaxed max-w-lg ${
+                        index === currentSlide ||
+                        index === currentSlide % slides.length
+                          ? "animate-fade-in-up animation-delay-150"
+                          : "opacity-0"
+                      }`}
+                    >
                       {slide.description}
                     </p>
-                    
+
                     {/* CTA Button */}
-                    <div className={`${
-                      index === currentSlide || index === currentSlide % slides.length ? "animate-fade-in-up animation-delay-300" : "opacity-0"
-                    }`}>
+                    <div
+                      className={`${
+                        index === currentSlide ||
+                        index === currentSlide % slides.length
+                          ? "animate-fade-in-up animation-delay-300"
+                          : "opacity-0"
+                      }`}
+                    >
                       <button
                         onClick={() => handleButtonClick(slide)}
                         className="group inline-flex items-center gap-2 xs:gap-2.5 sm:gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 rounded-full text-xs xs:text-sm sm:text-base md:text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 ease-out relative overflow-hidden"
@@ -203,7 +216,7 @@ export default function ThreeBannerModern() {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        
+
                         {/* Shine Effect */}
                         <div className="absolute inset-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:left-full transition-all duration-700 ease-out" />
                       </button>
@@ -218,11 +231,15 @@ export default function ThreeBannerModern() {
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 overflow-hidden z-30 rounded-b-none sm:rounded-b-2xl">
             <div
               className={`h-full bg-gradient-to-r from-red-600 to-red-700 transition-transform duration-100 ease-linear ${
-                isAutoPlaying && !isTransitioning ? "animate-progress" : "animation-paused"
+                isAutoPlaying && !isTransitioning
+                  ? "animate-progress"
+                  : "animation-paused"
               }`}
               style={{
-                transform: `scaleX(${isAutoPlaying && !isTransitioning ? 1 : 0})`,
-                transformOrigin: 'left'
+                transform: `scaleX(${
+                  isAutoPlaying && !isTransitioning ? 1 : 0
+                })`,
+                transformOrigin: "left",
               }}
             />
           </div>
@@ -276,8 +293,8 @@ export default function ThreeBannerModern() {
               key={i}
               onClick={() => goToSlide(i)}
               className={`relative w-5 xs:w-6 sm:w-6 h-1.5 xs:h-1.5 rounded-full transition-all duration-300 ${
-                (currentSlide % slides.length) === i 
-                  ? "bg-white scale-110" 
+                currentSlide % slides.length === i
+                  ? "bg-white scale-110"
                   : "bg-white/50 hover:bg-white/80 hover:scale-105"
               }`}
               aria-label={`Go to slide ${i + 1}`}
@@ -305,7 +322,7 @@ export default function ThreeBannerModern() {
             transform: translateY(0);
           }
         }
-        
+
         @keyframes progress {
           0% {
             transform: scaleX(0);
@@ -314,23 +331,23 @@ export default function ThreeBannerModern() {
             transform: scaleX(1);
           }
         }
-        
+
         .animate-fade-in-up {
           animation: fade-in-up 0.5s ease-out both;
         }
-        
+
         .animation-delay-150 {
           animation-delay: 0.15s;
         }
-        
+
         .animation-delay-300 {
           animation-delay: 0.3s;
         }
-        
+
         .animate-progress {
           animation: progress 6s linear forwards;
         }
-        
+
         .animation-paused {
           animation-play-state: paused;
         }
@@ -349,7 +366,7 @@ export default function ThreeBannerModern() {
           .animate-progress {
             animation: none;
           }
-          
+
           .transition-all,
           .transition-transform {
             transition: none;
