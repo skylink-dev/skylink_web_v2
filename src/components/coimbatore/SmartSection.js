@@ -148,9 +148,9 @@ export default function SmartSection() {
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
           <h2
             style={{
-              fontSize: "clamp(2.8rem, 4vw, 3rem)",
+              fontSize: "clamp(2rem, 4vw, 2.5rem)",
               fontWeight: "700",
-              marginBottom: "20px",
+              marginBottom: "16px",
               color: "#1f2937",
               letterSpacing: "-0.02em",
             }}
@@ -167,7 +167,7 @@ export default function SmartSection() {
             color: "#6b7280", 
             maxWidth: "600px", 
             margin: "0 auto",
-            fontSize: "1.6rem",
+            fontSize: "1.125rem",
             lineHeight: "1.6",
           }}>
             Fast, reliable Skylink fibernet broadband for homes and businesses in Coimbatore.
@@ -204,7 +204,7 @@ export default function SmartSection() {
           >
             <h3
               style={{
-                fontSize: "2rem",
+                fontSize: "1.5rem",
                 fontWeight: "600",
                 color: "#dc2626",
                 marginBottom: "16px",
@@ -215,7 +215,7 @@ export default function SmartSection() {
             <p style={{ 
               color: "#6b7280", 
               marginBottom: "32px",
-              fontSize: "1.5rem",
+              fontSize: "1rem",
               lineHeight: "1.6",
             }}>
               Everything your family needs in one affordable plan.
@@ -251,7 +251,7 @@ export default function SmartSection() {
                   <WifiIcon />
                 </div>
                 <span style={{ 
-                  fontSize: "1.5rem", 
+                  fontSize: "1rem", 
                   fontWeight: "600",
                   color: "#374151",
                 }}>Ultra-fast Wi-Fi</span>
@@ -285,7 +285,7 @@ export default function SmartSection() {
                   <TvIcon />
                 </div>
                 <span style={{ 
-                  fontSize: "1.5rem", 
+                  fontSize: "1rem", 
                   fontWeight: "600",
                   color: "#374151",
                 }}>TV + OTT</span>
@@ -318,7 +318,7 @@ export default function SmartSection() {
                   <PhoneIcon />
                 </div>
                 <span style={{ 
-                  fontSize: "1.5rem", 
+                  fontSize: "1rem", 
                   fontWeight: "600",
                   color: "#374151",
                 }}>Voice Services</span>
@@ -330,13 +330,13 @@ export default function SmartSection() {
               style={{
                 backgroundColor: "#dc2626",
                 color: "#fff",
-                padding: "16px 32px",
+                padding: "14px 28px",
                 borderRadius: "12px",
                 border: "none",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
                 fontWeight: "600",
-                fontSize: "1.5rem",
+                fontSize: "1rem",
                 width: "100%",
                 boxShadow: "0 4px 16px rgba(220, 38, 38, 0.3)",
               }}
@@ -375,7 +375,7 @@ export default function SmartSection() {
           >
             <h3
               style={{
-                fontSize: "2rem",
+                fontSize: "1.5rem",
                 fontWeight: "600",
                 color: "#dc2626",
                 marginBottom: "16px",
@@ -386,7 +386,7 @@ export default function SmartSection() {
             <p style={{ 
               color: "#6b7280", 
               marginBottom: "32px",
-              fontSize: "1.5rem",
+              fontSize: "1rem",
               lineHeight: "1.6",
             }}>
               Reliable internet for offices and operations.
@@ -422,7 +422,7 @@ export default function SmartSection() {
                   <BuildingIcon />
                 </div>
                 <span style={{ 
-                  fontSize: "1.5rem", 
+                  fontSize: "1rem", 
                   fontWeight: "600",
                   color: "#374151",
                 }}>Up to 1 Gbps</span>
@@ -456,7 +456,7 @@ export default function SmartSection() {
                   <ClockIcon />
                 </div>
                 <span style={{ 
-                  fontSize: "1.5rem", 
+                  fontSize: "1rem", 
                   fontWeight: "600",
                   color: "#374151",
                 }}>24/7 Support</span>
@@ -489,7 +489,7 @@ export default function SmartSection() {
                   <ShieldIcon />
                 </div>
                 <span style={{ 
-                  fontSize: "1.5rem", 
+                  fontSize: "1rem", 
                   fontWeight: "600",
                   color: "#374151",
                 }}>99.9% Reliability</span>
@@ -501,13 +501,14 @@ export default function SmartSection() {
               style={{
                 backgroundColor: "#dc2626",
                 color: "#fff",
-                padding: "16px 32px",
+                padding: "14px 28px",
                 borderRadius: "12px",
+                marginTop: "18px",
                 border: "none",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
                 fontWeight: "600",
-                fontSize: "1.5rem",
+                fontSize: "1rem",
                 width: "100%",
                 boxShadow: "0 4px 16px rgba(220, 38, 38, 0.3)",
               }}

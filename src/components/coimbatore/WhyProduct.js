@@ -35,31 +35,40 @@ export default function WhyProduct() {
             </span>
           </h2>
 
-{/* Features Grid */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-  {features.map((feature, index) => (
-    <div
-      key={index}
-      className={`bg-white p-5 md:p-6 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4 hover:-translate-y-2 hover:shadow-xl transition-transform duration-300 h-full w-full
-      ${
-        index === 3
-          ? "lg:col-start-2" // move 4th box to middle left
-          : index === 4
-          ? "lg:col-start-3" // move 5th box next to it
-          : ""
-      }`}
-    >
-      <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white shadow-md shrink-0">
-        {feature.icon}
-      </div>
-      <span className="text-lg md:text-xl leading-relaxed text-left font-semibold text-gray-700 flex-1">
-        {feature.text}
-      </span>
-    </div>
-  ))}
-</div>
-
-
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* First 3 items - normal grid flow */}
+            {features.slice(0, 3).map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white p-5 md:p-6 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4 hover:-translate-y-2 hover:shadow-xl transition-transform duration-300 h-full"
+              >
+                <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white shadow-md shrink-0">
+                  {feature.icon}
+                </div>
+                <span className="text-lg md:text-xl leading-relaxed text-left font-semibold text-gray-700 flex-1">
+                  {feature.text}
+                </span>
+              </div>
+            ))}
+            
+            {/* Last 2 items - centered side by side */}
+            <div className="lg:col-span-3 flex justify-center gap-6">
+              {features.slice(3, 5).map((feature, index) => (
+                <div
+                  key={index + 3}
+                  className="bg-white p-5 md:p-6 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4 hover:-translate-y-2 hover:shadow-xl transition-transform duration-300 h-full w-full max-w-md"
+                >
+                  <div className="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center text-white shadow-md shrink-0">
+                    {feature.icon}
+                  </div>
+                  <span className="text-lg md:text-xl leading-relaxed text-left font-semibold text-gray-700 flex-1">
+                    {feature.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
