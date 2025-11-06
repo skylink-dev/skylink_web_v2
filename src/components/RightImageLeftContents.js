@@ -44,8 +44,8 @@ export default function RightImageLeftContent({ title, Content, order }) {
     afterChange: index => setCurrentImage(index),
     dotsClass: "slick-dots !bottom-2 sm:!bottom-4",
     appendDots: dots => (
-      <div className="bg-white/90 backdrop-blur-sm rounded-full py-2 px-3 sm:py-2 sm:px-4 inline-flex shadow-sm">
-        <ul className="!m-0 !p-0 flex gap-1 sm:gap-2">{dots}</ul>
+      <div className="bg-white/90 backdrop-blur-sm rounded-full py-2 px-3 sm:py-2 sm:px-4 inline-flex shadow-sm mx-auto">
+        <ul className="!m-0 !p-0 flex gap-1 sm:gap-2 justify-center">{dots}</ul>
       </div>
     ),
     customPaging: i => (
@@ -258,15 +258,6 @@ export default function RightImageLeftContent({ title, Content, order }) {
                 </motion.div>
               ))}
             </Slider>
-
-            {/* Mobile Progress Indicator */}
-            <div className="flex justify-center mt-4 sm:mt-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-                <span className="text-xs sm:text-sm font-medium text-gray-700">
-                  Slide {currentImage + 1} of {Content.length}
-                </span>
-              </div>
-            </div>
           </div>
         )}
       </div>
