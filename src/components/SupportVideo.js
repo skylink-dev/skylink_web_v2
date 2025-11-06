@@ -34,7 +34,7 @@ export default function SupportVideos() {
       ? activeData.videos[activeSub || "Activate IPTV"]
       : activeData.video;
 
-  // autoplay attempt with fallback to muted
+  // autoplay
   useEffect(() => {
     const v = videoRef.current;
     if (v) {
@@ -49,7 +49,7 @@ export default function SupportVideos() {
     }
   }, [activeCategory, activeSub]);
 
-  // progress tracking
+  // track progress
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -106,7 +106,8 @@ export default function SupportVideos() {
           Our Support
         </p>
         <h2 className="text-3xl md:text-4xl font-bold mb-8">
-          We Offer Premium <span className="text-red-600">Support</span> For Your Connection
+          We Offer Premium <span className="text-red-600">Support</span> For
+          Your Connection
         </h2>
 
         {/* Tabs */}
@@ -124,9 +125,7 @@ export default function SupportVideos() {
                   : "bg-white border-gray-300 text-gray-700 hover:border-red-500"
               }`}
             >
-              {cat === "Internet" && "📡"}
-              {cat === "TV" && "📺"}
-              {cat === "OTT" && "🎬"} {cat}
+              {cat}
             </button>
           ))}
         </div>
@@ -178,8 +177,8 @@ export default function SupportVideos() {
             initial={{ bottom: "0px", left: "0%", right: "0%" }}
             animate={{
               bottom: isHovered ? "70px" : "0px",
-              left: isHovered ? "3%" : "0%",
-              right: isHovered ? "3%" : "0%",
+              left: isHovered ? "1.25rem" : "0%",
+              right: isHovered ? "1.25rem" : "0%", // matches px-5 (20px)
             }}
             transition={{ duration: 0.3 }}
             className="absolute h-2 bg-gray-800/50 cursor-pointer group rounded-full overflow-hidden"
@@ -189,102 +188,118 @@ export default function SupportVideos() {
               style={{ width: `${progress}%` }}
             ></div>
           </motion.div>
-{/* Controls */}
-<motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: isHovered ? 1 : 0 }}
-  transition={{ duration: 0.3 }}
-  className="absolute bottom-4 left-0 right-0 flex justify-between items-center px-5"
+
+          {/* Controls */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute bottom-4 left-0 right-0 flex justify-between items-center px-5"
+          >
+            {/* Left Controls */}
+            <div className="flex items-center gap-3">
+              {/* Play */}
+              <div className="bg-black/50 backdrop-blur-md w-9 h-9 flex items-center justify-center rounded-full border border-white/10">
+                <button
+                  onClick={handlePlayPause}
+                  className="text-white hover:text-red-400 transition-all"
+                >
+                  {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+                </button>
+              </div>
+
+              {/* Volume */}
+             <motion.div
+  onMouseEnter={() => setShowVolumeControls(true)}
+  onMouseLeave={() => setShowVolumeControls(false)}
+  animate={{
+    width: showVolumeControls ? 130 : 36,
+    paddingLeft: showVolumeControls ? 6 : 0,
+    paddingRight: showVolumeControls ? 6 : 0,
+  }}
+  transition={{ duration: 0.3, ease: "easeInOut" }}
+  className="bg-black/50 backdrop-blur-md h-9 flex items-center justify-between rounded-full border border-white/10 overflow-hidden"
 >
-  {/* Left Controls */}
-  <div className="flex items-center gap-3">
-    {/* Play */}
-    <div className="bg-black/50 backdrop-blur-md w-9 h-9 flex items-center justify-center rounded-full border border-white/10">
-      <button
-        onClick={handlePlayPause}
-        className="text-white hover:text-red-400 transition-all"
-      >
-        {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-      </button>
-    </div>
+  {/* Volume Icon */}
+  <button
+    onClick={handleMuteToggle}
+    className="text-white hover:text-red-400 transition-all flex items-center justify-center w-9 h-9 rounded-full"
+  >
+    {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+  </button>
 
-    {/* Volume */}
-    <motion.div
-      onMouseEnter={() => setShowVolumeControls(true)}
-      onMouseLeave={() => setShowVolumeControls(false)}
-      animate={{
-        width: showVolumeControls ? 130 : 36,
-        paddingLeft: showVolumeControls ? 10 : 0,
+  {/* Volume Slider */}
+  {showVolumeControls && (
+    <motion.input
+      type="range"
+      min="0"
+      max="1"
+      step="0.05"
+      value={volume}
+      onChange={(e) => {
+        const newVol = parseFloat(e.target.value);
+        setVolume(newVol);
+        videoRef.current.volume = newVol;
+        if (newVol > 0) {
+          videoRef.current.muted = false;
+          setIsMuted(false);
+        }
       }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="bg-black/50 backdrop-blur-md h-9 flex items-center rounded-full border border-white/10 overflow-hidden"
-    >
-      <button
-        onClick={handleMuteToggle}
-        className="text-white hover:text-red-400 transition-all flex items-center justify-center w-9 h-9"
-      >
-        {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-      </button>
+      initial={{ width: 0, opacity: 0 }}
+      animate={{ width: 80, opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className="appearance-none h-1.5 rounded-full cursor-pointer volume-slider mx-auto"
+      style={{
+        background: `linear-gradient(to right, #ef4444 ${volume * 100}%, #4b5563 ${volume * 100}%)`,
+      }}
+    />
+  )}
 
-      {/* Volume Slider */}
-      {showVolumeControls && (
-        <motion.input
-          type="range"
-          min="0"
-          max="1"
-          step="0.05"
-          value={volume}
-          onChange={(e) => {
-            const newVol = parseFloat(e.target.value);
-            setVolume(newVol);
-            videoRef.current.volume = newVol;
-            if (newVol > 0) {
-              videoRef.current.muted = false;
-              setIsMuted(false);
-            }
-          }}
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: 80, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="appearance-none h-1 rounded-full cursor-pointer"
-          style={{
-            background: `linear-gradient(to right, #ef4444 ${volume * 100}%, #4b5563 ${volume * 100}%)`,
-          }}
-        />
-      )}
+  {/* Style */}
+  <style jsx global>{`
+    .volume-slider::-webkit-slider-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ef4444 !important;
+      border: none !important;
+      cursor: pointer;
+      appearance: none;
+      margin-top: -4.5px; /* Adjusted for perfect center */
+      position: relative;
+    }
 
-      {/* Custom Thumb Style */}
-      <style jsx>{`
-        input[type="range"]::-webkit-slider-thumb {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: white;
-          cursor: pointer;
-          appearance: none;
-        }
-        input[type="range"]::-moz-range-thumb {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: white;
-          cursor: pointer;
-        }
-      `}</style>
-    </motion.div>
-  </div>
+    .volume-slider::-moz-range-thumb,
+    .volume-slider::-ms-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ef4444 !important;
+      border: none !important;
+      cursor: pointer;
+      position: relative;
+    }
 
-  {/* Fullscreen */}
-  <div className="bg-black/50 backdrop-blur-md w-9 h-9 flex items-center justify-center rounded-full border border-white/10">
-    <button
-      onClick={handleFullscreen}
-      className="text-white hover:text-red-400 transition-all"
-    >
-      <Maximize2 size={18} />
-    </button>
-  </div>
+    .volume-slider::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 4px;
+      background: transparent !important;
+    }
+  `}</style>
 </motion.div>
 
+            </div>
+
+            {/* Fullscreen */}
+            <div className="bg-black/50 backdrop-blur-md w-9 h-9 flex items-center justify-center rounded-full border border-white/10">
+              <button
+                onClick={handleFullscreen}
+                className="text-white hover:text-red-400 transition-all"
+              >
+                <Maximize2 size={18} />
+              </button>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
