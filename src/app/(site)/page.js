@@ -73,7 +73,8 @@ export default function Home() {
 
       {/* <Banner content={bannerContent} /> */}
       {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
-      <ThreeBannerModern/>
+
+      <ThreeBannerModern />
       <FlexCard
         title="Speed You Need. Connection You Trust. Entertainment You Love"
         rightImage="/assets/skyplay-card-right.jpg"
@@ -84,7 +85,9 @@ export default function Home() {
         rightContentData={rightContentFlexData}
         optionalColor=""
       />
-      <Slider slides={slidesData} color="bg-att-blue-000" />
+
+      {/* Need to rework on the slider component */}
+      {/* <Slider slides={slidesData} color="bg-att-blue-000" /> */}
       <RectangleBanner
         backgroundImage="/assets/skyplay-map.jpg"
         eyebrow="Introducing the Skylink Guarantee"
@@ -98,7 +101,7 @@ export default function Home() {
         title="Let's get you connected"
         slidesData={dynamicSlidesData}
       />
-      <IconCard titleData={IcontitleData} cardData={iconCard} />
+      {/* <IconCard titleData={IcontitleData} cardData={iconCard} />
       <Slider
         title="Upgrade Your Home Tech Experience"
         slides={slidesData2}
@@ -110,7 +113,7 @@ export default function Home() {
       />
       <IconDetails title="How can we help you today?" iconslist={IconContent} />
       <SingleFaq content={faqData} />
-      <NewsLetter content={contentNewsletter} />
+      <NewsLetter content={contentNewsletter} /> */}
     </>
   );
 }

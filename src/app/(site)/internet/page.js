@@ -42,9 +42,9 @@ export default function Page() {
   return (
     <>
       <HeroBanner content={HeroContent} />
-      <AvailabilityComponents />
+       <AvailabilityComponents />
       <SpeedBanner color="color-white" mainImage="/assets/level-up-projects.jpg" content={SpeedContent} />
-      <FlexCard
+       <FlexCard
        auth={auth}
         title=""
         rightImage="/assets/wireless-home-internet.jpg"
@@ -53,6 +53,8 @@ export default function Page() {
         rightContentData={rightContentFlexData}
         optionalColor="color-white"
       />
+
+      
       <IconFlexBanner />
       <SimpleBanner color="color-white" content={simpleContent} />
       <IconCard titleData={IcontitleData} cardData={iconCard} />
@@ -62,14 +64,25 @@ export default function Page() {
         providers={providersData}
         content={tablecontent}
       />
-      <RightImageLeftContent title="Now with incredible features" Content={dynamicImageContent} />
-      <ImageAndContent image="/assets/tv-a-bundle-for-your-home-business.jpg" content={contentData} />
-      <ContentandImageCarousel slidesData={CotentImageCarouselData} />
-      <IconMoreDetails content={iconMoreDetailcontent} />
-      <DynamicCarousel title="Got a few minutes to learn more?" slidesData={dynamicSlidesData} color="bg-white" />
+
+       <RightImageLeftContent title="Now with incredible features" Content={dynamicImageContent} />
+        <ImageAndContent image="/assets/tv-a-bundle-for-your-home-business.jpg" content={contentData} />
+          <ContentandImageCarousel slidesData={CotentImageCarouselData} />
+          <IconMoreDetails content={iconMoreDetailcontent} />
+           <DynamicCarousel title="Got a few minutes to learn more?" slidesData={dynamicSlidesData} color="bg-white" />
+           
       <Faq title="More reasons to love Skylink Fiber internet" content={faqSecondContent} />
       <Faq title="You’ve asked. We’ve answered." content={faqContent} />
-      <Whereat />
+       <Whereat />
+      {/*
+      
+     
+     
+     
+     
+      
+     
+      */}
     </>
   );
 }

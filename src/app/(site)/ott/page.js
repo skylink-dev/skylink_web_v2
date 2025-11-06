@@ -26,7 +26,7 @@ export default function Page() {
    }
   return (
     <>
-      <Banner content={bannerContent} />
+      <Banner content={bannerContent} />  
       <FlexCard
         title="Stream Smarter with OTT"
         rightImage="/assets/favorite-ott.png"
@@ -35,15 +35,6 @@ export default function Page() {
         mobileRightImage = "/assets/skyplay-flex-bannerbottom.jpg"
         contentData={flexCardData}
         rightContentData={rightContentFlexData}
-        optionalColor="color-white"
-      />
-      <FlexCard
-        additionalclass="row-reverse"
-        toppaddingremove="padding-top-remove"
-        rightImage="/assets/anytime-anywhere.png"
-        leftImage="/assets/skyplay-kids-family-pack.jpg"
-        contentData={flexCardDataNorth}
-        rightContentData={rightContentFlexDataNorth}
         optionalColor="color-white"
       />
        <RectangleBanner backgroundImage="/assets/skyplay-map.jpg"

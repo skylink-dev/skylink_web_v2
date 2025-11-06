@@ -1,11 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "./custom.css"
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
 import BeforeFooter from "@/components/BeforeFooter";
 import PageLoaderWrapper from "@/components/PageLoaderWrapper";
-import dynamic from "next/dynamic";
 import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
 
@@ -21,25 +19,35 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Skylink",
-  description: "Speed You Need. Connection You Trust. Entertainment You Love",
+  description: "Speed You Need. Connection You Trust. Entertainment You Love",
 };
 
-export default function RootLayout({children}) {
+export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="theme-att-2022 isPC isChrome isLandscape hydrated">
-      <link precedence="default" rel="preconnect" href="https://fonts.googleapis.com" />
-      <link precedence="default" rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-      <link precedence="default" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-      <link rel="icon" href="/favicon.png" sizes="any" />
+    <html lang="en" className="scroll-smooth">
+      <head>
+        {/* ✅ Font optimization */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="icon" href="/favicon.png" sizes="any" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-slate-900`}
       >
         <PageLoaderWrapper>
           <Providers>
-            <Header></Header>
-            {children}
-            <BeforeFooter></BeforeFooter>
-            <Footer></Footer>
+            <Header />
+            <main className="min-h-screen mt-25 lg:mt-20">{children}</main>
+            <BeforeFooter />
+            <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>
         </PageLoaderWrapper>

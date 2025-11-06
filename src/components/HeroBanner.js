@@ -1,59 +1,54 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-export default function HeroBanner({content}) {
-    return (
-        <div className="jsx-2949999815 story-feature">
-            <div className="max-width-background  pad-b-lg">
-                <div className="container">
-                    <div className="row flex-wrap">
-                        <div className="pad-b-none-lg pad-t-none-lg pad-t-xs-md pad-b-xxs-md pad-t-xs-sm  grid-col-12">
-                            <div className="row flex-wrap flex-items-center rel flex-row radius-lg aspect-ratio-16-9 scale-video theme-neutral-bg bgcolor">
-                                <div className="absolute-fill bgcolor bgcolor-fix z0 radius-lg"></div>
-                                <div className="absolute-fill bg-no-repeat zoomable z0 radius-lg" id="story-feature-2-background" style={{ backgroundImage: `url(${content.image})` }}></div>
-                                <div className="pad-l-none hide-md hide-sm grid-col-5 offset1">
-                                    <div className="story-feature-card radius-lg rel pad-sm-lg  theme-base-bg bgcolor">
-                                        <div className="marketing-copy">
-                                            <div className="text-left">
-                                                <span className="jsx-541690672 inline-flex height-sm-all child-height-full color-gray-800">
-                                                    <span className="inline-flex">
-                                                       
-                                                    </span>
-                                                </span>
-                                                <div id="marketing-copy-heading">
-                                                    <h1 className="mar-b-xs heading-xl">{content.title}</h1>
-                                                </div>
-                                                <div id="marketing-copy-text">
-                                                    <div className="type-base mar-b-xs rte-styles">
-                                                        {content.description}
-                                                    </div>
-                                                </div>
-                                                <div id="marketing-copy-legal">
-                                                    <div id="marketing-copy-legal-:Rck9jm:-0_Legal" className="type-legal mar-b-sm-all">
-                                                        <span>
-                                                            <p className="paragraph">{content.additionaldescription}</p>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="cta-container">
-                                                    <div className=" flex-row inline-flex flex-wrap gap16">
-                                                        <div data-testid="marketing-copy-primary-cta">
-                                                            <Link id="marketing-copy-btn-:Rck9jmH1:-0" aria-label="Shop Skylink Fiber plans" href="/plans" className="jsx-1196099039 btn-primary ">{content.subcta}</Link>
-                                                        </div>
-                                                        <div data-testid="marketing-copy-secondary-cta">
-                                                            <Link id="marketing-copy-secondary-btn-:Rck9jmH1:-0" aria-label="Call 844.886.4258 to order Skylink Fiber" href="tel:+919944199445" className="jsx-1196099039 btn-secondary ">{content.maincta}</Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+export default function HeroBanner({ content }) {
+  return (
+    <section className="relative overflow-hidden rounded-2xl max-w-7xl mx-auto mt-8 shadow-lg">
+      {/* Image Container */}
+      <div
+        className="relative flex items-center justify-start rounded-2xl overflow-hidden h-[520px] md:h-[580px] lg:h-[620px] bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${content?.image || "/herobanner.png"})`,
+        }}
+      >
+        {/* Text Card */}
+        <div className="relative z-10 max-w-xl ml-6 md:ml-14 bg-white/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/30">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight drop-shadow-md">
+            Internet for the entire household
+          </h1>
+
+          <p className="text-gray-700 text-base md:text-lg mb-3 drop-shadow-sm">
+            Enjoy consistent speeds, reliability, guaranteed simple,
+            straightforward pricing, and complete Wi-Fi coverage.
+          </p>
+
+          <p className="text-sm text-gray-500 mb-6">
+            Limited availability/areas. Based on wired connection to the gateway.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4">
+<Link
+  href="/plans"
+  className="relative overflow-hidden rounded-full text-white font-semibold py-3 px-7 text-center transition-all duration-300 shadow-md
+  before:absolute before:inset-0 before:bg-red-600 before:translate-x-[-100%] before:transition-transform before:duration-500
+  hover:before:translate-x-0 hover:text-white"
+>
+  <span className="relative z-10 text-black hover:text-white">Shop Skyplay Fiber</span>
+</Link>
+
+<Link
+  href="tel:+919944199448"
+  className="relative overflow-hidden rounded-full text-white font-semibold py-3 px-7 text-center transition-all duration-300 shadow-md
+  before:absolute before:inset-0 before:bg-red-600 before:translate-x-[100%] before:transition-transform before:duration-500
+  hover:before:translate-x-0 hover:text-white bg-gray-800"
+>
+  <span className="relative z-10">Call (+91) 99441 99448</span>
+</Link>
+
+          </div>
         </div>
-    )
+      </div>
+    </section>
+  );
 }

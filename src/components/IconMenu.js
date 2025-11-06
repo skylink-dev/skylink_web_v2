@@ -1,80 +1,68 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-export default function IconMenu({ content, onSelect, activeId }) {
-  return (
-    <div className="max-width-background bgcolor theme-base-bg">
-      <div className="container pad-l-none pad-r-none">
-        <div className="row nopad">
-          <div className="grid-col-12">
-            {/* Fixed with inline styles */}
-            <div 
-              className="overflow-x-auto scrollbar-hidden"
-              style={{
-                marginTop: '16px',
-                marginBottom: '16px'
-              }}
-            >
-              <ul className="flex w-full gap-0 md:gap-10 md:justify-center">
-                {content.map((item, index) => (
-                  <li
-                    key={index}
-                    onClick={() => onSelect(item.id)}
-                    className={`
-                      text-center transform transition-all duration-300 ease-in-out
-                      hover:-translate-y-1 hover:scale-110 hover:text-blue-600 cursor-pointer
-                      ${activeId === item.id ? 'text-blue-600 font-bold' : 'text-gray-800'}
-                      flex-shrink-0 w-1/4 flex flex-col items-center justify-center
-                      md:flex-shrink-0 md:w-32
-                    `}
-                  >
-                    <Link
-                      href={item.linkdata}
-                      className="flex flex-col items-center justify-center w-full p-0 md:px-2"
-                    >
-                      <Image
-                        width={28}
-                        height={28}
-                        src={item.icon}
-                        alt={item.title}
-                        className="mb-1 transition-transform duration-300 ease-in-out object-contain"
-                      />
-                      <span className="text-[10px] leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full md:text-base">
-                        {item.title}
-                      </span>
-                    </Link>
-
-                    <span
-                      className={`block h-0.5 bg-blue-600 transition-all duration-300 ease-in-out mt-1 mx-1 ${
-                        activeId === item.id ? 'w-full' : 'w-0 group-hover:w-full'
-                      } md:h-1`}
-                    ></span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+export default function IconMenu({ content = [], onSelect, activeId }) {
+  if (!Array.isArray(content) || content.length === 0) {
+    return (
+      <div className="w-full py-8 text-center text-gray-500">
+        No menu items available
       </div>
+    );
+  }
 
-      <style jsx>{`
-        /* Mobile and Tablet */
-        @media (max-width: 1023px) {
-          .scrollbar-hidden {
-            margin-top: 16px !important;
-            margin-bottom: 16px !important;
-          }
-        }
-        
-        /* Desktop */
-        @media (min-width: 1024px) {
-          .scrollbar-hidden {
-            margin-top: 20px !important;
-            margin-bottom: 24px !important;
-          }
-        }
-      `}</style>
+  return (
+    <div className="bg-gray-50 w-full">
+      <div className="container mx-auto px-2 sm:px-4">
+        <ul
+          className="
+            flex flex-wrap justify-center 
+            gap-4 sm:gap-6 md:gap-10 
+            mt-4 mb-6 lg:mt-6 lg:mb-8
+          "
+        >
+          {content.map((item, index) => (
+            <li
+              key={index}
+              onClick={() => onSelect && onSelect(item.id)}
+              className={`
+                flex flex-col items-center justify-center text-center
+                transform transition-all duration-300 ease-in-out 
+                hover:-translate-y-1 hover:scale-110 hover:text-blue-600 cursor-pointer
+                ${
+                  activeId === item.id
+                    ? "text-blue-600 font-bold"
+                    : "text-gray-700"
+                }
+                w-1/4 sm:w-1/5 md:w-32 lg:w-36
+              `}
+            >
+              <Link
+                href={item.linkdata || "#"}
+                className="flex flex-col items-center justify-center w-full"
+              >
+                <Image
+                  width={32}
+                  height={32}
+                  src={item.icon}
+                  alt={item.title || "icon"}
+                  className="mb-1 transition-transform duration-300 ease-in-out object-contain"
+                />
+                <span className="text-[11px] sm:text-sm md:text-base leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+                  {item.title}
+                </span>
+              </Link>
+
+              {/* Animated underline */}
+              <span
+                className={`block h-0.5 md:h-1 bg-blue-600 transition-all duration-300 ease-in-out mt-1 mx-2 ${
+                  activeId === item.id ? "w-full" : "w-0 hover:w-full"
+                }`}
+              ></span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

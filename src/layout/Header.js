@@ -1,212 +1,193 @@
-'use client';
-import MainMenu from '@/components/MainMenu';
-import Menu from '@/components/Menu';
-import SecondMenu from '@/components/SecondMenu';
-import SiteLogo from '@/components/SiteLogo';
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import SiteImg from "../assets/skylink logo.png";
 
 export default function Header() {
-  const [isClient, setIsClient] = useState(false);
+  const pathname = usePathname();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
+  const menu = [
+    { title: "Home", url: "/" },
+    { title: "Internet", url: "/internet" },
+    { title: "TV", url: "/tv" },
+    { title: "OTT", url: "/ott" },
+    { title: "Support", url: "/support" },
+    { title: "Plans", url: "/plans" },
+    { title: "Contact Us", url: "/contact-us" },
+  ];
 
-    const checkWidth = () => setIsMobile(window.innerWidth < 1024); // mobile + tablet
+  const buttons = [
+    {
+      label: "Download IPTV App",
+      href: "https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk",
+      color: "bg-[#DB4437]",
+      download: true,
+    },
+    {
+      label: "Claim Your TV/OTT",
+      href: "https://activations.skyplay.in/ott_subscription/login/",
+      color: "bg-[#F4B400]",
+    },
+    {
+      label: "Quick Pay",
+      href: "https://www.skylinknet.in/customer_portal/account/sn",
+      color: "bg-[#0F9D58]",
+    },
+    {
+      label: "View Our Plans",
+      href: "/plans",
+      color: "bg-[#4285F4]",
+    },
+  ];
+
+  const isActive = (url) => pathname === url;
+  const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+
+  useEffect(() => {
+    const checkWidth = () => setIsMobile(window.innerWidth < 1024);
     checkWidth();
-    window.addEventListener('resize', checkWidth);
-    return () => window.removeEventListener('resize', checkWidth);
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
   return (
-    <div id="gnavSSR" className="staticGNAV">
-      <header id="attgn_header" className="att_gnav_wrapper false">
-
-        {/* Mobile + Tablet Buttons */}
-        {isClient && isMobile && (
-          <div id="z1_right_zone_mobile" className="flex flex-nowrap items-center justify-center w-full m-0 p-0">
-            <Link
-              href="https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk"
-              className="btn-primary text-white text-sm font-medium text-center flex-1"
-              style={{
-                backgroundColor: '#DB4437',
-                padding: '10px 4px',
-                borderRadius: 0,
-                border: 'none',
-                borderRight: '1px solid rgba(255,255,255,0.3)',
-                fontSize: '0.75rem',
-                whiteSpace: 'nowrap',
-                transition: 'background-color 0.3s ease',
-              }}
-              download
-            >
-              Download IPTV App
-            </Link>
-
-            <Link
-              href="https://activations.skyplay.in/ott_subscription/login/"
-              target="_blank"
-              className="btn-primary text-white text-sm font-medium text-center flex-1"
-              style={{
-                backgroundColor: '#F4B400',
-                padding: '10px 4px',
-                borderRadius: 0,
-                border: 'none',
-                borderRight: '1px solid rgba(255,255,255,0.3)',
-                fontSize: '0.75rem',
-                whiteSpace: 'nowrap',
-                transition: 'background-color 0.3s ease',
-              }}
-            >
-              Claim Your TV/OTT
-            </Link>
-
-            <Link
-              href="https://www.skylinknet.in/customer_portal/account/sn"
-              target="_blank"
-              className="btn-primary text-white text-sm font-medium text-center flex-1"
-              style={{
-                backgroundColor: '#0F9D58',
-                padding: '10px 4px',
-                borderRadius: 0,
-                border: 'none',
-                borderRight: '1px solid rgba(255,255,255,0.3)',
-                fontSize: '0.75rem',
-                whiteSpace: 'nowrap',
-                transition: 'background-color 0.3s ease',
-              }}
-            >
-              Quick Pay
-            </Link>
-
-            <Link
-              href="/plans"
-              className="btn-primary text-white text-sm font-medium text-center flex-1"
-              style={{
-                backgroundColor: '#4285F4',
-                padding: '10px 4px',
-                borderRadius: 0,
-                border: 'none',
-                fontSize: '0.75rem',
-                whiteSpace: 'nowrap',
-                transition: 'background-color 0.3s ease',
-              }}
-            >
-              View Our Plans
-            </Link>
-          </div>
-        )}
-
-        <div className="header-special-div" style={{ marginTop: '12px' }}></div>
-
-        <nav
-          id="main-menu"
-          className="container flex flex-wrap md:flex-nowrap justify-between items-center rel nopad type-16 false"
-          style={{ alignItems: 'center' }}
-        >
-          <div id="z1_left_zone" className="flex items-center justify-between w-full md:w-auto">
-            <div className="flex items-center">
-              <div className="inline-flex items-center site-logo-wrap mx-6 md:mx-6"> {/* increased margin-left */}
-                <SiteLogo />
-              </div>
-              <MainMenu className="hidden md:block lg:block" /> {/* hide hamburger/hidden icon on tablet */}
-            </div>
-          </div>
-
-          {/* Desktop Buttons */}
-          <div
-            id="z1_right_zone_desktop"
-            className="hidden lg:flex flex-nowrap items-center justify-end"
-            style={{ marginLeft: '5px', gap: '8px' }}
+    <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between py-3 px-4 lg:px-6">
+        {/* LEFT SECTION: Logo + Menu */}
+        <div className="flex items-center justify-between w-full lg:w-auto">
+          {/* ✅ Logo */}
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center hover:opacity-90 transition-opacity duration-200"
           >
-            <Link
-              href="https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk"
-              className="btn-primary text-white text-base font-medium text-center"
-              style={{
-                backgroundColor: '#DB4437',
-                borderRadius: '6px',
-                padding: '6px 12px',
-                transition: 'background-color 0.3s ease',
-              }}
-              download
-            >
-              Download IPTV App
-            </Link>
+            <Image
+              src={SiteImg}
+              alt="Skylink Logo"
+              width={140}
+              height={40}
+              className="h-auto w-auto max-w-[140px] object-contain"
+              priority
+            />
+          </Link>
 
-            <Link
-              href="https://activations.skyplay.in/ott_subscription/login/"
-              target="_blank"
-              className="btn-primary text-white text-base font-medium text-center"
-              style={{
-                backgroundColor: '#F4B400',
-                borderRadius: '6px',
-                padding: '6px 12px',
-                transition: 'background-color 0.3s ease',
-              }}
+          {/* ✅ Hamburger for Mobile */}
+          <button
+            onClick={toggleDrawer}
+            aria-label="Menu"
+            className="lg:hidden p-2 text-gray-800 hover:text-red-600 focus:outline-none transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-6 h-6"
             >
-              Claim Your TV/OTT
-            </Link>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5"
+              />
+            </svg>
+          </button>
+        </div>
 
+        {/* ✅ Desktop Menu */}
+        <nav className="hidden lg:flex items-center space-x-6">
+          {menu.map((item, index) => (
             <Link
-              href="https://www.skylinknet.in/customer_portal/account/sn"
-              target="_blank"
-              className="btn-primary text-white text-base font-medium text-center"
-              style={{
-                backgroundColor: '#0F9D58',
-                borderRadius: '6px',
-                padding: '6px 12px',
-                transition: 'background-color 0.3s ease',
-              }}
+              key={index}
+              href={item.url}
+              className={`text-gray-800 text-sm font-medium transition-all duration-200 hover:text-red-600 ${
+                isActive(item.url)
+                  ? "text-red-600 border-b-2 border-red-600 pb-[2px]"
+                  : ""
+              }`}
             >
-              Quick Pay
+              {item.title}
             </Link>
-
-            <Link
-              href="/plans"
-              className="btn-primary text-white text-base font-medium text-center"
-              style={{
-                backgroundColor: '#4285F4',
-                borderRadius: '6px',
-                padding: '6px 12px',
-                transition: 'background-color 0.3s ease',
-              }}
-            >
-              View Our Plans
-            </Link>
-          </div>
+          ))}
         </nav>
-      </header>
 
-      <style jsx>{`
-        /* Hover effects for all buttons */
-        :global(#z1_right_zone_mobile a.btn-primary),
-        :global(#z1_right_zone_desktop a.btn-primary) {
-          transition: all 0.3s ease !important;
-        }
+        {/* ✅ Desktop Buttons */}
+        <div className="hidden lg:flex items-center gap-2">
+          {buttons.map((btn, idx) => (
+            <Link
+              key={idx}
+              href={btn.href}
+              download={btn.download}
+              target={btn.download ? undefined : "_blank"}
+              className={`${btn.color} text-white text-sm font-medium rounded-md px-3 py-2 transition-all duration-300 hover:brightness-90 hover:-translate-y-[1px] hover:shadow-md`}
+            >
+              {btn.label}
+            </Link>
+          ))}
+        </div>
+      </div>
 
-        :global(#z1_right_zone_mobile a.btn-primary:hover),
-        :global(#z1_right_zone_desktop a.btn-primary:hover) {
-          background-color: #DC2626 !important;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+      {/* ✅ Mobile Drawer */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 p-5 transform transition-transform duration-300 ease-in-out ${
+          isDrawerOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-lg font-semibold text-gray-800">Menu</h2>
+          <button
+            onClick={toggleDrawer}
+            aria-label="Close"
+            className="text-2xl text-gray-700 hover:text-red-600 transition"
+          >
+            &times;
+          </button>
+        </div>
 
-        /* Very small screen adjustments */
-        @media (max-width: 380px) {
-          #z1_right_zone_mobile a.btn-primary {
-            font-size: 0.7rem !important;
-            padding: 8px 2px !important;
-          }
-        }
+        {/* Drawer Links */}
+        <nav className="flex flex-col space-y-4">
+          {menu.map((item, index) => (
+            <Link
+              key={index}
+              href={item.url}
+              onClick={toggleDrawer}
+              className={`text-base font-medium px-2 py-1 rounded transition-colors ${
+                isActive(item.url)
+                  ? "text-red-600 font-semibold"
+                  : "text-gray-700 hover:text-red-600"
+              }`}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
 
-        @media (max-width: 320px) {
-          #z1_right_zone_mobile a.btn-primary {
-            font-size: 0.65rem !important;
-            padding: 6px 1px !important;
-          }
-        }
-      `}</style>
-    </div>
+        {/* Drawer Buttons */}
+        <div className="mt-6 flex flex-col gap-3">
+          {buttons.map((btn, idx) => (
+            <Link
+              key={idx}
+              href={btn.href}
+              download={btn.download}
+              target={btn.download ? undefined : "_blank"}
+              className={`${btn.color} text-white text-sm font-medium text-center rounded-md py-2 transition-all hover:brightness-90`}
+            >
+              {btn.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* ✅ Overlay for Drawer */}
+      {isDrawerOpen && (
+        <div
+          onClick={toggleDrawer}
+          className="fixed inset-0 bg-black/30 z-40 lg:hidden"
+        ></div>
+      )}
+    </header>
   );
 }
