@@ -86,9 +86,9 @@ export default function Home() {
         rightContentData={rightContentFlexData}
         optionalColor=""
       />
-
+<Slider slides={slidesData} color="bg-att-blue-000" /> 
       {/* Need to rework on the slider component */}
-      {/* <Slider slides={slidesData} color="bg-att-blue-000" /> */}
+      {/* */}
       <RectangleBanner
         backgroundImage="/assets/skyplay-map.jpg"
         eyebrow="Introducing the Skylink Guarantee"
@@ -102,17 +102,19 @@ export default function Home() {
         title="Let's get you connected"
         slidesData={dynamicSlidesData}
       />
+        <RightImageLeftContent
+        title="The Tripleplay difference"
+        Content={dynamicImageContent}
+      />
+        <IconDetails title="How can we help you today?" iconslist={IconContent} />
       {/* <IconCard titleData={IcontitleData} cardData={iconCard} />
       <Slider
         title="Upgrade Your Home Tech Experience"
         slides={slidesData2}
         color="bg-gray-200"
       />
-      <RightImageLeftContent
-        title="The Tripleplay difference"
-        Content={dynamicImageContent}
-      />
-      <IconDetails title="How can we help you today?" iconslist={IconContent} />
+    
+    
       <SingleFaq content={faqData} />
       <NewsLetter content={contentNewsletter} /> */}
     </>
