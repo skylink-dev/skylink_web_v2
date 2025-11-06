@@ -8,6 +8,7 @@ import PlanHighlights from "@/components/plans/PlanHighlights";
 import Speed from "@/components/plans/Speed";
 import React, { useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ContactPopup from "../../plans/component/ContactPopup";
 
 export default function CustomPlan({ plans, isMobile, activeTab }) {
   const dispatch = useDispatch();
