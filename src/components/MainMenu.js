@@ -22,7 +22,7 @@ export default function MainMenu() {
   return (
     <>
       {/* ✅ Mobile Hamburger */}
-      <div className="lg:hidden">
+      <div className=" lg:hidden">
         <button
           onClick={toggleDrawer}
           aria-label="Menu"
