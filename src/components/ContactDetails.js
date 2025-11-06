@@ -1,46 +1,47 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
 const contactSections = [
   {
-    title: 'Want to call us?',
-    iconType: 'phone',
+    title: "Want to call us?",
+    iconType: "phone",
     contacts: [
       {
-        label: 'Wireless support:',
-        numbers: [{ label: '+919944199445', link: 'tel:+919944199445' }],
-        note: 'Available 24/7',
+        label: "Wireless support:",
+        numbers: [{ label: "+919944199445", link: "tel:+919944199445" }],
+        note: "Available 24/7",
       },
       {
-        label: 'Internet or home phone support:',
-        numbers: [{ label: '+919944199445', link: 'tel:+919944199445' }],
-        note: 'Available 24/7',
+        label: "Internet or home phone support:",
+        numbers: [{ label: "+919944199445", link: "tel:+919944199445" }],
+        note: "Available 24/7",
       },
     ],
   },
   {
-    title: 'Support video library',
-    iconType: 'video',
-    description: 'Explore videos to help with your account, service, or device.',
+    title: "Support video library",
+    iconType: "video",
+    description:
+      "Explore videos to help with your account, service, or device.",
     link: {
-      href: '/support/pages/help-videos',
-      text: 'Go to video library',
+      href: "/support",
+      text: "Go to video library",
     },
   },
   {
-    title: 'Small business support',
-    iconType: 'home',
+    title: "Small business support",
+    iconType: "home",
     description:
-      'Looking for help for your business internet, phone, or wire accounts? We have you covered.',
+      "Looking for help for your business internet, phone, or wire accounts? We have you covered.",
     link: {
-      href: '/support/pages/help-videos',
-      text: 'Go to business support',
+      href: "/contact-us",
+      text: "Go to business support",
     },
   },
 ];
 
 const getIcon = (type) => {
-  if (type === 'phone')
+  if (type === "phone")
     return (
       <svg
         aria-hidden="false"
@@ -57,7 +58,7 @@ const getIcon = (type) => {
       </svg>
     );
 
-  if (type === 'video')
+  if (type === "video")
     return (
       <svg
         aria-hidden="false"
@@ -74,7 +75,7 @@ const getIcon = (type) => {
       </svg>
     );
 
-  if (type === 'home')
+  if (type === "home")
     return (
       <svg
         aria-hidden="false"
