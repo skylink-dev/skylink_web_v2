@@ -35,7 +35,6 @@ export default function WhyProduct() {
             </span>
           </h2>
 
-          {/* Features Grid */}
 {/* Features Grid */}
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
   {features.map((feature, index) => (
@@ -43,8 +42,10 @@ export default function WhyProduct() {
       key={index}
       className={`bg-white p-5 md:p-6 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4 hover:-translate-y-2 hover:shadow-xl transition-transform duration-300 h-full w-full
       ${
-        index >= 3
-          ? "lg:col-start-2" // Center last two in the middle column on large screens
+        index === 3
+          ? "lg:col-start-2" // move 4th box to middle left
+          : index === 4
+          ? "lg:col-start-3" // move 5th box next to it
           : ""
       }`}
     >
@@ -57,6 +58,7 @@ export default function WhyProduct() {
     </div>
   ))}
 </div>
+
 
         </div>
       </div>
