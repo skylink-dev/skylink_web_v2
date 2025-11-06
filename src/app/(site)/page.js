@@ -20,6 +20,7 @@ import {
 import HomeContactForm from "@/components/contact/ContactForm";
 import { useState } from "react";
 import ThreeBannerModern from "@/components/contact/ThreeBanner";
+import { homeIconiconList } from "@/data/home/homeIconImages";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -64,7 +65,7 @@ export default function Home() {
   };
   return (
     <>
-      <IconMenu onSelect={dummy} content={iconMenuData} />
+      <IconMenu onSelect={dummy} content={homeIconiconList} />
       {/* <ThreeDIconMenu
         content={testiconMenuData}
         activeId={activeId}

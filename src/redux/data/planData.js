@@ -8,6 +8,7 @@ export const basePlans = [
     dataLimit: "500GB",
     tvChannels: "350+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Vijay Tv", "Zee Tamil", "News 7"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Basic Monthly Pack",
@@ -27,6 +28,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Mega Max Monthly Pack",
@@ -36,7 +38,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "19",
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil", "Discovery+"],
+    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -46,6 +48,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Mega Max Monthly Pack",
@@ -55,7 +58,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "19",
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil", "Discovery+"],
+    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -65,6 +68,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "350+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Vijay Tv", "Zee Tamil", "News 7"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Basic Monthly Pack",
@@ -89,6 +93,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Mega Max Monthly Pack",
@@ -98,7 +103,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "19",
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil", "Discovery+"],
+    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -108,6 +113,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Mega Max Monthly Pack",
@@ -117,7 +123,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "19",
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil", "Discovery+"],
+    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -127,6 +133,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "350+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Vijay Tv", "Zee Tamil", "News 7"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Basic Monthly Pack",
@@ -151,6 +158,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Mega Max Monthly Pack",
@@ -160,7 +168,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "19",
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil", "Discovery+"],
+    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -170,6 +178,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Sky Max Monthly Pack",
@@ -179,14 +188,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "20",
-    mainOTTs: [
-      "Amazon",
-      "Jio Hotstar",
-      "Sun NXT",
-      "ZEE5",
-      "aha Tamil",
-      "Discovery+",
-    ],
+    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -196,6 +198,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Sky Max Monthly Pack",
@@ -205,14 +208,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "20",
-    mainOTTs: [
-      "Amazon",
-      "Jio Hotstar",
-      "Sun NXT",
-      "ZEE5",
-      "aha Tamil",
-      "Discovery+",
-    ],
+    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -222,6 +218,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Sky Max Monthly Pack",
@@ -231,14 +228,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "20",
-    mainOTTs: [
-      "Amazon",
-      "Jio Hotstar",
-      "Sun NXT",
-      "ZEE5",
-      "aha Tamil",
-      "Discovery+",
-    ],
+    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -248,6 +238,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Sky Max Monthly Pack",
@@ -257,14 +248,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "20",
-    mainOTTs: [
-      "Amazon",
-      "Jio Hotstar",
-      "Sun NXT",
-      "ZEE5",
-      "aha Tamil",
-      "Discovery+",
-    ],
+    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -274,6 +258,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Sky Max Monthly Pack",
@@ -283,14 +268,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "20",
-    mainOTTs: [
-      "Amazon",
-      "Jio Hotstar",
-      "Sun NXT",
-      "ZEE5",
-      "aha Tamil",
-      "Discovery+",
-    ],
+    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
   {
@@ -300,6 +278,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Sky Max Monthly Pack",
@@ -309,14 +288,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: "20",
-    mainOTTs: [
-      "Amazon",
-      "Jio Hotstar",
-      "Sun NXT",
-      "ZEE5",
-      "aha Tamil",
-      "Discovery+",
-    ],
+    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     exclusive: false,
   },
 ];

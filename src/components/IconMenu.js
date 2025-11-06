@@ -42,8 +42,8 @@ export default function IconMenu({ content = [], onSelect, activeId }) {
                 className="flex flex-col items-center justify-center w-full"
               >
                 <Image
-                  width={32}
-                  height={32}
+                  width={50}
+                  height={50}
                   src={item.icon}
                   alt={item.title || "icon"}
                   className="mb-1 transition-transform duration-300 ease-in-out object-contain"

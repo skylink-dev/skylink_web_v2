@@ -1,10 +1,23 @@
 "use client";
+import BilledCycle from "@/components/plans/BilledCycle";
+import Channel from "@/components/plans/Channel";
+import CustomPlans from "@/components/plans/CustomPlans";
+import CustomPlansMobile from "@/components/plans/CustomPlansMobile";
+import Ott from "@/components/plans/Ott";
+import PlanHighlights from "@/components/plans/PlanHighlights";
+import Speed from "@/components/plans/Speed";
 import React, { useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-export default function CustomPlan({ plans }) {
+export default function CustomPlan({ plans, isMobile, activeTab }) {
   const dispatch = useDispatch();
   const basePlans = plans || [];
+  // change the plan form old to new true==new false=old
+  const testMode = false;
+
+  const [activePrice, setActivePrice] = useState();
+  const [activeCycle, setActiveCycle] = useState();
+  const [isContactOpen, setIsContactOpen] = useState();
 
   const speeds = useMemo(
     () => [...new Set(basePlans.map((p) => p.internetSpeed))],
@@ -101,137 +114,216 @@ export default function CustomPlan({ plans }) {
   };
 
   return (
-    <div className="w-full bg-gray-50 rounded-2xl p-6 shadow-md">
-      <div className="flex flex-col  gap-8">
-        <div className="flex-1 space-y-6">
-          {/* Bandwidth */}
-          <div className="bg-blue-50 border border-blue-300 p-5 rounded-xl shadow-sm">
-            <h3 className="text-blue-800 font-semibold text-lg mb-4">
-              Choose Your Bandwidth
-            </h3>
-            <ButtonGrid
-              options={speeds}
-              selected={selectedSpeed}
-              setSelected={setSelectedSpeed}
-              color="blue"
-            />
-          </div>
+    <>
+      <ContactPopup
+        isMobile={isMobile}
+        activeMbps={activeTab}
+        activePrice={activePrice}
+        activeCycle={
+          activeCycle == 1
+            ? "Monthly"
+            : activeCycle == 3
+            ? "Quaterly"
+            : activeCycle == 6
+            ? "Half Yearly"
+            : "Yearly"
+        }
+        isOpen={isContactOpen}
+        setIsOpen={setIsContactOpen}
+      />
+      {testMode ? (
+        <>
+          <div className="w-full bg-gray-50 rounded-2xl p-6 shadow-md">
+            <div></div>
+            <div className="flex flex-col  gap-8">
+              <div className="flex-1 space-y-6">
+                {/* Bandwidth */}
+                <div className="bg-blue-50 border border-blue-300 p-5 rounded-xl shadow-sm">
+                  <h3 className="text-blue-800 font-semibold text-lg mb-4">
+                    Choose Your Bandwidth
+                  </h3>
+                  <ButtonGrid
+                    options={speeds}
+                    selected={selectedSpeed}
+                    setSelected={setSelectedSpeed}
+                    color="blue"
+                  />
+                </div>
 
-          {/* Billing Cycle */}
-          <div className="bg-red-50 border border-red-300 p-5 rounded-xl shadow-sm">
-            <h3 className="text-red-700 font-semibold text-lg mb-4">
-              Choose Your Billing Cycle
-            </h3>
-            <ButtonGrid
-              options={validities.map((v) => labelMap[v] || v)}
-              selected={labelMap[selectedCycle]}
-              setSelected={(label) =>
-                setSelectedCycle(
-                  Object.keys(labelMap).find((k) => labelMap[k] === label) ||
-                    label
-                )
-              }
-              color="red"
-            />
-          </div>
+                {/* Billing Cycle */}
+                <div className="bg-red-50 border border-red-300 p-5 rounded-xl shadow-sm">
+                  <h3 className="text-red-700 font-semibold text-lg mb-4">
+                    Choose Your Billing Cycle
+                  </h3>
+                  <ButtonGrid
+                    options={validities.map((v) => labelMap[v] || v)}
+                    selected={labelMap[selectedCycle]}
+                    setSelected={(label) =>
+                      setSelectedCycle(
+                        Object.keys(labelMap).find(
+                          (k) => labelMap[k] === label
+                        ) || label
+                      )
+                    }
+                    color="red"
+                  />
+                </div>
 
-          {/* TV Channels */}
-          <div className="bg-yellow-50 border border-yellow-300 p-5 rounded-xl shadow-sm">
-            <h3 className="text-yellow-700 font-semibold text-lg mb-4">
-              Choose Your TV Channels
-            </h3>
-            <ButtonGrid
-              options={channelOptions}
-              selected={selectedChannel}
-              setSelected={setSelectedChannel}
-              color="yellow"
-            />
-          </div>
+                {/* TV Channels */}
+                <div className="bg-yellow-50 border border-yellow-300 p-5 rounded-xl shadow-sm">
+                  <h3 className="text-yellow-700 font-semibold text-lg mb-4">
+                    Choose Your TV Channels
+                  </h3>
+                  <ButtonGrid
+                    options={channelOptions}
+                    selected={selectedChannel}
+                    setSelected={setSelectedChannel}
+                    color="yellow"
+                  />
+                </div>
 
-          {/* OTT Options */}
-          <div className="bg-green-50 border border-green-300 p-5 rounded-xl shadow-sm">
-            <h3 className="text-green-700 font-semibold text-lg mb-4">
-              Choose Your OTT Apps
-            </h3>
-            <ButtonGrid
-              options={ottOptions}
-              selected={selectedOtt}
-              setSelected={setSelectedOtt}
-              color="green"
-            />
-          </div>
-        </div>
-
-        {/* RIGHT SIDE */}
-        <div className="w-full lg:w-[35%] flex flex-col gap-6">
-          {/* Plan Summary */}
-          <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm h-full flex flex-col justify-between">
-            <div>
-              <h3 className="text-gray-800 font-semibold text-lg mb-4">
-                Plan Highlights
-              </h3>
-              {activePlan ? (
-                <>
-                  <div className="space-y-3 text-sm text-gray-700">
-                    <p>
-                      <strong>Speed:</strong> {activePlan.internetSpeed}
-                    </p>
-                    <p>
-                      <strong>Data:</strong> {activePlan.dataLimit}
-                    </p>
-                    <p>
-                      <strong>Channels:</strong> {selectedChannel}
-                    </p>
-                    <p>
-                      <strong>OTT Apps:</strong> {selectedOtt}
-                    </p>
-                    <p>
-                      <strong>Validity:</strong> {labelMap[selectedCycle]}
-                    </p>
-                  </div>
-                </>
-              ) : (
-                <p className="text-gray-500 text-sm">
-                  Select your plan details to see highlights.
-                </p>
-              )}
-            </div>
-
-            {activePlan && (
-              <div className="mt-6 border-t border-gray-200 pt-4">
-                <p className="text-xl font-bold text-gray-900">
-                  ₹{activePlan.price}{" "}
-                  <span className="text-sm text-gray-600">+ GST</span>
-                </p>
-                <p className="text-xs text-gray-500 mt-1">
-                  {getDiscountMessage()}
-                </p>
-                <button className="mt-4 w-full py-3 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-md font-semibold hover:shadow-lg hover:scale-[1.03] transition-all duration-200">
-                  Subscribe Now
-                </button>
+                {/* OTT Options */}
+                <div className="bg-green-50 border border-green-300 p-5 rounded-xl shadow-sm">
+                  <h3 className="text-green-700 font-semibold text-lg mb-4">
+                    Choose Your OTT Apps
+                  </h3>
+                  <ButtonGrid
+                    options={ottOptions}
+                    selected={selectedOtt}
+                    setSelected={setSelectedOtt}
+                    color="green"
+                  />
+                </div>
               </div>
-            )}
-          </div>
 
-          {/* Contact Info */}
-          <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl text-center">
-            <h5 className="text-gray-800 font-semibold mb-2">
-              Get in touch with our experts
-            </h5>
-            <h3 className="text-blue-700 font-bold text-xl mb-1">
-              <a
-                href="tel:9944199445"
-                className="underline hover:text-blue-900"
-              >
-                +91 99441 99445
-              </a>
-            </h3>
-            <p className="text-gray-600 text-sm">
-              24/7 Customer Care Service Available
-            </p>
+              {/* RIGHT SIDE */}
+              <div className="w-full lg:w-[35%] flex flex-col gap-6">
+                {/* Plan Summary */}
+                <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm h-full flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-gray-800 font-semibold text-lg mb-4">
+                      Plan Highlights
+                    </h3>
+                    {activePlan ? (
+                      <>
+                        <div className="space-y-3 text-sm text-gray-700">
+                          <p>
+                            <strong>Speed:</strong> {activePlan.internetSpeed}
+                          </p>
+                          <p>
+                            <strong>Data:</strong> {activePlan.dataLimit}
+                          </p>
+                          <p>
+                            <strong>Channels:</strong> {selectedChannel}
+                          </p>
+                          <p>
+                            <strong>OTT Apps:</strong> {selectedOtt}
+                          </p>
+                          <p>
+                            <strong>Validity:</strong> {labelMap[selectedCycle]}
+                          </p>
+                        </div>
+                      </>
+                    ) : (
+                      <p className="text-gray-500 text-sm">
+                        Select your plan details to see highlights.
+                      </p>
+                    )}
+                  </div>
+
+                  {activePlan && (
+                    <div className="mt-6 border-t border-gray-200 pt-4">
+                      <p className="text-xl font-bold text-gray-900">
+                        ₹{activePlan.price}{" "}
+                        <span className="text-sm text-gray-600">+ GST</span>
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {getDiscountMessage()}
+                      </p>
+                      <button className="mt-4 w-full py-3 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-md font-semibold hover:shadow-lg hover:scale-[1.03] transition-all duration-200">
+                        Subscribe Now
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Contact Info */}
+                <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl text-center">
+                  <h5 className="text-gray-800 font-semibold mb-2">
+                    Get in touch with our experts
+                  </h5>
+                  <h3 className="text-blue-700 font-bold text-xl mb-1">
+                    <a
+                      href="tel:9944199445"
+                      className="underline hover:text-blue-900"
+                    >
+                      +91 99441 99445
+                    </a>
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    24/7 Customer Care Service Available
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </>
+      ) : (
+        <>
+          <div
+            className={`pricing-plan-package-wrap custom-plan ${
+              isMobile
+                ? activeTab === "Customize Plan"
+                  ? "tab-active"
+                  : "tab-nonactive"
+                : `tab-active default-tab${
+                    activeTab === "Customize Plan" ? " colorful" : " gray"
+                  }`
+            }`}
+          >
+            <h2
+              onClick={() => setActiveTag("Customize Plan")}
+              style={{ cursor: "pointer" }}
+            >
+              Your Plan
+            </h2>
+            <div className="tab-wrap" style={{ display: "flex" }}>
+              <div className="table-wrap">
+                <table>
+                  <tbody>
+                    <tr className="speed-tabs-wrapper">
+                      <td colSpan="2">
+                        <Speed />
+                        <BilledCycle />
+                        <Channel />
+                        <Ott />
+                      </td>
+                    </tr>
+                    <PlanHighlights />
+                  </tbody>
+                </table>
+              </div>
+              <div className="custom-plans">
+                <CustomPlans />
+              </div>
+              <div className="phone-number">
+                <h5>Get in touch with our experts</h5>
+                <h3>
+                  {" "}
+                  <a
+                    href="tel:9944199445"
+                    className="text-blue-600 underline hover:text-blue-800"
+                  >
+                    +91 99441 99445
+                  </a>
+                </h3>
+                <h6>24/7 Customer Care Service Available</h6>
+              </div>
+            </div>
+            <CustomPlansMobile />
+          </div>
+        </>
+      )}
+    </>
   );
 }

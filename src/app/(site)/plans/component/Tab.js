@@ -30,7 +30,7 @@ export default function Tab() {
   const tags = ["Fixed Plan"];
   const billingCycle = ["Monthly", "Quarterly", "Half-Yearly", "Annual"];
   const [activeState, setActiveState] = useState("Tamil Nadu");
-  const { activeTag, setActiveTag } = usePlans();
+  const { activeTab, setActiveTab } = usePlans();
   const [activeCycle, setActiveCycle] = useState("Annual");
   const [activePrice, setActivePrice] = useState(699 * 12);
   const [activeMbps, setActiveMbps] = useState("50mbps");
@@ -47,6 +47,7 @@ export default function Tab() {
   const [isOpen, setIsOpen] = useState(false);
   const sectionRef = useRef(null);
   const customerSelectedPlanKey = "selectedplan-599";
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -55,6 +56,7 @@ export default function Tab() {
 
     checkIsMobile();
     window.addEventListener("resize", checkIsMobile);
+    setActiveTab("Customize Plan");
 
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
@@ -81,7 +83,7 @@ export default function Tab() {
 
   useEffect(() => {
     const zonePlans =
-      plans?.planOptions?.actualPrizeByZone?.[activeState]?.[activeTag]?.[
+      plans?.planOptions?.actualPrizeByZone?.[activeState]?.[activeTab]?.[
         activeCycle
       ] || {};
     const mbpsKeys = Object.keys(zonePlans);
@@ -115,7 +117,7 @@ export default function Tab() {
       setOpenAccordionIndex(0);
       setSelectedPlanIndices([]);
     }
-  }, [plans, activeState, activeTag, activeCycle]);
+  }, [plans, activeState, activeTab, activeCycle]);
 
   const isSelected = (key) => {
     const selected = selectedPlanIndices.includes(key);
@@ -137,7 +139,7 @@ export default function Tab() {
           const [mbps, index] = selectedPlanIndices[0].split("-");
           const currentMbps = activeMbps.replace(/\s+/g, "").toLowerCase();
           const plansMap =
-            plans?.planOptions?.actualPrizeByZone?.[activeState]?.[activeTag]?.[
+            plans?.planOptions?.actualPrizeByZone?.[activeState]?.[activeTab]?.[
               currentMbps
             ]?.[basePrice]?.[activeCycle];
           if (!plansMap) return null;
@@ -154,6 +156,22 @@ export default function Tab() {
 
   return (
     <>
+      <ContactPopup
+        isMobile={isMobile}
+        activeMbps={activeTab}
+        activePrice={activePrice}
+        activeCycle={
+          activeCycle == 1
+            ? "Monthly"
+            : activeCycle == 3
+            ? "Quaterly"
+            : activeCycle == 6
+            ? "Half Yearly"
+            : "Yearly"
+        }
+        isOpen={isContactOpen}
+        setIsOpen={setIsContactOpen}
+      />
       {isMobile ? (
         <>
           <section className="py-10 px-4 bg-gray-50 min-h-screen">
@@ -196,10 +214,10 @@ export default function Tab() {
                       <div
                         key={`tag-${tdx}`}
                         className={`pricing-plan-innovative-tag ${
-                          activeTag === tag ? "active" : ""
+                          activeTab === tag ? "active" : ""
                         }`}
                         onClick={() => {
-                          setActiveTag(tag);
+                          setActiveTab(tag);
                           setOpenChannelAccordionIndex(false);
                         }}
                         style={{
@@ -232,9 +250,9 @@ export default function Tab() {
                         <div
                           key={tag}
                           className={`pricing-plan-innovative-tag ${
-                            activeTag === tag ? "active" : ""
+                            activeTab === tag ? "active" : ""
                           }`}
-                          onClick={() => setActiveTag(tag)}
+                          onClick={() => setActiveTab(tag)}
                           style={{ cursor: "pointer" }}
                         >
                           <span>
@@ -253,18 +271,18 @@ export default function Tab() {
                     <div
                       className={`pricing-plan-package-wrap custom-plan ${
                         isMobile
-                          ? activeTag === "Customize Plan"
+                          ? activeTab === "Customize Plan"
                             ? "tab-active"
                             : "tab-nonactive"
                           : `tab-active default-tab${
-                              activeTag === "Customize Plan"
+                              activeTab === "Customize Plan"
                                 ? " colorful"
                                 : " gray"
                             }`
                       }`}
                     >
                       <h2
-                        onClick={() => setActiveTag("Customize Plan")}
+                        onClick={() => setActiveTab("Customize Plan")}
                         style={{ cursor: "pointer" }}
                       >
                         Your Plan
@@ -309,16 +327,16 @@ export default function Tab() {
                     <div
                       className={`accordion-left-bg ${
                         isMobile
-                          ? activeTag === "Fixed Plan"
+                          ? activeTab === "Fixed Plan"
                             ? "tab-active"
                             : "tab-nonactive"
                           : `tab-active default-tab${
-                              activeTag === "Fixed Plan" ? " colorful" : " gray"
+                              activeTab === "Fixed Plan" ? " colorful" : " gray"
                             }`
                       }`}
                     >
                       <h2
-                        onClick={() => setActiveTag("Fixed Plan")}
+                        onClick={() => setActiveTab("Fixed Plan")}
                         style={{ cursor: "pointer" }}
                       >
                         Our Plan
@@ -339,7 +357,7 @@ export default function Tab() {
                                 }`}
                                 onClick={() => {
                                   setActiveCycle(cycle);
-                                  setActiveTag("Fixed Plan");
+                                  setActiveTab("Fixed Plan");
                                   setActivePrice(
                                     plans?.planOptions?.actualPrizeByZone?.[
                                       "Tamil Nadu"
@@ -376,7 +394,7 @@ export default function Tab() {
                                 onClick={() => {
                                   setActiveMbps(mbps);
                                   toggleAccordion(idx);
-                                  setActiveTag("Fixed Plan");
+                                  setActiveTab("Fixed Plan");
                                   const midPlan =
                                     plans?.planOptions?.actualPrizeByZone?.[
                                       "Tamil Nadu"
@@ -798,6 +816,10 @@ export default function Tab() {
                                                       planInfo.billingCycle
                                                     );
                                                     setIsOpen(!isOpen);
+                                                    setIsContactOpen(
+                                                      !isContactOpen
+                                                    );
+                                                    console.log("Clicked");
                                                   }}
                                                 >
                                                   {isSelected(key) ? (
@@ -934,11 +956,15 @@ export default function Tab() {
                                                 setActiveCycle(
                                                   planInfo.billingCycle
                                                 );
-                                                setActiveTag("Fixed Plan");
+                                                setActiveTab("Fixed Plan");
                                                 setActiveInstallation(
                                                   planInfo.installationFee
                                                 );
                                                 setIsOpen(!isOpen);
+                                                setIsContactOpen(
+                                                  !isContactOpen
+                                                );
+                                                console.log("Clicked");
                                               }}
                                             >
                                               {isSelected(key) ? (
@@ -1031,6 +1057,8 @@ export default function Tab() {
                               className="subscribe"
                               onClick={() => {
                                 setIsOpen(!isOpen);
+                                setIsContactOpen(!isContactOpen);
+                                console.log("Clicked");
                               }}
                               data-price={activePrice}
                               data-active-tab={activeMbps}
