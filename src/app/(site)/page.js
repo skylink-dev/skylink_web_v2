@@ -86,7 +86,7 @@ export default function Home() {
         rightContentData={rightContentFlexData}
         optionalColor=""
       />
-<Slider slides={slidesData} color="bg-att-blue-000" /> 
+      <Slider slides={slidesData} color="bg-att-blue-000" />
       {/* Need to rework on the slider component */}
       {/* */}
       <RectangleBanner
@@ -102,11 +102,12 @@ export default function Home() {
         title="Let's get you connected"
         slidesData={dynamicSlidesData}
       />
-        <RightImageLeftContent
+      <RightImageLeftContent
         title="The Tripleplay difference"
         Content={dynamicImageContent}
       />
-        <IconDetails title="How can we help you today?" iconslist={IconContent} />
+      <IconDetails title="How can we help you today?" iconslist={IconContent} />
+      <NewsLetter content={contentNewsletter} />
       {/* <IconCard titleData={IcontitleData} cardData={iconCard} />
       <Slider
         title="Upgrade Your Home Tech Experience"

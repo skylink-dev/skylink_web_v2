@@ -23,29 +23,31 @@ export default function HeroBanner({ content }) {
           </p>
 
           <p className="text-sm text-gray-500 mb-6">
-            Limited availability/areas. Based on wired connection to the gateway.
+            Limited availability/areas. Based on wired connection to the
+            gateway.
           </p>
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-<Link
-  href="/plans"
-  className="relative overflow-hidden rounded-full text-white font-semibold py-3 px-7 text-center transition-all duration-300 shadow-md
+            <Link
+              href="/plans"
+              className="relative overflow-hidden rounded-full text-white font-semibold py-3 px-7 text-center transition-all duration-300 shadow-md
   before:absolute before:inset-0 before:bg-red-600 before:translate-x-[-100%] before:transition-transform before:duration-500
   hover:before:translate-x-0 hover:text-white"
->
-  <span className="relative z-10 text-black hover:text-white">Shop Skyplay Fiber</span>
-</Link>
+            >
+              <span className="relative z-10 text-black hover:text-white">
+                Shop SkyLink Fiber
+              </span>
+            </Link>
 
-<Link
-  href="tel:+919944199448"
-  className="relative overflow-hidden rounded-full text-white font-semibold py-3 px-7 text-center transition-all duration-300 shadow-md
+            <Link
+              href="tel:+919944199448"
+              className="relative overflow-hidden rounded-full text-white font-semibold py-3 px-7 text-center transition-all duration-300 shadow-md
   before:absolute before:inset-0 before:bg-red-600 before:translate-x-[100%] before:transition-transform before:duration-500
   hover:before:translate-x-0 hover:text-white bg-gray-800"
->
-  <span className="relative z-10">Call (+91) 99441 99448</span>
-</Link>
-
+            >
+              <span className="relative z-10">Call (+91) 99441 99445</span>
+            </Link>
           </div>
         </div>
       </div>
