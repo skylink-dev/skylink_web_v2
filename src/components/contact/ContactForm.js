@@ -1,4 +1,5 @@
 "use client";
+import { apiService } from "@/backend/apiservice";
 import { useState, useEffect } from "react";
 
 export default function ContactForm({ onClose }) {
@@ -67,7 +68,14 @@ export default function ContactForm({ onClose }) {
       return setErrors({ captcha: "Please verify that you are not a robot" });
 
     setIsLoading(true);
-    await new Promise((r) => setTimeout(r, 1500));
+    await apiService
+      .submitContactForm(formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(res);
+      });
 
     showToastNotification();
     setFormData({ name: "", email: "", phone: "", captcha: false });

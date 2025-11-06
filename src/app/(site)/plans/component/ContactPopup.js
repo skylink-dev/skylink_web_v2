@@ -1,115 +1,160 @@
-import { useEffect, useState } from 'react';
-import { FaTimes, FaFacebookF, FaInstagram, FaYoutube, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { apiService } from "@/backend/apiservice";
+import { useEffect, useState } from "react";
+import {
+  FaTimes,
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaLinkedinIn,
+  FaTwitter,
+} from "react-icons/fa";
 
-export default function ContactPopup({isOpen, setIsOpen, activeMbps, activePrice, activeCycle, isMobile}) {
+export default function ContactPopup({
+  isOpen,
+  setIsOpen,
+  activeMbps,
+  activePrice,
+  activeCycle,
+  isMobile,
+}) {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '+91 ',
-    subject: ''
+    name: "",
+    phone: "+91 ",
+    subject: "",
   });
   const [errors, setErrors] = useState({
-    name: '',
-    phone: ''
+    name: "",
+    phone: "",
   });
-  
+
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
       if (isMobile) {
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = '0';
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+        document.body.style.top = "0";
       }
     } else {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.top = "";
     }
-    
+
     setFormData({
-      name:'',
-      phone:'+91 ', 
-      subject:`${activeMbps} - ${activeCycle} ( ₹ ${activePrice}/- +GST applicable)`
-    })
-    setErrors({name: '', phone: ''})
-    
+      name: "",
+      phone: "+91 ",
+      subject: `${activeMbps} - ${activeCycle} ( ₹ ${activePrice}/- +GST applicable)`,
+    });
+    setErrors({ name: "", phone: "" });
+
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.top = "";
     };
-  },[activeMbps, activePrice, activeCycle, isOpen, isMobile])
- 
+  }, [activeMbps, activePrice, activeCycle, isOpen, isMobile]);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateName = (name) => {
-    if (!name.trim()) return 'Name is required';
-    if (name.trim().length < 2) return 'Name must be at least 2 characters';
-    if (!/^[a-zA-Z\s]+$/.test(name)) return 'Name should only contain letters and spaces';
-    return '';
+    if (!name.trim()) return "Name is required";
+    if (name.trim().length < 2) return "Name must be at least 2 characters";
+    if (!/^[a-zA-Z\s]+$/.test(name))
+      return "Name should only contain letters and spaces";
+    return "";
   };
 
   const validatePhone = (phone) => {
-    const phoneNumber = phone.replace(/^\+91\s*/, '').replace(/\s/g, '');
-    if (!phoneNumber) return 'Phone number is required';
-    if (!/^\d+$/.test(phoneNumber)) return 'Phone number should only contain digits';
-    if (phoneNumber.length !== 10) return 'Phone number must be 10 digits';
-    if (!/^[6-9]/.test(phoneNumber)) return 'Phone number must start with 6, 7, 8, or 9';
-    return '';
+    const phoneNumber = phone.replace(/^\+91\s*/, "").replace(/\s/g, "");
+    if (!phoneNumber) return "Phone number is required";
+    if (!/^\d+$/.test(phoneNumber))
+      return "Phone number should only contain digits";
+    if (phoneNumber.length !== 10) return "Phone number must be 10 digits";
+    if (!/^[6-9]/.test(phoneNumber))
+      return "Phone number must start with 6, 7, 8, or 9";
+    return "";
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
-    if (name === 'phone') {
-      if (!value.startsWith('+91 ')) {
-        setFormData({...formData, phone: '+91 '});
+
+    if (name === "phone") {
+      if (!value.startsWith("+91 ")) {
+        setFormData({ ...formData, phone: "+91 " });
         return;
       }
       const phoneNumber = value.slice(4);
       if (phoneNumber && !/^\d*$/.test(phoneNumber)) return;
       if (phoneNumber.length > 10) return;
     }
-    
-    if (name === 'name' && value.length > 50) return;
-    
-    setFormData({...formData, [name]: value});
-    setErrors({...errors, [name]: ''});
+
+    if (name === "name" && value.length > 50) return;
+
+    setFormData({ ...formData, [name]: value });
+    setErrors({ ...errors, [name]: "" });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const nameError = validateName(formData.name);
     const phoneError = validatePhone(formData.phone);
-    
+
     if (nameError || phoneError) {
-      setErrors({name: nameError, phone: phoneError});
+      setErrors({ name: nameError, phone: phoneError });
       return;
     }
-    
+
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Form submitted:', formData);
-      alert('Thank you! We will contact you soon.');
+      await apiService
+        .submitContactForm(formData)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(res);
+        });
+      console.log("Form submitted:", formData);
+      alert("Thank you! We will contact you soon.");
     } catch (err) {
       console.log(err);
       alert("Unexpected Error Occurred");
     }
-    setErrors({ name: '', phone: '' });
+    setErrors({ name: "", phone: "" });
     setIsSubmitting(false);
     setIsOpen(false);
   };
 
   const socialLinks = [
-    { icon: FaFacebookF, url: 'https://www.facebook.com/skylinkfibernetindia', label: 'Facebook' },
-    { icon: FaInstagram, url: 'https://www.instagram.com/skylinkfibernet', label: 'Instagram' },
-    { icon: FaYoutube, url: 'https://www.youtube.com/channel/UCwXOws8BUyPAxFO0Ni-ALaQ', label: 'YouTube' },
-    { icon: FaLinkedinIn, url: 'https://www.linkedin.com/company/skylink-fibernet', label: 'LinkedIn' },
-    { icon: FaTwitter, url: 'https://twitter.com/skylinkfiber', label: 'Twitter' }
+    {
+      icon: FaFacebookF,
+      url: "https://www.facebook.com/skylinkfibernetindia",
+      label: "Facebook",
+    },
+    {
+      icon: FaInstagram,
+      url: "https://www.instagram.com/skylinkfibernet",
+      label: "Instagram",
+    },
+    {
+      icon: FaYoutube,
+      url: "https://www.youtube.com/channel/UCwXOws8BUyPAxFO0Ni-ALaQ",
+      label: "YouTube",
+    },
+    {
+      icon: FaLinkedinIn,
+      url: "https://www.linkedin.com/company/skylink-fibernet",
+      label: "LinkedIn",
+    },
+    {
+      icon: FaTwitter,
+      url: "https://twitter.com/skylinkfiber",
+      label: "Twitter",
+    },
   ];
 
   if (!isOpen) return null;
@@ -437,12 +482,9 @@ export default function ContactPopup({isOpen, setIsOpen, activeMbps, activePrice
           margin-right: 8px;
         }
       `}</style>
-      
-      <div 
-        className="contact-popup-overlay"
-        onClick={() => setIsOpen(false)}
-      >
-        <div 
+
+      <div className="contact-popup-overlay" onClick={() => setIsOpen(false)}>
+        <div
           className="contact-popup-container"
           onClick={(e) => e.stopPropagation()}
         >
@@ -459,10 +501,14 @@ export default function ContactPopup({isOpen, setIsOpen, activeMbps, activePrice
               <div className="contact-popup-header">
                 <p className="contact-popup-greeting">Hello There!</p>
                 <h2 className="contact-popup-title">
-                  Stay Updated! Share Your{' '}
+                  Stay Updated! Share Your{" "}
                   <span className="contact-popup-highlight">Details</span>
                   {!isMobile && (
-                    <> <span className="contact-popup-highlight">to</span> Connect.</>
+                    <>
+                      {" "}
+                      <span className="contact-popup-highlight">to</span>{" "}
+                      Connect.
+                    </>
                   )}
                 </h2>
               </div>
@@ -475,7 +521,9 @@ export default function ContactPopup({isOpen, setIsOpen, activeMbps, activePrice
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Name (e.g., John Doe)"
-                    className={`contact-popup-input ${errors.name ? 'error' : ''}`}
+                    className={`contact-popup-input ${
+                      errors.name ? "error" : ""
+                    }`}
                   />
                   {errors.name && (
                     <p className="contact-popup-error">{errors.name}</p>
@@ -489,13 +537,15 @@ export default function ContactPopup({isOpen, setIsOpen, activeMbps, activePrice
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 9876543210"
-                    className={`contact-popup-input ${errors.phone ? 'error' : ''}`}
+                    className={`contact-popup-input ${
+                      errors.phone ? "error" : ""
+                    }`}
                   />
                   {errors.phone && (
                     <p className="contact-popup-error">{errors.phone}</p>
                   )}
                 </div>
-                
+
                 <div className="contact-popup-input-group">
                   <input
                     type="text"
@@ -508,7 +558,13 @@ export default function ContactPopup({isOpen, setIsOpen, activeMbps, activePrice
 
                 <button
                   onClick={handleSubmit}
-                  disabled={isSubmitting || !formData.name || !formData.phone || !formData.subject || formData.phone === '+91 '}
+                  disabled={
+                    isSubmitting ||
+                    !formData.name ||
+                    !formData.phone ||
+                    !formData.subject ||
+                    formData.phone === "+91 "
+                  }
                   className="contact-popup-submit"
                 >
                   {isSubmitting ? (
@@ -517,7 +573,7 @@ export default function ContactPopup({isOpen, setIsOpen, activeMbps, activePrice
                       Submitting...
                     </>
                   ) : (
-                    'Submit'
+                    "Submit"
                   )}
                 </button>
               </div>
