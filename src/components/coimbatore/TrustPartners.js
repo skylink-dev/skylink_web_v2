@@ -26,139 +26,45 @@ export default function TrustedPartners() {
   ];
 
   return (
-    <section style={{
-      width: "100%",
-      backgroundColor: "#ffffff",
-      padding: "5rem 0",
-      fontFamily: "Inter, sans-serif",
-      position: "relative",
-      overflow: "hidden",
-    }}>
+    <section className="w-full bg-white py-16 font-sans relative overflow-hidden">
       {/* Background Elements */}
-      <div style={{
-        position: "absolute",
-        top: "20%",
-        left: "5%",
-        width: "80px",
-        height: "80px",
-        background: "linear-gradient(135deg, #fef2f2 0%, #fecaca 100%)",
-        borderRadius: "50%",
-        opacity: 0.3,
-      }}></div>
-      <div style={{
-        position: "absolute",
-        bottom: "30%",
-        right: "5%",
-        width: "60px",
-        height: "60px",
-        background: "linear-gradient(135deg, #fecaca 0%, #f87171 100%)",
-        borderRadius: "50%",
-        opacity: 0.2,
-      }}></div>
+      <div className="absolute top-1/5 left-5 w-20 h-20 bg-gradient-to-br from-red-50 to-red-200 rounded-full opacity-30"></div>
+      <div className="absolute bottom-1/3 right-5 w-16 h-16 bg-gradient-to-br from-red-200 to-red-400 rounded-full opacity-20"></div>
 
-      <div style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "0 2rem",
-        textAlign: "center",
-      }}>
+      <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Header Section */}
-        <div style={{ marginBottom: "3rem" }}>
-          <h2 style={{
-            fontSize: "clamp(4rem, 3vw, 2.5rem)",
-            fontWeight: 700,
-            color: "#111827",
-            marginBottom: "1rem",
-            letterSpacing: "-0.02em",
-          }}>
+        <div className="mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
             Trusted by{" "}
-            <span style={{
-              color: "#dc2626",
-              background: "linear-gradient(135deg, #dc2626, #ef4444)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>4000+</span>{" "}
+            <span className="text-red-600 bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
+              4000+
+            </span>{" "}
             Partners
           </h2>
-          <p style={{
-            color: "#6b7280",
-            fontSize: "1.8rem",
-            maxWidth: "500px",
-            margin: "0 auto",
-            lineHeight: "1.6",
-          }}>
+          <p className="text-gray-600 text-base md:text-lg max-w-md mx-auto leading-relaxed">
             Collaborating with industry leaders across Coimbatore for reliable connectivity solutions
           </p>
         </div>
 
         {/* Logo Slider Container */}
-        <div style={{
-          position: "relative",
-          overflow: "hidden",
-          padding: "2rem 0",
-        }}>
+        <div className="relative overflow-hidden py-8">
           {/* Gradient Overlays */}
-          <div style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: "100px",
-            background: "linear-gradient(90deg, #ffffff 0%, transparent 100%)",
-            zIndex: 2,
-          }}></div>
-          <div style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: "100px",
-            background: "linear-gradient(270deg, #ffffff 0%, transparent 100%)",
-            zIndex: 2,
-          }}></div>
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
 
           {/* First Slider */}
-          <div style={{
-            display: "flex",
-            gap: "3rem",
-            animation: "scroll 40s linear infinite",
-            marginBottom: "2rem",
-          }}>
+          <div className="flex gap-8 animate-scroll mb-6">
             {[...logos].map((logo, index) => (
               <div
                 key={index}
-                style={{
-                  flexShrink: 0,
-                  width: "140px",
-                  height: "80px",
-                  position: "relative",
-                  opacity: 1,
-                  transition: "all 0.3s ease",
-                  padding: "0.5rem",
-                  backgroundColor: "#ffffff",
-                  borderRadius: "12px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "scale(1.08)";
-                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.12)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
-                }}
+                className="flex-shrink-0 w-32 h-20 relative opacity-100 transition-all duration-300 p-3 bg-white rounded-lg shadow-sm flex items-center justify-center hover:scale-105 hover:shadow-md"
               >
                 <Image
                   src={logo}
                   alt="Partner Logo"
-                  width={130}
-                  height={72}
-                  style={{ 
-                    objectFit: "contain",
-                  }}
+                  width={120}
+                  height={60}
+                  className="object-contain"
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
               </div>
@@ -166,46 +72,18 @@ export default function TrustedPartners() {
           </div>
 
           {/* Second Slider (Reverse) */}
-          <div style={{
-            display: "flex",
-            gap: "3rem",
-            animation: "scrollReverse 35s linear infinite",
-          }}>
+          <div className="flex gap-8 animate-scroll-reverse">
             {[...logos].reverse().map((logo, index) => (
               <div
                 key={index}
-                style={{
-                  flexShrink: 0,
-                  width: "140px",
-                  height: "80px",
-                  position: "relative",
-                  opacity: 1,
-                  transition: "all 0.3s ease",
-                  padding: "0.5rem",
-                  backgroundColor: "#ffffff",
-                  borderRadius: "12px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "scale(1.08)";
-                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.12)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
-                }}
+                className="flex-shrink-0 w-32 h-20 relative opacity-100 transition-all duration-300 p-3 bg-white rounded-lg shadow-sm flex items-center justify-center hover:scale-105 hover:shadow-md"
               >
                 <Image
                   src={logo}
                   alt="Partner Logo"
-                  width={130}
-                  height={72}
-                  style={{ 
-                    objectFit: "contain",
-                  }}
+                  width={120}
+                  height={60}
+                  className="object-contain"
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
               </div>
@@ -221,16 +99,22 @@ export default function TrustedPartners() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-140px * 10 - 3rem * 10));
+            transform: translateX(calc(-128px * 10 - 2rem * 10));
           }
         }
-        @keyframes scrollReverse {
+        @keyframes scroll-reverse {
           0% {
-            transform: translateX(calc(-140px * 10 - 3rem * 10));
+            transform: translateX(calc(-128px * 10 - 2rem * 10));
           }
           100% {
             transform: translateX(0);
           }
+        }
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+        }
+        .animate-scroll-reverse {
+          animation: scroll-reverse 35s linear infinite;
         }
       `}</style>
     </section>

@@ -10,19 +10,19 @@ export const apiService = {
       email: formData.email || "",
       message: "", // You're not collecting message in your form
       service: "", // You're not collecting service in your form
-      address: "" // You're not collecting address in your form
+      address: "", // You're not collecting address in your form
     };
-    
+
     console.log("Sending payload:", payload); // Add this for debugging
-    
+
     return axiosApi.post("contacts/", payload);
   },
-  
+
   submitSubscribe: (formData) => {
     const payload = {
-      email: formData.email || ""
+      email: formData.email || "",
     };
-    
+
     return axiosApi.post("subscription/subscribe/", payload);
   },
 
@@ -44,5 +44,5 @@ export const apiService = {
   // Delete contact
   deleteContact: (id) => {
     return axiosApi.delete(`contacts/${id}/`);
-  }
+  },
 };

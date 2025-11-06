@@ -4,7 +4,7 @@ import FixedPlan from "./FixedPlan";
 import CustomPlan from "./CustomPlan";
 
 export default function PlanTabs({ isMobile, plans }) {
-  const [activeTab, setActiveTab] = useState("Fixed Plan");
+  const [activeTab, setActiveTab] = useState("Customize Plan");
   const [fade, setFade] = useState(true);
 
   const tabs = ["Customize Plan", "Fixed Plan"];
@@ -18,7 +18,27 @@ export default function PlanTabs({ isMobile, plans }) {
   return (
     <div className="w-full">
       {/* TAB SWITCHER */}
-      <div className="flex items-center justify-center mb-8">
+      <div className="w-full flex flex-col items-center justify-center mb-8">
+        <div className="w-full flex flex-row m-2 p-3 content-center justify-center">
+          {" "}
+          <div className="flex w-full flex-row content-right justify-center  w-60 h-15 rounded-xl">
+            <img className="w-12 h-12" src={"/newassets/plan/mascot.png"} />
+            {"   "}
+            <span className=" ml-4 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-2xl p-4 justify-center text-xs md:xl text-center  text-white font-semibold content-center">
+              Your Plan
+            </span>
+          </div>
+          <div className="flex flex-row  w-full w-60 h-15 rounded-xl">
+            {"   "}
+            <span className=" ml-4 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-2xl p-4 justify-center text-xs md:xl text-center  text-white font-semibold content-center">
+              Our Plan
+            </span>
+            <img
+              className="w-12 h-12 scale-x-[-1] "
+              src={"/newassets/plan/mascot.png"}
+            />
+          </div>
+        </div>
         {isMobile ? (
           <div className="flex items-center justify-center gap-2 w-full max-w-md">
             {tabs.map((tab, i) => (
