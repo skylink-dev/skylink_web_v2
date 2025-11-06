@@ -8,12 +8,12 @@ const contactSections = [
     contacts: [
       {
         label: "Wireless support:",
-        numbers: [{ label: "+919944199445", link: "tel:+919944199445" }],
+        numbers: [{ label: "+91 99441 99445", link: "tel:+91 99441 99445" }],
         note: "Available 24/7",
       },
       {
         label: "Internet or home phone support:",
-        numbers: [{ label: "+919944199445", link: "tel:+919944199445" }],
+        numbers: [{ label: "+91 99441 99445", link: "tel:+91 99441 99445" }],
         note: "Available 24/7",
       },
     ],

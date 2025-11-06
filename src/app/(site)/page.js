@@ -108,6 +108,7 @@ export default function Home() {
       />
       <IconDetails title="How can we help you today?" iconslist={IconContent} />
       <NewsLetter content={contentNewsletter} />
+      <SingleFaq content={faqData} />
       {/* <IconCard titleData={IcontitleData} cardData={iconCard} />
       <Slider
         title="Upgrade Your Home Tech Experience"
@@ -116,7 +117,7 @@ export default function Home() {
       />
     
     
-      <SingleFaq content={faqData} />
+      
       <NewsLetter content={contentNewsletter} /> */}
     </>
   );
