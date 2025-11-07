@@ -112,8 +112,8 @@ export default function ThreeBannerModern() {
         onMouseLeave={() => setIsAutoPlaying(true)}
         className="relative w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 my-2 xs:my-3 sm:my-6 md:my-8"
       >
-        {/* ===== Slider Track - Taller for mobile portrait ===== */}
-        <div className="relative w-full h-[600px] xs:h-[650px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden rounded-none sm:rounded-2xl bg-black shadow-lg sm:shadow-xl shadow-black/40">
+        {/* ===== Slider Track - Fit to content ===== */}
+        <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden rounded-none sm:rounded-2xl bg-black shadow-lg sm:shadow-xl shadow-black/40">
           <div
             className="absolute inset-0 flex h-full transition-transform duration-700 ease-out will-change-transform"
             style={{
@@ -135,7 +135,7 @@ export default function ThreeBannerModern() {
                       src={slide.imageLandscape}
                       alt={slide.title}
                       fill
-                      className="object-cover"
+                      className="object-cover" 
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1400px"
                     />
@@ -144,24 +144,24 @@ export default function ThreeBannerModern() {
                   <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
                 </div>
 
-                {/* Portrait Image Container - Mobile (Full height) */}
+                {/* Portrait Image Container - Mobile (Fill container) */}
                 <div className="absolute inset-0 sm:hidden">
                   <div className="relative w-full h-full">
                     <Image
                       src={slide.imagePortrait}
                       alt={slide.title}
                       fill
-                      className="object-cover object-top"
+                      className="object-cover" 
                       priority={index === 0}
                       sizes="100vw"
                     />
                   </div>
-                  {/* Stronger gradient overlay for mobile - darker at top */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-black/75" />
+                  {/* Stronger gradient overlay for mobile */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/20" />
                 </div>
 
-                {/* ===== Content - Top aligned on mobile, center on desktop ===== */}
-                <div className="absolute inset-0 flex items-start sm:items-center z-10 px-3 xs:px-4 sm:px-8 md:px-12 lg:px-16 pt-4 xs:pt-6 sm:pt-0">
+                {/* ===== Content - Moved to top ===== */}
+                <div className="absolute inset-0 flex items-start z-10 px-3 xs:px-4 sm:px-8 md:px-12 lg:px-16 pt-4 xs:pt-6 sm:pt-8">
                   <div className="w-full max-w-2xl text-white text-left">
                     {/* Title */}
                     <h1
@@ -287,7 +287,7 @@ export default function ThreeBannerModern() {
         </button>
 
         {/* ===== Progress Dots ===== */}
-        <div className="absolute bottom-5 xs:bottom-6 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-1.5 xs:gap-2 sm:gap-3 z-30">
+        <div className="absolute bottom-4 xs:bottom-5 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-1.5 xs:gap-2 sm:gap-3 z-30">
           {slides.map((_, i) => (
             <button
               key={i}
@@ -350,14 +350,6 @@ export default function ThreeBannerModern() {
 
         .animation-paused {
           animation-play-state: paused;
-        }
-
-        /* Extra small breakpoint */
-        @media (min-width: 375px) {
-          .xs\\:text-xl {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-          }
         }
 
         /* Performance and reduced motion */
