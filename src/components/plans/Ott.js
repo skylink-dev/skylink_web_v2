@@ -27,7 +27,7 @@ export default function Ott() {
     activeOtts && (
       <>
         <div className="greenWrap">
-          <h3 className="greenFont">Choose Your OTT's</h3>
+          <h3 className="greenFont">Choose Your OTT&apos;s</h3>
           <div className="wrapforplans green">
             <div>
               <div className="plans-tabs">
