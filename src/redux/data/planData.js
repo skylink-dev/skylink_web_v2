@@ -8,6 +8,7 @@ export const basePlans = [
     dataLimit: "500GB",
     tvChannels: "350+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Vijay Tv", "Zee Tamil", "News 7"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -28,6 +29,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -48,6 +50,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -68,6 +71,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "350+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Vijay Tv", "Zee Tamil", "News 7"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -93,6 +97,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -113,6 +118,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -133,6 +139,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "350+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Vijay Tv", "Zee Tamil", "News 7"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -158,6 +165,8 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -178,6 +187,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -199,6 +209,7 @@ export const basePlans = [
     tvChannels: "550+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
+    discount: [0, 0, 7.5, 15],
     verifyAvailablePacks: false,
     ottMainPack: [
       "Sky Max Monthly Pack",
@@ -209,6 +220,7 @@ export const basePlans = [
     ottAdditionPack: "",
     noOfOTTs: "20",
     mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+
     exclusive: false,
   },
   {
@@ -218,6 +230,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -238,6 +251,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -258,6 +272,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
@@ -278,6 +293,7 @@ export const basePlans = [
     dataLimit: "Unlimited",
     tvChannels: "750+",
     validity: ["1 Month", "3 Month", "6 Month", "12 Month"],
+    discount: [0, 0, 7.5, 15],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     verifyAvailablePacks: false,
     ottMainPack: [
