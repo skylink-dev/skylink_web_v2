@@ -260,7 +260,7 @@ const stepsData = [
       <TitleComponent title={'See how the Skylink Fire TV <br /> makes your entertainment seamless'} ></TitleComponent> 
       <ContentandImageCarousel slidesData={CotentImageCarouselData} />
       <Faq title="You’ve asked. We’ve answered." content={faqContent} />
-      <SingleFaq content={faqData} />
+      {/* <SingleFaq content={faqData} /> */}
     </>
   )
 }

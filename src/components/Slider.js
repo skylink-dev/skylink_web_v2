@@ -25,7 +25,7 @@ export default function Slider({ slides = [] }) {
 
   useEffect(() => {
     if (isHovered) return;
-    const interval = setInterval(goToNextSlide, 8000);
+    const interval = setInterval(goToNextSlide, 3000); // auto-slide every 3s
     return () => clearInterval(interval);
   }, [isHovered, goToNextSlide]);
 
@@ -38,7 +38,7 @@ export default function Slider({ slides = [] }) {
 
   return (
     <div
-      className="flex justify-center items-center w-full py-6 px-3 sm:px-4"
+      className="flex justify-center items-center w-full py-8 px-3 sm:px-4"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -49,7 +49,9 @@ export default function Slider({ slides = [] }) {
           <>
             <button
               onClick={goToPrevSlide}
-              className="absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 left-3 sm:left-4"
+              className={`absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 ${
+                isMobile ? "top-[40%]" : "top-1/2"
+              } -translate-y-1/2 left-3 sm:left-4`}
               aria-label="Previous slide"
             >
               <svg
@@ -64,7 +66,9 @@ export default function Slider({ slides = [] }) {
 
             <button
               onClick={goToNextSlide}
-              className="absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 right-3 sm:right-4"
+              className={`absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 ${
+                isMobile ? "top-[40%]" : "top-1/2"
+              } -translate-y-1/2 right-3 sm:right-4`}
               aria-label="Next slide"
             >
               <svg
@@ -95,34 +99,38 @@ export default function Slider({ slides = [] }) {
             >
               {/* Text */}
               <div className="space-y-1 flex-shrink-0 h-[60px] overflow-visible z-10">
-                <p className="text-xs font-medium text-gray-600 leading-tight">
-                  {slide.eyebrow}
-                </p>
+                <p className="text-xs font-medium text-gray-600 leading-tight">{slide.eyebrow}</p>
                 <h3
                   className="text-sm md:text-base font-bold text-gray-900 line-clamp-2 leading-tight"
                   dangerouslySetInnerHTML={{ __html: slide.heading }}
                 ></h3>
-                <p className="text-gray-600 text-xs leading-snug line-clamp-2">
-                  {slide.description}
-                </p>
+                <p className="text-gray-600 text-xs leading-snug line-clamp-2">{slide.description}</p>
                 {slide.legal && (
                   <p className="text-[10px] text-gray-400 line-clamp-1 leading-tight">{slide.legal}</p>
                 )}
               </div>
 
-              {/* Image */}
-              <div className="flex-shrink-0 flex justify-center items-center mt-3 mb-3" style={{ height: "200px" }}>
-                <div className="w-full h-full flex items-center justify-center">
+              {/* Image - Adjusted for mobile to prevent overlap */}
+              <div className="flex-shrink-0 flex justify-center items-center mt-4 mb-5">
+                <div
+                  className="w-full flex items-center justify-center"
+                  style={{
+                    height: isMobile ? "180px" : "220px",
+                  }}
+                >
                   <img
                     src={slide.image}
                     alt={slide.heading}
-                    className="max-w-full max-h-full object-contain transform scale-125"
+                    className="max-w-full max-h-full object-contain transition-all duration-500"
+                    style={{
+                      transform: isMobile ? "scale(1.35)" : "scale(1.35)",
+                    }}
                     loading="lazy"
                   />
                 </div>
               </div>
 
-              {/* CTA Button — moves below image on mobile */}
+              {/* CTA Button - below content in mobile */}
               <div className={`${isMobile ? "mt-3" : "mt-auto"}`}>
                 <a
                   href={slide.ctaHref}
@@ -142,9 +150,7 @@ export default function Slider({ slides = [] }) {
               key={i}
               onClick={() => handleDotClick(i)}
               className={`transition-all duration-300 ${
-                i === activeIndex
-                  ? "bg-[#e60000] scale-110"
-                  : "bg-gray-400/60 hover:bg-gray-500"
+                i === activeIndex ? "bg-[#e60000] scale-110" : "bg-gray-400/60 hover:bg-gray-500"
               } h-2 w-8 rounded-full`}
               aria-label={`Go to slide ${i + 1}`}
             />
