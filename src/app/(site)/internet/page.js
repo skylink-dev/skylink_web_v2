@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import dynamic from 'next/dynamic';
+import React from "react";
+import dynamic from "next/dynamic";
 
 import {
   tablecontent,
@@ -19,29 +19,35 @@ import {
   contentData,
   HeroContent,
   SpeedContent,
-  simpleContent
+  simpleContent,
 } from "../../../data/internet";
 const auth = { userName: "John Doe", isLoggedIn: true };
-const PricingPlans = dynamic(() => import('@/components/PricingPlans'));
-const HeroBanner = dynamic(() => import('@/components/HeroBanner'));
-const AvailabilityComponents = dynamic(() => import('@/components/AvailabilityComponents'));
-const RightImageLeftContent = dynamic(() => import('@/components/RightImageLeftContents'));
-const ImageAndContent = dynamic(() => import('@/components/ImageAndContent'));
-const IconMoreDetails = dynamic(() => import('@/components/IconMoreDetails'));
-const Faq = dynamic(() => import('@/components/Faq'));
-const IconCard = dynamic(() => import('@/components/IconCard'));
-const DynamicCarousel = dynamic(() => import('@/components/DynamicCarousel'));
-const ContentandImageCarousel = dynamic(() => import('@/components/ContentandImageCarousel'));
-const FlexCard = dynamic(() => import('@/components/FlexCard'), { ssr: false });
-const IconFlexBanner = dynamic(() => import('@/components/IconFlexBanner'));
-const SimpleBanner = dynamic(() => import('@/components/SimpleBanner'));
-const Whereat = dynamic(() => import('@/components/Whereat'));
-const SpeedBanner = dynamic(() => import('@/components/SpeedBanner'));
+const PricingPlans = dynamic(() => import("@/components/PricingPlans"));
+const HeroBanner = dynamic(() => import("@/components/HeroBanner"));
+const AvailabilityComponents = dynamic(() =>
+  import("@/components/AvailabilityComponents")
+);
+const RightImageLeftContent = dynamic(() =>
+  import("@/components/RightImageLeftContents")
+);
+const ImageAndContent = dynamic(() => import("@/components/ImageAndContent"));
+const IconMoreDetails = dynamic(() => import("@/components/IconMoreDetails"));
+const Faq = dynamic(() => import("@/components/Faq"));
+const IconCard = dynamic(() => import("@/components/IconCard"));
+const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
+const ContentandImageCarousel = dynamic(() =>
+  import("@/components/ContentandImageCarousel")
+);
+const FlexCard = dynamic(() => import("@/components/FlexCard"), { ssr: false });
+const IconFlexBanner = dynamic(() => import("@/components/IconFlexBanner"));
+const SimpleBanner = dynamic(() => import("@/components/SimpleBanner"));
+const Whereat = dynamic(() => import("@/components/Whereat"));
+const SpeedBanner = dynamic(() => import("@/components/SpeedBanner"));
 
 export default function Page() {
   return (
     <>
-      <HeroBanner content={HeroContent} />
+      {/* <HeroBanner content={HeroContent} />
        <AvailabilityComponents />
       <SpeedBanner color="color-white" mainImage="/assets/level-up-projects.jpg" content={SpeedContent} />
        <FlexCard
@@ -72,8 +78,8 @@ export default function Page() {
            <DynamicCarousel title="Got a few minutes to learn more?" slidesData={dynamicSlidesData} color="bg-white" />
            
       <Faq title="More reasons to love Skylink Fiber internet" content={faqSecondContent} />
-      <Faq title="You’ve asked. We’ve answered." content={faqContent} />
-       <Whereat />
+      <Faq title="You’ve asked. We’ve answered." content={faqContent} /> */}
+      <Whereat />
       {/*
       
      
