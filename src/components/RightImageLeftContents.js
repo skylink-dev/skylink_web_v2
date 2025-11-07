@@ -42,10 +42,10 @@ export default function RightImageLeftContent({ title, Content, order }) {
     slidesToScroll: 1,
     arrows: false,
     afterChange: index => setCurrentImage(index),
-    dotsClass: "slick-dots !bottom-2 sm:!bottom-4",
+    dotsClass: "slick-dots custom-dots-container",
     appendDots: dots => (
-      <div className="bg-white/90 backdrop-blur-sm rounded-full py-2 px-3 sm:py-2 sm:px-4 inline-flex shadow-sm mx-auto">
-        <ul className="!m-0 !p-0 flex gap-1 sm:gap-2 justify-center">{dots}</ul>
+      <div className="bg-white/90 backdrop-blur-sm rounded-full py-2 px-4 inline-flex shadow-sm mx-auto mt-4 sm:mt-6">
+        <ul className="!m-0 !p-0 flex gap-2 sm:gap-3 justify-center">{dots}</ul>
       </div>
     ),
     customPaging: i => (
@@ -113,8 +113,8 @@ export default function RightImageLeftContent({ title, Content, order }) {
                   key={index}
                   className={`group relative rounded-xl lg:rounded-2xl p-4 lg:p-6 transition-all duration-500 cursor-pointer border-2 ${
                     currentImage === index
-                      ? 'bg-white border-red-200 shadow-lg lg:shadow-xl scale-105'
-                      : 'bg-white/80 border-transparent hover:border-red-100 hover:shadow-md lg:hover:shadow-lg'
+                      ? 'bg-red-600 border-red-600 shadow-lg lg:shadow-xl scale-105 text-white'
+                      : 'bg-white/80 border-transparent hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-md lg:hover:shadow-lg'
                   }`}
                   onMouseEnter={() => setCurrentImage(index)}
                   whileHover={{ scale: 1.02 }}
@@ -123,7 +123,7 @@ export default function RightImageLeftContent({ title, Content, order }) {
                   {/* Active Indicator */}
                   {currentImage === index && (
                     <motion.div 
-                      className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-1 h-12 lg:h-16 bg-red-600 rounded-full"
+                      className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-1 h-12 lg:h-16 bg-white rounded-full"
                       layoutId="activeIndicator"
                     />
                   )}
@@ -132,8 +132,8 @@ export default function RightImageLeftContent({ title, Content, order }) {
                     <motion.div 
                       className={`p-2 lg:p-3 rounded-xl lg:rounded-2xl transition-all duration-300 flex-shrink-0 ${
                         currentImage === index
-                          ? 'bg-red-100 shadow-inner'
-                          : 'bg-gray-100 group-hover:bg-red-50'
+                          ? 'bg-white/20 shadow-inner'
+                          : 'bg-gray-100 group-hover:bg-white/20'
                       }`}
                       whileHover={{ rotate: 5 }}
                     >
@@ -142,16 +142,20 @@ export default function RightImageLeftContent({ title, Content, order }) {
                         width={40}
                         height={40}
                         alt={item.title}
-                        className="w-8 h-8 lg:w-12 lg:h-12 object-contain"
+                        className={`w-8 h-8 lg:w-12 lg:h-12 object-contain transition-all duration-300 ${
+                          currentImage === index ? 'filter brightness-0 invert' : ''
+                        }`}
                       />
                     </motion.div>
                     <div className="flex-1 min-w-0">
                       <h3 className={`text-lg lg:text-xl font-bold mb-1 lg:mb-2 transition-colors duration-300 ${
-                        currentImage === index ? 'text-red-700' : 'text-gray-900'
+                        currentImage === index ? 'text-white' : 'text-gray-900 group-hover:text-white'
                       }`}>
                         {item.title}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed text-sm lg:text-base">
+                      <p className={`leading-relaxed text-sm lg:text-base transition-colors duration-300 ${
+                        currentImage === index ? 'text-white/90' : 'text-gray-600 group-hover:text-white/90'
+                      }`}>
                         {item.description}
                       </p>
                     </div>
@@ -193,74 +197,89 @@ export default function RightImageLeftContent({ title, Content, order }) {
             </div>
           </div>
         ) : (
-          // Mobile & Tablet Version - Fully Responsive
+          // Mobile & Tablet Version - Fixed Dots Positioning
           <div className="px-1 sm:px-2">
-            <Slider {...sliderSettings} ref={sliderRef}>
-              {Content.map((item, index) => (
-                <motion.div
-                  key={`mobile-${index}`}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.05 }}
-                  transition={{ duration: 0.5 }}
-                  className="px-1 sm:px-2 pb-6 sm:pb-8"
-                >
-                  <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl border border-gray-100">
-                    {/* Image Section */}
-                    <div className="relative w-full h-48 sm:h-64 md:h-80">
-                      <Image
-                        src={item.img || '/assets/default-image.webp'}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                        priority
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 60vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                      
-                      {/* Mobile Image Indicator */}
-                      <div className="absolute top-4 right-4 bg-black/60 text-white rounded-full px-3 py-1">
-                        <span className="text-xs font-medium">
-                          {index + 1} / {Content.length}
-                        </span>
-                      </div>
-                    </div>
-                    
-                    {/* Content Section */}
-                    <div className="p-4 sm:p-6 md:p-8">
-                      <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
-                        <div className="bg-red-100 p-2 sm:p-3 rounded-xl sm:rounded-2xl flex-shrink-0">
-                          <Image
-                            src={item.icon}
-                            width={32}
-                            height={32}
-                            alt={item.title}
-                            className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
-                            sizes="32px"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2">
-                            {item.title}
-                          </h3>
-                          <p className="text-gray-600 leading-relaxed text-sm sm:text-base line-clamp-3 sm:line-clamp-4">
-                            {item.description}
-                          </p>
+            <div className="relative">
+              <Slider {...sliderSettings} ref={sliderRef}>
+                {Content.map((item, index) => (
+                  <motion.div
+                    key={`mobile-${index}`}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 0.5 }}
+                    className="px-1 sm:px-2 pb-2" // Reduced bottom padding
+                  >
+                    <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl border border-gray-100 mb-2"> {/* Added margin bottom */}
+                      {/* Image Section */}
+                      <div className="relative w-full h-48 sm:h-64 md:h-80">
+                        <Image
+                          src={item.img || '/assets/default-image.webp'}
+                          alt={item.title}
+                          fill
+                          className="object-cover"
+                          priority
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 60vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                        
+                        {/* Mobile Image Indicator */}
+                        <div className="absolute top-4 right-4 bg-black/60 text-white rounded-full px-3 py-1">
+                          <span className="text-xs font-medium">
+                            {index + 1} / {Content.length}
+                          </span>
                         </div>
                       </div>
                       
-                      {/* Mobile CTA Button */}
-                      <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-xl sm:rounded-2xl transition-all duration-300 active:scale-95 mt-2 sm:mt-4">
-                        Learn More
-                      </button>
+                      {/* Content Section */}
+                      <div className="p-4 sm:p-6 md:p-8">
+                        <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                          <div className="bg-red-100 p-2 sm:p-3 rounded-xl sm:rounded-2xl flex-shrink-0">
+                            <Image
+                              src={item.icon}
+                              width={32}
+                              height={32}
+                              alt={item.title}
+                              className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
+                              sizes="32px"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2">
+                              {item.title}
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed text-sm sm:text-base line-clamp-3 sm:line-clamp-4">
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        {/* Mobile CTA Button */}
+                        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-xl sm:rounded-2xl transition-all duration-300 active:scale-95 mt-2 sm:mt-4">
+                          Learn More
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </Slider>
+                  </motion.div>
+                ))}
+              </Slider>
+            </div>
           </div>
         )}
       </div>
+
+      {/* Custom CSS for dots positioning */}
+      <style jsx>{`
+        :global(.custom-dots-container) {
+          position: relative !important;
+          bottom: 0 !important;
+          margin-top: 1rem !important;
+        }
+        :global(.slick-dots) {
+          position: relative !important;
+          bottom: 0 !important;
+        }
+      `}</style>
     </section>
   )
 }

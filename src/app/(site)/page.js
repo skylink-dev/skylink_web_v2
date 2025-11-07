@@ -19,8 +19,9 @@ import {
 
 import HomeContactForm from "@/components/contact/ContactForm";
 import { useState } from "react";
-import ThreeBannerModern from "@/components/contact/ThreeBanner";
+
 import { homeIconiconList } from "@/data/home/homeIconImages";
+import ThreeBannerModern from "@/components/contact/ThreeBanner";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -75,7 +76,7 @@ export default function Home() {
       {/* <Banner content={bannerContent} /> */}
       {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
 
-      <ThreeBannerModern />
+      <ThreeBannerModern/>
       <FlexCard
         title="Speed You Need. Connection You Trust. Entertainment You Love"
         rightImage="/assets/skyplay-card-right.jpg"
