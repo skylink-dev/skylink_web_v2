@@ -1,19 +1,19 @@
-'use client';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+"use client";
+import Link from "next/link";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function SliderBanner() {
   const sliderMessages = [
     {
       text: `Prompt, friendly service you deserve backed by the Skylink Guarantee. Speak to a tech expert within five minutes or schedule a callback at a time you prefer.`,
-      linkText: 'Learn more about the Skylink Guarantee',
-      link: '#',
+      linkText: "Learn more about the Skylink Guarantee",
+      link: "#",
     },
     {
       text: `Avoid scams: Skylink will never call you for a one-time PIN.`,
-      linkText: 'Learn safety tips',
-      link: '#',
+      linkText: "Learn safety tips",
+      link: "#",
     },
   ];
 
@@ -50,7 +50,11 @@ export default function SliderBanner() {
             stroke="white"
             className="w-6 h-6"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
 
@@ -65,7 +69,7 @@ export default function SliderBanner() {
               transition={{ duration: 0.5 }}
             >
               <h3 className="text-lg sm:text-xl font-medium leading-relaxed">
-                {text}{' '}
+                {text}{" "}
                 <Link
                   href={link}
                   target="_blank"
@@ -93,7 +97,11 @@ export default function SliderBanner() {
             stroke="white"
             className="w-6 h-6"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>

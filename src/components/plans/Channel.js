@@ -9,13 +9,13 @@ export default function Channel() {
   const {
     planOptions: { tvChannel, pricing },
     activeTab,
+    activeSpeed,
     activeNestedTab,
     activeChannel,
     setActiveChannel,
-    setActiveTag,
     setActiveTab,
   } = usePlans();
-  const activePricing = pricing[activeTab]?.[activeNestedTab]?.tv;
+  const activePricing = pricing[activeSpeed]?.[activeNestedTab]?.tv;
   return (
     activeChannel && (
       <>

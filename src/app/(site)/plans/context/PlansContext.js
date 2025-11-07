@@ -182,6 +182,8 @@ export const PlanProvider = ({ children }) => {
   return (
     <PlansContext.Provider
       value={{
+        activeSpeed,
+        setActiveSpeed,
         planOptions,
         setPlanOptions,
         activeTab,

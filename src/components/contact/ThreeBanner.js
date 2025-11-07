@@ -89,7 +89,7 @@ export default function ThreeBannerModern() {
 
   const handleButtonClick = (slide) => {
     if (!isMounted) return;
-    
+
     if (slide.buttonLink === "/plans") {
       router.push("/plans");
     } else if (slide.buttonLink === "#register") {
@@ -151,7 +151,7 @@ export default function ThreeBannerModern() {
           >
             {displaySlides.map((slide, index) => (
               <div
-                key={`${slide.id}-${index}`}
+                key={index}
                 className="relative w-full h-full flex-shrink-0"
                 style={{ minWidth: "100%", maxWidth: "100%" }}
               >

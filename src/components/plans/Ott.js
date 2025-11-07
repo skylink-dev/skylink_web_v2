@@ -5,6 +5,7 @@ export default function Ott() {
   const {
     planOptions: { ottOptions, pricing },
     activeTab,
+    activeSpeed,
     activeNestedTab,
     activeOtts,
     setActiveOtts,
@@ -13,13 +14,13 @@ export default function Ott() {
   } = usePlans();
 
   const isDisabled = (option) => {
-    const activePricing = pricing[activeTab]?.[activeNestedTab]?.ott;
+    const activePricing = pricing[activeSpeed]?.[activeNestedTab]?.ott;
     const activeIndex = ottOptions.indexOf(activePricing);
     const optionIndex = ottOptions.indexOf(option);
     return optionIndex !== -1 && optionIndex < activeIndex;
   };
   const getLabel = (option) => {
-    const activePricing = pricing[activeTab]?.[activeNestedTab]?.ott;
+    const activePricing = pricing[activeSpeed]?.[activeNestedTab]?.ott;
     if (isDisabled(option)) return "";
     return activePricing === option ? " (Free)" : " (Add-on)";
   };
