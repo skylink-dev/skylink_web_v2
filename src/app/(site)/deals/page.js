@@ -17,38 +17,34 @@ import {
   faqData,
 } from "../../../data/deals";
 
-import Banner from "@/components/Banner";
-import ThreeColumnLayout from "@/components/ColumnLayout";
-import ContentBaseBanner from "@/components/ContentBaseBanner";
-import DualBannerSection from "@/components/DualBannerSection";
-import BGImageRightContent from "@/components/BGImageRightContent";
-import ButtonGroupSection from "@/components/ButtonGroupSection";
-import ImageAndContent from "@/components/ImageAndContent";
-import ImageBanner from "@/components/ImageBanner";
-import TwoColumnSection from "@/components/TwoColumnSection";
-import RightImageLeftContent from "@/components/RightImageLeftContents";
-import SimpleBanner from "@/components/SimpleBanner";
-import ColumnsWithImageComponent from "@/components/ColumnsWithImageComponent";
-import NewsLetter from "@/components/NewsLetter";
-import Faq from "@/components/Faq";
-import SingleFaq from "@/components/SingleFaq";
-
-// // Lazy load components
-// const Banner = dynamic(() => import('@/components/Banner'));
-// const ThreeColumnLayout = dynamic(() => import('@/components/ColumnLayout'));
-// const ContentBaseBanner = dynamic(() => import('@/components/ContentBaseBanner'));
-// const DualBannerSection = dynamic(() => import('@/components/DualBannerSection'));
-// const BGImageRightContent = dynamic(() => import('@/components/BGImageRightContent'));
-// const ButtonGroupSection = dynamic(() => import('@/components/ButtonGroupSection'));
-// const ImageAndContent = dynamic(() => import('@/components/ImageAndContent'));
-// const ImageBanner = dynamic(() => import('@/components/ImageBanner'));
-// const TwoColumnSection = dynamic(() => import('@/components/TwoColumnSection'));
-// const RightImageLeftContent = dynamic(() => import('@/components/RightImageLeftContents'));
-// const SimpleBanner = dynamic(() => import('@/components/SimpleBanner'));
-// const ColumnsWithImageComponent = dynamic(() => import('@/components/ColumnsWithImageComponent'));
-// const NewsLetter = dynamic(() => import('@/components/NewsLetter'));
-// const Faq = dynamic(() => import('@/components/Faq'));
-// const SingleFaq = dynamic(() => import('@/components/SingleFaq'));
+// Lazy load components
+const Banner = dynamic(() => import("@/components/Banner"));
+const ThreeColumnLayout = dynamic(() => import("@/components/ColumnLayout"));
+const ContentBaseBanner = dynamic(() =>
+  import("@/components/ContentBaseBanner")
+);
+const DualBannerSection = dynamic(() =>
+  import("@/components/DualBannerSection")
+);
+const BGImageRightContent = dynamic(() =>
+  import("@/components/BGImageRightContent")
+);
+const ButtonGroupSection = dynamic(() =>
+  import("@/components/ButtonGroupSection")
+);
+const ImageAndContent = dynamic(() => import("@/components/ImageAndContent"));
+const ImageBanner = dynamic(() => import("@/components/ImageBanner"));
+const TwoColumnSection = dynamic(() => import("@/components/TwoColumnSection"));
+const RightImageLeftContent = dynamic(() =>
+  import("@/components/RightImageLeftContents")
+);
+const SimpleBanner = dynamic(() => import("@/components/SimpleBanner"));
+const ColumnsWithImageComponent = dynamic(() =>
+  import("@/components/ColumnsWithImageComponent")
+);
+const NewsLetter = dynamic(() => import("@/components/NewsLetter"));
+const Faq = dynamic(() => import("@/components/Faq"));
+const SingleFaq = dynamic(() => import("@/components/SingleFaq"));
 
 export default function Page() {
   return (

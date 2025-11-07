@@ -25,37 +25,27 @@ import {
   faqData,
 } from "../../../data/tv";
 
-import Banner from "@/components/Banner";
-import CardColumn from "@/components/CardColumn";
-import ThreeColumnLayout from "@/components/ColumnLayout";
-import ContentBaseBanner from "@/components/ContentBaseBanner";
-import DynamicCarousel from "@/components/DynamicCarousel";
-import Faq from "@/components/Faq";
-import HalfColumnCard from "@/components/HalfColumnCard";
-import IconDetails from "@/components/IconDetails";
-import ImageAndContent from "@/components/ImageAndContent";
-import NewsLetter from "@/components/NewsLetter";
-import PricingPlans from "@/components/PricingPlans";
-import RectangleBanner from "@/components/RectangleBanner";
-import RightImageLeftContent from "@/components/RightImageLeftContents";
-import SimpleColumnSection from "@/components/SimpleColumnSection";
-import SingleFaq from "@/components/SingleFaq";
-
-// const Banner = dynamic(() => import('@/components/Banner'));
-// const CardColumn = dynamic(() => import('@/components/CardColumn'));
-// const ThreeColumnLayout = dynamic(() => import('@/components/ColumnLayout'));
-// const ContentBaseBanner = dynamic(() => import('@/components/ContentBaseBanner'));
-// const DynamicCarousel = dynamic(() => import('@/components/DynamicCarousel'));
-// const Faq = dynamic(() => import('@/components/Faq'));
-// const HalfColumnCard = dynamic(() => import('@/components/HalfColumnCard'));
-// const IconDetails = dynamic(() => import('@/components/IconDetails'));
-// const ImageAndContent = dynamic(() => import('@/components/ImageAndContent'));
-// const NewsLetter = dynamic(() => import('@/components/NewsLetter'));
-// const PricingPlans = dynamic(() => import('@/components/PricingPlans'));
-// const RectangleBanner = dynamic(() => import('@/components/RectangleBanner'));
-// const RightImageLeftContent = dynamic(() => import('@/components/RightImageLeftContents'));
-// const SimpleColumnSection = dynamic(() => import('@/components/SimpleColumnSection'));
-// const SingleFaq = dynamic(() => import('@/components/SingleFaq'));
+const Banner = dynamic(() => import("@/components/Banner"));
+const CardColumn = dynamic(() => import("@/components/CardColumn"));
+const ThreeColumnLayout = dynamic(() => import("@/components/ColumnLayout"));
+const ContentBaseBanner = dynamic(() =>
+  import("@/components/ContentBaseBanner")
+);
+const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
+const Faq = dynamic(() => import("@/components/Faq"));
+const HalfColumnCard = dynamic(() => import("@/components/HalfColumnCard"));
+const IconDetails = dynamic(() => import("@/components/IconDetails"));
+const ImageAndContent = dynamic(() => import("@/components/ImageAndContent"));
+const NewsLetter = dynamic(() => import("@/components/NewsLetter"));
+const PricingPlans = dynamic(() => import("@/components/PricingPlans"));
+const RectangleBanner = dynamic(() => import("@/components/RectangleBanner"));
+const RightImageLeftContent = dynamic(() =>
+  import("@/components/RightImageLeftContents")
+);
+const SimpleColumnSection = dynamic(() =>
+  import("@/components/SimpleColumnSection")
+);
+const SingleFaq = dynamic(() => import("@/components/SingleFaq"));
 
 export default function Page() {
   return (

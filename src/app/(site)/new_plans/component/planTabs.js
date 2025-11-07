@@ -21,7 +21,7 @@ export default function PlanTabs({ isMobile, plans }) {
       <div className="w-full flex flex-col items-center justify-center mb-8">
         <div className="w-full flex flex-row m-2 p-3 content-center justify-center">
           {" "}
-          <div className="flex w-full flex-row content-right justify-center  w-60 h-15 rounded-xl">
+          <div className="flex  flex-row content-right justify-center  w-60 h-15 rounded-xl">
             <img className="w-12 h-12" src={"/newassets/plan/mascot.png"} />
             {"   "}
             <span className=" ml-4 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-2xl p-4 justify-center text-xs md:xl text-center  text-white font-semibold content-center">
