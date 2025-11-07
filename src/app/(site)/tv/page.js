@@ -1,6 +1,6 @@
-'use client';
-import dynamic from 'next/dynamic';
-import React from 'react';
+"use client";
+import dynamic from "next/dynamic";
+import React from "react";
 
 import {
   providersData,
@@ -22,25 +22,40 @@ import {
   IconContent,
   threeColumnData,
   bannerContent,
-  faqData
+  faqData,
 } from "../../../data/tv";
 
+import Banner from "@/components/Banner";
+import CardColumn from "@/components/CardColumn";
+import ThreeColumnLayout from "@/components/ColumnLayout";
+import ContentBaseBanner from "@/components/ContentBaseBanner";
+import DynamicCarousel from "@/components/DynamicCarousel";
+import Faq from "@/components/Faq";
+import HalfColumnCard from "@/components/HalfColumnCard";
+import IconDetails from "@/components/IconDetails";
+import ImageAndContent from "@/components/ImageAndContent";
+import NewsLetter from "@/components/NewsLetter";
+import PricingPlans from "@/components/PricingPlans";
+import RectangleBanner from "@/components/RectangleBanner";
+import RightImageLeftContent from "@/components/RightImageLeftContents";
+import SimpleColumnSection from "@/components/SimpleColumnSection";
+import SingleFaq from "@/components/SingleFaq";
 
-const Banner = dynamic(() => import('@/components/Banner'));
-const CardColumn = dynamic(() => import('@/components/CardColumn'));
-const ThreeColumnLayout = dynamic(() => import('@/components/ColumnLayout'));
-const ContentBaseBanner = dynamic(() => import('@/components/ContentBaseBanner'));
-const DynamicCarousel = dynamic(() => import('@/components/DynamicCarousel'));
-const Faq = dynamic(() => import('@/components/Faq'));
-const HalfColumnCard = dynamic(() => import('@/components/HalfColumnCard'));
-const IconDetails = dynamic(() => import('@/components/IconDetails'));
-const ImageAndContent = dynamic(() => import('@/components/ImageAndContent'));
-const NewsLetter = dynamic(() => import('@/components/NewsLetter'));
-const PricingPlans = dynamic(() => import('@/components/PricingPlans'));
-const RectangleBanner = dynamic(() => import('@/components/RectangleBanner'));
-const RightImageLeftContent = dynamic(() => import('@/components/RightImageLeftContents'));
-const SimpleColumnSection = dynamic(() => import('@/components/SimpleColumnSection'));
-const SingleFaq = dynamic(() => import('@/components/SingleFaq'));
+// const Banner = dynamic(() => import('@/components/Banner'));
+// const CardColumn = dynamic(() => import('@/components/CardColumn'));
+// const ThreeColumnLayout = dynamic(() => import('@/components/ColumnLayout'));
+// const ContentBaseBanner = dynamic(() => import('@/components/ContentBaseBanner'));
+// const DynamicCarousel = dynamic(() => import('@/components/DynamicCarousel'));
+// const Faq = dynamic(() => import('@/components/Faq'));
+// const HalfColumnCard = dynamic(() => import('@/components/HalfColumnCard'));
+// const IconDetails = dynamic(() => import('@/components/IconDetails'));
+// const ImageAndContent = dynamic(() => import('@/components/ImageAndContent'));
+// const NewsLetter = dynamic(() => import('@/components/NewsLetter'));
+// const PricingPlans = dynamic(() => import('@/components/PricingPlans'));
+// const RectangleBanner = dynamic(() => import('@/components/RectangleBanner'));
+// const RightImageLeftContent = dynamic(() => import('@/components/RightImageLeftContents'));
+// const SimpleColumnSection = dynamic(() => import('@/components/SimpleColumnSection'));
+// const SingleFaq = dynamic(() => import('@/components/SingleFaq'));
 
 export default function Page() {
   return (
@@ -48,16 +63,28 @@ export default function Page() {
       <Banner content={bannerContent} />
       <ThreeColumnLayout columnCount={4} content={threeColumnData} />
       <IconDetails title="Explore Skylink IPTV" iconslist={IconContent} />
-      <SimpleColumnSection title="IPTV Built with You in Mind" columns={simplecolumncontent} />
-      <RectangleBanner backgroundImage="/assets/skyplay-map.jpg"
-  eyebrow="Introducing the Skylink Guarantee"
-  heading={`Pan-India reliable connectivity<br/>Unbeatable plans you’ll love.<br/>Support that puts you first.`}
-  description={`All guaranteed — or we’ll make it right. Available to all eligible customers across India at <span className="nowrap"> no extra cost</span>`}
-  buttonText="Learn More"
-  buttonLink="/guarantee" />
+      <SimpleColumnSection
+        title="IPTV Built with You in Mind"
+        columns={simplecolumncontent}
+      />
+      <RectangleBanner
+        backgroundImage="/assets/skyplay-map.jpg"
+        eyebrow="Introducing the Skylink Guarantee"
+        heading={`Pan-India reliable connectivity<br/>Unbeatable plans you’ll love.<br/>Support that puts you first.`}
+        description={`All guaranteed — or we’ll make it right. Available to all eligible customers across India at <span className="nowrap"> no extra cost</span>`}
+        buttonText="Learn More"
+        buttonLink="/guarantee"
+      />
       {/* <ImageAndContent image="/assets/skyplay-tv-7.jpg" content={contentData} /> */}
-      <HalfColumnCard titlecontent={titlecontentData} items={cardData} color="color-white" />
-      <CardColumn title="Get the device that gets you" repeatcontent={cartcontent} />
+      <HalfColumnCard
+        titlecontent={titlecontentData}
+        items={cardData}
+        color="color-white"
+      />
+      <CardColumn
+        title="Get the device that gets you"
+        repeatcontent={cartcontent}
+      />
       <PricingPlans
         heading="See how we stack up against the competition"
         subtitle="When it comes to your choice of the best deals, wire plans, and flexible payment options, we’ve got you covered."
@@ -75,8 +102,15 @@ export default function Page() {
       {/* <SimpleColumnSection title="Find more plans to fit your needs" columns={columnSaveContent2} /> */}
       {/* <ContentBaseBanner content={contentBaseBanner2} color="bg-gray-200" /> */}
       <NewsLetter content={contentNewsletter} />
-      <DynamicCarousel title="More articles and resources" slidesData={dynamicSlidesData} color="bg-gray-200" />
-      <Faq title="More reasons to love Skylink Fiber internet" content={faqSecondContent} />
+      <DynamicCarousel
+        title="More articles and resources"
+        slidesData={dynamicSlidesData}
+        color="bg-gray-200"
+      />
+      <Faq
+        title="More reasons to love Skylink Fiber internet"
+        content={faqSecondContent}
+      />
       {/* <SingleFaq content={faqData} /> */}
     </>
   );
