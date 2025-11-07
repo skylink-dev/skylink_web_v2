@@ -52,6 +52,8 @@ export default function Slider({ slides = [] }) {
     return `translateX(-${activeIndex * (100 / visibleSlides)}%)`;
   };
 
+  if (!slides.length) return null;
+
   return (
     <div
       className="flex justify-center items-center w-full py-4 md:py-6 lg:py-8 px-3 sm:px-4"
