@@ -89,7 +89,7 @@ export default function ThreeBannerModern() {
 
   const handleButtonClick = (slide) => {
     if (!isMounted) return;
-    
+
     if (slide.buttonLink === "/plans") {
       router.push("/plans");
     } else if (slide.buttonLink === "#register") {
@@ -151,7 +151,7 @@ export default function ThreeBannerModern() {
           >
             {displaySlides.map((slide, index) => (
               <div
-                key={`${slide.id}-${index}`}
+                key={index}
                 className="relative w-full h-full flex-shrink-0"
                 style={{ minWidth: "100%", maxWidth: "100%" }}
               >
@@ -162,6 +162,7 @@ export default function ThreeBannerModern() {
                       src={slide.imageLandscape}
                       alt={slide.title}
                       fill
+                      className="object-cover"
                       className="object-cover"
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1400px"
@@ -178,6 +179,7 @@ export default function ThreeBannerModern() {
                       src={slide.imagePortrait}
                       alt={slide.title}
                       fill
+                      className="object-cover"
                       className="object-cover"
                       priority={index === 0}
                       sizes="100vw"

@@ -19,7 +19,7 @@ export default function PlanTabs({ isMobile, plans }) {
     <div className="w-full">
       {/* TAB SWITCHER */}
       <div className="w-full flex flex-col items-center justify-center mb-8">
-        <div className="w-full flex flex-row m-2 p-3 content-center justify-center">
+        {/* <div className="w-full flex flex-row m-2 p-3 content-center justify-center">
           {" "}
           <div className="flex  flex-row content-right justify-center  w-60 h-15 rounded-xl">
             <img className="w-12 h-12" src={"/newassets/plan/mascot.png"} />
@@ -38,7 +38,7 @@ export default function PlanTabs({ isMobile, plans }) {
               src={"/newassets/plan/mascot.png"}
             />
           </div>
-        </div>
+        </div> */}
         {isMobile ? (
           <div className="flex items-center justify-center gap-2 w-full max-w-md">
             {tabs.map((tab, i) => (
