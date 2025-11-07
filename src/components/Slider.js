@@ -2,17 +2,14 @@
 import { useState, useEffect, useCallback } from "react";
 
 export default function Slider({ slides = [] }) {
-  // if (!slides.length) return null;
+  if (!slides || slides.length === 0) return null;
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -34,21 +31,10 @@ export default function Slider({ slides = [] }) {
 
   const handleDotClick = (index) => setActiveIndex(index);
 
-  // Calculate visible slides based on screen size
-  const getVisibleSlides = () => {
-    if (isMobile) return 1;
-    return 3;
-  };
-
-  const getSlideWidth = () => {
-    const visibleSlides = getVisibleSlides();
-    return `calc(${100 / visibleSlides}% - ${isMobile ? '8px' : '12px'})`;
-  };
-
-  const getTransformValue = () => {
-    const visibleSlides = getVisibleSlides();
-    return `translateX(-${activeIndex * (100 / visibleSlides)}%)`;
-  };
+  const visibleSlidesCount = isMobile ? 1 : 3;
+  const slideWidth = `calc(${100 / visibleSlidesCount}% - ${isMobile ? "8px" : "16px"})`;
+  const transformValue = `translateX(-${activeIndex * (100 / visibleSlidesCount)}%)`;
+  const showArrows = slides.length > visibleSlidesCount;
 
   return (
     <div
@@ -56,86 +42,91 @@ export default function Slider({ slides = [] }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Main Rounded Container */}
-      <div className="relative max-w-7xl w-full bg-[#ffeeec] rounded-2xl md:rounded-3xl shadow-md p-3 md:p-4 overflow-hidden">
-        
-        {/* Desktop Navigation Arrows - Always visible on desktop */}
-        {!isMobile && slides.length > 1 && (
+      <div className="relative max-w-5xl w-full bg-[#ffeeec] rounded-2xl md:rounded-3xl shadow-md p-4 md:p-6 overflow-hidden">
+
+        {/* Navigation Arrows */}
+        {showArrows && (
           <>
             <button
               onClick={goToPrevSlide}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 z-10 hover:scale-110 active:scale-95"
+              className="absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 left-3 sm:left-4"
               aria-label="Previous slide"
             >
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-5 h-5 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
+
             <button
               onClick={goToNextSlide}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 z-10 hover:scale-110 active:scale-95"
+              className="absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 right-3 sm:right-4"
               aria-label="Next slide"
             >
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-5 h-5 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </>
         )}
 
-        {/* Slides Container */}
+        {/* Slides */}
         <div
-          className="flex gap-6 transition-transform duration-700 ease-in-out"
-          style={{ transform: getTransformValue() }}
+          className="flex gap-4 md:gap-5 transition-transform duration-700 ease-in-out"
+          style={{ transform: transformValue }}
         >
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="flex-shrink-0 bg-white rounded-xl md:rounded-2xl shadow-sm p-3 md:p-3 flex flex-col transition-all duration-700 hover:shadow-md"
+              className="flex-shrink-0 bg-white rounded-lg md:rounded-xl shadow-sm p-4 md:p-5 flex flex-col transition-all duration-700 hover:shadow-md overflow-hidden"
               style={{
-                width: getSlideWidth(),
-                height: isMobile ? '480px' : '420px'
+                height: isMobile ? "auto" : "420px",
+                width: slideWidth,
               }}
             >
-              {/* Text content - Fixed space */}
-              <div className="space-y-2 mb-4 flex-shrink-0 z-10 relative"> {/* Added z-10 and relative */}
-                <p className="text-sm font-medium text-gray-600">
+              {/* Text */}
+              <div className="space-y-1 flex-shrink-0 h-[60px] overflow-visible z-10">
+                <p className="text-xs font-medium text-gray-600 leading-tight">
                   {slide.eyebrow}
                 </p>
                 <h3
-                  className="text-xl font-bold text-gray-900 line-clamp-2"
+                  className="text-sm md:text-base font-bold text-gray-900 line-clamp-2 leading-tight"
                   dangerouslySetInnerHTML={{ __html: slide.heading }}
                 ></h3>
-                <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                <p className="text-gray-600 text-xs leading-snug line-clamp-2">
                   {slide.description}
                 </p>
                 {slide.legal && (
-                  <p className="text-xs text-gray-400">{slide.legal}</p>
+                  <p className="text-[10px] text-gray-400 line-clamp-1 leading-tight">{slide.legal}</p>
                 )}
               </div>
 
-              {/* Image Section - Takes maximum space */}
-              <div className="flex-1 flex justify-center items-center min-h-0 p-1">
+              {/* Image */}
+              <div className="flex-shrink-0 flex justify-center items-center mt-3 mb-3" style={{ height: "200px" }}>
                 <div className="w-full h-full flex items-center justify-center">
                   <img
                     src={slide.image}
                     alt={slide.heading}
-                    className="w-full h-full object-contain max-w-full max-h-full"
+                    className="max-w-full max-h-full object-contain transform scale-125"
                     loading="lazy"
-                    style={{
-                      minWidth: '100%',
-                      minHeight: '100%',
-                      objectFit: 'contain'
-                    }}
                   />
                 </div>
               </div>
 
-              {/* Button - Fixed at bottom */}
-              <div className="flex-shrink-0 z-10 relative"> {/* Added z-10 and relative */}
+              {/* CTA Button — moves below image on mobile */}
+              <div className={`${isMobile ? "mt-3" : "mt-auto"}`}>
                 <a
                   href={slide.ctaHref}
-                  className="block bg-[#e60000] text-white py-3 rounded-full font-semibold text-sm text-center hover:bg-red-700 transition-all duration-300 hover:scale-105"
+                  className="block bg-[#e60000] text-white py-2.5 md:py-3 rounded-full font-semibold text-sm text-center hover:bg-red-700 transition-all duration-300 hover:scale-105"
                 >
                   {slide.ctaLabel || "Shop now"}
                 </a>
@@ -145,112 +136,20 @@ export default function Slider({ slides = [] }) {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center items-center mt-6 space-x-2">
+        <div className="flex justify-center items-center mt-5 space-x-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => handleDotClick(i)}
               className={`transition-all duration-300 ${
-                i === activeIndex 
-                  ? "bg-[#e60000] scale-110" 
+                i === activeIndex
+                  ? "bg-[#e60000] scale-110"
                   : "bg-gray-400/60 hover:bg-gray-500"
-              } ${
-                isMobile ? "h-2 w-8 rounded-full" : "h-2 w-8 rounded-full"
-              }`}
+              } h-2 w-8 rounded-full`}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
-
-        {/* Arrows - Desktop */}
-        {!isMobile && slides.length > getVisibleSlides() && (
-          <>
-            <button
-              onClick={goToPrevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300"
-              aria-label="Previous slide"
-            >
-              <svg
-                className="w-5 h-5 text-gray-700"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <button
-              onClick={goToNextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300"
-              aria-label="Next slide"
-            >
-              <svg
-                className="w-5 h-5 text-gray-700"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </>
-        )}
-
-        {/* Arrows - Mobile */}
-        {isMobile && slides.length > 1 && (
-          <>
-            <button
-              onClick={goToPrevSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300"
-              aria-label="Previous slide"
-            >
-              <svg
-                className="w-5 h-5 text-gray-700"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <button
-              onClick={goToNextSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300"
-              aria-label="Next slide"
-            >
-              <svg
-                className="w-5 h-5 text-gray-700"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </>
-        )}
       </div>
     </div>
   );
