@@ -24,23 +24,23 @@ export default function Header() {
     {
       label: "Download IPTV App",
       href: "https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk",
-      color: "bg-[#DB4437]",
+      color: "bg-gradient-to-r from-red-600 to-red-700",
       download: true,
     },
     {
       label: "Claim Your TV/OTT",
       href: "https://activations.skyplay.in/ott_subscription/login/",
-      color: "bg-[#F4B400]",
+      color: "bg-gradient-to-r from-green-600 to-green-700 bg-green-600/90",
     },
     {
       label: "Quick Pay",
       href: "https://www.skylinknet.in/customer_portal/account/sn",
-      color: "bg-[#0F9D58]",
+      color: "bg-gradient-to-r from-purple-600 to-purple-700 bg-purple-600/90",
     },
     {
       label: "View Our Plans",
       href: "/plans",
-      color: "bg-[#4285F4]",
+      color: "bg-gradient-to-r from-blue-600 to-blue-700 bg-blue-500/90",
     },
   ];
 
@@ -56,6 +56,26 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+      {isMobile ? (
+        <>
+          <div className="grid grid-cols-4 w-full h-full items-center m-0 p-0">
+            {buttons.map((btn, idx) => (
+              <Link
+                key={idx}
+                href={btn.href}
+                download={btn.download}
+                target={btn.download ? undefined : "_blank"}
+                className={`${btn.color} 
+    flex items-center justify-center w-full h-full 
+    text-center text-white text-sm font-medium p-2
+    transition-all duration-300 hover:brightness-90 hover:-translate-y-[1px] hover:shadow-md`}
+              >
+                <span className="text-center w-full">{btn.label}</span>
+              </Link>
+            ))}
+          </div>
+        </>
+      ) : null}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between py-3 px-4 lg:px-6">
         {/* LEFT SECTION: Logo + Menu */}
         <div className="flex items-center justify-between w-full lg:w-auto">

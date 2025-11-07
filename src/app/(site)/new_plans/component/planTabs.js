@@ -28,7 +28,7 @@ export default function PlanTabs({ isMobile, plans }) {
               Your Plan
             </span>
           </div>
-          <div className="flex flex-row  w-full w-60 h-15 rounded-xl">
+          <div className="flex flex-row  w-full  w-60 h-15 rounded-xl">
             {"   "}
             <span className=" ml-4 bg-gradient-to-r from-red-600 via-red-700 to-red-600 rounded-2xl p-4 justify-center text-xs md:xl text-center  text-white font-semibold content-center">
               Our Plan

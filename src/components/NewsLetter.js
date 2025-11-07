@@ -58,170 +58,143 @@ export default function NewsLetter({ content }) {
     };
 
     return (
-        <div style={{
-            maxWidth: '100%',
-            backgroundColor: '#f8f9fa',
-            padding: '2rem 0 1rem 0'
-        }}>
-            <div style={{
-                maxWidth: '1200px',
-                margin: '0 auto',
-                padding: '0 1rem',
-                position: 'relative'
-            }}>
-                <div>
-                    {/* Header Section */}
-                    <div style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
-                        marginBottom: '2rem'
-                    }}>
-                        <div style={{
-                            gridColumn: 'span 10',
-                            textAlign: 'center'
-                        }}>
-                            <h2 style={{
-                                margin: '0 0 0.5rem 0',
-                                fontSize: '2.5rem',
-                                fontWeight: '700',
-                                lineHeight: '1.2'
-                            }}>
-                                {content.title}
-                            </h2>
-                            <div style={{
-                                marginTop: '0.5rem',
-                                fontSize: '1rem',
-                                lineHeight: '1.5'
-                            }}>
-                                <p>{content.description}</p>
-                            </div>
-                        </div>
+        <div className="w-full bg-gradient-to-br from-gray-50 to-blue-50/30 py-12 sm:py-16 lg:py-20">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header Section */}
+                <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                            {content.title}
+                        </h2>
+                        <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                            {content.description}
+                        </p>
                     </div>
+                </div>
 
-                    {/* Form Section */}
-                    <div style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
-                        marginBottom: '1.5rem'
-                    }}>
-                        <div style={{
-                            gridColumn: 'span 6',
-                            width: '100%',
-                            maxWidth: '600px'
-                        }}>
-                            <form onSubmit={handleSubmit}>
-                                <div style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '1rem'
-                                }}>
-                                    <div style={{
-                                        flex: '1',
-                                        minWidth: '200px'
-                                    }}>
-                                        <div style={{
-                                            position: 'relative'
-                                        }}>
-                                            <input 
-                                                type="email" 
-                                                aria-label="Enter your email here"
-                                                autoComplete="email"
-                                                name="email"
-                                                placeholder="Enter your email here"
-                                                value={email}
-                                                onChange={(e) => {
-                                                    setEmail(e.target.value);
-                                                    // Clear message when user starts typing
-                                                    if (message.text) {
-                                                        setMessage({ text: '', type: '' });
-                                                    }
-                                                }}
-                                                onKeyPress={handleKeyPress}
-                                                disabled={isLoading}
-                                                style={{
-                                                    width: '100%',
-                                                    padding: '12px 16px',
-                                                    border: '2px solid #e5e7eb',
-                                                    borderRadius: '8px',
-                                                    fontSize: '16px',
-                                                    lineHeight: '1.5',
-                                                    backgroundColor: '#ffffff',
-                                                    transition: 'all 0.2s ease-in-out',
-                                                    boxSizing: 'border-box'
-                                                }}
-                                            />
+                {/* Form Section */}
+                <div className="flex justify-center mb-8 sm:mb-10">
+                    <div className="w-full max-w-2xl lg:max-w-3xl">
+                        <form onSubmit={handleSubmit} className="w-full">
+                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-3 w-full">
+                                {/* Email Input */}
+                                <div className="flex-1 min-w-0">
+                                    <div className="relative">
+                                        <input 
+                                            type="email" 
+                                            aria-label="Enter your email here"
+                                            autoComplete="email"
+                                            name="email"
+                                            placeholder="Enter your email address"
+                                            value={email}
+                                            onChange={(e) => {
+                                                setEmail(e.target.value);
+                                                // Clear message when user starts typing
+                                                if (message.text) {
+                                                    setMessage({ text: '', type: '' });
+                                                }
+                                            }}
+                                            onKeyPress={handleKeyPress}
+                                            disabled={isLoading}
+                                            className="w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg border-2 border-gray-200 rounded-xl sm:rounded-2xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+                                        />
+                                        {/* Email Icon */}
+                                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                            </svg>
                                         </div>
                                     </div>
-                                    <div style={{
-                                        display: 'inline-flex',
-                                        flexShrink: 0
-                                    }}>
-                                        <button 
-                                            type="submit"
-                                            disabled={isLoading}
-                                            style={{
-                                                padding: '12px 24px',
-                                                backgroundColor: isLoading ? '#6b7280' : '#dc2626',
-                                                color: 'white',
-                                                border: 'none',
-                                                borderRadius: '8px',
-                                                fontSize: '16px',
-                                                fontWeight: '600',
-                                                cursor: isLoading ? 'not-allowed' : 'pointer',
-                                                transition: 'all 0.2s ease-in-out',
-                                                width: '100%',
-                                                minWidth: '140px'
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                if (!isLoading) {
-                                                    e.target.style.backgroundColor = '#b91c1c';
-                                                }
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                if (!isLoading) {
-                                                    e.target.style.backgroundColor = '#dc2626';
-                                                }
-                                            }}
-                                        >
-                                            {isLoading ? 'Subscribing...' : 'Sign me up!'}
-                                        </button>
-                                    </div>
                                 </div>
-                            </form>
 
-                            {/* Message Display */}
-                            {message.text && (
-                                <div style={{
-                                    marginTop: '1rem',
-                                    padding: '12px 16px',
-                                    borderRadius: '8px',
-                                    backgroundColor: message.type === 'success' ? '#dcfce7' : '#fef2f2',
-                                    border: `1px solid ${message.type === 'success' ? '#bbf7d0' : '#fecaca'}`,
-                                    color: message.type === 'success' ? '#166534' : '#dc2626',
-                                    fontSize: '14px',
-                                    textAlign: 'center'
-                                }}>
+                                {/* Submit Button */}
+                                <div className="flex-shrink-0">
+                                    <button 
+                                        type="submit"
+                                        disabled={isLoading}
+                                        className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold text-base sm:text-lg rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-lg min-w-[140px] sm:min-w-[160px]"
+                                    >
+                                        {isLoading ? (
+                                            <div className="flex items-center justify-center gap-2">
+                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                                <span>Subscribing...</span>
+                                            </div>
+                                        ) : (
+                                            <div className="flex items-center justify-center gap-2">
+                                                <span>Sign me up!</span>
+                                                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                </svg>
+                                            </div>
+                                        )}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        {/* Message Display */}
+                        {message.text && (
+                            <motion.div 
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className={`mt-4 p-4 rounded-xl border-2 text-center font-medium ${
+                                    message.type === 'success' 
+                                        ? 'bg-green-50 border-green-200 text-green-800' 
+                                        : 'bg-red-50 border-red-200 text-red-800'
+                                }`}
+                            >
+                                <div className="flex items-center justify-center gap-2">
+                                    {message.type === 'success' ? (
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                        </svg>
+                                    ) : (
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                        </svg>
+                                    )}
                                     {message.text}
                                 </div>
-                            )}
-                        </div>
+                            </motion.div>
+                        )}
                     </div>
+                </div>
 
-                    {/* Terms Section */}
-                    <div style={{
-                        display: 'flex',
-                        flexWrap: 'wrap'
-                    }}>
-                        <div style={{
-                            paddingTop: '0',
-                            textAlign: 'center',
-                            gridColumn: 'span 10',
-                            margin: '0 auto'
-                        }}>
+                {/* Additional Info Section */}
+                <div className="text-center">
+                    <div className="max-w-2xl mx-auto">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm sm:text-base text-gray-500">
+                            {/* Trust Badge */}
+                            <div className="flex items-center gap-2">
+                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                                <span>No spam ever</span>
+                            </div>
                             
+                            <div className="hidden sm:block w-px h-4 bg-gray-300"></div>
+                            
+                            <div className="flex items-center gap-2">
+                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                                <span>Unsubscribe anytime</span>
+                            </div>
+                            
+                            <div className="hidden sm:block w-px h-4 bg-gray-300"></div>
+                            
+                            <div className="flex items-center gap-2">
+                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                                <span>Weekly updates</span>
+                            </div>
                         </div>
+
+                        {/* Privacy Note */}
+                        <p className="mt-4 text-xs sm:text-sm text-gray-400 max-w-md mx-auto">
+                            By subscribing, you agree to our Privacy Policy and consent to receive updates from Skylink.
+                        </p>
                     </div>
                 </div>
             </div>

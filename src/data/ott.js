@@ -4,7 +4,7 @@
   firstcta: "Claim OTT Access",
   offercontent: "Limited Time Offer — Stream blockbuster movies, binge-hit series, live sports, and more on 18+ top OTT platforms. Terms apply.",
   offercta: "",
-  secondcta: "Call(+91)9944199445",
+  secondcta: "Call +91 99441 99445",
   href: "tel:(+91)9944199445"}
   export const iconMenuData = [{
     id: 1,
