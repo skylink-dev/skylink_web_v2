@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["MyFont", "ui-sans-serif", "system-ui"],
-        myfont: ["MyFont", "sans-serif"], // optional custom alias
+        myfont: ["MyFont", "sans-serif"],
       },
     },
   },

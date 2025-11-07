@@ -119,7 +119,7 @@ export default function ContactForm({ onClose }) {
           </svg>
           <div className="flex-1">
             <h4 className="font-semibold text-sm">Registration Successful!</h4>
-            <p className="text-xs opacity-90">We'll reach out soon.</p>
+            <p className="text-xs opacity-90">We&apos;ll reach out soon.</p>
           </div>
           <button
             onClick={() => setShowToast(false)}
@@ -241,9 +241,13 @@ export default function ContactForm({ onClose }) {
                 </div>
 
                 {/* Captcha */}
-                <div className={`border-2 rounded-lg p-3 transition-all ${
-                  captchaLoading ? 'border-red-500 bg-red-50' : 'border-gray-300 bg-gray-50'
-                }`}>
+                <div
+                  className={`border-2 rounded-lg p-3 transition-all ${
+                    captchaLoading
+                      ? "border-red-500 bg-red-50"
+                      : "border-gray-300 bg-gray-50"
+                  }`}
+                >
                   <label className="flex items-center gap-3 cursor-pointer">
                     <div className="relative">
                       <input
@@ -253,20 +257,32 @@ export default function ContactForm({ onClose }) {
                         disabled={captchaLoading}
                         className="sr-only"
                       />
-                      <div className={`w-5 h-5 border-2 rounded flex items-center justify-center transition-all ${
-                        formData.captcha 
-                          ? 'bg-red-600 border-red-600' 
-                          : 'bg-white border-gray-400'
-                      }`}>
+                      <div
+                        className={`w-5 h-5 border-2 rounded flex items-center justify-center transition-all ${
+                          formData.captcha
+                            ? "bg-red-600 border-red-600"
+                            : "bg-white border-gray-400"
+                        }`}
+                      >
                         {formData.captcha && (
-                          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          <svg
+                            className="w-3 h-3 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={3}
+                              d="M5 13l4 4L19 7"
+                            />
                           </svg>
                         )}
                       </div>
                     </div>
                     <span className="text-gray-700 text-sm font-medium">
-                      I'm not a robot *
+                      I&apos;m not a robot *
                     </span>
                     {captchaLoading && (
                       <div className="ml-auto w-4 h-4 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>

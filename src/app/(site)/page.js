@@ -109,7 +109,7 @@ export default function Home() {
       />
       <IconDetails title="How can we help you today?" iconslist={IconContent} />
       <NewsLetter content={contentNewsletter} />
-      
+
       {/* <IconCard titleData={IcontitleData} cardData={iconCard} />
       <Slider
         title="Upgrade Your Home Tech Experience"
