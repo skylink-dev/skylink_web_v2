@@ -49,7 +49,7 @@ const SingleFaq = dynamic(() => import("@/components/SingleFaq"));
 export default function Page() {
   return (
     <>
-      <Banner content={bannerContent} />
+      {/* <Banner content={bannerContent} />
       <ThreeColumnLayout columnCount={4} content={threeColumnData} />
       <ContentBaseBanner content={contentBaseData} color="bgcolor" />
       <DualBannerSection />
@@ -70,7 +70,7 @@ export default function Page() {
       <ColumnsWithImageComponent />
       <NewsLetter content={contentNewsletter} />
       <Faq title="Frequently asked questions" content={faqContent} />
-      <SingleFaq content={faqData} />
+      <SingleFaq content={faqData} /> */}
     </>
   );
 }
