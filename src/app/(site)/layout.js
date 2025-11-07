@@ -34,6 +34,10 @@ export default function RootLayout({ children }) {
           crossOrigin="true"
         />
         <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+        <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:wght@100..900&display=swap"
           rel="stylesheet"
         />
@@ -70,7 +74,7 @@ export default function RootLayout({ children }) {
         <PageLoaderWrapper>
           <Providers>
             <Header />
-            <main className="min-h-screen mt-25 lg:mt-20">{children}</main>
+            <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
             <BeforeFooter />
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />

@@ -167,7 +167,7 @@ export const PlanProvider = ({ children }) => {
       ],
     };
   }
-  const [activeTab, setActiveTab] = useState(planOptions.speeds[1]);
+  const [activeSpeed, setActiveSpeed] = useState(planOptions.speeds[0]);
   const [checkCondition, setCheckCondition] = useState(true);
   const [activeNestedTab, setActiveNestedTab] = useState(
     planOptions.billedCycle[0]
@@ -177,6 +177,7 @@ export const PlanProvider = ({ children }) => {
   const [price, setPrice] = useState(
     planOptions.pricing?.["30 Mbps"]?.["Monthly"]?.price || 0
   );
+  const [activeTab, setActiveTab] = useState("Customize Plan");
   const [activeTag, setActiveTag] = useState("Fixed Plan");
   return (
     <PlansContext.Provider

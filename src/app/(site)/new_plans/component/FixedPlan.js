@@ -62,7 +62,13 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
         setIsOpen={setIsContactOpen}
       />
 
-      <div className="w-full bg-white py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className="w-full bg-red-100 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+        <div className="w-full  m-0">
+          <h2 className="w-full h-2 text-center text-2xl text-gray-00  font-semibold mb-2">
+            OUR PLAN
+          </h2>
+        </div>
+
         {/* 🔘 Validity Selection */}
 
         {/* ⚡ Speed Selection */}
@@ -70,7 +76,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
           <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
             Choose Your BandWidth
           </h3>
-          <div className="grid grid-cols-7 sm:grid-cols-7 gap-1">
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
             {speedOptions.map((speed) => (
               <button
                 key={speed}
@@ -96,8 +102,8 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
           </div>
         </div>
 
-        <div>
-          <h3 className="text-gray-800 text-sm font-semibold mb-2">
+        <div className="bg-red-50 m-0 p-2 rounded-xl">
+          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
             Choose Your Billing Cycle
           </h3>
           <div className="grid grid-cols-4 sm:grid-cols-4 gap-3">
@@ -144,22 +150,48 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
               {filteredPlans.map((plan, index) => {
                 const isSelectedValidity = plan.validity === selectedValidity;
                 const isSelectedSpeed = plan.internetSpeed === selectedSpeed;
-
+                let discountIndex = 0;
+                plan.validity.forEach((element, index) => {
+                  if (element === selectedValidity) {
+                    console.log(index);
+                    discountIndex = index;
+                  }
+                });
+                const discount = plan.discount[discountIndex];
+                console.log(discount);
                 return (
                   <div
                     key={plan.sno || index}
-                    className={`flex flex-col bg-white bg-gradient-to-r from-pink-100/20 to-blue-100/20  border rounded-xl p-5  hover:shadow-2xl transition-all duration-200 inset-shadow-sm  ${
+                    className={`relative  flex flex-col overflow-hidden bg-white bg-gradient-to-r from-pink-100/20 to-blue-100/20  border rounded-xl p-5  hover:shadow-2xl transition-all duration-200 inset-shadow-sm  ${
                       isSelectedValidity && isSelectedSpeed
                         ? "border-red-500 ring-2 ring-red-200"
                         : "border-gray-200"
                     }`}
                   >
+                    {discount ? (
+                      <>
+                        {/* Ribbon */}
+                        <div
+                          className="absolute top-5 -left-10 w-40 h-8 
+             bg-gradient-to-r from-[#e01212] to-red-700 
+             text-white text-center font-semibold text-sm tracking-wide 
+             flex items-center justify-center 
+             transform -rotate-45 
+             shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
+             before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/10 before:to-transparent 
+             rounded-sm"
+                        >
+                          {discount}% OFF
+                        </div>
+                      </>
+                    ) : null}
+
                     {/* 💰 Save Tag */}
-                    {plan.discount && (
+                    {/* {plan.discount && (
                       <div className="inline-block mb-3 bg-gradient-to-r from-pink-500 to-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-md shadow-sm">
                         Save ₹{plan.discount}
                       </div>
-                    )}
+                    )} */}
 
                     {/* 🏷️ Title */}
                     <h2 className=" flex flex-col  text-lg font-semibold text-gray-900 mb-1">

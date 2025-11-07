@@ -16,6 +16,7 @@ export default function CustomPlans() {
     setActiveChannel,
     activeOtts,
     setActiveTag,
+    setActiveTab,
   } = usePlans();
 
   const billingCycleMultipliers = {
@@ -247,6 +248,7 @@ export default function CustomPlans() {
             onClick={() => {
               isOpenChange((prev) => !prev);
               setActiveTag("Customize Plan");
+              setActiveTab("Customize Plan");
             }}
           >
             <span className="plan-title">Selected Plan Details</span>{" "}
