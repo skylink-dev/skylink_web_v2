@@ -14,12 +14,6 @@ export default function Page() {
     <>
       <SliderBanner />
       <SupportVideos />
-      {/* <SupportSection
-        title="Welcome to Skylink Support"
-        subtitle="Want personalized help?"
-        cta="Sign in"
-        supports={supportscontent}
-      /> */}
       <CustomSearch />
       <ContactDetails />
     </>
