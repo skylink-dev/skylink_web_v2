@@ -361,7 +361,7 @@ export default function page() {
 
   return (
     <>
-      {/* <RectangleBanner
+      <RectangleBanner
         backgroundImage="/assets/benefits-of-partnering.jpg"
         eyebrow="Blazing Fast, Always Reliable, Truly Affordable!"
         heading={`Benefits of Partnering`}
@@ -412,7 +412,7 @@ export default function page() {
       <Faq
         title="More reasons to love Skylink Fiber internet"
         content={faqSecondContent}
-      /> */}
+      />
     </>
   );
 }

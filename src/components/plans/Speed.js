@@ -11,6 +11,8 @@ export default function Speed() {
     setActiveChannel,
     setActiveOtts,
     setActiveTag,
+    setActiveSpeed,
+    activeSpeed,
   } = usePlans();
 
   return (
@@ -25,10 +27,11 @@ export default function Speed() {
               <div
                 key={speed}
                 className={`mpbstab ${
-                  speed === activeTab ? "mbps-active" : ""
+                  speed === activeSpeed ? "mbps-active" : ""
                 }`}
                 onClick={() => {
-                  setActiveTab(speed);
+                  // setActiveTab(speed);
+                  setActiveSpeed(speed);
                   setActiveNestedTab(activeNestedTab);
                   setActiveChannel(
                     (prevChannel) =>
