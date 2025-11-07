@@ -47,7 +47,7 @@ const SpeedBanner = dynamic(() => import("@/components/SpeedBanner"));
 export default function Page() {
   return (
     <>
-      <HeroBanner content={HeroContent} />
+      {/* <HeroBanner content={HeroContent} />
       <AvailabilityComponents />
       <SpeedBanner
         color="color-white"
@@ -95,7 +95,7 @@ export default function Page() {
         content={faqSecondContent}
       />
       <Faq title="You’ve asked. We’ve answered." content={faqContent} />
-      <Whereat />
+      <Whereat /> */}
       {/*
       
      
