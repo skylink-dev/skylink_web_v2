@@ -62,7 +62,13 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
         setIsOpen={setIsContactOpen}
       />
 
-      <div className="w-full bg-white py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className="w-full bg-red-100 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+        <div className="w-full  m-0">
+          <h2 className="w-full h-2 text-center text-2xl text-gray-00  font-semibold mb-2">
+            OUR PLAN
+          </h2>
+        </div>
+
         {/* 🔘 Validity Selection */}
 
         {/* ⚡ Speed Selection */}
@@ -70,7 +76,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
           <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
             Choose Your BandWidth
           </h3>
-          <div className="grid grid-cols-7 sm:grid-cols-7 gap-1">
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
             {speedOptions.map((speed) => (
               <button
                 key={speed}

@@ -8,6 +8,7 @@ export default function BilledCycle() {
     activeNestedTab,
     setActiveNestedTab,
     checkCondition,
+    setActiveTab,
     setActiveTag,
   } = usePlans();
   return (
@@ -26,7 +27,8 @@ export default function BilledCycle() {
                     }`}
                     onClick={() => {
                       setActiveNestedTab(option);
-                      setActiveTag("Customize Plan");
+                      // setActiveTag("Customize Plan");
+                      setActiveTab("Customize Plan");
                     }}
                   >
                     {option === "Yearly" ? "Annual" : option}{" "}

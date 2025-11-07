@@ -70,7 +70,7 @@ export default function RootLayout({ children }) {
         <PageLoaderWrapper>
           <Providers>
             <Header />
-            <main className="min-h-screen mt-25 lg:mt-20">{children}</main>
+            <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
             <BeforeFooter />
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
