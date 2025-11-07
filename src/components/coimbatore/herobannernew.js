@@ -1,6 +1,6 @@
 "use client";
-import { useState } from 'react';
-import ContactForm from '../contact/ContactForm';
+import { useState } from "react";
+import ContactForm from "../contact/ContactForm";
 
 export default function HeroBanner() {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -13,7 +13,7 @@ export default function HeroBanner() {
 
       <div className="relative max-w-6xl mx-auto px-8">
         <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl mb-8 text-slate-900 tracking-tight leading-tight">
-          Coimbatore's Premium{" "}
+          Coimbatore&apos;s Premium{" "}
           <span className="inline-block animate-pulse-text bg-gradient-to-br from-red-600 to-red-500 bg-clip-text text-transparent">
             High-Speed Fibernet
           </span>{" "}
@@ -41,9 +41,7 @@ export default function HeroBanner() {
               <div className="text-2xl font-bold text-red-600 mb-2">
                 {stat.number}
               </div>
-              <div className="text-slate-500 font-semibold">
-                {stat.label}
-              </div>
+              <div className="text-slate-500 font-semibold">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -60,19 +58,25 @@ export default function HeroBanner() {
       {/* Custom styles for animations */}
       <style jsx>{`
         @keyframes pulseText {
-          0%, 100% { 
-            transform: scale(1); 
+          0%,
+          100% {
+            transform: scale(1);
             text-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
           }
-          50% { 
-            transform: scale(1.02); 
+          50% {
+            transform: scale(1.02);
             text-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
           }
         }
 
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
         }
 
         .animate-pulse-text {
@@ -88,7 +92,9 @@ export default function HeroBanner() {
         }
       `}</style>
 
-      {showContactForm && <ContactForm onClose={() => setShowContactForm(false)} />}
+      {showContactForm && (
+        <ContactForm onClose={() => setShowContactForm(false)} />
+      )}
     </section>
   );
 }

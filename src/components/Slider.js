@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 export default function Slider({ slides = [] }) {
-  if (!slides.length) return null;
+  // if (!slides.length) return null;
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -12,10 +12,10 @@ export default function Slider({ slides = [] }) {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const goToNextSlide = useCallback(() => {
@@ -23,7 +23,7 @@ export default function Slider({ slides = [] }) {
   }, [slides.length]);
 
   const goToPrevSlide = useCallback(() => {
-    setActiveIndex((prev) => prev === 0 ? slides.length - 1 : prev - 1);
+    setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   }, [slides.length]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function Slider({ slides = [] }) {
 
   const getSlideWidth = () => {
     const visibleSlides = getVisibleSlides();
-    return `calc(${100 / visibleSlides}% - ${isMobile ? '8px' : '12px'})`;
+    return `calc(${100 / visibleSlides}% - ${isMobile ? "8px" : "12px"})`;
   };
 
   const getTransformValue = () => {
@@ -60,7 +60,6 @@ export default function Slider({ slides = [] }) {
     >
       {/* Main Rounded Container */}
       <div className="relative max-w-7xl w-full bg-[#ffeeec] rounded-2xl md:rounded-3xl shadow-md p-3 md:p-4 overflow-hidden">
-        
         {/* Desktop Navigation Arrows - Always visible on desktop */}
         {!isMobile && slides.length > 1 && (
           <>
@@ -69,8 +68,18 @@ export default function Slider({ slides = [] }) {
               className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 z-10 hover:scale-110 active:scale-95"
               aria-label="Previous slide"
             >
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-4 h-4 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
             <button
@@ -78,8 +87,18 @@ export default function Slider({ slides = [] }) {
               className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 z-10 hover:scale-110 active:scale-95"
               aria-label="Next slide"
             >
-              <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-4 h-4 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </>
@@ -98,7 +117,7 @@ export default function Slider({ slides = [] }) {
               className="flex-shrink-0 bg-white rounded-xl md:rounded-2xl shadow-sm p-3 md:p-3 flex flex-col transition-all duration-700 hover:shadow-md"
               style={{
                 width: getSlideWidth(),
-                height: isMobile ? '480px' : '420px'
+                height: isMobile ? "480px" : "420px",
               }}
             >
               {/* Text Section - Minimal space */}
@@ -127,9 +146,9 @@ export default function Slider({ slides = [] }) {
                     className="w-full h-full object-contain max-w-full max-h-full"
                     loading="lazy"
                     style={{
-                      minWidth: '100%',
-                      minHeight: '100%',
-                      objectFit: 'contain'
+                      minWidth: "100%",
+                      minHeight: "100%",
+                      objectFit: "contain",
                     }}
                   />
                 </div>
@@ -153,12 +172,10 @@ export default function Slider({ slides = [] }) {
               key={i}
               onClick={() => handleDotClick(i)}
               className={`transition-all duration-300 ${
-                i === activeIndex 
-                  ? "bg-[#e60000] scale-110" 
+                i === activeIndex
+                  ? "bg-[#e60000] scale-110"
                   : "bg-gray-400/60 hover:bg-gray-500"
-              } ${
-                isMobile ? "h-2 w-8 rounded-full" : "h-2 w-8 rounded-full"
-              }`}
+              } ${isMobile ? "h-2 w-8 rounded-full" : "h-2 w-8 rounded-full"}`}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
@@ -172,8 +189,18 @@ export default function Slider({ slides = [] }) {
               className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 z-10 hover:scale-110 active:scale-95"
               aria-label="Previous slide"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-5 h-5 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
             <button
@@ -181,8 +208,18 @@ export default function Slider({ slides = [] }) {
               className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 z-10 hover:scale-110 active:scale-95"
               aria-label="Next slide"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                className="w-5 h-5 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </>
