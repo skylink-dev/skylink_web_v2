@@ -1,11 +1,11 @@
-'use client'
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+"use client";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function SingleFaq({ content }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleFaq = () => setIsOpen(prev => !prev);
+  const toggleFaq = () => setIsOpen((prev) => !prev);
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,14 +18,15 @@ export default function SingleFaq({ content }) {
           <div className="flex-1 pr-6">
             <span className="font-bold text-gray-900">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 leading-tight">
-                Stay connected with high-quality internet and TV services from Skylink
+                Stay connected with high-quality internet and TV services from
+                Skylink
               </h2>
             </span>
             <p className="text-gray-600 text-sm sm:text-base mt-2 hidden sm:block">
               Click to explore our comprehensive services and solutions
             </p>
           </div>
-          
+
           {/* Animated Chevron Icon */}
           <div className="flex-shrink-0 mt-1">
             <motion.div
@@ -33,13 +34,18 @@ export default function SingleFaq({ content }) {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-sm"
             >
-              <svg 
-                className="w-4 h-4 sm:w-5 sm:h-5 text-white" 
-                fill="none" 
-                stroke="currentColor" 
+              <svg
+                className="w-4 h-4 sm:w-5 sm:h-5 text-white"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={3}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </motion.div>
           </div>
@@ -49,9 +55,9 @@ export default function SingleFaq({ content }) {
           {isOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
+              animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="overflow-hidden"
             >
               <div className="p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-gray-50/50 to-red-50/30">
@@ -67,8 +73,18 @@ export default function SingleFaq({ content }) {
                     >
                       <div className="mb-4">
                         <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          <svg
+                            className="w-6 h-6 text-white"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
                           </svg>
                         </div>
                         <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-200">
@@ -78,18 +94,28 @@ export default function SingleFaq({ content }) {
                           {item.content}
                         </div>
                       </div>
-                      
+
                       {/* Learn More Link */}
                       <button className="text-red-600 font-semibold text-sm hover:text-red-700 transition-colors duration-200 flex items-center gap-1 group-hover:gap-2">
                         Learn more
-                        <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <svg
+                          className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
                         </svg>
                       </button>
                     </motion.div>
                   ))}
                 </div>
-                
+
                 {/* Full width items for remaining content */}
                 {content.length > 4 && (
                   <motion.div
@@ -104,13 +130,26 @@ export default function SingleFaq({ content }) {
                           key={index + 4}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: (index + 1) * 0.1 }}
+                          transition={{
+                            duration: 0.4,
+                            delay: (index + 1) * 0.1,
+                          }}
                           className="bg-white rounded-xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 group hover:border-red-200"
                         >
                           <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors duration-200 flex items-center gap-3">
                             <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center">
-                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              <svg
+                                className="w-5 h-5 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M5 13l4 4L19 7"
+                                />
                               </svg>
                             </div>
                             {item.title}
@@ -118,7 +157,7 @@ export default function SingleFaq({ content }) {
                           <div className="text-gray-600 leading-relaxed text-base">
                             {item.content}
                           </div>
-                          
+
                           {/* Contact CTA for full-width items */}
                           <div className="mt-6 flex flex-col sm:flex-row gap-3">
                             <button className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg active:scale-95">
@@ -133,7 +172,7 @@ export default function SingleFaq({ content }) {
                     </div>
                   </motion.div>
                 )}
-                
+
                 {/* Bottom CTA Section */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -146,7 +185,8 @@ export default function SingleFaq({ content }) {
                       Ready to experience better connectivity?
                     </h3>
                     <p className="text-red-100 text-lg mb-6 max-w-2xl mx-auto">
-                      Join thousands of satisfied customers who trust Skylink for their internet and TV needs.
+                      Join thousands of satisfied customers who trust Skylink
+                      for their internet and TV needs.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <button className="bg-white text-red-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-xl transition-all duration-200 hover:shadow-lg active:scale-95">
@@ -164,5 +204,5 @@ export default function SingleFaq({ content }) {
         </AnimatePresence>
       </div>
     </div>
-  )
+  );
 }
