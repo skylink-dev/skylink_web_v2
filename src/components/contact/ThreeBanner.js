@@ -7,7 +7,14 @@ import dynamic from "next/dynamic";
 // Dynamically import ContactForm (no SSR)
 const ContactForm = dynamic(() => import("./ContactForm"), {
   ssr: false,
-  loading: () => null,
+  loading: () => (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-xl">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+        <p className="mt-4 text-gray-600">Loading form...</p>
+      </div>
+    </div>
+  ),
 });
 
 export default function ThreeBannerModern() {
@@ -18,6 +25,7 @@ export default function ThreeBannerModern() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const sliderRef = useRef(null);
   const [displaySlides, setDisplaySlides] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   const slides = [
     {
@@ -52,56 +60,75 @@ export default function ThreeBannerModern() {
     },
   ];
 
+  // Initialize component
+  useEffect(() => {
+    setIsMounted(true);
+    setDisplaySlides([...slides, slides[0]]);
+  }, []);
+
   const nextSlide = useCallback(() => {
-    if (isTransitioning) return;
+    if (isTransitioning || !isMounted) return;
     setIsTransitioning(true);
     setCurrentSlide((prev) => prev + 1);
     setTimeout(() => setIsTransitioning(false), 800);
-  }, [isTransitioning]);
+  }, [isTransitioning, isMounted]);
 
   const prevSlide = useCallback(() => {
-    if (isTransitioning) return;
+    if (isTransitioning || !isMounted) return;
     setIsTransitioning(true);
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
     setTimeout(() => setIsTransitioning(false), 800);
-  }, [isTransitioning, slides.length]);
+  }, [isTransitioning, slides.length, isMounted]);
 
   const goToSlide = (index) => {
-    if (isTransitioning) return;
+    if (isTransitioning || !isMounted) return;
     setIsTransitioning(true);
     setCurrentSlide(index);
     setTimeout(() => setIsTransitioning(false), 800);
   };
 
   const handleButtonClick = (slide) => {
-    if (slide.buttonLink === "/plans") router.push("/plans");
-    else if (slide.buttonLink === "#register") setShowContactForm(true);
-    else if (slide.buttonLink.startsWith("#")) {
-      document
-        .querySelector(slide.buttonLink)
-        ?.scrollIntoView({ behavior: "smooth" });
-    } else window.location.href = slide.buttonLink;
+    if (!isMounted) return;
+
+    if (slide.buttonLink === "/plans") {
+      router.push("/plans");
+    } else if (slide.buttonLink === "#register") {
+      setShowContactForm(true);
+    } else if (slide.buttonLink.startsWith("#")) {
+      const element = document.querySelector(slide.buttonLink);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (slide.buttonLink) {
+      router.push(slide.buttonLink);
+    }
   };
 
+  // Reset position when reaching the clone
   useEffect(() => {
-    // Create infinite loop array: [...slides, first slide]
-    setDisplaySlides([...slides, slides[0]]);
-  }, []);
-
-  useEffect(() => {
-    // Reset position instantly when reaching the clone
-    if (currentSlide === slides.length) {
-      setTimeout(() => {
+    if (currentSlide === slides.length && isMounted) {
+      const timer = setTimeout(() => {
         setCurrentSlide(0);
       }, 800);
+      return () => clearTimeout(timer);
     }
-  }, [currentSlide, slides.length]);
+  }, [currentSlide, slides.length, isMounted]);
 
+  // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || !isMounted) return;
     const interval = setInterval(() => nextSlide(), 6000);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, nextSlide]);
+  }, [isAutoPlaying, nextSlide, isMounted]);
+
+  // Don't render until mounted to avoid hydration issues
+  if (!isMounted) {
+    return (
+      <div className="w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 my-2 xs:my-3 sm:my-6 md:my-8">
+        <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] bg-gray-200 animate-pulse rounded-none sm:rounded-2xl"></div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -112,7 +139,7 @@ export default function ThreeBannerModern() {
         onMouseLeave={() => setIsAutoPlaying(true)}
         className="relative w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 my-2 xs:my-3 sm:my-6 md:my-8"
       >
-        {/* ===== Slider Track - Fit to content ===== */}
+        {/* ===== Slider Track ===== */}
         <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden rounded-none sm:rounded-2xl bg-black shadow-lg sm:shadow-xl shadow-black/40">
           <div
             className="absolute inset-0 flex h-full transition-transform duration-700 ease-out will-change-transform"
@@ -136,6 +163,7 @@ export default function ThreeBannerModern() {
                       alt={slide.title}
                       fill
                       className="object-cover"
+                      className="object-cover"
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1400px"
                     />
@@ -144,7 +172,7 @@ export default function ThreeBannerModern() {
                   <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
                 </div>
 
-                {/* Portrait Image Container - Mobile (Fill container) */}
+                {/* Portrait Image Container - Mobile */}
                 <div className="absolute inset-0 sm:hidden">
                   <div className="relative w-full h-full">
                     <Image
@@ -152,15 +180,16 @@ export default function ThreeBannerModern() {
                       alt={slide.title}
                       fill
                       className="object-cover"
+                      className="object-cover"
                       priority={index === 0}
                       sizes="100vw"
                     />
                   </div>
-                  {/* Stronger gradient overlay for mobile */}
+                  {/* Gradient overlay for mobile */}
                   <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/20" />
                 </div>
 
-                {/* ===== Content - Moved to top ===== */}
+                {/* ===== Content ===== */}
                 <div className="absolute inset-0 flex items-start z-10 px-3 xs:px-4 sm:px-8 md:px-12 lg:px-16 pt-4 xs:pt-6 sm:pt-8">
                   <div className="w-full max-w-2xl text-white text-left">
                     {/* Title */}
@@ -227,7 +256,7 @@ export default function ThreeBannerModern() {
             ))}
           </div>
 
-          {/* ===== Progress Bar - INSIDE CONTAINER ===== */}
+          {/* ===== Progress Bar ===== */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 overflow-hidden z-30 rounded-b-none sm:rounded-b-2xl">
             <div
               className={`h-full bg-gradient-to-r from-red-600 to-red-700 transition-transform duration-100 ease-linear ${
