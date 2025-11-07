@@ -71,77 +71,76 @@ export default function DynamicCarousel({ title, slidesData = [] }) {
   };
 
   return (
-    <></>
-    // <section className="relative py-20 bg-white">
-    //   {/* Title */}
-    //   <div className="max-w-6xl mx-auto px-6 text-center mb-12">
-    //     <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
-    //       {title}
-    //     </h2>
-    //     <div className="mt-3 h-1 w-20 mx-auto bg-red-600 rounded-full" />
-    //   </div>
+    <section className="relative py-20 bg-white">
+      {/* Title */}
+      <div className="max-w-6xl mx-auto px-6 text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+          {title}
+        </h2>
+        <div className="mt-3 h-1 w-20 mx-auto bg-red-600 rounded-full" />
+      </div>
 
-    //   {/* Slider */}
-    //   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    //     <Slider ref={sliderRef} {...settings}>
-    //       {slidesData.map((item, index) => (
-    //         <motion.div
-    //           key={index}
-    //           initial={{ opacity: 0, y: 30 }}
-    //           animate={{ opacity: 1, y: 0 }}
-    //           transition={{ duration: 0.6, delay: index * 0.1 }}
-    //           whileHover={{ scale: 1.03 }}
-    //           className="px-3"
-    //         >
-    //           <div className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-[520px]">
-    //             {/* Image */}
-    //             <div className="relative w-full aspect-[4/3] overflow-hidden">
-    //               <motion.img
-    //                 src={item.imgSrc}
-    //                 alt={item.title}
-    //                 className="w-full h-full object-cover transition-transform duration-500"
-    //                 whileHover={{ scale: 1.1 }}
-    //               />
-    //               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-    //             </div>
+      {/* Slider */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Slider ref={sliderRef} {...settings}>
+          {slidesData.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03 }}
+              className="px-3"
+            >
+              <div className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-[520px]">
+                {/* Image */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  <motion.img
+                    src={item.imgSrc}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500"
+                    whileHover={{ scale: 1.1 }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                </div>
 
-    //             {/* Content */}
-    //             <div className="flex flex-col justify-between flex-1 p-6 text-left">
-    //               <div>
-    //                 <p className="text-sm font-semibold text-red-600 uppercase mb-1">
-    //                   {item.title}
-    //                 </p>
-    //                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-    //                   {item.subtitle}
-    //                 </h3>
-    //                 <p className="text-gray-600 text-sm leading-relaxed mb-3">
-    //                   {item.description}
-    //                 </p>
+                {/* Content */}
+                <div className="flex flex-col justify-between flex-1 p-6 text-left">
+                  <div>
+                    <p className="text-sm font-semibold text-red-600 uppercase mb-1">
+                      {item.title}
+                    </p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {item.subtitle}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                      {item.description}
+                    </p>
 
-    //                 {item.normaltext && (
-    //                   <p className="text-xs text-gray-500 mb-1">
-    //                     <strong>{item.normaltext}</strong>
-    //                   </p>
-    //                 )}
-    //                 {item.legalText && (
-    //                   <p className="text-xs text-gray-400">{item.legalText}</p>
-    //                 )}
-    //               </div>
+                    {item.normaltext && (
+                      <p className="text-xs text-gray-500 mb-1">
+                        <strong>{item.normaltext}</strong>
+                      </p>
+                    )}
+                    {item.legalText && (
+                      <p className="text-xs text-gray-400">{item.legalText}</p>
+                    )}
+                  </div>
 
-    //               {item.link && (
-    //                 <Link
-    //                   href={item.link}
-    //                   className="mt-5 inline-block px-5 py-2.5 text-sm font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-300 text-center"
-    //                 >
-    //                   Learn More
-    //                 </Link>
-    //               )}
-    //             </div>
-    //           </div>
-    //         </motion.div>
-    //       ))}
-    //     </Slider>
-    //   </div>
-    // </section>
+                  {item.link && (
+                    <Link
+                      href={item.link}
+                      className="mt-5 inline-block px-5 py-2.5 text-sm font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-300 text-center"
+                    >
+                      Learn More
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </Slider>
+      </div>
+    </section>
   );
 }
