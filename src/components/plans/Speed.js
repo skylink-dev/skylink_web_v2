@@ -38,7 +38,7 @@ export default function Speed() {
                     (prevOTT) =>
                       pricing[speed]?.[activeNestedTab]?.ott || prevOTT
                   );
-                  setActiveTag("Customize Plan");
+                  setActiveTab("Customize Plan");
                 }}
               >
                 {speed}

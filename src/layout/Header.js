@@ -24,23 +24,27 @@ export default function Header() {
     {
       label: "Download IPTV App",
       href: "https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk",
-      color: "bg-gradient-to-r from-red-600 to-red-700",
+      color:
+        "bg-gradient-to-r from-[#e01212] to-[#e01212] inset-shadow-red-900/50 inset-shadow-sm  ",
       download: true,
     },
     {
       label: "Claim Your TV/OTT",
       href: "https://activations.skyplay.in/ott_subscription/login/",
-      color: "bg-gradient-to-r from-green-600 to-green-700 bg-green-600/90",
+      color:
+        "bg-gradient-to-r from-[#00c458] to-[#00c458] inset-shadow-green-900/50 inset-shadow-sm  ",
     },
     {
       label: "Quick Pay",
       href: "https://www.skylinknet.in/customer_portal/account/sn",
-      color: "bg-gradient-to-r from-purple-600 to-purple-700 bg-purple-600/90",
+      color:
+        "bg-gradient-to-r from-[#9300a3] to-[#9300a3]  inset-shadow-violet-900/50 inset-shadow-sm  ",
     },
     {
       label: "View Our Plans",
       href: "/plans",
-      color: "bg-gradient-to-r from-blue-600 to-blue-700 bg-blue-500/90",
+      color:
+        "bg-gradient-to-r from-[#007aff] to-[#007aff] inset-shadow-blue-900/50 inset-shadow-sm  ",
     },
   ];
 
@@ -58,7 +62,7 @@ export default function Header() {
     <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
       {isMobile ? (
         <>
-          <div className="grid grid-cols-4 w-full h-full items-center m-0 p-0">
+          <div className="grid grid-cols-4 w-full h-full min-h-14 items-center m-0 p-0">
             {buttons.map((btn, idx) => (
               <Link
                 key={idx}
@@ -186,7 +190,7 @@ export default function Header() {
         </nav>
 
         {/* Drawer Buttons */}
-        <div className="mt-6 flex flex-col gap-3">
+        {/* <div className="mt-6 flex flex-col gap-3">
           {buttons.map((btn, idx) => (
             <Link
               key={idx}
@@ -198,7 +202,7 @@ export default function Header() {
               {btn.label}
             </Link>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* ✅ Overlay for Drawer */}

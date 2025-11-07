@@ -283,7 +283,10 @@ export default function CustomPlan({ plans, isMobile, activeTab }) {
             }`}
           >
             <h2
-              onClick={() => setActiveTag("Customize Plan")}
+              onClick={() => {
+                setActiveTag("Customize Plan");
+                // setActiveTab("Customize Plan");
+              }}
               style={{ cursor: "pointer" }}
             >
               Your Plan
