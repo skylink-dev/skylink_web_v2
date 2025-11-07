@@ -163,7 +163,6 @@ export default function ThreeBannerModern() {
                       alt={slide.title}
                       fill
                       className="object-cover"
-                      className="object-cover"
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1400px"
                     />
@@ -179,7 +178,6 @@ export default function ThreeBannerModern() {
                       src={slide.imagePortrait}
                       alt={slide.title}
                       fill
-                      className="object-cover"
                       className="object-cover"
                       priority={index === 0}
                       sizes="100vw"
