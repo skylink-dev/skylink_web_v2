@@ -262,7 +262,7 @@ export default function page() {
 
   const dynamicSlidesData = [
     {
-      imgSrc: "/assets/iptv-setup.jpg",
+      imgSrc: "/newassets/tv/iptv-skylink.jpg",
       title: "Boost Your Business",
       subtitle: "End-to-End Marketing Support",
       description:
@@ -270,7 +270,7 @@ export default function page() {
       link: "/",
     },
     {
-      imgSrc: "/assets/iptv-setup.jpg",
+      imgSrc: "/newassets/tv/iptv-skylink.jpg",
       title: "Amplify Online Reach",
       subtitle: "Full-Service Digital Marketing",
       description:
@@ -286,7 +286,7 @@ export default function page() {
       link: "/",
     },
     {
-      imgSrc: "/assets/iptv-setup.jpg",
+      imgSrc: "/newassets/tv/iptv-skylink.jpg",
       title: "Expand on Ground",
       subtitle: "Dedicated Sales Teams",
       description:
@@ -302,7 +302,7 @@ export default function page() {
       link: "/",
     },
     {
-      imgSrc: "/assets/iptv-setup.jpg",
+      imgSrc: "/newassets/tv/iptv-skylink.jpg",
       title: "Earn More",
       subtitle: "60% Revenue Share Model",
       description:
@@ -318,7 +318,7 @@ export default function page() {
       link: "/",
     },
     {
-      imgSrc: "/assets/iptv-setup.jpg",
+      imgSrc: "/newassets/tv/iptv-skylink.jpg",
       title: "Grow Together",
       subtitle: "Co-Branded Campaigns",
       description:
@@ -326,7 +326,7 @@ export default function page() {
       link: "/",
     },
     {
-      imgSrc: "/assets/iptv-setup.jpg",
+      imgSrc: "/newassets/tv/iptv-skylink.jpg",
       title: "Sell With Confidence",
       subtitle: "Custom Plans for Your Market",
       description:
@@ -400,7 +400,7 @@ export default function page() {
       </div>
       <SpeedBanner
         color="color-white"
-        mainImage="/assets/grow-with-us.jpg"
+        mainImage="/newassets/partner/grow-with-us.jpg"
         content={SpeedContent}
       />
       <DynamicCarousel

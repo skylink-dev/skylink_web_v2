@@ -8,7 +8,7 @@ import React from 'react'
 
 export default function page() {
 const HeroContent = {
-  image: "assets/move-and-packers.jpg",
+  image: "newassets/relocating/move-and-packers.png",
   title: "Shifting your home?",
   description: "Don't leave your internet behind.",
   additionaldescription: "Skylink makes broadband relocation smooth and hassle-free. Stay connected when you move — we’ll handle the transfer.",
@@ -37,7 +37,7 @@ const stepsData = [
 ];
 const dynamicImageContent = [
   {
-    img: "/assets/easy-move.jpg",
+    img: "/newassets/relocating/Feasy-move.jpg",
     icon: ("/assets/offer.png"),
    title: "Easy Move",
     description: "Moving your broadband is simple with Skylink. Just share your new address — we’ll handle the rest, with zero disruption to your service.",
@@ -49,7 +49,7 @@ const dynamicImageContent = [
     description: "Moving? We've got a gift for you. Use code MOVE4REWARD at checkout and claim your ₹1000 reward card. Hurry – offer ends 30/09/25. Online only. Redemption required."
   },
   {
-    img: "/assets/always-connected.jpg",
+    img: "/newassets/relocating/always-connected.jpg",
     icon: ("/assets/give-price-less.png"),
           title: "Always Connected",
     description: "We ensure your connection is active when you arrive. No delays, no downtime — seamless transition, uninterrupted internet.",

@@ -514,7 +514,7 @@ const blogData = [
     link: '/helpful-resources',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Explainer',
     subtitle: 'What is IPTV?',
     description: `
@@ -896,7 +896,7 @@ const blogData = [
     link: '/multi-device-ott-streaming',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Boost Your Business',
     subtitle: 'End-to-End Marketing Support',
     description: `
@@ -933,7 +933,7 @@ const blogData = [
     link: '/end-to-end-marketing-support',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Amplify Online Reach',
     subtitle: 'Full-Service Digital Marketing',
     description: `
@@ -1007,7 +1007,7 @@ const blogData = [
     link: '/social-media-promotions',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Expand on Ground',
     subtitle: 'Dedicated Sales Teams',
     description: `
@@ -1044,7 +1044,7 @@ const blogData = [
     link: '/dedicated sales teams',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Start Strong',
     subtitle: 'Partner Onboarding & Training',
     description: `
@@ -1081,7 +1081,7 @@ const blogData = [
     link: '/partner-onboarding-training',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Earn More',
     subtitle: '60% Revenue Share Model',
     description: `
@@ -1118,7 +1118,7 @@ const blogData = [
     link: '/revenue-share-model',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Support You Can Count On',
     subtitle: '24/7 Technical Support',
     description: `
@@ -1155,7 +1155,7 @@ const blogData = [
     link: '/technical-support',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Grow Together',
     subtitle: 'Co-Branded Campaigns',
     description: `
@@ -1192,7 +1192,7 @@ const blogData = [
     link: '/co-branded-campaigns',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Sell With Confidence',
     subtitle: 'Custom Plans for Your Market',
     description: `
@@ -1229,7 +1229,7 @@ const blogData = [
     link: '/custom-plans-for-your-market',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Track Everything',
     subtitle: 'Partner Performance Dashboard',
     description: `
@@ -1266,7 +1266,7 @@ const blogData = [
     link: '/partner-performance-dashboard',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Fast & Fair',
     subtitle: 'Monthly Payouts',
     description: `
@@ -1303,7 +1303,7 @@ const blogData = [
     link: '/monthly-payouts',
   },
   {
-    imgSrc: '/assets/iptv-setup.jpg',
+    imgSrc: '/newassets/tv/iptv-skylink.jpg',
     title: 'Join the Movement',
     subtitle: 'Growing Partner Ecosystem',
     description: `
