@@ -229,7 +229,7 @@ const PlanCard = ({
           return (
             <div
               key={key}
-              className={`pricing-plan-package-item absolute h-80 ${
+              className={`pricing-plan-package-item  absolute ${
                 isSelected(key) ? "active" : ""
               } ${planInfo.hot === "yes" ? "active" : ""}`}
               onClick={
