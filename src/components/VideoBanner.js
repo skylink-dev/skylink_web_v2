@@ -93,7 +93,7 @@ export default function VideoBanner() {
                 {/* Text Content */}
                 <div className="flex-1 text-center lg:text-left space-y-6 lg:space-y-8">
                   <motion.p 
-                    className="text-sm md:text-base lg:text-lg font-semibold text-blue-400 uppercase tracking-wider"
+                    className="text-sm md:text-base lg:text-lg font-semibold text-red-400 uppercase tracking-wider"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
@@ -109,7 +109,7 @@ export default function VideoBanner() {
                     transition={{ delay: 0.3 }}
                   >
                     Connectivity you depend on.{' '}
-                    <span className="block mt-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    <span className="block mt-2 bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent">
                       Deals you want.
                     </span>{' '}
                     <span className="block mt-2">Service you deserve.</span>
@@ -136,7 +136,7 @@ export default function VideoBanner() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <button className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                       Get Started Today
                     </button>
                     <button className="px-8 py-4 bg-transparent hover:bg-white/10 text-white font-semibold rounded-lg border-2 border-white/30 hover:border-white transition-all duration-300">
@@ -153,7 +153,7 @@ export default function VideoBanner() {
                   transition={{ delay: 0.6 }}
                 >
                   <div className="relative w-full max-w-md lg:max-w-lg">
-                    <div className="aspect-square bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl backdrop-blur-sm border border-white/10 p-8">
+                    <div className="aspect-square bg-gradient-to-br from-red-500/20 to-red-600/20 rounded-2xl backdrop-blur-sm border border-white/10 p-8">
                       <div className="w-full h-full flex items-center justify-center">
                         <div className="text-center text-white/80">
                           <div className="text-6xl mb-4">📱</div>
