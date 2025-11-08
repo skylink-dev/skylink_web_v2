@@ -18,7 +18,7 @@ export default function HalfColumnCard({ titlecontent, items }) {
   if (!isMounted) return null;
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-14 md:py-24 overflow-hidden">
+    <section className="bg-gradient-to-b from-gray-50 to-white py-4 md:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
