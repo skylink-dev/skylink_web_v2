@@ -538,10 +538,10 @@ export const dynamicSlidesData = [
 export const flexCardData = [
   {
     id: 1,
-    title: "TV. But Smarter.",
-    subtitle: "500+ channels. Zero cables.",
-    description:
-      "From Chennai to Chandigarh, live TV is reimagined. No cables. No clutter. Just flawless HD clarity.",
+    title: "India’s Finest Stories, Ready to Play",
+    subtitle:
+      "From timeless classics to todays hits, everything you love is ready when you are ",
+    description: "No setup, just stories that move with you.",
     details: "Setup-free.",
     leftImage: "/assets/skyplay-flex-card-left.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile.jpg",
@@ -549,10 +549,9 @@ export const flexCardData = [
   },
   {
     id: 2,
-    title: "All Your OTT. One Skyplay.",
-    subtitle: "One login. Every platform.",
-    description:
-      "Everything you love. In one seamless place. Made for every home—from Kochi to Kanpur.",
+    title: "Your Screen. Your Stadium.",
+    subtitle: "Stream every match, every moment live in HD. ",
+    description: "One login for all sports, free for 30 days.",
     details: "Instant access. No switching apps. Free trial included.",
     leftImage: "/assets/skyplay-flex-card-left-hindi.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile-banner.jpg",
@@ -560,10 +559,10 @@ export const flexCardData = [
   },
   {
     id: 3,
-    title: "Now Playing: The Future.",
+    title:
+      "From bhajans to binge nights, Skylink offers stories every generation can share, safely and easily.",
     subtitle: "4K clarity. Voice control.",
-    description:
-      "No remotes. No rules. Just your voice—and every show you love—in any language you choose.",
+    description: "secure, simple, and shared.",
     details: "Experience 4K clarity with zero setup. ",
     leftImage: "/assets/skyplay-flex-card-left.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile-banner.jpg",
@@ -571,10 +570,9 @@ export const flexCardData = [
   },
   {
     id: 4,
-    title: "A Home Full of Stories.",
-    subtitle: "Kids. Parents. All together.",
-    description:
-      "From bedtime cartoons to early-morning bhajans—this is entertainment crafted for the Indian family.",
+    title: "Watch It All, Without the Wall",
+    subtitle: "Your entire watchlist, one login away. ",
+    description: "Simple. Smooth. Sorted.",
     details: "Safe. Simple. Sensational.",
     leftImage: "/assets/skyplay-flex-card-left-hindi.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile.jpg",
@@ -582,10 +580,9 @@ export const flexCardData = [
   },
   {
     id: 5,
-    title: "Feel the Stadium. From Your Sofa.",
+    title: "Stream over 500 HD channels across India. ",
     subtitle: "Every match. Every moment.",
-    description:
-      "Every cheer. Every replay. Every goosebump—live, loud, and in HD. For the true fan in you.",
+    description: "No cables, no setup required.",
     details: "All sports. One screen. Try it free for 30 days.",
     leftImage: "/assets/skyplay-flex-card-left.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile-banner.jpg",
@@ -593,10 +590,9 @@ export const flexCardData = [
   },
   {
     id: 6,
-    title: "Cinema, Rewritten.",
-    subtitle: "Big screen. No theatre.",
-    description:
-      "Blockbusters in 4K. From Rajinikanth to Ranbir. Watch what you love, when you want.",
+    title: "4K Clarity. Voice Control.",
+    subtitle: "Stream in ultra-clear 4K and control it all with your voice.",
+    description: "Smart, hands-free, and effortless",
     details: "No setup box. Just the story. ",
     leftImage: "/assets/skyplay-flex-card-left-hindi.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile.jpg",
@@ -605,9 +601,10 @@ export const flexCardData = [
 ];
 
 export const rightContentFlexData = {
-  subheading: "Skylink – One India. One Stream.",
-  heading: "Refer. Earn. Repeat.",
-  description: "Bring friends. Grab ₹200 rewards. Enjoy Skylink together.",
+  subheading: "Skylink - Stronger Connections. Stronger India",
+  heading: "Share the Connection. Share the Reward.",
+  description:
+    "Invite friends, earn ₹200, and join the Skylink family - stronger, together. Reward credited after activation.",
   legal: "T&Cs apply. Referral credited post activation.",
   smaallcta: "View full offer details",
   mainCta: "Call Now: +91  99441 99445",

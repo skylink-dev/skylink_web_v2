@@ -30,9 +30,9 @@ export default function ThreeBannerModern() {
   const slides = [
     {
       id: 1,
-      title: "Entertainment reimagined with Skylink OTT",
+      title: "Entertainment in Sync, by Skylink",
       description:
-        "Stream blockbuster shows, exclusive movies & live sports with Skylink OTT Premium plans.",
+        "From blockbusters to live matches, watch it all in one place with Skylink OTT Premium.",
       buttonText: "Check Available OTTs",
       buttonLink: "/ott",
       imageLandscape: "/assets/banner1.jpg",
@@ -40,9 +40,9 @@ export default function ThreeBannerModern() {
     },
     {
       id: 2,
-      title: "We Offer The Highest-Quality Network Connections",
+      title: "Internet That Fits Your Life.",
       description:
-        "Choose us for the highest-quality connections that support your digital lifestyle.",
+        "Work sharp. Play hard. Stream freely. A connection that moves as smoothly as you do.",
       buttonText: "Register for FREE",
       buttonLink: "#register",
       imageLandscape: "/assets/banner2.jpg",
@@ -50,9 +50,9 @@ export default function ThreeBannerModern() {
     },
     {
       id: 3,
-      title: "Unlock the Ultimate Broadband Experience",
+      title: "Connections That Keep Growing.",
       description:
-        "Enjoy fast, reliable connectivity for all your streaming, gaming, browsing, and work-from-home needs.",
+        "From 9-to-5s to midnight streams, a connection that moves at your pace, wherever life takes you.",
       buttonText: "Explore Plans",
       buttonLink: "/plans",
       imageLandscape: "/assets/banner3.jpg",
@@ -184,7 +184,7 @@ export default function ThreeBannerModern() {
                     />
                   </div>
                   {/* Gradient overlay for mobile */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/10" />
                 </div>
 
                 {/* ===== Content ===== */}
