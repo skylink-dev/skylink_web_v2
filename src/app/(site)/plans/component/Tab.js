@@ -229,7 +229,7 @@ const PlanCard = ({
           return (
             <div
               key={key}
-              className={`pricing-plan-package-item absolute h-80 ${
+              className={`pricing-plan-package-item  absolute ${
                 isSelected(key) ? "active" : ""
               } ${planInfo.hot === "yes" ? "active" : ""}`}
               onClick={
@@ -1056,23 +1056,7 @@ export default function Tab() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                               >
-                                <div class="relative min-h-screen bg-gradient-to-br from-[#414040] via-[#ceadad] to-[#1a1a1a] overflow-hidden">
-                                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.05)_0%,rgba(0,0,0,0)_70%)]"></div>
-
-                                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(255,0,0,0.08)_0%,rgba(0,0,0,0)_70%)]"></div>
-
-                                  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-white">
-                                    <h1 class="text-5xl font-bold mb-4">
-                                      Modern Plan Section
-                                    </h1>
-                                    <p class="text-gray-400 text-lg max-w-lg text-center">
-                                      This is your recreated dark background
-                                      using Tailwind gradients and radial
-                                      overlays.
-                                    </p>
-                                  </div>
-                                </div>
-                                <NewPlanCard
+                                {/* <NewPlanCard
                                   isOpen={isOpen}
                                   setInsideAccordionIndex={
                                     setInsideAccordionIndex
@@ -1096,7 +1080,7 @@ export default function Tab() {
                                   setIsOpen={setIsOpen}
                                   setIsContactOpen={setIsContactOpen}
                                   isContactOpen={isContactOpen}
-                                />
+                                /> */}
                                 <PlanCard
                                   isOpen={isOpen}
                                   setInsideAccordionIndex={
