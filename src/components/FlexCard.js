@@ -65,7 +65,7 @@ export default function FlexCard({
         toppaddingremove || ""
       } py-8 sm:py-12 md:py-16`}
     >
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 relative">
+      <div className="container mx-auto p-3 sm:p-4 md:p-6 relative">
         {title && (
           <motion.div
             className="text-center mb-6 sm:mb-8 md:mb-12"
@@ -73,7 +73,7 @@ export default function FlexCard({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-2xl min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent px-2">
+            <h1 className="text-2xl p-2 min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-600 via-red-600/80 to-red-600 bg-clip-text text-transparent px-2">
               {title}
             </h1>
           </motion.div>

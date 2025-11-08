@@ -56,9 +56,10 @@ export const slides = [
 export const slidesData = [
   {
     id: "slide-3",
-    heading: "Ultra-Fast @ ₹399/m",
-    eyebrow: "Buffer-Free Streaming",
-    description: "Up to 30 Mbps broadband. Designed for you.",
+    heading: "Skylink OTT Basic @ ₹599/month",
+    eyebrow: "Movies. Music. More",
+    description:
+      "Stream 550+ free and regional channels along with 19 OTT apps through the Skylink OTTs Basic Plan.",
     legal: "Speed varies. Fair usage applies.",
     ctaLabel: "Check Coverage",
     ctaHref: "/",
