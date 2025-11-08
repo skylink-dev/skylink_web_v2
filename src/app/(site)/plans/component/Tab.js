@@ -24,6 +24,442 @@ import "./Tab.css";
 import ContactPopup from "./ContactPopup";
 import PlanTabs from "../../new_plans/component/planTabs";
 
+const PlanCard = ({
+  setInsideAccordionIndex,
+  isSelected,
+  setActiveMbps,
+  setActivePrice,
+  setBasePrice,
+  setActiveCycle,
+  setActiveInstallation,
+  isMobile,
+  planDetailArray,
+  mbps,
+  insideAccordionIndex,
+  activeCycle,
+  detailRef,
+  viewCart,
+  setDrawerOpen,
+  sectionRef,
+  activeTab,
+  setActiveTab,
+  setIsOpen,
+  setIsContactOpen,
+  isContactOpen,
+}) => {
+  return (
+    <>
+      {Object.entries(planDetailArray)
+        .reverse()
+        .map((plan, planIdx) => {
+          const key = `${mbps}-${planIdx}`;
+          const isOpen = insideAccordionIndex === key;
+          const planInfo = plan[1][activeCycle];
+          return (
+            <div
+              key={key}
+              className={`pricing-plan-package-item ${
+                isSelected(key) ? "active" : ""
+              } ${planInfo.hot === "yes" ? "active" : ""}`}
+              onClick={
+                isMobile
+                  ? () => {
+                      setInsideAccordionIndex((prev) =>
+                        prev === key ? false : key
+                      );
+                      setActiveMbps(planInfo.speed);
+                      setActivePrice(planInfo.price);
+                      setBasePrice(planInfo.basePrice);
+                      setActiveCycle(planInfo.billingCycle);
+                      setActiveInstallation(planInfo.installationFee);
+                    }
+                  : undefined
+              }
+            >
+              <div className="gradient-color"></div>
+              {planInfo.hot === "yes" && (
+                <div
+                  className={`flex w-full ${
+                    activeTab == "Fixed Plan"
+                      ? "bg-yellow-400/80"
+                      : "bg-gray-600/20"
+                  }  rounded-xl mb-4  p-2 justify-center content-center`}
+                >
+                  <p className="font-extrabold  text-white mt-1 mr-4 text-xs uppercase drop-shadow-md">
+                    Recommended
+                  </p>
+                  <div className="relative">
+                    <FaStar className="absolute left-0 right-0 top-0 star text-white w-6 h-6" />
+                  </div>
+                </div>
+              )}
+              <div className="pricing-separate-files m-0 p-0">
+                <div className="mobile-alignmentfor-planname">
+                  <div className="speed-wrap ">
+                    <div className="speed-icon" style={{ display: "none" }}>
+                      <img
+                        alt="tv-logo-speed-brand"
+                        loading="lazy"
+                        width="25"
+                        height="25"
+                        src="https://skyplay.in/assets/speed-brand.svg"
+                        style={{
+                          color: "transparent",
+                        }}
+                      />
+                    </div>
+                    <div className="ott-counts mobile-only">
+                      {planInfo.speed + " + " + planInfo.otts}
+                    </div>
+                    <div className="speed-texts">
+                      {isMobile ? (
+                        <>
+                          ₹{planInfo.basePrice}
+                          <span
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <span className="multiply-symbol">X</span>{" "}
+                            {planInfo.billingCycle === "Monthly"
+                              ? "1"
+                              : planInfo.billingCycle === "Quarterly"
+                              ? "3"
+                              : planInfo.billingCycle === "Half-Yearly"
+                              ? "6"
+                              : planInfo.billingCycle === "Annual"
+                              ? "12"
+                              : ""}
+                          </span>
+                        </>
+                      ) : (
+                        <div className="speed-container">
+                          <span className="speed-container-wrap">
+                            <span className="speed-container-title">Speed</span>
+                            <span className="speed-container-price">
+                              <div className="speed-container-unit">
+                                {planInfo.speed.split(" ")[0]}
+                              </div>
+                              <div className="speed-container-mbps">
+                                {planInfo.speed.split(" ")[1]}
+                              </div>
+                            </span>
+                          </span>
+                          <div className="data-limit">
+                            {planInfo.dataLimit} Data
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <div className="specialInfocontainer">
+                      <div className="specialInfowrap">
+                        <span className="specialInfowraptitle">Validity</span>
+                        <span className="specialInfowrapvalue">
+                          <div>
+                            {planInfo.billingCycle === "Monthly"
+                              ? "1 Month"
+                              : planInfo.billingCycle === "Quarterly"
+                              ? "3 Months"
+                              : planInfo.billingCycle === "Half-Yearly"
+                              ? "6 Months"
+                              : planInfo.billingCycle === "Annual"
+                              ? "12 Months"
+                              : ""}
+                          </div>
+                        </span>
+                      </div>
+                      <div className="specialInfowrap">
+                        <span className="specialInfowraptitle">Data</span>
+                        <span className="specialInfowrapvalue">
+                          {planInfo.dataLimit}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      className="details-link mobile-only"
+                      onClick={() => {
+                        setInsideAccordionIndex(true);
+                        setDrawerOpen(false);
+                        setActiveMbps(planInfo.speed);
+                        setActivePrice(planInfo.price);
+                        setBasePrice(planInfo.basePrice);
+                        setActiveCycle(planInfo.billingCycle);
+                        setActiveInstallation(planInfo.installationFee);
+                      }}
+                    >
+                      {insideAccordionIndex === key ? (
+                        <KeyboardArrowRightIcon />
+                      ) : (
+                        <KeyboardArrowRightIcon />
+                      )}
+                    </button>
+                  </div>
+                  <div className="mobile-hide">
+                    <button
+                      className="details-link"
+                      onClick={() => {
+                        setInsideAccordionIndex((prev) => {
+                          const isOpen = prev === key;
+                          const newIndex = isOpen ? false : key;
+                          if (!isOpen) {
+                            setDrawerOpen(false);
+                            setActiveMbps(planInfo.speed);
+                            setActivePrice(planInfo.price);
+                            setBasePrice(planInfo.basePrice);
+                            setActiveCycle(planInfo.billingCycle);
+                            setActiveInstallation(planInfo.installationFee);
+                          }
+                          return newIndex;
+                        });
+                      }}
+                    >
+                      More Detail
+                    </button>
+                  </div>
+                  <div className="pricing-plan-package-details mobile-only">
+                    <div
+                      className="iconslist"
+                      style={{
+                        display: "flex",
+                        columnGap: "12px",
+                      }}
+                    >
+                      <div className="info-details tv-container">
+                        <div className="image-wrap w-100 flex gap-2 my-2">
+                          {planInfo?.channels === "350+ Channels" && (
+                            <>
+                              <img
+                                alt="news7"
+                                src="https://www.skylink.net.in/wp-content/uploads/2025/06/Logo_of_News7_Tamil_Logo.jpg"
+                                width="35"
+                                height="35"
+                              />
+                              <img
+                                alt="zee"
+                                src="https://skyplay.in/assets/zee-tamizh.png"
+                                width="35"
+                                height="35"
+                              />
+                            </>
+                          )}
+                          {planInfo?.channels === "550+ Channels" && (
+                            <>
+                              <img
+                                alt="zee"
+                                src="https://skyplay.in/assets/zee-tamizh.png"
+                                width="35"
+                                height="35"
+                              />
+                              <img
+                                alt="vijay"
+                                src="https://skyplay.in/assets/vijay-tv.png"
+                                width="35"
+                                height="35"
+                              />
+                            </>
+                          )}
+                          {planInfo?.channels === "750+ Channels" && (
+                            <>
+                              <img
+                                alt="zee"
+                                src="https://skyplay.in/assets/zee-tamizh.png"
+                                width="35"
+                                height="35"
+                              />
+                              <img
+                                alt="vijay"
+                                src="https://skyplay.in/assets/vijay-tv.png"
+                                width="35"
+                                height="35"
+                              />
+                            </>
+                          )}
+                          <span className="count-of-logo">+10 more</span>
+                        </div>
+                      </div>
+                      <div className="info-details tv-container">
+                        <div className="image-wrap w-100 flex gap-2 my-2">
+                          {planInfo?.otts === "21+ OTTs" && (
+                            <>
+                              <img
+                                alt="sunnxt"
+                                src="https://skyplay.in/assets/sunnxt.png"
+                                width="35"
+                                height="35"
+                              />
+                              <img
+                                alt="zee5"
+                                src="https://www.skylink.net.in/wp-content/uploads/2023/08/ZEE5-Logo-700x394-1.png"
+                                width="35"
+                                height="35"
+                              />
+                            </>
+                          )}
+                          {planInfo?.otts === "24+ OTTs" && (
+                            <>
+                              <img
+                                alt="sunnxt"
+                                src="https://skyplay.in/assets/sunnxt.png"
+                                width="35"
+                                height="35"
+                              />
+                              <img
+                                alt="zee5"
+                                src="https://www.skylink.net.in/wp-content/uploads/2023/08/ZEE5-Logo-700x394-1.png"
+                                width="35"
+                                height="35"
+                              />
+                            </>
+                          )}
+                          <span className="count-of-logo">+10 more</span>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      className="subscribe-button mt-2"
+                      onClick={(e) => {
+                        setDrawerOpen(true);
+                        setActiveMbps(planInfo.speed);
+                        setActivePrice(planInfo.price);
+                        setActiveInstallation(planInfo.installationFee);
+                        setBasePrice(planInfo.basePrice);
+                        setActiveCycle(planInfo.billingCycle);
+                        setIsOpen(!isOpen);
+                        setIsContactOpen(!isContactOpen);
+                        console.log("Clicked");
+                      }}
+                    >
+                      {isSelected(key) ? (
+                        <span className="flex items-center justify-center">
+                          Book Now
+                        </span>
+                      ) : (
+                        "Book Now"
+                      )}
+                    </button>
+                  </div>
+                </div>
+                <div className="pricing-plan-package-details">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "end",
+                    }}
+                    className="mobile-hide"
+                  >
+                    <span className="special-price-wrap">
+                      ₹{planInfo.price}
+                    </span>{" "}
+                    /{" "}
+                    <div style={{ fontSize: "12px" }}>
+                      {planInfo.billingCycle === "Monthly"
+                        ? "1 Mon"
+                        : planInfo.billingCycle === "Quarterly"
+                        ? "3 Mon"
+                        : planInfo.billingCycle === "Half-Yearly"
+                        ? "6 Mon"
+                        : planInfo.billingCycle === "Annual"
+                        ? "12 Mon"
+                        : ""}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4 border-t order-change">
+                <div ref={detailRef}>
+                  {isMobile ? (
+                    <PlanAccordionDetails
+                      key={key}
+                      open={insideAccordionIndex === key}
+                      plan={planInfo}
+                      planindex={key}
+                      isSelected={isSelected}
+                      setInsideAccordionIndex={setInsideAccordionIndex}
+                      insideAccordionIndex={insideAccordionIndex}
+                      viewCart={viewCart}
+                      setDrawerOpen={setDrawerOpen}
+                      sectionRef={sectionRef}
+                    />
+                  ) : (
+                    <PlanAccordionDetails
+                      key={key}
+                      open={insideAccordionIndex === false}
+                      plan={planInfo}
+                      planindex={key}
+                      isSelected={isSelected}
+                      setInsideAccordionIndex={setInsideAccordionIndex}
+                      insideAccordionIndex={insideAccordionIndex}
+                      viewCart={viewCart}
+                      setDrawerOpen={setDrawerOpen}
+                      sectionRef={sectionRef}
+                    />
+                  )}
+                </div>
+                <img
+                  className="red-line-wrap"
+                  src="https://www.skylink.net.in/wp-content/uploads/2025/07/red-line.png"
+                  alt="red line"
+                />
+                <hr
+                  style={{
+                    marginTop: "20px",
+                    color: "#dddddd",
+                  }}
+                />
+                <div className="pricing-plan-package-details">
+                  <span className="mobile-hide">
+                    <span className="special_price_wrap">
+                      ₹{planInfo.basePrice}{" "}
+                      <span className="after-price-special-font-styling">
+                        X{" "}
+                        {planInfo.billingCycle === "Monthly"
+                          ? "1 Month"
+                          : planInfo.billingCycle === "Quarterly"
+                          ? "3 Months"
+                          : planInfo.billingCycle === "Half-Yearly"
+                          ? "6 Months"
+                          : planInfo.billingCycle === "Annual"
+                          ? "12 Months"
+                          : ""}
+                      </span>
+                    </span>
+                  </span>
+                </div>
+                <button
+                  className={`subscribe-button ${
+                    !isMobile ? "open-popup" : ""
+                  } mt-2`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setDrawerOpen(true);
+                    setActiveMbps(planInfo.speed);
+                    setActivePrice(planInfo.price);
+                    setBasePrice(planInfo.basePrice);
+                    setActiveCycle(planInfo.billingCycle);
+                    setActiveTab("Fixed Plan");
+                    setActiveInstallation(planInfo.installationFee);
+                    setIsOpen(!isOpen);
+                    setIsContactOpen(!isContactOpen);
+                    console.log("Clicked");
+                  }}
+                >
+                  {isSelected(key) ? (
+                    <span className="flex items-center justify-center">
+                      Book Now
+                    </span>
+                  ) : (
+                    "Book Now"
+                  )}
+                </button>
+              </div>
+            </div>
+          );
+        })}
+    </>
+  );
+};
+
 export default function Tab() {
   const newplans = useSelector((state) => state.newPlans.basePlans);
   const plans = useSelector((state) => state.plans);
@@ -454,531 +890,33 @@ export default function Tab() {
                                   className="inside-div"
                                   style={{ display: "flex" }}
                                 >
-                                  {Object.entries(planDetailArray)
-                                    .reverse()
-                                    .map((plan, planIdx) => {
-                                      const key = `${mbps}-${planIdx}`;
-                                      const isOpen =
-                                        insideAccordionIndex === key;
-                                      const planInfo = plan[1][activeCycle];
-                                      return (
-                                        <div
-                                          key={key}
-                                          className={`pricing-plan-package-item ${
-                                            isSelected(key) ? "active" : ""
-                                          } ${
-                                            planInfo.hot === "yes"
-                                              ? "active"
-                                              : ""
-                                          }`}
-                                          onClick={
-                                            isMobile
-                                              ? () => {
-                                                  setInsideAccordionIndex(
-                                                    (prev) =>
-                                                      prev === key ? false : key
-                                                  );
-                                                  setActiveMbps(planInfo.speed);
-                                                  setActivePrice(
-                                                    planInfo.price
-                                                  );
-                                                  setBasePrice(
-                                                    planInfo.basePrice
-                                                  );
-                                                  setActiveCycle(
-                                                    planInfo.billingCycle
-                                                  );
-                                                  setActiveInstallation(
-                                                    planInfo.installationFee
-                                                  );
-                                                }
-                                              : undefined
-                                          }
-                                        >
-                                          <div className="gradient-color"></div>
-                                          {planInfo.hot === "yes" && (
-                                            <div className="ad-card">
-                                              <p className="font-extrabold mt-4 text-white text-xl uppercase tracking-widest drop-shadow-md">
-                                                Recommended
-                                              </p>
-                                              <div className="m-2 ml-4">
-                                                <FaStar className="star text-white w-6 h-6" />
-                                              </div>
-                                            </div>
-                                          )}
-                                          <div className="pricing-separate-files">
-                                            <div className="mobile-alignmentfor-planname">
-                                              <div className="speed-wrap">
-                                                <div
-                                                  className="speed-icon"
-                                                  style={{ display: "none" }}
-                                                >
-                                                  <img
-                                                    alt="tv-logo-speed-brand"
-                                                    loading="lazy"
-                                                    width="25"
-                                                    height="25"
-                                                    src="https://skyplay.in/assets/speed-brand.svg"
-                                                    style={{
-                                                      color: "transparent",
-                                                    }}
-                                                  />
-                                                </div>
-                                                <div className="ott-counts mobile-only">
-                                                  {planInfo.speed +
-                                                    " + " +
-                                                    planInfo.otts}
-                                                </div>
-                                                <div className="speed-texts">
-                                                  {isMobile ? (
-                                                    <>
-                                                      ₹{planInfo.basePrice}
-                                                      <span
-                                                        style={{
-                                                          display: "flex",
-                                                          alignItems: "center",
-                                                        }}
-                                                      >
-                                                        <span className="multiply-symbol">
-                                                          X
-                                                        </span>{" "}
-                                                        {planInfo.billingCycle ===
-                                                        "Monthly"
-                                                          ? "1"
-                                                          : planInfo.billingCycle ===
-                                                            "Quarterly"
-                                                          ? "3"
-                                                          : planInfo.billingCycle ===
-                                                            "Half-Yearly"
-                                                          ? "6"
-                                                          : planInfo.billingCycle ===
-                                                            "Annual"
-                                                          ? "12"
-                                                          : ""}
-                                                      </span>
-                                                    </>
-                                                  ) : (
-                                                    <div className="speed-container">
-                                                      <span className="speed-container-wrap">
-                                                        <span className="speed-container-title">
-                                                          Speed
-                                                        </span>
-                                                        <span className="speed-container-price">
-                                                          <div className="speed-container-unit">
-                                                            {
-                                                              planInfo.speed.split(
-                                                                " "
-                                                              )[0]
-                                                            }
-                                                          </div>
-                                                          <div className="speed-container-mbps">
-                                                            {
-                                                              planInfo.speed.split(
-                                                                " "
-                                                              )[1]
-                                                            }
-                                                          </div>
-                                                        </span>
-                                                      </span>
-                                                      <div className="data-limit">
-                                                        {planInfo.dataLimit}{" "}
-                                                        Data
-                                                      </div>
-                                                    </div>
-                                                  )}
-                                                </div>
-                                                <div className="specialInfocontainer">
-                                                  <div className="specialInfowrap">
-                                                    <span className="specialInfowraptitle">
-                                                      Validity
-                                                    </span>
-                                                    <span className="specialInfowrapvalue">
-                                                      <div>
-                                                        {planInfo.billingCycle ===
-                                                        "Monthly"
-                                                          ? "1 Month"
-                                                          : planInfo.billingCycle ===
-                                                            "Quarterly"
-                                                          ? "3 Months"
-                                                          : planInfo.billingCycle ===
-                                                            "Half-Yearly"
-                                                          ? "6 Months"
-                                                          : planInfo.billingCycle ===
-                                                            "Annual"
-                                                          ? "12 Months"
-                                                          : ""}
-                                                      </div>
-                                                    </span>
-                                                  </div>
-                                                  <div className="specialInfowrap">
-                                                    <span className="specialInfowraptitle">
-                                                      Data
-                                                    </span>
-                                                    <span className="specialInfowrapvalue">
-                                                      {planInfo.dataLimit}
-                                                    </span>
-                                                  </div>
-                                                </div>
-                                                <button
-                                                  className="details-link mobile-only"
-                                                  onClick={() => {
-                                                    setInsideAccordionIndex(
-                                                      true
-                                                    );
-                                                    setDrawerOpen(false);
-                                                    setActiveMbps(
-                                                      planInfo.speed
-                                                    );
-                                                    setActivePrice(
-                                                      planInfo.price
-                                                    );
-                                                    setBasePrice(
-                                                      planInfo.basePrice
-                                                    );
-                                                    setActiveCycle(
-                                                      planInfo.billingCycle
-                                                    );
-                                                    setActiveInstallation(
-                                                      planInfo.installationFee
-                                                    );
-                                                  }}
-                                                >
-                                                  {insideAccordionIndex ===
-                                                  key ? (
-                                                    <KeyboardArrowRightIcon />
-                                                  ) : (
-                                                    <KeyboardArrowRightIcon />
-                                                  )}
-                                                </button>
-                                              </div>
-                                              <div className="mobile-hide">
-                                                <button
-                                                  className="details-link"
-                                                  onClick={() => {
-                                                    setInsideAccordionIndex(
-                                                      (prev) => {
-                                                        const isOpen =
-                                                          prev === key;
-                                                        const newIndex = isOpen
-                                                          ? false
-                                                          : key;
-                                                        if (!isOpen) {
-                                                          setDrawerOpen(false);
-                                                          setActiveMbps(
-                                                            planInfo.speed
-                                                          );
-                                                          setActivePrice(
-                                                            planInfo.price
-                                                          );
-                                                          setBasePrice(
-                                                            planInfo.basePrice
-                                                          );
-                                                          setActiveCycle(
-                                                            planInfo.billingCycle
-                                                          );
-                                                          setActiveInstallation(
-                                                            planInfo.installationFee
-                                                          );
-                                                        }
-                                                        return newIndex;
-                                                      }
-                                                    );
-                                                  }}
-                                                >
-                                                  More Detail
-                                                </button>
-                                              </div>
-                                              <div className="pricing-plan-package-details mobile-only">
-                                                <div
-                                                  className="iconslist"
-                                                  style={{
-                                                    display: "flex",
-                                                    columnGap: "12px",
-                                                  }}
-                                                >
-                                                  <div className="info-details tv-container">
-                                                    <div className="image-wrap w-100 flex gap-2 my-2">
-                                                      {planInfo?.channels ===
-                                                        "350+ Channels" && (
-                                                        <>
-                                                          <img
-                                                            alt="news7"
-                                                            src="https://www.skylink.net.in/wp-content/uploads/2025/06/Logo_of_News7_Tamil_Logo.jpg"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                          <img
-                                                            alt="zee"
-                                                            src="https://skyplay.in/assets/zee-tamizh.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                        </>
-                                                      )}
-                                                      {planInfo?.channels ===
-                                                        "550+ Channels" && (
-                                                        <>
-                                                          <img
-                                                            alt="zee"
-                                                            src="https://skyplay.in/assets/zee-tamizh.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                          <img
-                                                            alt="vijay"
-                                                            src="https://skyplay.in/assets/vijay-tv.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                        </>
-                                                      )}
-                                                      {planInfo?.channels ===
-                                                        "750+ Channels" && (
-                                                        <>
-                                                          <img
-                                                            alt="zee"
-                                                            src="https://skyplay.in/assets/zee-tamizh.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                          <img
-                                                            alt="vijay"
-                                                            src="https://skyplay.in/assets/vijay-tv.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                        </>
-                                                      )}
-                                                      <span className="count-of-logo">
-                                                        +10 more
-                                                      </span>
-                                                    </div>
-                                                  </div>
-                                                  <div className="info-details tv-container">
-                                                    <div className="image-wrap w-100 flex gap-2 my-2">
-                                                      {planInfo?.otts ===
-                                                        "21+ OTTs" && (
-                                                        <>
-                                                          <img
-                                                            alt="sunnxt"
-                                                            src="https://skyplay.in/assets/sunnxt.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                          <img
-                                                            alt="zee5"
-                                                            src="https://www.skylink.net.in/wp-content/uploads/2023/08/ZEE5-Logo-700x394-1.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                        </>
-                                                      )}
-                                                      {planInfo?.otts ===
-                                                        "24+ OTTs" && (
-                                                        <>
-                                                          <img
-                                                            alt="sunnxt"
-                                                            src="https://skyplay.in/assets/sunnxt.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                          <img
-                                                            alt="zee5"
-                                                            src="https://www.skylink.net.in/wp-content/uploads/2023/08/ZEE5-Logo-700x394-1.png"
-                                                            width="35"
-                                                            height="35"
-                                                          />
-                                                        </>
-                                                      )}
-                                                      <span className="count-of-logo">
-                                                        +10 more
-                                                      </span>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                                <button
-                                                  className="subscribe-button mt-2"
-                                                  onClick={(e) => {
-                                                    setDrawerOpen(true);
-                                                    setActiveMbps(
-                                                      planInfo.speed
-                                                    );
-                                                    setActivePrice(
-                                                      planInfo.price
-                                                    );
-                                                    setActiveInstallation(
-                                                      planInfo.installationFee
-                                                    );
-                                                    setBasePrice(
-                                                      planInfo.basePrice
-                                                    );
-                                                    setActiveCycle(
-                                                      planInfo.billingCycle
-                                                    );
-                                                    setIsOpen(!isOpen);
-                                                    setIsContactOpen(
-                                                      !isContactOpen
-                                                    );
-                                                    console.log("Clicked");
-                                                  }}
-                                                >
-                                                  {isSelected(key) ? (
-                                                    <span className="flex items-center justify-center">
-                                                      Book Now
-                                                    </span>
-                                                  ) : (
-                                                    "Book Now"
-                                                  )}
-                                                </button>
-                                              </div>
-                                            </div>
-                                            <div className="pricing-plan-package-details">
-                                              <div
-                                                style={{
-                                                  display: "flex",
-                                                  alignItems: "end",
-                                                }}
-                                                className="mobile-hide"
-                                              >
-                                                <span className="special-price-wrap">
-                                                  ₹{planInfo.price}
-                                                </span>{" "}
-                                                /{" "}
-                                                <div
-                                                  style={{ fontSize: "12px" }}
-                                                >
-                                                  {planInfo.billingCycle ===
-                                                  "Monthly"
-                                                    ? "1 Mon"
-                                                    : planInfo.billingCycle ===
-                                                      "Quarterly"
-                                                    ? "3 Mon"
-                                                    : planInfo.billingCycle ===
-                                                      "Half-Yearly"
-                                                    ? "6 Mon"
-                                                    : planInfo.billingCycle ===
-                                                      "Annual"
-                                                    ? "12 Mon"
-                                                    : ""}
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div className="p-4 border-t order-change">
-                                            <div ref={detailRef}>
-                                              {isMobile ? (
-                                                <PlanAccordionDetails
-                                                  key={key}
-                                                  open={
-                                                    insideAccordionIndex === key
-                                                  }
-                                                  plan={planInfo}
-                                                  planindex={key}
-                                                  isSelected={isSelected}
-                                                  setInsideAccordionIndex={
-                                                    setInsideAccordionIndex
-                                                  }
-                                                  insideAccordionIndex={
-                                                    insideAccordionIndex
-                                                  }
-                                                  viewCart={viewCart}
-                                                  setDrawerOpen={setDrawerOpen}
-                                                  sectionRef={sectionRef}
-                                                />
-                                              ) : (
-                                                <PlanAccordionDetails
-                                                  key={key}
-                                                  open={
-                                                    insideAccordionIndex ===
-                                                    false
-                                                  }
-                                                  plan={planInfo}
-                                                  planindex={key}
-                                                  isSelected={isSelected}
-                                                  setInsideAccordionIndex={
-                                                    setInsideAccordionIndex
-                                                  }
-                                                  insideAccordionIndex={
-                                                    insideAccordionIndex
-                                                  }
-                                                  viewCart={viewCart}
-                                                  setDrawerOpen={setDrawerOpen}
-                                                  sectionRef={sectionRef}
-                                                />
-                                              )}
-                                            </div>
-                                            <img
-                                              className="red-line-wrap"
-                                              src="https://www.skylink.net.in/wp-content/uploads/2025/07/red-line.png"
-                                              alt="red line"
-                                            />
-                                            <hr
-                                              style={{
-                                                marginTop: "20px",
-                                                color: "#dddddd",
-                                              }}
-                                            />
-                                            <div className="pricing-plan-package-details">
-                                              <span className="mobile-hide">
-                                                <span className="special_price_wrap">
-                                                  ₹{planInfo.basePrice}{" "}
-                                                  <span className="after-price-special-font-styling">
-                                                    X{" "}
-                                                    {planInfo.billingCycle ===
-                                                    "Monthly"
-                                                      ? "1 Month"
-                                                      : planInfo.billingCycle ===
-                                                        "Quarterly"
-                                                      ? "3 Months"
-                                                      : planInfo.billingCycle ===
-                                                        "Half-Yearly"
-                                                      ? "6 Months"
-                                                      : planInfo.billingCycle ===
-                                                        "Annual"
-                                                      ? "12 Months"
-                                                      : ""}
-                                                  </span>
-                                                </span>
-                                              </span>
-                                            </div>
-                                            <button
-                                              className={`subscribe-button ${
-                                                !isMobile ? "open-popup" : ""
-                                              } mt-2`}
-                                              onClick={(e) => {
-                                                e.stopPropagation();
-                                                setDrawerOpen(true);
-                                                setActiveMbps(planInfo.speed);
-                                                setActivePrice(planInfo.price);
-                                                setBasePrice(
-                                                  planInfo.basePrice
-                                                );
-                                                setActiveCycle(
-                                                  planInfo.billingCycle
-                                                );
-                                                setActiveTab("Fixed Plan");
-                                                setActiveInstallation(
-                                                  planInfo.installationFee
-                                                );
-                                                setIsOpen(!isOpen);
-                                                setIsContactOpen(
-                                                  !isContactOpen
-                                                );
-                                                console.log("Clicked");
-                                              }}
-                                            >
-                                              {isSelected(key) ? (
-                                                <span className="flex items-center justify-center">
-                                                  Book Now
-                                                </span>
-                                              ) : (
-                                                "Book Now"
-                                              )}
-                                            </button>
-                                          </div>
-                                        </div>
-                                      );
-                                    })}
+                                  <PlanCard
+                                    isOpen={isOpen}
+                                    setInsideAccordionIndex={
+                                      setInsideAccordionIndex
+                                    }
+                                    isSelected={isSelected}
+                                    setActiveMbps={setActiveMbps}
+                                    setActivePrice={setActivePrice}
+                                    setBasePrice={setBasePrice}
+                                    setActiveCycle={setActiveCycle}
+                                    setActiveInstallation={
+                                      setActiveInstallation
+                                    }
+                                    planDetailArray={planDetailArray}
+                                    mbps={mbps}
+                                    insideAccordionIndex={insideAccordionIndex}
+                                    activeCycle={activeCycle}
+                                    detailRef={detailRef}
+                                    viewCart={viewCart}
+                                    setDrawerOpen={setDrawerOpen}
+                                    sectionRef={sectionRef}
+                                    activeTab={activeTab}
+                                    setActiveTab={setActiveTab}
+                                    setIsOpen={setIsOpen}
+                                    setIsContactOpen={setIsContactOpen}
+                                    isContactOpen={isContactOpen}
+                                  />
                                 </div>
                               </motion.div>
                             </AnimatePresence>
