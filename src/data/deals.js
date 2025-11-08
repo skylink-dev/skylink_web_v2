@@ -38,7 +38,7 @@ export const contentBaseData = {
   policy:
     "Up to ₹800 via reward card (redemption required). Restrictions apply.",
   subcta: "See offer details.",
-  cta: "Call +919944199445",
+  cta: "Call +91 99441 99445",
   href: "/",
 };
 export const faqContent = [

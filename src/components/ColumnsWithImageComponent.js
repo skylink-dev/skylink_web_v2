@@ -3,147 +3,145 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Image from "next/image"
+import Image from "next/image";
 import Link from 'next/link';
 
-const CustomPrevArrow = (props) => {
-    const { className, onClick } = props;
-    return (
-        <div className={className} onClick={onClick}>
-            <button
-                className="btn-reset touch-space"
-                aria-label="Previous"
-            >
-                <span className="inline-flex flex-centered round border color-white border-gray-400 color-gray-400 underlay-icon-bg width-lg-all height-lg-all">
-                    <svg className="height-sm-all width-sm-all color-gray-400" focusable="false" height="24" width="24" viewBox="0 0 32 32">
-                        <path d="M19.73 26.71L9 16 19.73 5.29l1.41 1.42L11.85 16l9.29 9.29z"></path>
-                    </svg>
-                </span>
-            </button>
-        </div>
-    );
-};
-
-const CustomNextArrow = (props) => {
-    const { className, onClick } = props;
-    return (
-        <div className={className} onClick={onClick}>
-            <button
-                className="btn-reset touch-space"
-                aria-label="Next"
-            >
-                <span className="inline-flex flex-centered round border rotate180 color-white border-cobalt-600 color-cobalt-600 bg-transparent width-lg-all height-lg-all">
-                    <svg className="height-sm-all width-sm-all color-cobalt-600" focusable="false" height="24" width="24" viewBox="0 0 32 32">
-                        <path d="M19.73 26.71L9 16 19.73 5.29l1.41 1.42L11.85 16l9.29 9.29z"></path>
-                    </svg>
-                </span>
-            </button>
-        </div>
-    );
-};
-
 const slidesData = [
-    {
-        title: "Skyplay Business Fiber",
-        subtitle: "Get up to 3 months* free",
-        description: "Plus, we will cover your early termination fee up to ₹750** when switching from another provider.",
-        legal: "*1 month with 300M; 2 months with 500M; 3 months with 1 GIG+. Fees extra. **Card redemption & proof of eligibility required. Ltd availability/areas.",
-        imgSrc: "/assets/skyplay-business-fiber-connection-1.jpg",
-        link: "/buy/internet/plans?customer_type=smallbusiness"
-    },
-    {
+  {
+    title: "Skyplay Business Fiber",
+    subtitle: "Get up to 3 months* free",
+    description:
+      "Plus, we will cover your early termination fee up to ₹750** when switching from another provider.",
+    legal:
+      "*1 month with 300M; 2 months with 500M; 3 months with 1 GIG+. Fees extra. **Card redemption & proof of eligibility required. Ltd availability/areas.",
+    imgSrc: "/assets/skyplay-business-fiber-connection-1.jpg",
+    link: "/buy/internet/plans?customer_type=smallbusiness",
+  },
+  {
     title: "₹699 Triple Play Bundle",
     subtitle: "IPTV + OTT + Internet + WiFi",
-    description: "Enjoy seamless entertainment and connectivity with Skyplay's ₹699 combo plan. Includes high-speed internet, IPTV with HD channels, premium OTT apps, and easy home WiFi setup.",
-    legal: "Offer valid in select cities only. Internet speed and OTT availability may vary by location and network conditions. Installation charges may apply. Fair usage policy applies. Terms and conditions apply.",
-        imgSrc: "/assets/skyplay-business-fiber-connection-2.jpg",
-        link: "/buy/internet/plans?customer_type=smallbusiness"
-    }
+    description:
+      "Enjoy seamless entertainment and connectivity with Skyplay's ₹699 combo plan. Includes high-speed internet, IPTV with HD channels, premium OTT apps, and easy home WiFi setup.",
+    legal:
+      "Offer valid in select cities only. Internet speed and OTT availability may vary by location and network conditions. Installation charges may apply. Fair usage policy applies. Terms and conditions apply.",
+    imgSrc: "/assets/skyplay-business-fiber-connection-2.jpg",
+    link: "/buy/internet/plans?customer_type=smallbusiness",
+  },
 ];
 
 export default function ColumnsWithImageComponent() {
-    const [carouselItems, setCarouselItems] = useState(slidesData);
+  const [carouselItems] = useState(slidesData);
 
-    const settings = {
-        dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        gap: 10,
-        prevArrow: <CustomPrevArrow />,
-        nextArrow: <CustomNextArrow />,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-        ],
-        beforeChange: (current, next) => {
-            console.log("Current slide index:", current);
-            console.log("Next slide index:", next);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    arrows: false,
+
+    appendDots: dots => (
+      <div className="mt-6 block md:hidden"> {/* visible only on mobile */}
+        <ul className="flex justify-center gap-2">{dots}</ul>
+      </div>
+    ),
+
+    customPaging: i => (
+      <div className="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300"></div>
+    ),
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: false, // hide dots on tablet & desktop
         },
-    };
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true, // show dots only on mobile
+        },
+      },
+    ],
+  };
 
-    return (
-        <div className="max-width-background mar-b-sm">
-            <div className="absolute-fill bgcolor bgcolor-fix bg-gray-200"></div>
-            <div className="rel container">
-                <div className="row flex-items-stretch">
-                    <div className="centered grid-col-10 text-center pad-t-xl pad-b-xs">
-                        <h2 className="mar-b-xs heading-xxl">Enjoy big savings on business essentials</h2>
-                    </div>
-                </div>
-            </div>
-            <div className="container pad-b-xl">
-                <div className="jsx-994660347 rel">
-                    <Slider {...settings}>
-                        {carouselItems.map((item, index) => (
-                            <div key={index} className="flex justify-center grid-col-12 fade">
-                                <div className="width-full px-2" key={index}>
-                                    <div className="card bgcolor theme-base-bg height-full z0 bg-white rel radius-lg flex justify-between flex-column">
-                                        <div className="card-img overflow-hidden">
-                                            <div style={{ position: 'relative', width: '100%', height: 'auto', aspectRatio: '3 / 2' }}>
-                                            <Image src={item.imgSrc} alt={item.title} fill className="zoomable" style={{ objectFit: 'cover' }}/>
-                                            </div>
-                                            <div className="pad-sm-lg pad-md-md pad-xs-sm pad-b-xxs">
-                                                <p className="type-eyebrow-md">{item.title}</p>
-                                                <h3 className="mar-b-xs heading-md">{item.subtitle}</h3>
-                                                <div className="type-sm mar-b-xs rte-styles">
-                                                    <p>{item.description}</p>
-                                                </div>
-                                                <div className="type-legal mar-b-sm-all">
-                                                    <span>{item.legal}</span>
-                                                    <button className="btn-reset nowrap"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="pad-sm-lg pad-md-md pad-xs-sm pad-t-xxs">
-                                            <Link
-                                                href={item.link}
-                                                className="jsx-1196099039 btn-primary"
-                                                aria-label={`See if ${item.title} is available in your area.`}
-                                            >
-                                                Check availability
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
-            </div>
+  return (
+    <div className="bg-gradient-to-br from-gray-50 to-white py-12 lg:py-16">
+      <style jsx global>{`
+        /* ✅ Hide slick dots completely for md and up */
+        @media (min-width: 768px) {
+          .slick-dots {
+            display: none !important;
+          }
+        }
+      `}</style>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Enjoy big savings on business essentials
+          </h2>
+          <div className="w-20 h-1 bg-red-600 mx-auto rounded-full"></div>
         </div>
-    );
+
+        {/* Slider */}
+        <div className="relative">
+          <Slider {...settings}>
+            {carouselItems.map((item, index) => (
+              <div key={index} className="px-3">
+                <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-[1.02] h-[620px] w-full flex flex-col">
+                  
+                  {/* Image Section */}
+                  <div className="relative w-full h-56 flex-shrink-0 overflow-hidden">
+                    <Image
+                      src={item.imgSrc}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="flex-1 p-7 flex flex-col min-h-0">
+                    <div className="flex-1 min-h-0 overflow-hidden">
+                      <p className="text-red-600 font-semibold text-sm uppercase tracking-wide mb-2">
+                        {item.title}
+                      </p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight line-clamp-2">
+                        {item.subtitle}
+                      </h3>
+                      <p className="text-gray-600 text-base leading-relaxed mb-4 line-clamp-3">
+                        {item.description}
+                      </p>
+                      <div className="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-4">
+                        {item.legal}
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="flex-shrink-0 pt-4 mt-auto">
+                      <Link
+                        href={item.link}
+                        className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg block"
+                        aria-label={`See if ${item.title} is available in your area.`}
+                      >
+                        Check availability
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
+    </div>
+  );
 }

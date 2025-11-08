@@ -4,7 +4,7 @@ export default function SimpleBanner({ color = "text-white", content }) {
   return (
     <section
       className="relative w-full max-w-7xl mx-auto mt-10 rounded-2xl overflow-hidden shadow-xl bg-cover bg-center flex flex-col md:flex-row items-center justify-between 
-                 min-h-[350px] md:min-h-[460px] lg:min-h-[520px] px-6 md:px-12 lg:px-16 group"
+                 min-h-[340px] md:min-h-[360px] lg:min-h-[380px] px-5 md:px-10 lg:px-14 group"
       style={{
         backgroundImage: `url(${content.backgroundImage})`,
       }}
@@ -13,25 +13,25 @@ export default function SimpleBanner({ color = "text-white", content }) {
       <div className="absolute inset-0 bg-gradient-to-r from-[#b70000]/90 via-[#cc0000]/70 to-transparent group-hover:from-[#990000]/95 transition-all duration-700"></div>
 
       {/* Left Text Section */}
-      <div className="relative z-10 text-left max-w-2xl text-white py-10 md:py-0">
+      <div className="relative z-10 text-left max-w-2xl text-white py-6 md:py-8">
         {/* Eyebrow */}
-        <p className="uppercase tracking-widest text-sm font-semibold text-gray-200 mb-2">
+        <p className="uppercase tracking-widest text-sm font-semibold text-gray-200 mb-1">
           {content.eyebrowText}
         </p>
 
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-snug mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-snug mb-3">
           {content.heading}
         </h2>
 
         {/* Subtext */}
-        <p className="text-base md:text-lg leading-relaxed mb-4 text-gray-100">
+        <p className="text-sm md:text-base leading-relaxed mb-3 text-gray-100">
           {content.subText}
         </p>
 
         {/* Legal Note */}
         {content.legalNote && (
-          <p className="text-xs text-gray-200 mb-6 opacity-80">
+          <p className="text-xs text-gray-200 mb-4 opacity-80">
             {content.legalNote}
           </p>
         )}
@@ -40,8 +40,8 @@ export default function SimpleBanner({ color = "text-white", content }) {
         {content.cta && (
           <a
             href={content.cta.link}
-            className="relative inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg bg-white text-red-600 
-                       hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="relative inline-flex items-center justify-center px-5 py-2.5 font-semibold rounded-lg bg-white text-red-600 
+                       hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg"
           >
             <span className="flex items-center gap-2">
               {content.cta.text}
@@ -63,7 +63,7 @@ export default function SimpleBanner({ color = "text-white", content }) {
         )}
       </div>
 
-      {/* Decorative Red Shape / Gradient Extension */}
+      {/* Decorative Gradient */}
       <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-[#ff0000]/60 to-transparent"></div>
     </section>
   );
