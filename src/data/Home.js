@@ -76,7 +76,7 @@ export const slidesData = [
     legal: "No hardware. Internet only.",
     ctaLabel: "Explore  OTT",
     ctaHref: "/",
-    image: "/assets/skyplay-ott-image.jpg",
+    image: "/newassets/home/slider/Skylink-ott-image.png",
     speed: "30 Mbps",
     tvChannels: 550,
     ottApps: 19,
