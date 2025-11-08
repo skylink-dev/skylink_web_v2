@@ -24,6 +24,177 @@ import "./Tab.css";
 import ContactPopup from "./ContactPopup";
 import PlanTabs from "../../new_plans/component/planTabs";
 
+const NewPlanCard = ({
+  setInsideAccordionIndex,
+  isSelected,
+  setActiveMbps,
+  setActivePrice,
+  setBasePrice,
+  setActiveCycle,
+  setActiveInstallation,
+  isMobile,
+  planDetailArray,
+  mbps,
+  insideAccordionIndex,
+  activeCycle,
+  detailRef,
+  viewCart,
+  setDrawerOpen,
+  sectionRef,
+  activeTab,
+  setActiveTab,
+  setIsOpen,
+  setIsContactOpen,
+  isContactOpen,
+}) => {
+  return (
+    <div className="flex flex-wrap justify-center gap-6 w-full">
+      {Object.entries(planDetailArray)
+        .reverse()
+        .map((plan, planIdx) => {
+          const key = `${mbps}-${planIdx}`;
+          const planInfo = plan[1][activeCycle];
+          const isOpen = insideAccordionIndex === key;
+          const selected = isSelected(key);
+
+          return (
+            <motion.div
+              key={key}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+              className={`relative bg-white border rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 w-72 p-4 flex flex-col justify-between cursor-pointer ${
+                selected || planInfo.hot === "yes"
+                  ? "border-red-500 ring-2 ring-red-300"
+                  : "border-gray-200"
+              }`}
+              onClick={
+                isMobile
+                  ? () => {
+                      setInsideAccordionIndex((prev) =>
+                        prev === key ? false : key
+                      );
+                      setActiveMbps(planInfo.speed);
+                      setActivePrice(planInfo.price);
+                      setBasePrice(planInfo.basePrice);
+                      setActiveCycle(planInfo.billingCycle);
+                      setActiveInstallation(planInfo.installationFee);
+                    }
+                  : undefined
+              }
+            >
+              {/* Recommended Badge */}
+              {planInfo.hot === "yes" && (
+                <div className="absolute -top-3 right-3 flex items-center gap-1 bg-gradient-to-r from-yellow-500 to-orange-400 text-white font-semibold text-xs px-3 py-1 rounded-full shadow-md">
+                  <FaStar className="text-white w-4 h-4" /> Recommended
+                </div>
+              )}
+
+              {/* Plan Speed and Price */}
+              <div className="text-center">
+                <h3 className="text-2xl font-extrabold text-gray-800">
+                  {planInfo.speed}
+                </h3>
+                <p className="text-sm text-gray-500 mt-1">
+                  {planInfo.dataLimit} Data
+                </p>
+                <div className="mt-2 text-lg font-semibold text-gray-800">
+                  ₹{planInfo.price}{" "}
+                  <span className="text-sm text-gray-500">
+                    /{" "}
+                    {planInfo.billingCycle === "Monthly"
+                      ? "1 Month"
+                      : planInfo.billingCycle === "Quarterly"
+                      ? "3 Months"
+                      : planInfo.billingCycle === "Half-Yearly"
+                      ? "6 Months"
+                      : "12 Months"}
+                  </span>
+                </div>
+              </div>
+
+              {/* OTT + TV Logos */}
+              <div className="flex justify-center gap-3 mt-4">
+                {planInfo?.otts && (
+                  <img
+                    src="https://skyplay.in/assets/sunnxt.png"
+                    alt="SunNXT"
+                    className="w-8 h-8 rounded-md object-contain"
+                  />
+                )}
+                {planInfo?.channels && (
+                  <img
+                    src="https://skyplay.in/assets/zee-tamizh.png"
+                    alt="Zee Tamil"
+                    className="w-8 h-8 rounded-md object-contain"
+                  />
+                )}
+              </div>
+
+              {/* Validity */}
+              <div className="mt-4 flex justify-between text-sm text-gray-600 border-t pt-2">
+                <div>
+                  <span className="block font-semibold">Validity</span>
+                  <span>
+                    {planInfo.billingCycle === "Monthly"
+                      ? "1 Month"
+                      : planInfo.billingCycle === "Quarterly"
+                      ? "3 Months"
+                      : planInfo.billingCycle === "Half-Yearly"
+                      ? "6 Months"
+                      : "12 Months"}
+                  </span>
+                </div>
+                <div>
+                  <span className="block font-semibold">Installation</span>
+                  <span>₹{planInfo.installationFee}</span>
+                </div>
+              </div>
+
+              {/* Details Accordion (optional on mobile) */}
+              <div ref={detailRef} className="mt-3">
+                <PlanAccordionDetails
+                  key={key}
+                  open={insideAccordionIndex === key}
+                  plan={planInfo}
+                  planindex={key}
+                  isSelected={isSelected}
+                  setInsideAccordionIndex={setInsideAccordionIndex}
+                  insideAccordionIndex={insideAccordionIndex}
+                  viewCart={viewCart}
+                  setDrawerOpen={setDrawerOpen}
+                  sectionRef={sectionRef}
+                />
+              </div>
+
+              {/* Book Now Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setDrawerOpen(true);
+                  setActiveMbps(planInfo.speed);
+                  setActivePrice(planInfo.price);
+                  setBasePrice(planInfo.basePrice);
+                  setActiveCycle(planInfo.billingCycle);
+                  setActiveInstallation(planInfo.installationFee);
+                  setActiveTab("Fixed Plan");
+                  setIsOpen(!isOpen);
+                  setIsContactOpen(!isContactOpen);
+                }}
+                className={`mt-4 w-full rounded-xl text-white font-semibold py-2 transition-all duration-300 ${
+                  selected
+                    ? "bg-red-600 hover:bg-red-700"
+                    : "bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
+                }`}
+              >
+                Book Now
+              </button>
+            </motion.div>
+          );
+        })}
+    </div>
+  );
+};
+
 const PlanCard = ({
   setInsideAccordionIndex,
   isSelected,
@@ -48,7 +219,7 @@ const PlanCard = ({
   isContactOpen,
 }) => {
   return (
-    <>
+    <div className=" flex content-center justify-center  ">
       {Object.entries(planDetailArray)
         .reverse()
         .map((plan, planIdx) => {
@@ -58,7 +229,7 @@ const PlanCard = ({
           return (
             <div
               key={key}
-              className={`pricing-plan-package-item ${
+              className={`pricing-plan-package-item absolute h-80 ${
                 isSelected(key) ? "active" : ""
               } ${planInfo.hot === "yes" ? "active" : ""}`}
               onClick={
@@ -76,10 +247,9 @@ const PlanCard = ({
                   : undefined
               }
             >
-              <div className="gradient-color"></div>
               {planInfo.hot === "yes" && (
                 <div
-                  className={`flex w-full ${
+                  className={`relative -top-7 -right-3  flex w-35 ${
                     activeTab == "Fixed Plan"
                       ? "bg-yellow-400/80"
                       : "bg-gray-600/20"
@@ -456,7 +626,7 @@ const PlanCard = ({
             </div>
           );
         })}
-    </>
+    </div>
   );
 };
 
@@ -886,38 +1056,76 @@ export default function Tab() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                               >
+                                <div class="relative min-h-screen bg-gradient-to-br from-[#414040] via-[#ceadad] to-[#1a1a1a] overflow-hidden">
+                                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.05)_0%,rgba(0,0,0,0)_70%)]"></div>
+
+                                  <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(255,0,0,0.08)_0%,rgba(0,0,0,0)_70%)]"></div>
+
+                                  <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-white">
+                                    <h1 class="text-5xl font-bold mb-4">
+                                      Modern Plan Section
+                                    </h1>
+                                    <p class="text-gray-400 text-lg max-w-lg text-center">
+                                      This is your recreated dark background
+                                      using Tailwind gradients and radial
+                                      overlays.
+                                    </p>
+                                  </div>
+                                </div>
+                                <NewPlanCard
+                                  isOpen={isOpen}
+                                  setInsideAccordionIndex={
+                                    setInsideAccordionIndex
+                                  }
+                                  isSelected={isSelected}
+                                  setActiveMbps={setActiveMbps}
+                                  setActivePrice={setActivePrice}
+                                  setBasePrice={setBasePrice}
+                                  setActiveCycle={setActiveCycle}
+                                  setActiveInstallation={setActiveInstallation}
+                                  planDetailArray={planDetailArray}
+                                  mbps={mbps}
+                                  insideAccordionIndex={insideAccordionIndex}
+                                  activeCycle={activeCycle}
+                                  detailRef={detailRef}
+                                  viewCart={viewCart}
+                                  setDrawerOpen={setDrawerOpen}
+                                  sectionRef={sectionRef}
+                                  activeTab={activeTab}
+                                  setActiveTab={setActiveTab}
+                                  setIsOpen={setIsOpen}
+                                  setIsContactOpen={setIsContactOpen}
+                                  isContactOpen={isContactOpen}
+                                />
+                                <PlanCard
+                                  isOpen={isOpen}
+                                  setInsideAccordionIndex={
+                                    setInsideAccordionIndex
+                                  }
+                                  isSelected={isSelected}
+                                  setActiveMbps={setActiveMbps}
+                                  setActivePrice={setActivePrice}
+                                  setBasePrice={setBasePrice}
+                                  setActiveCycle={setActiveCycle}
+                                  setActiveInstallation={setActiveInstallation}
+                                  planDetailArray={planDetailArray}
+                                  mbps={mbps}
+                                  insideAccordionIndex={insideAccordionIndex}
+                                  activeCycle={activeCycle}
+                                  detailRef={detailRef}
+                                  viewCart={viewCart}
+                                  setDrawerOpen={setDrawerOpen}
+                                  sectionRef={sectionRef}
+                                  activeTab={activeTab}
+                                  setActiveTab={setActiveTab}
+                                  setIsOpen={setIsOpen}
+                                  setIsContactOpen={setIsContactOpen}
+                                  isContactOpen={isContactOpen}
+                                />
                                 <div
                                   className="inside-div"
                                   style={{ display: "flex" }}
-                                >
-                                  <PlanCard
-                                    isOpen={isOpen}
-                                    setInsideAccordionIndex={
-                                      setInsideAccordionIndex
-                                    }
-                                    isSelected={isSelected}
-                                    setActiveMbps={setActiveMbps}
-                                    setActivePrice={setActivePrice}
-                                    setBasePrice={setBasePrice}
-                                    setActiveCycle={setActiveCycle}
-                                    setActiveInstallation={
-                                      setActiveInstallation
-                                    }
-                                    planDetailArray={planDetailArray}
-                                    mbps={mbps}
-                                    insideAccordionIndex={insideAccordionIndex}
-                                    activeCycle={activeCycle}
-                                    detailRef={detailRef}
-                                    viewCart={viewCart}
-                                    setDrawerOpen={setDrawerOpen}
-                                    sectionRef={sectionRef}
-                                    activeTab={activeTab}
-                                    setActiveTab={setActiveTab}
-                                    setIsOpen={setIsOpen}
-                                    setIsContactOpen={setIsContactOpen}
-                                    isContactOpen={isContactOpen}
-                                  />
-                                </div>
+                                ></div>
                               </motion.div>
                             </AnimatePresence>
                           </div>
