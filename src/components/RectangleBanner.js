@@ -18,7 +18,7 @@ export default function RectangleBanner({
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
       whileHover={{ scale: 1.01 }}
-      className={`relative overflow-hidden rounded-2xl shadow-lg my-10 mx-4 sm:mx-6 md:mx-10 lg:mx-auto ${
+      className={`relative overflow-hidden rounded-2xl shadow-lg mx-4 sm:mx-6 md:mx-6 lg:mx-auto ${
         darkTheme ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"
       } max-w-7xl`}
     >

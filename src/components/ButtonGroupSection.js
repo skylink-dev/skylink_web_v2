@@ -4,20 +4,31 @@ import React from 'react'
 
 export default function ButtonGroupSection({ content }) {
   return (
-    <div className="max-width-background pad-t-md pad-b-lg bg-gray-200 mar-t-md ">
-      <div className="container">
-        <div className="row flex-items-stretch justify-center">
-          <div className="rel grid-col-10 text-center">
-            <h2 className="heading-xxl"><span className="block pad-b-md">{content.title}</span></h2>
-            <div className="flex-wrap cta-container gap16 justify-center inline-flex-lg flex-column-sm">
-              {content.buttons.map((item, index) => (
-                <div key={index} className='inline-flex'>
-                  <Link id="multiCta-Compare-iPhones-lnk-2297" aria-label="Compare iPhones" viewport="[object Object]" href={item.buttonurl} className="jsx-1196099039 btn-secondary ">{item.buttontitle}</Link>
-                  <div className="inline-flex bg-gray-400 mar-l-xxs mar-r-xxs hide-sm" style={{ "width": "1px" }}></div>
-                </div>
-              ))}
+    <div className="bg-gradient-to-br from-gray-100 to-gray-200 py-10 lg:py-12 rounded-2xl mx-auto w-[95%] max-w-4xl shadow-md">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center">
+          {/* Title */}
+          <h2 className="text-2xl lg:text-3xl font-extrabold text-gray-900 mb-6 tracking-wide">
+            {content.title}
+          </h2>
 
-            </div>
+          {/* Button Group - No Scroll */}
+          <div className="flex flex-wrap justify-center items-center gap-3 py-3">
+            {content.buttons.map((item, index) => (
+              <React.Fragment key={index}>
+                <Link 
+                  href={item.buttonurl}
+                  className="bg-white hover:bg-gray-50 text-gray-900 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md text-sm sm:text-base text-center"
+                >
+                  {item.buttontitle}
+                </Link>
+
+                {/* Divider */}
+                {index < content.buttons.length - 1 && (
+                  <div className="w-px h-6 bg-gray-400"></div>
+                )}
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

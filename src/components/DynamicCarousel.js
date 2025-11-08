@@ -10,7 +10,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 const CustomPrevArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-800 hover:bg-gray-100 shadow-lg p-2 rounded-full transition"
+    className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-800 hover:bg-gray-100 shadow-md p-2 rounded-full transition"
   >
     <ArrowLeft className="w-5 h-5" />
   </button>
@@ -19,7 +19,7 @@ const CustomPrevArrow = ({ onClick }) => (
 const CustomNextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-800 hover:bg-gray-100 shadow-lg p-2 rounded-full transition"
+    className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-800 hover:bg-gray-100 shadow-md p-2 rounded-full transition"
   >
     <ArrowRight className="w-5 h-5" />
   </button>
@@ -53,7 +53,7 @@ export default function DynamicCarousel({ title, slidesData = [] }) {
           <li key={index}>
             <button
               onClick={() => sliderRef.current?.slickGoTo(index)}
-              className={`w-3 h-3 rounded-full ${
+              className={`w-2.5 h-2.5 rounded-full ${
                 currentSlide === index
                   ? "bg-red-600 scale-110"
                   : "bg-gray-300 hover:bg-gray-400"
@@ -71,9 +71,9 @@ export default function DynamicCarousel({ title, slidesData = [] }) {
   };
 
   return (
-    <section className="relative py-20 bg-white">
+    <section className="relative py-2 bg-white">
       {/* Title */}
-      <div className="max-w-6xl mx-auto px-6 text-center mb-12">
+      <div className="max-w-6xl mx-auto px-6 text-center mb-10">
         <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
           {title}
         </h2>
@@ -86,34 +86,35 @@ export default function DynamicCarousel({ title, slidesData = [] }) {
           {slidesData.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
               className="px-3"
             >
-              <div className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-[520px]">
-                {/* Image */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden">
+              {/* Card Container */}
+              <div className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 h-[490px]">
+                {/* Fixed Image Section */}
+                <div className="relative w-full h-[180px] flex-shrink-0 overflow-hidden">
                   <motion.img
                     src={item.imgSrc}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-500"
                     whileHover={{ scale: 1.1 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                {/* Content */}
-                <div className="flex flex-col justify-between flex-1 p-6 text-left">
-                  <div>
+                {/* Content Section */}
+                <div className="flex flex-col justify-between flex-1 p-5 text-left">
+                  <div className="flex-1">
                     <p className="text-sm font-semibold text-red-600 uppercase mb-1">
                       {item.title}
                     </p>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
                       {item.subtitle}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-3">
                       {item.description}
                     </p>
 
@@ -123,14 +124,16 @@ export default function DynamicCarousel({ title, slidesData = [] }) {
                       </p>
                     )}
                     {item.legalText && (
-                      <p className="text-xs text-gray-400">{item.legalText}</p>
+                      <p className="text-xs text-gray-400 line-clamp-2">
+                        {item.legalText}
+                      </p>
                     )}
                   </div>
 
                   {item.link && (
                     <Link
                       href={item.link}
-                      className="mt-5 inline-block px-5 py-2.5 text-sm font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-300 text-center"
+                      className="mt-4 inline-block px-5 py-2 text-sm font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-300 text-center"
                     >
                       Learn More
                     </Link>
