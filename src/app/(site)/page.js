@@ -76,9 +76,9 @@ export default function Home() {
       {/* <Banner content={bannerContent} /> */}
       {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
 
-      <ThreeBannerModern/>
+      <ThreeBannerModern />
       <FlexCard
-        title="Speed You Need. Connection You Trust. Entertainment You Love"
+        title="For Every Age. Every Stage. Every Connection."
         rightImage="/assets/skyplay-card-right.jpg"
         leftImage="/assets/skyplay-flex-card-left.jpg"
         mobileleftImage="/assets/skyplay-banner-mobile.jpg"

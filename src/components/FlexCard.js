@@ -60,7 +60,11 @@ export default function FlexCard({
   if (!isMounted) return null;
 
   return (
-    <section className={`bg-gradient-to-br from-gray-50 to-red-50 ${toppaddingremove || ""} py-8 sm:py-12 md:py-16`}>
+    <section
+      className={`bg-gradient-to-br from-gray-50 to-red-50 ${
+        toppaddingremove || ""
+      } py-8 sm:py-12 md:py-16`}
+    >
       <div className="container mx-auto px-3 sm:px-4 md:px-6 relative">
         {title && (
           <motion.div
@@ -100,7 +104,7 @@ export default function FlexCard({
 
             <motion.div
               key={selectedId}
-              className="relative z-10 p-5 min-[375px]:p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 text-white h-full flex flex-col justify-center rounded-2xl sm:rounded-3xl"
+              className="relative z-10  p-5 min-[375px]:p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 text-white h-full flex flex-col justify-center rounded-2xl sm:rounded-3xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -108,15 +112,15 @@ export default function FlexCard({
             >
               {selected && (
                 <>
-                  <motion.p 
-                    className="uppercase tracking-wider sm:tracking-widest text-xs min-[375px]:text-sm mb-2 sm:mb-3 text-red-400 font-semibold"
+                  <motion.p
+                    className="uppercase tracking-wider sm:tracking-widest text-xs min-[375px]:text-xs mb-2 sm:mb-3 text-red-400 font-semibold"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
                   >
                     {selected.subtitle}
                   </motion.p>
-                  <motion.h3 
+                  <motion.h3
                     className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -124,7 +128,7 @@ export default function FlexCard({
                   >
                     {selected.title}
                   </motion.h3>
-                  <motion.p 
+                  <motion.p
                     className="text-sm min-[375px]:text-base sm:text-lg mb-2 sm:mb-3 text-gray-100 leading-relaxed max-w-2xl"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -132,7 +136,7 @@ export default function FlexCard({
                   >
                     {selected.description}
                   </motion.p>
-                  <motion.p 
+                  <motion.p
                     className="text-xs min-[375px]:text-sm opacity-90 text-gray-200 max-w-2xl mb-4 sm:mb-5 md:mb-6"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -152,8 +156,18 @@ export default function FlexCard({
                       className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2.5 min-[375px]:py-3 px-6 min-[375px]:px-8 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-sm min-[375px]:text-base"
                     >
                       <span>Subscribe now</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
                       </svg>
                     </Link>
                   </motion.div>
@@ -192,7 +206,7 @@ export default function FlexCard({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <motion.p 
+              <motion.p
                 className="uppercase text-red-400 text-xs min-[375px]:text-sm mb-1.5 sm:mb-2 font-semibold tracking-wider sm:tracking-widest drop-shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -207,7 +221,7 @@ export default function FlexCard({
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               />
-              <motion.p 
+              <motion.p
                 className="text-gray-100 mb-2 sm:mb-3 text-xs min-[375px]:text-sm leading-relaxed drop-shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -215,7 +229,7 @@ export default function FlexCard({
               >
                 {rightSelected?.description}
               </motion.p>
-              <motion.p 
+              <motion.p
                 className="text-xs text-gray-200 mb-3 sm:mb-4 drop-shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -235,8 +249,18 @@ export default function FlexCard({
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2 min-[375px]:py-2.5 px-5 min-[375px]:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-xs min-[375px]:text-sm"
                 >
                   <span>{rightSelected?.mainCta}</span>
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <svg
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </Link>
               </motion.div>
