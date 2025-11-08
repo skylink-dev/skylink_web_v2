@@ -4,38 +4,57 @@ import React from 'react'
 
 export default function TwoColumnSection({title, promoCards}) {
     return (
-        <div className="py-8 md:py-12 lg:py-16 bg-white relative">
-            <div className="container mx-auto px-4 relative">
-                <div className="flex justify-center items-stretch">
-                    <div className="w-full lg:w-2/3 md:w-5/6 text-center relative">
-                        <h2 className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">{title}</h2>
-                    </div>
+        <div className="py-10 md:py-14 lg:py-18 bg-gradient-to-br from-gray-50 to-white relative">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
+                {/* Header Section */}
+                <div className="text-center mb-12 lg:mb-16">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                        {title}
+                    </h2>
+                    <div className="w-20 h-1 bg-red-600 mx-auto rounded-full"></div>
                 </div>
-                <div className="flex flex-wrap justify-center items-stretch -mx-4 mt-8">
+
+                {/* Promo Cards Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {promoCards.map((card) => (
-                        <div key={card.id} className="w-full lg:w-1/2 px-4 mb-8 group">
+                        <div key={card.id} className="group">
                             <div 
-                                className="relative rounded-2xl flex flex-col justify-start items-center overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 min-h-[620px] group-hover:scale-[1.02] transition-transform duration-300 bg-cover bg-center"
+                                className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 min-h-[580px] group-hover:scale-[1.02] bg-cover bg-center"
                                 style={{
                                     backgroundImage: `url('${card.image}')`,
                                 }}
                             >
-                                {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10" />
-                                
-                                {/* Content directly on image container */}
-                                <div className="relative w-full z-20 p-6 mt-6">
-                                    <p className="text-sm font-semibold tracking-wider text-red-600 uppercase mb-2">{card.eyebrow}</p>
-                                    <h3 className="mb-4 text-2xl md:text-3xl font-bold text-white drop-shadow-lg" dangerouslySetInnerHTML={{ __html: card.heading }} />
-                                    <div className="text-base text-white leading-relaxed drop-shadow-lg">
+                                {/* Content - No Overlay */}
+                                <div className="relative h-full flex flex-col justify-end p-8">
+                                    {/* Eyebrow */}
+                                    <p className="text-sm font-semibold tracking-wider text-red-600 uppercase mb-3">
+                                        {card.eyebrow}
+                                    </p>
+                                    
+                                    {/* Heading */}
+                                    <h3 
+                                        className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight"
+                                        dangerouslySetInnerHTML={{ __html: card.heading }} 
+                                    />
+                                    
+                                    {/* Description */}
+                                    <div className="text-gray-700 text-base leading-relaxed mb-4">
                                         <p dangerouslySetInnerHTML={{ __html: card.description }} />
                                     </div>
-                                    <div className="text-xs text-white/80 mt-3 drop-shadow" dangerouslySetInnerHTML={{ __html: card.legal }} />
+                                    
+                                    {/* Legal Text */}
+                                    {card.legal && (
+                                        <div 
+                                            className="text-gray-600 text-xs mb-6 leading-relaxed"
+                                            dangerouslySetInnerHTML={{ __html: card.legal }} 
+                                        />
+                                    )}
                                 
-                                    <div className="mt-6 flex flex-col md:flex-row justify-center gap-4">
+                                    {/* CTA Button */}
+                                    <div className="mt-4">
                                         <Link 
                                             href={card.ctaHref} 
-                                            className="bg-white text-red-600 border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-red-50 transition-all duration-200 transform hover:scale-105 text-center"
+                                            className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white border-2 border-red-600 hover:border-red-700 px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center min-w-[160px]"
                                             aria-label={card.ctaText}
                                         >
                                             {card.ctaText}

@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function RightImageLeftContent({ title, Content, order }) {
+export default function LeftImageRightContent({ title, Content, order }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -80,7 +80,7 @@ export default function RightImageLeftContent({ title, Content, order }) {
   };
 
   const contentVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
       x: 0,
@@ -89,12 +89,12 @@ export default function RightImageLeftContent({ title, Content, order }) {
   };
 
   return (
-    <section className="bg-gradient-to-br from-white to-gray-50/30 py-10 sm:py-14 lg:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Heading - Mobile Optimized */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+    <section className="bg-gradient-to-br from-white to-gray-50/30 py-8 sm:py-10 lg:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Heading */}
+        <div className="text-center mb-10 sm:mb-14 lg:mb-16">
           <motion.h2
-            className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -106,12 +106,44 @@ export default function RightImageLeftContent({ title, Content, order }) {
 
         {!isMobile && !isTablet ? (
           // Desktop Layout
-          <div
-            className={`flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 ${order}`}
-          >
-            {/* Content Section */}
+          <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-12">
+            {/* Image Section - Now on LEFT with equal height */}
+            <div className="w-full lg:w-1/2 flex">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImage}
+                  className="relative w-full h-full min-h-[500px] overflow-hidden rounded-xl lg:rounded-2xl shadow-lg"
+                  variants={imageVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  <Image
+                    src={
+                      Content[currentImage]?.img || "/assets/default-image.webp"
+                    }
+                    alt={Content[currentImage]?.title || "Content image"}
+                    fill
+                    className="object-cover rounded-xl lg:rounded-2xl transition-transform duration-1000 group-hover:scale-105"
+                    priority
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl lg:rounded-2xl" />
+
+                  {/* Image Indicator */}
+                  <div className="absolute bottom-4 lg:bottom-5 left-4 lg:left-5 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+                    <span className="text-xs font-semibold text-gray-700">
+                      {currentImage + 1} / {Content.length}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Content Section - Now on RIGHT with equal height */}
             <motion.div
-              className="w-full lg:w-2/5 space-y-4 lg:space-y-6"
+              className="w-full lg:w-1/2 flex flex-col space-y-3 lg:space-y-4"
               initial="hidden"
               animate="visible"
               variants={contentVariants}
@@ -119,26 +151,26 @@ export default function RightImageLeftContent({ title, Content, order }) {
               {Content.map((item, index) => (
                 <motion.div
                   key={index}
-                  className={`group relative rounded-xl lg:rounded-2xl p-4 lg:p-6 transition-all duration-500 cursor-pointer border-2 ${
+                  className={`group relative rounded-lg lg:rounded-xl p-4 lg:p-5 transition-all duration-500 cursor-pointer border-2 flex-1 ${
                     currentImage === index
-                      ? "bg-red-600 border-red-600 shadow-lg lg:shadow-xl scale-105 text-white"
-                      : "bg-white/80 border-transparent hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-md lg:hover:shadow-lg"
+                      ? "bg-red-600 border-red-600 shadow-lg scale-105 text-white"
+                      : "bg-white/80 border-transparent hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-md"
                   }`}
                   onMouseEnter={() => setCurrentImage(index)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {/* Active Indicator */}
+                  {/* Active Indicator - Moved to right side */}
                   {currentImage === index && (
                     <motion.div
-                      className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-1 h-12 lg:h-16 bg-white rounded-full"
+                      className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-1 h-10 lg:h-12 bg-white rounded-full"
                       layoutId="activeIndicator"
                     />
                   )}
 
-                  <div className="flex items-start gap-3 lg:gap-5">
+                  <div className="flex items-start gap-3 lg:gap-4 h-full">
                     <motion.div
-                      className={`p-2 lg:p-3 rounded-xl lg:rounded-2xl transition-all duration-300 flex-shrink-0 ${
+                      className={`p-2 lg:p-2 rounded-lg lg:rounded-xl transition-all duration-300 flex-shrink-0 ${
                         currentImage === index
                           ? "bg-white/20 shadow-inner"
                           : "bg-gray-100 group-hover:bg-white/20"
@@ -147,19 +179,19 @@ export default function RightImageLeftContent({ title, Content, order }) {
                     >
                       <Image
                         src={item.icon}
-                        width={40}
-                        height={40}
+                        width={32}
+                        height={32}
                         alt={item.title}
-                        className={`w-8 h-8 lg:w-12 lg:h-12 object-contain transition-all duration-300 ${
+                        className={`w-6 h-6 lg:w-8 lg:h-8 object-contain transition-all duration-300 ${
                           currentImage === index
                             ? "filter brightness-0 invert"
                             : ""
                         }`}
                       />
                     </motion.div>
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 flex flex-col justify-center">
                       <h3
-                        className={`text-lg lg:text-xl font-bold mb-1 lg:mb-2 transition-colors duration-300 ${
+                        className={`text-base lg:text-lg font-bold mb-1 lg:mb-2 transition-colors duration-300 ${
                           currentImage === index
                             ? "text-white"
                             : "text-gray-900 group-hover:text-white"
@@ -168,7 +200,7 @@ export default function RightImageLeftContent({ title, Content, order }) {
                         {item.title}
                       </h3>
                       <p
-                        className={`leading-relaxed text-sm lg:text-base transition-colors duration-300 ${
+                        className={`leading-relaxed text-sm transition-colors duration-300 ${
                           currentImage === index
                             ? "text-white/90"
                             : "text-gray-600 group-hover:text-white/90"
@@ -181,43 +213,9 @@ export default function RightImageLeftContent({ title, Content, order }) {
                 </motion.div>
               ))}
             </motion.div>
-
-            {/* Image Section */}
-            <div className="w-full lg:w-3/5">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentImage}
-                  className="relative w-full h-[400px] sm:h-[500px] lg:h-[700px] overflow-hidden rounded-2xl lg:rounded-3xl shadow-xl lg:shadow-2xl"
-                  variants={imageVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                >
-                  <Image
-                    src={
-                      Content[currentImage]?.img || "/assets/default-image.webp"
-                    }
-                    alt={Content[currentImage]?.title || "Content image"}
-                    fill
-                    className="object-cover rounded-2xl lg:rounded-3xl transition-transform duration-1000 group-hover:scale-105"
-                    priority
-                  />
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl lg:rounded-3xl" />
-
-                  {/* Image Indicator */}
-                  <div className="absolute bottom-4 lg:bottom-6 left-4 lg:left-6 bg-white/90 backdrop-blur-sm rounded-full px-3 lg:px-4 py-1 lg:py-2">
-                    <span className="text-xs lg:text-sm font-semibold text-gray-700">
-                      {currentImage + 1} / {Content.length}
-                    </span>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
           </div>
         ) : (
-          // Mobile & Tablet Version - Fixed Dots Positioning
+          // Mobile & Tablet Version
           <div className="px-1 sm:px-2">
             <div className="relative">
               <Slider {...sliderSettings} ref={sliderRef}>
@@ -228,13 +226,11 @@ export default function RightImageLeftContent({ title, Content, order }) {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 0.5 }}
-                    className="px-1 sm:px-2 pb-2" // Reduced bottom padding
+                    className="px-1 sm:px-2 pb-2"
                   >
-                    <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl border border-gray-100 mb-2">
-                      {" "}
-                      {/* Added margin bottom */}
+                    <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-2">
                       {/* Image Section */}
-                      <div className="relative w-full h-48 sm:h-64 md:h-80">
+                      <div className="relative w-full h-40 sm:h-52 md:h-64">
                         <Image
                           src={item.img || "/assets/default-image.webp"}
                           alt={item.title}
@@ -246,37 +242,37 @@ export default function RightImageLeftContent({ title, Content, order }) {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
                         {/* Mobile Image Indicator */}
-                        <div className="absolute top-4 right-4 bg-black/60 text-white rounded-full px-3 py-1">
+                        <div className="absolute top-3 right-3 bg-black/60 text-white rounded-full px-2 py-1">
                           <span className="text-xs font-medium">
                             {index + 1} / {Content.length}
                           </span>
                         </div>
                       </div>
                       {/* Content Section */}
-                      <div className="p-4 sm:p-6 md:p-8">
-                        <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
-                          <div className="bg-red-100 p-2 sm:p-3 rounded-xl sm:rounded-2xl flex-shrink-0">
+                      <div className="p-4 sm:p-5 md:p-6">
+                        <div className="flex items-start gap-3 sm:gap-4 mb-3">
+                          <div className="bg-red-100 p-2 rounded-lg flex-shrink-0">
                             <Image
                               src={item.icon}
-                              width={32}
-                              height={32}
+                              width={28}
+                              height={28}
                               alt={item.title}
-                              className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
-                              sizes="32px"
+                              className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                              sizes="28px"
                             />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2">
+                            <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1 line-clamp-2">
                               {item.title}
                             </h3>
-                            <p className="text-gray-600 leading-relaxed text-sm sm:text-base line-clamp-3 sm:line-clamp-4">
+                            <p className="text-gray-600 leading-relaxed text-xs sm:text-sm line-clamp-3">
                               {item.description}
                             </p>
                           </div>
                         </div>
 
                         {/* Mobile CTA Button */}
-                        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-xl sm:rounded-2xl transition-all duration-300 active:scale-95 mt-2 sm:mt-4">
+                        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 active:scale-95 mt-2 text-sm">
                           Learn More
                         </button>
                       </div>
