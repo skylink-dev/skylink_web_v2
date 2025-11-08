@@ -6,8 +6,8 @@ import { channelImageList } from "@/redux/data/ChannelsNamesImage";
 import ContactPopup from "../../plans/component/ContactPopup";
 
 export default function FixedPlan({ isMobile, plans, activeTab }) {
-  const [selectedValidity, setSelectedValidity] = useState("1 Month");
-  const [selectedSpeed, setSelectedSpeed] = useState("30 Mbps");
+  const [selectedValidity, setSelectedValidity] = useState("12 Month");
+  const [selectedSpeed, setSelectedSpeed] = useState("50 Mbps");
   const [activePrice, setActivePrice] = useState();
   const [activeCycle, setActiveCycle] = useState();
   const [isContactOpen, setIsContactOpen] = useState();
@@ -71,43 +71,12 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
 
         {/* 🔘 Validity Selection */}
 
-        {/* ⚡ Speed Selection */}
-        <div className="bg-red-50 m-0 p-2 rounded-xl">
-          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
-            Choose Your BandWidth
-          </h3>
-          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
-            {speedOptions.map((speed) => (
-              <button
-                key={speed}
-                onClick={() => setSelectedSpeed(speed)}
-                className={`w-full py-2 text-[14px] lg:text-sm font-medium rounded-md relative overflow-hidden border transition-all duration-300 
-                ${
-                  selectedSpeed === speed
-                    ? "bg-red-600 text-white border-red-600"
-                    : "bg-gray-50 text-gray-700 border-gray-300 hover:text-white"
-                }
-                group
-              `}
-              >
-                {/* Hover fill effect */}
-                <span
-                  className={`absolute inset-0 bg-red-600 scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
-                    selectedSpeed === speed ? "scale-150" : ""
-                  }`}
-                ></span>
-                <span className="relative z-10">{speed}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
         <div className="bg-red-50 m-0 p-2 rounded-xl">
           <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
             Choose Your Billing Cycle
           </h3>
           <div className="grid grid-cols-4 sm:grid-cols-4 gap-3">
-            {validityOptions.map((v) => {
+            {validityOptions.reverse().map((v) => {
               const labelMap = {
                 "1 Month": "Monthly",
                 "3 Month": "Quarterly",
@@ -140,6 +109,37 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
                 </button>
               );
             })}
+          </div>
+        </div>
+
+        {/* ⚡ Speed Selection */}
+        <div className="bg-red-50 m-0 p-2 rounded-xl">
+          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
+            Choose Your BandWidth
+          </h3>
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
+            {speedOptions.map((speed) => (
+              <button
+                key={speed}
+                onClick={() => setSelectedSpeed(speed)}
+                className={`w-full py-2 text-[14px] lg:text-sm font-medium rounded-md relative overflow-hidden border transition-all duration-300 
+                ${
+                  selectedSpeed === speed
+                    ? "bg-red-600 text-white border-red-600"
+                    : "bg-gray-50 text-gray-700 border-gray-300 hover:text-white"
+                }
+                group
+              `}
+              >
+                {/* Hover fill effect */}
+                <span
+                  className={`absolute inset-0 bg-red-600 scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
+                    selectedSpeed === speed ? "scale-150" : ""
+                  }`}
+                ></span>
+                <span className="relative z-10">{speed}</span>
+              </button>
+            ))}
           </div>
         </div>
 
