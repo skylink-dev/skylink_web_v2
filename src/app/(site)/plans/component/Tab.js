@@ -23,6 +23,7 @@ import { usePlans } from "../context/PlansContext";
 import "./Tab.css";
 import ContactPopup from "./ContactPopup";
 import PlanTabs from "../../new_plans/component/planTabs";
+import Image from "next/image";
 
 const NewPlanCard = ({
   setInsideAccordionIndex,
@@ -115,17 +116,21 @@ const NewPlanCard = ({
               {/* OTT + TV Logos */}
               <div className="flex justify-center gap-3 mt-4">
                 {planInfo?.otts && (
-                  <img
-                    src="https://skyplay.in/assets/sunnxt.png"
+                  <Image
+                    src="/newassets/plan/channels/sunnxt.png"
                     alt="SunNXT"
-                    className="w-8 h-8 rounded-md object-contain"
+                    width={32} // w-8 = 2rem = 32px
+                    height={32} // h-8 = 2rem = 32px
+                    className="rounded-md object-contain"
                   />
                 )}
                 {planInfo?.channels && (
-                  <img
-                    src="https://skyplay.in/assets/zee-tamizh.png"
+                  <Image
+                    src="/newassets/plan/channels/zee-tamizh.png"
                     alt="Zee Tamil"
-                    className="w-8 h-8 rounded-md object-contain"
+                    width={32} // w-8 = 2rem = 32px
+                    height={32} // h-8 = 2rem = 32px
+                    className="rounded-md object-contain"
                   />
                 )}
               </div>
@@ -267,15 +272,14 @@ const PlanCard = ({
                 <div className="mobile-alignmentfor-planname">
                   <div className="speed-wrap ">
                     <div className="speed-icon" style={{ display: "none" }}>
-                      <img
+                      <Image
                         alt="tv-logo-speed-brand"
-                        loading="lazy"
-                        width="25"
-                        height="25"
                         src="https://skyplay.in/assets/speed-brand.svg"
-                        style={{
-                          color: "transparent",
-                        }}
+                        width={25}
+                        height={25}
+                        loading="lazy"
+                        className="object-contain"
+                        style={{ color: "transparent" }}
                       />
                     </div>
                     <div className="ott-counts mobile-only">
@@ -399,49 +403,58 @@ const PlanCard = ({
                         <div className="image-wrap w-100 flex gap-2 my-2">
                           {planInfo?.channels === "350+ Channels" && (
                             <>
-                              <img
+                              <Image
                                 alt="news7"
-                                src="https://www.skylink.net.in/wp-content/uploads/2025/06/Logo_of_News7_Tamil_Logo.jpg"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/news7_tamil.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
-                              <img
+
+                              <Image
                                 alt="zee"
-                                src="https://skyplay.in/assets/zee-tamizh.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/zee-tamizh.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
                             </>
                           )}
                           {planInfo?.channels === "550+ Channels" && (
                             <>
-                              <img
+                              <Image
                                 alt="zee"
-                                src="https://skyplay.in/assets/zee-tamizh.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/zee-tamizh.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
-                              <img
+
+                              <Image
                                 alt="vijay"
-                                src="https://skyplay.in/assets/vijay-tv.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/vijay-tv.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
                             </>
                           )}
                           {planInfo?.channels === "750+ Channels" && (
                             <>
-                              <img
+                              <Image
                                 alt="zee"
-                                src="https://skyplay.in/assets/zee-tamizh.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/zee-tamizh.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
-                              <img
+
+                              <Image
                                 alt="vijay"
-                                src="https://skyplay.in/assets/vijay-tv.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/vijay-tv.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
                             </>
                           )}
@@ -452,33 +465,39 @@ const PlanCard = ({
                         <div className="image-wrap w-100 flex gap-2 my-2">
                           {planInfo?.otts === "21+ OTTs" && (
                             <>
-                              <img
+                              <Image
                                 alt="sunnxt"
-                                src="https://skyplay.in/assets/sunnxt.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/sunnxt.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
-                              <img
+
+                              <Image
                                 alt="zee5"
-                                src="https://www.skylink.net.in/wp-content/uploads/2023/08/ZEE5-Logo-700x394-1.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/zee5.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
                             </>
                           )}
                           {planInfo?.otts === "24+ OTTs" && (
                             <>
-                              <img
+                              <Image
                                 alt="sunnxt"
-                                src="https://skyplay.in/assets/sunnxt.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/sunnxt.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
-                              <img
+
+                              <Image
                                 alt="zee5"
-                                src="https://www.skylink.net.in/wp-content/uploads/2023/08/ZEE5-Logo-700x394-1.png"
-                                width="35"
-                                height="35"
+                                src="/newassets/plan/channels/zee5.png"
+                                width={35}
+                                height={35}
+                                className="object-contain rounded-md"
                               />
                             </>
                           )}
@@ -566,11 +585,15 @@ const PlanCard = ({
                     />
                   )}
                 </div>
-                <img
+                <Image
                   className="red-line-wrap"
-                  src="https://www.skylink.net.in/wp-content/uploads/2025/07/red-line.png"
+                  src="/newassets/plan/red-line.png"
                   alt="red line"
+                  width={500} // adjust based on actual image size or layout
+                  height={10} // adjust proportionally to maintain aspect ratio
+                  priority // optional: ensures it loads fast if it's a key visual element
                 />
+
                 <hr
                   style={{
                     marginTop: "20px",

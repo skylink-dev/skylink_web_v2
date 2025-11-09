@@ -1,11 +1,12 @@
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const blogData = [
   {
-    imgSrc: '/assets/blogs-01.png',
-    title: 'Skylink Fiber Broadband',
-    subtitle: 'Speed that connects all of India',
+    imgSrc: "/assets/blogs-01.png",
+    title: "Skylink Fiber Broadband",
+    subtitle: "Speed that connects all of India",
     description: `
 <h2>Speed That Connects All of India</h2>
 
@@ -44,12 +45,12 @@ const blogData = [
 </p>`,
     normaltext: "",
     legalText: "Speed varies by location and network conditions.",
-    link: '/speed-that-connects-all-of-india',
+    link: "/speed-that-connects-all-of-india",
   },
   {
-    imgSrc: '/assets/blogs-02.png',
-    title: 'Skylink OTT Universe',
-    subtitle: 'All your favorite shows, South to North',
+    imgSrc: "/assets/blogs-02.png",
+    title: "Skylink OTT Universe",
+    subtitle: "All your favorite shows, South to North",
     description: `<h2>One Subscription. Infinite Entertainment.</h2>
 
 <p>
@@ -87,12 +88,12 @@ const blogData = [
 </p>`,
     normaltext: "",
     legalText: "Content and app availability may vary by region.",
-    link: '/all-your-favorite-shows-south-to-north',
+    link: "/all-your-favorite-shows-south-to-north",
   },
   {
-    imgSrc: '/assets/blogs-03.png',
-    title: 'Skylink IPTV',
-    subtitle: '900+ Live Channels in HD, from Punjab to Tamil Nadu',
+    imgSrc: "/assets/blogs-03.png",
+    title: "Skylink IPTV",
+    subtitle: "900+ Live Channels in HD, from Punjab to Tamil Nadu",
     description: `
 <h2>Live TV, Reimagined for India</h2>
 <p>
@@ -122,13 +123,14 @@ const blogData = [
 <p><em>*Channel lineup varies by area. Compatible device and internet needed.</em></p>
 `,
     normaltext: "",
-    legalText: "Channel lineup varies by area. Compatible device and internet needed.",
-    link: '/live-channels-in-hd-from-punjab-to-tamil-nadu',
+    legalText:
+      "Channel lineup varies by area. Compatible device and internet needed.",
+    link: "/live-channels-in-hd-from-punjab-to-tamil-nadu",
   },
   {
-    imgSrc: '/assets/blogs-04.png',
-    title: 'HD TV, No Setup Boxes',
-    subtitle: 'Streamlined TV for every region',
+    imgSrc: "/assets/blogs-04.png",
+    title: "HD TV, No Setup Boxes",
+    subtitle: "Streamlined TV for every region",
     description: `
 <h2>TV, Reinvented for Simplicity</h2>
 <p>
@@ -158,13 +160,14 @@ const blogData = [
 <p><em>*Free installation applies to new customers. Smart TV or compatible device required.</em></p>
 `,
     normaltext: "",
-    legalText: "Free installation applies to new customers. Smart TV or compatible device required.",
-    link: '/streamlined-tv-for-every-region',
+    legalText:
+      "Free installation applies to new customers. Smart TV or compatible device required.",
+    link: "/streamlined-tv-for-every-region",
   },
   {
-    imgSrc: '/assets/blogs-06.png',
-    title: 'Entertainment Bundles Tailored for India',
-    subtitle: 'IPTV, OTT & Broadband in one plan',
+    imgSrc: "/assets/blogs-06.png",
+    title: "Entertainment Bundles Tailored for India",
+    subtitle: "IPTV, OTT & Broadband in one plan",
     description: `
 <h2>The Power of 3 in One</h2>
 <p>
@@ -195,12 +198,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "Bundle content and availability vary by state.",
-    link: '/iptv-ott-broadband-in-one-plan',
+    link: "/iptv-ott-broadband-in-one-plan",
   },
   {
-    imgSrc: '/assets/blogs-07.png',
-    title: 'Next-Gen Wi-Fi Everywhere',
-    subtitle: 'Strong signals from North to South',
+    imgSrc: "/assets/blogs-07.png",
+    title: "Next-Gen Wi-Fi Everywhere",
+    subtitle: "Strong signals from North to South",
     description: `
 <h2>Signal That Travels Far</h2>
 <p>
@@ -231,12 +234,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "Router availability depends on plan.",
-    link: '/strong-signals-from-north-to-south',
+    link: "/strong-signals-from-north-to-south",
   },
   {
-    imgSrc: '/assets/blogs-08.png',
-    title: 'Flexible Plans That Grow With You',
-    subtitle: 'Upgrade anytime, hassle-free',
+    imgSrc: "/assets/blogs-08.png",
+    title: "Flexible Plans That Grow With You",
+    subtitle: "Upgrade anytime, hassle-free",
     description: `
 <h2>Change as Life Changes</h2>
 <p>
@@ -267,12 +270,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "Upgrade eligibility varies by plan.",
-    link: '/upgrade-anytime-hassle-free',
+    link: "/upgrade-anytime-hassle-free",
   },
   {
-    imgSrc: '/assets/blogs-05.png',
-    title: 'Parental Controls for Safe Surfing',
-    subtitle: 'Protect your family across India',
+    imgSrc: "/assets/blogs-05.png",
+    title: "Parental Controls for Safe Surfing",
+    subtitle: "Protect your family across India",
     description: `
 <h2>Safety First, Always</h2>
 <p>
@@ -303,12 +306,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "Supported on select routers.",
-    link: '/protect-your-family-across-india',
+    link: "/protect-your-family-across-india",
   },
   {
-    imgSrc: '/assets/blogs-11.png',
-    title: 'Smart IoT for Every Indian Home',
-    subtitle: 'Connected living from coast to capital',
+    imgSrc: "/assets/blogs-11.png",
+    title: "Smart IoT for Every Indian Home",
+    subtitle: "Connected living from coast to capital",
     description: `
 <h2>Smarter Living Starts Here</h2>
 <p>
@@ -339,12 +342,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "Device compatibility may vary.",
-    link: '/connected-living-from-coast-to-capital',
+    link: "/connected-living-from-coast-to-capital",
   },
   {
-    imgSrc: '/assets/blogs-10.png',
-    title: 'Cloud Backup Made Simple',
-    subtitle: 'Secure your data, no matter where you are',
+    imgSrc: "/assets/blogs-10.png",
+    title: "Cloud Backup Made Simple",
+    subtitle: "Secure your data, no matter where you are",
     description: `
 <h2>Never Lose a File Again</h2>
 <p>
@@ -375,12 +378,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "Storage limits and pricing vary by plan.",
-    link: '/',
+    link: "/",
   },
   {
-    imgSrc: '/assets/fibernet-image.jpg',
-    title: 'Explainer',
-    subtitle: 'What’s fiber internet?',
+    imgSrc: "/assets/fibernet-image.jpg",
+    title: "Explainer",
+    subtitle: "What’s fiber internet?",
     description: `
 <h2>What is Fiber Internet?</h2>
 <p>
@@ -408,13 +411,13 @@ const blogData = [
 </p>
 `,
     normaltext: "",
-    legalText: '',
-    link: '/whats-fiber-internet',
+    legalText: "",
+    link: "/whats-fiber-internet",
   },
   {
-    imgSrc: '/assets/skyplaynextup.jpg',
-    title: 'Learn more',
-    subtitle: 'Skylink Next Up AnytimeSM',
+    imgSrc: "/assets/skyplaynextup.jpg",
+    title: "Learn more",
+    subtitle: "Skylink Next Up AnytimeSM",
     description: `
 <h2>Next Up: Fiber Simplicity</h2>
 <p>
@@ -443,12 +446,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/skyplay-next-up-anytimesm',
+    link: "/skyplay-next-up-anytimesm",
   },
   {
-    imgSrc: '/assets/customer-and-industry reviews.jpg',
-    title: 'Learn more',
-    subtitle: 'Customer and industry reviews',
+    imgSrc: "/assets/customer-and-industry reviews.jpg",
+    title: "Learn more",
+    subtitle: "Customer and industry reviews",
     description: `
 <h2>Voices That Matter</h2>
 <p>
@@ -477,12 +480,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/customer-and-industry-reviews',
+    link: "/customer-and-industry-reviews",
   },
   {
-    imgSrc: '/assets/helpful-and-support.jpg',
-    title: '24/7 Expert Support',
-    subtitle: 'Helpful resources',
+    imgSrc: "/assets/helpful-and-support.jpg",
+    title: "24/7 Expert Support",
+    subtitle: "Helpful resources",
     description: `
 <h2>Always-On Support</h2>
 <p>
@@ -509,14 +512,14 @@ const blogData = [
   Get assistance in your regional language—because great support should feel personal.
 </p>
 `,
-    normaltext: '',
-    legalText: '',
-    link: '/helpful-resources',
+    normaltext: "",
+    legalText: "",
+    link: "/helpful-resources",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Explainer',
-    subtitle: 'What is IPTV?',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Explainer",
+    subtitle: "What is IPTV?",
     description: `
 <h2>IPTV in a Nutshell</h2>
 <p>
@@ -544,13 +547,13 @@ const blogData = [
 </p>
 `,
     normaltext: "",
-    legalText: '',
-    link: '/what-is-iptv',
+    legalText: "",
+    link: "/what-is-iptv",
   },
   {
-    imgSrc: '/assets/what-is-iptv-in-skyplay.jpg',
-    title: 'Get started',
-    subtitle: 'Simple IPTV Setup',
+    imgSrc: "/assets/what-is-iptv-in-skyplay.jpg",
+    title: "Get started",
+    subtitle: "Simple IPTV Setup",
     description: `<h2>Easy IPTV Installation</h2>
 <p>
   Setting up Skylink IPTV is a breeze. Whether you're a first-time user or a seasoned streamer, our guided setup process ensures you're ready in minutes. No need for complex configurations—just follow a few simple steps and enjoy TV like never before.
@@ -583,12 +586,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "simple-iptv-setup",
-    link: '/',
+    link: "/",
   },
   {
-    imgSrc: '/assets/skyplay-IPTV-customer-review-and-rating.jpg',
-    title: 'What others say',
-    subtitle: 'Customer reviews & ratings',
+    imgSrc: "/assets/skyplay-IPTV-customer-review-and-rating.jpg",
+    title: "What others say",
+    subtitle: "Customer reviews & ratings",
     description: `<h2>Rated by Real Users</h2>
 <p>
   Skylink IPTV users across India have shared their genuine feedback on our services. With high satisfaction scores and consistent praise, our IPTV and broadband solutions are rated among the best in the country.
@@ -620,12 +623,12 @@ const blogData = [
 </p>`,
     normaltext: "",
     legalText: "",
-    link: '/customer-reviews-ratings',
+    link: "/customer-reviews-ratings",
   },
   {
-    imgSrc: '/assets/helpful-and-support.jpg',
-    title: '',
-    subtitle: 'Help & Support',
+    imgSrc: "/assets/helpful-and-support.jpg",
+    title: "",
+    subtitle: "Help & Support",
     description: `
 <h2>Need Help? We’ve Got You</h2>
 <p>
@@ -659,12 +662,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/help-support',
+    link: "/help-support",
   },
   {
-    imgSrc: '/assets/skyplay-ott-blog-1.jpg',
-    title: 'Skylink OTT Hub',
-    subtitle: 'All-in-One Streaming Platform',
+    imgSrc: "/assets/skyplay-ott-blog-1.jpg",
+    title: "Skylink OTT Hub",
+    subtitle: "All-in-One Streaming Platform",
     description: `
 <h2>Your Entertainment Hub</h2>
 <p>
@@ -698,12 +701,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/all-in-one-streaming-platform',
+    link: "/all-in-one-streaming-platform",
   },
   {
-    imgSrc: '/assets/skyplay-ott-blog-2.jpg',
-    title: 'Premium Streaming Experience',
-    subtitle: 'HD, 4K, and Buffer-Free Playback',
+    imgSrc: "/assets/skyplay-ott-blog-2.jpg",
+    title: "Premium Streaming Experience",
+    subtitle: "HD, 4K, and Buffer-Free Playback",
     description: `
 <h2>Streaming Without Limits</h2>
 <p>
@@ -737,12 +740,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/hd-and-buffer-free-playback',
+    link: "/hd-and-buffer-free-playback",
   },
   {
-    imgSrc: '/assets/skyplay-ott-blog-3.jpg',
-    title: 'Curated Content Packs',
-    subtitle: 'Tailored for Every Taste',
+    imgSrc: "/assets/skyplay-ott-blog-3.jpg",
+    title: "Curated Content Packs",
+    subtitle: "Tailored for Every Taste",
     description: `
 <h2>Entertainment That Speaks to You</h2>
 <p>
@@ -776,12 +779,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/tailored-for-every-taste',
+    link: "/tailored-for-every-taste",
   },
   {
-    imgSrc: '/assets/skyplay-ott-blog-04.jpg',
-    title: 'One Login, All Access',
-    subtitle: 'Unified Control for Multiple Platforms',
+    imgSrc: "/assets/skyplay-ott-blog-04.jpg",
+    title: "One Login, All Access",
+    subtitle: "Unified Control for Multiple Platforms",
     description: `
 <h2>One Login, All OTT Access</h2>
 <p>
@@ -815,12 +818,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/unified-control-for-multiple-platforms',
+    link: "/unified-control-for-multiple-platforms",
   },
   {
-    imgSrc: '/assets/skyplay-ott-blog-05.jpg',
-    title: 'Smart Recommendations',
-    subtitle: 'Powered by AI & Viewing Habits',
+    imgSrc: "/assets/skyplay-ott-blog-05.jpg",
+    title: "Smart Recommendations",
+    subtitle: "Powered by AI & Viewing Habits",
     description: `
 <h2>Entertainment That Understands You</h2>
 <p>
@@ -854,12 +857,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/powered-by-ai-viewing-habits',
+    link: "/powered-by-ai-viewing-habits",
   },
   {
-    imgSrc: '/assets/skyplay-ott-blog-06.jpg',
-    title: 'Watch Anywhere, Anytime',
-    subtitle: 'Multi-Device OTT Streaming',
+    imgSrc: "/assets/skyplay-ott-blog-06.jpg",
+    title: "Watch Anywhere, Anytime",
+    subtitle: "Multi-Device OTT Streaming",
     description: `
 <h2>Stream Without Limits</h2>
 <p>
@@ -893,12 +896,12 @@ const blogData = [
 `,
     normaltext: "",
     legalText: "",
-    link: '/multi-device-ott-streaming',
+    link: "/multi-device-ott-streaming",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Boost Your Business',
-    subtitle: 'End-to-End Marketing Support',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Boost Your Business",
+    subtitle: "End-to-End Marketing Support",
     description: `
 <h2>Accelerate Growth With Skylink</h2>
 <p>
@@ -930,12 +933,12 @@ const blogData = [
   Our digital and branding experts assist you in choosing the right campaigns and messaging, ensuring your promotions align with customer demand.
 </p>
 `,
-    link: '/end-to-end-marketing-support',
+    link: "/end-to-end-marketing-support",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Amplify Online Reach',
-    subtitle: 'Full-Service Digital Marketing',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Amplify Online Reach",
+    subtitle: "Full-Service Digital Marketing",
     description: `
 <h2>360° Digital Visibility</h2>
 <p>
@@ -967,12 +970,12 @@ const blogData = [
   You get access to detailed campaign dashboards and monthly performance summaries, so you're always in the loop on what’s working and what needs tuning.
 </p>
 `,
-    link: '/full-service-digital-marketing',
+    link: "/full-service-digital-marketing",
   },
   {
-    imgSrc: '/assets/social-media-pomotions.jpg',
-    title: 'Stay Social',
-    subtitle: 'Social Media Promotions',
+    imgSrc: "/assets/social-media-pomotions.jpg",
+    title: "Stay Social",
+    subtitle: "Social Media Promotions",
     description: `
 <h2>Local Engagement, National Impact</h2>
 <p>
@@ -1004,12 +1007,12 @@ const blogData = [
   We monitor how your posts perform, tweak creatives, test new formats, and share weekly insights so you always stay ahead of the curve.
 </p>
 `,
-    link: '/social-media-promotions',
+    link: "/social-media-promotions",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Expand on Ground',
-    subtitle: 'Dedicated Sales Teams',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Expand on Ground",
+    subtitle: "Dedicated Sales Teams",
     description: `
 <h2>Door-to-Door, Done Right</h2>
 <p>
@@ -1041,12 +1044,12 @@ const blogData = [
   Need a push during peak seasons or new territory launch? Scale up your sales force instantly with additional ground teams trained and ready to deploy.
 </p>
 `,
-    link: '/dedicated sales teams',
+    link: "/dedicated sales teams",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Start Strong',
-    subtitle: 'Partner Onboarding & Training',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Start Strong",
+    subtitle: "Partner Onboarding & Training",
     description: `
 <h2>Solid Foundation for Every Partner</h2>
 <p>
@@ -1078,12 +1081,12 @@ const blogData = [
   Complete training earns you an official Skylink Partner Certificate, boosting your credibility with customers and opening doors to bonus programs.
 </p>
 `,
-    link: '/partner-onboarding-training',
+    link: "/partner-onboarding-training",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Earn More',
-    subtitle: '60% Revenue Share Model',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Earn More",
+    subtitle: "60% Revenue Share Model",
     description: `
 <h2>Keep the Majority</h2>
 <p>
@@ -1115,12 +1118,12 @@ const blogData = [
   Payouts are credited directly to your account every month without delays. No more chasing payments—your earnings arrive on time, every time.
 </p>
 `,
-    link: '/revenue-share-model',
+    link: "/revenue-share-model",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Support You Can Count On',
-    subtitle: '24/7 Technical Support',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Support You Can Count On",
+    subtitle: "24/7 Technical Support",
     description: `
 <h2>Always-On Assistance</h2>
 <p>
@@ -1152,12 +1155,12 @@ const blogData = [
   We offer regional language support, so you and your customers feel comfortable and understood during every interaction.
 </p>
 `,
-    link: '/technical-support',
+    link: "/technical-support",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Grow Together',
-    subtitle: 'Co-Branded Campaigns',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Grow Together",
+    subtitle: "Co-Branded Campaigns",
     description: `
 <h2>Build a Trusted Image</h2>
 <p>
@@ -1189,12 +1192,12 @@ const blogData = [
   Choose from digital-only, field-based, or hybrid campaigns to suit your market and budget. Our team helps you select the best format.
 </p>
 `,
-    link: '/co-branded-campaigns',
+    link: "/co-branded-campaigns",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Sell With Confidence',
-    subtitle: 'Custom Plans for Your Market',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Sell With Confidence",
+    subtitle: "Custom Plans for Your Market",
     description: `
 <h2>Tailored to Local Needs</h2>
 <p>
@@ -1226,12 +1229,12 @@ const blogData = [
   Monitor plan performance through your dashboard and make quick adjustments as needed. We help you stay agile in a changing market.
 </p>
 `,
-    link: '/custom-plans-for-your-market',
+    link: "/custom-plans-for-your-market",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Track Everything',
-    subtitle: 'Partner Performance Dashboard',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Track Everything",
+    subtitle: "Partner Performance Dashboard",
     description: `
 <h2>Full Visibility, Total Control</h2>
 <p>
@@ -1263,12 +1266,12 @@ const blogData = [
   Assign roles and access levels to team members. Everyone sees only what they need, keeping your data safe yet collaborative.
 </p>
 `,
-    link: '/partner-performance-dashboard',
+    link: "/partner-performance-dashboard",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Fast & Fair',
-    subtitle: 'Monthly Payouts',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Fast & Fair",
+    subtitle: "Monthly Payouts",
     description: `
 <h2>On-Time Payments, Always</h2>
 <p>
@@ -1300,12 +1303,12 @@ const blogData = [
   Our partners plan their finances around Skylink's predictable, consistent payout cycles. We’ve earned that trust—and we intend to keep it.
 </p>
 `,
-    link: '/monthly-payouts',
+    link: "/monthly-payouts",
   },
   {
-    imgSrc: '/newassets/tv/iptv-skylink.jpg',
-    title: 'Join the Movement',
-    subtitle: 'Growing Partner Ecosystem',
+    imgSrc: "/newassets/tv/iptv-skylink.jpg",
+    title: "Join the Movement",
+    subtitle: "Growing Partner Ecosystem",
     description: `
 <h2>Be Part of Something Big</h2>
 <p>
@@ -1337,14 +1340,14 @@ const blogData = [
   From regional meetups to recognition awards and incentive trips, our partner ecosystem isn’t just about business—it’s about community and celebration.
 </p>
 `,
-    link: '/growing-partner-ecosystem',
-  }
+    link: "/growing-partner-ecosystem",
+  },
 ];
-const posts = blogData.map(blog => ({
+const posts = blogData.map((blog) => ({
   image: blog.imgSrc,
-  slug: blog.link.replace(/^\//, ''),
+  slug: blog.link.replace(/^\//, ""),
   title: blog.subtitle,
-  content: `${blog.description}\n\n${blog.normaltext || ''}`.trim(),
+  content: `${blog.description}\n\n${blog.normaltext || ""}`.trim(),
 }));
 
 export async function generateStaticParams() {
@@ -1354,9 +1357,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
-  if (!post) {
-    return { title: 'Post Not Found' };
-  }
+  if (!post) return { title: "Post Not Found" };
   return { title: post.title };
 }
 
@@ -1364,60 +1365,47 @@ export default async function BlogPost({ params }) {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
 
-  if (!post) {
-    notFound();
-  }
+  if (!post) notFound();
 
   return (
-    <><div className="SNR_section section single-blog-section">
-      <div className="region region--black region--flush-vertical ">
-        <div className="region__wrap blog-page-region">
-          <div className="snr-banner section">
-            <div className="component">
-              <div className="banner">
-                <div className="banner__img">
-                  <img src={post.image} />
-                </div>
-                <div className="banner__content banner__content--right">
-                  <div className="content__wrap ">
-                    <div className="banner__text banner__text--adjusted-lg">
-                      <div className="banner__headline">
-                        <h1 className="banner__headline--text text-left">{post.title}</h1>
-                      </div>
-                      <div className="banner__level3" style={{ "display": "none" }}>
-                        Timely news and information to stay Cyber Aware and better protect your devices and data.<br />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Banner Section */}
+      <section className="relative h-64 md:h-96 w-full">
+        <Image
+          src={post.image}
+          alt={post.title}
+          fill
+          className="object-cover brightness-75"
+          priority
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+          <h1 className="text-3xl md:text-5xl font-bold mb-2">{post.title}</h1>
+          <p className="text-sm md:text-lg opacity-90">
+            Latest insights from Skylink
+          </p>
         </div>
-      </div>
+      </section>
+
+      {/* Article Content */}
+      <article className="max-w-4xl mx-auto px-6 py-12 bg-white shadow-lg rounded-lg -mt-16 relative z-10">
+        <div className="prose prose-lg max-w-none text-gray-700">
+          <p className="text-lg leading-relaxed whitespace-pre-line">
+            {post.content}
+          </p>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/blogs"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition duration-300"
+          >
+            ← Back to Blogs
+          </Link>
+        </div>
+      </article>
+
+      {/* Footer spacing */}
+      <div className="h-12" />
     </div>
-      <div className="blog-single">
-        <div className="row">
-          <div className="row__wrap">
-            <div className="col col-12">
-              <div className="featured-article">
-                <p className="featured-category">
-                  <Link href="#"></Link>
-                </p>
-              </div>
-              <div className="article__header">
-                <div className="article__meta" style={{ "display": "none" }}>
-                  <div className="meta__info"></div>
-                  <h1>{post.title}</h1>
-                </div>
-              </div>
-              <div style={{ paddingTop: '0px', paddingBottom: '20px' }} className="post-content">
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
   );
 }
