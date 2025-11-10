@@ -5,6 +5,7 @@ import Link from "next/link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const CustomPrevArrow = ({ onClick }) => (
@@ -26,6 +27,7 @@ const CustomNextArrow = ({ onClick }) => (
 );
 
 export default function DynamicCarousel({ title, slidesData = [] }) {
+  const MotionImage = motion(Image);
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -96,9 +98,11 @@ export default function DynamicCarousel({ title, slidesData = [] }) {
               <div className="flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 h-[490px]">
                 {/* Fixed Image Section */}
                 <div className="relative w-full h-[180px] flex-shrink-0 overflow-hidden">
-                  <motion.img
+                  <MotionImage
                     src={item.imgSrc}
                     alt={item.title}
+                    width={500} // ✅ Required by Next.js — adjust as needed
+                    height={500}
                     className="w-full h-full object-cover transition-transform duration-500"
                     whileHover={{ scale: 1.1 }}
                   />

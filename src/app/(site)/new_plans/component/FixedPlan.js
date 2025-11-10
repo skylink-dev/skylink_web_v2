@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
@@ -7,6 +7,9 @@ import ContactPopup from "../../plans/component/ContactPopup";
 import Image from "next/image";
 
 export default function FixedPlan({ isMobile, plans, activeTab }) {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const GST_RATE = 0.18; // 18%
+  const INSTALLATION_CHARGE = 500;
   const [selectedValidity, setSelectedValidity] = useState("12 Month");
   const [selectedSpeed, setSelectedSpeed] = useState("50 Mbps");
   const [activePrice, setActivePrice] = useState();
@@ -21,7 +24,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
     () => [...new Set(plans.map((p) => p.internetSpeed))],
     [plans]
   );
-  useState(() => {
+  useEffect(() => {
     setActiveCycle(selectedValidity.substring(0, 1));
   }, [selectedValidity]);
 
@@ -63,21 +66,52 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
         setIsOpen={setIsContactOpen}
       />
 
-      <div className="w-full bg-red-100 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className="w-full mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
         <div className="w-full  m-0">
-          <h2 className="w-full h-2 text-center text-2xl text-gray-00  font-semibold mb-2">
+          <h2 className="w-full h-full p-3 mt-0 text-center text-2xl text-gray-100 bg-gradient-to-r from-red-600 to bg-red-700  font-semibold mb-2">
             OUR PLAN
           </h2>
         </div>
 
+        {/* ⚡ Speed Selection */}
+        <div className="bg-red-50 border border-red-100 m-0 p-2 rounded-xl">
+          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
+            Choose Your BandWidth
+          </h3>
+          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
+            {speedOptions.map((speed) => (
+              <button
+                key={speed}
+                onClick={() => setSelectedSpeed(speed)}
+                className={`w-full py-2 text-[14px] lg:text-sm font-medium rounded-md relative overflow-hidden border transition-all duration-300 
+                ${
+                  selectedSpeed === speed
+                    ? "bg-red-600 text-white border-red-600"
+                    : "bg-gray-50 text-gray-700 border-gray-300 hover:text-white"
+                }
+                
+              `}
+              >
+                {/* Hover fill effect */}
+                <span
+                  className={`absolute inset-0 bg-red-600 scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
+                    selectedSpeed === speed ? "scale-150" : ""
+                  }`}
+                ></span>
+                <span className="relative z-10">{speed}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* 🔘 Validity Selection */}
 
-        <div className="bg-red-50 m-0 p-2 rounded-xl">
+        <div className="bg-red-50 border border-red-100 m-0 p-2 rounded-xl">
           <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
             Choose Your Billing Cycle
           </h3>
           <div className="grid grid-cols-4 sm:grid-cols-4 gap-3">
-            {validityOptions.reverse().map((v) => {
+            {[...validityOptions].reverse().map((v) => {
               const labelMap = {
                 "1 Month": "Monthly",
                 "3 Month": "Quarterly",
@@ -97,7 +131,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
               ? "bg-red-600 text-white border-red-600"
               : "bg-gray-50 text-gray-700 border-gray-300 hover:text-white"
           }
-          group
+    
         `}
                 >
                   {/* Hover fill effect */}
@@ -113,41 +147,10 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
           </div>
         </div>
 
-        {/* ⚡ Speed Selection */}
-        <div className="bg-red-50 m-0 p-2 rounded-xl">
-          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
-            Choose Your BandWidth
-          </h3>
-          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
-            {speedOptions.map((speed) => (
-              <button
-                key={speed}
-                onClick={() => setSelectedSpeed(speed)}
-                className={`w-full py-2 text-[14px] lg:text-sm font-medium rounded-md relative overflow-hidden border transition-all duration-300 
-                ${
-                  selectedSpeed === speed
-                    ? "bg-red-600 text-white border-red-600"
-                    : "bg-gray-50 text-gray-700 border-gray-300 hover:text-white"
-                }
-                group
-              `}
-              >
-                {/* Hover fill effect */}
-                <span
-                  className={`absolute inset-0 bg-red-600 scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
-                    selectedSpeed === speed ? "scale-150" : ""
-                  }`}
-                ></span>
-                <span className="relative z-10">{speed}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* 💡 Filtered Plans */}
         <div className="mt-6 w-full">
           {filteredPlans.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6  ">
               {filteredPlans.map((plan, index) => {
                 const isSelectedValidity = plan.validity === selectedValidity;
                 const isSelectedSpeed = plan.internetSpeed === selectedSpeed;
@@ -159,7 +162,6 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
                   }
                 });
                 const discount = plan.discount[discountIndex];
-                console.log(discount);
                 return (
                   <div
                     key={plan.sno || index}
@@ -195,7 +197,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
                     )} */}
 
                     {/* 🏷️ Title */}
-                    <h2 className=" flex flex-col  text-lg font-semibold text-gray-900 mb-1">
+                    <h2 className=" flex flex-col  text-lg font-semibold text-gray-900 mb-1 ">
                       {`Skylink Red  ${plan.name || ` ₹${plan.price}`}`}{" "}
                       <span className="text-gray-600 font-normal text-xs">
                         {plan.internetSpeed ? `${plan.internetSpeed}` : ""}
@@ -364,6 +366,70 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
             <p className="text-center text-gray-500 text-sm">No plans found.</p>
           )}
         </div>
+        {/* {selectedPlan && (
+          <div className="mt-8 w-full bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+              Plan Summary
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div className="flex justify-between border-b pb-2">
+                <span className="text-gray-600">Plan Name</span>
+                <span className="font-medium text-gray-900">
+                  {selectedPlan.name}
+                </span>
+              </div>
+
+              <div className="flex justify-between border-b pb-2">
+                <span className="text-gray-600">Billing Cycle</span>
+                <span className="font-medium text-gray-900">
+                  {selectedValidity}
+                </span>
+              </div>
+
+              <div className="flex justify-between border-b pb-2">
+                <span className="text-gray-600">Base Price</span>
+                <span className="font-medium text-gray-900">
+                  ₹{selectedPlan.basePrice}
+                </span>
+              </div>
+
+              {selectedPlan.discountValue > 0 && (
+                <div className="flex justify-between border-b pb-2 text-green-600">
+                  <span>
+                    Discount ({selectedPlan.discount[discountIndex]}%)
+                  </span>
+                  <span>- ₹{selectedPlan.discountValue}</span>
+                </div>
+              )}
+
+              <div className="flex justify-between border-b pb-2">
+                <span className="text-gray-600">After Discount</span>
+                <span className="font-medium text-gray-900">
+                  ₹{selectedPlan.totalAfterDiscount}
+                </span>
+              </div>
+
+              <div className="flex justify-between border-b pb-2">
+                <span className="text-gray-600">GST (18%)</span>
+                <span className="font-medium text-gray-900">
+                  ₹{selectedPlan.gstAmount}
+                </span>
+              </div>
+
+              <div className="flex justify-between border-b pb-2">
+                <span className="text-gray-600">Installation Charges</span>
+                <span className="font-medium text-gray-900">
+                  ₹{INSTALLATION_CHARGE}
+                </span>
+              </div>
+
+              <div className="flex justify-between border-t pt-3 text-lg font-semibold text-gray-900">
+                <span>Total Payable</span>
+                <span className="text-red-600">₹{selectedPlan.finalPrice}</span>
+              </div>
+            </div>
+          </div>
+        )} */}
       </div>
     </>
   );

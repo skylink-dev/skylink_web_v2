@@ -3734,3 +3734,8 @@ section.pricing-plan-innovative-section .get-started-popup .container {
 .accordion-body.accordion-active {
   display: block !important;
 }
+
+.tailwind-plan-flex {
+  justify-content: center !important;
+  align-items: center !important;
+}
