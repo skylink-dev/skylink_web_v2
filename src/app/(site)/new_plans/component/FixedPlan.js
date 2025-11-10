@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
 import ContactPopup from "../../plans/component/ContactPopup";
+import Image from "next/image";
 
 export default function FixedPlan({ isMobile, plans, activeTab }) {
   const [selectedValidity, setSelectedValidity] = useState("12 Month");
@@ -250,11 +251,13 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
                             {plan.mainOTTs?.length > 0 && (
                               <div className="flex flex-wrap gap-1 justify-center">
                                 {plan.mainChannels.slice(0, 5).map((tv, i) => (
-                                  <img
+                                  <Image
                                     key={i}
                                     src={getImagePath(tv, "TV")}
                                     alt={tv}
-                                    className="h-6 w-6 object-contain rounded-md border border-gray-200"
+                                    width={24} // h-6 = 1.5rem = 24px
+                                    height={24}
+                                    className="object-contain rounded-md border border-gray-200"
                                   />
                                 ))}
                                 {/* <div className="flex h-6 w-6 object-contain rounded-md border border-gray-200 text-[6px] content-center align-center text-center p-0">
@@ -279,11 +282,13 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
                             {plan.mainOTTs?.length > 0 && (
                               <div className="flex flex-wrap gap-1 justify-center">
                                 {plan.mainOTTs.slice(0, 4).map((ott, i) => (
-                                  <img
+                                  <Image
                                     key={i}
                                     src={getImagePath(ott, "OTT")}
                                     alt={ott}
-                                    className="h-6 w-6 object-contain rounded-md border border-gray-200"
+                                    width={24} // h-6 = 1.5rem = 24px
+                                    height={24}
+                                    className="object-contain rounded-md border border-gray-200"
                                   />
                                 ))}
                                 {/* <div className="flex h-6 w-6 object-contain rounded-md border border-gray-200 text-[6px] content-center align-center text-center p-0">

@@ -53,16 +53,16 @@ export default function SpeedBanner({ mainImage, content }) {
           <p className="text-xs text-gray-300 mb-6 max-w-md">
             {content.subDescription}
           </p>
+<Link
+  href={content.ctaLink}
+  className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-red-500/25 w-fit"
+>
+  <span>{content.ctaText}</span>
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+  </svg>
+</Link>
 
-          <Link
-            href={content.ctaLink}
-            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-7 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/25"
-          >
-            <span>{content.ctaText}</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
         </div>
 
         {/* Right Side - Carousel Card */}
