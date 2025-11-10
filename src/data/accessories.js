@@ -67,7 +67,7 @@ export const slidesData = [
         ctaLabel: 'Buy Now',
         ctaHref: '/buy/phones/apple-iphone-16-plus.html',
         ctaId: 'cta-1',
-        image: '/assets/remote-only.jpg',
+        image: '/newassets/accessories/remote.png',
     },
     {
         id: 'slide-4',
@@ -80,7 +80,7 @@ export const slidesData = [
         ctaLabel: 'Learn More',
         ctaHref: '/buy/phones/samsung-galaxy-s25-ultra.html',
         ctaId: 'cta-2',
-        image: '/assets/firestick-skyplay.jpg',
+        image: '/newassets/accessories/firestick.png',
     },
     {
         id: 'slide-2',
@@ -93,7 +93,7 @@ export const slidesData = [
         ctaLabel: 'Learn More',
         ctaHref: '/buy/phones/apple-iphone-16-plus.html',
         ctaId: 'cta-1',
-        image: '/assets/setup-box.jpg',
+        image: '/newassets/accessories/setup-box.png',
     },
     {
         id: 'slide-3',
@@ -106,7 +106,7 @@ export const slidesData = [
         ctaLabel: 'Shop Now',
         ctaHref: '/buy/phones/samsung-galaxy-s25-ultra.html',
         ctaId: 'cta-2',
-        image: '/assets/router-gif.gif',
+        image: '/newassets/accessories/ONT.gif',
     },];
 export const dynamicSlidesData = [
     {
@@ -132,15 +132,6 @@ export const dynamicSlidesData = [
         title: 'Learn more',
         subtitle: 'Customer and industry reviews',
         description: "Check out the latest customer reviews of Skylink Fiber service and read what industry experts are saying about our fastest internet plans.",
-        normaltext: "",
-        legalText: "",
-        link: '/',
-    },
-    {
-        imgSrc: '/assets/helpful-and-support.jpg',
-        title: '',
-        subtitle: 'Helpful resources',
-        description: "",
         normaltext: "",
         legalText: "",
         link: '/',

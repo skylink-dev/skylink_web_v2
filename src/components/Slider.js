@@ -1,7 +1,10 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Slider({ slides = [] }) {
+  const router = useRouter();
+
   if (!slides || slides.length === 0) return null;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,36 +26,47 @@ export default function Slider({ slides = [] }) {
     setActiveIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   }, [slides.length]);
 
+  const handleExploreOTT = () => router.push("/ott");
+  const handleGetPlan = () => router.push("/plans");
+
   useEffect(() => {
     if (isHovered) return;
-    const interval = setInterval(goToNextSlide, 3500);
+    const interval = setInterval(goToNextSlide, 4000);
     return () => clearInterval(interval);
   }, [isHovered, goToNextSlide]);
 
   const handleDotClick = (index) => setActiveIndex(index);
 
   const visibleSlidesCount = isMobile ? 1 : 3;
-  const slideWidth = `calc(${100 / visibleSlidesCount}% - ${isMobile ? "10px" : "20px"})`;
+  const slideWidth = isMobile ? "100%" : `calc(28% - 16px)`; // narrower sub-containers
   const transformValue = `translateX(-${activeIndex * (100 / visibleSlidesCount)}%)`;
   const showArrows = slides.length > visibleSlidesCount;
 
   return (
     <div
-      className="flex justify-center items-center w-full py-10 px-4 sm:px-6"
+      className="flex justify-center items-center w-full py-8 px-2 sm:px-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative max-w-[90rem] w-full bg-[#ffeeec] rounded-3xl shadow-lg p-6 md:p-10 overflow-hidden">
-        {/* Arrows */}
+      {/* Main Container */}
+      <div className="relative w-full max-w-7xl bg-[#ffeeec] rounded-2xl shadow-sm p-4 sm:p-6 overflow-hidden">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-6 px-2 text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 ">
+            Accessories you love. Deals you want.
+          </h2>
+         
+        </div>
+
+        {/* Navigation Arrows */}
         {showArrows && (
           <>
             <button
               onClick={goToPrevSlide}
-              className="absolute bg-white/90 hover:bg-white rounded-full p-3 shadow-lg z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 left-3 sm:left-6"
-              aria-label="Previous slide"
+              className="absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 left-2 sm:left-4"
             >
               <svg
-                className="w-6 h-6 text-gray-700"
+                className="w-4 h-4 text-gray-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -63,11 +77,10 @@ export default function Slider({ slides = [] }) {
 
             <button
               onClick={goToNextSlide}
-              className="absolute bg-white/90 hover:bg-white rounded-full p-3 shadow-lg z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 right-3 sm:right-6"
-              aria-label="Next slide"
+              className="absolute bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-10 hover:scale-110 transition-all duration-300 top-1/2 -translate-y-1/2 right-2 sm:right-4"
             >
               <svg
-                className="w-6 h-6 text-gray-700"
+                className="w-4 h-4 text-gray-700"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -80,57 +93,48 @@ export default function Slider({ slides = [] }) {
 
         {/* Slides */}
         <div
-          className="flex gap-6 md:gap-8 transition-transform duration-700 ease-in-out"
-          style={{ transform: transformValue }}
+           className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
+          style={{
+            transform: transformValue,
+          }}
         >
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="flex-shrink-0 bg-white rounded-2xl shadow-md p-6 md:p-10 flex flex-col justify-between relative transition-all duration-700 hover:shadow-lg overflow-hidden"
+              className="flex-shrink-0 bg-white rounded-2xl shadow-md relative flex flex-col justify-between p-5 sm:p-6 hover:shadow-lg transition-all duration-300 overflow-hidden"
               style={{
-                height: isMobile ? "auto" : "480px",
                 width: slideWidth,
+                height: isMobile ? "auto" : "420px",
               }}
             >
-              {/* ✅ Text section */}
-              <div
-                className={`${
-                  isMobile
-                    ? "relative flex flex-col items-center text-center gap-2"
-                    : "absolute top-10 left-8 right-1/2 text-left"
-                } z-10`}
-              >
-                <p className="text-sm font-medium text-gray-600 leading-tight">{slide.eyebrow}</p>
+              {/* Text & Button (Top Left) */}
+              <div className="z-10 text-left w-[65%] sm:w-[60%]">
+                <p className="text-xs sm:text-sm font-medium text-gray-500 mb-1">
+                  {slide.eyebrow}
+                </p>
                 <h3
-                  className="text-lg md:text-xl font-bold text-gray-900 leading-tight"
+                  className="text-base sm:text-lg font-bold text-gray-900 mb-2 leading-snug"
                   dangerouslySetInnerHTML={{ __html: slide.heading }}
                 ></h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{slide.description}</p>
-                {slide.legal && (
-                  <p className="text-xs text-gray-400 mt-1 leading-tight">{slide.legal}</p>
-                )}
-                <a
-                  href={slide.ctaHref}
-                  className="mt-4 inline-block bg-[#e60000] text-white py-2.5 px-6 rounded-full font-semibold text-sm text-center hover:bg-red-700 transition-all duration-300 hover:scale-105 w-fit"
+                <p className="text-sm text-gray-600 mb-4 leading-snug">
+                  {slide.description}
+                </p>
+                <button
+                  onClick={handleGetPlan}
+                  className="bg-[#e60000] text-white py-2 px-5 rounded-full font-semibold text-sm hover:bg-red-700 transition-all duration-200"
                 >
-                  {slide.ctaLabel || "Shop now"}
-                </a>
+                  Shop now
+                </button>
               </div>
 
-              {/* ✅ Image section */}
-              <div
-                className={`${
-                  isMobile
-                    ? "mt-6 flex justify-center items-center"
-                    : "absolute bottom-4 right-4 flex justify-end items-end w-[55%] h-[60%]"
-                }`}
-              >
+              {/* Image (Bottom Right) */}
+              <div className="absolute bottom-0 right-0 flex justify-end items-end w-[45%] h-[55%]">
                 <img
                   src={slide.image}
                   alt={slide.heading}
-                  className="max-w-full max-h-full object-contain transition-all duration-500"
+                  className="w-full h-full object-contain"
                   style={{
-                    transform: isMobile ? "scale(0.9)" : "scale(1.1)", // 🔽 reduced slightly
+                    maxHeight: isMobile ? "160px" : "200px",
                   }}
                   loading="lazy"
                 />
@@ -140,15 +144,16 @@ export default function Slider({ slides = [] }) {
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center items-center mt-6 space-x-3">
+        <div className="flex justify-center items-center mt-6 space-x-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => handleDotClick(i)}
               className={`transition-all duration-300 ${
-                i === activeIndex ? "bg-[#e60000] scale-110" : "bg-gray-400/60 hover:bg-gray-500"
-              } h-2.5 w-10 rounded-full`}
-              aria-label={`Go to slide ${i + 1}`}
+                i === activeIndex
+                  ? "bg-[#e60000] scale-110"
+                  : "bg-gray-400/60 hover:bg-gray-500"
+              } h-2 w-8 rounded-full`}
             />
           ))}
         </div>
