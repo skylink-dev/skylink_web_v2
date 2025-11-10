@@ -1,13 +1,15 @@
 "use client";
 
-import { apiService } from "@/backend/apiservice";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import {
   FaMapMarkerAlt,
   FaEnvelope,
   FaPhoneAlt,
   FaPaperPlane,
 } from "react-icons/fa";
+import { apiService } from "@/backend/apiservice";
+import LocationMap from "./LocationMap";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -19,7 +21,6 @@ export default function ContactForm() {
     address: "",
     message: "",
   });
-
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -44,28 +45,19 @@ export default function ContactForm() {
     "Home Automation",
   ];
 
-  const validateMobile = (mobile) => {
-    const mobileRegex = /^[6-9]\d{9}$/;
-    return mobileRegex.test(mobile);
-  };
+  const validateMobile = (mobile) => /^[6-9]\d{9}$/.test(mobile);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
-
-    if (!formData.firstName.trim()) {
+    if (!formData.firstName.trim())
       newErrors.firstName = "First name is required";
-    }
-
     if (!formData.mobile.trim()) {
       newErrors.mobile = "Mobile number is required";
     } else if (!validateMobile(formData.mobile)) {
@@ -75,21 +67,13 @@ export default function ContactForm() {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
-    } else {
-      apiService
-        .submitContactForm(formData)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(res);
-        });
     }
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await apiService.submitContactForm(formData);
       setSubmitStatus("success");
       setFormData({
         service: "",
@@ -108,694 +92,244 @@ export default function ContactForm() {
     }
   };
 
-  // Container Styles
-  const containerStyle = {
-    minHeight: "100vh",
-    background:
-      "linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #e0e7ff 100%)",
-    padding: "48px 16px",
-  };
-
-  const innerContainerStyle = {
-    maxWidth: "1280px",
-    margin: "0 auto",
-  };
-
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "1fr",
-    gap: "32px",
-  };
-
-  // Header Styles
-  const headerContainerStyle = {
-    marginBottom: "32px",
-  };
-  const contactStyle = {
-    fontSize: "clamp(32px, 5vw, 42px)",
-    fontWeight: "bold",
-    color: "#e41d1dff",
-    textAlign: "center",
-    marginBottom: "clamp(24px, 4vw, 32px)",
-    letterSpacing: "-0.02em",
-    lineHeight: "1.2",
-  };
-
-  const badgeStyle = {
-    display: "inline-block",
-    fontSize: "14px",
-    fontWeight: "600",
-    color: "#dc2626",
-    textTransform: "uppercase",
-    letterSpacing: "0.05em",
-    backgroundColor: "#fee2e2",
-    padding: "8px 16px",
-    borderRadius: "9999px",
-    marginBottom: "16px",
-  };
-
-  const titleStyle = {
-    fontSize: "36px",
-    fontWeight: "700",
-    color: "#1f2937",
-    lineHeight: "1.2",
-    marginBottom: "16px",
-  };
-
-  const gradientTextStyle = {
-    background: "linear-gradient(90deg, #dc2626, #b91c1c, #991b1b)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-  };
-
-  const redTextStyle = {
-    color: "#dc2626",
-  };
-
-  const descriptionStyle = {
-    fontSize: "18px",
-    color: "#6b7280",
-    lineHeight: "1.6",
-  };
-
-  // Contact Card Styles
-  const cardsContainerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "16px",
-  };
-
-  const cardStyle = {
-    backgroundColor: "white",
-    borderRadius: "16px",
-    padding: "24px",
-    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-    transition: "all 0.3s ease-in-out",
-    cursor: "pointer",
-    textDecoration: "none",
-  };
-
-  const cardHoverStyle = {
-    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-    transform: "translateY(-4px)",
-  };
-
-  const cardContentStyle = {
-    display: "flex",
-    alignItems: "flex-start",
-    gap: "16px",
-  };
-
-  const iconContainerStyle = {
-    flexShrink: 0,
-    width: "48px",
-    height: "48px",
-    borderRadius: "12px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transition: "transform 0.3s ease-in-out",
-  };
-
-  const iconHoverStyle = {
-    transform: "scale(1.1)",
-  };
-
-  const cardTextStyle = {
-    flex: "1",
-  };
-
-  const cardTitleStyle = {
-    fontSize: "18px",
-    fontWeight: "600",
-    color: "#1f2937",
-    marginBottom: "8px",
-  };
-
-  const cardDescriptionStyle = {
-    color: "#6b7280",
-    lineHeight: "1.6",
-  };
-
-  const linkStyle = {
-    color: "#2926dcff",
-    fontWeight: "500",
-    textDecoration: "none",
-    transition: "color 0.2s ease-in-out",
-  };
-
-  const linkHoverStyle = {
-    color: "#1cb93eff",
-  };
-
-  // Form Styles
-  const formContainerStyle = {
-    backgroundColor: "white",
-    borderRadius: "24px",
-    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-    padding: "32px",
-  };
-
-  const formStyle = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "24px",
-  };
-
-  // Input Styles
-  const inputStyle = {
-    width: "100%",
-    padding: "12px 16px",
-    border: "2px solid #e5e7eb",
-    borderRadius: "12px",
-    backgroundColor: "#f9fafb",
-    fontSize: "16px",
-    lineHeight: "1.5",
-    color: "#1f2937",
-    transition: "all 0.2s ease-in-out",
-    minHeight: "48px",
-    boxSizing: "border-box",
-    fontFamily: "inherit",
-  };
-
-  const focusStyle = {
-    borderColor: "#dc2626",
-    backgroundColor: "#ffffff",
-    boxShadow: "0 0 0 3px rgba(220, 38, 38, 0.1)",
-    outline: "none",
-  };
-
-  const errorStyle = {
-    borderColor: "#dc2626",
-    backgroundColor: "#fef2f2",
-  };
-
-  const textareaStyle = {
-    ...inputStyle,
-    minHeight: "120px",
-    resize: "vertical",
-  };
-
-  const selectStyle = {
-    ...inputStyle,
-    backgroundImage:
-      "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e\")",
-    backgroundPosition: "right 12px center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "16px",
-    paddingRight: "40px",
-  };
-
-  const grid2ColStyle = {
-    display: "grid",
-    gridTemplateColumns: "1fr",
-    gap: "16px",
-  };
-
-  const errorTextStyle = {
-    color: "#dc2626",
-    fontSize: "14px",
-    marginTop: "4px",
-  };
-
-  // Button Styles
-  const buttonStyle = {
-    width: "100%",
-    background: "linear-gradient(135deg, #dc2626, #b91c1c)",
-    color: "white",
-    padding: "16px 24px",
-    borderRadius: "12px",
-    fontWeight: "600",
-    fontSize: "16px",
-    border: "none",
-    cursor: "pointer",
-    transition: "all 0.2s ease-in-out",
-    minHeight: "56px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    boxSizing: "border-box",
-    fontFamily: "inherit",
-  };
-
-  const buttonHoverStyle = {
-    background: "linear-gradient(135deg, #b91c1c, #991b1b)",
-    transform: "translateY(-1px)",
-    boxShadow: "0 10px 25px -5px rgba(220, 38, 38, 0.4)",
-  };
-
-  const buttonDisabledStyle = {
-    opacity: 0.7,
-    cursor: "not-allowed",
-  };
-
-  // Status Message Styles
-  const statusSuccessStyle = {
-    padding: "16px",
-    backgroundColor: "#dcfce7",
-    border: "1px solid #bbf7d0",
-    color: "#166534",
-    borderRadius: "8px",
-  };
-
-  const statusErrorStyle = {
-    padding: "16px",
-    backgroundColor: "#fef2f2",
-    border: "1px solid #fecaca",
-    color: "#dc2626",
-    borderRadius: "8px",
-  };
-
-  // Loading Animation
-  const spinnerStyle = {
-    width: "20px",
-    height: "20px",
-    border: "2px solid white",
-    borderTop: "2px solid transparent",
-    borderRadius: "50%",
-    animation: "spin 1s linear infinite",
-  };
-
   return (
-    <div style={containerStyle}>
-      <style>
-        {`
-          @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          @media (min-width: 1024px) {
-            .contact-grid {
-              grid-template-columns: 1fr 1fr !important;
-            }
-            .name-grid {
-              grid-template-columns: 1fr 1fr !important;
-            }
-            .contact-grid-2 {
-              grid-template-columns: 1fr 1fr !important;
-            }
-          }
-          @media (min-width: 640px) {
-            .name-grid {
-              grid-template-columns: 1fr 1fr !important;
-            }
-            .contact-grid-2 {
-              grid-template-columns: 1fr 1fr !important;
-            }
-          }
-        `}
-      </style>
-
-      <div style={innerContainerStyle}>
-        <div
-          style={{ ...gridStyle, gridTemplateColumns: "1fr" }}
-          className="contact-grid"
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-8 md:px-12 lg:px-16">
+      <div className="max-w-6xl mx-auto grid gap-12 md:grid-cols-2 items-start">
+        {/* LEFT COLUMN */}
+        <motion.div
+          className="space-y-4 relative"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          {/* Left Section */}
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "32px" }}
-          >
-            {/* Header */}
-            <div style={headerContainerStyle}>
-              <div style={badgeStyle}>Secure Connections</div>
-              <h1 style={titleStyle}>
-                We Offer The{" "}
-                <span style={gradientTextStyle}>Highest-Quality</span>{" "}
-                <span style={redTextStyle}>Network Connections</span>
-              </h1>
-              <p style={descriptionStyle}>
-                Our network connections are designed to provide unmatched
-                reliability and speed, ensuring seamless online experiences for
-                both personal and business use.
-              </p>
-            </div>
-
-            {/* Contact Info Cards */}
-            <div style={cardsContainerStyle}>
-              {/* Address Card */}
-
-              <div
-                style={cardStyle}
-                onMouseEnter={(e) =>
-                  Object.assign(e.currentTarget.style, cardHoverStyle)
-                }
-                onMouseLeave={(e) =>
-                  Object.assign(e.currentTarget.style, cardStyle)
-                }
-              >
-                <a
-                  href="https://maps.google.com/maps?q=Skylink%20Fibernet%20Private%20Limited"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#1d4ed8")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#2563eb")
-                  }
-                >
-                  <div style={cardContentStyle}>
-                    <div
-                      style={{
-                        ...iconContainerStyle,
-                        background: "linear-gradient(135deg, #3b82f6, #6366f1)",
-                      }}
-                      onMouseEnter={(e) =>
-                        Object.assign(e.currentTarget.style, iconHoverStyle)
-                      }
-                      onMouseLeave={(e) =>
-                        Object.assign(e.currentTarget.style, {
-                          transform: "scale(1)",
-                        })
-                      }
-                    >
-                      <FaMapMarkerAlt
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          color: "white",
-                        }}
-                      />
-                    </div>
-                    <div style={cardTextStyle}>
-                      <h3 style={cardTitleStyle}>Our Location</h3>
-                      <p style={cardDescriptionStyle}>
-                        Skylink Fibernet Private Limited,
-                        <br />
-                        B6, II Floor, Vue Grande,
-                        <br />
-                        339 Chinnaswamy Road, Siddha Pudhur,
-                        <br />
-                        Coimbatore - 641044
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Email Card */}
-              <div
-                style={cardStyle}
-                onMouseEnter={(e) =>
-                  Object.assign(e.currentTarget.style, cardHoverStyle)
-                }
-                onMouseLeave={(e) =>
-                  Object.assign(e.currentTarget.style, cardStyle)
-                }
-              >
-                <div style={cardContentStyle}>
-                  <div
-                    style={{
-                      ...iconContainerStyle,
-                      background: "linear-gradient(135deg, #8b5cf6, #ec4899)",
-                    }}
-                    onMouseEnter={(e) =>
-                      Object.assign(e.currentTarget.style, iconHoverStyle)
-                    }
-                    onMouseLeave={(e) =>
-                      Object.assign(e.currentTarget.style, {
-                        transform: "scale(1)",
-                      })
-                    }
-                  >
-                    <FaEnvelope
-                      style={{ width: "24px", height: "24px", color: "white" }}
-                    />
-                  </div>
-                  <div style={cardTextStyle}>
-                    <h3 style={cardTitleStyle}>Email Us</h3>
-                    <a
-                      href="mailto:info@skylink.net.in"
-                      style={linkStyle}
-                      onMouseEnter={(e) =>
-                        Object.assign(e.currentTarget.style, linkHoverStyle)
-                      }
-                      onMouseLeave={(e) =>
-                        Object.assign(e.currentTarget.style, linkStyle)
-                      }
-                    >
-                      info@skylink.net.in
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Phone Card */}
-              <div
-                style={cardStyle}
-                onMouseEnter={(e) =>
-                  Object.assign(e.currentTarget.style, cardHoverStyle)
-                }
-                onMouseLeave={(e) =>
-                  Object.assign(e.currentTarget.style, cardStyle)
-                }
-              >
-                <div style={cardContentStyle}>
-                  <div
-                    style={{
-                      ...iconContainerStyle,
-                      background: "linear-gradient(135deg, #10b981, #059669)",
-                    }}
-                    onMouseEnter={(e) =>
-                      Object.assign(e.currentTarget.style, iconHoverStyle)
-                    }
-                    onMouseLeave={(e) =>
-                      Object.assign(e.currentTarget.style, {
-                        transform: "scale(1)",
-                      })
-                    }
-                  >
-                    <FaPhoneAlt
-                      style={{ width: "24px", height: "24px", color: "white" }}
-                    />
-                  </div>
-                  <div style={cardTextStyle}>
-                    <h3 style={cardTitleStyle}>Call Us</h3>
-                    <a
-                      href="tel:+919944199445"
-                      style={linkStyle}
-                      onMouseEnter={(e) =>
-                        Object.assign(e.currentTarget.style, linkHoverStyle)
-                      }
-                      onMouseLeave={(e) =>
-                        Object.assign(e.currentTarget.style, linkStyle)
-                      }
-                    >
-                      (+91) 99441 99445
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Section - Form */}
+          {/* Header */}
           <div>
-            <div style={formContainerStyle}>
-              <div style={contactStyle}>Contact US</div>
-              <form onSubmit={handleSubmit} style={formStyle}>
-                {/* Service Dropdown */}
-                <div>
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    style={{
-                      ...selectStyle,
-                      ...(errors.service ? errorStyle : {}),
-                    }}
-                    onFocus={(e) => Object.assign(e.target.style, focusStyle)}
-                    onBlur={(e) => Object.assign(e.target.style, selectStyle)}
-                  >
-                    {services.map((service, index) => (
-                      <option key={index} value={service}>
-                        {service}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.service && (
-                    <p style={errorTextStyle}>{errors.service}</p>
-                  )}
-                </div>
-
-                {/* Name Fields */}
-                <div style={{ ...grid2ColStyle }} className="name-grid">
-                  <div>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      placeholder="First name"
-                      style={{
-                        ...inputStyle,
-                        ...(errors.firstName ? errorStyle : {}),
-                      }}
-                      onFocus={(e) => Object.assign(e.target.style, focusStyle)}
-                      onBlur={(e) => Object.assign(e.target.style, inputStyle)}
-                    />
-                    {errors.firstName && (
-                      <p style={errorTextStyle}>{errors.firstName}</p>
-                    )}
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      placeholder="Last name"
-                      style={{
-                        ...inputStyle,
-                        ...(errors.lastName ? errorStyle : {}),
-                      }}
-                      onFocus={(e) => Object.assign(e.target.style, focusStyle)}
-                      onBlur={(e) => Object.assign(e.target.style, inputStyle)}
-                    />
-                    {errors.lastName && (
-                      <p style={errorTextStyle}>{errors.lastName}</p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Email and Mobile */}
-                <div style={{ ...grid2ColStyle }}>
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Your email"
-                      style={{
-                        ...inputStyle,
-                        ...(errors.email ? errorStyle : {}),
-                      }}
-                      onFocus={(e) => Object.assign(e.target.style, focusStyle)}
-                      onBlur={(e) => Object.assign(e.target.style, inputStyle)}
-                    />
-                    {errors.email && (
-                      <p style={errorTextStyle}>{errors.email}</p>
-                    )}
-                  </div>
-                  <div>
-                    <input
-                      type="tel"
-                      name="mobile"
-                      value={formData.mobile}
-                      onChange={handleChange}
-                      placeholder="Mobile Number"
-                      maxLength="10"
-                      style={{
-                        ...inputStyle,
-                        ...(errors.mobile ? errorStyle : {}),
-                      }}
-                      onFocus={(e) => Object.assign(e.target.style, focusStyle)}
-                      onBlur={(e) => Object.assign(e.target.style, inputStyle)}
-                    />
-                    {errors.mobile && (
-                      <p style={errorTextStyle}>{errors.mobile}</p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Address */}
-                <div>
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    placeholder="Your Address"
-                    style={{
-                      ...inputStyle,
-                      ...(errors.address ? errorStyle : {}),
-                    }}
-                    onFocus={(e) => Object.assign(e.target.style, focusStyle)}
-                    onBlur={(e) => Object.assign(e.target.style, inputStyle)}
-                  />
-                  {errors.address && (
-                    <p style={errorTextStyle}>{errors.address}</p>
-                  )}
-                </div>
-
-                {/* Message */}
-                <div>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your Message"
-                    rows="5"
-                    style={{
-                      ...textareaStyle,
-                      ...(errors.message ? errorStyle : {}),
-                    }}
-                    onFocus={(e) => Object.assign(e.target.style, focusStyle)}
-                    onBlur={(e) => Object.assign(e.target.style, textareaStyle)}
-                  />
-                  {errors.message && (
-                    <p style={errorTextStyle}>{errors.message}</p>
-                  )}
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  style={{
-                    ...buttonStyle,
-                    ...(isSubmitting ? buttonDisabledStyle : {}),
-                  }}
-                  onMouseEnter={(e) =>
-                    !isSubmitting &&
-                    Object.assign(e.target.style, buttonHoverStyle)
-                  }
-                  onMouseLeave={(e) =>
-                    Object.assign(e.target.style, buttonStyle)
-                  }
-                >
-                  {isSubmitting ? (
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                      }}
-                    >
-                      <div style={spinnerStyle} />
-                      <span>Submitting...</span>
-                    </div>
-                  ) : (
-                    <>
-                      <span>Submit</span>
-                      <FaPaperPlane
-                        style={{
-                          width: "20px",
-                          height: "20px",
-                          marginLeft: "8px",
-                        }}
-                      />
-                    </>
-                  )}
-                </button>
-
-                {/* Status Messages */}
-                {submitStatus === "success" && (
-                  <div style={statusSuccessStyle}>
-                    Thank you! Your message has been sent successfully.
-                  </div>
-                )}
-                {submitStatus === "error" && (
-                  <div style={statusErrorStyle}>
-                    Oops! Something went wrong. Please try again.
-                  </div>
-                )}
-              </form>
+            <div className="inline-block bg-red-100 text-red-600 font-semibold text-xs uppercase tracking-wider px-4 py-1 rounded-full mb-3">
+              Secure Connections
             </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+              We Offer The{" "}
+              <span className="bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
+                Highest-Quality
+              </span>{" "}
+              <span className="text-red-600">Network Connections</span>
+            </h1>
+            <p className="text-gray-600 mt-3">
+              Experience blazing speeds and unmatched reliability for both home
+              and business connections — we ensure you’re always connected.
+            </p>
           </div>
-        </div>
+
+          {/* Map Component */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <LocationMap />
+          </motion.div>
+        </motion.div>
+
+        {/* RIGHT COLUMN - Contact Form */}
+        <motion.div
+          className="bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-gray-100"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Title */}
+          <h2
+            className="text-3xl md:text-4xl text-center 
+            bg-gradient-to-tl from-purple-600 via-red-600 to-red-300 bg-clip-text font-bold text-transparent mb-2"
+          >
+            Contact Us
+          </h2>
+
+          {/* Contact Cards */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {/* Email Card */}
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              href="mailto:info@skylink.net.in"
+              className="flex min-w-[150px] items-center gap-4 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex-1  cursor-pointer"
+            >
+              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-tr from-purple-500 to-pink-500 text-white text-xl">
+                <FaEnvelope />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 text-lg">
+                  Email Us
+                </h3>
+                <p className="text-blue-600 text-sm font-medium break-all">
+                  info@skylink.net.in
+                </p>
+              </div>
+            </motion.a>
+
+            {/* Call Card */}
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              href="tel:+919944199445"
+              className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex-1 min-w-[250px] cursor-pointer"
+            >
+              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-tr from-emerald-500 to-green-600 text-white text-xl">
+                <FaPhoneAlt />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 text-lg">Call Us</h3>
+                <p className="text-blue-600 text-sm font-medium">
+                  (+91) 99441 99445
+                </p>
+              </div>
+            </motion.a>
+          </div>
+
+          {/* Subtitle */}
+          <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center">
+            Let Us Contact You
+          </h2>
+
+          {/* Contact Form */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Service Dropdown */}
+            <div>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 border-2 rounded-lg text-gray-700 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 transition ${
+                  errors.service
+                    ? "border-red-500 bg-red-50"
+                    : "border-gray-200"
+                }`}
+              >
+                {services.map((service, index) => (
+                  <option key={index} value={service}>
+                    {service}
+                  </option>
+                ))}
+              </select>
+              {errors.service && (
+                <p className="text-red-600 text-sm mt-1">{errors.service}</p>
+              )}
+            </div>
+
+            {/* Name Fields */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="First Name"
+                  className={`w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition ${
+                    errors.firstName
+                      ? "border-red-500 bg-red-50"
+                      : "border-gray-200"
+                  }`}
+                />
+                {errors.firstName && (
+                  <p className="text-red-600 text-sm mt-1">
+                    {errors.firstName}
+                  </p>
+                )}
+              </div>
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Last Name"
+                className="w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 border-gray-200 transition"
+              />
+            </div>
+
+            {/* Email and Mobile */}
+            <div className="grid md:grid-cols-2 gap-4">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email"
+                className="w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 border-gray-200 transition"
+              />
+              <div>
+                <input
+                  type="tel"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Mobile Number"
+                  maxLength="10"
+                  className={`w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition ${
+                    errors.mobile
+                      ? "border-red-500 bg-red-50"
+                      : "border-gray-200"
+                  }`}
+                />
+                {errors.mobile && (
+                  <p className="text-red-600 text-sm mt-1">{errors.mobile}</p>
+                )}
+              </div>
+            </div>
+
+            {/* Address */}
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              placeholder="Your Address"
+              className="w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 border-gray-200 transition"
+            />
+
+            {/* Submit Button */}
+            <motion.button
+              type="submit"
+              disabled={isSubmitting}
+              whileHover={!isSubmitting ? { scale: 1.03 } : {}}
+              whileTap={!isSubmitting ? { scale: 0.97 } : {}}
+              className={`w-full py-3 rounded-lg font-semibold text-white text-lg flex items-center justify-center gap-2 transition-all duration-300 ${
+                isSubmitting
+                  ? "bg-red-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-red-600 to-red-800 shadow-lg"
+              }`}
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                <>
+                  Submit <FaPaperPlane />
+                </>
+              )}
+            </motion.button>
+
+            {/* Status */}
+            {submitStatus === "success" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-3 bg-green-100 border border-green-300 text-green-700 rounded-md"
+              >
+                ✅ Thank you! Your message has been sent successfully.
+              </motion.div>
+            )}
+            {submitStatus === "error" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-3 bg-red-100 border border-red-300 text-red-700 rounded-md"
+              >
+                ❌ Oops! Something went wrong. Please try again.
+              </motion.div>
+            )}
+          </form>
+        </motion.div>
       </div>
     </div>
   );
