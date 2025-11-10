@@ -49,7 +49,7 @@ export default function RectangleBanner({
           {/* Heading */}
           {heading && (
             <h2
-              className="text-xl sm:text-2xl lg:text-3xl font-bold leading-snug mb-2 drop-shadow-md"
+              className="text-xl sm:text-2xl lg:text-2xl font-bold leading-snug mb-2 drop-shadow-md"
               dangerouslySetInnerHTML={{ __html: heading }}
             ></h2>
           )}
