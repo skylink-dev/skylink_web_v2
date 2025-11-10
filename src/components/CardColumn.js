@@ -19,12 +19,13 @@ export default function CardColumn({ title, repeatcontent }) {
               className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between w-full sm:w-[45%] lg:w-[25%]"
             >
               {/* Image */}
-              <div className="relative w-full aspect-[3/2] overflow-hidden rounded-t-2xl">
+              <div className="relative w-full h-60 overflow-hidden rounded-t-2xl flex justify-center items-center bg-gray-100">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  style={{ objectFit: 'cover' }}
+                  className={`object-contain ${index === 3 ? 'scale-95' : 'scale-100'}`}
+                  style={{ objectPosition: "center" }}
                 />
               </div>
 
@@ -38,7 +39,7 @@ export default function CardColumn({ title, repeatcontent }) {
               <div className="p-5 pt-0">
                 <Link
                   href={item.href}
-                  className="inline-block relative overflow-hidden bg-red-600 text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-500"
+                  className="inline-block relative overflow-hidden bg-red-600 text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-500 group"
                 >
                   <span className="absolute inset-0 bg-red-400 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
                   <span className="relative z-10">{item.cta}</span>
