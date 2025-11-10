@@ -9,6 +9,8 @@ export default function HeroBanner({ content }) {
         className="relative flex items-center justify-start rounded-2xl overflow-hidden h-[520px] md:h-[580px] lg:h-[620px] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${content?.image || "/herobanner.png"})`,
+          backgroundPosition: "center center", // ensures balanced fit
+          backgroundSize: "cover", // full container coverage (no zoom-in/out)
         }}
       >
         {/* Text Card */}

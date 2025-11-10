@@ -78,7 +78,7 @@ const faqSecondContent = [
     <>
     <HeroBanner content={HeroContent} />
     <AvailabilityComponents />
-    <StepByStepComponent steps={stepsData}></StepByStepComponent>
+    {/* <StepByStepComponent steps={stepsData}></StepByStepComponent> */}
     <RightImageLeftContent title="We're glad you're here" Content={dynamicImageContent} />
     <BgSlider></BgSlider>
     <Faq title="Why Skylink Fiber is the Smarter Choice" content={faqSecondContent} />

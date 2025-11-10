@@ -207,7 +207,7 @@ export default function FlexCard({
               transition={{ duration: 0.8 }}
             >
               <motion.p
-                className="uppercase text-red-400 text-xs min-[375px]:text-sm mb-1.5 sm:mb-2 font-semibold tracking-wider sm:tracking-widest drop-shadow-lg"
+                className="uppercase text-red-300 text-xs min-[375px]:text-sm mb-1.5 sm:mb-2 font-semibold tracking-wider sm:tracking-widest drop-shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
