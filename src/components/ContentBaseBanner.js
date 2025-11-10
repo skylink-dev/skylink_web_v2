@@ -1,9 +1,12 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 export default function ContentBaseBanner({ content, color }) {
   return (
-    <div className={`w-full bg-gray-50 text-black py-14 px-6 sm:px-12 ${color}`}>
+    <div
+      className={`w-full bg-gray-50 text-black py-14 px-6 sm:px-12 ${color}`}
+    >
       <div className="max-w-6xl mx-auto text-center">
         {/* Subtitle */}
         <p className="text-base sm:text-lg font-semibold tracking-wide uppercase text-gray-600 mb-2">

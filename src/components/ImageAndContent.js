@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Check, X } from "lucide-react";
+import Image from "next/image";
 
 export default function ImageAndContent({ image, content, row = "row" }) {
   return (

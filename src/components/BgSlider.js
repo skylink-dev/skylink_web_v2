@@ -53,8 +53,8 @@ export default function BgSlider() {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleNext = () => {
@@ -119,8 +119,8 @@ export default function BgSlider() {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={`h-2 rounded-full transition-all ${
-                  index === activeIndex 
-                    ? "bg-gray-800 w-6 md:w-8" 
+                  index === activeIndex
+                    ? "bg-gray-800 w-6 md:w-8"
                     : "bg-gray-300 w-2 hover:bg-gray-400"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
@@ -163,7 +163,11 @@ export default function BgSlider() {
                 <div
                   key={`${slide.title}-${i}`}
                   className="flex-shrink-0 transition-all duration-300"
-                  style={{ width: `calc((100% - ${(slidesToShow - 1) * 2}rem) / ${slidesToShow})` }}
+                  style={{
+                    width: `calc((100% - ${
+                      (slidesToShow - 1) * 2
+                    }rem) / ${slidesToShow})`,
+                  }}
                 >
                   {/* Portrait Card - Equal Height on Small Screens */}
                   <div className="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center p-6 md:p-8 hover:shadow-xl transition-all mx-auto w-full max-w-xs h-full min-h-[380px] sm:min-h-[420px] md:min-h-0">

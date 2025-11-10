@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 export default function Slider({ slides = [] }) {
   const router = useRouter();
 
-  if (!slides || slides.length === 0) return null;
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -39,9 +37,11 @@ export default function Slider({ slides = [] }) {
 
   const visibleSlidesCount = isMobile ? 1 : 3;
   const slideWidth = isMobile ? "100%" : `calc(28% - 16px)`; // narrower sub-containers
-  const transformValue = `translateX(-${activeIndex * (100 / visibleSlidesCount)}%)`;
+  const transformValue = `translateX(-${
+    activeIndex * (100 / visibleSlidesCount)
+  }%)`;
   const showArrows = slides.length > visibleSlidesCount;
-
+  if (!slides || slides.length === 0) return null;
   return (
     <div
       className="flex justify-center items-center w-full py-8 px-2 sm:px-6"
@@ -55,7 +55,6 @@ export default function Slider({ slides = [] }) {
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 ">
             Accessories you love. Deals you want.
           </h2>
-         
         </div>
 
         {/* Navigation Arrows */}
@@ -71,7 +70,12 @@ export default function Slider({ slides = [] }) {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
 
@@ -85,7 +89,12 @@ export default function Slider({ slides = [] }) {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </>
@@ -93,7 +102,7 @@ export default function Slider({ slides = [] }) {
 
         {/* Slides */}
         <div
-           className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
+          className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
           style={{
             transform: transformValue,
           }}
