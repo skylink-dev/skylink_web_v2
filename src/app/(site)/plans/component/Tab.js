@@ -64,7 +64,7 @@ const NewPlanCard = ({
               transition={{ duration: 0.2 }}
               className={`relative bg-white border rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 w-72 p-4 flex flex-col justify-between cursor-pointer ${
                 selected || planInfo.hot === "yes"
-                  ? "border-red-500 ring-2 ring-red-300"
+                  ? "border-red-500 bg-gradient-to-r from-red-600 via-red-600/90 to-red-600 text-white ring-2 ring-red-300"
                   : "border-gray-200"
               }`}
               onClick={
@@ -91,15 +91,39 @@ const NewPlanCard = ({
 
               {/* Plan Speed and Price */}
               <div className="text-center">
-                <h3 className="text-2xl font-extrabold text-gray-800">
+                <h3
+                  className={`text-2xl font-extrabold  ${
+                    selected || planInfo.hot === "yes"
+                      ? "text-white"
+                      : " text-gray-800"
+                  }`}
+                >
                   {planInfo.speed}
                 </h3>
-                <p className="text-sm text-gray-500 mt-1">
+                <p
+                  className={`text-sm${
+                    selected || planInfo.hot === "yes"
+                      ? "text-white"
+                      : " text-gray-500"
+                  }  mt-1`}
+                >
                   {planInfo.dataLimit} Data
                 </p>
-                <div className="mt-2 text-lg font-semibold text-gray-800">
+                <div
+                  className={`mt-2 text-lg font-semibold ${
+                    selected || planInfo.hot === "yes"
+                      ? "text-white"
+                      : " text-gray-800"
+                  } `}
+                >
                   ₹{planInfo.price}{" "}
-                  <span className="text-sm text-gray-500">
+                  <span
+                    className={`text-sm ${
+                      selected || planInfo.hot === "yes"
+                        ? "text-white"
+                        : " text-gray-500"
+                    } `}
+                  >
                     /{" "}
                     {planInfo.billingCycle === "Monthly"
                       ? "1 Month"
@@ -131,7 +155,13 @@ const NewPlanCard = ({
               </div>
 
               {/* Validity */}
-              <div className="mt-4 flex justify-between text-sm text-gray-600 border-t pt-2">
+              <div
+                className={`mt-4 flex justify-between text-sm ${
+                  selected || planInfo.hot === "yes"
+                    ? "text-white"
+                    : " text-gray-600"
+                }  border-t pt-2`}
+              >
                 <div>
                   <span className="block font-semibold">Validity</span>
                   <span>
@@ -1056,7 +1086,7 @@ export default function Tab() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                               >
-                                {/* <NewPlanCard
+                                <NewPlanCard
                                   isOpen={isOpen}
                                   setInsideAccordionIndex={
                                     setInsideAccordionIndex
@@ -1080,7 +1110,7 @@ export default function Tab() {
                                   setIsOpen={setIsOpen}
                                   setIsContactOpen={setIsContactOpen}
                                   isContactOpen={isContactOpen}
-                                /> */}
+                                />
                                 <PlanCard
                                   isOpen={isOpen}
                                   setInsideAccordionIndex={
