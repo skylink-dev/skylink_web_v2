@@ -9,79 +9,78 @@ import Link from "next/link";
 
 export default function Footer() {
   const [footerMenu, setFootermenu] = useState([
-    {
-      title: "Skylink",
-      menus: [
-        { title: "About Us", url: "/about" },
-        { title: "Find a Store", url: "/" },
-        { title: "Newsroom", url: "/" },
-        { title: "Investor Relations", url: "/" },
-        { title: "Careers", url: "/" },
-        { title: "Contact Support", url: "/" },
-        { title: "Skylink Guarantee", url: "/" },
-      ],
-    },
-    {
-      title: "Services",
-      menus: [
-        { title: "Broadband Plans", url: "/" },
-        { title: "IPTV Packages", url: "/" },
-        { title: "OTT Subscriptions", url: "/" },
-        { title: "Plan Upgrades", url: "/" },
-        { title: "Parental Controls", url: "/" },
-        { title: "Home Surveillance", url: "/" },
-        { title: "IoT Services", url: "/" },
-      ],
-    },
-    {
-      title: "Help & Support",
-      menus: [
-        { title: "Installation Guide", url: "/" },
-        { title: "Troubleshooting", url: "/" },
-        { title: "FAQs", url: "/" },
-        { title: "Billing & Payments", url: "/" },
-        { title: "Network Status", url: "/" },
-        { title: "Device Compatibility", url: "/" },
-        { title: "Customer Care", url: "/" },
-      ],
-    },
-    {
-      title: "Resources",
-      menus: [
-        {
-          title: "Speed Test",
-          url: "https://skylinkfiber.speedtestcustom.com/",
-        },
-        { title: "Coverage Areas", url: "/" },
-        { title: "Download Channel List", url: "/" },
-        { title: "Compare Plans", url: "/" },
-        { title: "Broadband Facts", url: "/" },
-        { title: "What is IPTV?", url: "/" },
-        { title: "How OTT Works", url: "/" },
-      ],
-    },
-    {
-      title: "Legal & Policy",
-      menus: [
-        { title: "Privacy Policy", url: "/policy" },
-        { title: "Refund Policy", url: "/refund" },
-        { title: "Subscription Contract", url: "/subscription-contract" },
-        { title: "Whistleblower Policy", url: "/whistleblower-policy" },
-      ],
-    },
+    // {
+    //   title: "Skylink",
+    //   menus: [
+    //     { title: "About Us", url: "/about" },
+    //     { title: "Find a Store", url: "/" },
+    //     { title: "Newsroom", url: "/" },
+    //     { title: "Investor Relations", url: "/" },
+    //     { title: "Careers", url: "/" },
+    //     { title: "Contact Support", url: "/" },
+    //     { title: "Skylink Guarantee", url: "/" },
+    //   ],
+    // },
+    // {
+    //   title: "Services",
+    //   menus: [
+    //     { title: "Broadband Plans", url: "/" },
+    //     { title: "IPTV Packages", url: "/" },
+    //     { title: "OTT Subscriptions", url: "/" },
+    //     { title: "Plan Upgrades", url: "/" },
+    //     { title: "Parental Controls", url: "/" },
+    //     { title: "Home Surveillance", url: "/" },
+    //     { title: "IoT Services", url: "/" },
+    //   ],
+    // },
+    // {
+    //   title: "Help & Support",
+    //   menus: [
+    //     { title: "Installation Guide", url: "/" },
+    //     { title: "Troubleshooting", url: "/" },
+    //     { title: "FAQs", url: "/" },
+    //     { title: "Billing & Payments", url: "/" },
+    //     { title: "Network Status", url: "/" },
+    //     { title: "Device Compatibility", url: "/" },
+    //     { title: "Customer Care", url: "/" },
+    //   ],
+    // },
+    // {
+    //   title: "Resources",
+    //   menus: [
+    //     {
+    //       title: "Speed Test",
+    //       url: "https://skylinkfiber.speedtestcustom.com/",
+    //     },
+    //     { title: "Coverage Areas", url: "/" },
+    //     { title: "Download Channel List", url: "/" },
+    //     { title: "Compare Plans", url: "/" },
+    //     { title: "Broadband Facts", url: "/" },
+    //     { title: "What is IPTV?", url: "/" },
+    //     { title: "How OTT Works", url: "/" },
+    //   ],
+    // },
+    // {
+    //   title: "Legal & Policy",
+    //   menus: [
+     
+    //   ],
+    // },
   ]);
 
   const [footerBottomMenu, setFooterBottomMenu] = useState([
     { title: "Site Map", url: "/" },
     { title: "Coverage Map", url: "/" },
-    { title: "Privacy Policy", url: "/policy" },
+     { title: "Privacy Policy", url: "/policy" },
+        { title: "Refund Policy", url: "/refund" },
+        { title: "Subscription Contract", url: "/subscription-contract" },
+        { title: "Whistleblower Policy", url: "/whistleblower-policy" },
     { title: "Terms of Use", url: "/" },
     { title: "Broadband Details", url: "/" },
-    { title: "Accessibility", url: "/" },
-    { title: "Advertising Preferences", url: "/" },
     { title: "Legal Policy Center", url: "/" },
     { title: "Cybersecurity", url: "/" },
     { title: "FCC Public Files", url: "/" },
+    {title:"Speed Test", url:"https://skylinkfiber.speedtestcustom.com/"}
   ]);
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -101,7 +100,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-gray-200">
       {/* Top Bar */}
-      <div className="border-b border-slate-700">
+      <div className="border-none">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-6">
           <SiteLogo />
           <div className="flex gap-4 mt-4 md:mt-0">
@@ -138,7 +137,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 py-10">
+      <div className="max-w-7xl mx-auto  py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {footerMenu.map((section, index) => (
             <div key={index}>
@@ -171,7 +170,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="my-8 border-t border-slate-700"></div>
+        {/* <div className="my-8 border-t border-slate-700"></div> */}
 
         {/* Bottom Links */}
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs text-gray-400">
