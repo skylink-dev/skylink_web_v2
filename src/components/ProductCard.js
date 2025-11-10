@@ -3,40 +3,53 @@ import React from 'react'
 
 export default function ProductCard({title, products}) {
     return (
-        <div className="jsx-2913604578">
-            <div className="max-width-background  bgcolor pad-t-lg pad-b-lg bg-white theme-accent-bg">
-                <div className="container rel">
-                    <div className="row flex-wrap justify-center">
-                        <div className="text-center grid-col-10">
-                            <h2 className="mar-b-xs heading-xxl">{title}</h2>
-                        </div>
-                    </div>
-                    <div className="row flex-wrap flex-items-stretch justify-center">
-                        {products.map((product) => (
-                            <div className="grid-col-4" key={product.id}>
-                                <div className="jsx-1680617885 jsx-2300775981 card flex-card radius-lg rel bgcolor theme-light-bg-img flex-card-background"  style={{ backgroundImage: `url(${product.image})` }}>
-                                    <div className="jsx-1680617885 jsx-2300775981 row flex flex-column card-height-tall rel">
-                                        <div className="jsx-1680617885 jsx-2300775981 flex-1 grid-col-12 text-center pad-b-none max-width pad-md-lg pad-md-md pad-lg-sm">
-                                            <div className="jsx-1680617885 jsx-2300775981 ">
-                                                <h3 className="heading-md">{product.name}</h3>
-                                                <div className="cta-container mar-t-xs">
-                                                    <Link
-                                                        className="btn-primary"
-                                                        id={`product-${product.id}`}
-                                                        type="button"
-                                                        aria-label={`Shop ${product.name}`}
-                                                        href={product.link}
-                                                    >
-                                                        {product.buttonLabel}
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <div className="w-full bg-white py-3 sm:py-4 md:py-5">
+            <div className="container mx-auto px-2 sm:px-3 md:px-4 max-w-6xl">
+                {/* Header Section */}
+                <div className="text-center mb-3 sm:mb-4">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900">
+                        {title}
+                    </h2>
+                </div>
+
+                {/* Products Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+                    {products.map((product) => (
+                        <div 
+                            key={product.id}
+                            className="group bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden aspect-[5/6] sm:aspect-[4/5] relative"
+                        >
+                            {/* Background Image - Full container */}
+                            <div 
+                                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                                style={{ backgroundImage: `url(${product.image})` }}
+                            />
+                            
+                            {/* Content Overlay at Top */}
+                            <div className="relative z-10 p-2 sm:p-1.5 md:p-2.5 flex flex-col items-center">
+                                {/* Product Name */}
+                                <h3 className="text-sm sm:text-[11px] md:text-sm font-semibold text-gray-900 mb-1.5 sm:mb-1 md:mb-1.5 leading-tight text-center">
+                                    {product.name}
+                                </h3>
+                                
+                                {/* CTA Button with Black Animation */}
+                                <Link
+                                    className="relative inline-flex items-center justify-center px-4 sm:px-2.5 md:px-4 py-1.5 sm:py-0.5 md:py-1 bg-red-600 text-white text-xs sm:text-[9px] md:text-xs font-semibold rounded-full overflow-hidden group/btn text-center transition-all duration-300"
+                                    id={`product-${product.id}`}
+                                    aria-label={`Shop ${product.name}`}
+                                    href={product.link}
+                                >
+                                    {/* Black background that slides in from left on hover */}
+                                    <span className="absolute inset-0 bg-gray-900 transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-in-out"></span>
+                                    
+                                    {/* Text content */}
+                                    <span className="relative z-10 transition-colors duration-300 whitespace-nowrap">
+                                        {product.buttonLabel}
+                                    </span>
+                                </Link>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

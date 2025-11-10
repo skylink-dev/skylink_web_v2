@@ -45,9 +45,9 @@ export default function StepByStepComponent({ steps }) {
           </p>
         </motion.div>
 
-        {/* Steps Grid */}
+        {/* Steps Grid - Centered */}
         <motion.div 
-          className="relative"
+          className="relative flex justify-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -56,15 +56,15 @@ export default function StepByStepComponent({ steps }) {
           {/* Connecting Line - Desktop */}
           <div className="hidden lg:block absolute top-20 left-1/2 transform -translate-x-1/2 w-4/5 h-0.5 bg-gradient-to-r from-red-200 via-red-500 to-red-200 z-0" />
           
-          {/* Steps Container */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-6 relative z-10">
+          {/* Steps Container - Centered with proper grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-6 relative z-10 justify-items-center w-full max-w-6xl">
             {steps.map(({ id, title, description, link, svg }, index) => (
               <motion.div
                 key={id}
                 variants={itemVariants}
-                className="group"
+                className="group w-full flex justify-center"
               >
-                <div className="bg-white rounded-2xl lg:rounded-3xl p-6 md:p-8 lg:p-6 xl:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col items-center text-center border border-gray-100 hover:border-red-200/50 group-hover:scale-105 group-hover:bg-white/95">
+                <div className="bg-white rounded-2xl lg:rounded-3xl p-6 md:p-8 lg:p-6 xl:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col items-center text-center border border-gray-100 hover:border-red-200/50 group-hover:scale-105 group-hover:bg-white/95 w-full max-w-xs sm:max-w-sm md:max-w-full">
                   
                   {/* Step Number with Animation */}
                   <div className="relative mb-6 md:mb-8 lg:mb-6 xl:mb-8">
@@ -82,7 +82,7 @@ export default function StepByStepComponent({ steps }) {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 flex flex-col items-center">
+                  <div className="flex-1 flex flex-col items-center w-full">
                     <h3 className="text-xl md:text-2xl lg:text-xl xl:text-2xl font-semibold text-gray-900 mb-3 md:mb-4 lg:mb-3 xl:mb-4 group-hover:text-red-700 transition-colors duration-300">
                       {title}
                     </h3>
@@ -108,15 +108,11 @@ export default function StepByStepComponent({ steps }) {
                         </svg>
                       </Link>
                     )}
-
-                
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-
-          {/* Mobile Progress Indicator - REMOVED */}
         </motion.div>
 
         {/* CTA Section */}

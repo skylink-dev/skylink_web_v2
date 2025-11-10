@@ -4,19 +4,19 @@ export const cardData = [
     subtitle: "Broadband + OTT + Live TV",
     title: "Save upto Rs.1500/- with Fire TV",
     description:
-      "Get Broadband, OTT & Live TV with free installation and refundable Fire TV deposit.",
+      "Enjoy fast broadband, live TV, and OTT apps together in one smart home plan.",
     legalText:
-      "Offer available for new and existing customers. Fire TV deposit refundable as per plan. Regional availability may vary. Terms and conditions apply.",
+      "Includes free installation and a refundable Fire TV deposit. Availability may vary.",
     link: "/",
   },
   {
     image: "/assets/smart-tv.jpg",
-    subtitle: "Smart TV? You’re already set!",
+    subtitle: "Already Have a Smart TV? You’re Set",
     title: "Just tap. Stream everything.",
     description:
-      "Enjoy unlimited 350+ channels & 19 OTT apps — just ₹399/month!",
+      "Access 350+ channels and 19 OTT apps for ₹399/month directly on your TV.",
     legalText:
-      "No additional hardware needed. Internet connection required. Offer valid for South India only. Terms apply.",
+      "Works with any internet connection. Offer available across South India.",
     link: "/south-plans",
   },
 ];
@@ -61,8 +61,8 @@ export const slidesData = [
     description:
       "Stream 550+ free and regional channels along with 19 OTT apps through the Skylink OTTs Basic Plan.",
     legal: "Speed varies. Fair usage applies.",
-    ctaLabel: "Check Coverage",
-    ctaHref: "/",
+    ctaLabel: "Get the Plan",
+    ctaHref: "/ott",
     image: "/newassets/home/slider/skylink-second.png",
     speed: "30 Mbps",
     tvChannels: 350,
@@ -75,8 +75,8 @@ export const slidesData = [
     description:
       "550+ FTA & PLC channels at zero cost, plus 19 OTT apps free with Skylink & OTTs Basic Plan.",
     legal: "No hardware. Internet only.",
-    ctaLabel: "Explore  OTT",
-    ctaHref: "/",
+    ctaLabel: "Explore OTT",
+    ctaHref: "/ott",
     image: "/newassets/home/slider/skylink-ott-image.png",
     speed: "30 Mbps",
     tvChannels: 550,
@@ -84,11 +84,11 @@ export const slidesData = [
   },
   {
     id: "slide-1",
-    heading: "TriplePlay ₹799/m",
-    eyebrow: "India’s Best",
+    heading: "Skylink Home Combo @ ₹799/month",
+    eyebrow: "The Everyday Essential.",
     description:
-      "Broadband. 750+ channels and Sun Tv, Vijay Tv, Zee 5. One simple plan.",
-    legal: "No set-top box. Free install TN, Telangana, Karnataka.",
+      "Enjoy fast broadband and 750+ live TV channels, including Sun TV, Vijay TV, and Zee5 - all in one plan.",
+    legal: "Free installation available across Tamil Nadu, Telangana, and Karnataka.",
     ctaLabel: "Get the Plan",
     ctaHref: "/",
     image: "/newassets/home/slider/skylink-first.png",
@@ -98,11 +98,11 @@ export const slidesData = [
   },
   {
     id: "slide-4",
-    heading: "All-in-One ₹899/m",
-    eyebrow: "Best Value",
-    description: "Broadband + 1000+ TV channels +Jio Hotstar, SonyLIV, Zee5.",
-    legal: "No device needed.",
-    ctaLabel: "Get Plan",
+    heading: "Skylink Fiber Max @ ₹899/month",
+    eyebrow: "The Ultimate Skylink Experience.",
+    description: "Access high-speed broadband, 1000+ live TV channels, and premium OTT apps like JioCinema, SonyLIV, and Zee5.",
+    legal: "No extra setup or device required. Your connection handles it all.",
+    ctaLabel: "Get the Plan",
     ctaHref: "/",
     image: "/newassets/home/slider/skylink-tv.png",
     speed: "50 Mbps",
@@ -114,11 +114,11 @@ export const slidesData = [
     heading: "Unlimited OTT ₹999/m",
     eyebrow: "Hindi Hits & Series",
     description:
-      "Addon -Jio Hotstar, Zee5 — streaming redefined. Mega Max 29 OTT pack worth ₹299/- Free.",
+      "Addon -Jio Hotstar, Zee5 - streaming redefined. Mega Max 29 OTT pack worth ₹299/- Free.",
     legal:
       "If Mega Max pack is claimed as free, then IPTV Premium Pack can’t be claimed by customer. Internet required. No set-top box.",
     ctaLabel: "Explore OTT",
-    ctaHref: "/",
+    ctaHref: "/ott",
     image: "/newassets/home/slider/skylink-unlimited.png",
     speed: "200 Mbps",
     tvChannels: 550,
@@ -132,7 +132,7 @@ export const slidesData2 = [
     heading: "Smart Remote Control",
     eyebrow: "Skylink Essentials",
     description:
-      "Control all your Skylink devices with one intuitive, voice-enabled remote—simple, sleek, and powerful.",
+      "Control all your Skylink devices with one intuitive, voice-enabled remote-simple, sleek, and powerful.",
     legal: "",
     legalLabel: "",
     legalButtonId: "",
@@ -146,7 +146,7 @@ export const slidesData2 = [
     heading: "Skylink Fire Tv",
     eyebrow: "Skylink OTT Devices",
     description:
-      "Stream your favorite apps like Zee5, Amazon Prime, and Disney+ with the Amazon Fire TV — easy setup and smooth 4K playback.",
+      "Stream your favorite apps like Zee5, Amazon Prime, and Disney+ with the Amazon Fire TV - easy setup and smooth 4K playback.",
     legal: "",
     legalLabel: "",
     legalButtonId: "",
@@ -202,23 +202,23 @@ export const dynamicImageContent = [
   {
     img: "/assets/connectiona-changes.jpg",
     icon: "/assets/connecting-changes- everything.png",
-    title: "Connecting changes everything",
+    title: "Life, Uninterrupted",
     description:
-      "We're working together to change the world by enhancing education, developing career opportunities, and bridging the digital divide. Learn how Skyplay is providing affordable & accessible internet.",
+      "Reliable fiber internet that keeps your work sessions, online learning, and entertainment running uninterrupted. Every. Single. Day.",
   },
   {
     img: "/assets/empowering-the-future.jpg",
     icon: "/assets/empowering-the-future.png",
-    title: "Empowering the future",
+    title: "Helping You Stay Ahead",
     description:
-      "From supporting low-income families with affordable internet to building the nation's infrastructure, learn how we're unlocking life's greater possibilities.",
+      "Affordable broadband plans in India that open access to education, remote work, and small-business growth with consistent, fast connectivity.",
   },
   {
     img: "/assets/encouraging-healthy-digital-habits.jpg",
     icon: "/assets/encouraging-ealthy-digital-habits.png",
-    title: "Encouraging healthy digital habits",
+    title: "Safe Connections, Happier Homes",
     description:
-      "Every child and family is different. We've teamed up with the American Academy of Pediatrics to develop resources to help your family stay safe on all screens.",
+      "Smart tools and guidance for secure home Wi-Fi, helping families stay connected, balanced, and protected in today’s digital world.",
   },
 ];
 export const IconContent = [
@@ -366,10 +366,10 @@ export const contentNewsletter = {
 export const bannerContent = {
   subtitle: "Think Big, Stream Bigger",
   title:
-    "Router @ ₹1499/- + Skylink Fire TV — FREE device, refundable deposit applies.",
+    "Router @ ₹1499/- + Skylink Fire TV - FREE device, refundable deposit applies.",
   firstcta: "",
   offercontent:
-    "First time ever — Skylink Firestick available on refundable deposit! No one else offers this. Refundable deposit applies based on your chosen plan.",
+    "First time ever - Skylink Firestick available on refundable deposit! No one else offers this. Refundable deposit applies based on your chosen plan.",
   offercta: "",
   secondcta: "Call +919944199445",
   href: "tel:+919944199445",
@@ -436,105 +436,106 @@ export const dynamicSlidesData = [
   {
     imgSrc: "/assets/blogs-01.png",
     title: "Skylink Fiber Broadband",
-    subtitle: "Speed that connects all of India",
+    subtitle: " Steady Wi-Fi, Every Day",
     description:
-      "From Chennai’s tech hubs to Delhi’s bustling streets, enjoy blazing 1 Gbps fiber internet for streaming, gaming, and work without limits.",
+      "A dependable connection that keeps homes and workplaces running smoothly.",
     normaltext: "",
-    legalText: "Speed varies by location and network conditions.",
+    legalText: "Smart routers are available with select Skylink plans.",
     link: "/",
   },
   {
     imgSrc: "/assets/blogs-02.png",
     title: "Skylink OTT Universe",
-    subtitle: "All your favorite shows, South to North",
+    subtitle: "Upgrade on Your Terms",
     description:
-      "Stream hits from Sun TV and Vijay TV to Sony and Zee5—one subscription, endless entertainment for every Indian home.",
+      "Need more speed or data? Switch plans easily without starting over",
     normaltext: "",
-    legalText: "Content and app availability may vary by region.",
+    legalText: "Flexibility built into every Skylink account.",
     link: "/",
   },
-  {
-    imgSrc: "/assets/blogs-03.png",
-    title: "Skylink IPTV",
-    subtitle: "900+ Live Channels in HD, from Punjab to Tamil Nadu",
-    description:
-      "Access Tamil, Telugu, Hindi, Punjabi, and Bengali channels with HD clarity and features like pause, rewind, and multi-device support.",
-    normaltext: "",
-    legalText:
-      "Channel lineup varies by area. Compatible device and internet needed.",
-    link: "/",
-  },
-  {
-    imgSrc: "/assets/blogs-04.png",
-    title: "HD TV, No Setup Boxes",
-    subtitle: "Streamlined TV for every region",
-    description:
-      "Enjoy 300+ HD channels with free installation. Watch your favorite South and North Indian channels on Smart TVs or Fire Tv without extra hardware.",
-    normaltext: "",
-    legalText:
-      "Free installation applies to new customers. Smart TV or compatible device required.",
-    link: "/",
-  },
-  {
-    imgSrc: "/assets/blogs-06.png",
-    title: "Entertainment Bundles Tailored for India",
-    subtitle: "IPTV, OTT & Broadband in one plan",
-    description:
-      "From Coimbatore to Chandigarh, get the perfect mix of internet, TV, and OTT services that fit your lifestyle and language preferences.",
-    normaltext: "",
-    legalText: "Bundle content and availability vary by state.",
-    link: "/",
-  },
-  {
-    imgSrc: "/assets/blogs-07.png",
-    title: "Next-Gen Wi-Fi Everywhere",
-    subtitle: "Strong signals from North to South",
-    description:
-      "Wi-Fi 6 routers that deliver fast, stable internet in every corner—whether it’s a Chennai apartment or a Delhi villa.",
-    normaltext: "",
-    legalText: "Router availability depends on plan.",
-    link: "/",
-  },
-  {
-    imgSrc: "/assets/blogs-08.png",
-    title: "Flexible Plans That Grow With You",
-    subtitle: "Upgrade anytime, hassle-free",
-    description:
-      "Need more speed or channels? Switch plans anytime without fees—designed for dynamic lifestyles from Tamil Nadu to Punjab.",
-    normaltext: "",
-    legalText: "Upgrade eligibility varies by plan.",
-    link: "/",
-  },
-  {
-    imgSrc: "/assets/blogs-05.png",
-    title: "Parental Controls for Safe Surfing",
-    subtitle: "Protect your family across India",
-    description:
-      "Manage content and screen time easily—from Hyderabad to Jaipur—with Skylink’s intuitive parental control tools.",
-    normaltext: "",
-    legalText: "Supported on select routers.",
-    link: "/",
-  },
-  {
-    imgSrc: "/assets/blogs-11.png",
-    title: "Smart IoT for Every Indian Home",
-    subtitle: "Connected living from coast to capital",
-    description:
-      "Control your home’s lights, fans, and appliances seamlessly—from Kerala’s backwaters to Delhi’s heart—with Skylink-compatible devices.",
-    normaltext: "",
-    legalText: "Device compatibility may vary.",
-    link: "/",
-  },
-  {
-    imgSrc: "/assets/blogs-10.png",
-    title: "Cloud Backup Made Simple",
-    subtitle: "Secure your data, no matter where you are",
-    description:
-      "Automatically save files, photos, and videos with encrypted cloud storage, optimized for users from South to North India.",
-    normaltext: "",
-    legalText: "Storage limits and pricing vary by plan.",
-    link: "/",
-  },
+ {
+  imgSrc: "/assets/blogs-03.png",
+  title: "Skylink IPTV",
+  subtitle: "Safer Online Spaces",
+  description:
+    "Parental controls that help families browse, learn, and stream with confidence.",
+  normaltext: "",
+  legalText: "Manage settings directly from your Skylink dashboard.",
+  link: "/",
+},
+{
+  imgSrc: "/assets/blogs-04.png",
+  title: "HD TV, No Setup Boxes",
+  subtitle: "Smart-er Homes",
+  description:
+    "From lighting to appliances, control what you need with Skylink’s smart home integrations.",
+  normaltext: "",
+  legalText: "Set up support available for compatible devices.",
+  link: "/",
+},
+{
+  imgSrc: "/assets/blogs-06.png",
+  title: "Entertainment Bundles Tailored for India",
+  subtitle: "Your Cloud, Your Rules",
+  description:
+    "Keep your files protected and within reach with Skylink Cloud Backup.",
+  normaltext: "",
+  legalText: "Reliable storage for personal and work essentials.",
+  link: "/",
+},
+{
+  imgSrc: "/assets/blogs-07.png",
+  title: "Next-Gen Wi-Fi Everywhere",
+  subtitle: "Fiber That Never Flinches",
+  description:
+    "Consistent, high-speed connectivity built for streaming, gaming, and hybrid work.",
+  normaltext: "",
+  legalText: "Now available across multiple Indian cities.",
+  link: "/",
+},
+{
+  imgSrc: "/assets/blogs-05.png",
+  title: "Parental Controls for Safe Surfing",
+  subtitle: "Your One-Stop Shop",
+  description:
+    "Access popular apps and live content through the Skylink OTT Universe.",
+  normaltext: "",
+  legalText: "One login, effortless streaming.",
+  link: "/",
+},
+{
+  imgSrc: "/assets/blogs-11.png",
+  title: "Smart IoT for Every Indian Home",
+  subtitle: "Live. Local. Limitless.",
+  description:
+    "Enjoy over 900 HD channels with pause and rewind controls.",
+  normaltext: "",
+  legalText:
+    "From Punjab to Tamil Nadu, entertainment stays uninterrupted.",
+  link: "/",
+},
+{
+  imgSrc: "/assets/blogs-10.png",
+  title: "Cloud Backup Made Simple",
+  subtitle: "Switch On. Stream On.",
+  description:
+    "Watch 300+ HD channels on any Smart TV. No cables, no clutter.",
+  normaltext: "",
+  legalText: "Simply connect and start watching.",
+  link: "/",
+},
+{
+  imgSrc: "/assets/blogs-09.png",
+  title: "The Shortcut to Every Screen",
+  subtitle: "The Shortcut to Every Screen.",
+  description:
+    "Internet, TV, and OTT in one straightforward plan.",
+  normaltext: "",
+  legalText:
+    "Easy setup, consistent performance, and real value for every home.",
+  link: "/",
+},
+
 ];
 export const flexCardData = [
   {
@@ -602,7 +603,7 @@ export const flexCardData = [
 ];
 
 export const rightContentFlexData = {
-  subheading: "Skylink - Stronger Connections. Stronger India",
+  subheading: "Stronger Connections. Stronger India",
   heading: "Share the Connection. Share the Reward.",
   description:
     "Invite friends, earn ₹200, and join the Skylink family - stronger, together. Reward credited after activation.",
@@ -626,7 +627,7 @@ export const faqData = [
   {
     title: "Entertainment for the whole family",
     content:
-      "With Skylink’s OTT services, access kids shows, live sports, movies, and international content — all in one subscription. Set parental controls and stream worry-free for all age groups.",
+      "With Skylink’s OTT services, access kids shows, live sports, movies, and international content - all in one subscription. Set parental controls and stream worry-free for all age groups.",
   },
   {
     title: "Switch to Skylink hassle-free",
