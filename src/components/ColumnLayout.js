@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 export default function ThreeColumnLayout({ content }) {
   return (
@@ -32,7 +33,6 @@ export default function ThreeColumnLayout({ content }) {
 
                 {/* Buttons */}
                 <div className="flex flex-col gap-3">
-
                   {/* CTA button */}
                   <Link
                     href="/buy/phones/apple-iphone-16-pro.html"

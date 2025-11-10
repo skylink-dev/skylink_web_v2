@@ -1,6 +1,7 @@
-'use client'
-import Link from 'next/link'
-import React from 'react'
+"use client";
+import Link from "next/link";
+import React from "react";
+import Image from "next/image";
 
 export default function ButtonGroupSection({ content }) {
   return (
@@ -16,7 +17,7 @@ export default function ButtonGroupSection({ content }) {
           <div className="flex flex-wrap justify-center items-center gap-3 py-3">
             {content.buttons.map((item, index) => (
               <React.Fragment key={index}>
-                <Link 
+                <Link
                   href={item.buttonurl}
                   className="bg-white hover:bg-gray-50 text-gray-900 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md text-sm sm:text-base text-center"
                 >
@@ -33,5 +34,5 @@ export default function ButtonGroupSection({ content }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
