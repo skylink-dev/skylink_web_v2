@@ -41,7 +41,7 @@ export default function RectangleBanner({
         >
           {/* Eyebrow */}
           {eyebrow && (
-            <p className="text-xs sm:text-sm uppercase tracking-wide font-semibold text-blue-400 mb-1.5">
+            <p className="text-xs sm:text-sm uppercase tracking-wide font-semibold text-red-200 mb-1.5">
               {eyebrow}
             </p>
           )}
@@ -49,7 +49,7 @@ export default function RectangleBanner({
           {/* Heading */}
           {heading && (
             <h2
-              className="text-xl sm:text-2xl lg:text-3xl font-bold leading-snug mb-2 drop-shadow-md"
+              className="text-xl sm:text-2xl lg:text-4xl font-bold leading-snug mb-2 drop-shadow-md"
               dangerouslySetInnerHTML={{ __html: heading }}
             ></h2>
           )}
@@ -57,7 +57,7 @@ export default function RectangleBanner({
           {/* Description */}
           {description && (
             <div
-              className="text-sm sm:text-base leading-relaxed mb-4 break-words opacity-90"
+              className="text-xs sm:text-base leading-relaxed mb-4 break-words opacity-90"
               dangerouslySetInnerHTML={{ __html: description }}
             ></div>
           )}

@@ -16,7 +16,7 @@ export default function Header() {
     { title: "TV", url: "/tv" },
     { title: "OTT", url: "/ott" },
     { title: "Support", url: "/support" },
-    { title: "Plans", url: "/plans" },
+    { title: "Plans", url: "/new_plans" },
     { title: "Contact Us", url: "/contact-us" },
   ];
 
@@ -42,7 +42,7 @@ export default function Header() {
     },
     {
       label: "View Our Plans",
-      href: "/plans",
+      href: "/new_plans",
       color:
         "bg-gradient-to-r from-[#007aff] to-[#007aff] inset-shadow-blue-900/50 inset-shadow-sm  ",
     },

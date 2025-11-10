@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const CustomPrevArrow = ({ onClick }) => (
@@ -24,57 +25,71 @@ const CustomNextArrow = ({ onClick }) => (
   </button>
 );
 
-export default function DynamicCarousel({ title = "Featured Content", slidesData = [] }) {
+export default function DynamicCarousel({
+  title = "Featured Content",
+  slidesData = [],
+}) {
+  const MotionImage = motion(Image);
   const sliderRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Default slide data
   const defaultSlides = [
     {
-      imgSrc: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop",
+      imgSrc:
+        "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop",
       title: "Business Solutions",
       subtitle: "Transform Your Business Strategy",
-      description: "Discover innovative solutions that drive growth and efficiency in your organization.",
+      description:
+        "Discover innovative solutions that drive growth and efficiency in your organization.",
       normaltext: "Special Offer: Get 20% off",
       legalText: "Terms and conditions apply. Limited time offer.",
-      link: "#"
+      link: "#",
     },
     {
-      imgSrc: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+      imgSrc:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
       title: "Analytics",
       subtitle: "Data-Driven Insights",
-      description: "Harness the power of data to make informed decisions and optimize performance.",
+      description:
+        "Harness the power of data to make informed decisions and optimize performance.",
       normaltext: "Free Trial Available",
       legalText: "No credit card required.",
-      link: "#"
+      link: "#",
     },
     {
-      imgSrc: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop",
+      imgSrc:
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop",
       title: "Collaboration",
       subtitle: "Enhanced Team Productivity",
-      description: "Work smarter with tools designed for seamless collaboration across teams.",
+      description:
+        "Work smarter with tools designed for seamless collaboration across teams.",
       normaltext: "Starting at $29/month",
       legalText: "Billed annually. Cancel anytime.",
-      link: "#"
+      link: "#",
     },
     {
-      imgSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
+      imgSrc:
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop",
       title: "Innovation",
       subtitle: "Future-Ready Technology",
-      description: "Stay ahead of the curve with cutting-edge technology solutions.",
+      description:
+        "Stay ahead of the curve with cutting-edge technology solutions.",
       normaltext: "Request a Demo",
       legalText: "Available for enterprise customers.",
-      link: "#"
+      link: "#",
     },
     {
-      imgSrc: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
+      imgSrc:
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
       title: "Growth",
       subtitle: "Scale Your Operations",
-      description: "Expand your reach and capabilities with our scalable platform.",
+      description:
+        "Expand your reach and capabilities with our scalable platform.",
       normaltext: "30-Day Money Back Guarantee",
       legalText: "See terms for details.",
-      link: "#"
-    }
+      link: "#",
+    },
   ];
 
   const slides = slidesData.length > 0 ? slidesData : defaultSlides;
@@ -146,9 +161,11 @@ export default function DynamicCarousel({ title = "Featured Content", slidesData
               <div className="flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-[480px]">
                 {/* Image Section */}
                 <div className="relative w-full h-[220px] flex-shrink-0 overflow-hidden">
-                  <motion.img
+                  <MotionImage
                     src={item.imgSrc}
                     alt={item.title}
+                    width={500} // ✅ Required by Next.js — adjust as needed
+                    height={500}
                     className="w-full h-full object-cover transition-transform duration-500"
                     whileHover={{ scale: 1.1 }}
                   />

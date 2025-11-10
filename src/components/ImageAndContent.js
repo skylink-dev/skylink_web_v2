@@ -8,9 +8,10 @@ export default function ImageAndContent({ image, content, row = "row" }) {
       <div className="container mx-auto px-4">
         {/* Mobile View - Content Over Image (moved to top) */}
         <div className="md:hidden relative w-full aspect-[4/4.5] rounded-2xl overflow-hidden shadow-lg">
-          <img
+          <Image
             src={image}
             alt="content"
+            fill // ✅ Automatically fills parent container
             className="object-cover w-full h-full"
           />
 
@@ -72,7 +73,9 @@ export default function ImageAndContent({ image, content, row = "row" }) {
         <div className="hidden md:flex items-center justify-between gap-4 lg:gap-6 xl:gap-8">
           {/* Content Section */}
           <div
-            className={`flex-1 ${row === "row" ? "order-1" : "order-2"} space-y-3 lg:space-y-4`}
+            className={`flex-1 ${
+              row === "row" ? "order-1" : "order-2"
+            } space-y-3 lg:space-y-4`}
           >
             <p className="text-red-500 uppercase tracking-widest text-xs lg:text-sm font-semibold">
               {content.subtitle}
@@ -88,7 +91,10 @@ export default function ImageAndContent({ image, content, row = "row" }) {
 
             <ul className="space-y-2 lg:space-y-2.5">
               {content.contentlists.map((item, index) => (
-                <li key={index} className="flex items-start gap-2.5 text-gray-800">
+                <li
+                  key={index}
+                  className="flex items-start gap-2.5 text-gray-800"
+                >
                   <Check className="text-red-500 w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span className="text-sm lg:text-base">{item}</span>
                 </li>
@@ -98,7 +104,10 @@ export default function ImageAndContent({ image, content, row = "row" }) {
             {content.crossList && (
               <ul className="space-y-2 lg:space-y-2.5">
                 {content.crossList.map((item, index) => (
-                  <li key={index} className="flex items-start gap-2.5 text-gray-800">
+                  <li
+                    key={index}
+                    className="flex items-start gap-2.5 text-gray-800"
+                  >
                     <X className="text-red-500 w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span className="text-sm lg:text-base">{item}</span>
                   </li>
@@ -118,13 +127,16 @@ export default function ImageAndContent({ image, content, row = "row" }) {
 
           {/* Image Section */}
           <div
-            className={`flex-1 ${row === "row" ? "order-2" : "order-1"} flex justify-center`}
+            className={`flex-1 ${
+              row === "row" ? "order-2" : "order-1"
+            } flex justify-center`}
           >
             <div className="relative rounded-2xl overflow-hidden shadow-xl w-[90%] lg:w-[80%] aspect-[3/3.2]">
-              <img
+              <Image
                 src={image}
                 alt="content"
-                className="object-cover w-full h-full transform hover:scale-105 transition duration-500 ease-in-out"
+                fill
+                className="object-cover w-full h-full transition duration-500 ease-in-out hover:scale-105"
               />
               {content.titleBox && (
                 <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">

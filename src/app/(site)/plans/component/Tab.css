@@ -1,3 +1,8 @@
+.div {
+  margin: 0px;
+  padding: 0px;
+}
+
 .App-header {
   display: block;
   margin-top: 0px;
@@ -3122,7 +3127,7 @@ section.pricing-plan-innovative-section .container {
   background-image: url("https://www.skylink.net.in/wp-content/uploads/2025/07/tri.png");
   background-size: contain;
   width: 100%;
-  height: 75%;
+  height: 50%;
   position: absolute;
   top: 50%;
   left: 0;
@@ -3728,4 +3733,9 @@ section.pricing-plan-innovative-section .get-started-popup .container {
 
 .accordion-body.accordion-active {
   display: block !important;
+}
+
+.tailwind-plan-flex {
+  justify-content: center !important;
+  align-items: center !important;
 }

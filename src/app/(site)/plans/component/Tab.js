@@ -1,6 +1,5 @@
 "use client";
-import "./Tab.css";
-import "./Tab.mobile.css";
+
 import React, { useEffect, useRef, useState } from "react";
 import Speed from "../../../../components/plans/Speed";
 import BilledCycle from "../../../../components/plans/BilledCycle";
@@ -14,8 +13,6 @@ import { FaStar } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import PlanAccordionDetails from "../../../../components/plans/PlanAccordionDetails";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -24,6 +21,7 @@ import "./Tab.css";
 import ContactPopup from "./ContactPopup";
 import PlanTabs from "../../new_plans/component/planTabs";
 import Image from "next/image";
+import FixedPlan from "../../new_plans/component/FixedPlan";
 
 const NewPlanCard = ({
   setInsideAccordionIndex,
@@ -48,6 +46,7 @@ const NewPlanCard = ({
   setIsContactOpen,
   isContactOpen,
 }) => {
+  const showfullPrice = false;
   return (
     <div className="flex flex-wrap justify-center gap-6 w-full">
       {Object.entries(planDetailArray)
@@ -65,8 +64,8 @@ const NewPlanCard = ({
               transition={{ duration: 0.2 }}
               className={`relative bg-white border rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 w-72 p-4 flex flex-col justify-between cursor-pointer ${
                 selected || planInfo.hot === "yes"
-                  ? "border-red-500 ring-2 ring-red-300"
-                  : "border-gray-200"
+                  ? "border-red-500 text-white ring-2 ring-red-300 bg-[url('/newassets/plan/plan-background-active.jpg')] bg-center bg-cover bg-no-repeat bg-opacity-20"
+                  : "border-gray-200 bg-[url('/newassets/plan/plan-background-inactive.jpg')] bg-center bg-cover bg-no-repeat bg-opacity-20"
               }`}
               onClick={
                 isMobile
@@ -91,29 +90,166 @@ const NewPlanCard = ({
               )}
 
               {/* Plan Speed and Price */}
-              <div className="text-center">
-                <h3 className="text-2xl font-extrabold text-gray-800">
-                  {planInfo.speed}
-                </h3>
-                <p className="text-sm text-gray-500 mt-1">
-                  {planInfo.dataLimit} Data
-                </p>
-                <div className="mt-2 text-lg font-semibold text-gray-800">
-                  ₹{planInfo.price}{" "}
-                  <span className="text-sm text-gray-500">
-                    /{" "}
-                    {planInfo.billingCycle === "Monthly"
-                      ? "1 Month"
-                      : planInfo.billingCycle === "Quarterly"
-                      ? "3 Months"
-                      : planInfo.billingCycle === "Half-Yearly"
-                      ? "6 Months"
-                      : "12 Months"}
-                  </span>
+              <div className="flex flex-col">
+                <div className="flex flex-col text-start w-full h-full ">
+                  {/* <div className="p-1 text-xs ">Speed</div> */}
+                  <div className="flex content-center">
+                    <div className="pr-2 text-2xl font-semibold ">
+                      {planInfo.speed}
+                    </div>
+                    <div className="flex justify-end text-end mt-auto">
+                      {/* <span className="text-xs">{planInfo.dataLimit} Data</span> */}
+                    </div>
+                  </div>
                 </div>
+                {showfullPrice ? (
+                  <div className="flex h-full justify-center flex-row">
+                    <div
+                      className={`mt-2 text-5xl font-semibold ${
+                        selected || planInfo.hot === "yes"
+                          ? "text-white"
+                          : " text-gray-800"
+                      } `}
+                    >
+                      ₹{planInfo.price}{" "}
+                    </div>
+                    <div
+                      className={`text-sm ml-3 h-full justify-end content-end ${
+                        selected || planInfo.hot === "yes"
+                          ? "text-white"
+                          : " text-gray-500"
+                      } `}
+                    >
+                      X{" "}
+                      {planInfo.billingCycle === "Monthly"
+                        ? "1 Month"
+                        : planInfo.billingCycle === "Quarterly"
+                        ? "3 Months"
+                        : planInfo.billingCycle === "Half-Yearly"
+                        ? "6 Months"
+                        : "12 Months"}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex h-full justify-center flex-row">
+                    <div
+                      className={`mt-2 text-5xl font-semibold ${
+                        selected || planInfo.hot === "yes"
+                          ? "text-white"
+                          : " text-gray-800"
+                      } `}
+                    >
+                      ₹{planInfo.basePrice}{" "}
+                    </div>
+                    <div
+                      className={`text-sm ml-3 h-full justify-end content-end ${
+                        selected || planInfo.hot === "yes"
+                          ? "text-white"
+                          : " text-gray-500"
+                      } `}
+                    >
+                      X{" "}
+                      {planInfo.billingCycle === "Monthly"
+                        ? "1 Month"
+                        : planInfo.billingCycle === "Quarterly"
+                        ? "3 Months"
+                        : planInfo.billingCycle === "Half-Yearly"
+                        ? "6 Months"
+                        : "12 Months"}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* OTT + TV Logos */}
+              <div className="border-t ">
+                <div className="flex items-center gap-2 my-2 relative">
+                  <div className="flex -space-x-1">
+                    {planInfo?.channels === "350+ Channels" && (
+                      <>
+                        <Image
+                          alt="suntv"
+                          src="/newassets/plan/channels/sun-tv.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                        <Image
+                          alt="news7"
+                          src="/newassets/plan/channels/news7_tamil.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                        <Image
+                          alt="zee"
+                          src="/newassets/plan/channels/zee-tamizh.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                      </>
+                    )}
+
+                    {planInfo?.channels === "550+ Channels" && (
+                      <>
+                        <Image
+                          alt="suntv"
+                          src="/newassets/plan/channels/sun-tv.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                        <Image
+                          alt="zee"
+                          src="/newassets/plan/channels/zee-tamizh.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                        <Image
+                          alt="vijay"
+                          src="/newassets/plan/channels/vijay-tv.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                      </>
+                    )}
+
+                    {planInfo?.channels === "750+ Channels" && (
+                      <>
+                        <Image
+                          alt="suntv"
+                          src="/newassets/plan/channels/sun-tv.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                        <Image
+                          alt="zee"
+                          src="/newassets/plan/channels/zee-tamizh.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                        <Image
+                          alt="vijay"
+                          src="/newassets/plan/channels/vijay-tv.png"
+                          width={25}
+                          height={25}
+                          className="object-contain rounded-4xl bg-white border-2 border-white shadow-md"
+                        />
+                      </>
+                    )}
+                  </div>
+                  <div className="ml-3 text-xl font-bold">
+                    + {(planInfo?.channels).substring(0, 3)}{" "}
+                    <span className="text-sm font-normal">TV Channels</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex justify-center gap-3 mt-4">
                 {planInfo?.otts && (
                   <Image
@@ -121,7 +257,7 @@ const NewPlanCard = ({
                     alt="SunNXT"
                     width={32} // w-8 = 2rem = 32px
                     height={32} // h-8 = 2rem = 32px
-                    className="rounded-md object-contain"
+                    className="rounded-4xl object-contain"
                   />
                 )}
                 {planInfo?.channels && (
@@ -130,13 +266,19 @@ const NewPlanCard = ({
                     alt="Zee Tamil"
                     width={32} // w-8 = 2rem = 32px
                     height={32} // h-8 = 2rem = 32px
-                    className="rounded-md object-contain"
+                    className="rounded-4xl object-contain"
                   />
                 )}
               </div>
 
               {/* Validity */}
-              <div className="mt-4 flex justify-between text-sm text-gray-600 border-t pt-2">
+              <div
+                className={`mt-4 flex justify-between text-sm ${
+                  selected || planInfo.hot === "yes"
+                    ? "text-white"
+                    : " text-gray-600"
+                }  border-t pt-2`}
+              >
                 <div>
                   <span className="block font-semibold">Validity</span>
                   <span>
@@ -654,6 +796,8 @@ const PlanCard = ({
 };
 
 export default function Tab() {
+  const new_plans = useSelector((state) => state.newPlans.basePlans);
+
   const newplans = useSelector((state) => state.newPlans.basePlans);
   const plans = useSelector((state) => state.plans);
   const tags = ["Fixed Plan"];
@@ -828,7 +972,7 @@ export default function Tab() {
               <div className="container-wrap">
                 <h1>Broadband + TV + OTT</h1>
                 <div className="this-or-that-image-wrap">
-                  {/* <img style={{width:"250px", margin:"20px auto 0px auto", display:"block"}} src="https://www.skylink.net.in/wp-content/uploads/2025/07/or-character-with-no-space.png" /> */}
+                  {/* <Image style={{width:"250px", margin:"20px auto 0px auto", display:"block"}} src="https://www.skylink.net.in/wp-content/uploads/2025/07/or-character-with-no-space.png" /> */}
                 </div>
                 {isMobile ? (
                   <div
@@ -964,7 +1108,7 @@ export default function Tab() {
                             }`
                       }`}
                     >
-                      <h2
+                      {/* <h2
                         onClick={() => setActiveTab("Fixed Plan")}
                         style={{ cursor: "pointer" }}
                       >
@@ -1079,7 +1223,7 @@ export default function Tab() {
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                               >
-                                {/* <NewPlanCard
+                                <NewPlanCard
                                   isOpen={isOpen}
                                   setInsideAccordionIndex={
                                     setInsideAccordionIndex
@@ -1103,7 +1247,7 @@ export default function Tab() {
                                   setIsOpen={setIsOpen}
                                   setIsContactOpen={setIsContactOpen}
                                   isContactOpen={isContactOpen}
-                                /> */}
+                                />
                                 <PlanCard
                                   isOpen={isOpen}
                                   setInsideAccordionIndex={
@@ -1137,8 +1281,14 @@ export default function Tab() {
                             </AnimatePresence>
                           </div>
                         );
-                      })}
-                      <div className="leftside-content-wrap">
+                      })} */}
+
+                      <FixedPlan
+                        isMobile={isMobile}
+                        plans={new_plans}
+                        activeTab={activeTab}
+                      />
+                      {/* <div className="leftside-content-wrap">
                         <div className="firstset">
                           <h2
                             className="title-class"
@@ -1221,7 +1371,7 @@ export default function Tab() {
                             </button>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
