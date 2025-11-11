@@ -91,7 +91,7 @@ export default function PlansTabs({ isMobile, plans }) {
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`w-48 h-11 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
+                className={`w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
                   activeTab === tab.key
                     ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
                     : "bg-white text-gray-700 border border-gray-300"
@@ -108,8 +108,8 @@ export default function PlansTabs({ isMobile, plans }) {
                   }`}
                 >
                   {tab.key === "Fixed Plan"
-                    ? "Fixed Plans"
-                    : "Customize Your Plan"}
+                    ? "Explore Our Standard Plans"
+                    : "Customize Your Own Plans"}
                 </span>
               </button>
             ))}
@@ -119,7 +119,7 @@ export default function PlansTabs({ isMobile, plans }) {
 
       {/* TAB CONTENT with fade animation */}
       <div
-        className={`mt-8 transition-opacity duration-500 ${
+        className={`mt-4 transition-opacity duration-500 ${
           fade ? "opacity-100" : "opacity-0"
         }`}
       >

@@ -54,22 +54,22 @@ export default function FixedPlan({
     <>
       <div className="w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
         <div className="w-full  m-0">
-          <h2 className="w-full h-full p-3 mt-0 text-center text-2xl text-gray-100 bg-gradient-to-r from-red-600 to bg-red-700  font-semibold mb-2">
-            OUR PLAN
+          <h2 className="w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 bg-gradient-to-r from-red-600 to bg-red-700  font-semibold mb-2">
+            Explore Our Standard Plans
           </h2>
         </div>
 
         {/* ⚡ Speed Selection */}
         <div className="bg-red-50 border border-red-100 m-0 p-2 rounded-xl">
-          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
+          <h3 className="w-full text-start text-gray-800 text-sm md:xl font-semibold mb-2">
             Choose Your BandWidth
           </h3>
-          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
+          <div className="grid grid-cols-4 md:grid-cols-7 gap-1 md:gap-10">
             {speedOptions.map((speed) => (
               <button
                 key={speed}
                 onClick={() => setSelectedSpeed(speed)}
-                className={`w-full py-2 text-[14px] lg:text-sm font-medium rounded-md relative overflow-hidden border transition-all duration-300 
+                className={`w-full py-2 text-sm lg:text-xl font-medium rounded-md relative overflow-hidden border transition-all duration-300 
                 ${
                   selectedSpeed === speed
                     ? "bg-red-600 text-white border-red-600"
