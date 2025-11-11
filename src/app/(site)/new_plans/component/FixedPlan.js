@@ -1,20 +1,23 @@
 "use client";
 import React, { useState, useMemo, useEffect } from "react";
-
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
 import ContactPopup from "../../plans/component/ContactPopup";
 import Image from "next/image";
 
-export default function FixedPlan({ isMobile, plans, activeTab }) {
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const GST_RATE = 0.18; // 18%
-  const INSTALLATION_CHARGE = 500;
-  const [selectedValidity, setSelectedValidity] = useState("12 Month");
+export default function FixedPlan({
+  isMobile,
+  plans,
+  activeTab,
+  setSelectedPlan,
+  setIsContactOpen,
+  isContactOpen,
+}) {
+  // const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedValidity, setSelectedValidity] = useState(12);
   const [selectedSpeed, setSelectedSpeed] = useState("50 Mbps");
   const [activePrice, setActivePrice] = useState();
   const [activeCycle, setActiveCycle] = useState();
-  const [isContactOpen, setIsContactOpen] = useState();
 
   const validityOptions = useMemo(
     () => [...new Set(plans.flatMap((p) => p.validity))],
@@ -25,7 +28,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
     [plans]
   );
   useEffect(() => {
-    setActiveCycle(selectedValidity.substring(0, 1));
+    setActiveCycle(selectedValidity);
   }, [selectedValidity]);
 
   const filteredPlans = useMemo(() => {
@@ -49,45 +52,28 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
 
   return (
     <>
-      <ContactPopup
-        isMobile={isMobile}
-        activeMbps={selectedSpeed}
-        activePrice={activePrice}
-        activeCycle={
-          activeCycle == 1
-            ? "Monthly"
-            : activeCycle == 3
-            ? "Quaterly"
-            : activeCycle == 6
-            ? "Half Yearly"
-            : "Yearly"
-        }
-        isOpen={isContactOpen}
-        setIsOpen={setIsContactOpen}
-      />
-
-      <div className="w-full mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className="w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
         <div className="w-full  m-0">
-          <h2 className="w-full h-full p-3 mt-0 text-center text-2xl text-gray-100 bg-gradient-to-r from-red-600 to bg-red-700  font-semibold mb-2">
-            OUR PLAN
+          <h2 className="w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 bg-gradient-to-r from-red-600 to bg-red-700  font-semibold mb-2">
+            Explore Our Standard Plans
           </h2>
         </div>
 
         {/* ⚡ Speed Selection */}
         <div className="bg-red-50 border border-red-100 m-0 p-2 rounded-xl">
-          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
+          <h3 className="w-full text-start text-gray-800 text-sm  font-bold mb-2">
             Choose Your BandWidth
           </h3>
-          <div className="grid grid-cols-4 sm:grid-cols-7 gap-1">
+          <div className="grid grid-cols-4 md:grid-cols-7 gap-1 md:gap-10">
             {speedOptions.map((speed) => (
               <button
                 key={speed}
                 onClick={() => setSelectedSpeed(speed)}
-                className={`w-full py-2 text-[14px] lg:text-sm font-medium rounded-md relative overflow-hidden border transition-all duration-300 
+                className={`w-full py-2 text-sm  font-medium rounded-md relative overflow-hidden border transition-all duration-300 
                 ${
                   selectedSpeed === speed
                     ? "bg-red-600 text-white border-red-600"
-                    : "bg-gray-50 text-gray-700 border-gray-300 hover:text-white"
+                    : "bg-gray-50 text-gray-700 border-gray-300 hover:bg-red-600  hover:text-white"
                 }
                 
               `}
@@ -113,10 +99,10 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
           <div className="grid grid-cols-4 sm:grid-cols-4 gap-3">
             {[...validityOptions].reverse().map((v) => {
               const labelMap = {
-                "1 Month": "Monthly",
-                "3 Month": "Quarterly",
-                "6 Month": "Half Yearly",
-                "12 Month": "Annual",
+                1: "Monthly",
+                3: "Quarterly",
+                6: "Half Yearly",
+                12: "Annual",
               };
 
               const displayLabel = labelMap[v] || v; // fallback if new validity appears
@@ -129,7 +115,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
           ${
             selectedValidity === v
               ? "bg-red-600 text-white border-red-600"
-              : "bg-gray-50 text-gray-700 border-gray-300 hover:text-white"
+              : "bg-gray-50 text-gray-700 border-gray-300 hover:bg-red-600 hover:text-white"
           }
     
         `}
@@ -150,7 +136,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
         {/* 💡 Filtered Plans */}
         <div className="mt-6 w-full">
           {filteredPlans.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6  ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  ">
               {filteredPlans.map((plan, index) => {
                 const isSelectedValidity = plan.validity === selectedValidity;
                 const isSelectedSpeed = plan.internetSpeed === selectedSpeed;
@@ -232,7 +218,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
                       </span>
                       <p className="text-xs text-gray-500">Speed</p>
                     </div> */}
-                      <div className="grid rounded-sm p-2 grid-cols-2 ">
+                      <div className="grid min-w-1/3 rounded-sm p-2 grid-cols-2 ">
                         <div>
                           <span className="font-semibold">
                             {plan.dataLimit}
@@ -337,20 +323,24 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
                       <button
                         onClick={() => {
                           setActiveCycle(
-                            selectedValidity.substring(0, 1) == "1"
-                              ? selectedValidity.substring(1, 2) == "2"
+                            selectedValidity == 1
+                              ? selectedValidity == 2
                                 ? 12
                                 : 1
-                              : Number(selectedValidity.substring(0, 1))
+                              : Number(selectedValidity)
                           );
                           setActivePrice(
-                            (selectedValidity.substring(0, 1) == "1"
-                              ? selectedValidity.substring(1, 2) == "2"
+                            (selectedValidity == 1
+                              ? selectedValidity == 2
                                 ? 12
                                 : 1
-                              : Number(selectedValidity.substring(0, 1))) *
-                              plan.price
+                              : Number(selectedValidity)) * plan.price
                           );
+                          setSelectedPlan({
+                            ...plan,
+                            discountIndex: discountIndex,
+                            activeCycle: selectedValidity,
+                          });
                           setIsContactOpen(!isContactOpen);
                         }}
                         className="flex-1 py-2 bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold rounded-md hover:opacity-90 transition"
