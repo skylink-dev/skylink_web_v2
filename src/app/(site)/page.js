@@ -22,6 +22,8 @@ import { useState } from "react";
 
 import { homeIconiconList } from "@/data/home/homeIconImages";
 import ThreeBannerModern from "@/components/contact/ThreeBanner";
+
+import SkylinkQuickPayPage from "@/components/SkylinkQuickPayPage";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -66,6 +68,8 @@ export default function Home() {
   };
   return (
     <>
+
+    {/* <SkylinkQuickPayPage /> */}
       <IconMenu onSelect={dummy} content={homeIconiconList} />
       {/* <ThreeDIconMenu
         content={testiconMenuData}
