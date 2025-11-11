@@ -24,27 +24,23 @@ export default function Header() {
     {
       label: "Download IPTV App",
       href: "https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk",
-      color:
-        "bg-gradient-to-r from-[#e01212] to-[#e01212] inset-shadow-red-900/50 inset-shadow-sm  ",
+      color: "bg-gradient-to-r from-[#E91A2F] to-[#E91A2F]",
       download: true,
     },
     {
       label: "Claim Your TV/OTT",
       href: "https://activations.skyplay.in/ott_subscription/login/",
-      color:
-        "bg-gradient-to-r from-[#34A853] to-[#34A853] inset-shadow-green-900/50 inset-shadow-sm ",
+      color: "bg-gradient-to-r from-[#4285F4] to-[#4285F4]",
     },
     {
       label: "Quick Pay",
       href: "https://www.skylinknet.in/customer_portal/account/sn",
-      color:
-        "bg-gradient-to-r from-[#FCBE1A] to-[#FCBE1A] inset-shadow-yellow-900/50 inset-shadow-sm ",
+      color: "bg-gradient-to-r from-[#F4B402] to-[#F4B402]",
     },
     {
       label: "View Our Plans",
-      href: "/new_plans",
-      color:
-        "bg-gradient-to-r from-[#007aff] to-[#007aff] inset-shadow-blue-900/50 inset-shadow-sm  ",
+      href: "/new_plans", // internal route -> should open in same page
+      color: "bg-gradient-to-r from-[#2A9D57] to-[#2A9D57]",
     },
   ];
 
@@ -60,30 +56,30 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
-      {isMobile ? (
-        <>
-          <div className="grid grid-cols-4 w-full h-full min-h-14 items-center m-0 p-0">
-            {buttons.map((btn, idx) => (
+      {/* ✅ Mobile Top Buttons */}
+      {isMobile && (
+        <div className="grid grid-cols-4 w-full m-0 p-0">
+          {buttons.map((btn, idx) => {
+            const isInternal = btn.href.startsWith("/");
+            return (
               <Link
                 key={idx}
                 href={btn.href}
                 download={btn.download}
-                target={btn.download ? undefined : "_blank"}
-                className={`${btn.color} 
-    flex items-center justify-center w-full h-full 
-    text-center text-white text-sm font-medium p-2
-    transition-all duration-300 hover:brightness-90 hover:-translate-y-[1px] hover:shadow-md`}
+                target={isInternal || btn.download ? undefined : "_blank"}
+                className={`${btn.color} flex items-center justify-center text-center text-white text-[11px] font-medium min-h-[60px] h-[60px] px-1 text-wrap leading-tight transition-all duration-300 hover:brightness-90 hover:-translate-y-[1px] hover:shadow-md w-full`}
               >
-                <span className="text-center w-full">{btn.label}</span>
+                <span className="text-center px-1 break-words">{btn.label}</span>
               </Link>
-            ))}
-          </div>
-        </>
-      ) : null}
+            );
+          })}
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between py-3 px-4 lg:px-6">
-        {/* LEFT SECTION: Logo + Menu */}
+        {/* ✅ LEFT SECTION: Logo + Menu Toggle */}
         <div className="flex items-center justify-between w-full lg:w-auto">
-          {/* ✅ Logo */}
+          {/* Logo */}
           <Link
             href="/"
             className="inline-flex items-center justify-center hover:opacity-90 transition-opacity duration-200"
@@ -98,7 +94,7 @@ export default function Header() {
             />
           </Link>
 
-          {/* ✅ Hamburger for Mobile */}
+          {/* Hamburger Menu (Mobile) */}
           <button
             onClick={toggleDrawer}
             aria-label="Menu"
@@ -121,7 +117,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* ✅ Desktop Menu */}
+        {/* ✅ Desktop Navigation Menu */}
         <nav className="hidden lg:flex items-center space-x-6">
           {menu.map((item, index) => (
             <Link
@@ -140,17 +136,20 @@ export default function Header() {
 
         {/* ✅ Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-2">
-          {buttons.map((btn, idx) => (
-            <Link
-              key={idx}
-              href={btn.href}
-              download={btn.download}
-              target={btn.download ? undefined : "_blank"}
-              className={`${btn.color} text-white text-sm font-medium rounded-md px-3 py-2 transition-all duration-300 hover:brightness-90 hover:-translate-y-[1px] hover:shadow-md`}
-            >
-              {btn.label}
-            </Link>
-          ))}
+          {buttons.map((btn, idx) => {
+            const isInternal = btn.href.startsWith("/");
+            return (
+              <Link
+                key={idx}
+                href={btn.href}
+                download={btn.download}
+                target={isInternal || btn.download ? undefined : "_blank"}
+                className={`${btn.color} text-white text-sm font-medium rounded-md px-3 py-2 transition-all duration-300 hover:brightness-90 hover:-translate-y-[1px] hover:shadow-md min-h-[40px] h-[40px] min-w-[120px] flex items-center justify-center text-center`}
+              >
+                {btn.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
 
@@ -171,7 +170,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Drawer Links */}
+        {/* Drawer Menu Links */}
         <nav className="flex flex-col space-y-4">
           {menu.map((item, index) => (
             <Link
@@ -188,21 +187,6 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-
-        {/* Drawer Buttons */}
-        {/* <div className="mt-6 flex flex-col gap-3">
-          {buttons.map((btn, idx) => (
-            <Link
-              key={idx}
-              href={btn.href}
-              download={btn.download}
-              target={btn.download ? undefined : "_blank"}
-              className={`${btn.color} text-white text-sm font-medium text-center rounded-md py-2 transition-all hover:brightness-90`}
-            >
-              {btn.label}
-            </Link>
-          ))}
-        </div> */}
       </div>
 
       {/* ✅ Overlay for Drawer */}
