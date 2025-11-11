@@ -66,7 +66,7 @@ export default function FixedPlan({ isMobile, plans, activeTab }) {
         setIsOpen={setIsContactOpen}
       />
 
-      <div className="w-full mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className="w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
         <div className="w-full  m-0">
           <h2 className="w-full h-full p-3 mt-0 text-center text-2xl text-gray-100 bg-gradient-to-r from-red-600 to bg-red-700  font-semibold mb-2">
             OUR PLAN

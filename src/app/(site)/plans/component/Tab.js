@@ -1108,7 +1108,7 @@ export default function Tab() {
                             }`
                       }`}
                     >
-                      {/* <h2
+                      <h2
                         onClick={() => setActiveTab("Fixed Plan")}
                         style={{ cursor: "pointer" }}
                       >
@@ -1281,13 +1281,13 @@ export default function Tab() {
                             </AnimatePresence>
                           </div>
                         );
-                      })} */}
+                      })}
 
-                      <FixedPlan
+                      {/* <FixedPlan
                         isMobile={isMobile}
                         plans={new_plans}
                         activeTab={activeTab}
-                      />
+                      /> */}
                       {/* <div className="leftside-content-wrap">
                         <div className="firstset">
                           <h2
