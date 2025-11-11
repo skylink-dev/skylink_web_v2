@@ -223,10 +223,10 @@ export const CotentImageCarouselData = [
 export const flexCardData = [
   {
     id: 1,
-    title: 'Connectivity you depend on',
+    title: 'Zero Downtime.',
     subtitle: 'Introducing the Skylink Guarantee',
-    description: 'If you experience a network interruption, we’ll fix it fast and credit you with a full day of service.',
-    details: 'Credit for fiber downtime lasting 20 minutes or more. Restrictions and exclusions apply. Skylink.app  for full details.',
+    description: ' Any downtime, you get a full day credited. Our Promise. ',
+    details: 'Applicable for outages over 20 minutes*',
     leftImage: "/assets/1gbps.jpg",
     mobileLeftImage: "/assets/save-big-data.jpg", 
     link: '/buy/internet/broadband.html'

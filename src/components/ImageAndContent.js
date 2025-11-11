@@ -16,8 +16,8 @@ export default function ImageAndContent({ image, content, row = "row" }) {
             className="object-cover w-full h-full"
           />
 
-          {/* Gradient Overlay for better readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent" />
+          {/* Black Overlay for Mobile Only */}
+          <div className="absolute inset-0 bg-black/80" />
 
           {/* Content Overlay — moved to top */}
           <div className="absolute inset-0 flex flex-col justify-start p-6 text-white space-y-3 pt-8">
