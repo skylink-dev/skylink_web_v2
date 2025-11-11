@@ -61,7 +61,7 @@ export default function FixedPlan({
 
         {/* ⚡ Speed Selection */}
         <div className="bg-red-50 border border-red-100 m-0 p-2 rounded-xl">
-          <h3 className="w-full text-start text-gray-800 text-sm md:xl font-semibold mb-2">
+          <h3 className="w-full text-start text-gray-800 text-sm  font-bold mb-2">
             Choose Your BandWidth
           </h3>
           <div className="grid grid-cols-4 md:grid-cols-7 gap-1 md:gap-10">
@@ -69,7 +69,7 @@ export default function FixedPlan({
               <button
                 key={speed}
                 onClick={() => setSelectedSpeed(speed)}
-                className={`w-full py-2 text-sm lg:text-xl font-medium rounded-md relative overflow-hidden border transition-all duration-300 
+                className={`w-full py-2 text-sm  font-medium rounded-md relative overflow-hidden border transition-all duration-300 
                 ${
                   selectedSpeed === speed
                     ? "bg-red-600 text-white border-red-600"
