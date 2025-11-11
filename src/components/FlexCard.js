@@ -90,61 +90,73 @@ export default function FlexCard({
             <AnimatePresence mode="wait">
               <motion.div
                 key={leftBg}
-                className="absolute inset-0 bg-cover bg-center"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${leftBg})` }}
-                initial={{ opacity: 0, scale: 1.1 }}
+                initial={{ opacity: 0, scale: 1.05 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 1.2 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               />
             </AnimatePresence>
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent z-[1]" />
+            {/* Gradient Overlay - Different for mobile vs desktop */}
+            <div className={`absolute inset-0 z-[1] ${
+              isMobile 
+                ? "bg-gradient-to-b from-black/80 via-black/60 to-black/40" 
+                : "bg-gradient-to-br from-black/70 via-black/50 to-transparent"
+            }`} />
 
+            {/* Content Container */}
             <motion.div
               key={selectedId}
-              className="relative z-10  p-5 min-[375px]:p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 text-white h-full flex flex-col justify-center rounded-2xl sm:rounded-3xl"
+              className="relative z-10 p-5 min-[375px]:p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 text-white h-full flex flex-col rounded-2xl sm:rounded-3xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
             >
+              {/* Unified layout for both mobile and desktop - content at top, button below text */}
               {selected && (
-                <>
-                  <motion.p
-                    className="uppercase tracking-wider sm:tracking-widest text-xs min-[375px]:text-xs mb-2 sm:mb-3 text-red-400 font-semibold"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    {selected.subtitle}
-                  </motion.p>
-                  <motion.h3
-                    className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    {selected.title}
-                  </motion.h3>
-                  <motion.p
-                    className="text-sm min-[375px]:text-base sm:text-lg mb-2 sm:mb-3 text-gray-100 leading-relaxed max-w-2xl"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    {selected.description}
-                  </motion.p>
-                  <motion.p
-                    className="text-xs min-[375px]:text-sm opacity-90 text-gray-200 max-w-2xl mb-4 sm:mb-5 md:mb-6"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    {selected.details}
-                  </motion.p>
+                <div className="flex-col justify-between h-full">
+                  {/* Text Content - Takes available space */}
+                  <div className="flex-grow">
+                    <motion.p
+                      className="uppercase tracking-wider sm:tracking-widest text-xs min-[375px]:text-xs mb-2 sm:mb-3 text-red-400 font-semibold"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {selected.subtitle}
+                    </motion.p>
+                    <motion.h3
+                      className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      {selected.title}
+                    </motion.h3>
+                    <motion.p
+                      className="text-sm min-[375px]:text-base sm:text-lg mb-2 sm:mb-3 text-gray-100 leading-relaxed max-w-2xl"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      {selected.description}
+                    </motion.p>
+                    <motion.p
+                      className="text-xs min-[375px]:text-sm opacity-90 text-gray-200 max-w-2xl mb-4 sm:mb-5 md:mb-6"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {selected.details}
+                    </motion.p>
+                  </div>
+                  
+                  {/* Button - Always positioned below text content */}
                   <motion.div
+                    className="mt-auto"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
@@ -153,7 +165,7 @@ export default function FlexCard({
                   >
                     <Link
                       href={selected.link || "#"}
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2.5 min-[375px]:py-3 px-6 min-[375px]:px-8 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-sm min-[375px]:text-base"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2.5 px-6 rounded-lg shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-sm w-fit"
                     >
                       <span>Subscribe now</span>
                       <svg
@@ -171,7 +183,7 @@ export default function FlexCard({
                       </svg>
                     </Link>
                   </motion.div>
-                </>
+                </div>
               )}
             </motion.div>
           </motion.div>
@@ -186,12 +198,12 @@ export default function FlexCard({
             <AnimatePresence mode="wait">
               <motion.div
                 key={rightBg}
-                className="absolute inset-0 bg-cover bg-center"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${rightBg})` }}
-                initial={{ opacity: 0, scale: 1.1 }}
+                initial={{ opacity: 0, scale: 1.05 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 1.2 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               />
             </AnimatePresence>
 
@@ -286,6 +298,13 @@ export default function FlexCard({
           .hover\\:shadow-red-500\\/50:hover {
             box-shadow: none;
           }
+        }
+
+        /* Ensure images fit containers properly */
+        .bg-cover {
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
         }
       `}</style>
     </section>

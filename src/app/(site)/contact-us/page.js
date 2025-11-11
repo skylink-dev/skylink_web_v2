@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <>
       <ContactForm />
-      {/* <LocationMap/> */}
+      <LocationMap />
       {/* <ContactSection />
       <ContactFormNew />
       <CustomSearch />

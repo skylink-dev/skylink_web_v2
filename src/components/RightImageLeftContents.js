@@ -228,14 +228,15 @@ export default function LeftImageRightContent({ title, Content, order }) {
                     transition={{ duration: 0.5 }}
                     className="px-1 sm:px-2 pb-2"
                   >
-                    <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 mb-2">
-                      {/* Image Section */}
-                      <div className="relative w-full h-40 sm:h-52 md:h-64">
+                    {/* Consistent container for all slides */}
+                    <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-[380px] sm:h-[420px] flex flex-col">
+                      {/* Image Section - Fixed height that fits container */}
+                      <div className="relative w-full h-48 sm:h-48 flex-shrink-0">
                         <Image
                           src={item.img || "/assets/default-image.webp"}
                           alt={item.title}
                           fill
-                          className="object-cover"
+                          className="object-cover w-full h-full"
                           priority
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 60vw"
                         />
@@ -248,9 +249,10 @@ export default function LeftImageRightContent({ title, Content, order }) {
                           </span>
                         </div>
                       </div>
-                      {/* Content Section */}
-                      <div className="p-4 sm:p-5 md:p-6">
-                        <div className="flex items-start gap-3 sm:gap-4 mb-3">
+                      
+                      {/* Content Section - Fixed height for consistency */}
+                      <div className="flex-1 p-4 sm:p-5 flex flex-col">
+                        <div className="flex items-start gap-3 sm:gap-4 mb-3 flex-1">
                           <div className="bg-red-100 p-2 rounded-lg flex-shrink-0">
                             <Image
                               src={item.icon}
@@ -271,8 +273,8 @@ export default function LeftImageRightContent({ title, Content, order }) {
                           </div>
                         </div>
 
-                        {/* Mobile CTA Button */}
-                        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 active:scale-95 mt-2 text-sm">
+                        {/* Mobile CTA Button - Fixed at bottom */}
+                        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 active:scale-95 mt-auto text-sm">
                           Learn More
                         </button>
                       </div>

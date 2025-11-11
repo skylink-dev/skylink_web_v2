@@ -10,13 +10,25 @@ import {
 } from "react-icons/fa";
 
 export default function ContactPopup({
+  selectedPlan,
   isOpen,
   setIsOpen,
-  activeMbps,
-  activePrice,
-  activeCycle,
   isMobile,
 }) {
+  const activeCycle = selectedPlan?.activeCycle;
+  const activeMbps = selectedPlan?.internetSpeed;
+  const discount = selectedPlan?.discount[selectedPlan?.discountIndex];
+  const activePrice = selectedPlan?.price * selectedPlan?.activeCycle;
+  const installationCharges = Number(
+    selectedPlan?.installationCharges[selectedPlan?.discountIndex]
+  );
+
+  useEffect(() => {
+    console.log(activeCycle);
+    console.log(activeMbps);
+    console.log(discount);
+    console.log(activePrice);
+  }, [selectedPlan]);
   const [formData, setFormData] = useState({
     name: "",
     phone: "+91 ",
@@ -26,6 +38,7 @@ export default function ContactPopup({
     name: "",
     phone: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -57,8 +70,7 @@ export default function ContactPopup({
     };
   }, [activeMbps, activePrice, activeCycle, isOpen, isMobile]);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
+  // Validation
   const validateName = (name) => {
     if (!name.trim()) return "Name is required";
     if (name.trim().length < 2) return "Name must be at least 2 characters";
@@ -110,14 +122,7 @@ export default function ContactPopup({
 
     setIsSubmitting(true);
     try {
-      await apiService
-        .submitContactForm(formData)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(res);
-        });
+      await apiService.submitContactForm(formData);
       console.log("Form submitted:", formData);
       alert("Thank you! We will contact you soon.");
     } catch (err) {
@@ -160,447 +165,363 @@ export default function ContactPopup({
   if (!isOpen) return null;
 
   return (
-    <>
-      <style>{`
-        .contact-popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0, 0, 0, 0.75);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 999999;
-          padding: 20px;
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
-        }
-
-        .contact-popup-container {
-          background-color: white;
-          border-radius: 20px;
-          width: 90%;
-          max-width: 800px;
-          max-height: 90vh;
-          display: flex;
-          position: relative;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-          overflow: hidden;
-        }
-
-        .contact-popup-content {
-          display: flex;
-          width: 100%;
-          height: 100%;
-          overflow-y: auto;
-        }
-
-        .contact-popup-form-section {
-          padding: 60px 40px 40px;
-          flex: 1;
-          width: 60%;
-          overflow-y: auto;
-        }
-
-        .contact-popup-image-section {
-          position: relative;
-          width: 40%;
-          min-height: 500px;
-          background-image: url(https://www.skylink.net.in/wp-content/uploads/2025/04/couple-watch-skylink.jpg);
-          background-size: cover;
-          background-position: center;
-        }
-
-        .contact-popup-close {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          z-index: 1000000;
-          background: rgba(255, 255, 255, 0.95);
-          border: none;
-          border-radius: 50%;
-          width: 48px;
-          height: 48px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          color: #6b7280;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-          transition: all 0.3s;
-        }
-
-        .contact-popup-close:hover {
-          background: #f3f4f6;
-          color: #374151;
-          transform: scale(1.1);
-        }
-
-        @keyframes slideInDesktop {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes slideInMobile {
-          from {
-            transform: translateY(100%);
-          }
-          to {
-            transform: translateY(0);
-          }
-        }
-
-        .contact-popup-container {
-          animation: slideInDesktop 0.3s ease-out;
-        }
-
-        /* MOBILE STYLES */
-        @media (max-width: 768px) {
-          .contact-popup-overlay {
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-          }
-
-          .contact-popup-container {
-            width: 95%;
-            max-width: 95%;
-            max-height: 85vh;
-            border-radius: 16px;
-            animation: slideInMobile 0.3s ease-out;
-          }
-
-          .contact-popup-content {
-            flex-direction: column;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-          }
-
-          .contact-popup-form-section {
-            width: 100%;
-            padding: 45px 16px 20px;
-            overflow-y: visible;
-          }
-
-          .contact-popup-image-section {
-            display: none;
-          }
-
-          .contact-popup-close {
-            top: 12px;
-            right: 12px;
-            width: 36px;
-            height: 36px;
-          }
-
-          .contact-popup-header {
-            text-align: center;
-            margin-bottom: 20px;
-          }
-
-          .contact-popup-title {
-            font-size: 20px;
-          }
-        }
-
-        .contact-popup-header {
-          margin-bottom: 28px;
-        }
-
-        .contact-popup-greeting {
-          color: #2563eb;
-          font-size: 16px;
-          font-weight: 600;
-          margin: 0 0 10px 0;
-        }
-
-        .contact-popup-title {
-          font-size: 28px;
-          font-weight: 700;
-          color: #111827;
-          margin: 0;
-          line-height: 1.3;
-        }
-
-        .contact-popup-highlight {
-          color: #2563eb;
-        }
-
-        .contact-popup-form {
-          background: #f8fafc;
-          border-radius: 14px;
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        @media (max-width: 768px) {
-          .contact-popup-form {
-            padding: 16px;
-            gap: 14px;
-          }
-        }
-
-        .contact-popup-input-group {
-          width: 100%;
-        }
-
-        .contact-popup-input {
-          width: 100%;
-          padding: 14px 16px;
-          background: white;
-          border: 2px solid #e2e8f0;
-          border-radius: 10px;
-          outline: none;
-          font-size: 16px;
-          transition: all 0.3s;
-          box-sizing: border-box;
-          font-family: inherit;
-        }
-
-        @media (max-width: 768px) {
-          .contact-popup-input {
-            padding: 12px 14px;
-            font-size: 15px;
-          }
-        }
-
-        .contact-popup-input:focus {
-          border-color: #2563eb;
-          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .contact-popup-input.error {
-          border-color: #ef4444;
-        }
-
-        .contact-popup-input:disabled {
-          background: #f9f9f9;
-          color: #666;
-          cursor: not-allowed;
-        }
-
-        .contact-popup-error {
-          color: #ef4444;
-          font-size: 12px;
-          margin: 4px 0 0 4px;
-          font-weight: 500;
-        }
-
-        .contact-popup-submit {
-          width: 100%;
-          padding: 15px 24px;
-          background: #2563eb;
-          color: white;
-          border: none;
-          border-radius: 10px;
-          font-size: 16px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s;
-          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-          font-family: inherit;
-          margin-top: 4px;
-        }
-
-        @media (max-width: 768px) {
-          .contact-popup-submit {
-            padding: 13px 20px;
-            font-size: 15px;
-          }
-        }
-
-        .contact-popup-submit:hover:not(:disabled) {
-          background: #1d4ed8;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
-        }
-
-        .contact-popup-submit:disabled {
-          background: #9ca3af;
-          cursor: not-allowed;
-          transform: none;
-        }
-
-        .contact-popup-social {
-          position: absolute;
-          bottom: 40px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 16px;
-          z-index: 10;
-        }
-
-        .contact-popup-social-link {
-          background: rgba(255, 255, 255, 0.95);
-          color: #2563eb;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-          transition: all 0.3s;
-        }
-
-        .contact-popup-social-link:hover {
-          background: #2563eb;
-          color: white;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        }
-
-        .contact-popup-overlay-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.3) 100%);
-        }
-
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        .contact-popup-spinner {
-          display: inline-block;
-          animation: spin 1s linear infinite;
-          margin-right: 8px;
-        }
-      `}</style>
-
-      <div className="contact-popup-overlay" onClick={() => setIsOpen(false)}>
-        <div
-          className="contact-popup-container"
-          onClick={(e) => e.stopPropagation()}
+    <div
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/75 backdrop-blur-sm p-4"
+      onClick={() => setIsOpen(false)}
+    >
+      <div
+        className="relative flex w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden animate-scaleIn sm:max-h-[90vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setIsOpen(false)}
+          aria-label="Close"
+          className="absolute top-3 right-3 sm:top-5 sm:right-5 bg-white/90 rounded-full p-2 shadow hover:scale-110 transition-transform"
         >
-          <button
-            onClick={() => setIsOpen(false)}
-            className="contact-popup-close"
-            aria-label="Close"
-          >
-            <FaTimes size={isMobile ? 16 : 24} />
-          </button>
+          <FaTimes
+            size={isMobile ? 16 : 22}
+            className="text-gray-600 hover:text-gray-800"
+          />
+        </button>
 
-          <div className="contact-popup-content">
-            <div className="contact-popup-form-section">
-              <div className="contact-popup-header">
-                <p className="contact-popup-greeting">Hello There!</p>
-                <h2 className="contact-popup-title">
-                  Stay Updated! Share Your{" "}
-                  <span className="contact-popup-highlight">Details</span>
-                  {!isMobile && (
-                    <>
-                      {" "}
-                      <span className="contact-popup-highlight">to</span>{" "}
-                      Connect.
-                    </>
-                  )}
-                </h2>
-              </div>
-
-              <div className="contact-popup-form">
-                <div className="contact-popup-input-group">
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Name (e.g., John Doe)"
-                    className={`contact-popup-input ${
-                      errors.name ? "error" : ""
-                    }`}
-                  />
-                  {errors.name && (
-                    <p className="contact-popup-error">{errors.name}</p>
-                  )}
-                </div>
-
-                <div className="contact-popup-input-group">
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 9876543210"
-                    className={`contact-popup-input ${
-                      errors.phone ? "error" : ""
-                    }`}
-                  />
-                  {errors.phone && (
-                    <p className="contact-popup-error">{errors.phone}</p>
-                  )}
-                </div>
-
-                <div className="contact-popup-input-group">
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    disabled={true}
-                    className="contact-popup-input"
-                  />
-                </div>
-
-                <button
-                  onClick={handleSubmit}
-                  disabled={
-                    isSubmitting ||
-                    !formData.name ||
-                    !formData.phone ||
-                    !formData.subject ||
-                    formData.phone === "+91 "
-                  }
-                  className="contact-popup-submit"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className="contact-popup-spinner">⏳</span>
-                      Submitting...
-                    </>
-                  ) : (
-                    "Submit"
-                  )}
-                </button>
-              </div>
+        {/* Content */}
+        <div className="flex flex-col sm:flex-row w-full">
+          {/* Form Section */}
+          <div className="flex-1 p-6 sm:p-10 overflow-y-auto">
+            <div className="mb-6 text-center sm:text-left">
+              <p className="text-blue-600 font-semibold">Hello There!</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
+                Stay Updated! Share Your{" "}
+                <span className="text-blue-600">Details</span>{" "}
+                {!isMobile && (
+                  <span className="text-blue-600">to Connect.</span>
+                )}
+              </h2>
             </div>
 
-            {!isMobile && (
-              <div className="contact-popup-image-section">
-                <div className="contact-popup-overlay-bg"></div>
-                <div className="contact-popup-social">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className="contact-popup-social-link"
-                    >
-                      <social.icon size={18} />
-                    </a>
-                  ))}
-                </div>
+            <form
+              className="bg-gray-50 rounded-xl p-5 space-y-4"
+              onSubmit={handleSubmit}
+            >
+              {/* Name */}
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Name (e.g., John Doe)"
+                  className={`w-full border-2 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.name ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                )}
               </div>
+
+              {/* Phone */}
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+91 9876543210"
+                  className={`w-full border-2 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.phone ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+                )}
+              </div>
+
+              {/* Subject */}
+              {/* <div>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  disabled
+                  className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-100 text-gray-600 cursor-not-allowed"
+                />
+              </div> */}
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={
+                  isSubmitting ||
+                  !formData.name ||
+                  !formData.phone ||
+                  !formData.subject ||
+                  formData.phone === "+91 "
+                }
+                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-md transition-transform disabled:bg-gray-400"
+              >
+                {isSubmitting ? "⏳ Submitting..." : "Submit"}
+              </button>
+            </form>
+            {isMobile ? (
+              <>
+                <div className="flex justify-center items-start px-6 py-8">
+                  <div className="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-lg p-6">
+                    <h3 className="text-xl font-bold text-blue-700 mb-4 pb-3 border-b border-gray-200">
+                      Plan Summary
+                    </h3>
+
+                    <div className="grid grid-cols-1 gap-3 text-base sm:text-lg">
+                      {/* Plan Name */}
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span className="text-gray-600">Plan Name</span>
+                        <span className="font-semibold text-gray-900">
+                          {activeMbps}
+                        </span>
+                      </div>
+
+                      {/* Billing Cycle */}
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span className="text-gray-600">Billing Cycle</span>
+                        <span className="font-semibold text-gray-900">
+                          {activeCycle}{" "}
+                          <span className="font-normal text-gray-700">
+                            (
+                            {activeCycle === "Yearly"
+                              ? "12 months"
+                              : activeCycle === "Half-Yearly"
+                              ? "6 months"
+                              : activeCycle === "Quaterly"
+                              ? "3 months"
+                              : "1 month"}
+                            )
+                          </span>
+                        </span>
+                      </div>
+
+                      {/* Base Price */}
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span className="text-gray-600">Base Price</span>
+                        <span className="font-semibold text-gray-900">
+                          ₹{activePrice.toFixed(2)}
+                        </span>
+                      </div>
+
+                      {/* Discount */}
+                      {discount !== 0 && (
+                        <div className="flex justify-between items-center border-b border-gray-100 pb-2 text-green-600">
+                          <span>Discount ({discount}%)</span>
+                          <span>
+                            - ₹{((activePrice * discount) / 100).toFixed(2)}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* GST */}
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span className="text-gray-600">GST (18%)</span>
+                        <span className="font-semibold text-gray-900">
+                          ₹
+                          {(
+                            (activePrice -
+                              (activePrice * (discount !== 0 ? discount : 1)) /
+                                100) *
+                            0.18
+                          ).toFixed(2)}
+                        </span>
+                      </div>
+
+                      {/* Installation Charges */}
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span
+                          className={`${
+                            installationCharges === 0
+                              ? "text-green-600"
+                              : "text-gray-600"
+                          }`}
+                        >
+                          Installation Charges
+                        </span>
+                        <span
+                          className={`${
+                            installationCharges === 0
+                              ? "text-green-600"
+                              : "font-semibold text-gray-900"
+                          }`}
+                        >
+                          {installationCharges === 0
+                            ? "Free"
+                            : `₹${installationCharges.toFixed(2)}`}
+                        </span>
+                      </div>
+
+                      {/* Total Payable */}
+                      <div className="flex justify-between items-center border-t border-gray-300 pt-3 text-lg font-bold">
+                        <span className="text-gray-800">Total Payable</span>
+                        <span className="text-red-600">
+                          ₹
+                          {(
+                            activePrice -
+                            (activePrice * discount) / 100 +
+                            (activePrice -
+                              (activePrice * (discount !== 0 ? discount : 1)) /
+                                100) *
+                              0.18 +
+                            installationCharges
+                          ).toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-gray-500 mt-3 text-center sm:text-left">
+                      * All prices are inclusive of applicable taxes.
+                      Installation charges may vary.
+                    </p>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center justify-center w-full py-6 sm:py-10 bg-gray-50 rounded-xl">
+                  <div className="flex flex-wrap justify-center gap-4">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-bl from-red-600 via-red-500 to-red-600 text-white shadow-md hover:bg-red-700 transition-transform duration-300 hover:scale-110"
+                      >
+                        <social.icon size={20} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </>
             )}
           </div>
+
+          {/* Image Section */}
+          {!isMobile && (
+            <div className="flex justify-center items-start px-6 py-8">
+              <div className="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-lg p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 pb-3 border-b border-gray-200">
+                  Plan Summary
+                </h3>
+
+                <div className="grid grid-cols-1 gap-3 text-base sm:text-lg">
+                  {/* Plan Name */}
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span className="text-gray-600">Plan Name</span>
+                    <span className="font-semibold text-gray-900">
+                      {activeMbps}
+                    </span>
+                  </div>
+
+                  {/* Billing Cycle */}
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span className="text-gray-600">Billing Cycle</span>
+                    <span className="font-semibold text-gray-900">
+                      {activeCycle}{" "}
+                      <span className="font-normal text-gray-700">
+                        (
+                        {activeCycle === "Yearly"
+                          ? "12 months"
+                          : activeCycle === "Half-Yearly"
+                          ? "6 months"
+                          : activeCycle === "Quaterly"
+                          ? "3 months"
+                          : "1 month"}
+                        )
+                      </span>
+                    </span>
+                  </div>
+
+                  {/* Base Price */}
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span className="text-gray-600">Base Price</span>
+                    <span className="font-semibold text-gray-900">
+                      ₹{activePrice.toFixed(2)}
+                    </span>
+                  </div>
+
+                  {/* Discount */}
+                  {discount !== 0 && (
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2 text-green-600">
+                      <span>Discount ({discount}%)</span>
+                      <span>
+                        - ₹{((activePrice * discount) / 100).toFixed(2)}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* GST */}
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span className="text-gray-600">GST (18%)</span>
+                    <span className="font-semibold text-gray-900">
+                      ₹
+                      {(
+                        (activePrice -
+                          (activePrice * (discount !== 0 ? discount : 1)) /
+                            100) *
+                        0.18
+                      ).toFixed(2)}
+                    </span>
+                  </div>
+
+                  {/* Installation Charges */}
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span
+                      className={`${
+                        installationCharges === 0
+                          ? "text-green-600"
+                          : "text-gray-600"
+                      }`}
+                    >
+                      Installation Charges
+                    </span>
+                    <span
+                      className={`${
+                        installationCharges === 0
+                          ? "text-green-600"
+                          : "font-semibold text-gray-900"
+                      }`}
+                    >
+                      {installationCharges === 0
+                        ? "Free"
+                        : `₹${installationCharges.toFixed(2)}`}
+                    </span>
+                  </div>
+
+                  {/* Total Payable */}
+                  <div className="flex justify-between items-center border-t border-gray-300 pt-3 text-lg font-bold">
+                    <span className="text-gray-800">Total Payable</span>
+                    <span className="text-red-600">
+                      ₹
+                      {(
+                        activePrice -
+                        (activePrice * discount) / 100 +
+                        (activePrice -
+                          (activePrice * (discount !== 0 ? discount : 1)) /
+                            100) *
+                          0.18 +
+                        installationCharges
+                      ).toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-gray-500 mt-3 text-center sm:text-left">
+                  * All prices are inclusive of applicable taxes. Installation
+                  charges may vary.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

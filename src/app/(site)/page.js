@@ -22,6 +22,9 @@ import { useState } from "react";
 
 import { homeIconiconList } from "@/data/home/homeIconImages";
 import ThreeBannerModern from "@/components/contact/ThreeBanner";
+
+import SkylinkQuickPayPage from "@/components/SkylinkQuickPayPage";
+import SpeedTestBanner from "@/components/SpeedTest";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -66,6 +69,8 @@ export default function Home() {
   };
   return (
     <>
+
+    {/* <SkylinkQuickPayPage /> */}
       <IconMenu onSelect={dummy} content={homeIconiconList} />
       {/* <ThreeDIconMenu
         content={testiconMenuData}
@@ -107,6 +112,7 @@ export default function Home() {
         title="The Tripleplay difference"
         Content={dynamicImageContent}
       />
+      <SpeedTestBanner/>
       <IconDetails title="How can we help you today?" iconslist={IconContent} />
       <NewsLetter content={contentNewsletter} />
 

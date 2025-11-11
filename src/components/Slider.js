@@ -36,23 +36,26 @@ export default function Slider({ slides = [] }) {
   const handleDotClick = (index) => setActiveIndex(index);
 
   const visibleSlidesCount = isMobile ? 1 : 3;
-  const slideWidth = isMobile ? "100%" : `calc(28% - 16px)`; // narrower sub-containers
-  const transformValue = `translateX(-${
-    activeIndex * (100 / visibleSlidesCount)
-  }%)`;
+  const slideWidth = isMobile ? "100%" : `calc(100% / ${visibleSlidesCount})`;
+  
+  // Calculate transform value to eliminate any gaps
+  const transformValue = `translateX(-${activeIndex * (100 / visibleSlidesCount)}%)`;
+  
   const showArrows = slides.length > visibleSlidesCount;
+
   if (!slides || slides.length === 0) return null;
+
   return (
     <div
       className="flex justify-center items-center w-full py-8 px-2 sm:px-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Main Container */}
+      {/* Main Container - Tight layout */}
       <div className="relative w-full max-w-7xl bg-[#ffeeec] rounded-2xl shadow-sm p-4 sm:p-6 overflow-hidden">
         {/* Header */}
         <div className="flex justify-between items-center mb-6 px-2 text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 ">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
             Accessories you love. Deals you want.
           </h2>
         </div>
@@ -100,56 +103,65 @@ export default function Slider({ slides = [] }) {
           </>
         )}
 
-        {/* Slides */}
-        <div
-          className="flex gap-6 sm:gap-8 transition-transform duration-500 ease-in-out"
-          style={{
-            transform: transformValue,
-          }}
-        >
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 bg-white rounded-2xl shadow-md relative flex flex-col justify-between p-5 sm:p-6 hover:shadow-lg transition-all duration-300 overflow-hidden"
-              style={{
-                width: slideWidth,
-                height: isMobile ? "auto" : "420px",
-              }}
-            >
-              {/* Text & Button (Top Left) */}
-              <div className="z-10 text-left w-[65%] sm:w-[60%]">
-                <p className="text-xs sm:text-sm font-medium text-gray-500 mb-1">
-                  {slide.eyebrow}
-                </p>
-                <h3
-                  className="text-base sm:text-lg font-bold text-gray-900 mb-2 leading-snug"
-                  dangerouslySetInnerHTML={{ __html: slide.heading }}
-                ></h3>
-                <p className="text-sm text-gray-600 mb-4 leading-snug">
-                  {slide.description}
-                </p>
-                <button
-                  onClick={handleGetPlan}
-                  className="bg-[#e60000] text-white py-2 px-5 rounded-full font-semibold text-sm hover:bg-red-700 transition-all duration-200"
-                >
-                  Shop now
-                </button>
-              </div>
+        {/* Slides Container - No gaps, tight layout */}
+        <div className="w-full overflow-hidden px-0">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              transform: transformValue,
+              width: isMobile ? `${slides.length * 100}%` : '100%',
+            }}
+          >
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 bg-white rounded-2xl shadow-md relative flex flex-col justify-between p-5 sm:p-6 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                style={{
+                  width: slideWidth,
+                  height: isMobile ? "auto" : "420px",
+                  // Remove any margins or gaps
+                  margin: 0,
+                  // Add minimal gap only between slides
+                  marginRight: isMobile ? '0px' : '12px',
+                  // Last slide should have no margin
+                  ...(index === slides.length - 1 && { marginRight: '0px' })
+                }}
+              >
+                {/* Text & Button (Top Left) */}
+                <div className="z-10 text-left w-[65%] sm:w-[60%]">
+                  <p className="text-xs sm:text-sm font-medium text-gray-500 mb-1">
+                    {slide.eyebrow}
+                  </p>
+                  <h3
+                    className="text-base sm:text-lg font-bold text-gray-900 mb-2 leading-snug"
+                    dangerouslySetInnerHTML={{ __html: slide.heading }}
+                  ></h3>
+                  <p className="text-sm text-gray-600 mb-4 leading-snug">
+                    {slide.description}
+                  </p>
+                  <button
+                    onClick={handleGetPlan}
+                    className="bg-[#e60000] text-white py-2 px-5 rounded-full font-semibold text-sm hover:bg-red-700 transition-all duration-200"
+                  >
+                    Shop now
+                  </button>
+                </div>
 
-              {/* Image (Bottom Right) */}
-              <div className="absolute bottom-0 right-0 flex justify-end items-end w-[45%] h-[55%]">
-                <img
-                  src={slide.image}
-                  alt={slide.heading}
-                  className="w-full h-full object-contain"
-                  style={{
-                    maxHeight: isMobile ? "160px" : "200px",
-                  }}
-                  loading="lazy"
-                />
+                {/* Image (Bottom Right) */}
+                <div className="absolute bottom-0 right-0 flex justify-end items-end w-[45%] h-[55%]">
+                  <img
+                    src={slide.image}
+                    alt={slide.heading}
+                    className="w-full h-full object-contain"
+                    style={{
+                      maxHeight: isMobile ? "160px" : "200px",
+                    }}
+                    loading="lazy"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Dots */}
