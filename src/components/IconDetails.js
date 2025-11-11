@@ -29,9 +29,9 @@ export default function IconDetails({ iconslist, title }) {
         <div className="mt-3 md:mt-4 h-1 w-20 md:w-24 mx-auto bg-red-600 rounded-full"></div>
       </div>
 
-      {/* Icon Grid */}
+      {/* Icon Grid - Updated for 3 columns on mobile */}
       <motion.div
-        className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 px-4 md:px-6"
+        className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 px-4 md:px-6"
         variants={listVariants}
         initial="hidden"
         whileInView="visible"
@@ -46,13 +46,13 @@ export default function IconDetails({ iconslist, title }) {
               y: -5,
               boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
             }}
-            className="group bg-white border border-gray-100 hover:border-red-400 transition-all duration-300 rounded-2xl p-6 sm:p-8 w-[42%] sm:w-40 md:w-44 lg:w-48 flex flex-col items-center justify-center"
+            className="group bg-white border border-gray-100 hover:border-red-400 transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center"
           >
-            <div className="text-red-600 text-3xl sm:text-4xl mb-3">{item.icon}</div>
+            <div className="text-red-600 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3">{item.icon}</div>
             <Link
               href="/support/"
               aria-label={item.cta}
-              className="relative font-semibold text-gray-800 text-xs sm:text-sm group-hover:text-red-600 transition-colors duration-300 text-center"
+              className="relative font-semibold text-gray-800 text-xs group-hover:text-red-600 transition-colors duration-300 text-center"
             >
               <span className="relative z-10">{item.cta}</span>
               <span className="absolute inset-x-0 bottom-0 h-0.5 bg-red-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></span>
