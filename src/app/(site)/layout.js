@@ -6,7 +6,7 @@ import BeforeFooter from "@/components/BeforeFooter";
 import PageLoaderWrapper from "@/components/PageLoaderWrapper";
 import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
-
+import SocialSidebar from "@/components/SocialSidebar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -74,6 +74,7 @@ export default function RootLayout({ children }) {
         <PageLoaderWrapper>
           <Providers>
             <Header />
+            <SocialSidebar />
             <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
             <BeforeFooter />
             <Footer />
