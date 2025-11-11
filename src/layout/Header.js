@@ -32,13 +32,13 @@ export default function Header() {
       label: "Claim Your TV/OTT",
       href: "https://activations.skyplay.in/ott_subscription/login/",
       color:
-        "bg-gradient-to-r from-[#00c458] to-[#00c458] inset-shadow-green-900/50 inset-shadow-sm  ",
+        "bg-gradient-to-r from-[#34A853] to-[#34A853] inset-shadow-green-900/50 inset-shadow-sm ",
     },
     {
       label: "Quick Pay",
       href: "https://www.skylinknet.in/customer_portal/account/sn",
       color:
-        "bg-gradient-to-r from-[#9300a3] to-[#9300a3]  inset-shadow-violet-900/50 inset-shadow-sm  ",
+        "bg-gradient-to-r from-[#FCBE1A] to-[#FCBE1A] inset-shadow-yellow-900/50 inset-shadow-sm ",
     },
     {
       label: "View Our Plans",
