@@ -95,7 +95,7 @@ export default function Page() {
         content={faqSecondContent}
       />
       <Faq title="You’ve asked. We’ve answered." content={faqContent} />
-      <Whereat />
+     
       {/*
       
      
