@@ -38,56 +38,59 @@ export default function AvailabilityComponents() {
 
   return (
     <div className="w-full flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white">
-      {/* Title */}
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 text-gray-900 max-w-xl leading-tight">
-        Enter your address to get started
-      </h2>
+      {/* Light Gray Container with max-width 5xl */}
+      <div className="w-full max-w-5xl bg-gray-50 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm">
+        {/* Title */}
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 text-gray-900 max-w-xl mx-auto leading-tight">
+          Enter your address to get started
+        </h2>
 
-      {/* Input + Button in single row */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-start gap-3 sm:gap-4 mb-6 w-full max-w-md">
-        {/* Input Field */}
-        <div className="w-full sm:flex-1 flex flex-col">
-          <input
-            type="text"
-            placeholder="Enter Your City Name"
-            value={inputValue}
-            onChange={(e) => {
-              setInputValue(e.target.value)
-              setErrorMessage('')
-            }}
-            onKeyPress={handleKeyPress}
-            className="w-full border border-gray-300 rounded-xl py-2.5 px-4 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 h-[44px]"
-          />
-          <p className="text-red-500 text-xs sm:text-sm h-5 mt-1">{errorMessage}</p>
+        {/* Input + Button in single row */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-start gap-3 sm:gap-4 mb-6 w-full max-w-md mx-auto">
+          {/* Input Field */}
+          <div className="w-full sm:flex-1 flex flex-col">
+            <input
+              type="text"
+              placeholder="Enter Your City Name"
+              value={inputValue}
+              onChange={(e) => {
+                setInputValue(e.target.value)
+                setErrorMessage('')
+              }}
+              onKeyPress={handleKeyPress}
+              className="w-full border border-gray-300 rounded-xl py-2.5 px-4 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200 h-[44px]"
+            />
+            <p className="text-red-500 text-xs sm:text-sm h-5 mt-1">{errorMessage}</p>
+          </div>
+
+          {/* Button with same height as input */}
+          <button
+            onClick={checkAvailability}
+            className="bg-red-600 hover:bg-red-700 text-white font-semibold text-sm sm:text-base py-2.5 px-5 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/25 w-full sm:w-auto h-[44px] flex items-center justify-center whitespace-nowrap"
+          >
+            Check availability
+          </button>
         </div>
 
-        {/* Button with same height as input */}
-        <button
-          onClick={checkAvailability}
-          className="bg-red-600 hover:bg-red-700 text-white font-semibold text-sm sm:text-base py-2.5 px-5 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/25 w-full sm:w-auto h-[44px] flex items-center justify-center whitespace-nowrap"
-        >
-          Check availability
-        </button>
-      </div>
+        {/* Checkbox */}
+        <div className="flex items-center gap-2 sm:gap-3 mb-4 p-3 bg-white rounded-lg text-sm sm:text-base max-w-md mx-auto">
+          <input
+            id="home-business"
+            type="checkbox"
+            className="w-4 h-4 accent-red-600 rounded focus:ring-2 focus:ring-red-500"
+          />
+          <label htmlFor="home-business" className="text-gray-700">
+            This is my home or business
+          </label>
+        </div>
 
-      {/* Checkbox */}
-      <div className="flex items-center gap-2 sm:gap-3 mb-4 p-3 bg-gray-50 rounded-lg text-sm sm:text-base">
-        <input
-          id="home-business"
-          type="checkbox"
-          className="w-4 h-4 accent-red-600 rounded focus:ring-2 focus:ring-red-500"
-        />
-        <label htmlFor="home-business" className="text-gray-700">
-          This is my home or business
-        </label>
-      </div>
-
-      {/* Business Link */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-sm sm:text-base">
-        <p className="text-gray-600">Are you a business customer?</p>
-        <Link href="/plans" className="text-red-600 font-medium hover:underline">
-          Learn more about business offers
-        </Link>
+        {/* Business Link */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-sm sm:text-base">
+          <p className="text-gray-600">Are you a business customer?</p>
+          <Link href="/plans" className="text-red-600 font-medium hover:underline">
+            Learn more about business offers
+          </Link>
+        </div>
       </div>
 
       {/* Popup */}
