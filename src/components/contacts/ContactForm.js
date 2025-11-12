@@ -45,8 +45,7 @@ export default function ContactForm() {
     e.preventDefault();
     const newErrors = {};
 
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First name is required";
+    if (!formData.name.trim()) newErrors.firstName = "First name is required";
     if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
     else if (!validateMobile(formData.mobile))
       newErrors.mobile = "Please enter a valid 10-digit Indian mobile number";
@@ -222,7 +221,7 @@ export default function ContactForm() {
                 <input
                   name="firstName"
                   placeholder="First name"
-                  value={formData.firstName}
+                  value={formData.name}
                   onChange={handleChange}
                   className={`w-full p-3 rounded-lg border-2 ${
                     errors.firstName
@@ -261,7 +260,7 @@ export default function ContactForm() {
                   type="tel"
                   placeholder="Mobile number"
                   maxLength="10"
-                  value={formData.mobile}
+                  value={formData.phone}
                   onChange={handleChange}
                   className={`w-full p-3 rounded-lg border-2 ${
                     errors.mobile

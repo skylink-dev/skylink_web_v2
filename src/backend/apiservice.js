@@ -5,12 +5,14 @@ export const apiService = {
   submitContactForm: (formData) => {
     const payload = {
       first_name: formData.name || "",
-      last_name: "", // You're not collecting last name in your form
+      last_name: "" || formData.last_name, // You're not collecting last name in your form
       phone: formData.phone || "",
       email: formData.email || "",
-      message: "", // You're not collecting message in your form
-      service: "", // You're not collecting service in your form
-      address: "", // You're not collecting address in your form
+      message: "" || formData.message, // You're not collecting message in your form
+      service: "" || formData.service, // You're not collecting service in your form
+      address: "" || formData.address, // You're not collecting address in your form
+      location: "" || formData.location,
+      message: "" || formData.message,
     };
 
     console.log("Sending payload:", payload); // Add this for debugging

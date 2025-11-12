@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import CustomPlan from "./CustomPlan";
 import ContactPopup from "../../plans/component/ContactPopup";
 
-export default function PlansTabs({ isMobile, plans }) {
+export default function PlansTabs({ isMobile, plans, isMediumSize }) {
   const [activeTab, setActiveTab] = useState("Customize Plan");
   const [fade, setFade] = useState(true);
 
@@ -65,7 +65,7 @@ export default function PlansTabs({ isMobile, plans }) {
             />
           </div>
         </div> */}
-        {isMobile ? (
+        {isMobile || isMediumSize ? (
           <div className="flex items-center justify-center gap-2 w-full max-w-md">
             {tabs.map((tab, i) => (
               <React.Fragment key={tab.key}>
@@ -123,7 +123,7 @@ export default function PlansTabs({ isMobile, plans }) {
           fade ? "opacity-100" : "opacity-0"
         }`}
       >
-        {isMobile ? (
+        {isMobile || isMediumSize ? (
           <>
             {activeTab === "Fixed Plan" ? (
               <FixedPlan
@@ -155,7 +155,7 @@ export default function PlansTabs({ isMobile, plans }) {
                 animate={
                   activeTab === "Customize Plan" ? "centerright" : "left"
                 }
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                transition={{ duration: 0.6, ease: "easeIn" }}
               >
                 <CustomPlan
                   isMobile={isMobile}
@@ -172,7 +172,7 @@ export default function PlansTabs({ isMobile, plans }) {
                   setActiveTab("Fixed Plan");
                 }}
                 animate={activeTab === "Fixed Plan" ? "centerleft" : "right"}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                transition={{ duration: 0.6, ease: "easeIn" }}
               >
                 <FixedPlan
                   isMobile={isMobile}

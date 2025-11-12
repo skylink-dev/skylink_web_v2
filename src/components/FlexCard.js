@@ -73,7 +73,7 @@ export default function FlexCard({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-2xl p-2 min-[375px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-600 via-red-600/80 to-red-600 bg-clip-text text-transparent px-2">
+            <h1 className="text-xl p-2 min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-red-600 via-red-600/80 to-red-600 bg-clip-text text-transparent px-2">
               {title}
             </h1>
           </motion.div>
@@ -129,7 +129,7 @@ export default function FlexCard({
                       {selected.subtitle}
                     </motion.p>
                     <motion.h3
-                      className="text-xl min-[375px]:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight"
+                      className="text-lg min-[375px]:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3 }}
@@ -227,7 +227,7 @@ export default function FlexCard({
                 {rightSelected?.subheading}
               </motion.p>
               <motion.h3
-                className="text-lg min-[375px]:text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 text-white leading-tight drop-shadow-lg"
+                className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-white leading-tight drop-shadow-lg"
                 dangerouslySetInnerHTML={{ __html: rightSelected?.heading }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}

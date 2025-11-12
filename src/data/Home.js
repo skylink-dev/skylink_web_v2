@@ -542,7 +542,7 @@ export const flexCardData = [
     id: 1,
     title: "India’s Finest Stories, Ready to Play",
     subtitle:
-      "From timeless classics to todays hits, everything you love is ready when you are ",
+      "From timeless classics to todays hits, everything you love. ",
     description: "No setup, just stories that move with you.",
     details: "Setup-free.",
     leftImage: "/assets/skyplay-flex-card-left.jpg",
@@ -562,9 +562,9 @@ export const flexCardData = [
   {
     id: 3,
     title:
-      "From bhajans to binge nights, Skylink offers stories every generation can share, safely and easily.",
+      "Made for Every Generation",
     subtitle: "4K clarity. Voice control.",
-    description: "secure, simple, and shared.",
+    description: "From classics to crowd favourites. Secure, simple, and shared.",
     details: "Experience 4K clarity with zero setup. ",
     leftImage: "/assets/skyplay-flex-card-left.jpg",
     mobileLeftImage: "/assets/skyplay-banner-mobile-banner.jpg",
@@ -582,7 +582,7 @@ export const flexCardData = [
   },
   {
     id: 5,
-    title: "Stream over 500 HD channels across India. ",
+    title: "Stream over 950 HD channels. ",
     subtitle: "Every match. Every moment.",
     description: "No cables, no setup required.",
     details: "All sports. One screen. Try it free for 30 days.",

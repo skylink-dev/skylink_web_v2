@@ -9,16 +9,15 @@ export default function IconFlexBanner() {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Want to know how fast you are going?
+            Test Your Connection Speed
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Use this internet speed test to check the download and upload speeds of the internet connection you’re currently using.
+            Check how fast you’re really connected.
           </p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          
           {/* Device Speed Test Card */}
           <div className="bg-red-50 rounded-2xl p-10 border border-red-100 transition-all duration-300">
             <div className="flex flex-col h-full">
@@ -28,10 +27,35 @@ export default function IconFlexBanner() {
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center">
                       {/* Icon: black stroke + red accent */}
-                      <svg width="40" height="40" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="26" cy="26" r="24" stroke="#111827" strokeWidth="2"/>
-                        <path d="M33 19L26 26" stroke="#111827" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <circle cx="33" cy="19" r="3.5" fill="#ef4444" stroke="#111827" strokeWidth="1.5"/>
+                      <svg
+                        width="40"
+                        height="40"
+                        viewBox="0 0 52 52"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="26"
+                          cy="26"
+                          r="24"
+                          stroke="#111827"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M33 19L26 26"
+                          stroke="#111827"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <circle
+                          cx="33"
+                          cy="19"
+                          r="3.5"
+                          fill="#ef4444"
+                          stroke="#111827"
+                          strokeWidth="1.5"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -42,7 +66,9 @@ export default function IconFlexBanner() {
                       Check device speed
                     </h3>
                     <p className="text-gray-600 mb-4 leading-relaxed">
-                      Check the speed between your device and the internet. You can run the test through a cellular (mobile) network, a wired connection, or your local Wi-Fi.
+                      Run a speed test to measure your devices download and
+                      upload performance, whether on mobile data, Wi-Fi, or
+                      wired internet.
                     </p>
 
                     {/* Speedtest Label */}
@@ -50,7 +76,9 @@ export default function IconFlexBanner() {
                       <span className="text-sm text-gray-500 font-medium">
                         Powered by
                       </span>
-                      <span className="text-sm font-semibold text-gray-700">Speedtest</span>
+                      <span className="text-sm font-semibold text-gray-700">
+                        Speedtest
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -75,7 +103,12 @@ export default function IconFlexBanner() {
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
                     </svg>
                   </span>
                 </Link>
@@ -92,12 +125,42 @@ export default function IconFlexBanner() {
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center">
                       {/* Gateway icon: black stroke + red signal */}
-                      <svg width="40" height="40" viewBox="0 0 56 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="6" y="20" width="44" height="16" rx="3" stroke="#111827" strokeWidth="2" fill="none"/>
-                        <circle cx="14" cy="28" r="2" fill="#111827"/>
-                        <path d="M28 12c2.5-3 6-5 10-5" stroke="#111827" strokeWidth="2" strokeLinecap="round"/>
-                        <path d="M28 16c1.8-2.2 4.5-3.8 7.5-3.8" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round"/>
-                        <path d="M28 20c1.2-1.6 3-2.8 5-2.8" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/>
+                      <svg
+                        width="40"
+                        height="40"
+                        viewBox="0 0 56 46"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="6"
+                          y="20"
+                          width="44"
+                          height="16"
+                          rx="3"
+                          stroke="#111827"
+                          strokeWidth="2"
+                          fill="none"
+                        />
+                        <circle cx="14" cy="28" r="2" fill="#111827" />
+                        <path
+                          d="M28 12c2.5-3 6-5 10-5"
+                          stroke="#111827"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M28 16c1.8-2.2 4.5-3.8 7.5-3.8"
+                          stroke="#ef4444"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M28 20c1.2-1.6 3-2.8 5-2.8"
+                          stroke="#ef4444"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -105,10 +168,14 @@ export default function IconFlexBanner() {
                   {/* Text */}
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                      Check your Skylink<br/>Wi-Fi Gateway speed
+                      Check your Skylink
+                      <br />
+                      Wi-Fi Gateway speed
                     </h3>
                     <p className="text-gray-600 leading-relaxed text-sm">
-                      Already an Skylink customer? Sign in to test the speed between your Skylink Wi-Fi Gateway and the Skylink network. Explore faster internet options.
+                      Already with Skylink? Sign in to test your Skylink Wi-Fi
+                      Gateway speed and explore upgrade options for even
+                      smoother performance.{" "}
                     </p>
                   </div>
                 </div>
@@ -127,14 +194,18 @@ export default function IconFlexBanner() {
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
                     </svg>
                   </span>
                 </button>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

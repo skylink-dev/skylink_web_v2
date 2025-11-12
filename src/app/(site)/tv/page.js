@@ -98,7 +98,7 @@ export default function Page() {
         color="bg-gray-200"
       />
       <Faq
-        title="More reasons to love Skylink Fiber internet"
+        title="More reasons to love Skylink"
         content={faqSecondContent}
       />
       {/* <SingleFaq content={faqData} /> */}

@@ -19,7 +19,7 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 10,
-    mainOTTs: ["aha Tamil"],
+    mainOTTs: [["aha Tamil"], ["aha Tamil"], ["aha Tamil"], ["aha Tamil"]],
     exclusive: [false, false, false, false],
   },
   {
@@ -41,7 +41,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 19,
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -63,7 +68,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 19,
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -90,7 +100,12 @@ export const basePlans = [
       "Jio Hotstar 12 Month",
     ],
     noOfOTTs: 11,
-    mainOTTs: ["Jio Hotstar", "aha Tamil"],
+    mainOTTs: [
+      ["Jio Hotstar", "aha Tamil"],
+      ["Jio Hotstar", "aha Tamil"],
+      ["Jio Hotstar", "aha Tamil"],
+      ["Jio Hotstar", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -112,7 +127,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 19,
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -134,7 +154,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 19,
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -161,7 +186,12 @@ export const basePlans = [
       "Jio Hotstar 12 Month",
     ],
     noOfOTTs: 11,
-    mainOTTs: ["Jio Hotstar", "aha Tamil"],
+    mainOTTs: [
+      ["Jio Hotstar", "aha Tamil"],
+      ["Jio Hotstar", "aha Tamil"],
+      ["Jio Hotstar", "aha Tamil"],
+      ["Jio Hotstar", "aha Tamil"],
+    ],
     exclusive: true,
   },
   {
@@ -183,7 +213,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 19,
-    mainOTTs: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -205,7 +240,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 20,
-    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -227,7 +267,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 20,
-    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
 
     exclusive: [false, false, false, false],
   },
@@ -250,7 +295,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 20,
-    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -272,7 +322,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 20,
-    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -294,7 +349,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 20,
-    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
   {
@@ -316,7 +376,12 @@ export const basePlans = [
     ],
     ottAdditionPack: "",
     noOfOTTs: 20,
-    mainOTTs: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    mainOTTs: [
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+      ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
+    ],
     exclusive: [false, false, false, false],
   },
 ];

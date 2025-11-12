@@ -98,8 +98,9 @@ export default function Home() {
       <RectangleBanner
         backgroundImage="/assets/skyplay-map.jpg"
         eyebrow="Your Day, Powered by Skylink"
-        heading={`Fast fiber for every scroll and stream.<br> Support that truly listens.<br> Plans that fit your pace`}
-        description={`All guaranteed or we’ll make it right.<br> Available to all eligible customers across India at <span class="nowrap"> no extra cost</span>`}
+        heading={`Connectivity, refined for real life.`}
+        description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
+        subDescription ={`Available at no extra cost for elegible customers across India.`}
         buttonText="Learn More"
         buttonLink="/guarantee"
       />

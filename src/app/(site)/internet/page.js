@@ -75,7 +75,7 @@ export default function Page() {
       />
 
       <RightImageLeftContent
-        title="Now with incredible features"
+        title="What Makes Skylink Different"
         Content={dynamicImageContent}
       />
       <ImageAndContent
@@ -91,7 +91,7 @@ export default function Page() {
       />
 
       <Faq
-        title="More reasons to love Skylink Fiber internet"
+        title="More reasons to love Skylink"
         content={faqSecondContent}
       />
       <Faq title="You’ve asked. We’ve answered." content={faqContent} />

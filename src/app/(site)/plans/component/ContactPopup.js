@@ -33,10 +33,12 @@ export default function ContactPopup({
     name: "",
     phone: "+91 ",
     subject: "",
+    email: "",
   });
   const [errors, setErrors] = useState({
     name: "",
     phone: "",
+    email: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -90,6 +92,13 @@ export default function ContactPopup({
     return "";
   };
 
+  const validateEmail = (email) => {
+    if (!email.trim()) return "Email is required";
+    // Basic email regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return "Invalid email format";
+    return "";
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -108,15 +117,15 @@ export default function ContactPopup({
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: "" });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const nameError = validateName(formData.name);
     const phoneError = validatePhone(formData.phone);
+    const emailError = validateEmail(formData.email);
 
-    if (nameError || phoneError) {
-      setErrors({ name: nameError, phone: phoneError });
+    if (nameError || phoneError || emailError) {
+      setErrors({ name: nameError, phone: phoneError, email: emailError });
       return;
     }
 
@@ -129,11 +138,10 @@ export default function ContactPopup({
       console.log(err);
       alert("Unexpected Error Occurred");
     }
-    setErrors({ name: "", phone: "" });
+    setErrors({ name: "", phone: "", email: "" });
     setIsSubmitting(false);
     setIsOpen(false);
   };
-
   const socialLinks = [
     {
       icon: FaFacebookF,
@@ -237,6 +245,21 @@ export default function ContactPopup({
                   <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
                 )}
               </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email (e.g., john.doe@example.com)"
+                  className={`w-full border-2 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    errors.email ? "border-red-500" : "border-gray-300"
+                  }`}
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                )}
+              </div>
 
               {/* Subject */}
               {/* <div>
@@ -285,14 +308,20 @@ export default function ContactPopup({
                       <div className="flex justify-between items-center border-b border-gray-100 pb-2">
                         <span className="text-gray-600">Billing Cycle</span>
                         <span className="font-semibold text-gray-900">
-                          {activeCycle}{" "}
+                          {activeCycle == 12
+                            ? "Annual"
+                            : activeCycle == 6
+                            ? "Half Yearly"
+                            : activeCycle == 3
+                            ? "Quaterly"
+                            : "Monthly"}{" "}
                           <span className="font-normal text-gray-700">
                             (
-                            {activeCycle === "Yearly"
+                            {activeCycle === 12
                               ? "12 months"
-                              : activeCycle === "Half-Yearly"
+                              : activeCycle === 6
                               ? "6 months"
-                              : activeCycle === "Quaterly"
+                              : activeCycle === 3
                               ? "3 months"
                               : "1 month"}
                             )
@@ -424,14 +453,20 @@ export default function ContactPopup({
                   <div className="flex justify-between items-center border-b border-gray-100 pb-2">
                     <span className="text-gray-600">Billing Cycle</span>
                     <span className="font-semibold text-gray-900">
-                      {activeCycle}{" "}
+                      {activeCycle == 12
+                        ? "Annual"
+                        : activeCycle == 6
+                        ? "Half Yearly"
+                        : activeCycle == 3
+                        ? "Quaterly"
+                        : "Monthly"}{" "}
                       <span className="font-normal text-gray-700">
                         (
-                        {activeCycle === "Yearly"
+                        {activeCycle === 12
                           ? "12 months"
-                          : activeCycle === "Half-Yearly"
+                          : activeCycle === 6
                           ? "6 months"
-                          : activeCycle === "Quaterly"
+                          : activeCycle === 3
                           ? "3 months"
                           : "1 month"}
                         )
@@ -514,8 +549,7 @@ export default function ContactPopup({
                 </div>
 
                 <p className="text-xs text-gray-500 mt-3 text-center sm:text-left">
-                  * All prices are inclusive of applicable taxes. Installation
-                  charges may vary.
+                  * All prices are inclusive of applicable taxes.
                 </p>
               </div>
             </div>
