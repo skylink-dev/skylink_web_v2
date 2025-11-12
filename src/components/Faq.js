@@ -24,7 +24,7 @@ export default function Faq({ title, content = [] }) {
 
   return (
     <section className="bg-white py-20">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6"> {/* Increased from max-w-5xl to max-w-6xl */}
         {/* Title + Expand All */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
@@ -51,13 +51,13 @@ export default function Faq({ title, content = [] }) {
               {/* Header */}
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full flex justify-between items-center text-left py-5 px-6 focus:outline-none"
+                className="w-full flex justify-between items-center text-left py-5 px-6 focus:outline-none hover:bg-gray-50 transition-colors duration-200"
               >
-                <span className="font-semibold text-gray-900 text-lg">
+                <span className="font-semibold text-gray-900 text-lg pr-4"> {/* Added padding-right */}
                   {item.title}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-red-600 transform transition-transform duration-300 ${
+                  className={`w-5 h-5 text-red-600 transform transition-transform duration-300 flex-shrink-0 ${
                     isOpen(index) ? "rotate-180" : "rotate-0"
                   }`}
                   fill="none"
@@ -72,10 +72,10 @@ export default function Faq({ title, content = [] }) {
               {/* Content */}
               <div
                 className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                  isOpen(index) ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                  isOpen(index) ? "max-h-96 opacity-100" : "max-h-0 opacity-0" // Increased max-h from 40 to 96
                 }`}
               >
-                <div className="px-6 pb-6 text-gray-700 text-base leading-relaxed">
+                <div className="px-6 pb-6 text-gray-700 text-sm leading-relaxed"> {/* Reduced from text-base to text-sm */}
                   {item.content}
                 </div>
               </div>

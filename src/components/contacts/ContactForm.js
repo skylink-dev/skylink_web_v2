@@ -9,6 +9,7 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 import LocationMap from "./LocationMap";
+import AlertModal from "../alert/AlertModal";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -16,10 +17,17 @@ export default function ContactForm() {
     firstName: "",
     lastName: "",
     email: "",
-    mobile: "",
+    phone: "",
     address: "",
     message: "",
   });
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [alertInfo, setAlertInfo] = useState({
+    title: "",
+    message: "",
+    type: "success",
+  });
+
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -33,7 +41,7 @@ export default function ContactForm() {
     "Others",
   ];
 
-  const validateMobile = (mobile) => /^[6-9]\d{9}$/.test(mobile);
+  const validateMobile = (phone) => /^[6-9]\d{9}$/.test(phone);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,10 +53,11 @@ export default function ContactForm() {
     e.preventDefault();
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.firstName = "First name is required";
-    if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
-    else if (!validateMobile(formData.mobile))
-      newErrors.mobile = "Please enter a valid 10-digit Indian mobile number";
+    if (!formData.firstName.trim())
+      newErrors.firstName = "First name is required";
+    if (!formData.phone.trim()) newErrors.phone = "Mobile number is required";
+    else if (!validateMobile(formData.phone))
+      newErrors.phone = "Please enter a valid 10-digit Indian mobile number";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -59,20 +68,42 @@ export default function ContactForm() {
     setSubmitStatus(null);
 
     try {
-      await apiService.submitContactForm(formData);
+      await apiService
+        .submitContactForm(formData)
+        .then((res) => {
+          if (res.id) {
+          } else {
+            setAlertInfo({
+              title: "Error!",
+              message: "Something went wrong. Please try again.",
+              type: "error",
+            });
+          }
+          setIsAlertOpen(true);
+        })
+        .catch((err) => {});
       setSubmitStatus("success");
+      setAlertInfo({
+        title: "Success!",
+        message: "Your request has been submitted successfully.",
+        type: "success",
+      });
       setFormData({
         service: "",
         firstName: "",
         lastName: "",
         email: "",
-        mobile: "",
+        phone: "",
         address: "",
         message: "",
       });
       setTimeout(() => setSubmitStatus(null), 4000);
     } catch (error) {
-      setSubmitStatus("error");
+      setAlertInfo({
+        title: "Error!",
+        message: "Something went wrong. Please try again.",
+        type: "error",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -80,6 +111,13 @@ export default function ContactForm() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-sky-100 to-indigo-100 py-12 px-4">
+      <AlertModal
+        isOpen={isAlertOpen}
+        onClose={() => setIsAlertOpen(false)}
+        title={alertInfo.title}
+        message={alertInfo.message}
+        type={alertInfo.type}
+      />
       <div className="max-w-4/5 mx-auto grid gap-10 lg:grid-cols-2">
         {/* Left Section */}
         <div className="flex flex-col gap-8">
@@ -221,7 +259,7 @@ export default function ContactForm() {
                 <input
                   name="firstName"
                   placeholder="First name"
-                  value={formData.name}
+                  value={formData.firstName}
                   onChange={handleChange}
                   className={`w-full p-3 rounded-lg border-2 ${
                     errors.firstName
@@ -256,20 +294,20 @@ export default function ContactForm() {
               />
               <div>
                 <input
-                  name="mobile"
+                  name="phone"
                   type="tel"
                   placeholder="Mobile number"
                   maxLength="10"
                   value={formData.phone}
                   onChange={handleChange}
                   className={`w-full p-3 rounded-lg border-2 ${
-                    errors.mobile
+                    errors.phone
                       ? "border-red-500 bg-red-50"
                       : "border-gray-200"
                   } focus:border-red-500 focus:ring-2 focus:ring-red-100 transition outline-none`}
                 />
-                {errors.mobile && (
-                  <p className="text-red-500 text-sm">{errors.mobile}</p>
+                {errors.phone && (
+                  <p className="text-red-500 text-sm">{errors.phone}</p>
                 )}
               </div>
             </div>

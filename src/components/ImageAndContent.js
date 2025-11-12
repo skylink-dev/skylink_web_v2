@@ -20,7 +20,7 @@ export default function ImageAndContent({ image, content, row = "row" }) {
           <div className="absolute inset-0 bg-black/80" />
 
           {/* Content Overlay — moved to top */}
-          <div className="absolute inset-0 flex flex-col justify-start p-6 text-white space-y-5 pt-8">
+          <div className="absolute inset-0 flex flex-col justify-start p-6 text-white space-y-3 pt-8">
             {content.titleBox && (
               <div className="bg-red-500 text-white px-3 py-1 rounded-md text-xs font-semibold self-start mb-2">
                 {content.titleBox}
