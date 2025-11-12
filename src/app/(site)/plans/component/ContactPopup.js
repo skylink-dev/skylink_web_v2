@@ -137,19 +137,6 @@ export default function ContactPopup({
 
     setIsSubmitting(true);
     try {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setFormData({
-            ...formData,
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-        },
-        (err) => {
-          alert("Unable to retrieve location: " + err.message);
-        }
-      );
-      console.log("Formdate aith lat and long" + formData);
       await apiService.submitContactForm(formData);
       console.log("Form submitted:", formData);
       setIsAlertOpen(true);

@@ -351,7 +351,13 @@ ${
 
                     {/* 💵 Price Section */}
                     <div className="flex w-full items-center justify-center gap-2 mb-4">
-                      <span className="text-xl text-center font-bold text-gray-900">
+                      <span
+                        className={`text-xl text-center font-bold activeTab ==  ${
+                          activeTab == "Fixed Plan"
+                            ? "text-gray-900"
+                            : "text-gray-600"
+                        } `}
+                      >
                         ₹{plan.price}{" "}
                         <span className="font-normal text-gray-600 text-lg">
                           x {selectedValidity} Months
@@ -396,7 +402,11 @@ ${
                           });
                           setIsContactOpen(!isContactOpen);
                         }}
-                        className="flex-1 py-2 bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold rounded-md hover:opacity-90 transition"
+                        className={`flex-1 py-2   ${
+                          activeTab == "Fixed Plan"
+                            ? "bg-gradient-to-r from-red-600 to-red-500"
+                            : "bg-gray-400"
+                        }  text-white font-semibold rounded-md hover:opacity-90 transition`}
                       >
                         Select Plan
                       </button>
