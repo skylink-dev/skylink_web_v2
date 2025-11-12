@@ -19,4 +19,4 @@ public/assets/**/cache/
 
 # Ignore video assets
 /public/assets/
-/public/newassets/
+/public/newassets/support/
