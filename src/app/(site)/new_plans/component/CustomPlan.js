@@ -15,7 +15,7 @@ export default function CustomPlan({ plans, isMobile, activeTab }) {
   const dispatch = useDispatch();
   const basePlans = plans || [];
   // change the plan form old to new true==new false=old
-  const testMode = false;
+  const testMode = true;
 
   const [activePrice, setActivePrice] = useState();
   const [activeCycle, setActiveCycle] = useState();
@@ -59,20 +59,24 @@ export default function CustomPlan({ plans, isMobile, activeTab }) {
   const ButtonGrid = ({ options, selected, setSelected, color }) => {
     const colorMap = {
       blue: {
-        base: "border-blue-300 text-blue-700 hover:bg-blue-100",
-        active: "bg-blue-600 text-white border-blue-600 shadow-md",
+        base: "border-blue-300 text-blue-700 hover:bg-blue-500 hover:text-white shadow-[0_2px_6px_rgba(59,130,246,0.25)]",
+        active:
+          "bg-blue-600 text-white border-blue-600 shadow-[0_4px_8px_rgba(37,99,235,0.35)]",
       },
       red: {
-        base: "border-red-300 text-red-700 hover:bg-red-100",
-        active: "bg-red-600 text-white border-red-600 shadow-md",
+        base: "border-red-300 text-red-700 hover:bg-red-500 hover:text-white shadow-[0_2px_6px_rgba(239,68,68,0.25)]",
+        active:
+          "bg-red-600 text-white border-red-600 shadow-[0_4px_8px_rgba(220,38,38,0.35)]",
       },
       yellow: {
-        base: "border-yellow-300 text-yellow-700 hover:bg-yellow-100",
-        active: "bg-yellow-500 text-white border-yellow-500 shadow-md",
+        base: "border-yellow-300 text-yellow-700 hover:bg-yellow-500 hover:text-white shadow-[0_2px_6px_rgba(234,179,8,0.25)]",
+        active:
+          "bg-yellow-500 text-white border-yellow-500 shadow-[0_4px_8px_rgba(202,138,4,0.35)]",
       },
       green: {
-        base: "border-green-300 text-green-700 hover:bg-green-100",
-        active: "bg-green-600 text-white border-green-600 shadow-md",
+        base: "border-green-300 text-green-700 hover:bg-green-500 hover:text-white shadow-[0_2px_6px_rgba(34,197,94,0.25)]",
+        active:
+          "bg-green-600 text-white border-green-600 shadow-[0_4px_8px_rgba(22,163,74,0.35)]",
       },
     };
 
@@ -80,29 +84,31 @@ export default function CustomPlan({ plans, isMobile, activeTab }) {
     const getGridCols = (count) => {
       switch (count) {
         case 1:
-          return "grid-cols-1";
+          return "grid-cols-1 md:grid-cols-1";
         case 2:
-          return "grid-cols-2";
+          return "grid-cols-2 md:grid-cols-2";
         case 3:
-          return "grid-cols-3";
+          return "grid-cols-3 md:grid-cols-3";
         case 4:
-          return "grid-cols-4";
+          return "grid-cols-4 md:grid-cols-4";
         case 5:
-          return "grid-cols-5";
+          return "grid-cols-5 md:grid-cols-5";
         case 6:
-          return "grid-cols-6";
+          return "grid-cols-6 md:grid-cols-6";
+        case 7:
+          return "grid-cols-4 md:grid-cols-7 ";
         default:
           return "grid-cols-2 sm:grid-cols-3"; // fallback
       }
     };
 
     return (
-      <div className={`grid ${getGridCols(options.length)} gap-3 w-full`}>
+      <div className={`grid ${getGridCols(options.length)} gap-2 w-full `}>
         {options.map((opt) => (
           <button
             key={opt}
             onClick={() => setSelected(opt)}
-            className={`w-full py-3 rounded-md font-medium border transition-all duration-200 transform hover:scale-[1.02] ${
+            className={`cursor-pointer w-full min-h-15 py-3 rounded-md font-medium border transition-all duration-200 transform hover:scale-[1.02] ${
               selected === opt
                 ? colorMap[color].active
                 : `${colorMap[color].base} bg-white`
@@ -136,7 +142,17 @@ export default function CustomPlan({ plans, isMobile, activeTab }) {
       {testMode ? (
         <>
           <div className="w-full bg-gray-50 rounded-2xl p-6 shadow-md">
-            <div></div>
+            <div className="w-full  m-0">
+              <h2
+                className={`w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 ${
+                  activeTab == "Custom Plan"
+                    ? "bg-gradient-to-r from-red-600 to bg-red-700   "
+                    : "bg-gray-300"
+                } font-semibold mb-2 `}
+              >
+                Customize Your Own Plans
+              </h2>
+            </div>
             <div className="flex flex-col  gap-8">
               <div className="flex-1 space-y-6">
                 {/* Bandwidth */}
