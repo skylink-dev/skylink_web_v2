@@ -9,10 +9,14 @@ export default function Page() {
   const plans = useSelector((state) => state.newPlans.basePlans);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isMediumSize, setIsMediumSize] = useState(false);
 
   // ✅ Handle screen resize for mobile detection
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setIsMediumSize(window.innerWidth > 768 && window.innerWidth < 1098);
+    };
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -32,7 +36,11 @@ export default function Page() {
             </h1>
 
             <div className="w-full">
-              <PlanTabs isMobile={isMobile} plans={plans} />
+              <PlanTabs
+                isMobile={isMobile}
+                plans={plans}
+                isMediumSize={isMediumSize}
+              />
             </div>
           </div>
         </section>
