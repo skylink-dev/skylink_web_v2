@@ -6,23 +6,26 @@
   secondcta: "Call (+91)  99441 99445", href:"/"}
   export const threeColumnData = [
     { image: "/assets/experience-4k-uhd-and-dolby-audio-streaming.jpg",     subtitle: "Skylink IPTV",
-    title: "Experience 4K UHD & Dolby Audio Streaming",
-    description: "Enjoy crystal-clear visuals and immersive sound with our latest IPTV tech—optimized for cinematic entertainment at home.",
-    subdescription: "4K & Dolby features require compatible devices and setup. Internet connection required.",
+    title: "4K That Lives Up to Its Name",
+    description: "Watch in 4K Ultra HD with Dolby Audio that pulls you right into the story - crisp,\n" +
+        "rich, and beautifully lifelike.",
+    subdescription: "(4K & Dolby available on compatible devices.)",
     smallcta: "",
-    cta: "Start Streaming"}, 
+    cta: "View IPTV Plans\n"},
     { image: "/assets/watch-anywhere-anytime-on-any-device.jpg", subtitle: "Next-Gen IPTV",
-    title: "Watch Anywhere, Anytime on Any Device",
-    description: "Access your favorite channels on Smart TVs, smartphones, laptops, or tablets with a single Skylink subscription.",
-    subdescription: "Device compatibility may vary. Internet required.",
+    title: "TV That Travels With You",
+    description: "Watch your favorite shows and channels anywhere - on your TV, phone, or\n" +
+        "laptop. Your entertainment moves with you.\n",
+    subdescription: "(Internet connection required.)\n",
     smallcta: "",
-    cta: "Activate Now"}, 
+    cta: "See Where You Can Watch\n"},
     { image: "/assets/smart-recommendationersonalizedviewing.jpg",subtitle: "AI-Enhanced IPTV",
-    title: "Smart Recommendations & Personalized Viewing",
-    description: "Discover shows you'll love with AI-driven suggestions tailored to your taste and watch history.",
-    subdescription: "AI features evolve with usage. Privacy protected.",
+    title: "Smarter. Simpler. More You.\n",
+    description: "Let Skylink’s smart recommendations learn your taste and line up shows you’ll\n" +
+        "actually want to watch - no searching, just playing.\n",
+    subdescription: "(Your privacy stays yours - always.)\n",
     smallcta: "",
-    cta: "Try Smart IPTV"}];
+    cta: " Explore Smart Features\n"}];
   export const IconContent = [{
     icon: (<svg aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M80 13H16a6 6 0 00-6 6v56a6 6 0 006 6h48v-2H16a4 4 0 01-4-4V25h72v32h2V19a6 6 0 00-6-6zM12 23v-4a4 4 0 014-4h64a4 4 0 014 4v4zm3-5h2v2h-2zm4 0h2v2h-2zm4 0h2v2h-2z"></path><path className="svg-accent" d="M78.17 66.59l9.83-4.8-33.13-13.25 13.24 33.11 4.8-9.8L83.3 82.24 88.56 77zm-5.83 1.86l-4 8.28-9.83-24.6L83.05 62l-8.27 4 11 11-2.48 2.41z"></path></svg>),
     cta: "IPTV Support"
@@ -44,9 +47,12 @@
   }];
 
   export const simplecolumncontent = [
-    { icon: (<svg aria-label="star icon" aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M48 14l9.34 19a7.29 7.29 0 005.48 4l20.88 3-15.11 14.69a7.29 7.29 0 00-2.09 6.45l3.57 20.79-18.68-9.81a7.26 7.26 0 00-6.78 0l-18.68 9.81 3.57-20.79a7.29 7.29 0 00-2.09-6.45L12.3 40l20.88-3a7.29 7.29 0 005.48-4L48 14m0-4.51L36.87 32.06a5.29 5.29 0 01-4 2.89L8 38.57l18 17.55a5.3 5.3 0 011.52 4.68l-4.24 24.79 22.26-11.7a5.27 5.27 0 014.92 0l22.26 11.7-4.25-24.79A5.3 5.3 0 0170 56.12l18-17.55L63.11 35a5.29 5.29 0 01-4-2.89L48 9.51z"></path><path className="svg-accent" d="M34.42 73.85l-2-.27 2.15-15.38a3 3 0 00-.69-2.67l-9.09-10 1.48-1.34 9.08 10a4.9 4.9 0 011.19 4.36z"></path></svg>), title: "Live TV Streaming", description: "Stream HD channels smoothly with zero buffering and full control.", cta: "Explore Channels" },
-    { icon: (<svg aria-label="Turbo icon" aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M48 10a38 38 0 1038 38 38 38 0 00-38-38zm0 74a36 36 0 1136-36 36 36 0 01-36 36zm0-44a7.92 7.92 0 00-4.9 1.69L28.24 26.83l-1.41 1.41L41.69 43.1A7.92 7.92 0 0040 48a8 8 0 108-8zm0 14a6 6 0 116-6 6 6 0 01-6 6z"></path><path className="svg-accent" d="M76 48h-2a26 26 0 00-39.5-22.23l-1-1.7A28 28 0 0176 48zm-56 0h2a25.93 25.93 0 013.79-13.52l-1.71-1A28 28 0 0020 48z"></path></svg>), title: "On-Demand Library", description: "Watch movies and shows anytime from our extensive IPTV library.", cta: "Browse Library" },
-    { icon: (<svg aria-label="infinity icon" aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M48 10.13a38 38 0 1038 38 38 38 0 00-38-38zm0 74a36 36 0 1136-36 36 36 0 01-36 36.01z"></path><path className="svg-accent" d="M76 48.13a12.18 12.18 0 01-20.8 8.61L39.34 40.93a10.16 10.16 0 00-14.4 0 10.18 10.18 0 0014.4 14.4l5.9-5.9 1.42 1.41-5.9 5.9a12.19 12.19 0 110-17.23l7.9 7.91 7.91 7.91a10.19 10.19 0 100-14.4l-5.9 5.9-1.41-1.41 5.9-5.91A12.19 12.19 0 0176 48.13z"></path></svg>), title: "Multi-Device Access", description: "Enjoy seamless viewing on phones, TVs, tablets, and other devices.", cta: "Compatible Devices" },
+    { icon: (<svg aria-label="star icon" aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M48 14l9.34 19a7.29 7.29 0 005.48 4l20.88 3-15.11 14.69a7.29 7.29 0 00-2.09 6.45l3.57 20.79-18.68-9.81a7.26 7.26 0 00-6.78 0l-18.68 9.81 3.57-20.79a7.29 7.29 0 00-2.09-6.45L12.3 40l20.88-3a7.29 7.29 0 005.48-4L48 14m0-4.51L36.87 32.06a5.29 5.29 0 01-4 2.89L8 38.57l18 17.55a5.3 5.3 0 011.52 4.68l-4.24 24.79 22.26-11.7a5.27 5.27 0 014.92 0l22.26 11.7-4.25-24.79A5.3 5.3 0 0170 56.12l18-17.55L63.11 35a5.29 5.29 0 01-4-2.89L48 9.51z"></path><path className="svg-accent" d="M34.42 73.85l-2-.27 2.15-15.38a3 3 0 00-.69-2.67l-9.09-10 1.48-1.34 9.08 10a4.9 4.9 0 011.19 4.36z"></path></svg>), title: "Live Broadcasts\n", description: "Enjoy your favorite HD channels with smooth playback, instant switching, and zero\n" +
+            "buffering.", cta: "Explore Channels" },
+    { icon: (<svg aria-label="Turbo icon" aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M48 10a38 38 0 1038 38 38 38 0 00-38-38zm0 74a36 36 0 1136-36 36 36 0 01-36 36zm0-44a7.92 7.92 0 00-4.9 1.69L28.24 26.83l-1.41 1.41L41.69 43.1A7.92 7.92 0 0040 48a8 8 0 108-8zm0 14a6 6 0 116-6 6 6 0 01-6 6z"></path><path className="svg-accent" d="M76 48h-2a26 26 0 00-39.5-22.23l-1-1.7A28 28 0 0176 48zm-56 0h2a25.93 25.93 0 013.79-13.52l-1.71-1A28 28 0 0020 48z"></path></svg>), title: "A World of Content, Anytime", description: "Dive into a wide collection of movies and shows you can watch anytime - no schedules,\n" +
+            "no waiting.", cta: "Browse Library" },
+    { icon: (<svg aria-label="infinity icon" aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M48 10.13a38 38 0 1038 38 38 38 0 00-38-38zm0 74a36 36 0 1136-36 36 36 0 01-36 36.01z"></path><path className="svg-accent" d="M76 48.13a12.18 12.18 0 01-20.8 8.61L39.34 40.93a10.16 10.16 0 00-14.4 0 10.18 10.18 0 0014.4 14.4l5.9-5.9 1.42 1.41-5.9 5.9a12.19 12.19 0 110-17.23l7.9 7.91 7.91 7.91a10.19 10.19 0 100-14.4l-5.9 5.9-1.41-1.41 5.9-5.91A12.19 12.19 0 0176 48.13z"></path></svg>), title: "Multi-Device Access", description: "Stay connected across all your screens - TV, phone, tablet, or laptop - without missing a\n" +
+            "moment", cta: "Compatible Devices" },
     { icon: (<svg aria-label="active armor" aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" fillRule="evenodd" d="M25.33 35.47a36.73 36.73 0 0 0-3.95 3.45 50.25 50.25 0 0 0-10.7 16.68 38.98 38.98 0 0 1-.68-7.18C10 27.2 27.02 10 48.03 10c1.44 0 2.85.09 4.25.25.74.5 1.48 1.1 2.24 1.84a46.23 46.23 0 0 1 11.07 17.46c.34.98.62 1.98.87 3a37.79 37.79 0 0 0-41.13 2.93Zm44.12-6.86a37.38 37.38 0 0 1 1.96 11.7 38.63 38.63 0 0 1-3.71 17 37.03 37.03 0 0 1-14.27 15.9c.07.01.14.04.2.06l.25.08a42.69 42.69 0 0 0 19.85 1.13c1-.2 1.9-.45 2.72-.76A38.19 38.19 0 0 0 86 48.34c0-17.05-11-31.46-26.13-36.17a49.66 49.66 0 0 1 9.58 16.44Zm-4 49.97c-4.66 0-9.48-.63-13.87-1.94a37.47 37.47 0 0 1-8.13-3.54 38 38 0 0 1-14.27-14.7 37.23 37.23 0 0 1-4.55-18c-.36.33-.71.65-1.05 1a45.33 45.33 0 0 0-10.72 17.4 17.19 17.19 0 0 0-.69 2.97A38.1 38.1 0 0 0 47.73 86c8.67 0 16.67-2.88 23.07-7.72-1.73.2-3.53.3-5.35.3Z" clipRule="evenodd"></path></svg>), title: "Parental Controls", description: "Control your family’s viewing experience with simple safe settings.", cta: "Set Controls  " }];
   export const cartcontent = [{ image: "/assets/firestick-product-1.jpg", title: "Skylink Fire Tv", content: "Stream your favorite apps like Zee5, Amazon Prime, and Jio Hotstar with the Amazon Fire TV Tv — easy setup and smooth 4K playback.", cta: "Shop", href:"/"}, { image: "/assets/skyplay-seupbox-and-remote.jpg", title: "4K Set-Top Box", content: "Enjoy crystal-clear visuals and smooth navigation with our advanced 4K-ready set-top box for IPTV and DTH services.", cta: "Shop", href:"/"}, { image: "/assets/remote-product.jpg", title: "Smart Remote Control", content: "Control all your Skylink devices with one intuitive, voice-enabled remote—simple, sleek, and powerful.", cta: "Shop", href:"/"}, { image: "/newassets/tv/highspeed-router.png", title: "High-Speed Dual Band Router", content: "Upgrade your internet experience with our dual-band router offering enhanced speed, range, and reliability for all your devices.", cta: "Shop", href:"/" }]
  export const tablecontent = [
