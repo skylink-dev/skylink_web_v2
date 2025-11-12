@@ -18,7 +18,7 @@ export const basePlans = [
       "Basic Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 10,
+    noOfOTTs: [15, 15, 15, 15],
     mainOTTs: [["aha Tamil"], ["aha Tamil"], ["aha Tamil"], ["aha Tamil"]],
     exclusive: [false, false, false, false],
   },
@@ -40,7 +40,7 @@ export const basePlans = [
       "Mega Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 19,
+    noOfOTTs: [19, 19, 19, 19],
     mainOTTs: [
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -67,7 +67,7 @@ export const basePlans = [
       "Mega Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 19,
+    noOfOTTs: [19, 20, 20, 20],
     mainOTTs: [
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -99,7 +99,7 @@ export const basePlans = [
       "Jio Hotstar 6 Month",
       "Jio Hotstar 12 Month",
     ],
-    noOfOTTs: 11,
+    noOfOTTs: [16, 16, 16, 16],
     mainOTTs: [
       ["Jio Hotstar", "aha Tamil"],
       ["Jio Hotstar", "aha Tamil"],
@@ -126,7 +126,7 @@ export const basePlans = [
       "Mega Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 19,
+    noOfOTTs: [19, 19, 19, 19],
     mainOTTs: [
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -153,7 +153,7 @@ export const basePlans = [
       "Mega Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 19,
+    noOfOTTs: [19, 20, 20, 20],
     mainOTTs: [
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -185,7 +185,7 @@ export const basePlans = [
       "Jio Hotstar 6 Month",
       "Jio Hotstar 12 Month",
     ],
-    noOfOTTs: 11,
+    noOfOTTs: [16, 16, 16, 16],
     mainOTTs: [
       ["Jio Hotstar", "aha Tamil"],
       ["Jio Hotstar", "aha Tamil"],
@@ -212,7 +212,7 @@ export const basePlans = [
       "Mega Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 19,
+    noOfOTTs: [19, 19, 19, 19],
     mainOTTs: [
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -239,7 +239,7 @@ export const basePlans = [
       "Sky Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 20,
+    noOfOTTs: [19, 19, 19, 19],
     mainOTTs: [
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -266,7 +266,7 @@ export const basePlans = [
       "Sky Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 20,
+    noOfOTTs: [20, 20, 20, 20],
     mainOTTs: [
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -294,7 +294,7 @@ export const basePlans = [
       "Sky Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 20,
+    noOfOTTs: [20, 20, 20, 20],
     mainOTTs: [
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -321,7 +321,7 @@ export const basePlans = [
       "Sky Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 20,
+    noOfOTTs: [20, 20, 20, 20],
     mainOTTs: [
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -348,7 +348,7 @@ export const basePlans = [
       "Sky Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 20,
+    noOfOTTs: [20, 20, 20, 20],
     mainOTTs: [
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
@@ -375,7 +375,7 @@ export const basePlans = [
       "Sky Max Annual Pack",
     ],
     ottAdditionPack: "",
-    noOfOTTs: 20,
+    noOfOTTs: [20, 20, 20, 20],
     mainOTTs: [
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
       ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
