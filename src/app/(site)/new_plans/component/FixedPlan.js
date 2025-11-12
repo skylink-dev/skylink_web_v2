@@ -285,8 +285,8 @@ ${
                                     key={i}
                                     src={getImagePath(tv, "TV")}
                                     alt={tv}
-                                    width={24} // h-6 = 1.5rem = 24px
-                                    height={24}
+                                    width={32} // h-6 = 1.5rem = 24px
+                                    height={32}
                                     className={`object-contain rounded-md border border-gray-200  ${
                                       activeTab == "Fixed Plan"
                                         ? ""
@@ -322,8 +322,8 @@ ${
                                       key={i}
                                       src={getImagePath(ott, "OTT")}
                                       alt={ott}
-                                      width={24} // h-6 = 1.5rem = 24px
-                                      height={24}
+                                      width={32} // h-6 = 1.5rem = 24px
+                                      height={32}
                                       className={`object-contain rounded-md border border-gray-200  ${
                                         activeTab == "Fixed Plan"
                                           ? ""
