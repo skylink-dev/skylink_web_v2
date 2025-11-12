@@ -47,18 +47,18 @@ export const dynamicImageContent = [
 
 export const iconMoreDetailcontent = [{
   icon: (<svg aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M88 27.59L71.3 18H25.7L9 27.59l1 1.74 14.68-8.45L15.36 39H21v36a6 6 0 006 6h43a6 6 0 006-6V39h5.64l-9.33-18.12L87 29.33zM74 75a4 4 0 01-4 4H27a4 4 0 01-4-4V39h51zM18.64 37l8.76-17h42.2l8.76 17z"></path><path className="svg-accent" d="M70 75H58v-2h12zm0-7H58v2h12z"></path></svg>),
-  title: "Moving with Skylink",
-  description: "Get connected in your new home with superfast speeds.",
+  title: "Get set up fast.",
+  description: "Move in with fiver that's ready whenever you are. ",
   cta: "Learn more"
 }, {
   icon: (<svg aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M88 27.59L71.3 18H25.7L9 27.59l1 1.74 14.68-8.45L15.36 39H21v36a6 6 0 006 6h43a6 6 0 006-6V39h5.64l-9.33-18.12L87 29.33zM74 75a4 4 0 01-4 4H27a4 4 0 01-4-4V39h51zM18.64 37l8.76-17h42.2l8.76 17z"></path><path className="svg-accent" d="M70 75H58v-2h12zm0-7H58v2h12z"></path></svg>),
-  title: "All your connections in one",
-  description: "Explore Wire, Internet, and TV Service Bundles with Skylink.",
+  title: "Simplify your setup.",
+  description: "Combine Internet, TV, and more in one easy plan.",
   cta: "Stop Bundles"
 }, {
   icon: (<svg aria-hidden="true" focusable="false" className="svg-accent-att-blue color-black" height="64" width="64" viewBox="0 0 96 96"><path className="svg-base" d="M88 27.59L71.3 18H25.7L9 27.59l1 1.74 14.68-8.45L15.36 39H21v36a6 6 0 006 6h43a6 6 0 006-6V39h5.64l-9.33-18.12L87 29.33zM74 75a4 4 0 01-4 4H27a4 4 0 01-4-4V39h51zM18.64 37l8.76-17h42.2l8.76 17z"></path><path className="svg-accent" d="M70 75H58v-2h12zm0-7H58v2h12z"></path></svg>),
-  title: "More coverage. In more places.",
-  description: "Connect effortlessly with Skylink Extended Wi-Fi coverage service.",
+  title: "Beyond every corner.",
+  description: "Extended Wi-Fi that adapts to every space.",
   cta: "Learn more"
 }];
 export const faqContent = [
