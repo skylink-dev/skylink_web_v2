@@ -249,7 +249,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
                           </span>
                         </div>
                       </div>
-                      
+
                       {/* Content Section - Fixed height for consistency */}
                       <div className="flex-1 p-4 sm:p-5 flex flex-col">
                         <div className="flex items-start gap-3 sm:gap-4 mb-3 flex-1">

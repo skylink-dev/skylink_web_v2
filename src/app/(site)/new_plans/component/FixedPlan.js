@@ -54,35 +54,58 @@ export default function FixedPlan({
     <>
       <div className="w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
         <div className="w-full  m-0">
-          <h2 className="w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 bg-gradient-to-r from-red-600 to bg-red-700  font-semibold mb-2">
+          <h2
+            className={`w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 ${
+              activeTab == "Fixed Plan"
+                ? "bg-gradient-to-r from-red-600 to bg-red-700   "
+                : "bg-gray-300"
+            } font-semibold mb-2 `}
+          >
             Explore Our Standard Plans
           </h2>
         </div>
 
         {/* ⚡ Speed Selection */}
-        <div className="bg-red-50 border border-red-100 m-0 p-2 rounded-xl">
-          <h3 className="w-full text-start text-gray-800 text-sm  font-bold m-2 md:p-3">
+        <div
+          className={`  ${
+            activeTab == "Fixed Plan" ? "bg-red-50  " : "bg-gray-100  "
+          } border border-red-100 m-0 p-2 rounded-xl`}
+        >
+          <h3
+            className={`w-full text-start  ${
+              activeTab == "Fixed Plan" ? "text-gray-800" : "text-gray-400"
+            }  text-sm  font-semibold m-2 md:p-1 md:text-lg`}
+          >
             Choose Your BandWidth
           </h3>
-          <div className="grid grid-cols-4 md:grid-cols-7 gap-1 md:gap-10 md:p-2">
+          <div className="grid grid-cols-4 md:grid-cols-7 gap-2 md:gap-10 md:p-2">
             {speedOptions.map((speed) => (
               <button
                 key={speed}
                 onClick={() => setSelectedSpeed(speed)}
-                className={`w-full p-2 text-sm  font-medium rounded-md relative overflow-hidden border transition-all duration-300 
-                ${
-                  selectedSpeed === speed
-                    ? "bg-red-600 text-white border-red-600"
-                    : "bg-gray-50 text-gray-700 border-gray-300 hover:bg-red-600  hover:text-white"
-                }
+                className={`w-full p-2 text-sm md:text-lg  font-medium rounded-md relative overflow-hidden border transition-all duration-300 
+                   ${
+                     activeTab == "Fixed Plan"
+                       ? ` ${
+                           selectedSpeed === speed
+                             ? "bg-red-600 text-white border-red-600"
+                             : "bg-gray-50 text-gray-700 border-gray-300   hover:text-white hover:bg-red-600"
+                         }`
+                       : "bg-gray-200 text-gray-400 border-gray-100 "
+                   }
+               
                 
               `}
               >
                 {/* Hover fill effect */}
                 <span
-                  className={`absolute inset-0 bg-red-600 scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
-                    selectedSpeed === speed ? "scale-150" : ""
-                  }`}
+                  className={`absolute inset-0  ${
+                    activeTab == "Fixed Plan" ? "bg-red-600" : "bg-gray-300"
+                  }
+            
+            scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
+              selectedSpeed === speed ? "scale-150" : ""
+            }`}
                 ></span>
                 <span className="relative z-10">{speed}</span>
               </button>
@@ -92,11 +115,19 @@ export default function FixedPlan({
 
         {/* 🔘 Validity Selection */}
 
-        <div className="bg-red-50 border border-red-100 m-0 p-2 rounded-xl">
-          <h3 className="w-full text-start text-gray-800 text-sm font-semibold mb-2">
+        <div
+          className={` ${
+            activeTab == "Fixed Plan" ? "bg-red-50 " : "bg-gray-100 "
+          }  border border-red-100  m-0 p-2 rounded-xl`}
+        >
+          <h3
+            className={`w-full text-start  ${
+              activeTab == "Fixed Plan" ? "text-gray-800" : "text-gray-400"
+            } text-sm font-semibold mb-2  m-2 md:p-1 md:text-lg`}
+          >
             Choose Your Billing Cycle
           </h3>
-          <div className="grid grid-cols-4 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-4 sm:grid-cols-4 gap-2 md:gap-10">
             {[...validityOptions].reverse().map((v) => {
               const labelMap = {
                 1: "Monthly",
@@ -111,18 +142,24 @@ export default function FixedPlan({
                 <button
                   key={v}
                   onClick={() => setSelectedValidity(v)}
-                  className={`w-full py-2 text-sm font-medium rounded-md relative overflow-hidden border transition-all duration-300 
-          ${
-            selectedValidity === v
-              ? "bg-red-600 text-white border-red-600"
-              : "bg-gray-50 text-gray-700 border-gray-300 hover:bg-red-600 hover:text-white"
-          }
-    
+                  className={`w-full py-2 text-sm font-medium md:text-lg rounded-md relative overflow-hidden border transition-all duration-300 
+
+                     ${
+                       activeTab == "Fixed Plan"
+                         ? ` ${
+                             selectedValidity === v
+                               ? "bg-red-600 text-white border-red-600"
+                               : "bg-gray-50 text-gray-700 border-gray-300 hover:bg-red-600 hover:text-white"
+                           }`
+                         : "text-gray-400 border-gray-300  bg-gray-200/80"
+                     }
         `}
                 >
                   {/* Hover fill effect */}
                   <span
-                    className={`absolute inset-0 bg-red-600 scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
+                    className={`absolute inset-0  ${
+                      activeTab == "Fixed Plan" ? "bg-red-600" : "bg-gray-300"
+                    }  scale-0 group-hover:scale-150 transition-transform duration-500 ease-out rounded-full origin-center ${
                       selectedValidity === v ? "scale-150" : ""
                     }`}
                   ></span>
@@ -136,7 +173,7 @@ export default function FixedPlan({
         {/* 💡 Filtered Plans */}
         <div className="mt-6 w-full">
           {filteredPlans.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4  ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4  ">
               {filteredPlans.map((plan, index) => {
                 const isSelectedValidity = plan.validity === selectedValidity;
                 const isSelectedSpeed = plan.internetSpeed === selectedSpeed;
@@ -161,14 +198,19 @@ export default function FixedPlan({
                       <>
                         {/* Ribbon */}
                         <div
-                          className="absolute top-5 -left-10 w-40 h-8 
-             bg-gradient-to-r from-[#e01212] to-red-700 
+                          className={`absolute top-5 -left-10 w-40 h-8 
+${
+  activeTab == "Fixed Plan"
+    ? "bg-gradient-to-r from-[#e01212] to-red-700"
+    : "bg-gray-400"
+}
+              
              text-white text-center font-semibold text-sm tracking-wide 
              flex items-center justify-center 
              transform -rotate-45 
              shadow-[0_2px_8px_rgba(0,0,0,0.4)] 
              before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/10 before:to-transparent 
-             rounded-sm"
+             rounded-sm`}
                         >
                           {discount}% OFF
                         </div>
@@ -183,7 +225,7 @@ export default function FixedPlan({
                     )} */}
 
                     {/* 🏷️ Title */}
-                    <h2 className=" flex flex-col  text-lg font-semibold text-gray-900 mb-1 ">
+                    <h2 className=" flex flex-col  text-lg 2xl:text-2xl xl:text:xl font-semibold text-gray-900 mb-1 ">
                       {`Skylink Red  ${plan.name || ` ₹${plan.price}`}`}{" "}
                       <span className="text-gray-600 font-normal text-xs">
                         {plan.internetSpeed ? `${plan.internetSpeed}` : ""}
@@ -245,7 +287,11 @@ export default function FixedPlan({
                                     alt={tv}
                                     width={24} // h-6 = 1.5rem = 24px
                                     height={24}
-                                    className="object-contain rounded-md border border-gray-200"
+                                    className={`object-contain rounded-md border border-gray-200  ${
+                                      activeTab == "Fixed Plan"
+                                        ? ""
+                                        : "grayscale"
+                                    }`}
                                   />
                                 ))}
                                 {/* <div className="flex h-6 w-6 object-contain rounded-md border border-gray-200 text-[6px] content-center align-center text-center p-0">
@@ -258,7 +304,7 @@ export default function FixedPlan({
                           </div>
                           <div>
                             <span className="font-semibold">
-                              {plan.tvChannels}
+                              {plan.tvChannels} +
                             </span>
                             <p className="text-xs text-gray-500">TV Channels</p>
                           </div>
@@ -269,16 +315,22 @@ export default function FixedPlan({
                           <div className="flext justify  content-center  ">
                             {plan.mainOTTs?.length > 0 && (
                               <div className="flex flex-wrap gap-1 justify-center">
-                                {plan.mainOTTs.slice(0, 4).map((ott, i) => (
-                                  <Image
-                                    key={i}
-                                    src={getImagePath(ott, "OTT")}
-                                    alt={ott}
-                                    width={24} // h-6 = 1.5rem = 24px
-                                    height={24}
-                                    className="object-contain rounded-md border border-gray-200"
-                                  />
-                                ))}
+                                {plan.mainOTTs[discountIndex]
+                                  .slice(0, 4)
+                                  .map((ott, i) => (
+                                    <Image
+                                      key={i}
+                                      src={getImagePath(ott, "OTT")}
+                                      alt={ott}
+                                      width={24} // h-6 = 1.5rem = 24px
+                                      height={24}
+                                      className={`object-contain rounded-md border border-gray-200  ${
+                                        activeTab == "Fixed Plan"
+                                          ? ""
+                                          : "grayscale"
+                                      }`}
+                                    />
+                                  ))}
                                 {/* <div className="flex h-6 w-6 object-contain rounded-md border border-gray-200 text-[6px] content-center align-center text-center p-0">
                               <span className="w-full content-center align-center text-center p-0 m-0 ">
                                 + more
@@ -302,12 +354,22 @@ export default function FixedPlan({
                       <span className="text-xl text-center font-bold text-gray-900">
                         ₹{plan.price}{" "}
                         <span className="font-normal text-gray-600 text-lg">
-                          x {selectedValidity}
+                          x {selectedValidity} Months
                         </span>
                       </span>
                       <span className="lg:text-sm text-[8px] text-gray-500">
                         + GST
                       </span>
+                      {plan.installationCharges[discountIndex] != 0 ? (
+                        <>
+                          {" "}
+                          <span className="lg:text-sm text-[8px] text-gray-500">
+                            + Installation Charges
+                          </span>
+                        </>
+                      ) : (
+                        <></>
+                      )}
                       {plan.originalPrice && (
                         <span className="line-through text-xs text-gray-400 ml-2">
                           ₹{plan.originalPrice}
