@@ -77,7 +77,9 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                       : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
-                  {tab.key}
+                  {tab.key === "Fixed Plan"
+                    ? "Explore Our Standard Plans"
+                    : "Customize Your Own Plans"}
                 </button>
                 {i === 0 && (
                   <span className="text-gray-500 font-medium text-sm">or</span>
