@@ -9,10 +9,10 @@ export default function IconFlexBanner() {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Want to know how fast you are going?
+            Test Your Connection Speed
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Use this internet speed test to check the download and upload speeds of the internet connection you’re currently using.
+           Check how fast you’re really connected.
           </p>
         </div>
 
@@ -42,7 +42,8 @@ export default function IconFlexBanner() {
                       Check device speed
                     </h3>
                     <p className="text-gray-600 mb-4 leading-relaxed">
-                      Check the speed between your device and the internet. You can run the test through a cellular (mobile) network, a wired connection, or your local Wi-Fi.
+                      Run a speed test to measure your device's download and upload performance, whether on
+mobile data, Wi-Fi, or wired internet.
                     </p>
 
                     {/* Speedtest Label */}
@@ -108,8 +109,7 @@ export default function IconFlexBanner() {
                       Check your Skylink<br/>Wi-Fi Gateway speed
                     </h3>
                     <p className="text-gray-600 leading-relaxed text-sm">
-                      Already an Skylink customer? Sign in to test the speed between your Skylink Wi-Fi Gateway and the Skylink network. Explore faster internet options.
-                    </p>
+                     Already with Skylink? Sign in to test your Skylink Wi-Fi Gateway speed and explore upgrade options for even smoother performance. </p>
                   </div>
                 </div>
               </div>

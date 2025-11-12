@@ -8,6 +8,7 @@ export default function RectangleBanner({
   eyebrow,
   heading,
   description,
+  subDescription,
   buttonText,
   buttonLink,
   darkTheme = true,
@@ -49,7 +50,7 @@ export default function RectangleBanner({
           {/* Heading */}
           {heading && (
             <h2
-              className="text-xl sm:text-2xl lg:text-4xl font-bold leading-snug mb-2 drop-shadow-md"
+              className="text-xl sm:text-2xl lg:text-5xl font-bold leading-snug mb-2 drop-shadow-md"
               dangerouslySetInnerHTML={{ __html: heading }}
             ></h2>
           )}
@@ -57,8 +58,14 @@ export default function RectangleBanner({
           {/* Description */}
           {description && (
             <div
-              className="text-xs sm:text-base leading-relaxed mb-4 break-words opacity-90"
+              className="text-sm sm:text-base leading-relaxed mb-4 break-words opacity-90"
               dangerouslySetInnerHTML={{ __html: description }}
+            ></div>
+          )}
+          {subDescription &&(
+            <div
+              className="text-xs lg:text-xs sm:text-base leading-relaxed mb-4 break-words opacity-90"
+              dangerouslySetInnerHTML={{ __html: subDescription }}
             ></div>
           )}
 
