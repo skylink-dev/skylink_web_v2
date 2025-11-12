@@ -22,26 +22,26 @@ export const dynamicImageContent = [
   {
     img: "/assets/tv-wi-fi-built-for-the-next-gen.jpg",
     icon: ("/assets/wifi-next-gen.png"),
-    title: "Wi-Fi built for the next gen",
-    description: "Skylink All-Fi™ delivers everything you need for a reliable connection.",
+    title: "Wi-Fi That Understands Your Routine",
+    description: "Skylink All-Fi™ adjusts to how your home actually uses the internet, keeping your video calls, streaming, and browsing steady throughout the day.",
   },
   {
     img: "/assets/tv-more-coverage-in-more-places.jpg",
     icon: ("/assets/more-places.png"),
-    title: "More coverage in more places",
-    description: " Extenders connect to your Skylink Wi-Fi Gateway to provide increased speed and coverage within your home.",
+    title: "Coverage That Reaches Every Corner",
+    description: " All-Fi mesh expands range intelligently so every floor and corner stays connected, without the need for extra wiring.",
   },
   {
     img: "/assets/your-security-top-priority.jpg",
     icon: ("/assets/your-security-top-security.png"),
-    title: "Your security is our top priority",
-    description: "Skylink ActiveArmor SM helps stop threats before they get to you.",
+    title: "Security You Can See Working",
+    description: "Real-time protection filters unsafe sites and suspicious activity before they slow you down.",
   },
   {
     img: "/assets/tv-your-home-wi-fi-your-rules.jpg",
     icon: ("/assets/wifi-and-rules.png"),
-    title: "Your home Wi-Fi. Your rules.",
-    description: "Download the Skylink Smart Home Manager app and take control of your Wi-Fi experience.",
+    title: "Control That Fits in Your Hand",
+    description: "With Skylink IPTV, your favorite channels, apps, and live TV work together under one simple interface.",
   },
 ]
 
@@ -63,63 +63,74 @@ export const iconMoreDetailcontent = [{
 }];
 export const faqContent = [
   {
-    title: "What is fiber broadband and how is it better?",
-    content: "Fiber broadband uses optical cables to deliver internet at ultra-high speeds. It offers faster, more reliable connections compared to traditional copper or DSL, especially during peak usage hours."
+    title: "What makes fiber broadband better than regular internet?",
+    content:
+      "Fiber broadband transmits data as light through glass cables - not electricity through copper. That means faster speeds, lower lag, and reliable performance even during busy hours. Perfect for streaming, gaming, and working - all at once."
   },
   {
-    title: "How fast is Skylink Fiber internet?",
-    content: "Skylink Fiber offers speeds up to 5Gbps with equal upload and download rates, ideal for streaming, gaming, remote work, and smart home devices. Actual speeds may vary based on location and setup."
+    title: "How much internet speed do I really need?",
+    content:
+      "Most homes function smoothly with 100–300 Mbps, but if you stream in 4K, play online games, or use multiple smart devices, 500 Mbps or higher keeps everything running without delay. Skylink offers flexible plans to match your lifestyle, not just your browsing habits."
   },
   {
-    title: "What equipment do I need for Skylink Fiber?",
-    content: "You’ll need a compatible fiber gateway with Wi-Fi 6 or Wi-Fi 6E support for best performance. Our technicians will install and configure everything during setup."
+    title: "Will my connection slow down when everyone’s online?",
+    content:
+      "Nope. Skylink Fiber utilizes dedicated fiber lines that can handle heavy traffic without bottlenecks. So even when everyone’s streaming or calling, your connection stays steady."
   },
   {
-    title: "Is Wi-Fi 6/6E necessary for high-speed fiber?",
-    content: "While not required, Wi-Fi 6 or Wi-Fi 6E routers significantly improve speed, range, and capacity for multiple devices in modern homes. Skylink provides gateways compatible with the latest standards."
+    title: "How long does installation take?",
+    content:
+      "Once your address is fiber-ready, setup takes around 2–4 hours. Our technicians handle wiring, configuration, and testing - you’ll be online the same day."
   },
   {
-    title: "Can I use my own router with Skylink Fiber?",
-    content: "Yes, you can use your own router if it supports fiber speeds and is compatible. However, using the Skylink-provided gateway ensures full support and optimal performance."
+    title: "Can I watch OTT apps and live TV without a set-top box?",
+    content:
+      "Yes. Skylink’s OTT-ready broadband lets you stream Disney+ Hotstar, Zee5, YouTube, and live channels directly on your smart TV or device. No boxes. No cables. Just one connection for everything."
   },
   {
-    title: "What is the average installation time for fiber broadband?",
-    content: "Skylink Fiber installation typically takes 2 to 4 hours. It includes running fiber to your home, setting up equipment, and testing the network."
+    title: "My Wi-Fi signal isn’t strong in every room. What should I do?",
+    content:
+      "Upgrade to a Skylink Wi-Fi 6 or mesh router for stronger coverage. It delivers faster speeds and smooth connectivity across bedrooms, balconies, and areas your old router overlooked."
   },
   {
-    title: "Is Skylink Fiber available in my area?",
-    content: "Skylink is expanding rapidly. Use our online tool to check availability at your address or sign up for notifications when it becomes available in your region."
+    title: "Does Skylink really offer unlimited data?",
+    content:
+      "Yes - and we mean it. Every Skylink plan includes true unlimited data with no caps, throttling, or conditions. Stream, download, and work freely without watching a meter."
   },
   {
-    title: "Does Skylink offer unlimited internet data?",
-    content: "Yes, all Skylink Fiber plans include unlimited data with no caps or throttling, so you can stream, game, and work freely."
+    title: "Can I use my own router with Skylink?",
+    content:
+      "Absolutely. If your router supports high-speed fiber, it’ll work just fine. For the best stability and full technical support, we recommend our certified Skylink gateways."
   },
   {
-    title: "Are there any contracts or hidden fees?",
-    content: "Skylink plans come with no annual contracts and no hidden fees. Equipment rental is included in your plan."
+    title: "Is Skylink available in my area?",
+    content:
+      "We’re growing across India every month. Check your address on the Skylink website or sign up for updates - we’ll let you know the moment we reach your street."
   },
   {
-    title: "Are there discounts for combining fiber and mobile?",
-    content: "Yes. Bundling Skylink Fiber with Skylink Mobile gives you up to 20% monthly savings. Additional perks and promos may also apply."
+    title: "What kind of customer support does Skylink offer?",
+    content:
+      "Our India-based support teams are available 24×7 via chat, call, and WhatsApp. Whether it’s setup help or troubleshooting, most issues are fixed on the first contact - by real people who know your area."
   }
 ];
 
+
 export const faqSecondContent = [
   {
-    title: "What makes Skylink Fiber internet different?",
-    content: "Skylink Fiber uses cutting-edge fiber optic technology to deliver internet at ultra-high speeds directly to your home. Unlike cable internet that relies on copper wires, fiber provides faster, more consistent speeds with low latency. As of 2025, Skylink offers plans up to 5 GIG, with maximum single-device wired speeds of 4.7Gbps. Performance may vary by location. Check your address for availability."
+    title: "Fiber That Grows With You",
+    content: "Whether you’re working from home or building a business, Skylink Fiber scales effortlessly. Reliable today, ready for tomorrow’s speed demands."
   },
   {
-    title: "Internet powered by Skylink Fiber",
-    content: "From streaming in 4K to managing smart homes, Skylink Fiber keeps up with modern demands. Choose from multiple plans — 300 Mbps, 500 Mbps, 1 GIG, 2 GIG, and 5 GIG — all designed to deliver fast, seamless internet for every type of user. All plans include Wi-Fi 6 support, unlimited data, and professional installation."
+    title: "Seamless Streaming, Zero Guesswork",
+    content: "No buffering, no drops. Every Skylink connection is optimized for HD and 4K playback on multiple devices, all at once."
   },
   {
-    title: "Smarter homes with the Skylink Smart Home Manager",
-    content: "Take control of your digital life with the Skylink Smart Home Manager app. Set up parental controls, manage connected devices, optimize speed by device, and track data usage — all in one place. Compatible with Skylink fiber gateways supporting Wi-Fi 6 and Wi-Fi 6E."
+    title: "Smart Control, Simplified",
+    content: "Manage your devices, set limits, and check performance right from your TV interface. Simple controls that keep you in charge."
   },
   {
-    title: "Truly unlimited data at home",
-    content: "Every Skylink Fiber plan includes unlimited data. That means no data caps, no overage charges, and no throttling — just reliable, high-speed internet no matter how much you stream, game, or work from home."
+    title: "Support That Stays Human",
+    content: "Real people, real help available across India to solve issues without long waits or confusion. Because connection should come with care."
   }
 ];
 
@@ -127,29 +138,29 @@ export const iconCard = [
   {
     icon: ("/assets/device-protection.png"),
     title: "Device protection",
-    description: "Covers mechanical and electrical breakdowns, plus accidental damage, regardless of where it was purchased. No receipt required.",
+    description: "Covers electrical and mechanical breakdowns, plus accidental damage - no receipts or store restrictions needed.",
     legal: "",
   },
   {
     icon: ("/assets/device-support.png"),
-    title: "Device support",
-    description: "24/7 support with setup, troubleshooting, performance optimization, data backup, virus removal, etc., over the phone.",
+    title: "24/7 Support",
+    description: "Get real help anytime. From setup and troubleshooting to data backup and virus removal, our experts are one call away.",
     legal: "​",
   },
   {
     icon: ("/assets/home-consultation.png"),
     title: "In-home consultations",
-    description: "Health check of in-home network, customer education, configuration, setup, and optimization of smart home devices. Up to two per year.",
+    description: "Schedule up to two visits a year for network health checks, device setup, and personalized smart-home guidance.",
     legal: "",
   },
   {
     icon: ("/assets/device-installation.png"),
-    title: "Device Installations",
-    description: "Optimize placement, physically install, mount, configure, and connect to network, and smart home ecosystem. (₹49 per device).",
+    title: "Professional Device Installations",
+    description: "We mount, connect, and optimize every device for the best performance in your home - all for just ₹49 per device.",
     legal: "​",
   },
 ];
-export const IcontitleData = { title: "One simple plan that covers your gadgets", description: "Enjoy repair, replacement, and 24/7 expert support for virtually all your home electronics. All for just ₹399 a month.", links: [{ title: "  See offer details", url: "/" }] }
+export const IcontitleData = { title: "One Simple Plan for Every Gadget", description: "Complete device protection for your home, quick fixes, replacements, and setup help for ₹399 a month.", links: [{ title: "  See offer details", url: "/" }] }
 export const dynamicSlidesData = [
   {
     imgSrc: '/assets/fibernet-image.jpg',
@@ -225,8 +236,8 @@ export const flexCardData = [
     id: 1,
     title: 'Zero Downtime.',
     subtitle: 'Introducing the Skylink Guarantee',
-    description: ' Any downtime, you get a full day credited. Our Promise. ',
-    details: 'Applicable for outages over 20 minutes*',
+    description: ' A full-day credit for every verified outage. Simple as that. ',
+    details: 'Applicable for outages over 20 minutes. Terms and exclusions apply.',
     leftImage: "/assets/1gbps.jpg",
     mobileLeftImage: "/assets/save-big-data.jpg", 
     link: '/buy/internet/broadband.html'
@@ -234,28 +245,28 @@ export const flexCardData = [
 ];
 export const rightContentFlexData = {
   subheading: "Combo Plan: Broadband + Live TV + OTT",
-  heading: "Save More with Skylink Combo Packs",
-  description: "Bundle internet, TV & OTT and save up to 15% with Skylink Combo Plans.",
-  legal: "Available in select regions. Terms & conditions apply.",
+  heading: "Smarter bundles. Bigger savings.",
+  description: "Save up to 15% when you combine high-speed internet, live TV, and OTT entertainment in one Skylink Combo Plan.",
+  legal: "Available in select regions. Conditions apply.",
   smaallcta: "See combo details.",
   mainCta: "Choose Your Plan"
 };
 export const contentData = {
   subtitle: "Reliable Internet for Small Businesses",
-  title: "Business Internet Made Simple",
-  description: "Get fast internet, backup connectivity, and secure Wi-Fi in one easy bundle — perfect for any small business.",
+  title: "Work Never Waits. Neither Should You.",
+  description: "Stay connected and protected with Skylink’s business-grade fiber built for performance, uptime, and steady growth.",
   contentlists: [
-    "Skylink Business Fiber – Up to 1 Gbps",
-    "Managed Internet Backup – Stay online during outages (up to 2 devices)",
-    "Business-Class Wi-Fi Gateway – Secure & stable"
+    "Up to 1 Gbps fiber connectivity for offices and shops",
+    "Managed Internet Backup to stay online during outages (supports up to two devices)",
+    "Business-Class Wi-Fi Gateway with advanced security and dependable uptime"
   ]
 };
-export const HeroContent = { image: "assets/broadband-family.jpg", title: "Internet for the entire household", description: "Enjoy consistent speeds, reliability, guaranteed simple, straightforward pricing, and complete Wi-Fi coverage.", additionaldescription: "Limited availability/areas. Based on wired connection to the gateway.", subcta: "Shop Skylink Fiber", maincta: "Call (+91)  99441 99445" };
+export const HeroContent = { image: "assets/broadband-family.jpg", title: "Connection that fits your home, not the other way around.", description: "Consistent speed, honest pricing, and Wi-Fi made for every corner.", additionaldescription: "Limited availability/areas. Based on wired connection to the gateway.", subcta: "Shop Skylink Fiber", maincta: "Call (+91)  99441 99445" };
 export const SpeedContent = {
-  headingTop: "Join the Skylink Family",
-  headingMain: "Grow with us.<br/>Shape the future.",
-  description: "Partner with Skylink to deliver broadband, OTT, and TV across India. Built on trust, growth, and shared success.",
-  subDescription: "Perfect for ISPs, cable operators, and local entrepreneurs.",
+  headingTop: "Join the Skylink Network",
+  headingMain: "Grow with purpose.<br/> Build the future of connectivity.",
+  description: "Partner with Skylink to bring broadband, OTT, and TV to homes across India.",
+  subDescription: "Built on trust, reliability, and shared growth.",
   ctaText: "Start your partnership today.",
   ctaLink: "/partner-with-us",
   slides: [
@@ -286,8 +297,8 @@ export const SpeedContent = {
 ]}
 export const simpleContent = {
   backgroundImage: "/assets/speed-lines.jpg",
-  eyebrowText: "Blazing Fast Fiber Internet",
-  heading: "Skylink Fiber — Fast. Reliable. Seamless.",
-  subText: "Engineered for 4K streaming, online gaming, and smart homes.",
-  legalNote: "Speeds vary by plan and location. Based on internal network testing and user experience.",
+  eyebrowText: "Next-Gen Fiber Internet",
+  heading: "Skylink Fiber - steady, responsive, and built for how you live online",
+  subText: "Perfect for streaming, gaming, and powering every smart device in your home.",
+  legalNote: "(Actual speeds depend on your plan and location.)",
 }

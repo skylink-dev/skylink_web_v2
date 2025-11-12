@@ -129,24 +129,24 @@ export default function page() {
   ];
   const faqSecondContent = [
     {
-      title: "What makes Skylink Fiber internet different?",
+      title: "Fiber That Grows With You",
       content:
-        "Skylink Fiber uses cutting-edge fiber optic technology to deliver internet at ultra-high speeds directly to your home. Unlike cable internet that relies on copper wires, fiber provides faster, more consistent speeds with low latency. As of 2025, Skylink offers plans up to 5 GIG, with maximum single-device wired speeds of 4.7Gbps. Performance may vary by location. Check your address for availability.",
+        "Whether you’re working from home or building a business, Skylink Fiber scales effortlessly. Reliable today, ready for tomorrow’s speed demands.",
     },
     {
-      title: "Internet powered by Skylink Fiber",
+      title: "Seamless Streaming, Zero Guesswork",
       content:
-        "From streaming in 4K to managing smart homes, Skylink Fiber keeps up with modern demands. Choose from multiple plans — 300 Mbps, 500 Mbps, 1 GIG, 2 GIG, and 5 GIG — all designed to deliver fast, seamless internet for every type of user. All plans include Wi-Fi 6 support, unlimited data, and professional installation.",
+        "No buffering, no drops. Every Skylink connection is optimized for HD and 4K playback on multiple devices, all at once.",
     },
     {
-      title: "Smarter homes with the Skylink Smart Home Manager",
+      title: "Smart Control, Simplified",
       content:
-        "Take control of your digital life with the Skylink Smart Home Manager app. Set up parental controls, manage connected devices, optimize speed by device, and track data usage — all in one place. Compatible with Skylink fiber gateways supporting Wi-Fi 6 and Wi-Fi 6E.",
+        "Manage your devices, set limits, and check performance right from your TV interface. Simple controls that keep you in charge.",
     },
     {
-      title: "Truly unlimited data at home",
+      title: "Support That Stays Human",
       content:
-        "Every Skylink Fiber plan includes unlimited data. That means no data caps, no overage charges, and no throttling — just reliable, high-speed internet no matter how much you stream, game, or work from home.",
+        "Real people, real help available across India to solve issues without long waits or confusion. Because connection should come with care.",
     },
   ];
   const contentData = {
@@ -410,7 +410,7 @@ export default function page() {
       />
       <ContactFormNew />
       <Faq
-        title="More reasons to love Skylink Fiber internet"
+        title="More reasons to love Skylink"
         content={faqSecondContent}
       />
     </>
