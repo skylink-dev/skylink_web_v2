@@ -7,7 +7,7 @@ import ContactPopup from "../../plans/component/ContactPopup";
 import AlertModal from "@/components/alert/AlertModal";
 
 export default function PlansTabs({ isMobile, plans, isMediumSize }) {
-  const [activeTab, setActiveTab] = useState("Customize Plan");
+  const [activeTab, setActiveTab] = useState("Custom Plan");
   const [fade, setFade] = useState(true);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [alertInfo, setAlertInfo] = useState({
@@ -19,10 +19,10 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  // const tabs = ["Customize Plan", "Fixed Plan"];
+  // const tabs = ["Custom Plan", "Fixed Plan"];
   const tabs = [
     {
-      key: "Customize Plan",
+      key: "Custom Plan",
     },
     {
       key: "Fixed Plan",
@@ -159,6 +159,9 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                 isMobile={isMobile}
                 plans={plans}
                 activeTab={activeTab}
+                setSelectedPlan={setSelectedPlan}
+                isContactOpen={isContactOpen}
+                setIsContactOpen={setIsContactOpen}
               />
             )}
           </>
@@ -169,18 +172,19 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
               <motion.div
                 className="flex-1 min-w-[70%]"
                 onClick={() => {
-                  setActiveTab("Customize Plan");
+                  setActiveTab("Custom Plan");
                 }}
                 variants={variants}
-                animate={
-                  activeTab === "Customize Plan" ? "centerright" : "left"
-                }
+                animate={activeTab === "Custom Plan" ? "centerright" : "left"}
                 transition={{ duration: 0.6, ease: "easeIn" }}
               >
                 <CustomPlan
                   isMobile={isMobile}
                   plans={plans}
                   activeTab={activeTab}
+                  setSelectedPlan={setSelectedPlan}
+                  isContactOpen={isContactOpen}
+                  setIsContactOpen={setIsContactOpen}
                 />
               </motion.div>
 
