@@ -357,19 +357,10 @@ ${
                           x {selectedValidity} Months
                         </span>
                       </span>
-                      <span className="lg:text-sm text-[8px] text-gray-500">
+                      <span className="lg:text-[8px] text-[8px] text-gray-500">
                         + GST
                       </span>
-                      {plan.installationCharges[discountIndex] != 0 ? (
-                        <>
-                          {" "}
-                          <span className="lg:text-sm text-[8px] text-gray-500">
-                            + Installation Charges
-                          </span>
-                        </>
-                      ) : (
-                        <></>
-                      )}
+
                       {plan.originalPrice && (
                         <span className="line-through text-xs text-gray-400 ml-2">
                           ₹{plan.originalPrice}

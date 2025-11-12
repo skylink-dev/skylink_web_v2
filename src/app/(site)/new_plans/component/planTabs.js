@@ -4,10 +4,17 @@ import FixedPlan from "./FixedPlan";
 import { motion } from "framer-motion";
 import CustomPlan from "./CustomPlan";
 import ContactPopup from "../../plans/component/ContactPopup";
+import AlertModal from "@/components/alert/AlertModal";
 
 export default function PlansTabs({ isMobile, plans, isMediumSize }) {
   const [activeTab, setActiveTab] = useState("Customize Plan");
   const [fade, setFade] = useState(true);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [alertInfo, setAlertInfo] = useState({
+    title: "",
+    message: "",
+    type: "success",
+  });
 
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -36,8 +43,19 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
 
   return (
     <div className="w-full">
+      <AlertModal
+        isOpen={isAlertOpen}
+        onClose={() => setIsAlertOpen(false)}
+        title={alertInfo.title}
+        message={alertInfo.message}
+        type={alertInfo.type}
+      />
       <ContactPopup
         isMobile={isMobile}
+        isAlertOpen={isAlertOpen}
+        setIsAlertOpen={setIsAlertOpen}
+        alertInfo={alertInfo}
+        setAlertInfo={setAlertInfo}
         selectedPlan={selectedPlan}
         isOpen={isContactOpen}
         setIsOpen={setIsContactOpen}
