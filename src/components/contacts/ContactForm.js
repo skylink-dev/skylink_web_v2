@@ -1,14 +1,13 @@
 "use client";
 
+import { apiService } from "@/backend/apiservice";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import {
   FaMapMarkerAlt,
   FaEnvelope,
   FaPhoneAlt,
   FaPaperPlane,
 } from "react-icons/fa";
-import { apiService } from "@/backend/apiservice";
 import LocationMap from "./LocationMap";
 
 export default function ContactForm() {
@@ -27,22 +26,11 @@ export default function ContactForm() {
 
   const services = [
     "How we can help you?",
-    "Services Needed",
-    "Business Plans",
-    "Enterprise Plan",
-    "Lease Line",
-    "AWS",
-    "Azure",
-    "Google",
-    "Broadband Connection",
-    "DTH / IPTV / Digital TV",
-    "Wi-Fi 6",
-    "Plan Upgraded / Downgraded",
-    "Cloud Surveillance",
-    "Parental Control",
-    "Enable IOT",
-    "CCTV",
-    "Home Automation",
+    "Technical",
+    "Billing",
+    "New Connection / Installation",
+    "OTT / IPTV",
+    "Others",
   ];
 
   const validateMobile = (mobile) => /^[6-9]\d{9}$/.test(mobile);
@@ -56,13 +44,12 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
+
     if (!formData.firstName.trim())
       newErrors.firstName = "First name is required";
-    if (!formData.mobile.trim()) {
-      newErrors.mobile = "Mobile number is required";
-    } else if (!validateMobile(formData.mobile)) {
+    if (!formData.mobile.trim()) newErrors.mobile = "Mobile number is required";
+    else if (!validateMobile(formData.mobile))
       newErrors.mobile = "Please enter a valid 10-digit Indian mobile number";
-    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -84,7 +71,7 @@ export default function ContactForm() {
         address: "",
         message: "",
       });
-      setTimeout(() => setSubmitStatus(null), 5000);
+      setTimeout(() => setSubmitStatus(null), 4000);
     } catch (error) {
       setSubmitStatus("error");
     } finally {
@@ -93,213 +80,233 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 px-4 py-8 md:px-12 lg:px-16">
-      <div className="max-w-6xl mx-auto grid gap-12 md:grid-cols-2 items-start">
-        {/* LEFT COLUMN */}
-        <motion.div
-          className="space-y-4 relative"
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-sky-100 to-indigo-100 py-12 px-4">
+      <div className="max-w-4/5 mx-auto grid gap-10 lg:grid-cols-2">
+        {/* Left Section */}
+        <div className="flex flex-col gap-8">
           {/* Header */}
           <div>
-            <div className="inline-block bg-red-100 text-red-600 font-semibold text-xs uppercase tracking-wider px-4 py-1 rounded-full mb-3">
+            <span className="inline-block text-sm font-semibold uppercase tracking-wide text-red-600 bg-red-100 px-4 py-2 rounded-full mb-4">
               Secure Connections
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            </span>
+            <h1 className="text-4xl font-bold text-gray-900 leading-tight">
               We Offer The{" "}
-              <span className="bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 bg-clip-text text-transparent">
                 Highest-Quality
               </span>{" "}
               <span className="text-red-600">Network Connections</span>
             </h1>
-            <p className="text-gray-600 mt-3">
-              Experience blazing speeds and unmatched reliability for both home
-              and business connections — we ensure you’re always connected.
+            <p className="text-gray-600 mt-4 text-lg">
+              Our network connections are designed to provide unmatched
+              reliability and speed, ensuring seamless online experiences for
+              both personal and business use.
             </p>
           </div>
 
-          {/* Map Component */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <LocationMap />
-          </motion.div>
-        </motion.div>
+          {/* Cards */}
+          <div className="flex flex-col gap-4">
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* Phone */}
+              <div className="group bg-white p-6 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white group-hover:scale-110 transition-transform duration-300">
+                    <FaPhoneAlt className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      Call Us
+                    </h3>
+                    <a
+                      href="tel:+919944199445"
+                      className="text-blue-600 font-medium hover:text-green-600 transition"
+                    >
+                      (+91) 99441 99445
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-        {/* RIGHT COLUMN - Contact Form */}
-        <motion.div
-          className="bg-white/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-gray-100"
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Title */}
-          <h2
-            className="text-3xl md:text-4xl text-center 
-            bg-gradient-to-tl from-purple-600 via-red-600 to-red-300 bg-clip-text font-bold text-transparent mb-2"
-          >
+              {/* Email */}
+              <div className="group bg-white p-6 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white group-hover:scale-110 transition-transform duration-300">
+                    <FaEnvelope className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      Email Us
+                    </h3>
+                    <a
+                      href="mailto:info@skylink.net.in"
+                      className="text-blue-600 font-medium hover:text-green-600 transition"
+                    >
+                      info@skylink.net.in
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Address */}
+            <div className="group bg-white p-6 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="flex flex-col lg:flex-row items-start gap-6">
+                {/* Icon + Address */}
+                <div className="flex flex-col sm:flex-row items-start gap-4 lg:w-1/2">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 text-white group-hover:scale-110 transition-transform duration-300">
+                    <FaMapMarkerAlt className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      Our Location
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Skylink Fibernet Private Limited,
+                      <br />
+                      B6, II Floor, Vue Grande,
+                      <br />
+                      339 Chinnaswamy Road,
+                      <br />
+                      Siddha Pudhur,
+                      <br />
+                      Coimbatore - 641044
+                    </p>
+                  </div>
+                </div>
+
+                {/* Map */}
+                <div className="w-full lg:w-1/2">
+                  <div className="overflow-hidden rounded-xl shadow-lg h-64 sm:h-72">
+                    <iframe
+                      src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Skylink%20Fibernet%20Private%20Limited+(My%20Business%20Name)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                      title="Skylink Fibernet Private Limited Location"
+                      className="w-full h-full border-0"
+                      allowFullScreen
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Section - Contact Form */}
+        <div className="bg-white rounded-3xl shadow-2xl pb-21 p-8">
+          <h2 className="text-3xl font-bold text-center text-red-600 mb-8">
             Contact Us
           </h2>
 
-          {/* Contact Cards */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {/* Email Card */}
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              href="mailto:info@skylink.net.in"
-              className="flex min-w-[150px] items-center gap-4 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex-1  cursor-pointer"
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            {/* Service */}
+            <select
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+              className={`w-full p-3 rounded-lg border-2 ${
+                errors.service ? "border-red-500 bg-red-50" : "border-gray-200"
+              } focus:border-red-500 focus:ring-2 focus:ring-red-100 outline-none transition`}
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-tr from-purple-500 to-pink-500 text-white text-xl">
-                <FaEnvelope />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800 text-lg">
-                  Email Us
-                </h3>
-                <p className="text-blue-600 text-sm font-medium break-all">
-                  info@skylink.net.in
-                </p>
-              </div>
-            </motion.a>
+              {services.map((s, i) => (
+                <option key={i} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+            {errors.service && (
+              <p className="text-red-500 text-sm">{errors.service}</p>
+            )}
 
-            {/* Call Card */}
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              href="tel:+919944199445"
-              className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex-1 min-w-[250px] cursor-pointer"
-            >
-              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-tr from-emerald-500 to-green-600 text-white text-xl">
-                <FaPhoneAlt />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800 text-lg">Call Us</h3>
-                <p className="text-blue-600 text-sm font-medium">
-                  (+91) 99441 99445
-                </p>
-              </div>
-            </motion.a>
-          </div>
-
-          {/* Subtitle */}
-          <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center">
-            Let Us Contact You
-          </h2>
-
-          {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Service Dropdown */}
-            <div>
-              <select
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 border-2 rounded-lg text-gray-700 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 transition ${
-                  errors.service
-                    ? "border-red-500 bg-red-50"
-                    : "border-gray-200"
-                }`}
-              >
-                {services.map((service, index) => (
-                  <option key={index} value={service}>
-                    {service}
-                  </option>
-                ))}
-              </select>
-              {errors.service && (
-                <p className="text-red-600 text-sm mt-1">{errors.service}</p>
-              )}
-            </div>
-
-            {/* Name Fields */}
-            <div className="grid md:grid-cols-2 gap-4">
+            {/* Name */}
+            <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <input
-                  type="text"
                   name="firstName"
+                  placeholder="First name"
                   value={formData.firstName}
                   onChange={handleChange}
-                  placeholder="First Name"
-                  className={`w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition ${
+                  className={`w-full p-3 rounded-lg border-2 ${
                     errors.firstName
                       ? "border-red-500 bg-red-50"
                       : "border-gray-200"
-                  }`}
+                  } focus:border-red-500 focus:ring-2 focus:ring-red-100 transition outline-none`}
                 />
                 {errors.firstName && (
-                  <p className="text-red-600 text-sm mt-1">
-                    {errors.firstName}
-                  </p>
+                  <p className="text-red-500 text-sm">{errors.firstName}</p>
                 )}
               </div>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                placeholder="Last Name"
-                className="w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 border-gray-200 transition"
-              />
+              <div>
+                <input
+                  name="lastName"
+                  placeholder="Last name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-lg border-2 border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-100 transition outline-none"
+                />
+              </div>
             </div>
 
-            {/* Email and Mobile */}
-            <div className="grid md:grid-cols-2 gap-4">
+            {/* Email & Mobile */}
+            <div className="grid sm:grid-cols-2 gap-4">
               <input
-                type="email"
                 name="email"
+                type="email"
+                placeholder="Your email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Your Email"
-                className="w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 border-gray-200 transition"
+                className="w-full p-3 rounded-lg border-2 border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-100 transition outline-none"
               />
               <div>
                 <input
-                  type="tel"
                   name="mobile"
+                  type="tel"
+                  placeholder="Mobile number"
+                  maxLength="10"
                   value={formData.mobile}
                   onChange={handleChange}
-                  placeholder="Mobile Number"
-                  maxLength="10"
-                  className={`w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition ${
+                  className={`w-full p-3 rounded-lg border-2 ${
                     errors.mobile
                       ? "border-red-500 bg-red-50"
                       : "border-gray-200"
-                  }`}
+                  } focus:border-red-500 focus:ring-2 focus:ring-red-100 transition outline-none`}
                 />
                 {errors.mobile && (
-                  <p className="text-red-600 text-sm mt-1">{errors.mobile}</p>
+                  <p className="text-red-500 text-sm">{errors.mobile}</p>
                 )}
               </div>
             </div>
 
             {/* Address */}
             <input
-              type="text"
               name="address"
+              placeholder="Your address"
               value={formData.address}
               onChange={handleChange}
-              placeholder="Your Address"
-              className="w-full px-4 py-3 border-2 rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 border-gray-200 transition"
+              className="w-full p-3 rounded-lg border-2 border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-100 transition outline-none"
             />
 
-            {/* Submit Button */}
-            <motion.button
+            {/* Message */}
+            <textarea
+              name="message"
+              placeholder="Your message"
+              rows="4"
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full p-3 rounded-lg border-2 border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-100 transition outline-none"
+            />
+
+            {/* Submit */}
+            <button
               type="submit"
               disabled={isSubmitting}
-              whileHover={!isSubmitting ? { scale: 1.03 } : {}}
-              whileTap={!isSubmitting ? { scale: 0.97 } : {}}
-              className={`w-full py-3 rounded-lg font-semibold text-white text-lg flex items-center justify-center gap-2 transition-all duration-300 ${
+              className={`w-full flex justify-center items-center gap-3 text-white font-semibold py-3 rounded-lg text-lg transition-all ${
                 isSubmitting
                   ? "bg-red-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-red-600 to-red-800 shadow-lg"
+                  : "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 shadow-lg hover:shadow-xl"
               }`}
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
                   Submitting...
                 </>
               ) : (
@@ -307,29 +314,21 @@ export default function ContactForm() {
                   Submit <FaPaperPlane />
                 </>
               )}
-            </motion.button>
+            </button>
 
-            {/* Status */}
+            {/* Status Messages */}
             {submitStatus === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-3 bg-green-100 border border-green-300 text-green-700 rounded-md"
-              >
+              <div className="p-4 bg-green-100 border border-green-300 text-green-700 rounded-lg text-center">
                 ✅ Thank you! Your message has been sent successfully.
-              </motion.div>
+              </div>
             )}
             {submitStatus === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-3 bg-red-100 border border-red-300 text-red-700 rounded-md"
-              >
+              <div className="p-4 bg-red-100 border border-red-300 text-red-700 rounded-lg text-center">
                 ❌ Oops! Something went wrong. Please try again.
-              </motion.div>
+              </div>
             )}
           </form>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

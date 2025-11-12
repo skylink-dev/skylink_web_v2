@@ -36,7 +36,7 @@ export default function SpeedBanner({ mainImage, content }) {
         }}
       >
         {/* Black Overlay for Mobile */}
-        <div className="absolute inset-0 bg-black/80 lg:bg-black/0"></div>
+        <div className="absolute inset-0 bg-black/96 lg:bg-black/0"></div>
       </div>
 
       {/* Content Wrapper */}
