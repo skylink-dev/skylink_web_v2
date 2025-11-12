@@ -6,7 +6,7 @@ import { Play, Pause, Volume2, VolumeX, Maximize2 } from "lucide-react";
 export default function SupportVideos() {
   const [activeCategory, setActiveCategory] = useState("Internet");
   const [activeSub, setActiveSub] = useState("Activate IPTV");
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false); // start paused
   const [isMuted, setIsMuted] = useState(true);
   const [volume, setVolume] = useState(0);
   const [previousVolume, setPreviousVolume] = useState(0.5);
@@ -18,15 +18,15 @@ export default function SupportVideos() {
   const progressBarRef = useRef(null);
 
   const data = {
-    Internet: { video: "/assets/video/internet.mp4", subTabs: [] },
+    Internet: { video: "/newassets/support/videos/internet.mp4", subTabs: [] },
     TV: {
       videos: {
-        "Activate IPTV": "/assets/video/tv.mp4",
-        "Setup IPTV": "/assets/video/tv1.mp4",
+        "Activate IPTV": "/newassets/support/videos/tv.mp4",
+        "Setup IPTV": "/newassets/support/videos/tv1.mp4",
       },
       subTabs: ["Activate IPTV", "Setup IPTV"],
     },
-    OTT: { video: "/assets/video/ott.mp4", subTabs: [] },
+    OTT: { video: "/newassets/support/videos/ott.mp4", subTabs: [] },
   };
 
   const activeData = data[activeCategory];
@@ -35,20 +35,32 @@ export default function SupportVideos() {
       ? activeData.videos[activeSub || "Activate IPTV"]
       : activeData.video;
 
-  // autoplay
+  // reset on category/sub change
   useEffect(() => {
     const v = videoRef.current;
     if (v) {
+      v.pause();
+      v.currentTime = 0;
+      setIsPlaying(false);
       v.volume = volume;
       v.muted = true;
-      v.play().catch(() => {
-        v.muted = true;
-        v.play();
-      });
-      setIsPlaying(true);
       setIsMuted(true);
     }
   }, [activeCategory, activeSub]);
+
+  // pause video when tab is inactive
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const v = videoRef.current;
+      if (document.hidden && v && !v.paused) {
+        v.pause();
+        setIsPlaying(false);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
 
   // track progress
   useEffect(() => {
@@ -62,6 +74,8 @@ export default function SupportVideos() {
 
   const handlePlayPause = () => {
     const v = videoRef.current;
+    if (!v) return;
+
     if (v.paused) {
       v.play();
       setIsPlaying(true);
@@ -74,14 +88,12 @@ export default function SupportVideos() {
   const handleMuteToggle = () => {
     const v = videoRef.current;
     if (v.muted) {
-      // Unmuting - restore previous volume
       v.muted = false;
       const restoreVol = previousVolume > 0 ? previousVolume : 0.5;
       v.volume = restoreVol;
       setVolume(restoreVol);
       setIsMuted(false);
     } else {
-      // Muting - save current volume and set to 0
       setPreviousVolume(volume);
       v.muted = true;
       setVolume(0);
@@ -106,10 +118,6 @@ export default function SupportVideos() {
 
     v.currentTime = newTime;
     setProgress(percent * 100);
-    if (v.paused) {
-      v.play();
-      setIsPlaying(true);
-    }
   };
 
   return (
@@ -179,9 +187,21 @@ export default function SupportVideos() {
             ref={videoRef}
             src={currentVideo}
             className="w-full h-auto object-cover rounded-2xl"
-            autoPlay
             loop
+            playsInline
           />
+
+          {/* Center Play Button Overlay */}
+          {!isPlaying && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+              <button
+                onClick={handlePlayPause}
+                className="w-20 h-20 flex items-center justify-center rounded-full bg-red-600 hover:bg-red-500 transition-all"
+              >
+                <Play size={36} className="text-white ml-1" />
+              </button>
+            </div>
+          )}
 
           {/* Seek Bar */}
           <motion.div
@@ -211,7 +231,7 @@ export default function SupportVideos() {
           >
             {/* Left Controls */}
             <div className="flex items-center gap-3">
-              {/* Play */}
+              {/* Play/Pause */}
               <div className="bg-black/50 backdrop-blur-md w-9 h-9 flex items-center justify-center rounded-full border border-white/10">
                 <button
                   onClick={handlePlayPause}
@@ -221,6 +241,7 @@ export default function SupportVideos() {
                 </button>
               </div>
 
+              {/* Volume */}
               <motion.div
                 onMouseEnter={() => setShowVolumeControls(true)}
                 onMouseLeave={() => setShowVolumeControls(false)}
@@ -267,7 +288,7 @@ export default function SupportVideos() {
                   />
                 )}
 
-                {/* Style */}
+                {/* Slider Styles */}
                 <style jsx global>{`
                   .volume-slider::-webkit-slider-thumb {
                     width: 12px;
