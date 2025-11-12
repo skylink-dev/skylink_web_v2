@@ -99,7 +99,7 @@ export default function ContactForm({onClose}) {
             {/* Toast */}
             {showToast && (
                 <div
-                    className="fixed top-4 right-4 left-4 sm:left-auto sm:right-6 bg-green-600 text-white rounded-xl shadow-lg p-4 z-50 flex items-center gap-3 animate-fade-in">
+                    className="absolute top-1/4 right-10 mx-auto w-11/12 max-w-sm bg-green-600 text-white rounded-xl shadow-lg p-4 z-[60] flex items-center gap-3 animate-fade-in">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-5 h-5 flex-shrink-0"
