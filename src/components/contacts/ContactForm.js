@@ -68,20 +68,8 @@ export default function ContactForm() {
     setSubmitStatus(null);
 
     try {
-      await apiService
-        .submitContactForm(formData)
-        .then((res) => {
-          if (res.id) {
-          } else {
-            setAlertInfo({
-              title: "Error!",
-              message: "Something went wrong. Please try again.",
-              type: "error",
-            });
-          }
-          setIsAlertOpen(true);
-        })
-        .catch((err) => {});
+      await apiService.submitContactForm(formData);
+      setIsAlertOpen(true);
       setSubmitStatus("success");
       setAlertInfo({
         title: "Success!",

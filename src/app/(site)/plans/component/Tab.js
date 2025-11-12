@@ -22,6 +22,7 @@ import ContactPopup from "./ContactPopup";
 import PlanTabs from "../../new_plans/component/planTabs";
 import Image from "next/image";
 import FixedPlan from "../../new_plans/component/FixedPlan";
+import AlertModal from "@/components/alert/AlertModal";
 
 const NewPlanCard = ({
   setInsideAccordionIndex,
@@ -49,6 +50,13 @@ const NewPlanCard = ({
   const showfullPrice = false;
   return (
     <div className="flex flex-wrap justify-center gap-6 w-full">
+      <AlertModal
+        isOpen={isAlertOpen}
+        onClose={() => setIsAlertOpen(false)}
+        title={alertInfo.title}
+        message={alertInfo.message}
+        type={alertInfo.type}
+      />
       {Object.entries(planDetailArray)
         .reverse()
         .map((plan, planIdx) => {

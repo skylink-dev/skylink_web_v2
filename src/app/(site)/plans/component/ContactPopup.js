@@ -15,13 +15,11 @@ export default function ContactPopup({
   isOpen,
   setIsOpen,
   isMobile,
+  isAlertOpen,
+  setIsAlertOpen,
+  alertInfo,
+  setAlertInfo,
 }) {
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
-  const [alertInfo, setAlertInfo] = useState({
-    title: "",
-    message: "",
-    type: "success",
-  });
   const activeCycle = selectedPlan?.activeCycle;
   const activeMbps = selectedPlan?.internetSpeed;
   const discount = selectedPlan?.discount[selectedPlan?.discountIndex];
@@ -154,11 +152,13 @@ export default function ContactPopup({
       console.log("Formdate aith lat and long" + formData);
       await apiService.submitContactForm(formData);
       console.log("Form submitted:", formData);
+      setIsAlertOpen(true);
       setAlertInfo({
         title: "Success!",
         message: "Thank you! We will contact you soon",
         type: "success",
       });
+      setIsAlertOpen(true);
     } catch (err) {
       console.log(err);
       setAlertInfo({
