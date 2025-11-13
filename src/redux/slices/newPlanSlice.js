@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { basePlans } from "../data/planData";
+import { customPlans } from "../data/customPlanData";
 // import { selectivePlans } from "../data/selectivePlans";
 
 const initialState = {
   basePlans,
+  customPlans,
   selectivePlans: [], // need to work
   selectedPlanType: null, // "base" or "selective"
   selectedPlan: null,

@@ -6,7 +6,7 @@ import { Providers } from "../Providers";
 import { PlanProvider } from "../plans/context/PlansContext";
 
 export default function Page() {
-  const plans = useSelector((state) => state.newPlans.basePlans);
+  const plans = useSelector((state) => state.newPlans);
 
   const [isMobile, setIsMobile] = useState(false);
   const [isMediumSize, setIsMediumSize] = useState(false);

@@ -148,7 +148,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
             {activeTab === "Fixed Plan" ? (
               <FixedPlan
                 isMobile={isMobile}
-                plans={plans}
+                plans={plans.basePlans}
                 activeTab={activeTab}
                 setSelectedPlan={setSelectedPlan}
                 isContactOpen={isContactOpen}
@@ -157,7 +157,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
             ) : (
               <CustomPlan
                 isMobile={isMobile}
-                plans={plans}
+                plans={plans.basePlans}
                 activeTab={activeTab}
                 setSelectedPlan={setSelectedPlan}
                 isContactOpen={isContactOpen}
@@ -180,7 +180,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
               >
                 <CustomPlan
                   isMobile={isMobile}
-                  plans={plans}
+                  plans={plans.basePlans}
                   activeTab={activeTab}
                   setSelectedPlan={setSelectedPlan}
                   isContactOpen={isContactOpen}
@@ -200,7 +200,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
               >
                 <FixedPlan
                   isMobile={isMobile}
-                  plans={plans}
+                  plans={plans.basePlans}
                   activeTab={activeTab}
                   setSelectedPlan={setSelectedPlan}
                   isContactOpen={isContactOpen}
