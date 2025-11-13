@@ -367,7 +367,7 @@ export default function page() {
         heading={`Benefits of Partnering`}
         description={`Partnering with Skylink unlocks high-margin opportunities, 24/7 support, and advanced technology. With scalable data centers and widespread POPs, you’ll deliver fast, reliable internet and IPTV solutions that drive business growth and customer satisfaction.`}
         buttonText="Learn More"
-        buttonLink="/guarantee"
+        buttonLink="/internet"
       />
       <SimpleColumnSection
         title="What’s Right for You?"

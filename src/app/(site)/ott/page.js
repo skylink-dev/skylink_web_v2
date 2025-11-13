@@ -46,7 +46,7 @@ export default function Page() {
         heading={`Pan-India reliable connectivity<br/>Unbeatable plans you’ll love.<br/>Support that puts you first.`}
         description={`All guaranteed — or we’ll make it right. Available to all eligible customers across India at <span className="nowrap"> no extra cost</span>`}
         buttonText="Learn More"
-        buttonLink="/guarantee"
+        buttonLink="/internet"
       />
       <DynamicCarousel slidesData={dynamicSlidesData} />
       <ContentBaseBanner content={contentBaseBanner2} color="bg-gray-200" />

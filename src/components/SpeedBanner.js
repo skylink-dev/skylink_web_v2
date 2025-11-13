@@ -1,13 +1,14 @@
 'use client'
-import React, { useRef } from 'react'
+import React, {useRef, useState} from 'react'
 import Slider from "react-slick"
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Image from "next/image"
-import Link from 'next/link'
+import ContactForm from "@/components/contact/ContactForm";
 
 export default function SpeedBanner({ mainImage, content }) {
   const sliderRef = useRef();
+    const [isOpen, setIsOpen] = useState(false);
 
   const settings = {
     dots: true,
@@ -55,15 +56,17 @@ export default function SpeedBanner({ mainImage, content }) {
           <p className="text-xs text-gray-300 mb-4 lg:mb-6 max-w-md">
             {content.subDescription}
           </p>
-          <Link
-            href={content.ctaLink}
-            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-red-500/25 w-fit text-sm sm:text-base"
-          >
-            <span>{content.ctaText}</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+            <button
+                type="button"
+                onClick={() => setIsOpen(true)}
+                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-red-500/25 w-fit text-sm sm:text-base"
+            >
+                <span>{content.ctaText || 'Get Started'}</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </button>
+            {isOpen && <ContactForm isOpen={isOpen} onClose={() => setIsOpen(false)}/>}
         </div>
 
         {/* Right Side - Carousel Card with Liquid Glass Effect */}
