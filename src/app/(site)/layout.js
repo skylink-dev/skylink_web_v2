@@ -27,9 +27,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   // ✅ Get env values or fallback to “xxxx”
   const googleMapsKey =
-    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "xxxx";
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "AIzaSyBfl9FeQrq_J6IdVBRMzBJWm6enyJvjGQ4";
   const googleTagKey =
-    process.env.NEXT_PUBLIC_GOOGLE_TAG_KEY || "xxxx";
+    process.env.NEXT_PUBLIC_GOOGLE_TAG_KEY || "GTM-5PFTT4W";
 
   return (
     <html lang="en" className="scroll-smooth">
