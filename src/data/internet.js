@@ -192,8 +192,7 @@ export const dynamicSlidesData = [
   {
     imgSrc: '/assets/helpful-and-support.jpg',
     title: '24/7 Expert Support',
-    subtitle: 'Helpful resources',
-    subtitle: 'Helpful Resources',
+      subtitle: 'Helpful Resources',
     description: 'Access round-the-clock assistance, self-help articles, and guided tutorials to make the most of your Skylink services.',
     normaltext: '',
     legalText: '',
@@ -267,8 +266,8 @@ export const SpeedContent = {
   headingMain: "Grow with purpose.<br/> Build the future of connectivity.",
   description: "Partner with Skylink to bring broadband, OTT, and TV to homes across India.",
   subDescription: "Built on trust, reliability, and shared growth.",
-  ctaText: "Start your partnership today.",
-  ctaLink: "/partner-with-us",
+  ctaText: "Get a call back",
+  ctaLink: "/contact",
   slides: [
   {
     title: "Experience Next-Gen Wi-Fi with Skylink",

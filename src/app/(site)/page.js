@@ -102,7 +102,7 @@ export default function Home() {
         description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
         subDescription ={`Available at no extra cost for elegible customers across India.`}
         buttonText="Learn More"
-        buttonLink="/guarantee"
+        buttonLink="/internet"
       />
       <HalfColumnCard items={cardData} />
       <DynamicCarousel

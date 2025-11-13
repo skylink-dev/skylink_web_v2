@@ -40,7 +40,7 @@ export default function Slider({ slides = [] }) {
     });
   }, [slides.length]);
 
-  const handleGetPlan = () => router.push("/plans");
+  const handleGetPlan = () => router.push("/new_plans");
 
   useEffect(() => {
     if (isHovered) return;
