@@ -74,7 +74,7 @@ export default function Header() {
                 alt="Play Icon"
                 width={24}
                 height={24}
-                className="w-5 h-5 object-contain"
+                className="w-6 h-6 object-contain"
             />
         ),
     },
@@ -90,7 +90,19 @@ export default function Header() {
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
-  return (
+    useEffect(() => {
+        if (typeof document !== 'undefined') {
+            const style = document.createElement('style');
+            style.textContent = `
+        .text-shadow {
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+      `;
+            document.head.appendChild(style);
+        }
+    }, []);
+
+    return (
     <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
       {/* ✅ Mobile Top Buttons */}
       {isMobile && (
@@ -108,9 +120,9 @@ export default function Header() {
                   {btn.icon ?
                       <div className="flex flex-col items-center justify-center">
                           <div className="h-6 flex items-center justify-center">{btn.icon}</div>
-                          <span className="text-center px-1 break-words text-[10px] mt-1">{btn.label}</span>
+                          <span className="text-center px-1 break-words text-[10px] mt-1 text-shadow">{btn.label}</span>
                       </div> :
-                      <span className="text-center px-1 break-words">{btn.label}</span>
+                      <span className="text-center px-1 break-words text-shadow">{btn.label}</span>
                   }
               </Link>
             );
@@ -191,9 +203,9 @@ export default function Header() {
                   {btn.icon ?
                       <div className="flex items-center justify-center">
                           <span className="flex-shrink-0 w-4 h-4 flex items-center justify-center">{btn.icon}</span>
-                          <span className="ml-2 text-sm">{btn.label}</span>
+                          <span className="ml-2 text-sm text-shadow">{btn.label}</span>
                       </div> :
-                      <span className="text-center text-sm">{btn.label}</span>
+                      <span className="text-center text-sm text-shadow">{btn.label}</span>
                   }
               </Link>
             );
@@ -265,7 +277,7 @@ export default function Header() {
                           className={`${btn.color} text-white text-sm font-medium rounded-md p-3 flex flex-col items-center justify-center text-center`}
                       >
                           <span className="w-5 h-5 mb-1">{btn.icon}</span>
-                          <span className="text-xs">{btn.label}</span>
+                          <span className="text-xs text-shadow">{btn.label}</span>
                       </Link>
                   ))}
               </div>
@@ -302,7 +314,7 @@ export default function Header() {
                             />
                         </div>
                         <span
-                            className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium">
+                            className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium text-shadow">
                           {buttons[0].label}
                         </span>
                     </div>
@@ -328,7 +340,7 @@ export default function Header() {
                             />
                         </div>
                         <span
-                            className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium">
+                            className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium text-shadow">
                           {buttons[1].label}
                         </span>
                     </div>
