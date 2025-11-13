@@ -1,12 +1,33 @@
 export const customPlans = {
   speed: [
-    "30 Mbps",
-    "50 Mbps",
-    "100 Mbps",
-    "200 Mbps",
-    "300 Mbps",
-    "500 Mbps",
-    "1000 Mbps",
+    {
+      name: "30 Mbps",
+      price: 399,
+    },
+    {
+      name: "50 Mbps",
+      price: 499,
+    },
+    {
+      name: "100 Mbps",
+      price: 699,
+    },
+    {
+      name: "200 Mbps",
+      price: 999,
+    },
+    {
+      name: "300 Mbps",
+      price: 1299,
+    },
+    {
+      name: "500 Mbps",
+      price: 2499,
+    },
+    {
+      name: "1000 Mbps",
+      price: 3999,
+    },
   ],
   validity: [1, 3, 6, 12],
   channels: [
