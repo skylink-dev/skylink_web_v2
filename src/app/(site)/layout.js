@@ -7,6 +7,8 @@ import PageLoaderWrapper from "@/components/PageLoaderWrapper";
 import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
 import SocialSidebar from "@/components/SocialSidebar";
+import Script from "next/script";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,10 +25,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // ✅ Get env values or fallback to “xxxx”
+  const googleMapsKey =
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "xxxx";
+  const googleTagKey =
+    process.env.NEXT_PUBLIC_GOOGLE_TAG_KEY || "xxxx";
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* ✅ Font optimization */}
+        {/* ✅ Font preconnects */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -42,7 +50,15 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.png" sizes="any" />
-        <script
+
+        {/* ✅ Google Maps API (with fallback) */}
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}&libraries=places,geometry`}
+          strategy="beforeInteractive"
+        />
+
+        {/* ✅ Google Tag Manager (with fallback) */}
+        <Script
           id="gtm-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -55,22 +71,25 @@ export default function RootLayout({ children }) {
                 j.async=true;
                 j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
                 f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-XXXXXX');
+              })(window,document,'script','dataLayer','${googleTagKey}');
             `,
           }}
         />
       </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-slate-900`}
       >
+        {/* ✅ GTM NoScript fallback */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXX"
+            src={`https://www.googletagmanager.com/ns.html?id=${googleTagKey}`}
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
+
         <PageLoaderWrapper>
           <Providers>
             <Header />
