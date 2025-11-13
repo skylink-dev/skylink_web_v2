@@ -24,6 +24,7 @@ export default function ContactPopup({
   const activeMbps = selectedPlan?.internetSpeed;
   const discount = selectedPlan?.discount[selectedPlan?.discountIndex];
   const activePrice = selectedPlan?.price * selectedPlan?.activeCycle;
+  const basePrice = selectedPlan?.price;
   const installationCharges = Number(
     selectedPlan?.installationCharges[selectedPlan?.discountIndex]
   );
@@ -362,7 +363,9 @@ export default function ContactPopup({
 
                 {/* Base Price */}
                 <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span className="text-gray-600">Base Price</span>
+                  <span className="text-gray-600">
+                    Base Price({basePrice} x {activeCycle})
+                  </span>
                   <span className="font-semibold text-gray-900">
                     ₹{activePrice.toFixed(2)}
                   </span>
