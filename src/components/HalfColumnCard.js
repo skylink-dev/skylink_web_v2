@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function HalfColumnCard({ titlecontent, items }) {
@@ -17,7 +16,7 @@ export default function HalfColumnCard({ titlecontent, items }) {
 
   if (!isMounted) return null;
 
-  return (
+    return (
     <section className="bg-gradient-to-b from-gray-50 to-white py-4 md:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -36,13 +35,22 @@ export default function HalfColumnCard({ titlecontent, items }) {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
               {titlecontent.title}
             </h2>
-            <Link
-              href="/plans"
+              <button
+                  onClick={() => {
+                      console.log("Button clicked:", titlecontent.cta);
+                      if (typeof window !== 'undefined' && window.location) {
+                          if (titlecontent.link && titlecontent.link !== "#" && titlecontent.link !== "") {
+                          window.location.href = titlecontent.link;
+                        } else {
+                          window.location.href = "/contact-us";
+                        }
+                      }
+                  }}
               aria-label={titlecontent.cta}
               className="inline-block bg-red-600 text-white px-8 py-3 rounded-lg font-medium shadow-md hover:bg-red-700 hover:scale-105 transition-all duration-300"
             >
               {titlecontent.cta}
-            </Link>
+            </button>
           </motion.div>
         )}
 
@@ -87,13 +95,22 @@ export default function HalfColumnCard({ titlecontent, items }) {
 
                 {/* Button */}
                 <div className="mt-6">
-                  <Link
-                    href={item.link || "#"}
+                    <button
+                        onClick={() => {
+                            console.log("Button clicked:", "Shop Now");
+                            if (typeof window !== 'undefined' && window.location) {
+                                if (item.link && item.link !== "#" && item.link !== "") {
+                                    window.location.href = item.link;
+                                } else {
+                                    window.location.href = "/contact-us";
+                                }
+                            }
+                        }}
                     className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg text-sm font-medium shadow-md hover:bg-red-700 hover:scale-105 transition-all duration-300"
                     aria-label="Shop now"
                   >
                     Shop Now
-                  </Link>
+                  </button>
                 </div>
               </div>
             </motion.div>

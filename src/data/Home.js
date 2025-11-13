@@ -7,7 +7,7 @@ export const cardData = [
       "Enjoy fast broadband, live TV, and OTT apps together in one smart home plan.",
     legalText:
       "Includes free installation and a refundable Fire TV deposit. Availability may vary.",
-    link: "/",
+    link: "/contact-us",
   },
   {
     image: "/assets/smart-tv.jpg",
@@ -17,7 +17,7 @@ export const cardData = [
       "Access 350+ channels and 19 OTT apps for ₹399/month directly on your TV.",
     legalText:
       "Works with any internet connection. Offer available across South India.",
-    link: "/south-plans",
+    link: "/contact-us",
   },
 ];
 

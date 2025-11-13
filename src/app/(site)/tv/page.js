@@ -63,7 +63,7 @@ export default function Page() {
         heading={`Pan-India reliable connectivity<br/>Unbeatable plans you will love.<br/>Support that puts you first.`}
         description={`All guaranteed — or we will make it right. Available to all eligible customers across India at <span className="nowrap"> no extra cost</span>`}
         buttonText="Learn More"
-        buttonLink="/guarantee"
+        buttonLink="/internet"
       />
       {/* <ImageAndContent image="/assets/skyplay-tv-7.jpg" content={contentData} /> */}
       <HalfColumnCard

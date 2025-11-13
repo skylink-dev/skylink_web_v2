@@ -33,7 +33,7 @@ export default function ContactForm() {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const services = [
-    "How we can help you?",
+    "How can we help you?",
     "Technical",
     "Billing",
     "New Connection / Installation",
