@@ -117,7 +117,7 @@ export default function Slider({ slides = [] }) {
           <div
             className="flex transition-transform duration-700 ease-out"
             style={{
-              transform: `translateX(-${activeIndex * (100 / 3)}%)`,
+                transform: `translateX(-${activeIndex * (isMobile ? 100 : 100 / 3)}%)`,
             }}
           >
             {infiniteSlides.map((slide, index) => {
@@ -130,14 +130,14 @@ export default function Slider({ slides = [] }) {
                   className={`flex-shrink-0 px-1 sm:px-2 transition-all duration-500 ${
                     isActive ? "scale-105" : "scale-95 opacity-80"
                   }`}
-                  style={{ width: `calc(100% / 3)` }}
+                  style={{width: isMobile ? "100%" : `calc(100% / 3)`}}
                 >
                   <div
                     className={`bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden ${
                       isActive ? "ring-1 ring-red-300" : ""
                     }`}
-                    style={{ 
-                      height: isMobile ? "340px" : "380px",
+                    style={{
+                        height: isMobile ? "230px" : "380px",
                       marginRight: '4px'
                     }}
                   >
@@ -163,13 +163,14 @@ export default function Slider({ slides = [] }) {
                       </div>
 
                       {/* Image */}
-                      <div className="absolute bottom-0 right-0 w-[45%] sm:w-[50%] h-[50%] sm:h-[55%] flex justify-end items-end">
+                        <div
+                            className={`absolute bottom-0 right-0 ${isMobile ? 'w-[50%] h-[60%]' : 'w-[45%] sm:w-[50%] h-[50%] sm:h-[55%]'} flex justify-end items-end`}>
                         <img
                           src={slide.image}
                           alt={slide.heading}
                           className="w-full h-full object-contain"
                           style={{
-                            maxHeight: isMobile ? "140px" : "180px",
+                              maxHeight: isMobile ? "120px" : "180px",
                           }}
                           loading="lazy"
                         />

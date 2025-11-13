@@ -341,7 +341,7 @@ ${
                           </div>
                           <div>
                             <span className="font-semibold">
-                              {plan.noOfOTTs}+
+                              {plan.noOfOTTs[discountIndex]}+
                             </span>
                             <p className="text-xs text-gray-500">OTT Apps</p>
                           </div>
