@@ -1,8 +1,8 @@
     export const bannerContent = {  
-  subtitle: "Enjoy 18+ Premium OTT Subscriptions Absolutely FREE!",
-  title: "Sign up today and unlock unlimited entertainment with your plan!",
+  subtitle: "Get access to 20+ premium OTT platforms included with select Skylink plans.\n",
+  title: "No multiple logins, no juggling. Everything you already watch in one place.",
   firstcta: "Claim OTT Access",
-  offercontent: "Limited Time Offer — Stream blockbuster movies, binge-hit series, live sports, and more on 18+ top OTT platforms. Terms apply.",
+  offercontent: "Limited Time Offer — Stream blockbuster movies, binge-hit series, live sports, and more on 20+ top OTT platforms. Terms apply.",
   offercta: "",
   secondcta: "Call +91 99441 99445",
   href: "tel:(+91)9944199445"}
@@ -51,10 +51,10 @@
 export const flexCardData = [
   {
     id: 2,
-    title: 'All South. One Bundle.',
-    subtitle: 'Tamil, Telugu, Malayalam. United.',
-    description: 'All your favorite South Indian OTT platforms in one place.',
-    details: 'Save more with a single subscription.',
+    title: 'Stories from the South.',
+    subtitle: 'Take Tamil, Telugu, and Malayalam shows wherever you go.\n',
+    description: 'HD playback, offline viewing, and regional picks that travel with you',
+    details: 'Simple, seamless, yours',
     leftImage: '/assets/skyplay-south-india-movie.jpg',
     link: '/buy/bundles/south-indian-ott-bundle.html'
   },
@@ -208,15 +208,16 @@ export const rightContentFlexDataNorth = {
     },
     {
       imgSrc: '/assets/skyplay-ott-blog-04.jpg',
-      title: 'One Login, All Access',
-      subtitle: 'Unified Control for Multiple Platforms',
-      description: "Say goodbye to juggling passwords. Use your Skylink login to access all major OTT platforms and manage everything from a single dashboard.",
+      title: 'One Plan. All Platforms.',
+      subtitle: 'One subscription brings it all together.',
+      description: "Prime Video, Zee5, JioCinema, and more, combined under the Skylink Playbox Mega\n" +
+          "Max Pack.\n",
       normaltext: "",
       legalText: "",
       link: '/',
     },
     {
-      imgSrc: '/assets/Skylink-ott-blog-05.jpg',
+      imgSrc: '/assets/blogs-08.png',
       title: 'Smart Recommendations',
       subtitle: 'Powered by AI & Viewing Habits',
       description: "Discover your next binge-worthy show with AI-driven recommendations tailored to your preferences and watch history.",
@@ -227,17 +228,18 @@ export const rightContentFlexDataNorth = {
     {
       imgSrc: '/assets/skyplay-ott-blog-06.jpg',
       title: 'Watch Anywhere, Anytime',
-      subtitle: 'Multi-Device OTT Streaming',
-      description: "Stream your favorite shows on TV, mobile, tablet, or laptop. Skylink OTT supports simultaneous logins and viewing on up to 5 devices.",
+      subtitle: 'Simple, personal, and always ready.',
+      description: "From South stories to Hindi favorites, your entertainment moves with you",
       normaltext: "",
       legalText: "",
       link: '/',
     },
   ]
 export const contentBaseBanner2 = {
-  subtitle: "Explore Skylink OTT — Your All-in-One Streaming Solution",
-  title: "Discover More Entertainment Options with Skylink",
-  description: "From blockbuster movies to regional favorites, Skylink OTT delivers seamless access to top platforms in one subscription.",
+  subtitle: "Explore Skylink OTT",
+  title: "A single connection that simplifies how India watches",
+  description: "From global blockbusters to local stories, explore the future of streaming. All in one\n" +
+      "space.",
   policy: "Visit our official website at Skylink.app to explore features, plans, and partner platforms.",
   subcta: "",
   cta: "Check Out Skylink.app",
