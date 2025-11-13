@@ -27,11 +27,13 @@ export default function Header() {
       color: "bg-gradient-to-r from-[#E91A2F] to-[#E91A2F]",
       download: true,
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                <path fillRule="evenodd"
-                      d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
-                      clipRule="evenodd"/>
-            </svg>
+            <Image
+                src="/newassets/navbar/icons/play.png"
+                alt="Play Icon"
+                width={24}
+                height={24}
+                className="w-5 h-5 object-contain"
+            />
         ),
     },
     {
@@ -39,12 +41,13 @@ export default function Header() {
       href: "https://activations.skyplay.in/ott_subscription/login/",
       color: "bg-gradient-to-r from-[#4285F4] to-[#4285F4]",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                <path d="M19.5 6h-15v9h15V6z"/>
-                <path fillRule="evenodd"
-                      d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v11.25C1.5 17.16 2.34 18 3.375 18H9.75v1.5H6A.75.75 0 006 21h12a.75.75 0 000-1.5h-3.75V18h6.375c1.035 0 1.875-.84 1.875-1.875V4.875C22.5 3.839 21.66 3 20.625 3H3.375zm0 13.5h17.25a.375.375 0 00.375-.375V4.875a.375.375 0 00-.375-.375H3.375A.375.375 0 003 4.875v11.25c0 .207.168.375.375.375z"
-                      clipRule="evenodd"/>
-            </svg>
+            <Image
+                src="/newassets/navbar/icons/ott.png"
+                alt="Play Icon"
+                width={24}
+                height={24}
+                className="w-5 h-5 object-contain"
+            />
         ),
     },
     {
@@ -52,13 +55,13 @@ export default function Header() {
       href: "https://www.skylinknet.in/customer_portal/account/sn",
       color: "bg-gradient-to-r from-[#F4B402] to-[#F4B402]",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                <path
-                    d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 01-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004zM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 01-.921.42z"/>
-                <path fillRule="evenodd"
-                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v.816a3.836 3.836 0 00-1.72.756c-.712.566-1.112 1.35-1.112 2.178 0 .829.4 1.612 1.113 2.178.502.4 1.102.647 1.719.756v2.978a2.536 2.536 0 01-.921-.421l-.879-.66a.75.75 0 00-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 001.5 0v-.81a3.833 3.833 0 001.72-.756c.712-.566 1.112-1.35 1.112-2.178 0-.829-.4-1.612-1.113-2.178a3.833 3.833 0 00-1.719-.756V8.334c.376.1.733.27 1.025.478l.927.696a.75.75 0 00.9-1.2l-.927-.696A4.33 4.33 0 0012.75 6z"
-                      clipRule="evenodd"/>
-            </svg>
+            <Image
+                src="/newassets/navbar/icons/pay.png"
+                alt="Play Icon"
+                width={24}
+                height={24}
+                className="w-5 h-5 object-contain"
+            />
         ),
     },
     {
@@ -66,10 +69,13 @@ export default function Header() {
       href: "/new_plans", // internal route -> should open in same page
       color: "bg-gradient-to-r from-[#2A9D57] to-[#2A9D57]",
         icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                <path
-                    d="M5.625 3.75a2.625 2.625 0 100 5.25h12.75a2.625 2.625 0 000-5.25H5.625zM3.75 11.25a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5H3.75zM3 15.75a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75zM3.75 18.75a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5H3.75z"/>
-            </svg>
+            <Image
+                src="/newassets/navbar/icons/plan.png"
+                alt="Play Icon"
+                width={24}
+                height={24}
+                className="w-5 h-5 object-contain"
+            />
         ),
     },
   ];
@@ -101,7 +107,7 @@ export default function Header() {
               >
                   {btn.icon ?
                       <div className="flex flex-col items-center justify-center">
-                          {btn.icon}
+                          <div className="h-6 flex items-center justify-center">{btn.icon}</div>
                           <span className="text-center px-1 break-words text-[10px] mt-1">{btn.label}</span>
                       </div> :
                       <span className="text-center px-1 break-words">{btn.label}</span>
@@ -282,11 +288,19 @@ export default function Header() {
                     href={buttons[0].href}
                     download={buttons[0].download}
                     target="_blank"
-                    className={`${buttons[0].color} text-white p-3 rounded-full shadow-lg flex items-center w-12 h-12 lg:hover:w-[210px] overflow-hidden transition-all duration-300`}
+                    className={`${buttons[0].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-10 h-10 lg:hover:w-[190px] overflow-hidden transition-all duration-300`}
                     title={buttons[0].label}
                 >
                     <div className="flex items-center w-full">
-                        <div className="flex-shrink-0">{buttons[0].icon}</div>
+                        <div className="flex-shrink-0">
+                            <Image
+                                src="/newassets/navbar/icons/play.png"
+                                alt="Play Icon"
+                                width={24}
+                                height={24}
+                                className="w-5 h-5"
+                            />
+                        </div>
                         <span
                             className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium">
                           {buttons[0].label}
@@ -300,11 +314,19 @@ export default function Header() {
                 <Link
                     href={buttons[1].href}
                     target="_blank"
-                    className={`${buttons[1].color} text-white p-3 rounded-full shadow-lg flex items-center w-12 h-12 lg:hover:w-[210px] overflow-hidden transition-all duration-300`}
+                    className={`${buttons[1].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-10 h-10 lg:hover:w-[190px] overflow-hidden transition-all duration-300`}
                     title={buttons[1].label}
                 >
                     <div className="flex items-center w-full">
-                        <div className="flex-shrink-0">{buttons[1].icon}</div>
+                        <div className="flex-shrink-0">
+                            <Image
+                                src="/newassets/navbar/icons/ott.png"
+                                alt="Play Icon"
+                                width={24}
+                                height={24}
+                                className="w-5 h-5"
+                            />
+                        </div>
                         <span
                             className="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium">
                           {buttons[1].label}
