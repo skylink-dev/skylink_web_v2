@@ -72,7 +72,7 @@ export default function Slider({ slides = [] }) {
           <>
             <button
               onClick={goToPrevSlide}
-              className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 md:p-2.5 shadow-md hover:scale-110 transition-all duration-300"
+              className="absolute -left-1 sm:left-0 md:left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 md:p-2.5 shadow-md hover:scale-110 transition-all duration-300"
               style={{ marginTop: '-20px' }}
             >
               <svg

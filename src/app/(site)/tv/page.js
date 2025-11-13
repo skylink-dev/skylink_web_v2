@@ -76,8 +76,10 @@ export default function Page() {
         repeatcontent={cartcontent}
       />
       <PricingPlans
-        heading="See how we stack up against the competition"
-        subtitle="When it comes to your choice of the best deals, wire plans, and flexible payment options, we’ve got you covered."
+        heading="Control That Feels Natural"
+        subtitle="Parental tools and organized viewing options help you manage content easily, so
+everyone watches comfortably and safely.
+"
         providers={providersData}
         content={tablecontent}
       />

@@ -1,15 +1,4 @@
-module.exports = {
-  apps: [
-    {
-      name: "skylinkapp",
-      script: "npm",
-      args: "start",
-      env: {
-        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: "AIzaSyBfl9FeQrq_J6IdVBRMzBJWm6enyJvjGQ4",
-        NEXT_PUBLIC_GOOGLE_TAG_KEY:"GTM-5PFTT4W",
-        NODE_ENV: "production",
-      },
-    },
-  ],
-};
+#Load .env file before defining apps
+require("dotenv").config({ path: "/home/skydev/projects/skylink_web_v2/.env" });
+
 
