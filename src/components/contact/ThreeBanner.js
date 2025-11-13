@@ -162,29 +162,30 @@ export default function ThreeBannerModern() {
                       src={slide.imageLandscape}
                       alt={slide.title}
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1400px"
                     />
                   </div>
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/15"/>
                 </div>
 
                 {/* Portrait Image Container - Mobile */}
                 <div className="absolute inset-0 sm:hidden">
-                  <div className="relative w-full h-full">
+                    <div className="relative w-full h-full overflow-hidden">
                     <Image
                       src={slide.imagePortrait}
                       alt={slide.title}
                       fill
-                      className="object-cover"
+                      className="object-cover w-full h-full"
+                      style={{objectPosition: 'center 65%'}}
                       priority={index === 0}
                       sizes="100vw"
                     />
                   </div>
                   {/* Gradient overlay for mobile */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/35"/>
                 </div>
 
                 {/* ===== Content ===== */}
