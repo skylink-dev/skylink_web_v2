@@ -232,237 +232,34 @@ export default function CustomPlan({
   isContactOpen,
   setIsContactOpen,
 }) {
-  const basePlans = plans || [];
-  const additionalOTTCharges = 50;
-  const additionalChannelCharges = 100;
-  const [planSummary, setPlanSummary] = useState({
-    speed: "30 MbpsZ",
-    base_price: "399",
-    cycle: 12,
-    discount: 15,
-    installationCharges: 0,
+  const basePlans = plans;
+  const speeds = basePlans.speeds;
+  const [selectedSpeed, setSelectedSpeed] = useState({
+    name: "30 Mbps",
+    price: 399,
   });
-
-  // 🟢 Extract OTT and Channel data cleanly
-  const ottPlans = useMemo(() => {
-    return basePlans.flatMap((plan) => {
-      const firstIndex = 0;
-      if (!Array.isArray(plan.mainOTTs)) return [];
-      return plan.mainOTTs.map((ottList, idx) => ({
-        noOfOTTs: Array.isArray(plan.noOfOTTs)
-          ? plan.noOfOTTs[idx] ?? plan.noOfOTTs[firstIndex]
-          : plan.noOfOTTs || 0,
-        ottList: ottList || [],
-      }));
-    });
-  }, [basePlans]);
-
-  const channelPlans = useMemo(() => {
-    return basePlans.flatMap((plan) => ({
-      noOfChannels: plan.tvChannels || 0,
-      channelList: plan.mainChannels || [],
-    }));
-  }, [basePlans]);
-
-  // 🟡 Remove duplicates
-  const uniqueOTTs = useMemo(() => {
-    return [...new Set(ottPlans.map((p) => p))];
-  }, [ottPlans]);
-
-  const uniqueChannels = useMemo(() => {
-    return [...new Set(channelPlans.map((p) => p))];
-  }, [channelPlans]);
-
-  // console.log("Unique OTTs:", uniqueOTTs);
-  // console.log("Unique Channels:", uniqueChannels);
-
-  // Extract unique speeds
-  const speeds = useMemo(
-    () => [...new Set(basePlans.map((p) => p.internetSpeed))],
-    [basePlans]
-  );
-
-  // Default validities
-  const validities = useMemo(() => [12, 6, 3, 1], []);
-
-  const [selectedSpeed, setSelectedSpeed] = useState(speeds[0]);
-  const [selectedCycle, setSelectedCycle] = useState(validities[0]);
-
-  // Filter plans for current speed
-  const filteredPlans = useMemo(
-    () => basePlans.filter((p) => p.internetSpeed === selectedSpeed),
-    [basePlans, selectedSpeed]
-  );
-
-  const allChannelCounts = useMemo(() => {
-    const all = basePlans.map((p) => p.tvChannels);
-    return [...new Set(all)].sort((a, b) => a - b);
-  }, [basePlans]);
-
-  // Selected Channel (default to lowest)
-  const [selectedChannel, setSelectedChannel] = useState(
-    `${allChannelCounts[0]}+ Channels`
-  );
-
-  // 🟢 Find the minimum channel count for the selected speed
-  const minChannelsForSpeed = useMemo(() => {
-    const plansForSpeed = basePlans.filter(
-      (p) => p.internetSpeed === selectedSpeed
-    );
-    if (!plansForSpeed.length) return allChannelCounts[0];
-    return Math.min(...plansForSpeed.map((p) => p.tvChannels));
-  }, [basePlans, selectedSpeed, allChannelCounts]);
-
-  // 🟢 NEW: Collect all possible OTT counts from all plans
-  const allOttCounts = useMemo(() => {
-    const all = basePlans.flatMap((p) => p.noOfOTTs || []);
-    return [...new Set(all)].sort((a, b) => a - b);
-  }, [basePlans]);
-
-  const [selectedOtt, setSelectedOtt] = useState(`${allOttCounts[0]}+ OTTs`);
-
-  // Find the active plan
-  const activePlan = useMemo(() => {
-    const channelCount = parseInt(selectedChannel);
-    return basePlans.find(
-      (p) =>
-        (p.internetSpeed === selectedSpeed &&
-          p.validity.includes(selectedCycle)) ||
-        p.tvChannels === channelCount
-    );
-  }, [basePlans, selectedSpeed, selectedCycle, selectedChannel]);
-
-  // Label map
-  const labelMap = {
-    1: "Monthly",
-    3: "Quarterly",
-    6: "Half Yearly",
-    12: "Annual",
-  };
-
-  // 🟢 Determine the plan’s base OTT count and handle extra charge
-  const baseOttLimit = activePlan
-    ? Math.max(...activePlan.noOfOTTs)
-    : allOttCounts[0];
-  const selectedOttCount = parseInt(selectedOtt);
-  const isExtraOtt = selectedOttCount > baseOttLimit;
-
-  const extraOttCharge = isExtraOtt
-    ? (selectedOttCount - baseOttLimit) * additionalOTTCharges
-    : 0;
-
-  // 🟡 Determine the plan’s base channel count
-  const baseChannelLimit = activePlan
-    ? activePlan.tvChannels
-    : allChannelCounts[0];
-  const selectedChannelCount = parseInt(selectedChannel);
-  const isExtraChannel = selectedChannelCount > baseChannelLimit;
-
-  const extraChannelCharge = isExtraChannel
-    ? (selectedChannelCount - baseChannelLimit) * additionalChannelCharges
-    : 0;
-
-  // 🟢 Calculate final price dynamically
-  const planPrice = activePlan
-    ? activePlan.price + extraOttCharge + extraChannelCharge
-    : extraOttCharge + extraChannelCharge;
-
-  const getDiscountMessage = () => {
-    if (!activePlan) return "";
-    const idx = activePlan.validity.indexOf(selectedCycle);
-    const discount = activePlan.discount[idx] || 0;
-    const install = activePlan.installationCharges[idx] || 0;
-    if (discount > 0)
-      return `Enjoy a ${discount}% discount on this ${labelMap[selectedCycle]} plan.`;
-    return `Installation charge ₹${install} applicable.`;
-  };
-
-  // ✅ Split effects so OTT and Channels update independently
-  useEffect(() => {
-    if (selectedSpeed && basePlans.length > 0) {
-      const plansForSpeed = basePlans.filter(
-        (p) => p.internetSpeed === selectedSpeed
-      );
-      if (plansForSpeed.length > 0) {
-        const minChannel = Math.min(...plansForSpeed.map((p) => p.tvChannels));
-        setSelectedChannel(`${minChannel}+ Channels`);
-      }
-    }
-  }, [selectedSpeed, basePlans]);
-
-  useEffect(() => {
-    if (selectedSpeed && basePlans.length > 0) {
-      const plansForSpeed = basePlans.filter(
-        (p) => p.internetSpeed === selectedSpeed
-      );
-      if (plansForSpeed.length > 0) {
-        const allOttCounts = plansForSpeed.flatMap((p) => p.noOfOTTs || []);
-        const minOtt =
-          allOttCounts.length > 0 ? Math.min(...allOttCounts) : null;
-        if (minOtt !== null) {
-          setSelectedOtt(`${minOtt}+ OTTs`);
-        }
-      }
-    }
-  }, [selectedSpeed, basePlans]);
-
-  const handleSelection = (selectionType, selectionValue) => {
-    console.log(selectionType, "  ", selectionValue);
-    if (selectionType === "speed") {
-      var selectionPrice = 0;
-      basePlans.forEach((element) => {
-        if (element.internetSpeed == selectionValue + "") {
-          selectionPrice = selectionPrice == 0 ? element.price : selectionPrice;
-        }
-      });
-      console.log(selectionType, "  ", selectionValue, " ", selectionPrice);
-      setPlanSummary((prev) => {
-        return {
-          ...prev,
-          speed: selectionValue,
-          base_price: selectionPrice,
-        };
-      });
-    }
-    if (selectionType == "cycle") {
-      var index = -1;
-      basePlans[0].validity.forEach((element, i) => {
-        if (element == selectionValue + "") {
-          index = index + "" == -1 + "" ? i : index;
-        }
-      });
-
-      setPlanSummary((prev) => {
-        return {
-          ...prev,
-          cycle: selectionValue,
-          discount: basePlans[0].discount[index],
-          installationCharges: basePlans[0].installationCharges[index],
-        };
-      });
-    }
-    // if (selectionType == "channels") {
-    //   setPlanSummary((prev) => {
-    //     return { ...prev, ottprice: selectionValue };
-    //   });
-    // }
-    // if (selectionType == "otts") {
-    //   setPlanSummary((prev) => {
-    //     return { ...prev, ottprice: selectionValue };
-    //   });
-    // }
-  };
+  const validities = basePlans.validity;
+  const [selectedValidity, setSelectedValidity] = useState(12);
+  const channelsList = basePlans.channels;
+  const [selectedChannel, setSelectedChannel] = useState(null);
+  const ottsList = basePlans.otts;
+  const [selectedOtt, setSelectedOtt] = useState(null);
+  const [activePlan, setActivePlan] = useState(null);
+  const discountList = basePlans?.discount;
 
   // 🔵 Reusable Grid Button
   const ButtonGrid = ({
+    type,
     options,
     selected,
     setSelected,
     color,
     disabledLogic,
-    discountMap = {},
+    discountMap,
     extraChargeLogic,
   }) => {
+    console.log(options);
+
     const colorMap = {
       blue: {
         base: "border-blue-300 text-blue-700 hover:bg-blue-500 hover:text-white",
@@ -495,79 +292,193 @@ export default function CustomPlan({
       )} gap-2`;
 
     return (
-      <div className={`${getGridCols(options.length)} w-full`}>
-        {options.map((opt) => {
-          const isDisabled = disabledLogic ? disabledLogic(opt) : false;
-          const discount = discountMap[opt] || 0;
-          const extraCharge =
-            typeof extraChargeLogic === "function"
-              ? extraChargeLogic(opt)
-              : null;
+      <>
+        {type == "speed" ? (
+          <>
+            <div className={`${getGridCols(options.length)} w-full`}>
+              {options.map((opt, idx) => {
+                return (
+                  <div key={opt.name} className="relative w-full">
+                    {/* 🏷️ Discount ribbon */}
 
-          return (
-            <div key={opt} className="relative w-full">
-              {/* 🏷️ Discount ribbon */}
-              {discount > 0 && (
-                <div className="absolute -top-[1px] left-2 z-10 flex flex-col items-center">
-                  <span
-                    className={`absolute top-0 left-0 flex items-start justify-center font-semibold text-[13px] 
-                      ${selected === opt ? "text-red-600" : "text-white"}`}
-                    style={{
-                      backgroundImage: `url(${
-                        selected === opt
-                          ? "/newassets/plan/offer-badge-white.png"
-                          : "/newassets/plan/offer-badge.png"
-                      })`,
-                      backgroundPosition: "-4px -8px",
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "50px 50px",
-                      width: "43px",
-                      height: "50px",
-                      lineHeight: "7px",
-                      padding: "11px 4px 0",
-                    }}
-                  >
-                    {discount}%
-                  </span>
-                </div>
-              )}
-
-              <button
-                disabled={isDisabled}
-                onClick={() => {
-                  if (isDisabled) return;
-                  setSelected(opt);
-                }}
-                className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
-                  isDisabled
-                    ? colorMap[color].disabled
-                    : selected === opt
-                    ? colorMap[color].active
-                    : colorMap[color].base
-                }`}
-              >
-                {selected === opt && (
-                  <Check
-                    size={18}
-                    strokeWidth={4}
-                    className="absolute top-1 right-1 text-white rounded-full p-[1px]"
-                  />
-                )}
-                <div className="flex flex-col items-center">
-                  <span>
-                    {opt}{" "}
-                    {extraCharge !== null && (
-                      <span className={`text-[11px] font-medium `}>
-                        {extraCharge > 0 ? `(Addon)` : "(Free)"}
-                      </span>
-                    )}
-                  </span>
-                </div>
-              </button>
+                    <button
+                      onClick={() => {
+                        setSelected(opt);
+                      }}
+                      className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                        selected?.name === opt.name
+                          ? colorMap[color].active
+                          : colorMap[color].base
+                      }`}
+                    >
+                      {opt.name}
+                      {selected?.name === opt.name && (
+                        <Check
+                          size={18}
+                          strokeWidth={4}
+                          className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                        />
+                      )}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
+          </>
+        ) : null}
+
+        {type == "validity" ? (
+          <>
+            <div className={`${getGridCols(options.length)} w-full`}>
+              {[...options].reverse().map((opt) => {
+                let discount = 0;
+                console.log(discountMap);
+                discountMap?.validity?.forEach((el, idx) => {
+                  if (el == opt) {
+                    discount = discountMap?.rate[idx];
+                  }
+                });
+
+                return (
+                  <div key={opt.name} className="relative w-full">
+                    {/* 🏷️ Discount ribbon */}
+                    {discount > 0 && (
+                      <div className="absolute -top-[1px] left-2 z-10 flex flex-col items-center">
+                        <span
+                          className={`absolute top-0 left-0 flex items-start justify-center font-semibold text-[13px] 
+                      ${selected === opt ? "text-red-600" : "text-white"}`}
+                          style={{
+                            backgroundImage: `url(${
+                              selected === opt
+                                ? "/newassets/plan/offer-badge-white.png"
+                                : "/newassets/plan/offer-badge.png"
+                            })`,
+                            backgroundPosition: "-4px -8px",
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "50px 50px",
+                            width: "43px",
+                            height: "50px",
+                            lineHeight: "7px",
+                            padding: "11px 4px 0",
+                          }}
+                        >
+                          {discount}%
+                        </span>
+                      </div>
+                    )}
+
+                    <button
+                      onClick={() => {
+                        setSelected(opt);
+                      }}
+                      className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                        selected === opt
+                          ? colorMap[color].active
+                          : colorMap[color].base
+                      }`}
+                    >
+                      {selected === opt && (
+                        <Check
+                          size={18}
+                          strokeWidth={4}
+                          className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                        />
+                      )}
+                      <div className="flex flex-col items-center">
+                        <span>
+                          {opt == 12
+                            ? "Annual"
+                            : opt == 6
+                            ? "Half Yearly"
+                            : opt == 3
+                            ? "Quaterly"
+                            : "Monthly"}
+                        </span>
+                      </div>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ) : null}
+
+        {type == "syper" ? (
+          <div className={`${getGridCols(options.length)} w-full`}>
+            {options.map((opt) => {
+              const isDisabled = disabledLogic ? disabledLogic(opt) : false;
+              const discount = discountMap[opt] || 0;
+              const extraCharge =
+                typeof extraChargeLogic === "function"
+                  ? extraChargeLogic(opt)
+                  : null;
+
+              return (
+                <div key={opt.name} className="relative w-full">
+                  {/* 🏷️ Discount ribbon */}
+                  {discount > 0 && (
+                    <div className="absolute -top-[1px] left-2 z-10 flex flex-col items-center">
+                      <span
+                        className={`absolute top-0 left-0 flex items-start justify-center font-semibold text-[13px] 
+                      ${selected === opt ? "text-red-600" : "text-white"}`}
+                        style={{
+                          backgroundImage: `url(${
+                            selected === opt
+                              ? "/newassets/plan/offer-badge-white.png"
+                              : "/newassets/plan/offer-badge.png"
+                          })`,
+                          backgroundPosition: "-4px -8px",
+                          backgroundRepeat: "no-repeat",
+                          backgroundSize: "50px 50px",
+                          width: "43px",
+                          height: "50px",
+                          lineHeight: "7px",
+                          padding: "11px 4px 0",
+                        }}
+                      >
+                        {discount}%
+                      </span>
+                    </div>
+                  )}
+
+                  <button
+                    disabled={isDisabled}
+                    onClick={() => {
+                      if (isDisabled) return;
+                      setSelected(opt);
+                    }}
+                    className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                      isDisabled
+                        ? colorMap[color].disabled
+                        : selected === opt
+                        ? colorMap[color].active
+                        : colorMap[color].base
+                    }`}
+                  >
+                    {selected === opt && (
+                      <Check
+                        size={18}
+                        strokeWidth={4}
+                        className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                      />
+                    )}
+                    <div className="flex flex-col items-center">
+                      <span>
+                        {opt}{" "}
+                        {extraCharge !== null && (
+                          <span className={`text-[11px] font-medium `}>
+                            {extraCharge > 0 ? `(Addon)` : "(Free)"}
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
+      </>
     );
   };
 
@@ -596,12 +507,10 @@ export default function CustomPlan({
                 Choose Your Bandwidth
               </h3>
               <ButtonGrid
+                type={`speed`}
                 options={speeds}
                 selected={selectedSpeed}
-                setSelected={(val) => {
-                  setSelectedSpeed(val);
-                  handleSelection("speed", val);
-                }}
+                setSelected={setSelectedSpeed}
                 color="blue"
               />
             </div>
@@ -612,29 +521,18 @@ export default function CustomPlan({
                 Choose Your Billing Cycle
               </h3>
               <ButtonGrid
-                options={validities.map((v) => labelMap[v])}
-                selected={labelMap[selectedCycle]}
-                setSelected={(label) => {
-                  setSelectedCycle(
-                    parseInt(
-                      Object.keys(labelMap).find((k) => labelMap[k] === label)
-                    )
-                  );
-                  handleSelection(
-                    "cycle",
-                    parseInt(
-                      Object.keys(labelMap).find((k) => labelMap[k] === label)
-                    )
-                  );
-                }}
+                type={`validity`}
+                options={validities}
+                selected={selectedValidity}
+                setSelected={setSelectedValidity}
                 color="red"
                 discountMap={(() => {
-                  const map = {};
-                  validities.forEach((v) => {
-                    const idx = activePlan?.validity.indexOf(v);
-                    const disc =
-                      idx !== -1 ? activePlan?.discount[idx] || 0 : 0;
-                    map[labelMap[v]] = disc;
+                  let map = [];
+                  discountList.forEach((v) => {
+                    console.log(selectedSpeed.name, "   ", v?.speed);
+                    if (selectedSpeed.name == v?.speed) {
+                      map = v;
+                    }
                   });
                   return map;
                 })()}
@@ -647,22 +545,16 @@ export default function CustomPlan({
                 Choose Your TV Channels
               </h3>
               <ButtonGrid
-                options={allChannelCounts.map((c) => `${c}+ Channels`)}
+                type={`channels`}
+                options={channelsList}
                 selected={selectedChannel}
                 setSelected={setSelectedChannel}
                 color="yellow"
-                disabledLogic={(opt) => parseInt(opt) < minChannelsForSpeed}
-                extraChargeLogic={(opt) => {
-                  const count = parseInt(opt);
-                  return count > baseChannelLimit
-                    ? (count - baseChannelLimit) * additionalChannelCharges
-                    : 0;
-                }}
               />
             </div>
 
             {/* OTT */}
-            <div className="bg-green-50 border border-green-300 p-5 rounded-xl">
+            {/* <div className="bg-green-50 border border-green-300 p-5 rounded-xl">
               <h3 className="text-green-700 text-start  font-semibold text-lg mb-4">
                 Choose Your OTT Apps
               </h3>
@@ -679,7 +571,7 @@ export default function CustomPlan({
                     : 0;
                 }}
               />
-            </div>
+            </div> */}
           </div>
 
           {/* RIGHT SIDE */}

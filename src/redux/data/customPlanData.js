@@ -1,5 +1,5 @@
 export const customPlans = {
-  speed: [
+  speeds: [
     {
       name: "30 Mbps",
       price: 399,
@@ -256,74 +256,74 @@ export const customPlans = {
   installationCharges: [
     {
       speed: "30 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       ammount: [2000, 0, 0, 0],
     },
     {
       speed: "50 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       ammount: [2000, 0, 0, 0],
     },
     {
       speed: "100 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       ammount: [2000, 0, 0, 0],
     },
     {
       speed: "20 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       ammount: [2000, 0, 0, 0],
     },
     {
       speed: "300 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       ammount: [2000, 0, 0, 0],
     },
     {
       speed: "500 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       ammount: [2000, 0, 0, 0],
     },
     {
       speed: "1000 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       ammount: [2000, 0, 0, 0],
     },
   ],
   discount: [
     {
       speed: "30 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       rate: [0, 0, 7.5, 15],
     },
     {
       speed: "50 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       rate: [0, 0, 7.5, 15],
     },
     {
       speed: "100 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       rate: [0, 0, 7.5, 15],
     },
     {
       speed: "20 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       rate: [0, 0, 7.5, 15],
     },
     {
       speed: "300 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       rate: [0, 0, 7.5, 15],
     },
     {
       speed: "500 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       rate: [0, 0, 7.5, 15],
     },
     {
       speed: "1000 Mbps",
-      validty: [1, 3, 6, 12],
+      validity: [1, 3, 6, 12],
       rate: [0, 0, 7.5, 15],
     },
   ],
