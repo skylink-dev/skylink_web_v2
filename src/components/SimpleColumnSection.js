@@ -21,7 +21,8 @@ export default function SimpleColumnSection({ title, columns }) {
       </motion.div>
 
       {/* Single Row for Large Screens, Responsive Wrap Below */}
-      <div className="max-w-7xl mx-auto px-6 flex flex-wrap lg:flex-nowrap justify-center items-stretch gap-8">
+        <div
+            className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 flex flex-wrap lg:flex-nowrap justify-center items-stretch gap-3 sm:gap-4 lg:gap-6">
         {columns.map((item, index) => (
           <motion.div
             key={index}
@@ -38,29 +39,32 @@ export default function SimpleColumnSection({ title, columns }) {
               scale: 1.03,
               boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
             }}
-            className="bg-white border border-gray-100 hover:border-red-400 rounded-2xl shadow-sm p-8 
-                       flex flex-col items-center text-center
-                       w-full sm:w-[45%] md:w-[30%] lg:w-[300px] xl:w-[320px]
+            className="bg-white border border-gray-100 hover:border-red-400 rounded-2xl shadow-sm p-4 sm:p-6 lg:p-8 
+                       flex flex-col items-center justify-between text-center
+                       w-full sm:w-[45%] md:w-[30%] lg:flex-1
+                       min-h-[280px] sm:min-h-[320px] lg:min-h-[350px]
                        transition-all duration-500"
           >
             {/* Icon */}
-            <div className="text-red-600 text-5xl mb-4">{item.icon}</div>
+              <div className="text-red-600 text-4xl sm:text-5xl mb-3 sm:mb-4">{item.icon}</div>
 
-            {/* Title */}
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              {item.title}
-            </h3>
+              <div className="flex flex-col flex-grow">
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2">
+                      {item.title}
+                  </h3>
 
-            {/* Description */}
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              {item.description}
-            </p>
+                {/* Description */}
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                    {item.description}
+                </p>
+            </div>
 
             {/* CTA Button */}
             <Link
               href="/deals/cell-phone-deals/"
               aria-label={item.cta}
-              className="relative inline-block px-6 py-2.5 font-medium text-white bg-red-600 rounded-lg overflow-hidden transition-all duration-500 group"
+              className="relative inline-block px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:font-medium text-white bg-red-600 rounded-lg overflow-hidden transition-all duration-500 group mt-3 sm:mt-4"
             >
               <span className="absolute inset-0 bg-red-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></span>
               <span className="relative z-10 group-hover:text-white">
