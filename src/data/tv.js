@@ -142,25 +142,25 @@ export const bannerContent = {
       title: "Skylink Fire TV",
       content: "Access your favourite apps like Zee5, Prime Video, and Disney+ Hotstar on supported Skylink devices. Enjoy 4K streaming where available, with simple setup and voice-enabled control.",
       cta: "Shop Now",
-      href: "/"
+      href: "/contact-us"
   }, {
       image: "/assets/skyplay-seupbox-and-remote.jpg",
       title: "4K Set-Top Box",
       content: "Built for Skylink IPTV and Digital TV services, this 4K-ready box offers smooth navigation and sharp picture quality on compatible screens.",
       cta: "Shop Now",
-      href: "/"
+      href: "/contact-us"
   }, {
       image: "/assets/remote-product.jpg",
       title: "Smart Remote Control",
       content: "Control your Skylink devices with a single, easy-to-use remote featuring quick access and voice support on compatible setups.",
       cta: "Shop Now",
-      href: "/"
+      href: "/contact-us"
   }, {
       image: "/newassets/tv/highspeed-router.png",
       title: "Dual-Band Wi-Fi Router",
       content: "Keep your connection stable across multiple devices. Designed for reliable coverage and consistent performance throughout your home.",
       cta: "Shop Now",
-      href: "/"
+      href: "/contact-us"
   }]
 
   export const tablecontent = [
@@ -188,7 +188,7 @@ export const bannerContent = {
       title: '950+ Live Channels & 21+ OTT Apps for ₹399/month.',
       description: 'All your TV and OTT in one place with dependable quality and controls that feel natural.',
       legalText: 'No setup box - just your Smart TV and an internet connection.',
-      link: '/'
+      link: '/new_plans'
     },
     {
       image: '/assets/skyplay-tv-9.jpg',
@@ -197,7 +197,7 @@ export const bannerContent = {
       title: 'Watch on Smart TVs using the Skyline app or supported devices.',
       description: 'Just connect your broadband, no dish or setup fuss.',
       legalText: 'Enjoy HD clarity, tuned to your connection and device\n',
-      link: '/'
+      link: '/new_plans'
     }
   ];
   export const titlecontentData = { sub: "Phones & devices", title: "Need a new device?", cta: "Shop now" }
@@ -235,7 +235,7 @@ export const contentBaseBanner = {
     policy: "Requires an active Skylink Unlimited Starter (SL) plan with eligible AutoPay setup and paperless billing. Taxes and fees are additional.Skylink Unlimited Premium (PL), Skylink Unlimited Extra (EL), and Skylink Unlimited Starter (SL).",
     subcta: "",
     cta: "Learn More",
-    href: "/"
+    href: "/internet"
 };
 export const contentBaseBanner2 = {
     subtitle: "Skylink 5G. Fast. Reliable. Secure.",

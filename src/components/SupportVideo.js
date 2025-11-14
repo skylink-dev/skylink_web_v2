@@ -46,7 +46,7 @@ export default function SupportVideos() {
       v.muted = true;
       setIsMuted(true);
     }
-  }, [activeCategory, activeSub]);
+  }, [activeCategory, activeSub, volume]);
 
   // pause video when tab is inactive
   useEffect(() => {

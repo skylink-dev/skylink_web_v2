@@ -49,7 +49,7 @@ export default function BGImageRightContent({ image, content }) {
                 {/* Primary CTA */}
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
-                    href="/plans/next-up-anytime/"
+                    href="/internet/"
                     className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   >
                     {content.cta}

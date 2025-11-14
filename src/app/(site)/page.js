@@ -18,7 +18,7 @@ import {
 } from "../../data/Home";
 
 import HomeContactForm from "@/components/contact/ContactForm";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { homeIconiconList } from "@/data/home/homeIconImages";
 import ThreeBannerModern from "@/components/contact/ThreeBanner";
@@ -37,6 +37,9 @@ const NewsLetter = dynamic(() => import("@/components/NewsLetter"));
 const RectangleBanner = dynamic(() => import("@/components/RectangleBanner"));
 const RightImageLeftContent = dynamic(() =>
   import("@/components/RightImageLeftContents")
+);
+const AvailabilityComponents = dynamic(() =>
+    import("@/components/AvailabilityComponents")
 );
 const SingleFaq = dynamic(() => import("@/components/SingleFaq"));
 const Slider = dynamic(() => import("@/components/Slider"));
@@ -100,10 +103,11 @@ export default function Home() {
         eyebrow="Your Day, Powered by Skylink"
         heading={`Connectivity, refined for real life.`}
         description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
-        subDescription ={`Available at no extra cost for elegible customers across India.`}
+        subDescription ={`Available at no extra cost for eligible customers across India.`}
         buttonText="Learn More"
         buttonLink="/internet"
       />
+        <AvailabilityComponents />
       <HalfColumnCard items={cardData} />
       <DynamicCarousel
         title="Let's get you connected"

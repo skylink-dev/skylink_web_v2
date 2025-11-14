@@ -408,7 +408,7 @@ export default function page() {
         slidesData={dynamicSlidesData}
         color="bg-gray-200"
       />
-      <ContactFormNew />
+      {/*<ContactFormNew />*/}
       <Faq
         title="More reasons to love Skylink"
         content={faqSecondContent}

@@ -240,8 +240,8 @@ export const contentBaseBanner2 = {
   title: "A single connection that simplifies how India watches",
   description: "From global blockbusters to local stories, explore the future of streaming. All in one\n" +
       "space.",
-  policy: "Visit our official website at Skylink.app to explore features, plans, and partner platforms.",
+  policy: "Visit our official plan page to explore features, plans, and partner platforms.",
   subcta: "",
-  cta: "Check Out Skylink.app",
-  href:"/iptv-and-ott/"
+  cta: "Check Out Plans",
+  href:"/new_plans/"
 };

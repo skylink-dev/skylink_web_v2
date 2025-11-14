@@ -243,12 +243,12 @@ const stepsData = [
     <>
       <VideoBanner></VideoBanner>
       <VideoTabs></VideoTabs>
-      <StepByStepComponent steps={stepsData}></StepByStepComponent>
-      <IconMoreDetails title={{
-        eyebrow: 'Experience Skylink Firestick AssuranceGetting Started with Skylink Firestick',
-        heading: 'Here’s how it works',
-        description: "We’ve got your back — or we’ll make it right. Eligible Skylink customers are proactively covered by the Skylink Guarantee at no extra charge."
-      }} content={iconMoreDetailcontent} />
+      {/*<StepByStepComponent steps={stepsData}></StepByStepComponent>*/}
+      {/*<IconMoreDetails title={{*/}
+      {/*  eyebrow: 'Experience Skylink Firestick AssuranceGetting Started with Skylink Firestick',*/}
+      {/*  heading: 'Here’s how it works',*/}
+      {/*  description: "We’ve got your back — or we’ll make it right. Eligible Skylink customers are proactively covered by the Skylink Guarantee at no extra charge."*/}
+      {/*}} content={iconMoreDetailcontent} />*/}
       <ComparisonTable
         heading="Zero Touch Installation"
         subtitle="Streaming starts with the Skylink Fire TV — just plug, play, and dive into a world of entertainment. It's the simplest way to turn any TV into a smart experience powered by Skyplay."

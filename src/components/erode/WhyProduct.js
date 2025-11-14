@@ -21,11 +21,11 @@ export default function WhyProduct() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 leading-tight tracking-tight">
             Why Skylink Broadband in{" "}
             <span className="inline-block">
-              {"Coimbatore".split("").map((letter, index) => (
+              {"Erode".split("").map((letter, index) => (
                 <span
                   key={index}
                   className={`inline-block font-bold ${
-                    index >= 0 && index <= 9 ? "text-red-600 animate-jump" : "text-slate-900"
+                    index >= 0 && index <= 7 ? "text-red-600 animate-jump" : "text-slate-900"
                   }`}
                   style={{ animationDelay: `${index * 0.06}s` }}
                 >

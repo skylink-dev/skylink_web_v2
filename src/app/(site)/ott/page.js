@@ -43,8 +43,9 @@ export default function Page() {
       <RectangleBanner
         backgroundImage="/assets/skyplay-map.jpg"
         eyebrow="Introducing the Skylink Guarantee"
-        heading={`Pan-India reliable connectivity<br/>Unbeatable plans you’ll love.<br/>Support that puts you first.`}
-        description={`All guaranteed — or we’ll make it right. Available to all eligible customers across India at <span className="nowrap"> no extra cost</span>`}
+        heading={`Connectivity, refined for real life.`}
+        description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
+        subDescription = {`Available at no extra cost for eligible customers across India.`}
         buttonText="Learn More"
         buttonLink="/internet"
       />
