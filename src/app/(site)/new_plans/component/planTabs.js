@@ -42,7 +42,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
   }, [activeTab]);
 
   return (
-    <div className="w-full">
+    <div className="w-5/6 overflow-hidden">
       <AlertModal
         isOpen={isAlertOpen}
         onClose={() => setIsAlertOpen(false)}

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { selectPlan } from "@/redux/slices/newPlanSlice";
+import NewPlanSummary from "./NewPlanSummary";
 
 const PlanSummary = ({
   activePlan,
@@ -109,7 +110,7 @@ const PlanSummary = ({
                 <div className="flex flex-wrap gap-2 mt-2">
                   {channelList.slice(0, 6).map((ch, i) => (
                     <div
-                      key={i}
+                      key={ch.name + "" + i}
                       className="bg-gray-50  rounded-xl flex items-center justify-center p-1 hover:shadow-md transition-all duration-200"
                     >
                       <Image
@@ -244,7 +245,6 @@ export default function CustomPlan({
   const channelsList = basePlans.channels;
   const [selectedChannel, setSelectedChannel] = useState({
     name: 350,
-
     packValidity: [
       {
         speed: "30 Mbps",
@@ -271,10 +271,54 @@ export default function CustomPlan({
     channelList: ["Vijay Tv", "Zee Tamil", "News 7"],
   });
   const ottsList = basePlans.otts;
-  const [selectedOtt, setSelectedOtt] = useState(null);
+  const [selectedOtt, setSelectedOtt] = useState({
+    name: 15,
+
+    packValidity: [
+      {
+        speed: "30 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "50 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "100 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "200 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "300 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "500 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "1000 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+    ],
+    ottList: ["aha Tamil"],
+  });
   const [activePlan, setActivePlan] = useState(null);
   const [disableChannelList, setDisableChannelList] = useState(null);
   const [extraChargeChannelList, setExtraChargeChannelList] = useState(null);
+  const [disableOttList, setDisableOttList] = useState(null);
+  const [extraChargeOttList, setExtraChargeOttList] = useState(null);
+  const [installationCharge, setInstallationCharges] = useState(null);
   const discountList = basePlans?.discount;
   useEffect(() => {
     /**
@@ -346,6 +390,64 @@ export default function CustomPlan({
      *
      *
      */
+    disabledlist = [];
+    ottsList.forEach((el) => {
+      let channelcheck = false;
+      for (let i = 0; i < el?.packValidity?.length; i++) {
+        let element = el?.packValidity[i];
+        if (
+          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" ==
+          Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
+        ) {
+          channelcheck = true;
+          break;
+        }
+        channelcheck = false;
+      }
+      if (channelcheck) {
+        disabledlist.push({
+          name: el.name,
+          disable: false,
+        });
+      } else {
+        disabledlist.push({
+          name: el.name,
+          disable: true,
+        });
+      }
+      setDisableOttList(disabledlist);
+    });
+    additionalCost = -1;
+    extraChargesList = [];
+    ottsList.forEach((el) => {
+      for (let i = 0; i < el?.packValidity?.length; i++) {
+        let element = el?.packValidity[i];
+
+        if (
+          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" >
+          Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
+        ) {
+          additionalCost = element?.additionalcost;
+          break;
+        }
+        additionalCost = -1;
+      }
+      if (additionalCost == -1) {
+        setSelectedOtt(el);
+        extraChargesList.push({
+          name: el.name,
+          addons: false,
+          cost: 0,
+        });
+      } else {
+        extraChargesList.push({
+          name: el.name,
+          addons: true,
+          cost: additionalCost,
+        });
+      }
+    });
+    setExtraChargeOttList(extraChargesList);
   }, [selectedSpeed]);
 
   // 🔵 Reusable Grid Button
@@ -386,31 +488,34 @@ export default function CustomPlan({
 
     const getGridCols = (count) =>
       `grid grid-cols-${Math.ceil(count / 2)} md:grid-cols-${Math.min(
-        count,
-        4
+        count
       )} gap-2`;
 
     return (
       <>
         {type == "speed" ? (
           <>
-            <div className={`${getGridCols(options.length)} w-full`}>
+            <div
+              className={`${getGridCols(options.length)} w-full items-stretch`}
+            >
               {options.map((opt, idx) => {
                 return (
-                  <div key={opt.name} className="relative w-full">
+                  <div key={opt.name + "  " + idx} className="relative w-full">
                     {/* 🏷️ Discount ribbon */}
 
                     <button
                       onClick={() => {
                         setSelected(opt);
                       }}
-                      className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                      className={`relative cursor-pointer w-full p-2 md:py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center  flex-col md:flex-row ${
                         selected?.name === opt.name
                           ? colorMap[color].active
                           : colorMap[color].base
                       }`}
                     >
-                      {opt.name}
+                      <p> {opt?.name?.replace(/mbps/i, "").trim()}</p>
+                      <p>Mbps</p>
+
                       {selected?.name === opt.name && (
                         <Check
                           size={18}
@@ -439,7 +544,7 @@ export default function CustomPlan({
                 });
 
                 return (
-                  <div key={opt.name} className="relative w-full">
+                  <div key={"validity" + opt} className="relative w-full">
                     {/* 🏷️ Discount ribbon */}
                     {discount > 0 && (
                       <div className="absolute -top-[1px] left-2 z-10 flex flex-col items-center">
@@ -502,7 +607,7 @@ export default function CustomPlan({
           </>
         ) : null}
 
-        {type == "channels" ? (
+        {type == "channels" || type == "ott" ? (
           <div className={`${getGridCols(options.length)} w-full`}>
             {options.map((opt, idx) => {
               var isDisabled = false;
@@ -526,10 +631,7 @@ export default function CustomPlan({
               }
 
               return (
-                <div
-                  key={"channels" + opt.name + idx}
-                  className="relative w-full"
-                >
+                <div key={type + opt.name + idx} className="relative w-full">
                   <button
                     disabled={isDisabled}
                     onClick={() => {
@@ -539,12 +641,12 @@ export default function CustomPlan({
                     className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
                       isDisabled
                         ? colorMap[color].disabled
-                        : selected === opt
+                        : selected?.name === opt.name
                         ? colorMap[color].active
                         : colorMap[color].base
                     }`}
                   >
-                    {selected.name === opt.name && (
+                    {selected?.name === opt.name && (
                       <Check
                         size={18}
                         strokeWidth={4}
@@ -566,7 +668,6 @@ export default function CustomPlan({
             })}
           </div>
         ) : null}
-
         {type == "syper" ? (
           <div className={`${getGridCols(options.length)} w-full`}>
             {options.map((opt) => {
@@ -619,7 +720,7 @@ export default function CustomPlan({
                         : colorMap[color].base
                     }`}
                   >
-                    {selected === opt && (
+                    {selected.name === opt.name && (
                       <Check
                         size={18}
                         strokeWidth={4}
@@ -720,30 +821,33 @@ export default function CustomPlan({
             </div>
 
             {/* OTT */}
-            {/* <div className="bg-green-50 border border-green-300 p-5 rounded-xl">
+            <div className="bg-green-50 border border-green-300 p-5 rounded-xl">
               <h3 className="text-green-700 text-start  font-semibold text-lg mb-4">
                 Choose Your OTT Apps
               </h3>
               <ButtonGrid
-                options={allOttCounts.map((c) => `${c}+ OTTs`)}
+                type={`ott`}
+                options={ottsList}
                 selected={selectedOtt}
                 setSelected={setSelectedOtt}
                 color="green"
-                disabledLogic={(opt) => parseInt(opt) < baseOttLimit}
-                extraChargeLogic={(opt) => {
-                  const count = parseInt(opt);
-                  return count > baseOttLimit
-                    ? (count - baseOttLimit) * additionalOTTCharges
-                    : 0;
-                }}
+                disabledLogic={disableOttList}
+                extraChargeLogic={extraChargeOttList}
               />
-            </div> */}
+            </div>
           </div>
 
           {/* RIGHT SIDE */}
           <div className="w-full  flex flex-col gap-6">
             {/* Summary */}
-
+            <NewPlanSummary
+              selectedSpeed={selectedSpeed}
+              selectedValidity={selectedValidity}
+              selectedChannel={selectedChannel}
+              selectedOtt={selectedOtt}
+              discountList={discountList}
+              installationCharge={installationCharge}
+            />
             {activePlan && (
               // <div className="mt-6 border-t border-gray-200 pt-4">
               //   <p className="text-xl font-bold text-gray-900">
