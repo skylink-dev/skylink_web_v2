@@ -33,7 +33,10 @@ export const customPlans = {
   channels: [
     {
       name: 350,
-
+      /**
+       * If you  want to disable remove from the plan list
+       * If you want to add additional charges and make thenm add on or free make changes in additional charges
+       */
       packValidity: [
         {
           speed: "30 Mbps",
@@ -60,16 +63,16 @@ export const customPlans = {
           duration: [1, 3, 6, 12],
           additionalcost: 0,
         },
-        {
-          speed: "500 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
-        {
-          speed: "1000 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
+        // {
+        //   speed: "500 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
+        // {
+        //   speed: "1000 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
       ],
 
       channelList: ["Vijay Tv", "Zee Tamil", "News 7"],
@@ -96,23 +99,23 @@ export const customPlans = {
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 0,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 0,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 0,
         },
-        {
-          speed: "1000 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 199,
-        },
+        // {
+        //   speed: "1000 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 199,
+        // },
       ],
       channelList: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     },
@@ -120,9 +123,24 @@ export const customPlans = {
       name: 750,
       packValidity: [
         {
+          speed: "30 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 199,
+        },
+        {
+          speed: "50 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 199,
+        },
+        {
+          speed: "100 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 199,
+        },
+        {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 0,
+          additionalcost: 199,
         },
         {
           speed: "300 Mbps",
@@ -132,12 +150,12 @@ export const customPlans = {
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 0,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 0,
         },
       ],
       channelList: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
@@ -146,35 +164,42 @@ export const customPlans = {
   otts: [
     {
       name: 15,
-      additionalcost: 0,
+
       packValidity: [
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
       ],
       ottList: ["aha Tamil"],
@@ -182,105 +207,126 @@ export const customPlans = {
 
     {
       name: 16,
-      additionalcost: 0,
+
       packValidity: [
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
       ],
       ottList: ["Jio Hotstar", "aha Tamil"],
     },
     {
       name: 19,
-      additionalcost: 0,
+
       packValidity: [
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
       ],
       ottList: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     },
     {
       name: 20,
-      additionalcost: 299,
+
       packValidity: [
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 299,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 299,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 299,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 299,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 299,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 299,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 299,
         },
       ],
       ottList: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],

@@ -14,6 +14,7 @@ import {
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
+import { selectPlan } from "@/redux/slices/newPlanSlice";
 
 const PlanSummary = ({
   activePlan,
@@ -241,11 +242,111 @@ export default function CustomPlan({
   const validities = basePlans.validity;
   const [selectedValidity, setSelectedValidity] = useState(12);
   const channelsList = basePlans.channels;
-  const [selectedChannel, setSelectedChannel] = useState(null);
+  const [selectedChannel, setSelectedChannel] = useState({
+    name: 350,
+
+    packValidity: [
+      {
+        speed: "30 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "50 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "100 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+      {
+        speed: "200 Mbps",
+        duration: [1, 3, 6, 12],
+        additionalcost: 0,
+      },
+    ],
+
+    channelList: ["Vijay Tv", "Zee Tamil", "News 7"],
+  });
   const ottsList = basePlans.otts;
   const [selectedOtt, setSelectedOtt] = useState(null);
   const [activePlan, setActivePlan] = useState(null);
+  const [disableChannelList, setDisableChannelList] = useState(null);
+  const [extraChargeChannelList, setExtraChargeChannelList] = useState(null);
   const discountList = basePlans?.discount;
+  useEffect(() => {
+    /**
+     * This modul is for getting channel list along with their price and calculation and finding
+     *
+     */
+    let extraChargesList = [];
+    let additionalCost = -1;
+    channelsList.forEach((el) => {
+      for (let i = 0; i < el?.packValidity?.length; i++) {
+        let element = el?.packValidity[i];
+
+        if (
+          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" >
+          Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
+        ) {
+          additionalCost = element?.additionalcost;
+          break;
+        }
+        additionalCost = -1;
+      }
+      if (additionalCost == -1) {
+        setSelectedChannel(el);
+        extraChargesList.push({
+          name: el.name,
+          addons: false,
+          cost: 0,
+        });
+      } else {
+        extraChargesList.push({
+          name: el.name,
+          addons: true,
+          cost: additionalCost,
+        });
+      }
+    });
+    setExtraChargeChannelList(extraChargesList);
+    let disabledlist = [];
+    channelsList.forEach((el) => {
+      let channelcheck = false;
+      for (let i = 0; i < el?.packValidity?.length; i++) {
+        let element = el?.packValidity[i];
+        if (
+          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" ==
+          Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
+        ) {
+          channelcheck = true;
+          break;
+        }
+        channelcheck = false;
+      }
+      if (channelcheck) {
+        disabledlist.push({
+          name: el.name,
+          disable: false,
+        });
+      } else {
+        disabledlist.push({
+          name: el.name,
+          disable: true,
+        });
+      }
+      setDisableChannelList(disabledlist);
+    });
+    /**
+     *
+     *
+     * Checking for OTT disbling and checking for validity
+     *
+     *
+     */
+  }, [selectedSpeed]);
 
   // 🔵 Reusable Grid Button
   const ButtonGrid = ({
@@ -258,8 +359,6 @@ export default function CustomPlan({
     discountMap,
     extraChargeLogic,
   }) => {
-    console.log(options);
-
     const colorMap = {
       blue: {
         base: "border-blue-300 text-blue-700 hover:bg-blue-500 hover:text-white",
@@ -401,6 +500,71 @@ export default function CustomPlan({
               })}
             </div>
           </>
+        ) : null}
+
+        {type == "channels" ? (
+          <div className={`${getGridCols(options.length)} w-full`}>
+            {options.map((opt, idx) => {
+              var isDisabled = false;
+              var isextraCharge = false;
+              var extraCharge = false;
+              for (let i = 0; i < disabledLogic?.length; i++) {
+                if (opt?.name + "" == disabledLogic[i].name + "") {
+                  isDisabled = disabledLogic[i].disable;
+                }
+              }
+              for (let i = 0; i < extraChargeLogic?.length; i++) {
+                console.log(
+                  opt?.name + "",
+                  extraChargeLogic[i].name + "",
+                  opt?.name + "" == extraChargeLogic[i].name + ""
+                );
+                if (opt?.name + "" == extraChargeLogic[i].name + "") {
+                  isextraCharge = extraChargeLogic[i].addons;
+                  extraCharge = extraChargeLogic[i]?.cost;
+                }
+              }
+
+              return (
+                <div
+                  key={"channels" + opt.name + idx}
+                  className="relative w-full"
+                >
+                  <button
+                    disabled={isDisabled}
+                    onClick={() => {
+                      if (isDisabled) return;
+                      setSelected(opt);
+                    }}
+                    className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                      isDisabled
+                        ? colorMap[color].disabled
+                        : selected === opt
+                        ? colorMap[color].active
+                        : colorMap[color].base
+                    }`}
+                  >
+                    {selected.name === opt.name && (
+                      <Check
+                        size={18}
+                        strokeWidth={4}
+                        className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                      />
+                    )}
+                    <div className="flex flex-col items-center">
+                      <span>
+                        {opt.name}
+                        {" + Channels "}
+                        <span className={`text-[11px] font-medium `}>
+                          {isextraCharge ? `(Addon)` : "(Free)"}
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         ) : null}
 
         {type == "syper" ? (
@@ -549,44 +713,8 @@ export default function CustomPlan({
                 options={channelsList}
                 selected={selectedChannel}
                 setSelected={setSelectedChannel}
-                disabledLogic={(() => {
-                  let disabledlist = [];
-                  channelsList.forEach((el) => {
-                    let name = el.name;
-                    console.log("Pack Validity");
-                    console.log(el?.packValidity);
-                    for (let i = 0; i < el?.packValidity?.length; i++) {
-                      let element = el?.packValidity[i];
-                      console.log(
-                        Number(element?.speed?.replace(/mbps/i, "").trim()) +
-                          "" +
-                          Number(
-                            selectedSpeed.name?.replace(/mbps/i, "").trim()
-                          ) +
-                          "",
-                        Number(element?.speed?.replace(/mbps/i, "").trim()) +
-                          "" <=
-                          Number(
-                            selectedSpeed.name?.replace(/mbps/i, "").trim()
-                          ) +
-                            ""
-                      );
-                      if (
-                        Number(element?.speed?.replace(/mbps/i, "").trim()) +
-                          "" ==
-                        Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
-                      ) {
-                        disabledlist.push({
-                          name: el.name,
-                          disable: true,
-                        });
-                        break;
-                      }
-                    }
-                    console.log("disability list :");
-                    console.log(disabledlist);
-                  });
-                })()}
+                disabledLogic={disableChannelList}
+                extraChargeLogic={extraChargeChannelList}
                 color="yellow"
               />
             </div>
