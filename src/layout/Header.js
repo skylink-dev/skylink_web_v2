@@ -300,7 +300,7 @@ export default function Header() {
                     href={buttons[0].href}
                     download={buttons[0].download}
                     target="_blank"
-                    className={`${buttons[0].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-10 h-10 lg:hover:w-[190px] overflow-hidden transition-all duration-300`}
+                    className={`${buttons[0].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-12 h-12 lg:hover:w-[190px] overflow-hidden transition-all duration-300`}
                     title={buttons[0].label}
                 >
                     <div className="flex items-center w-full">
@@ -308,9 +308,9 @@ export default function Header() {
                             <Image
                                 src="/newassets/navbar/icons/play.png"
                                 alt="Play Icon"
-                                width={24}
-                                height={24}
-                                className="w-5 h-5"
+                                width={26}
+                                height={26}
+                                className="w-6 h-6"
                             />
                         </div>
                         <span
@@ -326,7 +326,7 @@ export default function Header() {
                 <Link
                     href={buttons[1].href}
                     target="_blank"
-                    className={`${buttons[1].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-10 h-10 lg:hover:w-[190px] overflow-hidden transition-all duration-300`}
+                    className={`${buttons[1].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-12 h-12 lg:hover:w-[190px] overflow-hidden transition-all duration-300`}
                     title={buttons[1].label}
                 >
                     <div className="flex items-center w-full">
@@ -334,9 +334,9 @@ export default function Header() {
                             <Image
                                 src="/newassets/navbar/icons/ott.png"
                                 alt="Play Icon"
-                                width={24}
-                                height={24}
-                                className="w-5 h-5"
+                                width={26}
+                                height={26}
+                                className="w-6 h-6"
                             />
                         </div>
                         <span

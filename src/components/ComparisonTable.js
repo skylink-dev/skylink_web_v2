@@ -112,7 +112,7 @@ export default function ComparisonTable({ heading, subtitle, content, providers 
                         {/* CTA Button */}
                         <div className="mt-6 mb-2">
                             <Link
-                                href="/buy/internet/plans"
+                                href="/new_plans"
                                 aria-label="Shop Skylink Fiber plans"
                                 className="inline-flex items-center px-6 py-3 bg-slate-700 text-white font-medium rounded-lg hover:bg-slate-800 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg"
                             >

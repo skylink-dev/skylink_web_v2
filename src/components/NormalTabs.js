@@ -186,9 +186,12 @@ export default function NormalTabs() {
                   ))}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-md">
-                    Learn more
-                  </button>
+                    <button
+                        onClick={() => window.location.href = '/internet'}
+                        className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-md"
+                    >
+                        Learn more
+                    </button>
                 </div>
               </div>
 

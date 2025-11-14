@@ -160,7 +160,7 @@ export const iconCard = [
     legal: "​",
   },
 ];
-export const IcontitleData = { title: "One Simple Plan for Every Gadget", description: "Complete device protection for your home, quick fixes, replacements, and setup help for ₹399 a month.", links: [{ title: "  See offer details", url: "/" }] }
+export const IcontitleData = { title: "One Simple Plan for Every Gadget", description: "Complete device protection for your home, quick fixes, replacements, and setup help for ₹399 a month.", links: [{ title: "  See offer details", url: "/new_plans" }] }
 export const dynamicSlidesData = [
   {
     imgSrc: '/assets/fibernet-image.jpg',

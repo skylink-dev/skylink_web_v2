@@ -50,13 +50,13 @@ export default function ImageBanner() {
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-3">
                             <Link 
-                                href="/"
+                                href="/new_plans"
                                 className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
                                 Shop now
                             </Link>
                             <Link 
-                                href="/prepaid/unlimited-level-up"
+                                href="/"
                                 className="bg-white hover:bg-gray-100 text-gray-900 font-semibold py-3 px-6 rounded-lg text-center border border-gray-300 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
                                 Learn more

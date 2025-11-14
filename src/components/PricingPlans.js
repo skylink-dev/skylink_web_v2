@@ -82,7 +82,7 @@ export default function PricingPlans({ heading, subtitle, content, providers }) 
         {/* Button */}
         <div className="text-center mt-10">
           <Link
-            href="/buy/internet/plans"
+            href="/new_plans"
             className="inline-block bg-red-600 hover:bg-red-500 text-white font-semibold px-8 py-3 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             Shop Skylink Fiber

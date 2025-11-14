@@ -14,7 +14,7 @@ export default function ContactForm({ title, contentData, rightImage, leftImage,
         }, 5000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [contentData]);
     return (
         <div className="">
             <div className="max-width-background  bgcolor mar-b-none mar-t-none pad-b-md pad-t-lg theme-base-bg">
@@ -37,7 +37,7 @@ export default function ContactForm({ title, contentData, rightImage, leftImage,
                                                 <span className=" ">{selected.details}</span>
                                                 <button className="btn-reset nowrap" aria-label=" See details about this offer">See offer details</button>
                                             </div>
-                                            <div className=" cta-container mar-t-xs font-color-change"><Link className="btn-primary bg-white" id="button-:R456khjmH1:" type="button" aria-label="Shop iPhone 16 Pro" href="/buy/phones/apple-iphone-16-pro.html">Shop now</Link></div>
+                                            <div className=" cta-container mar-t-xs font-color-change"><Link className="btn-primary bg-white" id="button-:R456khjmH1:" type="button" aria-label="Shop iPhone 16 Pro" href="/new_plans">Shop now</Link></div>
                                         </div>
                                     </div>
                                 </div>

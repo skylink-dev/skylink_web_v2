@@ -43,13 +43,10 @@ export default function SpeedTestBanner() {
             Speed Test
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-gray-900">
-            Discover your network speed
+              Check Your Connection in a Minute
           </h1>
           <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">
-            Test your internet speed effortlessly with our user-friendly tool.
-            Quickly assess how fast and reliable your connection is for browsing,
-            streaming, and gaming. Get precise results in seconds for a smoother
-            online experience.
+              Run a quick test to measure your current download and upload speeds with our tool. See if your connection can handle streaming, gaming, and video calls smoothly. Accurate result in seconds, no login needed
           </p>
 
           <p className="text-xs text-gray-600 mb-1">

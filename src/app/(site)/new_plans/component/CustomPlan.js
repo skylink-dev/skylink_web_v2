@@ -450,7 +450,7 @@ export default function CustomPlan({
     setExtraChargeOttList(extraChargesList);
   }, [selectedSpeed]);
 
-  // 🔵 Reusable Grid Button
+  // Reusable Grid Button
   const ButtonGrid = ({
     type,
     options,

@@ -15,6 +15,7 @@ export default function HeroTitleBanner() {
             src="/assets/about-company-image-1.JPG"
             width="1024"
             height="768"
+            alt="Skylink company image 1"
           />
         </div>
         <div className="image image--2">
@@ -22,6 +23,7 @@ export default function HeroTitleBanner() {
             src="/assets/about-company-image-2.JPG"
             width="1024"
             height="768"
+            alt="Skylink company image 2"
           />
         </div>
         <div className="image image--3">
@@ -29,6 +31,7 @@ export default function HeroTitleBanner() {
             src="/assets/about-company-image-3.JPG"
             width="1024"
             height="768"
+            alt="Skylink company image 3"
           />
         </div>
         <div className="image image--4">
@@ -36,6 +39,7 @@ export default function HeroTitleBanner() {
             src="/assets/about-company-image-4.JPG"
             width="1024"
             height="768"
+            alt="Skylink company image 4"
           />
         </div>
         <div className="text">

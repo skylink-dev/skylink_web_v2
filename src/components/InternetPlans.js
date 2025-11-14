@@ -181,7 +181,7 @@ export default function InternetPlans() {
                                                     </div>
                                                     <div className="jsx-2176973199 plan-card-cta">
                                                         <div className="jsx-2176973199">
-                                                            <Link id="plan-card-cta-4-0" target="_self" aria-label="Shop 300Mbps fiber internet now" href="/buy/internet/plans" className="jsx-1196099039 btn-primary  btn-full-width">Shop now</Link>
+                                                            <Link id="plan-card-cta-4-0" target="_self" aria-label="Shop 300Mbps fiber internet now" href="/new_plans" className="jsx-1196099039 btn-primary  btn-full-width">Shop now</Link>
                                                         </div>
                                                     </div>
                                                     <div className="jsx-2176973199 plan-toggle-accordion-wrapr plan-card-acc">

@@ -15,7 +15,7 @@ const slidesData = [
     legal:
       "*1 month with 300M; 2 months with 500M; 3 months with 1 GIG+. Fees extra. **Card redemption & proof of eligibility required. Ltd availability/areas.",
     imgSrc: "/assets/skyplay-business-fiber-connection-1.jpg",
-    link: "/buy/internet/plans?customer_type=smallbusiness",
+    link: "/new_plans?customer_type=smallbusiness",
   },
   {
     title: "₹699 Triple Play Bundle",
@@ -25,7 +25,7 @@ const slidesData = [
     legal:
       "Offer valid in select cities only. Internet speed and OTT availability may vary by location and network conditions. Installation charges may apply. Fair usage policy applies. Terms and conditions apply.",
     imgSrc: "/assets/skyplay-business-fiber-connection-2.jpg",
-    link: "/buy/internet/plans?customer_type=smallbusiness",
+    link: "/new_plans?customer_type=smallbusiness",
   },
 ];
 
@@ -127,13 +127,13 @@ export default function ColumnsWithImageComponent() {
 
                     {/* CTA Button */}
                     <div className="flex-shrink-0 pt-4 mt-auto">
-                      <Link
-                        href={item.link}
-                        className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg block"
-                        aria-label={`See if ${item.title} is available in your area.`}
-                      >
-                        Check availability
-                      </Link>
+                        <Link
+                            href="/internet#availability"
+                            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg block"
+                            aria-label={`See if ${item.title} is available in your area.`}
+                        >
+                            Check availability
+                        </Link>
                     </div>
                   </div>
                 </div>
