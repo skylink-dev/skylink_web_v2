@@ -571,7 +571,11 @@ export default function CustomPlan({
                           ) +
                             ""
                       );
-                      if (element?.speed + "" == selectedSpeed.name + "") {
+                      if (
+                        Number(element?.speed?.replace(/mbps/i, "").trim()) +
+                          "" ==
+                        Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
+                      ) {
                         disabledlist.push({
                           name: el.name,
                           disable: true,
