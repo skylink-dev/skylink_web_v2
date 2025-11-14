@@ -346,9 +346,9 @@ export default function CustomPlan({
      *
      *
      */
-  }, [selectedSpeed]);
+  }, [selectedSpeed, channelsList]);
 
-  // 🔵 Reusable Grid Button
+    // Reusable Grid Button
   const ButtonGrid = ({
     type,
     options,

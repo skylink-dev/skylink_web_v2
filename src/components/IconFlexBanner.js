@@ -29,7 +29,7 @@ export default function IconFlexBanner() {
                         Test Your Connection Speed
                     </h2>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Check how fast you're really connected.
+                        Check how fast you&apos;re really connected.
                     </p>
                 </div>
 

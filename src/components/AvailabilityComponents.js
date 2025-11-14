@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState, useMemo} from "react";
 import { MapPin, Phone, Mail, CheckCircle, X, Navigation, Search } from "lucide-react";
 
 export default function AvailabilityChecker() {
@@ -12,7 +12,7 @@ export default function AvailabilityChecker() {
     const [showButton, setShowButton] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
-    const serviceAreas = [
+    const serviceAreas = useMemo(() => [
         {
             name: "Erode",
             color: "#EF4444",
@@ -43,7 +43,7 @@ export default function AvailabilityChecker() {
                 { lat: 11.25, lng: 77.20 },
             ],
         },
-    ];
+    ], []);
 
     useEffect(() => {
         if (window.google) {
@@ -135,7 +135,7 @@ export default function AvailabilityChecker() {
                 });
             });
         }
-    }, []);
+    }, [marker, serviceAreas]);
 
     const checkAvailability = () => {
         if (!marker) return;
@@ -219,7 +219,7 @@ export default function AvailabilityChecker() {
                             Service not available in this area
                         </p>
                         <p className="text-red-600 text-sm text-center mt-1">
-                            We're expanding our network. Contact us for updates!
+                            We&apos;re expanding our network. Contact us for updates!
                         </p>
                     </div>
                 )}

@@ -14,7 +14,7 @@ export default function ContactForm({ title, contentData, rightImage, leftImage,
         }, 5000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [contentData]);
     return (
         <div className="">
             <div className="max-width-background  bgcolor mar-b-none mar-t-none pad-b-md pad-t-lg theme-base-bg">
