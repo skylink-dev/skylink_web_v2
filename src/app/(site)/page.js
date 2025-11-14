@@ -103,7 +103,7 @@ export default function Home() {
         eyebrow="Your Day, Powered by Skylink"
         heading={`Connectivity, refined for real life.`}
         description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
-        subDescription ={`Available at no extra cost for elegible customers across India.`}
+        subDescription ={`Available at no extra cost for eligible customers across India.`}
         buttonText="Learn More"
         buttonLink="/internet"
       />

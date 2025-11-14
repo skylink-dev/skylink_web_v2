@@ -14,8 +14,8 @@ export default function HeroBannerTUP() {
 
         {/* Main Content */}
         <div className="relative max-w-6xl mx-auto px-6 sm:px-10">
-          <h1 className="text-slate-900 font-extrabold mb-6 text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight">
-            Coimbatore&apos;s Premium{" "}
+          <h1 className="text-slate-900 fot-extrabold mb-6 text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight">
+            Tiruppur&apos;s Premium{" "}
             <span className="inline-block bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent animate-pulse-text">
               High-Speed Fibernet
             </span>{" "}
@@ -24,7 +24,7 @@ export default function HeroBannerTUP() {
 
           <p className="text-slate-600 max-w-3xl mx-auto mb-12 text-lg sm:text-xl font-medium">
             Experience lightning-fast, reliable, and unlimited internet for
-            homes and businesses in Coimbatore. Stay connected with seamless
+            homes and businesses in Tiruppur. Stay connected with seamless
             performance and unmatched support.
           </p>
 

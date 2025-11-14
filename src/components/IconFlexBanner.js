@@ -94,7 +94,7 @@ export default function IconFlexBanner() {
                         Powered by
                       </span>
                                             <span className="text-sm font-semibold text-gray-700">
-                        Speedtest
+                        ookla
                       </span>
                                         </div>
                                     </div>

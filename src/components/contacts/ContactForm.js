@@ -112,7 +112,7 @@ export default function ContactForm() {
           {/* Header */}
           <div>
             <span className="inline-block text-sm font-semibold uppercase tracking-wide text-red-600 bg-red-100 px-4 py-2 rounded-full mb-4">
-              Secure Connections
+              Adaptive Connectivity.
             </span>
             <h1 className="text-4xl font-bold text-gray-900 leading-tight">
               We Offer The{" "}
@@ -122,9 +122,7 @@ export default function ContactForm() {
               <span className="text-red-600">Network Connections</span>
             </h1>
             <p className="text-gray-600 mt-4 text-lg">
-              Our network connections are designed to provide unmatched
-              reliability and speed, ensuring seamless online experiences for
-              both personal and business use.
+                Our network ecosystem ensures uninterrupted performance, delivering consistent speed and security across every device and moment.
             </p>
           </div>
 
