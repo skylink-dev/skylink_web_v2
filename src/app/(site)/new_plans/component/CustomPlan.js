@@ -549,6 +549,40 @@ export default function CustomPlan({
                 options={channelsList}
                 selected={selectedChannel}
                 setSelected={setSelectedChannel}
+                disabledLogic={(() => {
+                  let disabledlist = [];
+                  channelsList.forEach((el) => {
+                    let name = el.name;
+                    console.log("Pack Validity");
+                    console.log(el?.packValidity);
+                    for (let i = 0; i < el?.packValidity?.length; i++) {
+                      let element = el?.packValidity[i];
+                      console.log(
+                        Number(element?.speed?.replace(/mbps/i, "").trim()) +
+                          "" +
+                          Number(
+                            selectedSpeed.name?.replace(/mbps/i, "").trim()
+                          ) +
+                          "",
+                        Number(element?.speed?.replace(/mbps/i, "").trim()) +
+                          "" <=
+                          Number(
+                            selectedSpeed.name?.replace(/mbps/i, "").trim()
+                          ) +
+                            ""
+                      );
+                      if (element?.speed + "" == selectedSpeed.name + "") {
+                        disabledlist.push({
+                          name: el.name,
+                          disable: true,
+                        });
+                        break;
+                      }
+                    }
+                    console.log("disability list :");
+                    console.log(disabledlist);
+                  });
+                })()}
                 color="yellow"
               />
             </div>

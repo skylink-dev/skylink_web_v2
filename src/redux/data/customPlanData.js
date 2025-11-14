@@ -33,35 +33,42 @@ export const customPlans = {
   channels: [
     {
       name: 350,
-      additionalcost: 0,
+
       packValidity: [
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 0,
         },
       ],
 
@@ -69,43 +76,70 @@ export const customPlans = {
     },
     {
       name: 550,
-      additionalcost: 199,
+
       packValidity: [
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 199,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 199,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 199,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 199,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 199,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 199,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
+          additionalcost: 199,
         },
       ],
       channelList: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     },
     {
       name: 750,
-      additionalcost: 299,
-      packValidity: ["200 Mbps", "300 Mbps", "500 Mbps", "1000 Mbps"],
+      packValidity: [
+        {
+          speed: "200 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 0,
+        },
+        {
+          speed: "300 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 0,
+        },
+        {
+          speed: "500 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 199,
+        },
+        {
+          speed: "1000 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 199,
+        },
+      ],
       channelList: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
     },
   ],
