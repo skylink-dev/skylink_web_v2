@@ -143,8 +143,8 @@ export default function AvailabilityChecker() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-6 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen">
-            <div className="w-full max-w-3xl bg-gray-100 rounded-3xl border border-gray-200 shadow-lg p-6 mb-6">
+        <div className="flex flex-col items-center justify-center p-6 bg-white min-h-screen">
+            <div className="w-full max-w-5xl bg-gray-100 rounded-3xl border border-gray-200 shadow-lg p-6 mb-6">
                 {/* Map Pin Title Section */}
                 <div className="text-center mb-6">
                     <div className="flex justify-center items-center gap-2 mb-2">
