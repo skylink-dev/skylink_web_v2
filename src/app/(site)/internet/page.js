@@ -83,7 +83,7 @@ export default function Page() {
         content={contentData}
       />
       <ContentandImageCarousel slidesData={CotentImageCarouselData} />
-      <IconMoreDetails content={iconMoreDetailcontent} />
+      {/*<IconMoreDetails content={iconMoreDetailcontent} />*/}
       <DynamicCarousel
         title="Got a few minutes to learn more?"
         slidesData={dynamicSlidesData}

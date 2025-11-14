@@ -45,25 +45,12 @@ export default function DualBannerSection() {
                   Savings applied to one service based on eligibility and
                   service(s) purchased/added.
                 </p>
-                <button className="text-red-400 hover:text-red-300 font-medium underline transition-colors text-xs">
-                  See offer details
-                </button>
-              </div>
-
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-3">
-                <Link
-                  href="/bundles/connectivity/"
-                  className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg text-center transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-sm"
-                >
-                  New customers
-                </Link>
-                <Link
-                  href="/bundles/internet-wireless/"
-                  className="bg-white hover:bg-gray-100 text-gray-900 font-semibold py-2 px-4 rounded-lg text-center transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg text-sm"
-                >
-                  Current customers
-                </Link>
+                  <Link
+                      href="/new_plans"
+                      className="text-red-400 hover:text-red-300 font-medium underline transition-colors text-xs"
+                  >
+                      See offer details
+                  </Link>
               </div>
             </div>
 

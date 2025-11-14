@@ -1,4 +1,4 @@
-'use client';
+    'use client';
 import React from 'react';
 import dynamic from 'next/dynamic';
 import {
@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <>
       <IconDetails title="Accessories by category?" iconslist={IconContent} />
-      <Slider title="Accessories you love. Deals you want." slides={slidesData} color="bg-att-blue-000" />
+      {/*<Slider title="Accessories you love. Deals you want." slides={slidesData} color="bg-att-blue-000" />*/}
       <ProductCard title="Designed by skyplay" products={productsData} />
       <DynamicCarousel slidesData={dynamicSlidesData} color="bg-white" />
     </>

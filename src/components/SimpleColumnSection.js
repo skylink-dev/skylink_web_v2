@@ -62,7 +62,7 @@ export default function SimpleColumnSection({ title, columns }) {
 
             {/* CTA Button */}
             <Link
-              href="/deals/cell-phone-deals/"
+              href="/"
               aria-label={item.cta}
               className="relative inline-block px-4 sm:px-6 py-2 sm:py-2.5 text-sm sm:font-medium text-white bg-red-600 rounded-lg overflow-hidden transition-all duration-500 group mt-3 sm:mt-4"
             >

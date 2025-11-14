@@ -62,7 +62,7 @@ export default function SkyplayTestimonialCarousel({ slidesData }) {
                 <p className="text-white/60 text-sm">Verified customer</p>
               </div>
               <Link
-                href="/buy/internet/plans"
+                href="/new_plans"
                 className="inline-block bg-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-base"
                 style={{ color: primaryRed }}
               >
