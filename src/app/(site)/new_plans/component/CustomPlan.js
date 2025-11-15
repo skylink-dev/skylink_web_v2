@@ -16,6 +16,7 @@ import {
 import Image from "next/image";
 import { selectPlan } from "@/redux/slices/newPlanSlice";
 import NewPlanSummary from "./NewPlanSummary";
+import SelectedPlanSummary from "./SelectedPlanSumamry";
 
 const PlanSummary = ({
   activePlan,
@@ -768,7 +769,7 @@ export default function CustomPlan({
           <div className="flex-1 space-y-6">
             {/* Speed */}
             <div className="bg-blue-50 border border-blue-300 p-5 rounded-xl">
-              <h3 className="text-blue-800 text-start  font-semibold text-lg mb-4">
+              <h3 className="text-blue-800 text-start  font-semibold text-lg mb-2">
                 Choose Your Bandwidth
               </h3>
               <ButtonGrid
@@ -782,7 +783,7 @@ export default function CustomPlan({
 
             {/* Cycle */}
             <div className="bg-red-50 border border-red-300 p-5 rounded-xl">
-              <h3 className="text-red-700 text-start font-semibold text-lg mb-4">
+              <h3 className="text-red-700 text-start font-semibold text-lg mb-2">
                 Choose Your Billing Cycle
               </h3>
               <ButtonGrid
@@ -806,7 +807,7 @@ export default function CustomPlan({
 
             {/* Channels */}
             <div className="bg-yellow-50 border border-yellow-300 p-5 rounded-xl">
-              <h3 className="text-yellow-700 text-start  font-semibold text-lg mb-4">
+              <h3 className="text-yellow-700 text-start  font-semibold text-lg mb-2">
                 Choose Your TV Channels
               </h3>
               <ButtonGrid
@@ -822,7 +823,7 @@ export default function CustomPlan({
 
             {/* OTT */}
             <div className="bg-green-50 border border-green-300 p-5 rounded-xl">
-              <h3 className="text-green-700 text-start  font-semibold text-lg mb-4">
+              <h3 className="text-green-700 text-start  font-semibold text-lg mb-2">
                 Choose Your OTT Apps
               </h3>
               <ButtonGrid
@@ -840,14 +841,25 @@ export default function CustomPlan({
           {/* RIGHT SIDE */}
           <div className="w-full  flex flex-col gap-6">
             {/* Summary */}
-            <NewPlanSummary
+            {/* <NewPlanSummary
               selectedSpeed={selectedSpeed}
               selectedValidity={selectedValidity}
               selectedChannel={selectedChannel}
               selectedOtt={selectedOtt}
               discountList={discountList}
               installationCharge={installationCharge}
+            /> */}
+
+            <SelectedPlanSummary
+              speed="50 Mbps"
+              validity={3}
+              installation={1000}
+              channelCount={350}
+              ottCount={22}
+              internetCharge={1497}
+              discount={0}
             />
+
             {activePlan && (
               // <div className="mt-6 border-t border-gray-200 pt-4">
               //   <p className="text-xl font-bold text-gray-900">

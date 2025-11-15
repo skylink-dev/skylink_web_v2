@@ -29,10 +29,10 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
     },
   ];
   const variants = {
-    left: { x: "-50%", scale: 0.9, opacity: 0.8 },
-    centerright: { x: "60%", scale: 1, opacity: 1 },
-    centerleft: { x: "-60%", scale: 1, opacity: 1 },
-    right: { x: "50%", scale: 0.9, opacity: 0.8 },
+    left: { x: "-40%", scale: 0.9, opacity: 0.8 },
+    centerright: { x: "40%", scale: 1, opacity: 1 },
+    centerleft: { x: "-40%", scale: 1, opacity: 1 },
+    right: { x: "40%", scale: 0.9, opacity: 0.8 },
   };
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
   }, [activeTab]);
 
   return (
-    <div className="w-5/6 overflow-hidden">
+    <div className=" overflow-hidden">
       <AlertModal
         isOpen={isAlertOpen}
         onClose={() => setIsAlertOpen(false)}

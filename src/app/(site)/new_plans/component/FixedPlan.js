@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, act } from "react";
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
 import ContactPopup from "../../plans/component/ContactPopup";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function FixedPlan({
   isMobile,
@@ -52,7 +53,28 @@ export default function FixedPlan({
 
   return (
     <>
-      <div className="w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className=" relative w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+        {activeTab !== "Fixed Plan" && (
+          <motion.div
+            initial={{ x: -120, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="absolute z-[999] w-1/4 h-full rounded-xl left-0 top-0 bottom-0
+               flex items-center justify-center 
+               cursor-pointer select-none
+               bg-gradient-to-b from-gray-900 via-black to-gray-800 
+               text-white text-xl font-semibold 
+               shadow-xl border-r border-white/10"
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className=" whitespace-nowrap lg:text-2xl tracking-wide"
+            >
+              Choose Our <br></br> Fixed Plans
+            </motion.span>
+          </motion.div>
+        )}
         <div className="w-full  m-0">
           <h2
             className={`w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 ${
