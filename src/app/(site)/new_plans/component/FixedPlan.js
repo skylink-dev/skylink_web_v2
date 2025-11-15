@@ -53,7 +53,7 @@ export default function FixedPlan({
 
   return (
     <>
-      <div className=" relative w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className=" relative w-full min-w-80 mt-4  py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
         {activeTab !== "Fixed Plan" && (
           <motion.div
             initial={{ x: -120, opacity: 0 }}
@@ -62,7 +62,7 @@ export default function FixedPlan({
             className="absolute z-[999] w-1/4 h-full rounded-xl left-0 top-0 bottom-0
                flex items-center justify-center 
                cursor-pointer select-none
-               bg-gradient-to-b from-gray-900 via-black to-gray-800 
+               bg-gradient-to-b from-red-700 via-red to-red-600 
                text-white text-xl font-semibold 
                shadow-xl border-r border-white/10"
           >
