@@ -56,38 +56,10 @@ export default function SelectedPlanSummary({
       : { name: chName, image: "/newassets/channel/default.png" };
   });
 
-  console.log("speed");
-  console.log(speed);
-  console.log("Validity");
-  console.log(validity);
-  console.log("Channel");
-  console.log(channel);
-  console.log("OTT");
-  console.log(ott);
-  console.log("Discount");
-  console.log(discount);
-  console.log("Installation Charges");
-  console.log(installation);
-
-  console.log("Imaege Ott");
-  console.log(ottImage);
-  console.log("ImageChannel");
-  console.log(channelImage);
-
-  console.log("Chargesss Ott");
-  console.log(ottExtraCharge);
-  console.log("Chargess Channel");
-  console.log(channelExtraCharge);
-
   for (let install of installation) {
     if (install?.speed + "" == speed.name + "") {
-      console.log(install);
       let curridx = -1;
       for (let i = 0; i <= install?.validity?.length; i++) {
-        console.log(
-          install?.validity[i] + "" + validity + "" + install?.validity + "" ==
-            validity + ""
-        );
         if (install?.validity[i] + "" == validity + "") {
           curridx = i;
         }
@@ -97,22 +69,10 @@ export default function SelectedPlanSummary({
       }
     }
   }
-
-  console.log("Installation Charges");
-  console.log(installation);
   for (let discountPrice of discount) {
     if (discountPrice?.speed + "" == speed.name + "") {
       let curridx = -1;
       for (let i = 0; i < discountPrice?.validity?.length; i++) {
-        console.log(
-          discountPrice?.validity[i] +
-            "" +
-            validity +
-            "" +
-            discountPrice?.validity +
-            "" ==
-            validity + ""
-        );
         if (discountPrice?.validity[i] + "" == validity + "") {
           curridx = i;
         }
@@ -336,7 +296,7 @@ export default function SelectedPlanSummary({
 /* Small subcomponents for clarity */
 
 function Highlight({ label, value, imageList = [] }) {
-  console.log(imageList);
+  // console.log(imageList);
   return (
     <div className="bg-white border border-gray-200 rounded-xl px-4 py-3 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all duration-200 hover:border-gray-300">
       <>

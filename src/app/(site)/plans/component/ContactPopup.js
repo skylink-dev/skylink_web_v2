@@ -31,10 +31,10 @@ export default function ContactPopup({
   );
 
   useEffect(() => {
-    console.log(activeCycle);
-    console.log(activeMbps);
-    console.log(discount);
-    console.log(activePrice);
+    // console.log(activeCycle);
+    // console.log(activeMbps);
+    // console.log(discount);
+    // console.log(activePrice);
   }, [selectedPlan]);
   const [formData, setFormData] = useState({
     name: "",
@@ -140,7 +140,7 @@ export default function ContactPopup({
     setIsSubmitting(true);
     try {
       await apiService.submitContactForm(formData);
-      console.log("Form submitted:", formData);
+      // console.log("Form submitted:", formData);
       setIsAlertOpen(true);
       setAlertInfo({
         title: "Success!",
@@ -149,7 +149,7 @@ export default function ContactPopup({
       });
       setIsAlertOpen(true);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setAlertInfo({
         title: "Error!",
         message: "Something went wrong. Please try again.",

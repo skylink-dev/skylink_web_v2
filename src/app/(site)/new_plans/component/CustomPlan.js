@@ -588,7 +588,7 @@ export default function CustomPlan({
             <div className={`${getGridCols(options.length)} w-full`}>
               {[...options].reverse().map((opt) => {
                 let discount = 0;
-                console.log(discountMap);
+                //console.log(discountMap);
                 discountMap?.validity?.forEach((el, idx) => {
                   if (el == opt) {
                     discount = discountMap?.rate[idx];
@@ -675,16 +675,7 @@ export default function CustomPlan({
                 }
               }
               for (let i = 0; i < extraChargeLogic?.length; i++) {
-                console.log("Checking for Additional logic idn  " + type);
-                console.log(
-                  opt?.name + "",
-                  extraChargeLogic[i].name + "",
-                  opt?.name + "" == extraChargeLogic[i].name + "",
-                  +" " +
-                    extraChargeLogic[i].addons +
-                    "  " +
-                    extraChargeLogic[i]?.cost
-                );
+                //console.log("Checking for Additional logic idn  " + type);
                 if (opt?.name + "" == extraChargeLogic[i].name + "") {
                   isextraCharge = extraChargeLogic[i].addons;
                   extraCharge = extraChargeLogic[i]?.cost;
@@ -927,7 +918,6 @@ export default function CustomPlan({
                 discountMap={(() => {
                   let map = [];
                   discountList.forEach((v) => {
-                    console.log(selectedSpeed.name, "   ", v?.speed);
                     if (selectedSpeed.name == v?.speed) {
                       map = v;
                     }

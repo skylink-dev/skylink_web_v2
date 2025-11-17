@@ -218,7 +218,7 @@ export default function FixedPlan({
                 let discountIndex = 0;
                 plan.validity.forEach((element, index) => {
                   if (element === selectedValidity) {
-                    console.log(index);
+                    // console.log(index);
                     discountIndex = index;
                   }
                 });
