@@ -18,6 +18,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
 
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [showInfo, setShowInfo] = useState(true);
 
   // const tabs = ["Custom Plan", "Fixed Plan"];
   const tabs = [
@@ -29,10 +30,10 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
     },
   ];
   const variants = {
-    left: { x: "-50%", scale: 0.9, opacity: 0.8 },
-    centerright: { x: "60%", scale: 1, opacity: 1 },
-    centerleft: { x: "-60%", scale: 1, opacity: 1 },
-    right: { x: "50%", scale: 0.9, opacity: 0.8 },
+    left: { x: "-40%", scale: 0.9, opacity: 0.8 },
+    centerright: { x: "40%", scale: 1, opacity: 1 },
+    centerleft: { x: "-40%", scale: 1, opacity: 1 },
+    right: { x: "40%", scale: 0.9, opacity: 0.8 },
   };
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
   }, [activeTab]);
 
   return (
-    <div className="w-full">
+    <div className=" overflow-hidden">
       <AlertModal
         isOpen={isAlertOpen}
         onClose={() => setIsAlertOpen(false)}
@@ -59,6 +60,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
         selectedPlan={selectedPlan}
         isOpen={isContactOpen}
         setIsOpen={setIsContactOpen}
+        showInfo={showInfo}
       />
 
       {/* TAB SWITCHER */}
@@ -84,7 +86,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
           </div>
         </div> */}
         {isMobile || isMediumSize ? (
-          <div className="flex items-center justify-center gap-2 w-full max-w-md">
+          <div className="flex items-center justify-center gap-1 w-full max-w-md">
             {tabs.map((tab, i) => (
               <React.Fragment key={tab.key}>
                 <button
@@ -139,7 +141,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
 
       {/* TAB CONTENT with fade animation */}
       <div
-        className={`mt-4 transition-opacity duration-500 ${
+        className={`mt-2 transition-opacity duration-500 ${
           fade ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -153,6 +155,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                 setSelectedPlan={setSelectedPlan}
                 isContactOpen={isContactOpen}
                 setIsContactOpen={setIsContactOpen}
+                setShowInfo={setShowInfo}
               />
             ) : (
               <CustomPlan
@@ -162,6 +165,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                 setSelectedPlan={setSelectedPlan}
                 isContactOpen={isContactOpen}
                 setIsContactOpen={setIsContactOpen}
+                setShowInfo={setShowInfo}
               />
             )}
           </>
@@ -185,6 +189,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                   setSelectedPlan={setSelectedPlan}
                   isContactOpen={isContactOpen}
                   setIsContactOpen={setIsContactOpen}
+                  setShowInfo={setShowInfo}
                 />
               </motion.div>
 
@@ -205,6 +210,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                   setSelectedPlan={setSelectedPlan}
                   isContactOpen={isContactOpen}
                   setIsContactOpen={setIsContactOpen}
+                  setShowInfo={setShowInfo}
                 />
               </motion.div>
             </div>

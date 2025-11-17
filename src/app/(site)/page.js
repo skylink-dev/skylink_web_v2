@@ -25,6 +25,7 @@ import ThreeBannerModern from "@/components/contact/ThreeBanner";
 
 import SkylinkQuickPayPage from "@/components/SkylinkQuickPayPage";
 import SpeedTestBanner from "@/components/SpeedTest";
+import NewIconMenu from "@/components/home/NewIconMenu";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const FlexCard = dynamic(() => import("@/components/FlexCard"));
@@ -39,10 +40,53 @@ const RightImageLeftContent = dynamic(() =>
   import("@/components/RightImageLeftContents")
 );
 const AvailabilityComponents = dynamic(() =>
-    import("@/components/AvailabilityComponents")
+  import("@/components/AvailabilityComponents")
 );
 const SingleFaq = dynamic(() => import("@/components/SingleFaq"));
 const Slider = dynamic(() => import("@/components/Slider"));
+/**
+ *
+ * @returns Icon Data
+ */
+export const newIconiconList = [
+  {
+    id: 1,
+    icon: "/newassets/home/new_icons/Internet.gif",
+    title: "Internet",
+    linkdata: "/internet",
+  },
+  {
+    id: 2,
+    icon: "/newassets/home/new_icons/tv.gif",
+    title: "TV",
+    linkdata: "/tv",
+  },
+  {
+    id: 3,
+    icon: "/newassets/home/new_icons/ott.gif",
+    title: "OTT",
+    linkdata: "/ott",
+  },
+  {
+    id: 4,
+    icon: "/newassets/home/new_icons/fire-stick.gif",
+    title: "Skylink Fire Tv",
+    linkdata: "/firestick",
+  },
+  {
+    id: 6,
+    icon: "/newassets/home/new_icons/deals.gif",
+    title: "Deals",
+    linkdata: "/deals",
+  },
+
+  {
+    id: 8,
+    icon: "/newassets/home/new_icons/accessories.gif",
+    title: "Accessories",
+    linkdata: "/accessories",
+  },
+];
 
 export default function Home() {
   // const testiconMenuData = [
@@ -72,9 +116,11 @@ export default function Home() {
   };
   return (
     <>
+      {/* <SkylinkQuickPayPage /> */}
 
-    {/* <SkylinkQuickPayPage /> */}
-      <IconMenu onSelect={dummy} content={homeIconiconList} />
+      <NewIconMenu content={newIconiconList} />
+
+      {/* <IconMenu onSelect={dummy} content={homeIconiconList} /> */}
       {/* <ThreeDIconMenu
         content={testiconMenuData}
         activeId={activeId}
@@ -85,6 +131,7 @@ export default function Home() {
       {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
 
       <ThreeBannerModern />
+        <AvailabilityComponents />
       <FlexCard
         title="For Every Age. Every Stage. Every Connection."
         rightImage="/assets/skyplay-card-right.jpg"
@@ -103,11 +150,11 @@ export default function Home() {
         eyebrow="Your Day, Powered by Skylink"
         heading={`Connectivity, refined for real life.`}
         description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
-        subDescription ={`Available at no extra cost for eligible customers across India.`}
+        subDescription={`Available at no extra cost for eligible customers across India.`}
         buttonText="Learn More"
         buttonLink="/internet"
       />
-        <AvailabilityComponents />
+    
       <HalfColumnCard items={cardData} />
       <DynamicCarousel
         title="Let's get you connected"
@@ -117,7 +164,7 @@ export default function Home() {
         title="The Tripleplay difference"
         Content={dynamicImageContent}
       />
-      <SpeedTestBanner/>
+      <SpeedTestBanner />
       <IconDetails title="How can we help you today?" iconslist={IconContent} />
       <NewsLetter content={contentNewsletter} />
 

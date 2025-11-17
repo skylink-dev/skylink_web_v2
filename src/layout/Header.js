@@ -292,10 +292,11 @@ export default function Header() {
         ></div>
       )}
 
-        {/* ✅ Floating Action Buttons - Hidden on Mobile */}
-        <div className="fixed right-4 bottom-36 lg:right-8 lg:top-52 h-32 w-[210px] z-40 hidden lg:block">
+        {/* Floating Action Buttons - Hidden on Mobile */}
+        <div
+            className="fixed right-4 bottom-36 lg:right-8 lg:top-52 h-32 w-[210px] z-40 hidden lg:block pointer-events-none">
             {/* Download IPTV App Button */}
-            <div className="absolute top-0 right-0 z-20 group">
+            <div className="absolute top-0 right-0 z-20 group pointer-events-auto">
                 <Link
                     href={buttons[0].href}
                     download={buttons[0].download}
@@ -322,7 +323,7 @@ export default function Header() {
             </div>
 
             {/* Claim Your TV/OTT Button */}
-            <div className="absolute top-16 right-0 z-10 group">
+            <div className="absolute top-16 right-0 z-10 group pointer-events-auto">
                 <Link
                     href={buttons[1].href}
                     target="_blank"

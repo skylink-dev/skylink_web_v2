@@ -1,9 +1,11 @@
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, act } from "react";
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
 import ContactPopup from "../../plans/component/ContactPopup";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 export default function FixedPlan({
   isMobile,
@@ -12,6 +14,7 @@ export default function FixedPlan({
   setSelectedPlan,
   setIsContactOpen,
   isContactOpen,
+  setShowInfo,
 }) {
   // const [selectedPlan, setSelectedPlan] = useState(null);
   const [selectedValidity, setSelectedValidity] = useState(12);
@@ -52,7 +55,42 @@ export default function FixedPlan({
 
   return (
     <>
-      <div className="w-full min-w-80 mt-4 bg-red-100/10 py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+      <div className=" relative w-full min-w-80 mt-4  py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
+        {activeTab !== "Fixed Plan" && (
+          <motion.div
+            initial={{ x: -120, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="absolute z-[999] w-1/4 h-full rounded-xl left-0 top-0 bottom-0 lg:text-2xl 
+                 flex items-center flex-col justify-start gap-4
+                 cursor-pointer select-none
+                 bg-gradient-to-b from-red-600 via-red-300 to-blue-600 
+                 text-white text-xl font-semibold 
+                 shadow-xl border-l border-white/10 px-4"
+          >
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className=" whitespace-nowrap lg:text-2xl mt-60 tracking-wide"
+            >
+              Choose Our <br></br> Fixed Plans
+            </motion.span>
+            <motion.div
+              className="rounded-full border-2  mt-10 border-white flex items-center justify-center p-2"
+              animate={{
+                scale: [1, 1.2, 1],
+                borderWidth: ["2px", "4px", "2px"],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.2,
+                ease: "easeInOut",
+              }}
+            >
+              <AiOutlineArrowRight className="text-white text-3xl" />
+            </motion.div>
+          </motion.div>
+        )}
         <div className="w-full  m-0">
           <h2
             className={`w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 ${
@@ -78,7 +116,7 @@ export default function FixedPlan({
           >
             Choose Your BandWidth
           </h3>
-          <div className="grid grid-cols-4 md:grid-cols-7 gap-2 md:gap-10 md:p-2">
+          <div className="grid grid-cols-4 md:grid-cols-7 gap-2 md:gap-8 md:p-2">
             {speedOptions.map((speed) => (
               <button
                 key={speed}
@@ -171,7 +209,7 @@ export default function FixedPlan({
         </div>
 
         {/* 💡 Filtered Plans */}
-        <div className="mt-6 w-full">
+        <div className="my-6 mx-2 w-full">
           {filteredPlans.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4  ">
               {filteredPlans.map((plan, index) => {
@@ -180,7 +218,7 @@ export default function FixedPlan({
                 let discountIndex = 0;
                 plan.validity.forEach((element, index) => {
                   if (element === selectedValidity) {
-                    console.log(index);
+                    // console.log(index);
                     discountIndex = index;
                   }
                 });
@@ -188,7 +226,7 @@ export default function FixedPlan({
                 return (
                   <div
                     key={plan.sno || index}
-                    className={`relative  flex flex-col overflow-hidden bg-white bg-gradient-to-r from-pink-100/20 to-blue-100/20  border rounded-xl p-5  hover:shadow-2xl transition-all duration-200 inset-shadow-sm  ${
+                    className={`relative  flex flex-col overflow-hidden bg-white bg-gradient-to-r from-pink-100/20 to-blue-100/20  border rounded-xl p-2  hover:shadow-2xl transition-all duration-200 inset-shadow-sm  ${
                       isSelectedValidity && isSelectedSpeed
                         ? "border-red-500 ring-2 ring-red-200"
                         : "border-gray-200"
@@ -225,7 +263,7 @@ ${
                     )} */}
 
                     {/* 🏷️ Title */}
-                    <h2 className=" flex flex-col  text-lg 2xl:text-2xl xl:text:xl font-semibold text-gray-900 mb-1 ">
+                    <h2 className=" flex flex-col  text-lg 2xl:text-2xl xl:text:xl font-semibold text-gray-900 m-4 ">
                       {`Skylink Red  ${plan.name || ` ₹${plan.price}`}`}{" "}
                       <span className="text-gray-600 font-normal text-xs">
                         {plan.internetSpeed ? `${plan.internetSpeed}` : ""}
@@ -253,7 +291,7 @@ ${
                   )} */}
 
                     {/* 📡 Plan Details */}
-                    <div className="grid w-full grid-cols-1 text-sm text-gray-700 gap-y-2 mb-4">
+                    <div className="grid w-full m-4 grid-cols-1 text-sm text-gray-700 gap-y-4 my-4">
                       {/* <div>
                       <span className="font-semibold">
                         {plan.internetSpeed}
@@ -350,9 +388,9 @@ ${
                     </div>
 
                     {/* 💵 Price Section */}
-                    <div className="flex w-full items-center justify-center gap-2 mb-4">
+                    <div className="flex w-full h-full items-end justify-center gap-2 mb-4">
                       <span
-                        className={`text-xl text-center font-bold activeTab ==  ${
+                        className={`text-xl text-end font-bold activeTab ==  ${
                           activeTab == "Fixed Plan"
                             ? "text-gray-900"
                             : "text-gray-600"
@@ -400,6 +438,7 @@ ${
                             discountIndex: discountIndex,
                             activeCycle: selectedValidity,
                           });
+                          setShowInfo(true);
                           setIsContactOpen(!isContactOpen);
                         }}
                         className={`flex-1 py-2   ${

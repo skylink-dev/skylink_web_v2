@@ -30,12 +30,12 @@ export default function Page() {
     <Providers>
       <PlanProvider>
         <section className="py-10 px-4 bg-gray-50 min-h-screen">
-          <div className="min-w-[95%] lg:min-w-[90%] mx-auto text-center">
+          <div className="container mx-auto text-center">
             <h1 className="text-4xl font-bold mb-6 text-red-600">
               Broadband + TV + OTT
             </h1>
 
-            <div className="w-full">
+            <div className="">
               <PlanTabs
                 isMobile={isMobile}
                 plans={plans}
