@@ -2,69 +2,78 @@
 
 import { useState } from "react";
 
-const faqs = [
-  {
-    question:
-      "What makes Skylink different from other broadband providers in Coimbatore?",
-    answer:
-      "Skylink isn't just another internet provider — we're a local network built in Coimbatore, for Coimbatore. With over 10 years of experience, we combine high-speed fibernet connectivity with personal, city-based support — ensuring faster resolutions, better uptime, and a service that truly understands your needs.",
-  },
-  {
-    question: "Do Skylink broadband plans include OTT and TV channels?",
-    answer:
-      "Yes. Every Skylink plan comes bundled with OTT access and TV channels — so you don't need to pay extra for cables, setup boxes, or streaming apps. One connection covers it all.",
-  },
-  {
-    question: "Are Skylink connections suitable for businesses too?",
-    answer:
-      "Absolutely. We offer customized broadband solutions with static IPs, SLA-backed uptime, and dedicated account support — designed for offices, retail outlets, and enterprises across Coimbatore.",
-  },
-  {
-    question: "How fast and reliable is Skylink's internet in Coimbatore?",
-    answer:
-      "Our advanced fibernet network delivers speeds up to 1 Gbps with 99.9% uptime, ensuring smooth streaming, remote work, and uninterrupted business operations — even during peak hours.",
-  },
-  {
-    question: "Is installation and router free with Skylink?",
-    answer:
-      "Yes, we provide free installation, router, and setup with all new connections in Coimbatore — with no hidden charges or activation fees.",
-  },
-  {
-    question: "How do I get a new Skylink connection?",
-    answer:
-      "Simply check connection availability in your area or request a free callback. Our Coimbatore team will help you choose a plan and schedule installation — usually within 24 hours.",
-  },
-];
+/**
+ * @typedef {Object} SkylinkFAQProps
+ * @property {string} [city="Coimbatore"] - The name of the city
+ */
 
-const ChevronIcon = ({ isOpen }) => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={`transition-transform duration-300 ${
-      isOpen ? "rotate-180" : "rotate-0"
-    }`}
-  >
-    <path
-      d="M7 10L12 15L17 10"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-export default function SkylinkFAQ() {
+/**
+ * SkylinkFAQ component displays frequently asked questions for a specific city
+ * @param {SkylinkFAQProps} props - Component props
+ * @returns {JSX.Element}
+ */
+export default function SkylinkFAQ({city = "Coimbatore"}) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  return (
+    // Define FAQs with dynamic city name
+    const faqs = [
+        {
+            question: `What makes Skylink different from other broadband providers in ${city}?`,
+            answer: `Skylink isn't just another internet provider — we're a local network built in ${city}, for ${city}. With over 10 years of experience, we combine high-speed fibernet connectivity with personal, city-based support — ensuring faster resolutions, better uptime, and a service that truly understands your needs.`,
+        },
+        {
+            question: "Do Skylink broadband plans include OTT and TV channels?",
+            answer:
+                "Yes. Every Skylink plan comes bundled with OTT access and TV channels — so you don't need to pay extra for cables, setup boxes, or streaming apps. One connection covers it all.",
+        },
+        {
+            question: "Are Skylink connections suitable for businesses too?",
+            answer:
+                `Absolutely. We offer customized broadband solutions with static IPs, SLA-backed uptime, and dedicated account support — designed for offices, retail outlets, and enterprises across ${city}.`,
+        },
+        {
+            question: `How fast and reliable is Skylink's internet in ${city}?`,
+            answer:
+                `Our advanced fibernet network delivers speeds up to 1 Gbps with 99.9% uptime, ensuring smooth streaming, remote work, and uninterrupted business operations — even during peak hours.`,
+        },
+        {
+            question: "Is installation and router free with Skylink?",
+            answer:
+                `Yes, we provide free installation, router, and setup with all new connections in ${city} — with no hidden charges or activation fees.`,
+        },
+        {
+            question: "How do I get a new Skylink connection?",
+            answer:
+                `Simply check connection availability in your area or request a free callback. Our ${city} team will help you choose a plan and schedule installation — usually within 24 hours.`,
+        },
+    ];
+
+    const ChevronIcon = ({isOpen}) => (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={`transition-transform duration-300 ${
+                isOpen ? "rotate-180" : "rotate-0"
+            }`}
+        >
+            <path
+                d="M7 10L12 15L17 10"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    );
+
+    return (
     <div className="bg-gradient-to-br from-slate-50 to-slate-100 py-16 font-sans relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(31,41,55,0.03)_0%,transparent_50%),radial-gradient(circle_at_80%_20%,rgba(31,41,55,0.03)_0%,transparent_50%)]" />
@@ -77,7 +86,7 @@ export default function SkylinkFAQ() {
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Find quick answers about Skylink&apos;s fibernet broadband plans &
-            prices in Coimbatore
+              prices in {city}
           </p>
         </div>
 
