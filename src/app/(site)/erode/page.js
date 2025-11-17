@@ -5,15 +5,14 @@ import ContactForm from "@/components/contacts/ContactForm";
 import LocationMap from "@/components/contacts/LocationMap";
 import HeroBanner from "@/components/HeroBanner";
 
-import HeroBannerER from "@/components/erode/HerobannerER";
-import WhyProduct from "@/components/erode/WhyProduct";
-import TvOttPartners from "@/components/erode/TvOttPartners";
-import SmartSection from "@/components/erode/SmartSection";
-import SkylinkPlans from "@/components/erode/SkylinkPlans";
-import TrustedPartners from "@/components/erode/TrustPartners";
-import SkylinkFAQ from "@/components/erode/SkylinkFAQ";
+import HeroBannerNew from "@/components/coimbatore/herobannernew";
 import FixedPlan from "@/app/(site)/new_plans/component/FixedPlan";
 import {useSelector} from "react-redux";
+import SmartSection from "@/components/coimbatore/SmartSection";
+import TvOttPartners from "@/components/coimbatore/TvOttPartners";
+import TrustedPartners from "@/components/coimbatore/TrustPartners";
+import WhyProduct from "@/components/coimbatore/WhyProduct";
+import SkylinkFAQ from "@/components/coimbatore/SkylinkFAQ";
 
 const ContactSection = dynamic(() => import("@/components/ContactSection"));
 const ContactFormNew = dynamic(() => import("@/components/ContactFormNew"));
@@ -37,10 +36,10 @@ export default function Page() {
 
     return (
         <>
-            <HeroBannerER />
-            <WhyProduct />
+            <HeroBannerNew city="Erode" />
+            <WhyProduct city="Erode" />
             <TvOttPartners/>
-            <SmartSection />
+           <SmartSection city = "Erode"/>
             <div className={`container  mx-auto text-center`}>
                 <div>
                     <FixedPlan
@@ -57,7 +56,7 @@ export default function Page() {
 
             </div>
             <TrustedPartners/>
-            <SkylinkFAQ/>
+            <SkylinkFAQ city="Erode"/>
         </>
     );
 }

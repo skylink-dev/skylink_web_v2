@@ -5,15 +5,13 @@ import ContactForm from "@/components/contacts/ContactForm";
 import LocationMap from "@/components/contacts/LocationMap";
 import HeroBanner from "@/components/HeroBanner";
 import HeroBannerNew from "@/components/coimbatore/herobannernew";
-import HeroBannerTUP from "@/components/tiruppur/HeroBannerTiruppur";
-import WhyProduct from "@/components/tiruppur/WhyProduct";
-import TvOttPartners from "@/components/tiruppur/TvOttPartners";
-import SmartSection from "@/components/tiruppur/SmartSection";
-import SkylinkPlans from "@/components/tiruppur/SkylinkPlans";
-import TrustedPartners from "@/components/tiruppur/TrustPartners";
-import SkylinkFAQ from "@/components/tiruppur/SkylinkFAQ";
+import WhyProduct from "@/components/coimbatore/WhyProduct";
+import SkylinkFAQ from "@/components/coimbatore/SkylinkFAQ";
 import {useSelector} from "react-redux";
 import FixedPlan from "@/app/(site)/new_plans/component/FixedPlan";
+import SmartSection from "@/components/coimbatore/SmartSection";
+import TvOttPartners from "@/components/coimbatore/TvOttPartners";
+import TrustedPartners from "@/components/coimbatore/TrustPartners";
 
 const ContactSection = dynamic(() => import("@/components/ContactSection"));
 const ContactFormNew = dynamic(() => import("@/components/ContactFormNew"));
@@ -38,10 +36,10 @@ export default function Page() {
 
   return (
     <>
-      <HeroBannerTUP />
-      <WhyProduct />
+      <HeroBannerNew city = "Tiruppur" />
+      <WhyProduct city = "Tiruppur"/>
       <TvOttPartners />
-      <SmartSection />
+      <SmartSection city = "Tiruppur"/>
         <div className={`container  mx-auto text-center`}>
             <div>
                 <FixedPlan
@@ -58,7 +56,7 @@ export default function Page() {
 
         </div>
       <TrustedPartners />
-      <SkylinkFAQ />
+      <SkylinkFAQ city = "Tiruppur"/>
     </>
   );
 }

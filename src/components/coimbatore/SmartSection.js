@@ -128,7 +128,17 @@ const ShieldIcon = () => (
   </svg>
 );
 
-export default function SmartSection() {
+/**
+ * @typedef {Object} SmartSectionProps
+ * @property {string} [city="Coimbatore"] - The name of the city
+ */
+
+/**
+ * SmartSection component displays smart home and business options
+ * @param {SmartSectionProps} props - Component props
+ * @returns {JSX.Element}
+ */
+export default function SmartSection({city = "Coimbatore"}) {
   const router = useRouter();
   const [columns, setColumns] = useState(2);
 
@@ -170,7 +180,7 @@ export default function SmartSection() {
             fontSize: "1.125rem",
             lineHeight: "1.6",
           }}>
-            Fast, reliable Skylink fibernet broadband for homes and businesses in Coimbatore.
+            Fast, reliable Skylink fibernet broadband for homes and businesses in {city}
           </p>
         </div>
 
