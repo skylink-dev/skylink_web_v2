@@ -319,7 +319,9 @@ export default function CustomPlan({
   const [extraChargeChannelList, setExtraChargeChannelList] = useState(null);
   const [disableOttList, setDisableOttList] = useState(null);
   const [extraChargeOttList, setExtraChargeOttList] = useState(null);
-  const [installationCharge, setInstallationCharges] = useState(null);
+  const [installationCharge, setInstallationCharges] = useState(
+    basePlans?.installationCharges
+  );
   const discountList = basePlans?.discount;
   useEffect(() => {
     /**
@@ -860,13 +862,12 @@ export default function CustomPlan({
             /> */}
 
             <SelectedPlanSummary
-              speed="50 Mbps"
-              validity={3}
-              installation={1000}
-              channelCount={350}
-              ottCount={22}
-              internetCharge={1497}
-              discount={0}
+              speed={selectedSpeed}
+              validity={selectedValidity}
+              installation={installationCharge}
+              channel={selectedChannel}
+              ott={selectedOtt}
+              discount={discountList}
             />
 
             {activePlan && (

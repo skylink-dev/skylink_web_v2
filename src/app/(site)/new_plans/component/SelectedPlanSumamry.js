@@ -1,6 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { ottImageList } from "@/redux/data/OTTNamesImage";
+import { channelImageList } from "@/redux/data/ChannelsNamesImage";
+import Image from "next/image";
 
 /**
  * SelectedPlanSummary (Option A)
@@ -8,28 +11,102 @@ import { ChevronDown, ChevronUp } from "lucide-react";
  * - Total & Subscribe button always visible at the bottom (outside accordion)
  * - Responsive, compact, modern styling (Tailwind)
  *
- * Props: speed, validity, installation, channelCount, ottCount, internetCharge, discount
+ * Props: speed, validity, installation, channel, ott, internetCharge, discount
  */
 export default function SelectedPlanSummary({
-  speed = "50 Mbps",
-  validity = 3,
-  installation = 1000,
-  channelCount = 350,
-  ottCount = 22,
-  internetCharge = 1497,
-  discount = 0,
+  speed,
+  validity,
+  installation,
+  channel,
+  ott,
+  discount,
   onSubscribe = () => {},
 }) {
   const [open, setOpen] = useState(true);
+  const ottImage =
+    ott?.ottList?.map((ottName) => {
+      const match = ottImageList.find((item) => item.name === ottName);
+      return match
+        ? { name: match.name, image: match.image }
+        : { name: ottName, image: "/newassets/ott/default.png" };
+    }) || [];
+
+  // 🟢 Extract Channel image list
+
+  const channelImage = channel?.channelList.map((chName) => {
+    const match = channelImageList.find((item) => item.name === chName);
+    return match
+      ? { name: match.name, image: match.image }
+      : { name: chName, image: "/newassets/channel/default.png" };
+  });
+
+  console.log("speed");
+  console.log(speed);
+  console.log("Validity");
+  console.log(validity);
+  console.log("Channel");
+  console.log(channel);
+  console.log("OTT");
+  console.log(ott);
+  console.log("Discount");
+  console.log(discount);
+  console.log("Installation Charges");
+  console.log(installation);
+
+  console.log("Imaege Ott");
+  console.log(ottImage);
+  console.log("ImageChannel");
+  console.log(channelImage);
+
+  for (let install of installation) {
+    if (install?.speed + "" == speed.name + "") {
+      console.log(install);
+      let curridx = -1;
+      for (let i = 0; i < install?.validity?.length; i++) {
+        console.log(
+          install?.validity[i] + "" + validity + "" + install?.validity + "" ==
+            validity + ""
+        );
+        if (install?.validity[i] + "" == validity + "") {
+          curridx = i;
+        }
+      }
+      if (curridx != -1) {
+        installation = install?.amount[curridx];
+      }
+    }
+  }
+
+  for (let discountPrice of discount) {
+    if (discountPrice?.speed + "" == speed.name + "") {
+      console.log(discountPrice);
+      let curridx = -1;
+      for (let i = 0; i < discountPrice?.validity?.length; i++) {
+        console.log(
+          discountPrice?.validity[i] +
+            "" +
+            validity +
+            "" +
+            discountPrice?.validity +
+            "" ==
+            validity + ""
+        );
+        if (discountPrice?.validity[i] + "" == validity + "") {
+          curridx = i;
+        }
+      }
+      if (curridx != -1) {
+        discount = discountPrice?.rate[curridx];
+      }
+    }
+  }
 
   // calculations
-  const subtotal = Math.max(0, internetCharge + installation - discount);
+  const subtotal = Math.max(0, speed?.price + installation - discount);
   const gst = Math.round(subtotal * 0.18);
   const total = subtotal + gst;
 
-  const billingCycleStr = `₹${Math.round(
-    internetCharge / (validity || 1)
-  )} / month`;
+  const billingCycleStr = `₹${Math.round(speed?.price)} / month`;
 
   return (
     <div className="w-full">
@@ -37,9 +114,17 @@ export default function SelectedPlanSummary({
         {/* Top row: compact highlights */}
         <div className="flex flex-col sm:flex-row gap-4 p-5 sm:p-6 border-b border-gray-100">
           <div className="flex-1 grid grid-cols-3 gap-4">
-            <Highlight label="Speed" value={speed} />
-            <Highlight label="TV Channels" value={`${channelCount}+`} />
-            <Highlight label="OTTs" value={`${ottCount}+`} />
+            <Highlight label="Speed" value={speed.name} />
+            <Highlight
+              label="TV Channels"
+              value={`${channel.name}+`}
+              imageList={channelImage}
+            />
+            <Highlight
+              label="OTTs"
+              value={`${ott.name}+`}
+              imageList={ottImage}
+            />
           </div>
 
           {/* Billing cycle summary */}
@@ -87,12 +172,12 @@ export default function SelectedPlanSummary({
         {open && (
           <div className="p-5 sm:p-6 bg-white animate-in fade-in duration-200">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Row label="Speed" value={speed} />
+              <Row label="Speed" value={speed.name} />
               <Row label="Billing Cycle" value={`${validity} months`} />
-              <Row label="Internet Charges" value={`₹${internetCharge}`} />
+              <Row label="Internet Charges" value={`₹${speed?.price}`} />
               <Row label="Installation" value={`₹${installation}`} />
-              <Row label="Channels" value={`${channelCount}+`} />
-              <Row label="OTTs" value={`${ottCount}+`} />
+              <Row label="Channels" value={`${channel.name}+`} />
+              <Row label="OTTs" value={`${ott.name}+`} />
               <div className="sm:col-span-2">
                 <div className="text-sm text-gray-600 bg-gray-50 rounded-lg p-3 border border-gray-100">
                   <strong className="text-gray-700">Notes:</strong> Installation
@@ -146,9 +231,34 @@ export default function SelectedPlanSummary({
 
 /* Small subcomponents for clarity */
 
-function Highlight({ label, value }) {
+function Highlight({ label, value, imageList = [] }) {
+  console.log(imageList);
   return (
     <div className="bg-white border border-gray-200 rounded-xl px-4 py-3 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all duration-200 hover:border-gray-300">
+      <>
+        {imageList?.length > 0 ? (
+          <div
+            className={` grid grid-cols-${
+              Math.ceil(imageList?.length / 2) <= 1 && imageList?.length > 1
+                ? 2
+                : Math.ceil(imageList?.length / 2)
+            } lg:grid-cols-${imageList?.length} gap-1`}
+          >
+            {imageList.map((currimage) => {
+              return (
+                <Image
+                  src={currimage.image}
+                  width={20}
+                  height={20}
+                  className="w-8 h-8 rounded-xl"
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <></>
+        )}
+      </>
       <div className="text-lg font-bold text-gray-900">{value}</div>
       <div className="text-xs text-gray-600 mt-1 font-medium">{label}</div>
     </div>
