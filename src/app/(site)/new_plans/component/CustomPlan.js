@@ -306,11 +306,11 @@ export default function CustomPlan({
         duration: [1, 3, 6, 12],
         additionalcost: 0,
       },
-      {
-        speed: "1000 Mbps",
-        duration: [1, 3, 6, 12],
-        additionalcost: 0,
-      },
+      // {
+      //   speed: "1000 Mbps",
+      //   duration: [1, 3, 6, 12],
+      //   additionalcost: 0,
+      // },
     ],
     ottList: ["aha Tamil"],
   });
@@ -333,7 +333,7 @@ export default function CustomPlan({
         let element = el?.packValidity[i];
 
         if (
-          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" >
+          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" >=
           Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
         ) {
           additionalCost = element?.additionalcost;
@@ -341,7 +341,7 @@ export default function CustomPlan({
         }
         additionalCost = -1;
       }
-      if (additionalCost == -1) {
+      if (additionalCost <= 0) {
         setSelectedChannel(el);
         extraChargesList.push({
           name: el.name,
@@ -425,7 +425,7 @@ export default function CustomPlan({
         let element = el?.packValidity[i];
 
         if (
-          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" >
+          Number(element?.speed?.replace(/mbps/i, "").trim()) + "" >=
           Number(selectedSpeed.name?.replace(/mbps/i, "").trim())
         ) {
           additionalCost = element?.additionalcost;
@@ -433,7 +433,7 @@ export default function CustomPlan({
         }
         additionalCost = -1;
       }
-      if (additionalCost == -1) {
+      if (additionalCost <= 0) {
         setSelectedOtt(el);
         extraChargesList.push({
           name: el.name,
@@ -620,10 +620,15 @@ export default function CustomPlan({
                 }
               }
               for (let i = 0; i < extraChargeLogic?.length; i++) {
+                console.log("Checking for Additional logic idn  " + type);
                 console.log(
                   opt?.name + "",
                   extraChargeLogic[i].name + "",
-                  opt?.name + "" == extraChargeLogic[i].name + ""
+                  opt?.name + "" == extraChargeLogic[i].name + "",
+                  +" " +
+                    extraChargeLogic[i].addons +
+                    "  " +
+                    extraChargeLogic[i]?.cost
                 );
                 if (opt?.name + "" == extraChargeLogic[i].name + "") {
                   isextraCharge = extraChargeLogic[i].addons;
@@ -657,8 +662,12 @@ export default function CustomPlan({
                     <div className="flex flex-col items-center">
                       <span>
                         {opt.name}
-                        {" + Channels "}
-                        <span className={`text-[11px] font-medium `}>
+                        {` + ${type == "channels" ? "Channels" : "OTTs"} `}
+                        <span
+                          className={`text-[11px] font-medium ${
+                            isDisabled ? "hidden" : ""
+                          } `}
+                        >
                           {isextraCharge ? `(Addon)` : "(Free)"}
                         </span>
                       </span>

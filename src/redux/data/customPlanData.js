@@ -58,11 +58,11 @@ export const customPlans = {
           duration: [1, 3, 6, 12],
           additionalcost: 0,
         },
-        {
-          speed: "300 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
+        // {
+        //   speed: "300 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
         // {
         //   speed: "500 Mbps",
         //   duration: [1, 3, 6, 12],
@@ -106,11 +106,11 @@ export const customPlans = {
           duration: [1, 3, 6, 12],
           additionalcost: 0,
         },
-        {
-          speed: "500 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
+        // {
+        //   speed: "500 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
         // {
         //   speed: "1000 Mbps",
         //   duration: [1, 3, 6, 12],
@@ -145,7 +145,7 @@ export const customPlans = {
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 0,
+          additionalcost: 199,
         },
         {
           speed: "500 Mbps",
@@ -169,12 +169,12 @@ export const customPlans = {
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 0,
+          additionalcost: 50,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 0,
+          additionalcost: 50,
         },
         {
           speed: "100 Mbps",
@@ -186,21 +186,21 @@ export const customPlans = {
           duration: [1, 3, 6, 12],
           additionalcost: 0,
         },
-        {
-          speed: "300 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
-        {
-          speed: "500 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
-        {
-          speed: "1000 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
+        // {
+        //   speed: "300 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
+        // {
+        //   speed: "500 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
+        // {
+        //   speed: "1000 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
       ],
       ottList: ["aha Tamil"],
     },
@@ -234,16 +234,16 @@ export const customPlans = {
           duration: [1, 3, 6, 12],
           additionalcost: 0,
         },
-        {
-          speed: "500 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
-        {
-          speed: "1000 Mbps",
-          duration: [1, 3, 6, 12],
-          additionalcost: 0,
-        },
+        // {
+        //   speed: "500 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
+        // {
+        //   speed: "1000 Mbps",
+        //   duration: [1, 3, 6, 12],
+        //   additionalcost: 0,
+        // },
       ],
       ottList: ["Jio Hotstar", "aha Tamil"],
     },
@@ -271,21 +271,21 @@ export const customPlans = {
           duration: [1, 3, 6, 12],
           additionalcost: 0,
         },
-        // {
-        //   speed: "300 Mbps",
-        //   duration: [1, 3, 6, 12],
-        //   additionalcost: 0,
-        // },
-        // {
-        //   speed: "500 Mbps",
-        //   duration: [1, 3, 6, 12],
-        //   additionalcost: 0,
-        // },
-        // {
-        //   speed: "1000 Mbps",
-        //   duration: [1, 3, 6, 12],
-        //   additionalcost: 0,
-        // },
+        {
+          speed: "300 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 0,
+        },
+        {
+          speed: "500 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 0,
+        },
+        {
+          speed: "1000 Mbps",
+          duration: [1, 3, 6, 12],
+          additionalcost: 0,
+        },
       ],
       ottList: ["Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],
     },
