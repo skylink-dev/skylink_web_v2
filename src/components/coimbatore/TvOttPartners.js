@@ -162,42 +162,34 @@ export default function TvOttPartners() {
           {/* First Row */}
           <div className="flex gap-8 animate-scroll mb-6">
             {[...ottLogos].map((logo, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-36 h-20 relative opacity-100 transition-all duration-300 p-3 bg-white rounded-lg shadow-sm flex items-center justify-center hover:scale-105 hover:shadow-md"
-              >
                 <Image
-                  src={logo.startsWith("/assets/") ? logo : `/assets/${logo}`}
-                  alt="OTT Logo"
-                  width={140}
-                  height={70}
-                  className="object-contain"
-                  onError={(e) => {
+                key={index}
+                src={logo.startsWith("/assets/") ? logo : `/assets/${logo}`}
+                alt="OTT Logo"
+                width={140}
+                height={70}
+                className="flex-shrink-0 object-contain transition-all duration-300 hover:scale-105"
+                onError={(e) => {
                     e.target.style.display = 'none';
-                  }}
-                />
-              </div>
+                }}
+              />
             ))}
           </div>
 
           {/* Second Row (Reverse Animation) */}
           <div className="flex gap-8 animate-scroll-reverse">
             {[...ottLogos].reverse().map((logo, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-36 h-20 relative opacity-100 transition-all duration-300 p-3 bg-white rounded-lg shadow-sm flex items-center justify-center hover:scale-105 hover:shadow-md"
-              >
                 <Image
-                  src={logo.startsWith("/assets/") ? logo : `/assets/${logo}`}
-                  alt="OTT Logo"
-                  width={140}
-                  height={70}
-                  className="object-contain"
-                  onError={(e) => {
+                key={index}
+                src={logo.startsWith("/assets/") ? logo : `/assets/${logo}`}
+                alt="OTT Logo"
+                width={140}
+                height={70}
+                className="flex-shrink-0 object-contain transition-all duration-300 hover:scale-105"
+                onError={(e) => {
                     e.target.style.display = 'none';
-                  }}
-                />
-              </div>
+                }}
+              />
             ))}
           </div>
         </div>
@@ -210,12 +202,12 @@ export default function TvOttPartners() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-144px * 10 - 2rem * 10));
+              transform: translateX(calc(-140px * 10 - 2rem * 10));
           }
         }
         @keyframes scroll-reverse {
           0% {
-            transform: translateX(calc(-144px * 10 - 2rem * 10));
+              transform: translateX(calc(-140px * 10 - 2rem * 10));
           }
           100% {
             transform: translateX(0);
