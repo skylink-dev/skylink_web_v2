@@ -14,15 +14,21 @@ import Image from "next/image";
  * Props: speed, validity, installation, channel, ott, internetCharge, discount
  */
 export default function SelectedPlanSummary({
+  activeTab,
   speed,
   validity,
-  installation,
+  installation = 0,
   channel,
   ott,
   discount,
+  setSelectedPlan,
+  isContactOpen,
+  setIsContactOpen,
+  setShowInfo,
   onSubscribe = () => {},
 }) {
   const [open, setOpen] = useState(true);
+
   const ottImage =
     ott?.ottList?.map((ottName) => {
       const match = ottImageList.find((item) => item.name === ottName);
@@ -31,6 +37,16 @@ export default function SelectedPlanSummary({
         : { name: ottName, image: "/newassets/ott/default.png" };
     }) || [];
 
+  function getExtraCharges(list) {
+    for (let item of list?.packValidity) {
+      if (item?.speed + "" == speed.name + "") {
+        return item.additionalcost;
+      }
+    }
+  }
+
+  const ottExtraCharge = getExtraCharges(ott);
+  const channelExtraCharge = getExtraCharges(channel);
   // 🟢 Extract Channel image list
 
   const channelImage = channel?.channelList.map((chName) => {
@@ -58,11 +74,16 @@ export default function SelectedPlanSummary({
   console.log("ImageChannel");
   console.log(channelImage);
 
+  console.log("Chargesss Ott");
+  console.log(ottExtraCharge);
+  console.log("Chargess Channel");
+  console.log(channelExtraCharge);
+
   for (let install of installation) {
     if (install?.speed + "" == speed.name + "") {
       console.log(install);
       let curridx = -1;
-      for (let i = 0; i < install?.validity?.length; i++) {
+      for (let i = 0; i <= install?.validity?.length; i++) {
         console.log(
           install?.validity[i] + "" + validity + "" + install?.validity + "" ==
             validity + ""
@@ -77,9 +98,10 @@ export default function SelectedPlanSummary({
     }
   }
 
+  console.log("Installation Charges");
+  console.log(installation);
   for (let discountPrice of discount) {
     if (discountPrice?.speed + "" == speed.name + "") {
-      console.log(discountPrice);
       let curridx = -1;
       for (let i = 0; i < discountPrice?.validity?.length; i++) {
         console.log(
@@ -102,17 +124,39 @@ export default function SelectedPlanSummary({
   }
 
   // calculations
-  const subtotal = Math.max(0, speed?.price + installation - discount);
+  const subtotal = Math.max(
+    0,
+    speed?.price * validity +
+      installation +
+      ottExtraCharge +
+      channelExtraCharge +
+      -(speed?.price * validity * discount * 0.01)
+  );
   const gst = Math.round(subtotal * 0.18);
   const total = subtotal + gst;
 
   const billingCycleStr = `₹${Math.round(speed?.price)} / month`;
 
   return (
-    <div className="w-full">
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-200 hover:shadow-xl">
+    <div
+      className={`w-full ${activeTab == "Custom Plan" ? " " : "opacity-50 "}`}
+    >
+      <div
+        className={`bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden transition-all duration-200 hover:shadow-xl`}
+      >
         {/* Top row: compact highlights */}
-        <div className="flex flex-col sm:flex-row gap-4 p-5 sm:p-6 border-b border-gray-100">
+        <div
+          className={`mt-4 text-start px-4 text-xl font-bold ${
+            activeTab == "Custom Plan"
+              ? " bg-gradient-to-r from-red-600 to-red-700"
+              : " bg-gradient-to-r from-gray-600 to-gray-700 hidden"
+          }  bg-clip-text text-transparent`}
+        >
+          Plan Highlights
+        </div>
+        <div
+          className={`flex flex-col sm:flex-row gap-4 p-5 sm:p-6 border-b border-gray-100`}
+        >
           <div className="flex-1 grid grid-cols-3 gap-4">
             <Highlight label="Speed" value={speed.name} />
             <Highlight
@@ -147,11 +191,19 @@ export default function SelectedPlanSummary({
         <button
           type="button"
           onClick={() => setOpen((s) => !s)}
-          className="w-full flex items-center justify-between gap-3 px-5 py-4 bg-white hover:bg-gray-50 transition-all duration-200 border-b border-gray-100 group"
+          className={` ${
+            activeTab == "Custom Plan" ? " " : " hidden "
+          } w-full flex items-center justify-between gap-3 px-5 py-4 bg-white hover:bg-gray-50 transition-all duration-200 border-b border-gray-100 group`}
           aria-expanded={open}
         >
           <div className="flex items-center gap-3">
-            <div className="text-xl font-bold bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+            <div
+              className={`text-xl font-bold ${
+                activeTab == "Custom Plan"
+                  ? " bg-gradient-to-r from-red-600 to-red-700"
+                  : " bg-gradient-to-r from-gray-600 to-gray-700 "
+              }  bg-clip-text text-transparent`}
+            >
               Selected Plan Details
             </div>
             <div className="text-sm text-gray-500 hidden sm:block transition-colors group-hover:text-gray-700">
@@ -170,38 +222,81 @@ export default function SelectedPlanSummary({
 
         {/* Accordion body */}
         {open && (
-          <div className="p-5 sm:p-6 bg-white animate-in fade-in duration-200">
+          <div
+            className={` ${
+              activeTab == "Custom Plan" ? " " : " hidden "
+            } p-5 sm:p-6 bg-white animate-in fade-in duration-200`}
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Row label="Speed" value={speed.name} />
               <Row label="Billing Cycle" value={`${validity} months`} />
-              <Row label="Internet Charges" value={`₹${speed?.price}`} />
-              <Row label="Installation" value={`₹${installation}`} />
-              <Row label="Channels" value={`${channel.name}+`} />
-              <Row label="OTTs" value={`${ott.name}+`} />
-              <div className="sm:col-span-2">
+              <Row
+                label="Internet Charges"
+                value={`₹${speed?.price * validity} `}
+              />
+
+              <Row
+                label="Installation"
+                value={` ${installation > 0 ? `₹ ${installation}` : `Free`}`}
+              />
+              {channelExtraCharge <= 0 ? (
+                <></>
+              ) : (
+                <Row
+                  label={`${channel.name} + Channels `}
+                  value={`₹ ${channel.name}`}
+                />
+              )}
+
+              {ottExtraCharge <= 0 ? (
+                <></>
+              ) : (
+                <Row
+                  label={`${ott.name} + OTTs `}
+                  value={`₹ ${ottExtraCharge}`}
+                />
+              )}
+
+              {/* <div className="sm:col-span-2">
                 <div className="text-sm text-gray-600 bg-gray-50 rounded-lg p-3 border border-gray-100">
                   <strong className="text-gray-700">Notes:</strong> Installation
                   charge {installation > 0 ? `₹${installation}` : "Free"} • GST
                   18% applied on subtotal.
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Discount line inside details (if any) */}
             {discount > 0 && (
-              <div className="mt-4 flex items-center gap-2 text-sm font-medium text-green-600 bg-green-50 rounded-lg p-3 border border-green-100">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                Discount applied: - ₹{discount}
+              <div
+                className={`mt-4 flex items-center gap-2 text-sm font-medium ${
+                  activeTab == "Custom Plan"
+                    ? "text-green-600 bg-green-50  border-green-100"
+                    : " text-gray-600 bg-gray-50  border-gray-100 "
+                }  rounded-lg p-3 border `}
+              >
+                <div
+                  className={`w-2 h-2 ${
+                    activeTab == "Custom Plan"
+                      ? " bg-green-500"
+                      : " bg-gray-500 "
+                  }  rounded-full`}
+                ></div>
+                Discount applied: - ₹{speed?.price * validity * discount * 0.01}
               </div>
             )}
           </div>
         )}
 
         {/* Bottom: always-visible total & subscribe */}
-        <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-5 py-5 sm:px-6 sm:py-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 justify-between border-t border-gray-200">
+        <div
+          className={` ${
+            activeTab == "Custom Plan" ? " " : "hidden "
+          } bg-gradient-to-r from-gray-50 to-gray-100 px-5 py-5 sm:px-6 sm:py-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 justify-between border-t border-gray-200`}
+        >
           <div className="flex flex-col">
             <div className="text-sm text-gray-600 font-medium">Subtotal</div>
-            <div className="flex items-baseline gap-2 mt-1">
+            <div className="flex justify-center items-baseline gap-2 mt-1">
               <div className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
                 ₹{total}
               </div>
@@ -209,15 +304,24 @@ export default function SelectedPlanSummary({
             </div>
             <div className="mt-2 text-sm text-gray-600">
               You pay now:{" "}
-              <span className="font-semibold text-gray-800">₹{subtotal}</span> +
-              GST ₹{gst}
+              <span className="font-semibold justify-center text-gray-800">
+                ₹{subtotal}
+              </span>{" "}
+              + GST ₹{gst}
             </div>
           </div>
 
           <div className="flex-1 sm:flex-none flex items-center">
             <button
-              onClick={onSubscribe}
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-emerald-700 hover:to-emerald-800 active:scale-[0.99] transition-all duration-200 transform hover:-translate-y-0.5"
+              onClick={() => {
+                setShowInfo(false);
+                setIsContactOpen(!isContactOpen);
+              }}
+              className={`w-full ${
+                activeTab == "Custom Plan"
+                  ? " bg-gradient-to-r from-emerald-600 to-emerald-700 hover:to-emerald-800"
+                  : "bg-gradient-to-r from-gray-600 to-gray-700 hover:to-gray-800  "
+              } sm:w-auto px-8 py-4  text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-emerald-700  active:scale-[0.99] transition-all duration-200 transform hover:-translate-y-0.5`}
               aria-label="Subscribe now"
             >
               Subscribe Now
@@ -247,6 +351,8 @@ function Highlight({ label, value, imageList = [] }) {
             {imageList.map((currimage) => {
               return (
                 <Image
+                  key={currimage.name}
+                  alt={currimage.name}
                   src={currimage.image}
                   width={20}
                   height={20}
