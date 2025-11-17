@@ -131,6 +131,7 @@ export default function Home() {
       {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
 
       <ThreeBannerModern />
+        <AvailabilityComponents />
       <FlexCard
         title="For Every Age. Every Stage. Every Connection."
         rightImage="/assets/skyplay-card-right.jpg"
@@ -153,7 +154,7 @@ export default function Home() {
         buttonText="Learn More"
         buttonLink="/internet"
       />
-      <AvailabilityComponents />
+    
       <HalfColumnCard items={cardData} />
       <DynamicCarousel
         title="Let's get you connected"

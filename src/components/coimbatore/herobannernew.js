@@ -2,7 +2,17 @@
 import { useState } from "react";
 import ContactForm from "../contact/ContactForm";
 
-export default function HeroBanner() {
+/**
+ * @typedef {Object} HeroBannerProps
+ * @property {string} [city="Coimbatore"] - The name of the city
+ */
+
+/**
+ * Hero banner component for city-specific pages
+ * @param {HeroBannerProps} props - Component props
+ * @returns {JSX.Element}
+ */
+export default function HeroBanner({city = "Coimbatore"}) {
   const [showContactForm, setShowContactForm] = useState(false);
 
   return (
@@ -13,7 +23,7 @@ export default function HeroBanner() {
 
       <div className="relative max-w-6xl mx-auto px-8">
         <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl mb-8 text-slate-900 tracking-tight leading-tight">
-          Coimbatore&apos;s Premium{" "}
+            {city}&apos;s Premium{" "}
           <span className="inline-block animate-pulse-text bg-gradient-to-br from-red-600 to-red-500 bg-clip-text text-transparent">
             High-Speed Fibernet
           </span>{" "}
@@ -22,7 +32,7 @@ export default function HeroBanner() {
 
         <p className="text-slate-600 mb-12 max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
           Experience lightning-fast, reliable, and unlimited internet for homes
-          and businesses in Coimbatore. Stay connected with seamless performance
+            and businesses in {city}. Stay connected with seamless performance
           and unmatched support.
         </p>
 
