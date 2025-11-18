@@ -109,31 +109,37 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
           </div>
         ) : (
           <div className="flex justify-center items-center gap-4 sm:gap-6 w-full max-w-2xl mx-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
-                  activeTab === tab.key
-                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
-                    : "bg-white text-gray-700 border border-gray-300"
-                } group`}
-              >
-                <span
-                  className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
-                ></span>
-                <span
-                  className={`relative z-10 transition-colors duration-300 ${
+            {tabs.map((tab, i) => (
+              <>
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
                     activeTab === tab.key
-                      ? "text-white"
-                      : "group-hover:text-white group-hover:font-semibold"
-                  }`}
+                      ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+                      : "bg-white text-gray-700 border border-gray-300"
+                  } group`}
                 >
-                  {tab.key === "Fixed Plan"
-                    ? "Explore Our Standard Plans"
-                    : "Customize Your Own Plans"}
-                </span>
-              </button>
+                  <span
+                    className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
+                  ></span>
+
+                  <span
+                    className={`relative z-10 transition-colors duration-300 ${
+                      activeTab === tab.key
+                        ? "text-white"
+                        : "group-hover:text-white group-hover:font-semibold"
+                    }`}
+                  >
+                    {tab.key === "Fixed Plan"
+                      ? "Explore Our Standard Plans"
+                      : "Customize Your Own Plans"}
+                  </span>
+                </button>
+                {i === 0 && (
+                  <span className="text-gray-500 font-medium text-sm">or</span>
+                )}
+              </>
             ))}
           </div>
         )}

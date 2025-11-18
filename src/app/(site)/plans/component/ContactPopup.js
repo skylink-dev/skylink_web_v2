@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { SiX } from "react-icons/si";
 
 export default function ContactPopup({
   selectedPlan,
@@ -197,9 +198,9 @@ export default function ContactPopup({
       label: "LinkedIn",
     },
     {
-      icon: FaTwitter,
-      url: "https://twitter.com/skylinkfiber",
-      label: "Twitter",
+      icon: SiX,
+      url: "https://x.com/skylinkfiber",
+      label: "x",
     },
   ];
 
