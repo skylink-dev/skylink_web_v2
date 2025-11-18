@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { SiX } from "react-icons/si";
 
 export default function ContactPopup({
   selectedPlan,
@@ -140,8 +141,7 @@ export default function ContactPopup({
     setIsSubmitting(true);
     try {
       await apiService.submitContactForm(formData);
-      // console.log("Form submitted:", formData);
-      setIsAlertOpen(true);
+
       setAlertInfo({
         title: "Success!",
         message: "Thank you! We will contact you soon",
@@ -149,16 +149,32 @@ export default function ContactPopup({
       });
       setIsAlertOpen(true);
     } catch (err) {
-      // console.log(err);
+      let message = "Something went wrong. Please try again.";
+
+      // Server is DOWN or no network
+      // When server is DOWN
+      if (err.code === "ERR_NETWORK" || !err.response) {
+        message = "Server is down. Please try again later.";
+      }
+      // Optional: Handle specific status codes
+      else if (err.response.status === 500) {
+        message = "Server error. Please try again after some time.";
+      } else if (err.response.status === 400) {
+        message = "Invalid input. Please check your details.";
+      }
+
       setAlertInfo({
         title: "Error!",
-        message: "Something went wrong. Please try again.",
+        message,
         type: "error",
       });
+
+      setIsAlertOpen(true);
+    } finally {
+      setErrors({ name: "", phone: "", email: "" });
+      setIsSubmitting(false);
+      setIsOpen(false);
     }
-    setErrors({ name: "", phone: "", email: "" });
-    setIsSubmitting(false);
-    setIsOpen(false);
   };
   const socialLinks = [
     {
@@ -182,9 +198,9 @@ export default function ContactPopup({
       label: "LinkedIn",
     },
     {
-      icon: FaTwitter,
-      url: "https://twitter.com/skylinkfiber",
-      label: "Twitter",
+      icon: SiX,
+      url: "https://x.com/skylinkfiber",
+      label: "x",
     },
   ];
 

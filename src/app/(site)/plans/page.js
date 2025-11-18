@@ -1,38 +1,51 @@
-'use client';
-import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import DoneIcon from '@mui/icons-material/Done';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { AnimatePresence, motion } from 'framer-motion';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import Link from 'next/link';
-import CustomIptvSlider from '@/components/customSlider';
-import CustomSliderOtt from '@/components/CustomSliderOtt';
-import Tab from './component/Tab';
-import { Providers } from '../Providers';
-import { PlanProvider } from './context/PlansContext';
-import ContactPopup from './component/ContactPopup';
+import PlanTabs from "./component/planTabs";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://skylink.net.in";
 
-
-const ReactSelectWithSearch = dynamic(
-    () => import('@/components/SelectField'),
-    { ssr: false }
-);
-const Drawyer = dynamic(() => import('@/components/Drawyer'));
+export const metadata = {
+  title: "Plans & Pricing | Skylink",
+  description:
+    "Explore Skylink's flexible plans with transparent pricing, GST included. Choose a plan that fits your needs perfectly.",
+  keywords: [
+    "Skylink",
+    "Skylink plans",
+    "Skylink pricing",
+    "Skylink subscription",
+    "Skylink premium plans",
+    "Skylink monthly plan",
+    "Skylink yearly plan",
+    "best subscription plans",
+    "customize plans",
+    "internet plans",
+  ],
+  openGraph: {
+    title: "Plans & Pricing | Skylink",
+    description: "Compare Skylink plans and choose the perfect match.",
+    url: `${BASE_URL}/plans`,
+    siteName: "Skylink",
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/og/plans.png`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  alternates: {
+    canonical: `${BASE_URL}/plans`,
+  },
+};
 
 export default function Page() {
-    return (
-        <Providers>
-          <PlanProvider>
-            
-            <><Tab></Tab></>
-        </PlanProvider>
-        </Providers>
-    )
+  return (
+    <section className="py-10 px-4 bg-gray-50 min-h-screen">
+      <div className="container mx-auto text-center">
+        <h1 className="text-4xl font-bold m-4 text-red-600">
+          Broadband + TV + OTT
+        </h1>
+
+        <PlanTabs />
+      </div>
+    </section>
+  );
 }
-       

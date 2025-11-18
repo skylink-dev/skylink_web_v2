@@ -27,7 +27,7 @@ export default function SelectedPlanSummary({
   setShowInfo,
   onSubscribe = () => {},
 }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const ottImage =
     ott?.ottList?.map((ottName) => {
@@ -188,11 +188,11 @@ export default function SelectedPlanSummary({
             } p-5 sm:p-6 bg-white animate-in fade-in duration-200`}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Row label="Speed" value={speed.name} />
-              <Row label="Billing Cycle" value={`${validity} months`} />
+              {/* <Row label="Speed" value={speed.name} />
+              <Row label="Billing Cycle" value={`${validity} months`} /> */}
               <Row
                 label="Internet Charges"
-                value={`₹${speed?.price * validity} `}
+                value={`₹${speed?.price} x ${validity}`}
               />
 
               <Row
@@ -254,8 +254,29 @@ export default function SelectedPlanSummary({
             activeTab == "Custom Plan" ? " " : "hidden "
           } bg-gradient-to-r from-gray-50 to-gray-100 px-5 py-5 sm:px-6 sm:py-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 justify-between border-t border-gray-200`}
         >
-          <div className="flex flex-col">
-            <div className="text-sm text-gray-600 font-medium">Subtotal</div>
+          <div className="flex flex-col items-center p-4 rounded-2xl bg-white shadow-sm border border-gray-100">
+            <div className="text-sm text-gray-500 font-medium tracking-wide">
+              Total Amount
+            </div>
+
+            <div className="flex items-end gap-2 mt-2">
+              <span className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-br from-red-600 to-red-700 bg-clip-text text-transparent drop-shadow-sm">
+                ₹{total}
+              </span>
+              <span className="text-xs sm:text-sm text-gray-500 font-medium">
+                (incl. GST)
+              </span>
+            </div>
+
+            {/* <div className="mt-2 text-xs sm:text-sm text-gray-600 bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+              Subtotal:{" "}
+              <span className="font-semibold text-gray-800">₹{subtotal}</span>
+              &nbsp;•&nbsp; GST:{" "}
+              <span className="font-semibold text-gray-800">₹{gst}</span>
+            </div> */}
+          </div>
+          {/* <div className="flex flex-col">
+            <div className="text-sm text-gray-600 font-medium">Total</div>
             <div className="flex justify-center items-baseline gap-2 mt-1">
               <div className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
                 ₹{total}
@@ -269,7 +290,7 @@ export default function SelectedPlanSummary({
               </span>{" "}
               + GST ₹{gst}
             </div>
-          </div>
+          </div> */}
 
           <div className="flex-1 sm:flex-none flex items-center">
             <button

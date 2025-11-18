@@ -118,7 +118,7 @@ export default function ImageAndContent({ image, content, row = "row" }) {
 
             <div className="pt-2">
               <Link
-                href="/new_plans"
+                href="/plans"
                 className="inline-block bg-red-500 text-white px-6 lg:px-7 py-3 lg:py-3.5 rounded-lg shadow-md hover:bg-red-600 hover:scale-105 transition-all duration-300 text-sm lg:text-base font-semibold"
               >
                 Learn More
