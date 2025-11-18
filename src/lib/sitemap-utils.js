@@ -29,7 +29,7 @@ export const routes = [
 
     // Plans & Packages Pages
     {route: '/plans', priority: 0.9, changefreq: 'weekly'},
-    {route: '/new_plans', priority: 0.9, changefreq: 'weekly'},
+    {route: '/plans', priority: 0.9, changefreq: 'weekly'},
     {route: '/deals', priority: 0.8, changefreq: 'weekly'},
     {route: '/packages', priority: 0.8, changefreq: 'weekly'},
 
