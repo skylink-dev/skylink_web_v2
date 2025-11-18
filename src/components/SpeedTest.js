@@ -77,12 +77,12 @@ export default function SpeedTestBanner() {
             <div
                 className="max-w-7xl mx-auto bg-gradient-to-r from-gray-900 to-black text-white rounded-3xl overflow-hidden flex items-center justify-between px-8 sm:px-16 h-[480px] relative">
                 {/* Hyperspeed animation background */}
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 rounded-3xl overflow-hidden">
                     <Hyperspeed effectOptions={hyperspeedPreset}/>
                 </div>
 
                 {/* Overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-0"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-0 rounded-3xl"></div>
 
                 {/* Text Section */}
                 <div className="max-w-2xl z-10 relative">
