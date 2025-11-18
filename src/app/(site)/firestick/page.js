@@ -12,6 +12,9 @@ import StepByStepComponent from '@/components/StepByStepComponent'
 import SingleFaq from '@/components/SingleFaq'
 import Faq from '@/components/Faq'
 import NormalTabs from '@/components/NormalTabs'
+import {firestickData} from "../../../data/Home";
+import StructuredData from "@/components/StructuredData";
+import {getServiceStructuredData, getBreadcrumbStructuredData} from "@/lib/structuredData";
 
 export default function page() {
   const iconMoreDetailcontent = [{
@@ -189,57 +192,79 @@ const faqContent = [
     content: "Plug the device into your TV’s HDMI port, power it on, connect to Wi-Fi, and follow the on-screen instructions. The setup takes just a few minutes and doesn't require technical skills."
   }
 ];
-const stepsData = [
-  {
-    id: 1,
-    title: 'Plug & Power',
-    description: 'Connect the Firestick to your TV’s HDMI port and plug the USB cable into a wall outlet for optimal performance.',
-    link: '/',
-    svg: (
-      <svg aria-label="Icon number one" className="color-gray-800 svg-accent-att-blue" height="64" width="64" role="img" viewBox="0 0 96 96">
-        <path className="svg-accent" d="M41 40.64l8.12-6.24H51V62h-2V36.76l-7 5.32z" />
-        <path className="svg-base" d="M48 86a38 38 0 1138-38 38 38 0 01-38 38zm0-74a36 36 0 1036 36 36 36 0 00-36-36z" />
-      </svg>
-    )
-  },
-  {
-    id: 2,
-    title: 'Get Connected',
-    description: 'Switch your TV to the correct HDMI input. Pair your remote (usually automatic), then connect to your Wi-Fi network.',
-    link: '/activate',
-    svg: (
-      <svg aria-label="icon number two" className="color-gray-800 svg-accent-att-blue" height="64" width="64" role="img" viewBox="0 0 96 96">
-        <path className="svg-base" d="M48 86a38 38 0 1138-38 38 38 0 01-38 38zm0-74a36 36 0 1036 36 36 36 0 00-36-36z" />
-        <path className="svg-accent" d="M40.66 62v-1.48..." />
-      </svg>
-    )
-  },
-  {
-    id: 3,
-    title: 'Sign In & Personalize',
-    description: 'Sign in to your Amazon account and adjust display settings for the best resolution under Settings > Display & Sounds.',
-    link: '/add-line',
-    svg: (
-      <svg aria-label="icon number three" className="color-gray-800 svg-accent-att-blue" height="64" width="64" role="img" viewBox="0 0 96 96">
-        <path className="svg-base" d="M48 86a38 38..." />
-        <path className="svg-accent" d="M47.46 62.4a12.64..." />
-      </svg>
-    )
-  },
-  {
-    id: 4,
-    title: 'Install Your Favorites',
-    description: 'Download top streaming apps like Prime Video, Netflix, and YouTube to start enjoying your Firestick.',
-    link: '/upgrade',
-    svg: (
-      <svg aria-label="icon number four" className="color-gray-800 svg-accent-att-blue" height="64" width="64" role="img" viewBox="0 0 96 96">
-        <path className="svg-base" d="M48 86..." />
-        <path className="svg-accent" d="M51 61v-7.12..." />
-      </svg>
-    )
-  },
-];
-  return (
+    const stepsData = [
+        {
+            id: 1,
+            title: 'Plug & Power',
+            description: 'Connect the Firestick to your TV’s HDMI port and plug the USB cable into a wall outlet for optimal performance.',
+            link: '/',
+            svg: (
+                <svg aria-label="Icon number one" className="color-gray-800 svg-accent-att-blue" height="64" width="64"
+                     role="img" viewBox="0 0 96 96">
+                    <path className="svg-accent" d="M41 40.64l8.12-6.24H51V62h-2V36.76l-7 5.32z"/>
+                    <path className="svg-base"
+                          d="M48 86a38 38 0 1138-38 38 38 0 01-38 38zm0-74a36 36 0 1036 36 36 36 0 00-36-36z"/>
+                </svg>
+            )
+        },
+        {
+            id: 2,
+            title: 'Get Connected',
+            description: 'Switch your TV to the correct HDMI input. Pair your remote (usually automatic), then connect to your Wi-Fi network.',
+            link: '/activate',
+            svg: (
+                <svg aria-label="icon number two" className="color-gray-800 svg-accent-att-blue" height="64" width="64"
+                     role="img" viewBox="0 0 96 96">
+                    <path className="svg-base"
+                          d="M48 86a38 38 0 1138-38 38 38 0 01-38 38zm0-74a36 36 0 1036 36 36 36 0 00-36-36z"/>
+                    <path className="svg-accent" d="M40.66 62v-1.48..."/>
+                </svg>
+            )
+        },
+        {
+            id: 3,
+            title: 'Sign In & Personalize',
+            description: 'Sign in to your Amazon account and adjust display settings for the best resolution under Settings > Display & Sounds.',
+            link: '/add-line',
+            svg: (
+                <svg aria-label="icon number three" className="color-gray-800 svg-accent-att-blue" height="64"
+                     width="64" role="img" viewBox="0 0 96 96">
+                    <path className="svg-base" d="M48 86..."/>
+                    <path className="svg-accent" d="M47.46 62.4a12.64..."/>
+                </svg>
+            )
+        },
+        {
+            id: 4,
+            title: 'Install Your Favorites',
+            description: 'Download top streaming apps like Prime Video, Netflix, and YouTube to start enjoying your Firestick.',
+            link: '/upgrade',
+            svg: (
+                <svg aria-label="icon number four" className="color-gray-800 svg-accent-att-blue" height="64" width="64"
+                     role="img" viewBox="0 0 96 96">
+                    <path className="svg-base" d="M48 86..."/>
+                    <path className="svg-accent" d="M51 61v-7.12..."/>
+                </svg>
+            )
+        },
+    ];
+
+    // Generate service structured data
+    const firestickServiceData = getServiceStructuredData({
+        name: "Skylink Firestick Streaming Services",
+        description: "Stream content from thousands of apps like Netflix, Prime Video, Hotstar, and more with Skylink's Firestick service. 4K streaming quality available.",
+        serviceType: "StreamingService",
+        url: "https://skylinkfiber.com/firestick"
+    });
+
+    // Generate breadcrumb structured data
+    const breadcrumbData = getBreadcrumbStructuredData([
+        {name: "Home", url: "https://skylinkfiber.com"},
+        {name: "Products", url: "https://skylinkfiber.com/products"},
+        {name: "Firestick", url: "https://skylinkfiber.com/firestick"}
+    ]);
+
+    return (
     <>
       <VideoBanner></VideoBanner>
       <VideoTabs></VideoTabs>
@@ -261,6 +286,8 @@ const stepsData = [
       <ContentandImageCarousel slidesData={CotentImageCarouselData} />
       <Faq title="You’ve asked. We’ve answered." content={faqContent} />
       {/* <SingleFaq content={faqData} /> */}
+        <StructuredData data={firestickServiceData}/>
+        <StructuredData data={breadcrumbData}/>
     </>
   )
 }

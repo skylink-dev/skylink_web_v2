@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Home Page -->
+    <url>
+        <loc>https://skylinkfiber.com/</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Main Service Pages -->
+    <url>
+        <loc>https://skylinkfiber.com/internet</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/tv</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/ott</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/firestick</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Plans & Packages Pages -->
+    <url>
+        <loc>https://skylinkfiber.com/plans</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/new_plans</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/deals</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/packages</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Products & Accessories -->
+    <url>
+        <loc>https://skylinkfiber.com/accessories</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/products</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Location Pages -->
+    <url>
+        <loc>https://skylinkfiber.com/coimbatore</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/erode</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/tiruppur</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Service & Support Pages -->
+    <url>
+        <loc>https://skylinkfiber.com/support</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/services</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/services/home-automation</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/speedtest</loc>
+        <lastmod>2025-11-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/installation-guide</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/moving</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/download-channel-list</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Business & Partnership -->
+    <url>
+        <loc>https://skylinkfiber.com/partner</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Company & About -->
+    <url>
+        <loc>https://skylinkfiber.com/about</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/contact-us</loc>
+        <lastmod>2025-11-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Blog & Content -->
+    <url>
+        <loc>https://skylinkfiber.com/blogs</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Featured Blog Posts Based on Your Data -->
+    <url>
+        <loc>https://skylinkfiber.com/blogs/skylink-fiber-broadband</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/blogs/skylink-ott-universe</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/blogs/skylink-iptv</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/blogs/hd-tv-no-setup-boxes</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/blogs/entertainment-bundles-tailored-for-india</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/blogs/next-gen-wifi-everywhere</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/blogs/parental-controls-for-safe-surfing</loc>
+        <lastmod>2025-11-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://skylinkfiber.com/terms</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/policy</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/refund</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/subscription-contract</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/whistleblower-policy</loc>
+        <lastmod>2025-10-13</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Products Based on Data File -->
+    <url>
+        <loc>https://skylinkfiber.com/products/smart-remote-control</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/products/skylink-fire-tv</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/products/high-speed-dual-band-router</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Service Package Pages Based on Data -->
+    <url>
+        <loc>https://skylinkfiber.com/services/triple-play</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/services/skylink-tv</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/services/customizable-wifi</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://skylinkfiber.com/services/stream-ott-apps</loc>
+        <lastmod>2025-11-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+</urlset>

@@ -21,7 +21,7 @@ export default function WhyProduct({city = "Coimbatore"}) {
   ];
 
   return (
-    <section className="pt-24 pb-24 bg-white text-slate-800 text-center relative font-sans">
+    <section className="pt-8 pb-4 bg-white text-slate-800 text-center relative font-sans">
       {/* Background Circle Design */}
       <div className="absolute top-10 right-10 w-36 h-36 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full opacity-60" />
       <div className="absolute bottom-10 left-10 w-24 h-24 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full opacity-40" />
