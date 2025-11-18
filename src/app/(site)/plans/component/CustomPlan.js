@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
-import { useDispatch } from "react-redux";
-import ContactPopup from "../../plans/component/ContactPopup";
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -16,8 +14,6 @@ import {
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
-import { selectPlan } from "@/redux/slices/newPlanSlice";
-import NewPlanSummary from "./NewPlanSummary";
 import SelectedPlanSummary from "./SelectedPlanSumamry";
 
 const PlanSummary = ({
