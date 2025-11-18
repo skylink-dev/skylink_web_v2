@@ -8,6 +8,7 @@ import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
 import SocialSidebar from "@/components/SocialSidebar";
 import Script from "next/script";
+import GlobalStructuredData from "@/components/GlobalStructuredData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -89,6 +90,9 @@ export default function RootLayout({ children }) {
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
+
+        {/* Global Structured Data */}
+        <GlobalStructuredData/>
 
         <PageLoaderWrapper>
           <Providers>

@@ -133,7 +133,7 @@ export default function TvOttPartners() {
   ];
 
   return (
-    <section className="w-full bg-white py-20 font-sans relative overflow-hidden">
+    <section className="w-full bg-white py-10 font-sans relative overflow-hidden">
       {/* Decorative Backgrounds */}
       <div className="absolute top-1/4 left-5 w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-300 rounded-full opacity-30"></div>
       <div className="absolute bottom-1/4 right-5 w-14 h-14 bg-gradient-to-br from-blue-300 to-blue-600 rounded-full opacity-20"></div>

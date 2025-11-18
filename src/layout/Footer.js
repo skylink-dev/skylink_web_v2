@@ -69,7 +69,7 @@ export default function Footer() {
   ]);
 
   const [footerBottomMenu, setFooterBottomMenu] = useState([
-    { title: "Site Map", url: "/" },
+      {title: "Site Map", url: "/sitemap"},
     { title: "Coverage Map", url: "/" },
      { title: "Privacy Policy", url: "/policy" },
         { title: "Refund Policy", url: "/refund" },

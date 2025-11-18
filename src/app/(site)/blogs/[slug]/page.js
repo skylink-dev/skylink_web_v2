@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import StructuredData from "@/components/StructuredData";
+import {getBlogStructuredData} from "@/lib/structuredData";
 
 const blogData = [
   {
@@ -1367,45 +1369,60 @@ export default async function BlogPost({ params }) {
 
   if (!post) notFound();
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Banner Section */}
-      <section className="relative h-64 md:h-96 w-full">
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          className="object-cover brightness-75"
-          priority
-        />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
-          <h1 className="text-3xl md:text-5xl font-bold mb-2">{post.title}</h1>
-          <p className="text-sm md:text-lg opacity-90">
-            Latest insights from Skylink
-          </p>
-        </div>
-      </section>
+    const blogStructuredData = post ? getBlogStructuredData({
+        title: post.title,
+        description: post.description,
+        url: `https://skylinkfiber.com/blogs/${slug}`,
+        imageUrl: post.image,
+        datePublished: new Date().toISOString(),
+        dateModified: new Date().toISOString(),
+        authorName: "Skylink Team"
+    }) : null;
 
-      {/* Article Content */}
-      <article className="max-w-4xl mx-auto px-6 py-12 bg-white shadow-lg rounded-lg -mt-16 relative z-10">
-        <div className="prose prose-lg max-w-none text-gray-700">
-          <p className="text-lg leading-relaxed whitespace-pre-line">
-            {post.content}
-          </p>
-        </div>
+    return (
+      <>
+          {blogStructuredData && <StructuredData data={blogStructuredData}/>}
 
-        <div className="mt-8 flex justify-center">
-          <Link
-            href="/blogs"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition duration-300"
-          >
-            ← Back to Blogs
-          </Link>
-        </div>
-      </article>
+          <div className="min-h-screen bg-gray-50">
+              {/* Banner Section */}
+              <section className="relative h-64 md:h-96 w-full">
+                  <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover brightness-75"
+                      priority
+                  />
+                  <div
+                      className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+                      <h1 className="text-3xl md:text-5xl font-bold mb-2">{post.title}</h1>
+                      <p className="text-sm md:text-lg opacity-90">
+                          Latest insights from Skylink
+                      </p>
+                  </div>
+              </section>
 
-      {/* Footer spacing */}
-      <div className="h-12" />
-    </div>
+          {/* Article Content */}
+          <article className="max-w-4xl mx-auto px-6 py-12 bg-white shadow-lg rounded-lg -mt-16 relative z-10">
+              <div className="prose prose-lg max-w-none text-gray-700">
+                  <p className="text-lg leading-relaxed whitespace-pre-line">
+                      {post.content}
+                  </p>
+              </div>
+
+            <div className="mt-8 flex justify-center">
+                <Link
+                    href="/blogs"
+                    className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition duration-300"
+                >
+                    ← Back to Blogs
+                </Link>
+            </div>
+        </article>
+
+          {/* Footer spacing */}
+          <div className="h-12"/>
+      </div>
+    </>
   );
 }

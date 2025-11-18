@@ -137,7 +137,7 @@ export default function ContactForm({onClose}) {
 
                     {/* Header */}
                     <h2 className="text-xl font-bold text-red-600 mb-1">
-                        Register for Premium Network
+                        Register to our Premium Network
                     </h2>
                     <p className="text-gray-500 text-sm mb-6">
                         Experience the highest-quality connectivity with our premium support
@@ -237,20 +237,19 @@ export default function ContactForm({onClose}) {
                                     <p className="text-red-500 text-xs mt-2">{errors.captcha}</p>
                                 )}
 
-                                <div className="flex gap-2">
+                                <div className="flex justify-center gap-4 mb-3">
                                     <button
                                         type="button"
                                         onClick={handleBack}
-                                        className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-300 transition-all"
+                                        className="w-1/3 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-300 transition-all"
                                     >
                                         Back
                                     </button>
                                     <button
                                         type="submit"
                                         disabled={isLoading}
-                                        className="flex-1 bg-gradient-to-b from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 disabled:opacity-70 transition-all flex items-center justify-center"
+                                        className="w-1/3 bg-gradient-to-b from-green-500 to-green-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 disabled:opacity-70 transition-all flex items-center justify-center"
                                     >
-
                                         {isLoading ? (
                                             <>
                                                 <div
@@ -258,10 +257,13 @@ export default function ContactForm({onClose}) {
                                                 Registering...
                                             </>
                                         ) : (
-                                            "Register for FREE"
+                                            "Submit"
                                         )}
                                     </button>
                                 </div>
+                                <p className="text-gray-500 text-sm text-center mb-2">
+                                    You will get an immediate callback.
+                                </p>
                             </>
                         )}
                     </form>
@@ -299,10 +301,10 @@ export default function ContactForm({onClose}) {
                                     d="M2 5.5C2 4.12 3.12 3 4.5 3h2A1.5 1.5 0 018 4.5v2A1.5 1.5 0 016.5 8H5a11 11 0 0011 11v-1.5A1.5 1.5 0 0117.5 16h2a1.5 1.5 0 011.5 1.5v2A1.5 1.5 0 0119.5 21C10.94 21 3 13.06 3 4.5 3 3.12 4.12 2 5.5 2H8"
                                 />
                             </svg>
-                            Get Immediate Support
+                            Get Instant Support
                         </h3>
                         <p className="text-gray-500 text-xs text-center mb-4">
-                            Our team is ready to assist you
+                            Our team is waiting for assist you
                         </p>
 
                         {/* Two Contact Boxes Side by Side */}

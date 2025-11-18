@@ -73,7 +73,7 @@ export default function SpeedTestBanner() {
     const [ip] = useState("103.130.90.103");
 
     return (
-        <section className="w-full py-8 px-4 sm:px-6 lg:px-8">
+        <section className="w-full py-8 px-4 sm:px-6 lg:px-8" id="SpeedTest">
             <div
                 className="max-w-7xl mx-auto bg-gradient-to-r from-gray-900 to-black text-white rounded-3xl overflow-hidden flex items-center justify-between px-8 sm:px-16 h-[480px] relative">
                 {/* Hyperspeed animation background */}
