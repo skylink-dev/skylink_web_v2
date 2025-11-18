@@ -23,7 +23,7 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    console.log("📦 Loaded plans:", plans);
+    // console.log("📦 Loaded plans:", plans);
   }, [plans]);
 
   return (

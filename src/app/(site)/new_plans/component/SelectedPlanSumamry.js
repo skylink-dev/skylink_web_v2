@@ -188,8 +188,8 @@ export default function SelectedPlanSummary({
             } p-5 sm:p-6 bg-white animate-in fade-in duration-200`}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Row label="Speed" value={speed.name} />
-              <Row label="Billing Cycle" value={`${validity} months`} />
+              {/* <Row label="Speed" value={speed.name} />
+              <Row label="Billing Cycle" value={`${validity} months`} /> */}
               <Row
                 label="Internet Charges"
                 value={`₹${speed?.price * validity} `}
