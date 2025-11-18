@@ -15,6 +15,7 @@ yarn-error.log*
 .env.development
 .env.production
 .env.test
+.env
 
 # Keep all files in public/assets/
 # Ignore only unnecessary files if any
