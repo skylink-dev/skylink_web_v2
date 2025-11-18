@@ -16,13 +16,6 @@ export default function SitemapPage() {
             ],
         },
         {
-            title: "Location Services",
-            links: [
-                { name: "Chennai", href: "/locations/chennai" },
-                { name: "Coimbatore", href: "/locations/coimbatore" },
-            ],
-        },
-        {
             title: "Account",
             links: [
                 { name: "Login", href: "/ott_subscription/login/" },
@@ -39,14 +32,13 @@ export default function SitemapPage() {
         {
             title: "Legal",
             links: [
-                { name: "Privacy Policy", href: "/privacy" },
                 { name: "Terms & Conditions", href: "/terms" },
             ],
         },
         {
             title: "More",
             links: [
-                { name: "Help Center", href: "/support/" },
+                { name: "Support", href: "/support/" },
             ],
         },
         {
@@ -65,7 +57,7 @@ export default function SitemapPage() {
     });
 
     return (
-        <div className="w-full max-w-7xl mx-auto px-6 py-10">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-10 mb-16">
             {/* TOP TITLE */}
             <h1 className="text-4xl font-extrabold mb-8">Site Map</h1>
 
@@ -86,7 +78,7 @@ export default function SitemapPage() {
                                         <li key={i}>
                                             <Link
                                                 href={link.href}
-                                                className="text-blue-700 hover:underline text-sm"
+                                                className="text-red-600 hover:underline text-sm transition-colors hover:text-blue-600"
                                             >
                                                 {link.name}
                                             </Link>
@@ -101,3 +93,4 @@ export default function SitemapPage() {
         </div>
     );
 }
+
