@@ -3,10 +3,31 @@ import React, { useEffect, useRef, useState } from "react";
 import FixedPlan from "./FixedPlan";
 import { motion } from "framer-motion";
 import CustomPlan from "./CustomPlan";
-import ContactPopup from "../../plans/component/ContactPopup";
+import ContactPopup from "./ContactPopup";
 import AlertModal from "@/components/alert/AlertModal";
+import { useSelector } from "react-redux";
 
-export default function PlansTabs({ isMobile, plans, isMediumSize }) {
+export default function PlansTabs() {
+  const plans = useSelector((state) => state.newPlans);
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMediumSize, setIsMediumSize] = useState(false);
+
+  // ✅ Handle screen resize for mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setIsMediumSize(window.innerWidth > 768 && window.innerWidth < 1098);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    // console.log("📦 Loaded plans:", plans);
+  }, [plans]);
+
   const [activeTab, setActiveTab] = useState("Custom Plan");
   const [fade, setFade] = useState(true);
   const [isAlertOpen, setIsAlertOpen] = useState(false);

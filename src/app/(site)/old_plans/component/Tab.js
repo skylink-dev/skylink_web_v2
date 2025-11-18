@@ -19,7 +19,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { usePlans } from "../context/PlansContext";
 import "./Tab.css";
 import ContactPopup from "./ContactPopup";
-import PlanTabs from "../../new_plans/component/planTabs";
+import PlanTabs from "../../plans/component/planTabs";
 import Image from "next/image";
 import FixedPlan from "../../new_plans/component/FixedPlan";
 

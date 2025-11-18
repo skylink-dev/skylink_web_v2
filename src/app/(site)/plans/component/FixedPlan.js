@@ -2,7 +2,6 @@
 import React, { useState, useMemo, useEffect, act } from "react";
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
-import ContactPopup from "../../plans/component/ContactPopup";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AiOutlineArrowRight } from "react-icons/ai";

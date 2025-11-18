@@ -45,12 +45,12 @@ export default function DualBannerSection() {
                   Savings applied to one service based on eligibility and
                   service(s) purchased/added.
                 </p>
-                  <Link
-                      href="/new_plans"
-                      className="text-red-400 hover:text-red-300 font-medium underline transition-colors text-xs"
-                  >
-                      See offer details
-                  </Link>
+                <Link
+                  href="/plans"
+                  className="text-red-400 hover:text-red-300 font-medium underline transition-colors text-xs"
+                >
+                  See offer details
+                </Link>
               </div>
             </div>
 

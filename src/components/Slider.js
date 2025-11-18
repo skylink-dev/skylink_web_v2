@@ -40,7 +40,7 @@ export default function Slider({ slides = [] }) {
     });
   }, [slides.length]);
 
-  const handleGetPlan = () => router.push("/new_plans");
+  const handleGetPlan = () => router.push("/plans");
 
   useEffect(() => {
     if (isHovered) return;
@@ -73,7 +73,7 @@ export default function Slider({ slides = [] }) {
             <button
               onClick={goToPrevSlide}
               className="absolute -left-1 sm:left-0 md:left-2 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 md:p-2.5 shadow-md hover:scale-110 transition-all duration-300"
-              style={{ marginTop: '-20px' }}
+              style={{ marginTop: "-20px" }}
             >
               <svg
                 className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-gray-700"
@@ -93,7 +93,7 @@ export default function Slider({ slides = [] }) {
             <button
               onClick={goToNextSlide}
               className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 md:p-2.5 shadow-md hover:scale-110 transition-all duration-300"
-              style={{ marginTop: '-20px' }}
+              style={{ marginTop: "-20px" }}
             >
               <svg
                 className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-gray-700"
@@ -117,28 +117,30 @@ export default function Slider({ slides = [] }) {
           <div
             className="flex transition-transform duration-700 ease-out"
             style={{
-                transform: `translateX(-${activeIndex * (isMobile ? 100 : 100 / 3)}%)`,
+              transform: `translateX(-${
+                activeIndex * (isMobile ? 100 : 100 / 3)
+              }%)`,
             }}
           >
             {infiniteSlides.map((slide, index) => {
               const relativeIndex = index % slides.length;
               const isActive = relativeIndex === activeIndex;
-              
+
               return (
                 <div
                   key={index}
                   className={`flex-shrink-0 px-1 sm:px-2 transition-all duration-500 ${
                     isActive ? "scale-105" : "scale-95 opacity-80"
                   }`}
-                  style={{width: isMobile ? "100%" : `calc(100% / 3)`}}
+                  style={{ width: isMobile ? "100%" : `calc(100% / 3)` }}
                 >
                   <div
                     className={`bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden ${
                       isActive ? "ring-1 ring-red-300" : ""
                     }`}
                     style={{
-                        height: isMobile ? "230px" : "380px",
-                      marginRight: '4px'
+                      height: isMobile ? "230px" : "380px",
+                      marginRight: "4px",
                     }}
                   >
                     <div className="h-full flex flex-col p-3 sm:p-4 md:p-5 lg:p-6 relative">
@@ -163,14 +165,19 @@ export default function Slider({ slides = [] }) {
                       </div>
 
                       {/* Image */}
-                        <div
-                            className={`absolute bottom-0 right-0 ${isMobile ? 'w-[50%] h-[60%]' : 'w-[45%] sm:w-[50%] h-[50%] sm:h-[55%]'} flex justify-end items-end`}>
+                      <div
+                        className={`absolute bottom-0 right-0 ${
+                          isMobile
+                            ? "w-[50%] h-[60%]"
+                            : "w-[45%] sm:w-[50%] h-[50%] sm:h-[55%]"
+                        } flex justify-end items-end`}
+                      >
                         <img
                           src={slide.image}
                           alt={slide.heading}
                           className="w-full h-full object-contain"
                           style={{
-                              maxHeight: isMobile ? "120px" : "180px",
+                            maxHeight: isMobile ? "120px" : "180px",
                           }}
                           loading="lazy"
                         />

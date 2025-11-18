@@ -35,7 +35,7 @@ export default function ThreeColumnLayout({ content }) {
                 <div className="flex flex-col gap-3">
                   {/* CTA button */}
                   <Link
-                    href="/new_plans"
+                    href="/plans"
                     className="relative overflow-hidden bg-red-600 text-white text-sm px-5 py-2 rounded-md font-medium w-fit transition-all duration-300 group/link"
                   >
                     <span className="relative z-10">{item.cta}</span>
