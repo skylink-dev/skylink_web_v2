@@ -6,6 +6,7 @@ import CustomPlan from "./CustomPlan";
 import ContactPopup from "./ContactPopup";
 import AlertModal from "@/components/alert/AlertModal";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 export default function PlansTabs() {
   const plans = useSelector((state) => state.newPlans);
@@ -50,6 +51,11 @@ export default function PlansTabs() {
       key: "Fixed Plan",
     },
   ];
+  /**
+   *
+   * Left and righ will adjust the component of lecct and right descrease will move closer the middle
+   *
+   */
   const variants = {
     left: { x: "-30%", scale: 0.9, opacity: 0.8 },
     centerright: { x: "40%", scale: 1, opacity: 1 },
@@ -135,12 +141,24 @@ export default function PlansTabs() {
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key)}
-                  className={`w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
+                  className={`  w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative transition-all duration-300 ${
                     activeTab === tab.key
                       ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
                       : "bg-white text-gray-700 border border-gray-300"
                   } group`}
                 >
+                  <div
+                    className={`absolute -top-2  z-4  ${
+                      i === 0 ? "-left-20" : "-right-20"
+                    }`}
+                  >
+                    <Image
+                      src={"/newassets/plan/mascot.png"}
+                      width={100}
+                      height={100}
+                      alt=" "
+                    />
+                  </div>
                   <span
                     className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
                   ></span>
