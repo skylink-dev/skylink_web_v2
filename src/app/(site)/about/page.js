@@ -88,10 +88,6 @@ export default function page() {
           <HeroTitleBanner></HeroTitleBanner>
         </div>
         <Counter></Counter>
-        <DynamicCarousel
-          title="Let's get you connected"
-          slidesData={dynamicSlidesData}
-        />
       </div>
     </>
   );

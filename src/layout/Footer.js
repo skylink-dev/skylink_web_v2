@@ -70,14 +70,13 @@ export default function Footer() {
 
   const [footerBottomMenu, setFooterBottomMenu] = useState([
       {title: "Site Map", url: "/sitemap"},
-    { title: "Coverage Map", url: "/" },
+    { title: "About us", url: "/about" },
      { title: "Privacy Policy", url: "/policy" },
         { title: "Refund Policy", url: "/refund" },
         { title: "Subscription Contract", url: "/subscription-contract" },
         { title: "Whistleblower Policy", url: "/whistleblower-policy" },
-    { title: "Terms of Use", url: "/" },
-    { title: "Broadband Details", url: "/" },
-    { title: "Legal Policy Center", url: "/" },
+    { title: "Broadband Details", url: "/plans" },
+    { title: "Legal Policy Center", url: "/policy" },
     { title: "Cybersecurity", url: "/" },
     { title: "FCC Public Files", url: "/" },
   ]);
