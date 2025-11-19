@@ -1360,7 +1360,17 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return { title: "Post Not Found" };
-  return { title: post.title };
+
+    // Return metadata that will use the template from root layout.js
+    return {
+        title: post.title,
+        description: post.content.substring(0, 160) + "...",
+        openGraph: {
+            title: post.title,
+            description: post.content.substring(0, 160) + "...",
+            images: [post.image],
+        }
+    };
 }
 
 export default async function BlogPost({ params }) {

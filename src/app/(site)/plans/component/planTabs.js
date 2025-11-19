@@ -51,10 +51,10 @@ export default function PlansTabs() {
     },
   ];
   const variants = {
-    left: { x: "-40%", scale: 0.9, opacity: 0.8 },
+    left: { x: "-30%", scale: 0.9, opacity: 0.8 },
     centerright: { x: "40%", scale: 1, opacity: 1 },
     centerleft: { x: "-40%", scale: 1, opacity: 1 },
-    right: { x: "40%", scale: 0.9, opacity: 0.8 },
+    right: { x: "30%", scale: 0.9, opacity: 0.8 },
   };
 
   useEffect(() => {

@@ -143,8 +143,8 @@ export default function ContactPopup({
       await apiService.submitContactForm(formData);
 
       setAlertInfo({
-        title: "Success!",
-        message: "Thank you! We will contact you soon",
+        title: "Thank you!",
+        message: "We will contact you soon",
         type: "success",
       });
       setIsAlertOpen(true);

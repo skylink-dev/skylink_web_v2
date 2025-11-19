@@ -3,11 +3,11 @@ import React from 'react'
 import {getSpeedTestStructuredData, getOrganizationStructuredData} from '@/lib/structuredData'
 import StructuredData from '@/components/StructuredData'
 
-// Define page metadata
-export const metadata = {
+// Using global metadata from root layout.js
+/* export const metadata = {
     title: 'Internet Speed Test | Skylink Fiber',
     description: 'Check your internet connection speed with Skylink\'s free speed test tool. Measure download and upload speeds accurately in real-time.',
-};
+}; */
 
 export default function SpeedTestPage() {
     // Get structured data
@@ -15,13 +15,13 @@ export default function SpeedTestPage() {
     const organizationData = getOrganizationStructuredData();
 
     return (
-      <>
-          {/* Add structured data */}
-          <StructuredData data={speedTestData}/>
-          <StructuredData data={organizationData}/>
+        <>
+            {/* Add structured data */}
+            <StructuredData data={speedTestData}/>
+            <StructuredData data={organizationData}/>
 
-          {/* Render the SpeedTest component */}
-          <SpeedTest/>
-      </>
-  )
+            {/* Render the SpeedTest component */}
+            <SpeedTest/>
+        </>
+    )
 }

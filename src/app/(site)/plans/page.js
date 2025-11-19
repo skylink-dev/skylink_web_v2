@@ -1,7 +1,7 @@
 import PlanTabs from "./component/planTabs";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://skylink.net.in";
 
-export const metadata = {
+/* export const metadata = {
   title: "Plans & Pricing | Skylink",
   description:
     "Explore Skylink's flexible plans with transparent pricing, GST included. Choose a plan that fits your needs perfectly.",
@@ -34,7 +34,7 @@ export const metadata = {
   alternates: {
     canonical: `${BASE_URL}/plans`,
   },
-};
+}; */
 
 export default function Page() {
   return (

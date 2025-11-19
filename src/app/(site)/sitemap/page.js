@@ -44,8 +44,8 @@ export default function SitemapPage() {
         {
             title: "Internet Plans",
             links: [
-                { name: "Broadband", href: "/new_plans" },
-                { name: "Fiber Plans", href: "/new_plans" },
+                { name: "Broadband", href: "/plans" },
+                { name: "Fiber Plans", href: "/plans" },
             ],
         },
     ];

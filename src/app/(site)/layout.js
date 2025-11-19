@@ -21,8 +21,77 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Skylink",
-  description: "Speed You Need. Connection You Trust. Entertainment You Love",
+    // Basic metadata
+    metadataBase: new URL('https://skylinkfiber.com'),
+    title: {
+        default: "Skylink - High-Speed Internet & TV Services",
+        template: "%s | Skylink"
+    },
+    description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink. Discover plans for your home and business.",
+    applicationName: "Skylink Fiber",
+    authors: [{name: "Skylink"}],
+    generator: "Next.js",
+    keywords: [
+        'high speed internet',
+        'fiber internet',
+        'fiber broadband',
+        'internet provider',
+        'tv subscription',
+        'entertainment packages',
+        'OTT services',
+        'Skylink Fiber',
+        'broadband',
+        'internet plans'
+    ],
+    referrer: 'origin-when-cross-origin',
+    creator: "Skylink",
+    publisher: "Skylink",
+    formatDetection: {
+        email: true,
+        address: true,
+        telephone: true,
+    },
+
+    // Open Graph metadata
+    openGraph: {
+        type: "website",
+        locale: "en_IN",
+        url: "https://skylinkfiber.com",
+        title: "Skylink - High-Speed Internet & TV Services",
+        description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
+        siteName: "Skylink",
+        images: [
+            {
+                url: "/opengraph-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Skylink - High-Speed Internet & TV Services",
+            },
+        ],
+    },
+
+    // Twitter metadata
+    twitter: {
+        card: "summary_large_image",
+        title: "Skylink - High-Speed Internet & TV Services",
+        description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
+        images: ["/opengraph-image.jpg"],
+        creator: "@skylinkfiber",
+        site: "@skylinkfiber",
+    },
+
+    // Additional metadata
+    category: "technology",
+    robots: {
+        index: true,
+        follow: true,
+        nocache: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            noimageindex: false,
+        },
+    },
 };
 
 export default function RootLayout({ children }) {
