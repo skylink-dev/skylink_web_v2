@@ -32,8 +32,8 @@ Basic information about Skylink Fiber, included on all pages via the `GlobalStru
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Skylink Fiber",
-  "url": "https://skylinkfiber.com",
-  "logo": "https://skylinkfiber.com/assets/skylink logo.png",
+  "url": "http://stage.skylink.net.in:3000/",
+  "logo": "http://stage.skylink.net.in:3000/assets/skylink logo.png",
   "sameAs": [...]
 }
 ```

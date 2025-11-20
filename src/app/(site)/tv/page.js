@@ -1,4 +1,4 @@
-"use client";
+
 import dynamic from "next/dynamic";
 import React from "react";
 
@@ -46,6 +46,48 @@ const SimpleColumnSection = dynamic(() =>
   import("@/components/SimpleColumnSection")
 );
 const SingleFaq = dynamic(() => import("@/components/SingleFaq"));
+
+// TV page metadata
+export const metadata = {
+    title: "TV Packages & Channels | Skylink",
+    description: "Discover our premium TV packages with hundreds of channels, 4K content, and flexible plans for the whole family.",
+    keywords: [
+        'high speed internet',
+        'fiber internet',
+        'fiber broadband',
+        'internet provider',
+        'tv subscription',
+        'entertainment packages',
+        'OTT services',
+        'Skylink Fiber',
+        'broadband',
+        'internet plans',
+        'tv packages',
+        'tv channels',
+        '4k tv',
+        'hd channels',
+        'cable tv alternative'
+    ],
+    openGraph: {
+        title: "TV Packages & Channels | Skylink",
+        description: "Discover our premium TV packages with hundreds of channels, 4K content, and flexible plans for the whole family.",
+        url: "http://stage.skylink.net.in:3000/tv",
+        type: "website",
+        images: [
+            {
+                url: "/opengraph-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "TV Packages & Channels | Skylink",
+            },
+        ],
+    },
+    twitter: {
+        title: "TV Packages & Channels | Skylink",
+        description: "Discover our premium TV packages with hundreds of channels, 4K content, and flexible plans for the whole family.",
+        images: ["/opengraph-image.jpg"],
+    },
+};
 
 export default function Page() {
   return (

@@ -7,7 +7,7 @@ export default function robots() {
             allow: '/',
             disallow: ['/api/', '/admin/', '/*?*'],
         },
-        sitemap: 'https://skylinkfiber.com/sitemap.xml',
-        host: 'https://skylinkfiber.com',
+        sitemap: 'http://stage.skylink.net.in:3000/sitemap.xml',
+        host: 'http://stage.skylink.net.in:3000',
     };
 }

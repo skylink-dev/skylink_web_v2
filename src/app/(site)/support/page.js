@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import dynamic from "next/dynamic";
 import ContactForm from "@/components/ContactForm";
@@ -14,13 +13,40 @@ const CustomSearch = dynamic(() => import("@/components/CustomSearch"));
 const ContactDetails = dynamic(() => import("@/components/ContactDetails"));
 const SupportVideos = dynamic(() => import("@/components/SupportVideo"));
 
-// Define page metadata - removing export as we've moved it to layout.js
-// export const metadata = {
-//     title: "Support | Skylink Fiber",
-//     description: "Get help with your Skylink services. Find answers to common questions, troubleshooting guides, and contact our support team for assistance.",
-// };
 
-// Define FAQ items directly
+// Support page metadata
+export const metadata = {
+    title: "Customer Support | Skylink",
+    description: "Get help with your Skylink internet, TV, or OTT services. Contact our 24/7 customer support team for technical assistance and troubleshooting.",
+    keywords: [
+        'skylink support',
+        'customer service',
+        'technical help',
+        'internet troubleshooting',
+        'contact skylink',
+        'service assistance',
+        'help center'
+    ],
+    openGraph: {
+        title: "Customer Support | Skylink",
+        description: "Get help with your Skylink internet, TV, or OTT services.",
+        url: "http://stage.skylink.net.in:3000/support",
+        type: "website",
+        images: [
+            {
+                url: "/opengraph-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Customer Support | Skylink",
+            },
+        ],
+    },
+    twitter: {
+        title: "Customer Support | Skylink",
+        description: "Get help with your Skylink internet, TV, or OTT services.",
+        images: ["/opengraph-image.jpg"],
+    },
+};
 const faqItems = [
     {
         question: "What speeds does Skylink Fiber offer?",

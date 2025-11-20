@@ -2,13 +2,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
-import BeforeFooter from "@/components/BeforeFooter";
 import PageLoaderWrapper from "@/components/PageLoaderWrapper";
 import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
 import SocialSidebar from "@/components/SocialSidebar";
 import Script from "next/script";
 import GlobalStructuredData from "@/components/GlobalStructuredData";
+// Import default metadata from our centralized metadata module
+import {defaultMetadata} from '@/lib/metadata';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,82 +21,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-    // Basic metadata
-    metadataBase: new URL('https://skylinkfiber.com'),
-    title: {
-        default: "Skylink - High-Speed Internet & TV Services",
-        template: "%s | Skylink"
-    },
-    description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink. Discover plans for your home and business.",
-    applicationName: "Skylink Fiber",
-    authors: [{name: "Skylink"}],
-    generator: "Next.js",
-    keywords: [
-        'high speed internet',
-        'fiber internet',
-        'fiber broadband',
-        'internet provider',
-        'tv subscription',
-        'entertainment packages',
-        'OTT services',
-        'Skylink Fiber',
-        'broadband',
-        'internet plans'
-    ],
-    referrer: 'origin-when-cross-origin',
-    creator: "Skylink",
-    publisher: "Skylink",
-    formatDetection: {
-        email: true,
-        address: true,
-        telephone: true,
-    },
-
-    // Open Graph metadata
-    openGraph: {
-        type: "website",
-        locale: "en_IN",
-        url: "https://skylinkfiber.com",
-        title: "Skylink - High-Speed Internet & TV Services",
-        description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
-        siteName: "Skylink",
-        images: [
-            {
-                url: "/opengraph-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Skylink - High-Speed Internet & TV Services",
-            },
-        ],
-    },
-
-    // Twitter metadata
-    twitter: {
-        card: "summary_large_image",
-        title: "Skylink - High-Speed Internet & TV Services",
-        description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
-        images: ["/opengraph-image.jpg"],
-        creator: "@skylinkfiber",
-        site: "@skylinkfiber",
-    },
-
-    // Additional metadata
-    category: "technology",
-    robots: {
-        index: true,
-        follow: true,
-        nocache: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            noimageindex: false,
-        },
-    },
-};
+/**
+ * Export the default metadata for the entire site
+ * This metadata will be used as the base for all pages
+ * Individual pages can override specific values through their own metadata.js files
+ */
+export const metadata = defaultMetadata;
 
 export default function RootLayout({ children }) {
-  // ✅ Get env values or fallback to “xxxx”
+
   const googleMapsKey =
     process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "xxxxtest";
   const googleTagKey =
@@ -104,7 +38,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* ✅ Font preconnects */}
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -168,7 +102,6 @@ export default function RootLayout({ children }) {
             <Header />
             <SocialSidebar />
             <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
-            {/*<BeforeFooter />*/}
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>

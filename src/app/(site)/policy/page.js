@@ -16,7 +16,7 @@ export default function Page() {
             title: 'Purpose',
             content: (<>
                 <p className="mb-4">Skylink IPTV Services Pvt. Ltd. is committed to protecting any personal information
-                    that we may receive while you access our online and mobile website www.Skylinkfiber.com. In
+                    that we may receive while you access our online and mobile website www.stage.skylink.net.in. In
                     particular, we believe it is important for you to know how we treat information about you that we
                     may receive from this website. This Privacy Policy is devised to help you feel more confident about
                     the privacy and security of your personal details.</p>

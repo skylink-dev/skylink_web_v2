@@ -301,7 +301,7 @@
                                     <td>
                                         <a href="{sitemap:loc}">
                                             <xsl:value-of
-                                                    select="substring-after(sitemap:loc, 'https://skylinkfiber.com')"/>
+                                                    select="substring-after(sitemap:loc, 'http://stage.skylink.net.in:3000/')"/>
                                         </a>
                                         <xsl:if test="contains(sitemap:loc, '/internet')">
                                             <span class="category">Internet</span>

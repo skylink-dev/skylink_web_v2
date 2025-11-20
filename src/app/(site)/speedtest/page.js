@@ -1,26 +1,42 @@
-import SpeedTest from '@/components/SpeedTest'
-import React from 'react'
-import {getSpeedTestStructuredData, getOrganizationStructuredData} from '@/lib/structuredData'
-import StructuredData from '@/components/StructuredData'
+import SpeedTest from "@/app/(site)/speedtest/SpeedTest";
 
-// Using global metadata from root layout.js
-/* export const metadata = {
-    title: 'Internet Speed Test | Skylink Fiber',
-    description: 'Check your internet connection speed with Skylink\'s free speed test tool. Measure download and upload speeds accurately in real-time.',
-}; */
+// Speed Test page metadata
+export const metadata = {
+    title: "Internet Speed Test | Skylink",
+    description: "Test your current internet connection speed with Skylink's free online speed test. Measure your download and upload speeds accurately.",
+    keywords: [
+        'internet speed test',
+        'bandwidth test',
+        'network speed',
+        'connection test',
+        'download speed',
+        'upload speed',
+        'latency test'
+    ],
+    openGraph: {
+        title: "Internet Speed Test | Skylink",
+        description: "Test your current internet connection speed with our free online tool.",
+        url: "http://stage.skylink.net.in:3000/speedtest",
+        type: "website",
+        images: [
+            {
+                url: "/opengraph-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Internet Speed Test | Skylink",
+            },
+        ],
+    },
+    twitter: {
+        title: "Internet Speed Test | Skylink",
+        description: "Test your current internet connection speed with our free online tool.",
+        images: ["/opengraph-image.jpg"],
+    },
+};
 
-export default function SpeedTestPage() {
-    // Get structured data
-    const speedTestData = getSpeedTestStructuredData();
-    const organizationData = getOrganizationStructuredData();
-
-    return (
+export default function Page(){
+    return(
         <>
-            {/* Add structured data */}
-            <StructuredData data={speedTestData}/>
-            <StructuredData data={organizationData}/>
-
-            {/* Render the SpeedTest component */}
             <SpeedTest/>
         </>
     )

@@ -1,58 +1,51 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import ContactForm from "@/components/contacts/ContactForm";
-import LocationMap from "@/components/contacts/LocationMap";
-import HeroBanner from "@/components/HeroBanner";
-import HeroBannerNew from "@/components/coimbatore/herobannernew";
-import WhyProduct from "@/components/coimbatore/WhyProduct";
-import SkylinkFAQ from "@/components/coimbatore/SkylinkFAQ";
-import { useSelector } from "react-redux";
-import FixedPlan from "@/app/(site)/plans/component/FixedPlan";
-import SmartSection from "@/components/coimbatore/SmartSection";
-import TvOttPartners from "@/components/coimbatore/TvOttPartners";
-import TrustedPartners from "@/components/coimbatore/TrustPartners";
+import Tiruppur from "@/app/(site)/tiruppur/Tiruppur";
 
-const ContactSection = dynamic(() => import("@/components/ContactSection"));
-const ContactFormNew = dynamic(() => import("@/components/ContactFormNew"));
-const CustomSearch = dynamic(() => import("@/components/CustomSearch"));
-const ContactDetails = dynamic(() => import("@/components/ContactDetails"));
+// Tiruppur page metadata
+export const metadata = {
+    title: "Internet & TV Services in Tiruppur | Skylink",
+    description: "Skylink offers reliable high-speed fiber internet and TV services throughout Tiruppur. Check availability now.",
+    keywords: [
+        'high speed internet',
+        'fiber internet',
+        'fiber broadband',
+        'internet provider',
+        'tv subscription',
+        'entertainment packages',
+        'OTT services',
+        'Skylink Fiber',
+        'broadband',
+        'internet plans',
+        'tiruppur internet provider',
+        'fiber internet tiruppur',
+        'tv services tiruppur',
+        'best internet tiruppur',
+        'skylink tiruppur'
+    ],
+    openGraph: {
+        title: "Internet & TV Services in Tiruppur | Skylink",
+        description: "Skylink offers reliable high-speed fiber internet and TV services throughout Tiruppur. Check availability now.",
+        url: "http://stage.skylink.net.in:3000/tiruppur",
+        type: "website",
+        images: [
+            {
+                url: "/opengraph-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Internet & TV Services in Tiruppur | Skylink",
+            },
+        ],
+    },
+    twitter: {
+        title: "Internet & TV Services in Tiruppur | Skylink",
+        description: "Skylink offers reliable high-speed fiber internet and TV services throughout Tiruppur. Check availability now.",
+        images: ["/opengraph-image.jpg"],
+    },
+};
 
 export default function Page() {
-  const plans = useSelector((state) => state.newPlans);
-  const [isMobile, setIsMobile] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return (
-    <>
-      <HeroBannerNew city="Tiruppur" />
-      <WhyProduct city="Tiruppur" />
-      <TvOttPartners />
-      <SmartSection city="Tiruppur" />
-      <div className={`container  mx-auto text-center`}>
-        <div>
-          <FixedPlan
-            isMobile={isMobile}
-            plans={plans.basePlans}
-            activeTab={"Fixed Plan"}
-            setSelectedPlan={setSelectedPlan}
-            isContactOpen={isContactOpen}
-            setIsContactOpen={setIsContactOpen}
-          />
-        </div>
-      </div>
-      <TrustedPartners />
-      <SkylinkFAQ city="Tiruppur" />
+    return (
+        <>
+            <Tiruppur/>
     </>
-  );
+    )
 }
