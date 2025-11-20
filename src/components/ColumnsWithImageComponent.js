@@ -1,10 +1,10 @@
-'use client'
-import React, { useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+"use client";
+import React, { useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 
 const slidesData = [
   {
@@ -15,7 +15,7 @@ const slidesData = [
     legal:
       "*1 month with 300M; 2 months with 500M; 3 months with 1 GIG+. Fees extra. **Card redemption & proof of eligibility required. Ltd availability/areas.",
     imgSrc: "/assets/skyplay-business-fiber-connection-1.jpg",
-    link: "/new_plans?customer_type=smallbusiness",
+    link: "/plans?customer_type=smallbusiness",
   },
   {
     title: "₹699 Triple Play Bundle",
@@ -25,7 +25,7 @@ const slidesData = [
     legal:
       "Offer valid in select cities only. Internet speed and OTT availability may vary by location and network conditions. Installation charges may apply. Fair usage policy applies. Terms and conditions apply.",
     imgSrc: "/assets/skyplay-business-fiber-connection-2.jpg",
-    link: "/new_plans?customer_type=smallbusiness",
+    link: "/plans?customer_type=smallbusiness",
   },
 ];
 
@@ -40,13 +40,15 @@ export default function ColumnsWithImageComponent() {
     slidesToScroll: 1,
     arrows: false,
 
-    appendDots: dots => (
-      <div className="mt-6 block md:hidden"> {/* visible only on mobile */}
+    appendDots: (dots) => (
+      <div className="mt-6 block md:hidden">
+        {" "}
+        {/* visible only on mobile */}
         <ul className="flex justify-center gap-2">{dots}</ul>
       </div>
     ),
 
-    customPaging: i => (
+    customPaging: (i) => (
       <div className="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300"></div>
     ),
 
@@ -96,7 +98,6 @@ export default function ColumnsWithImageComponent() {
             {carouselItems.map((item, index) => (
               <div key={index} className="px-3">
                 <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-[1.02] h-[620px] w-full flex flex-col">
-                  
                   {/* Image Section */}
                   <div className="relative w-full h-56 flex-shrink-0 overflow-hidden">
                     <Image
@@ -127,13 +128,13 @@ export default function ColumnsWithImageComponent() {
 
                     {/* CTA Button */}
                     <div className="flex-shrink-0 pt-4 mt-auto">
-                        <Link
-                            href="/internet#availability"
-                            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg block"
-                            aria-label={`See if ${item.title} is available in your area.`}
-                        >
-                            Check availability
-                        </Link>
+                      <Link
+                        href="/internet#availability"
+                        className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg block"
+                        aria-label={`See if ${item.title} is available in your area.`}
+                      >
+                        Check availability
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { SiX } from "react-icons/si";
 
 export default function ContactPopup({
   selectedPlan,
@@ -19,6 +20,7 @@ export default function ContactPopup({
   setIsAlertOpen,
   alertInfo,
   setAlertInfo,
+  showInfo = false,
 }) {
   const activeCycle = selectedPlan?.activeCycle;
   const activeMbps = selectedPlan?.internetSpeed;
@@ -30,10 +32,10 @@ export default function ContactPopup({
   );
 
   useEffect(() => {
-    console.log(activeCycle);
-    console.log(activeMbps);
-    console.log(discount);
-    console.log(activePrice);
+    // console.log(activeCycle);
+    // console.log(activeMbps);
+    // console.log(discount);
+    // console.log(activePrice);
   }, [selectedPlan]);
   const [formData, setFormData] = useState({
     name: "",
@@ -139,25 +141,40 @@ export default function ContactPopup({
     setIsSubmitting(true);
     try {
       await apiService.submitContactForm(formData);
-      console.log("Form submitted:", formData);
-      setIsAlertOpen(true);
+
       setAlertInfo({
-        title: "Success!",
-        message: "Thank you! We will contact you soon",
+        title: "Thank you!",
+        message: "We will contact you soon",
         type: "success",
       });
       setIsAlertOpen(true);
     } catch (err) {
-      console.log(err);
+      let message = "Something went wrong. Please try again.";
+
+      // Server is DOWN or no network
+      // When server is DOWN
+      if (err.code === "ERR_NETWORK" || !err.response) {
+        message = "Server is down. Please try again later.";
+      }
+      // Optional: Handle specific status codes
+      else if (err.response.status === 500) {
+        message = "Server error. Please try again after some time.";
+      } else if (err.response.status === 400) {
+        message = "Invalid input. Please check your details.";
+      }
+
       setAlertInfo({
         title: "Error!",
-        message: "Something went wrong. Please try again.",
+        message,
         type: "error",
       });
+
+      setIsAlertOpen(true);
+    } finally {
+      setErrors({ name: "", phone: "", email: "" });
+      setIsSubmitting(false);
+      setIsOpen(false);
     }
-    setErrors({ name: "", phone: "", email: "" });
-    setIsSubmitting(false);
-    setIsOpen(false);
   };
   const socialLinks = [
     {
@@ -181,9 +198,9 @@ export default function ContactPopup({
       label: "LinkedIn",
     },
     {
-      icon: FaTwitter,
-      url: "https://twitter.com/skylinkfiber",
-      label: "Twitter",
+      icon: SiX,
+      url: "https://x.com/skylinkfiber",
+      label: "x",
     },
   ];
 
@@ -322,124 +339,133 @@ export default function ContactPopup({
           </div>
 
           {/* Right: Plan Summary */}
-          <div className="flex justify-center items-start px-6 py-8 bg-white sm:w-1/2">
-            <div className="w-full max-w-md border border-gray-200 rounded-2xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-blue-700 mb-4 pb-3 border-b border-gray-200">
-                Plan Summary
-              </h3>
-              <div className="grid grid-cols-1 gap-3 text-base sm:text-lg">
-                {/* Plan Name */}
-                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span className="text-gray-600">Plan Name</span>
-                  <span className="font-semibold text-gray-900">
-                    {activeMbps}
-                  </span>
-                </div>
 
-                {/* Billing Cycle */}
-                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span className="text-gray-600">Billing Cycle</span>
-                  <span className="font-semibold text-gray-900">
-                    {activeCycle == 12
-                      ? "Annual"
-                      : activeCycle == 6
-                      ? "Half Yearly"
-                      : activeCycle == 3
-                      ? "Quaterly"
-                      : "Monthly"}{" "}
-                    <span className="font-normal text-gray-700">
-                      (
-                      {activeCycle === 12
-                        ? "12 months"
-                        : activeCycle === 6
-                        ? "6 months"
-                        : activeCycle === 3
-                        ? "3 months"
-                        : "1 month"}
-                      )
-                    </span>
-                  </span>
-                </div>
+          {showInfo ? (
+            <>
+              <div className="flex justify-center items-start px-6 py-8 bg-white sm:w-1/2">
+                <div className="w-full max-w-md border border-gray-200 rounded-2xl shadow-lg p-6">
+                  <h3 className="text-xl font-bold text-blue-700 mb-4 pb-3 border-b border-gray-200">
+                    Plan Summary
+                  </h3>
+                  <div className="grid grid-cols-1 gap-3 text-base sm:text-lg">
+                    {/* Plan Name */}
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                      <span className="text-gray-600">Plan Name</span>
+                      <span className="font-semibold text-gray-900">
+                        {activeMbps}
+                      </span>
+                    </div>
 
-                {/* Base Price */}
-                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span className="text-gray-600">
-                    Base Price({basePrice} x {activeCycle})
-                  </span>
-                  <span className="font-semibold text-gray-900">
-                    ₹{activePrice.toFixed(2)}
-                  </span>
-                </div>
+                    {/* Billing Cycle */}
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                      <span className="text-gray-600">Billing Cycle</span>
+                      <span className="font-semibold text-gray-900">
+                        {activeCycle == 12
+                          ? "Annual"
+                          : activeCycle == 6
+                          ? "Half Yearly"
+                          : activeCycle == 3
+                          ? "Quaterly"
+                          : "Monthly"}{" "}
+                        <span className="font-normal text-gray-700">
+                          (
+                          {activeCycle === 12
+                            ? "12 months"
+                            : activeCycle === 6
+                            ? "6 months"
+                            : activeCycle === 3
+                            ? "3 months"
+                            : "1 month"}
+                          )
+                        </span>
+                      </span>
+                    </div>
 
-                {/* Discount */}
-                {discount !== 0 && (
-                  <div className="flex justify-between items-center border-b border-gray-100 pb-2 text-green-600">
-                    <span>Discount ({discount}%)</span>
-                    <span>
-                      - ₹{((activePrice * discount) / 100).toFixed(2)}
-                    </span>
+                    {/* Base Price */}
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                      <span className="text-gray-600">
+                        Base Price({basePrice} x {activeCycle})
+                      </span>
+                      <span className="font-semibold text-gray-900">
+                        ₹{activePrice.toFixed(2)}
+                      </span>
+                    </div>
+
+                    {/* Discount */}
+                    {discount !== 0 && (
+                      <div className="flex justify-between items-center border-b border-gray-100 pb-2 text-green-600">
+                        <span>Discount ({discount}%)</span>
+                        <span>
+                          - ₹{((activePrice * discount) / 100).toFixed(2)}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* GST */}
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                      <span className="text-gray-600">GST (18%)</span>
+                      <span className="font-semibold text-gray-900">
+                        ₹
+                        {(
+                          (activePrice -
+                            (activePrice * (discount !== 0 ? discount : 1)) /
+                              100) *
+                          0.18
+                        ).toFixed(2)}
+                      </span>
+                    </div>
+
+                    {/* Installation Charges */}
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                      <span
+                        className={`${
+                          installationCharges === 0
+                            ? "text-green-600"
+                            : "text-gray-600"
+                        }`}
+                      >
+                        Installation Charges
+                      </span>
+                      <span
+                        className={`${
+                          installationCharges === 0
+                            ? "text-green-600"
+                            : "font-semibold text-gray-900"
+                        }`}
+                      >
+                        {installationCharges === 0
+                          ? "Free"
+                          : `₹${installationCharges.toFixed(2)}`}
+                      </span>
+                    </div>
+
+                    {/* Total Payable */}
+                    <div className="flex justify-between items-center border-t border-gray-300 pt-3 text-lg font-bold">
+                      <span className="text-gray-800">Total Payable</span>
+                      <span className="text-red-600">
+                        ₹
+                        {(
+                          activePrice -
+                          (activePrice * discount) / 100 +
+                          (activePrice -
+                            (activePrice * (discount !== 0 ? discount : 1)) /
+                              100) *
+                            0.18 +
+                          installationCharges
+                        ).toFixed(2)}
+                      </span>
+                    </div>
                   </div>
-                )}
 
-                {/* GST */}
-                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span className="text-gray-600">GST (18%)</span>
-                  <span className="font-semibold text-gray-900">
-                    ₹
-                    {(
-                      (activePrice -
-                        (activePrice * (discount !== 0 ? discount : 1)) / 100) *
-                      0.18
-                    ).toFixed(2)}
-                  </span>
-                </div>
-
-                {/* Installation Charges */}
-                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span
-                    className={`${
-                      installationCharges === 0
-                        ? "text-green-600"
-                        : "text-gray-600"
-                    }`}
-                  >
-                    Installation Charges
-                  </span>
-                  <span
-                    className={`${
-                      installationCharges === 0
-                        ? "text-green-600"
-                        : "font-semibold text-gray-900"
-                    }`}
-                  >
-                    {installationCharges === 0
-                      ? "Free"
-                      : `₹${installationCharges.toFixed(2)}`}
-                  </span>
-                </div>
-
-                {/* Total Payable */}
-                <div className="flex justify-between items-center border-t border-gray-300 pt-3 text-lg font-bold">
-                  <span className="text-gray-800">Total Payable</span>
-                  <span className="text-red-600">
-                    ₹
-                    {(
-                      activePrice -
-                      (activePrice * discount) / 100 +
-                      (activePrice -
-                        (activePrice * (discount !== 0 ? discount : 1)) / 100) *
-                        0.18 +
-                      installationCharges
-                    ).toFixed(2)}
-                  </span>
+                  <p className="text-xs text-gray-500 mt-3 text-center sm:text-left">
+                    * All prices are inclusive of applicable taxes.
+                  </p>
                 </div>
               </div>
-
-              <p className="text-xs text-gray-500 mt-3 text-center sm:text-left">
-                * All prices are inclusive of applicable taxes.
-              </p>
-            </div>
-          </div>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

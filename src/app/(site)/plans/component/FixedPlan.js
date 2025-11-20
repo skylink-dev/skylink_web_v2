@@ -2,9 +2,14 @@
 import React, { useState, useMemo, useEffect, act } from "react";
 import { ottImageList } from "@/redux/data/OTTNamesImage";
 import { channelImageList } from "@/redux/data/ChannelsNamesImage";
-import ContactPopup from "../../plans/component/ContactPopup";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import { AiOutlineArrowRight } from "react-icons/ai";
+// Dynamic import of Hyperspeed component to avoid SSR issues
+const Hyperspeed = dynamic(() => import("@/components/Hyperspeed"), {
+  ssr: false,
+});
 
 export default function FixedPlan({
   isMobile,
@@ -13,12 +18,48 @@ export default function FixedPlan({
   setSelectedPlan,
   setIsContactOpen,
   isContactOpen,
+  setShowInfo,
 }) {
   // const [selectedPlan, setSelectedPlan] = useState(null);
   const [selectedValidity, setSelectedValidity] = useState(12);
   const [selectedSpeed, setSelectedSpeed] = useState("50 Mbps");
   const [activePrice, setActivePrice] = useState();
   const [activeCycle, setActiveCycle] = useState();
+  const hyperspeedPreset = {
+    distortion: "xyDistortion", // A more horizontal flowing effect for speed test
+    length: 400,
+    roadWidth: 14, // Wider road for more dramatic effect
+    islandWidth: 1, // Thinner island to emphasize speed
+    lanesPerRoad: 5, // More lanes for richer visualization
+    fov: 90,
+    fovSpeedUp: 150,
+    speedUp: 3, // Faster default speed to showcase "speed" test
+    carLightsFade: 0.4,
+    totalSideLightSticks: 30,
+    lightPairsPerRoadWay: 60, // More lights for a busier effect
+    shoulderLinesWidthPercentage: 0.05,
+    brokenLinesWidthPercentage: 0.1,
+    brokenLinesLengthPercentage: 0.5,
+    lightStickWidth: [0.12, 0.5],
+    lightStickHeight: [1.3, 1.7],
+    movingAwaySpeed: [80, 100], // Faster movement
+    movingCloserSpeed: [-180, -200], // Faster counter-movement
+    carLightsLength: [400 * 0.05, 400 * 0.2],
+    carLightsRadius: [0.05, 0.14],
+    carWidthPercentage: [0.3, 0.5],
+    carShiftX: [-0.5, 0.5],
+    carFloorSeparation: [0, 1],
+    colors: {
+      roadColor: 0x080808,
+      islandColor: 0x0a0a0a,
+      background: 0x000000,
+      shoulderLines: 0xff0033, // Red color matching the button
+      brokenLines: 0xffffff, // White for visibility
+      leftCars: [0xff0033, 0xd90429, 0xe5383b], // Various red shades
+      rightCars: [0x0077b6, 0x00b4d8, 0x90e0ef], // Blue tones for contrast
+      sticks: 0xff0033, // Match brand color
+    },
+  };
 
   const validityOptions = useMemo(
     () => [...new Set(plans.flatMap((p) => p.validity))],
@@ -54,27 +95,42 @@ export default function FixedPlan({
   return (
     <>
       <div className=" relative w-full min-w-80 mt-4  py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
-        {activeTab !== "Fixed Plan" && (
+        {/* {activeTab !== "Fixed Plan" && (
           <motion.div
             initial={{ x: -120, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute z-[999] w-1/4 h-full rounded-xl left-0 top-0 bottom-0
-               flex items-center justify-center 
+            className="absolute z-[999] w-3/8 h-full left-0 top-0 flex flex-col items-center justify-center gap-4
                cursor-pointer select-none
-               bg-gradient-to-b from-red-700 via-red to-red-600 
+               bg-gradient-to-b from-red-600 via-red-300 to-blue-600 
                text-white text-xl font-semibold 
-               shadow-xl border-r border-white/10"
+               shadow-xl border-l border-white/10 px-4 "
           >
+            <Hyperspeed effectOptions={hyperspeedPreset} />
             <motion.span
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className=" whitespace-nowrap lg:text-2xl tracking-wide"
+              className="whitespace-nowrap lg:text-2xl text-center tracking-wide"
             >
-              Choose Our <br></br> Fixed Plans
+              Choose Our <br /> Fixed Plans
             </motion.span>
+
+            <motion.div
+              className="rounded-full border-2 border-white flex items-center justify-center p-2"
+              animate={{
+                scale: [1, 1.2, 1],
+                borderWidth: ["2px", "4px", "2px"],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.2,
+                ease: "easeInOut",
+              }}
+            >
+              <AiOutlineArrowRight className="text-white text-3xl" />
+            </motion.div>
           </motion.div>
-        )}
+        )} */}
         <div className="w-full  m-0">
           <h2
             className={`w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 ${
@@ -100,7 +156,7 @@ export default function FixedPlan({
           >
             Choose Your BandWidth
           </h3>
-          <div className="grid grid-cols-4 md:grid-cols-7 gap-2 md:gap-10 md:p-2">
+          <div className="grid grid-cols-4 md:grid-cols-7 gap-2 md:gap-8 md:p-2">
             {speedOptions.map((speed) => (
               <button
                 key={speed}
@@ -193,7 +249,7 @@ export default function FixedPlan({
         </div>
 
         {/* 💡 Filtered Plans */}
-        <div className="mt-6 w-full">
+        <div className="my-6 mx-2 w-full">
           {filteredPlans.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4  ">
               {filteredPlans.map((plan, index) => {
@@ -202,7 +258,7 @@ export default function FixedPlan({
                 let discountIndex = 0;
                 plan.validity.forEach((element, index) => {
                   if (element === selectedValidity) {
-                    console.log(index);
+                    // console.log(index);
                     discountIndex = index;
                   }
                 });
@@ -210,7 +266,7 @@ export default function FixedPlan({
                 return (
                   <div
                     key={plan.sno || index}
-                    className={`relative  flex flex-col overflow-hidden bg-white bg-gradient-to-r from-pink-100/20 to-blue-100/20  border rounded-xl p-5  hover:shadow-2xl transition-all duration-200 inset-shadow-sm  ${
+                    className={`relative  flex flex-col overflow-hidden bg-white bg-gradient-to-r from-pink-100/20 to-blue-100/20  border rounded-xl p-2  hover:shadow-2xl transition-all duration-200 inset-shadow-sm  ${
                       isSelectedValidity && isSelectedSpeed
                         ? "border-red-500 ring-2 ring-red-200"
                         : "border-gray-200"
@@ -247,7 +303,7 @@ ${
                     )} */}
 
                     {/* 🏷️ Title */}
-                    <h2 className=" flex flex-col  text-lg 2xl:text-2xl xl:text:xl font-semibold text-gray-900 mb-1 ">
+                    <h2 className=" flex flex-col  text-lg 2xl:text-2xl xl:text:xl font-semibold text-gray-900 m-4 ">
                       {`Skylink Red  ${plan.name || ` ₹${plan.price}`}`}{" "}
                       <span className="text-gray-600 font-normal text-xs">
                         {plan.internetSpeed ? `${plan.internetSpeed}` : ""}
@@ -275,7 +331,7 @@ ${
                   )} */}
 
                     {/* 📡 Plan Details */}
-                    <div className="grid w-full grid-cols-1 text-sm text-gray-700 gap-y-2 mb-4">
+                    <div className="grid w-full m-4 grid-cols-1 text-sm text-gray-700 gap-y-4 my-4">
                       {/* <div>
                       <span className="font-semibold">
                         {plan.internetSpeed}
@@ -372,9 +428,9 @@ ${
                     </div>
 
                     {/* 💵 Price Section */}
-                    <div className="flex w-full items-center justify-center gap-2 mb-4">
+                    <div className="flex w-full h-full items-end justify-center gap-2 mb-4">
                       <span
-                        className={`text-xl text-center font-bold activeTab ==  ${
+                        className={`text-xl text-end font-bold activeTab ==  ${
                           activeTab == "Fixed Plan"
                             ? "text-gray-900"
                             : "text-gray-600"
@@ -422,6 +478,7 @@ ${
                             discountIndex: discountIndex,
                             activeCycle: selectedValidity,
                           });
+                          setShowInfo(true);
                           setIsContactOpen(!isContactOpen);
                         }}
                         className={`flex-1 py-2   ${

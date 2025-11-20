@@ -1,11 +1,15 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-export default function PricingPlans({ heading, subtitle, content, providers }) {
+export default function PricingPlans({
+  heading,
+  subtitle,
+  content,
+  providers,
+}) {
   return (
     <div className="bg-white text-gray-900 py-20">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-gray-900 mb-3">{heading}</h2>
@@ -23,9 +27,9 @@ export default function PricingPlans({ heading, subtitle, content, providers }) 
                   <th
                     key={idx}
                     className={`py-5 px-6 text-center font-semibold text-white ${
-                      provider.name.toLowerCase().includes('skyplay')
-                        ? 'bg-red-600'
-                        : 'bg-red-600'
+                      provider.name.toLowerCase().includes("skyplay")
+                        ? "bg-red-600"
+                        : "bg-red-600"
                     }`}
                   >
                     {provider.name}
@@ -40,11 +44,13 @@ export default function PricingPlans({ heading, subtitle, content, providers }) 
                   key={index}
                   className="border-t border-gray-200 hover:bg-gray-50 transition-all duration-200"
                 >
-                  <td className="py-4 px-6 font-medium text-gray-800">{item.title}</td>
+                  <td className="py-4 px-6 font-medium text-gray-800">
+                    {item.title}
+                  </td>
 
                   {[item.option1, item.option2, item.option3].map((opt, i) => (
                     <td key={i} className="py-4 px-6 text-center">
-                      {opt === 'yes' ? (
+                      {opt === "yes" ? (
                         <svg
                           aria-label="Yes"
                           className="text-red-600 mx-auto"
@@ -82,7 +88,7 @@ export default function PricingPlans({ heading, subtitle, content, providers }) 
         {/* Button */}
         <div className="text-center mt-10">
           <Link
-            href="/new_plans"
+            href="/plans"
             className="inline-block bg-red-600 hover:bg-red-500 text-white font-semibold px-8 py-3 rounded-full transition-all shadow-md hover:shadow-lg"
           >
             Shop Skylink Fiber
@@ -91,13 +97,14 @@ export default function PricingPlans({ heading, subtitle, content, providers }) 
 
         {/* Legal Note */}
         <div className="text-center mt-8 text-gray-500 text-sm max-w-4xl mx-auto leading-relaxed">
-          Competitor comparison based on publicly available data as of 01/4/2025. Comparison reflects
-          typical cable and hybrid fiber-coaxial (HFC) services; excludes dedicated fiber offerings
-          where available. Availability varies by region. Speed claims are based on wired connections
-          under ideal conditions. Actual experience may vary due to network factors, device capabilities,
-          and service setup.
+          Competitor comparison based on publicly available data as of
+          01/4/2025. Comparison reflects typical cable and hybrid fiber-coaxial
+          (HFC) services; excludes dedicated fiber offerings where available.
+          Availability varies by region. Speed claims are based on wired
+          connections under ideal conditions. Actual experience may vary due to
+          network factors, device capabilities, and service setup.
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -3,10 +3,31 @@ import React, { useEffect, useRef, useState } from "react";
 import FixedPlan from "./FixedPlan";
 import { motion } from "framer-motion";
 import CustomPlan from "./CustomPlan";
-import ContactPopup from "../../plans/component/ContactPopup";
+import ContactPopup from "./ContactPopup";
 import AlertModal from "@/components/alert/AlertModal";
+import { useSelector } from "react-redux";
 
-export default function PlansTabs({ isMobile, plans, isMediumSize }) {
+export default function PlansTabs() {
+  const plans = useSelector((state) => state.newPlans);
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMediumSize, setIsMediumSize] = useState(false);
+
+  // ✅ Handle screen resize for mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setIsMediumSize(window.innerWidth > 768 && window.innerWidth < 1098);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    // console.log("📦 Loaded plans:", plans);
+  }, [plans]);
+
   const [activeTab, setActiveTab] = useState("Custom Plan");
   const [fade, setFade] = useState(true);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
@@ -18,6 +39,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
 
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [showInfo, setShowInfo] = useState(true);
 
   // const tabs = ["Custom Plan", "Fixed Plan"];
   const tabs = [
@@ -29,10 +51,10 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
     },
   ];
   const variants = {
-    left: { x: "-40%", scale: 0.9, opacity: 0.8 },
+    left: { x: "-30%", scale: 0.9, opacity: 0.8 },
     centerright: { x: "40%", scale: 1, opacity: 1 },
     centerleft: { x: "-40%", scale: 1, opacity: 1 },
-    right: { x: "40%", scale: 0.9, opacity: 0.8 },
+    right: { x: "30%", scale: 0.9, opacity: 0.8 },
   };
 
   useEffect(() => {
@@ -59,6 +81,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
         selectedPlan={selectedPlan}
         isOpen={isContactOpen}
         setIsOpen={setIsContactOpen}
+        showInfo={showInfo}
       />
 
       {/* TAB SWITCHER */}
@@ -84,7 +107,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
           </div>
         </div> */}
         {isMobile || isMediumSize ? (
-          <div className="flex items-center justify-center gap-2 w-full max-w-md">
+          <div className="flex items-center justify-center gap-1 w-full max-w-md">
             {tabs.map((tab, i) => (
               <React.Fragment key={tab.key}>
                 <button
@@ -107,31 +130,37 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
           </div>
         ) : (
           <div className="flex justify-center items-center gap-4 sm:gap-6 w-full max-w-2xl mx-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
-                  activeTab === tab.key
-                    ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
-                    : "bg-white text-gray-700 border border-gray-300"
-                } group`}
-              >
-                <span
-                  className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
-                ></span>
-                <span
-                  className={`relative z-10 transition-colors duration-300 ${
+            {tabs.map((tab, i) => (
+              <>
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
                     activeTab === tab.key
-                      ? "text-white"
-                      : "group-hover:text-white group-hover:font-semibold"
-                  }`}
+                      ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
+                      : "bg-white text-gray-700 border border-gray-300"
+                  } group`}
                 >
-                  {tab.key === "Fixed Plan"
-                    ? "Explore Our Standard Plans"
-                    : "Customize Your Own Plans"}
-                </span>
-              </button>
+                  <span
+                    className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
+                  ></span>
+
+                  <span
+                    className={`relative z-10 transition-colors duration-300 ${
+                      activeTab === tab.key
+                        ? "text-white"
+                        : "group-hover:text-white group-hover:font-semibold"
+                    }`}
+                  >
+                    {tab.key === "Fixed Plan"
+                      ? "Explore Our Standard Plans"
+                      : "Customize Your Own Plans"}
+                  </span>
+                </button>
+                {i === 0 && (
+                  <span className="text-gray-500 font-medium text-sm">or</span>
+                )}
+              </>
             ))}
           </div>
         )}
@@ -139,7 +168,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
 
       {/* TAB CONTENT with fade animation */}
       <div
-        className={`mt-4 transition-opacity duration-500 ${
+        className={`mt-2 transition-opacity duration-500 ${
           fade ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -153,6 +182,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                 setSelectedPlan={setSelectedPlan}
                 isContactOpen={isContactOpen}
                 setIsContactOpen={setIsContactOpen}
+                setShowInfo={setShowInfo}
               />
             ) : (
               <CustomPlan
@@ -162,6 +192,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                 setSelectedPlan={setSelectedPlan}
                 isContactOpen={isContactOpen}
                 setIsContactOpen={setIsContactOpen}
+                setShowInfo={setShowInfo}
               />
             )}
           </>
@@ -185,6 +216,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                   setSelectedPlan={setSelectedPlan}
                   isContactOpen={isContactOpen}
                   setIsContactOpen={setIsContactOpen}
+                  setShowInfo={setShowInfo}
                 />
               </motion.div>
 
@@ -205,6 +237,7 @@ export default function PlansTabs({ isMobile, plans, isMediumSize }) {
                   setSelectedPlan={setSelectedPlan}
                   isContactOpen={isContactOpen}
                   setIsContactOpen={setIsContactOpen}
+                  setShowInfo={setShowInfo}
                 />
               </motion.div>
             </div>

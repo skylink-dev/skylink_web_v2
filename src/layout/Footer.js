@@ -69,18 +69,16 @@ export default function Footer() {
   ]);
 
   const [footerBottomMenu, setFooterBottomMenu] = useState([
-    { title: "Site Map", url: "/" },
-    { title: "Coverage Map", url: "/" },
+      {title: "Site Map", url: "/sitemap"},
+    { title: "About Us", url: "/about" },
      { title: "Privacy Policy", url: "/policy" },
         { title: "Refund Policy", url: "/refund" },
         { title: "Subscription Contract", url: "/subscription-contract" },
         { title: "Whistleblower Policy", url: "/whistleblower-policy" },
-    { title: "Terms of Use", url: "/" },
-    { title: "Broadband Details", url: "/" },
-    { title: "Legal Policy Center", url: "/" },
+    { title: "Terms of Use", url: "/terms" },
+    { title: "Broadband Details", url: "/plans" },
     { title: "Cybersecurity", url: "/" },
     { title: "FCC Public Files", url: "/" },
-    {title:"Speed Test", url:"https://skylinkfiber.speedtestcustom.com/"}
   ]);
 
   const [openIndex, setOpenIndex] = useState(null);
@@ -96,6 +94,28 @@ export default function Footer() {
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+    // Function to handle opening the speed test popup
+    const handleOpenSpeedTest = (e) => {
+        e.preventDefault();
+
+        // Calculate center position for the popup
+        const width = 1000;
+        const height = 700;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+
+        // Open popup window
+        const popup = window.open(
+            "https://skylinkfiber.speedtestcustom.com/",
+            "SpeedTest",
+            `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes`
+        );
+
+        if (!popup) {
+            alert("Please allow popups for this site to run the speed test");
+        }
+    };
 
   return (
     <footer className="bg-slate-900 text-gray-200">
@@ -181,6 +201,15 @@ export default function Footer() {
               </Link>
             </li>
           ))}
+            {/* Separate Speed Test link with custom click handler */}
+            <li>
+                <button
+                    onClick={handleOpenSpeedTest}
+                    className="text-xs text-gray-400 hover:text-white transition"
+                >
+                    Speed Test
+                </button>
+            </li>
         </ul>
 
         {/* Copyright */}

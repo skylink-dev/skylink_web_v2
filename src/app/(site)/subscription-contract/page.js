@@ -204,39 +204,51 @@ export default function Page() {
     },]
     return (
         <>
-            <div className="aem-Grid aem-Grid--12 aem-Grid--default--12">
-                <div className="contact aem-GridColumn aem-GridColumn--default--12" style={{ "margin": "30px 0px" }}>
-                    <div className="contact-phone">
-                        <h2>Subscription Contract</h2>
+            <div className="w-full bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+                    <div className="text-center">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Subscription
+                            Contract</h1>
+                        <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Terms and conditions for
+                            Skylink services.</p>
                     </div>
                 </div>
             </div>
-            <div className="container" id="refund" style={{ padding: '40px 0px 0px 0px' }}>
-            <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800">
-                <div className="policywrap">
-                    <div className="list-svg line-h-normal type-base rte-checkmark-att-blue">
-                        <p>The terms and conditions mentioned herein form part of the Customer Application Form (CAF) signed by the Subscriber and are binding on the Subscriber.</p>
-                        <p>Purpose Fixed Broadband Service is provided to the Subscriber by Skylink Private Limited on the basis of the Contract (defined below), which governs the relationship between the Company and the Subscriber while the Subscriber uses the Fixed Broadband Services of the Company.</p>
-                        <p>Eligibility (a) An individual residing in India, above 18 years of age, fully competent under law to enter into the Contract or (b) a company/entity having its place of business in India, represented by an individual having appropriate authority to accept the Contract and sign the CAF.</p>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                <div
+                    className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200 mb-8 p-6 md:p-8">
+                    <div className="prose prose-sm md:prose max-w-none text-gray-700">
+                        <p className="mb-4">The terms and conditions mentioned herein form part of the Customer
+                            Application Form (CAF) signed by the Subscriber and are binding on the Subscriber.</p>
+                        <p className="mb-4">Purpose Fixed Broadband Service is provided to the Subscriber by Skylink
+                            Private Limited on the basis of the Contract (defined below), which governs the relationship
+                            between the Company and the Subscriber while the Subscriber uses the Fixed Broadband
+                            Services of the Company.</p>
+                        <p className="mb-0">Eligibility (a) An individual residing in India, above 18 years of age,
+                            fully competent under law to enter into the Contract or (b) a company/entity having its
+                            place of business in India, represented by an individual having appropriate authority to
+                            accept the Contract and sign the CAF.</p>
                     </div>
                 </div>
-            </div>
-            </div>
-             <div className="container" id="refund" style={{ padding: '0px 0px 40px 0px' }}>
-                <div className="max-w-3xl mx-auto px-4 py-10 text-gray-800">
-                    {policySections.map(({ title, content }, idx) => (
-                        <div key={idx} className="policywrap border-bottom border-gray-300">
-                            <h3>
+                <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                    {policySections.map(({title, content}, idx) => (
+                        <div key={idx} className="border-b border-gray-200 last:border-b-0">
+                            <h3 className="w-full">
                                 <button
                                     onClick={() => toggle(idx)}
-                                    className="accordion-cta btn-reset heading- line-h-normal letter-spacing-0 type-lg width-full flex flex-items-top justify-between text-left pad-t-md pad-b-md"
+                                    className="w-full py-5 px-4 md:px-6 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 hover:bg-gray-50 transition-colors duration-200"
                                     aria-expanded={openIndex === idx}
                                     aria-controls={`section-content-${idx}`}
                                     id={`section-header-${idx}`}
                                 >
-                                    <span className="reading-width">{title}</span>
-                                    <span className={`text-3xl select-none transform transition-transform duration-300 ${openIndex === idx ? 'rotate-45' : 'rotate-0'
-                                        }`}>{openIndex === idx ? <KeyboardArrowUpIcon fontSize="large"></KeyboardArrowUpIcon> : <KeyboardArrowDownIcon fontSize="large"></KeyboardArrowDownIcon>}</span>
+                                    <span className="text-lg md:text-xl font-medium text-gray-900">{title}</span>
+                                    <span
+                                        className={`text-gray-500 transition-transform duration-300 ${openIndex === idx ? 'transform rotate-180' : ''}`}>
+                                        {openIndex === idx ?
+                                            <KeyboardArrowUpIcon className="h-6 w-6"/> :
+                                            <KeyboardArrowDownIcon className="h-6 w-6"/>}
+                                    </span>
                                 </button>
                             </h3>
                             <AnimatePresence initial={false}>
@@ -246,18 +258,17 @@ export default function Page() {
                                         role="region"
                                         aria-labelledby={`section-header-${idx}`}
                                         ref={(el) => (contentRefs.current[idx] = el)}
-                                        className="px-6 overflow-hidden bg-white"
+                                        className="px-4 md:px-6 overflow-hidden bg-white overflow-x-hidden"
                                         initial="collapsed"
                                         animate="open"
                                         exit="collapsed"
                                         variants={{
-                                            open: { height: 'auto', opacity: 1, paddingTop: 24, paddingBottom: 24 },
-                                            collapsed: { height: 0, opacity: 0, paddingTop: 0, paddingBottom: 0 },
+                                            open: {height: 'auto', opacity: 1, paddingTop: 16, paddingBottom: 24},
+                                            collapsed: {height: 0, opacity: 0, paddingTop: 0, paddingBottom: 0},
                                         }}
-                                        transition={{ duration: 0.4, ease: 'easeInOut' }}
-                                        style={{ willChange: 'height, opacity, padding' }}
+                                        transition={{duration: 0.3, ease: 'easeInOut'}}
                                     >
-                                        <div className="type-base rte-styles">
+                                        <div className="prose prose-sm md:prose max-w-none text-gray-700">
                                             {content}
                                         </div>
                                     </motion.div>

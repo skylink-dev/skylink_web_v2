@@ -225,13 +225,13 @@ export default function AvailabilityChecker() {
 {/* Map View Buttons */}
 <div className="flex justify-center mt-4 gap-1"> {/* reduced gap from 2 -> 1 */}
   <button
-    className="px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 shadow-md transition-colors duration-200"
+    className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 shadow-md transition-colors duration-200"
     onClick={() => setMapView("roadmap")}
   >
     Roadmap
   </button>
   <button
-    className="px-4 py-2 bg-purple-500 text-white rounded-xl hover:bg-purple-600 shadow-md transition-colors duration-200"
+    className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 shadow-md transition-colors duration-200"
     onClick={() => setMapView("satellite")}
   >
     Satellite

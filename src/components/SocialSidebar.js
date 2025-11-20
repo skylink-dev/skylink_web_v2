@@ -2,21 +2,35 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Facebook,
-  Linkedin,
-  Instagram,
-  Twitter,
-  MessageCircle,
-  X,
-  PhoneCall,
-} from "lucide-react";
+import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { SiX } from "react-icons/si"; // For Twitter/X logo
+import { FiMessageCircle, FiX, FiPhoneCall } from "react-icons/fi";
 
 const socialLinks = [
-  { name: "Facebook", url: "https://www.facebook.com/skylinkfibernetindia/", color: "#1877F2", icon: <Facebook size={22} /> },
-  { name: "LinkedIn", url: "https://www.linkedin.com/company/skylink-fibernet?originalSubdomain=in", color: "#0A66C2", icon: <Linkedin size={22} /> },
-  { name: "Instagram", url: "https://instagram.com/skylinkfibernet/", color: "#E4405F", icon: <Instagram size={22} /> },
-  { name: "Twitter", url: "https://x.com/skylinkfiber", color: "#1DA1F2", icon: <Twitter size={22} /> },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/skylinkfibernetindia/",
+    color: "#1877F2",
+    icon: <FaFacebookF size={22} />,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/skylink-fibernet?originalSubdomain=in",
+    color: "#0A66C2",
+    icon: <FaLinkedinIn size={22} />,
+  },
+  {
+    name: "Instagram",
+    url: "https://instagram.com/skylinkfibernet/",
+    color: "#E4405F",
+    icon: <FaInstagram size={22} />,
+  },
+  {
+    name: "X",
+    url: "https://x.com/skylinkfiber",
+    color: "#1DA1F2",
+    icon: <SiX size={22} />,
+  },
 ];
 
 export default function SocialSidebar() {
@@ -70,7 +84,6 @@ export default function SocialSidebar() {
 
       {/* 📱 Mobile — Connect on Left Corner */}
       <div className="md:hidden fixed bottom-5 left-5 z-50 flex flex-col items-center gap-3">
-        {/* Connect Button */}
         <motion.button
           onClick={() => setOpen(!open)}
           whileHover={{ scale: 1.1 }}
@@ -87,7 +100,7 @@ export default function SocialSidebar() {
             }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
-          <MessageCircle
+          <FiMessageCircle
             size={28}
             className={`relative transition-all duration-300 ${
               open ? "rotate-45" : "rotate-0"
@@ -98,7 +111,6 @@ export default function SocialSidebar() {
           </span>
         </motion.button>
 
-        {/* Expanding Social Icons — Small Animated Red+Blue Background */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -108,7 +120,6 @@ export default function SocialSidebar() {
               transition={{ duration: 0.4, type: "spring" }}
               className="relative flex flex-col items-center gap-3 p-3 rounded-2xl overflow-hidden"
             >
-              {/* Animated red-blue water background */}
               <motion.div
                 className="absolute inset-0 rounded-2xl blur-lg bg-gradient-to-br from-red-500/70 via-blue-500/60 to-purple-700/70 -z-10"
                 animate={{
@@ -150,7 +161,7 @@ export default function SocialSidebar() {
         </AnimatePresence>
       </div>
 
-      {/* 📞 Fixed Call Button — Right Corner (Both Web + Mobile) */}
+      {/* 📞 Fixed Call Button */}
       <motion.button
         onClick={() => setShowChat(true)}
         whileHover={{ scale: 1.1 }}
@@ -173,7 +184,7 @@ export default function SocialSidebar() {
           }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
-        <PhoneCall size={28} className="text-white relative drop-shadow-lg" />
+        <FiPhoneCall size={28} className="text-white relative drop-shadow-lg" />
       </motion.button>
 
       {/* 💬 Chat Popup */}
@@ -202,7 +213,7 @@ export default function SocialSidebar() {
                 onClick={() => setShowChat(false)}
                 className="absolute top-2 right-2 bg-gray-800 text-white p-1 rounded-full shadow-lg"
               >
-                <X size={18} />
+                <FiX size={18} />
               </button>
             </motion.div>
           </motion.div>

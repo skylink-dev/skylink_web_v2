@@ -21,6 +21,9 @@ import {
   SpeedContent,
   simpleContent,
 } from "../../../data/internet";
+import {getServiceStructuredData} from "@/lib/structuredData";
+import StructuredData from "@/components/StructuredData";
+
 const auth = { userName: "John Doe", isLoggedIn: true };
 const PricingPlans = dynamic(() => import("@/components/PricingPlans"));
 const HeroBanner = dynamic(() => import("@/components/HeroBanner"));
@@ -44,9 +47,19 @@ const SimpleBanner = dynamic(() => import("@/components/SimpleBanner"));
 const Whereat = dynamic(() => import("@/components/Whereat"));
 const SpeedBanner = dynamic(() => import("@/components/SpeedBanner"));
 
+// Get structured data for internet service
+const internetServiceData = getServiceStructuredData({
+    name: "Skylink Fiber Internet",
+    description: "High-speed fiber internet with unlimited data, low latency, and no throttling. Perfect for streaming, gaming, and working from home.",
+    serviceType: "BroadbandService",
+    url: "https://skylinkfiber.com/internet"
+});
+
 export default function Page() {
   return (
     <>
+        {/* Add structured data */}
+        <StructuredData data={internetServiceData}/>
       <HeroBanner content={HeroContent} />
       <AvailabilityComponents />
       <SpeedBanner

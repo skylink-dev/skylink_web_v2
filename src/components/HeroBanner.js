@@ -46,7 +46,7 @@ export default function HeroBanner() {
           {/* Buttons */}
           <div className="flex flex-row flex-wrap items-center gap-2">
             <Link
-              href="/new_plans"
+              href="/plans"
               className="relative overflow-hidden rounded-full text-black font-semibold py-1.5 px-3 sm:py-2 sm:px-4 text-center text-xs sm:text-sm
                 transition-all duration-300 shadow-md
                 before:absolute before:inset-0 before:bg-red-600 before:-translate-x-full before:transition-transform before:duration-500
