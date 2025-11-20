@@ -4,6 +4,18 @@ import { motion } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, Maximize2 } from "lucide-react";
 
 export default function SupportVideos() {
+    // For debugging video issues
+    const logVideoInfo = (video) => {
+        if (!video) return;
+        console.log('Video info:', {
+            readyState: video.readyState,
+            networkState: video.networkState,
+            error: video.error,
+            src: video.src,
+            currentSrc: video.currentSrc,
+            paused: video.paused,
+        });
+    };
   const [activeCategory, setActiveCategory] = useState("Internet");
   const [activeSub, setActiveSub] = useState("Activate IPTV");
   const [isPlaying, setIsPlaying] = useState(false); // start paused
@@ -13,6 +25,7 @@ export default function SupportVideos() {
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [showVolumeControls, setShowVolumeControls] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
   const videoRef = useRef(null);
   const progressBarRef = useRef(null);
@@ -29,27 +42,94 @@ export default function SupportVideos() {
     OTT: { video: "/newassets/support/videos/ott.mp4", subTabs: [] },
   };
 
-  const activeData = data[activeCategory];
-  const currentVideo =
-    activeCategory === "TV"
-      ? activeData.videos[activeSub || "Activate IPTV"]
-      : activeData.video;
+    // Define these variables first, before using them in useEffect
+    const activeData = data[activeCategory];
+    const currentVideo =
+        activeCategory === "TV"
+            ? activeData.videos[activeSub || "Activate IPTV"]
+            : activeData.video;
+
+    // Ensure video files exist by checking if any requests 404
+    useEffect(() => {
+        const checkVideoExists = async (url) => {
+            try {
+                const response = await fetch(url, {method: 'HEAD'});
+                if (!response.ok) {
+                    console.error(`Video file not found: ${url}`);
+                }
+            } catch (error) {
+                console.error(`Error checking video: ${url}`, error);
+            }
+        };
+
+        // Check the current video
+        if (currentVideo) {
+            checkVideoExists(currentVideo);
+        }
+    }, [currentVideo]);
 
   // reset on category/sub change
   useEffect(() => {
     const v = videoRef.current;
     if (v) {
-      v.pause();
-      v.currentTime = 0;
-      setIsPlaying(false);
-      v.volume = volume;
-      v.muted = true;
-      setIsMuted(true);
+        // Reset video state but keep the video visible
+        v.pause();
+        v.currentTime = 0;
+        setIsPlaying(false);
+        v.volume = volume;
+        v.muted = true;
+        setIsMuted(true);
+
+        // Set the loading state to true initially so video is visible
+        // even during loading, and update it when the video is ready
+        setIsLoaded(true);
+
+        // Force the video to load
+        v.load();
+
+        // Update loading state based on readyState
+        const checkLoadState = () => {
+            if (v.readyState >= 3) {
+                setIsLoaded(true);
+            }
+        };
+        v.addEventListener('loadeddata', checkLoadState);
+        v.addEventListener('canplay', checkLoadState);
+
+        return () => {
+            v.removeEventListener('loadeddata', checkLoadState);
+            v.removeEventListener('canplay', checkLoadState);
+        };
     }
   }, [activeCategory, activeSub, volume]);
 
-  // pause video when tab is inactive
-  useEffect(() => {
+  // Initial loading check
+    useEffect(() => {
+        const v = videoRef.current;
+        if (!v) return;
+
+        // Log video information for debugging
+        logVideoInfo(v);
+
+        // Always show the video, even during loading
+        setIsLoaded(true);
+
+        // Manually trigger a load
+        v.load();
+
+        // Add listener for when video is ready to play
+        const handleReady = () => {
+            setIsLoaded(true);
+            logVideoInfo(v);
+        };
+
+        v.addEventListener('canplay', handleReady);
+        return () => v.removeEventListener('canplay', handleReady);
+    }, []);
+
+    // Pause video when tab is inactive
+
+    useEffect(() => {
     const handleVisibilityChange = () => {
       const v = videoRef.current;
       if (document.hidden && v && !v.paused) {
@@ -66,10 +146,24 @@ export default function SupportVideos() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    const updateProgress = () =>
-      setProgress((v.currentTime / v.duration) * 100 || 0);
-    v.addEventListener("timeupdate", updateProgress);
-    return () => v.removeEventListener("timeupdate", updateProgress);
+
+      // Update progress while playing
+      const updateProgress = () =>
+          setProgress((v.currentTime / v.duration) * 100 || 0);
+
+      // Handle error while keeping video visible
+      const handleError = (e) => {
+          console.error('Video error:', e);
+          // Don't hide the video even on error
+      };
+
+      v.addEventListener("timeupdate", updateProgress);
+      v.addEventListener("error", handleError);
+
+      return () => {
+          v.removeEventListener("timeupdate", updateProgress);
+          v.removeEventListener("error", handleError);
+      };
   }, [currentVideo]);
 
   const handlePlayPause = () => {
@@ -77,11 +171,34 @@ export default function SupportVideos() {
     if (!v) return;
 
     if (v.paused) {
-      v.play();
-      setIsPlaying(true);
+        // Try to play the video
+        const attemptPlay = () => {
+            v.play()
+                .then(() => {
+                    setIsPlaying(true);
+                    console.log('Video playing successfully');
+                })
+                .catch(err => {
+                    console.error('Error playing video:', err);
+                    // Still show the video even if there's an error playing
+                    setIsLoaded(true);
+                });
+        };
+
+        // If video is not ready, set up event listener
+        if (v.readyState < 3) {
+            v.addEventListener('canplay', function playWhenReady() {
+                attemptPlay();
+                v.removeEventListener('canplay', playWhenReady);
+            }, {once: true});
+        } else {
+            // Video is ready to play
+            attemptPlay();
+        }
     } else {
-      v.pause();
-      setIsPlaying(false);
+        // Pause the video
+        v.pause();
+        setIsPlaying(false);
     }
   };
 
@@ -183,20 +300,38 @@ export default function SupportVideos() {
             setShowVolumeControls(false);
           }}
         >
-          <video
-            ref={videoRef}
-            src={currentVideo}
-            className="w-full h-auto object-cover rounded-2xl"
-            loop
-            playsInline
-          />
+          <div className="relative w-full">
+              <video
+                  ref={videoRef}
+                  src={currentVideo}
+                  className="w-full h-auto object-cover rounded-2xl"
+                  loop
+                  playsInline
+                  preload="auto"
+              />
 
-          {/* Center Play Button Overlay */}
-          {!isPlaying && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-              <button
-                onClick={handlePlayPause}
-                className="w-20 h-20 flex items-center justify-center rounded-full bg-red-600 hover:bg-red-500 transition-all"
+              {/* Loading Indicator - Only show when actually loading, not when paused */}
+              {!isLoaded && videoRef.current?.networkState === 2 && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-2xl">
+                      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-600"></div>
+                  </div>
+              )}
+          </div>
+
+          {/* Fallback for browsers having issues */}
+            {!currentVideo && (
+                <div className="absolute inset-0 bg-black rounded-2xl flex items-center justify-center text-white">
+                    <p>Video could not be loaded</p>
+                </div>
+            )}
+
+            {/* Center Play Button Overlay - More transparent, always show when paused */}
+            {!isPlaying && (
+                <div
+                    className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors duration-300">
+                    <button
+                        onClick={handlePlayPause}
+                        className="w-20 h-20 flex items-center justify-center rounded-full bg-red-600 hover:bg-red-500 transition-all shadow-lg"
               >
                 <Play size={36} className="text-white ml-1" />
               </button>
