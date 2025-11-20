@@ -1,6 +1,12 @@
 "use client";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaCheckCircle,
+  FaTimesCircle,
+  FaExclamationTriangle,
+  FaInfoCircle,
+} from "react-icons/fa";
 
 export default function AlertModal({
   isOpen,
@@ -10,135 +16,65 @@ export default function AlertModal({
   type = "success",
 }) {
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      // Auto close after 4 seconds
-      const timer = setTimeout(onClose, 4000);
-      return () => clearTimeout(timer);
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => (document.body.style.overflow = "auto");
+    // if (isOpen) {
+    //   document.body.style.overflow = "hidden";
+    //   const timer = setTimeout(onClose, 3500);
+    //   return () => clearTimeout(timer);
+    // } else {
+    //   document.body.style.overflow = "auto";
+    // }
   }, [isOpen, onClose]);
 
-  // Modern color schemes with better contrast
+  // SKYLINK POPUP STYLE (Blue theme, subtle shadows, soft UI)
   const typeStyles = {
     success: {
-      container: "bg-emerald-50 border-emerald-200",
-      text: "text-emerald-900",
-      icon: "text-emerald-500",
-      button: "bg-emerald-600 hover:bg-emerald-700 text-white",
+      icon: <FaCheckCircle className="text-green-600" size={38} />,
+      ring: "ring-green-300",
+      bar: "bg-green-600",
     },
     error: {
-      container: "bg-rose-50 border-rose-200",
-      text: "text-rose-900",
-      icon: "text-rose-500",
-      button: "bg-rose-600 hover:bg-rose-700 text-white",
+      icon: <FaTimesCircle className="text-red-600" size={38} />,
+      ring: "ring-red-300",
+      bar: "bg-red-600",
     },
     warning: {
-      container: "bg-amber-50 border-amber-200",
-      text: "text-amber-900",
-      icon: "text-amber-500",
-      button: "bg-amber-500 hover:bg-amber-600 text-white",
+      icon: <FaExclamationTriangle className="text-amber-500" size={38} />,
+      ring: "ring-amber-300",
+      bar: "bg-amber-500",
     },
     info: {
-      container: "bg-blue-50 border-blue-200",
-      text: "text-blue-900",
-      icon: "text-blue-500",
-      button: "bg-blue-600 hover:bg-blue-700 text-white",
+      icon: <FaInfoCircle className="text-blue-600" size={38} />,
+      ring: "ring-blue-300",
+      bar: "bg-blue-600",
     },
   };
 
-  // Icons for each type
-  const typeIcons = {
-    success: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    ),
-    error: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    ),
-    warning: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"
-        />
-      </svg>
-    ),
-    info: (
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    ),
-  };
-
-  const styles = typeStyles[type];
+  const style = typeStyles[type];
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-6 bg-black/60">
+          {/* Fade background */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0"
             onClick={onClose}
           />
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.85, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className={`relative max-w-md w-full rounded-2xl border-2 ${styles.container} p-6 shadow-2xl`}
+            exit={{ opacity: 0, scale: 0.9, y: 10 }}
+            className={`relative bg-white w-full max-w-sm rounded-2xl shadow-2xl px-7 py-8 border border-gray-200`}
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-1 hover:bg-white/50 rounded-full transition-colors"
+              className="absolute top-4 right-4 p-1 hover:bg-gray-100 rounded-full transition"
             >
               <svg
                 className="w-5 h-5 text-gray-500"
@@ -155,41 +91,36 @@ export default function AlertModal({
               </svg>
             </button>
 
-            {/* Content */}
-            <div className="text-center">
-              {/* Icon */}
-              <div
-                className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-white mb-4 ${styles.icon}`}
-              >
-                {typeIcons[type]}
-              </div>
+            {/* Icon */}
+            <div className="w-full flex justify-center mb-3">{style.icon}</div>
 
-              {/* Title */}
-              <h2 className={`text-2xl font-bold mb-3 ${styles.text}`}>
-                {title}
-              </h2>
+            {/* Title */}
+            <h2 className="text-xl font-bold text-gray-800 text-center mb-2">
+              {title}
+            </h2>
 
-              {/* Message */}
-              <p className={`text-lg mb-6 leading-relaxed ${styles.text}`}>
-                {message}
-              </p>
+            {/* Message */}
+            <p className="text-gray-600 text-center text-base leading-relaxed mb-6">
+              {message}
+            </p>
 
-              {/* Progress bar */}
-              <div className="w-full bg-white/50 rounded-full h-1.5 mb-6 overflow-hidden">
-                <motion.div
-                  initial={{ width: "100%" }}
-                  animate={{ width: "0%" }}
-                  transition={{ duration: 4, ease: "linear" }}
-                  className={`h-full ${styles.button.split(" ")[0]}`}
-                />
-              </div>
+            {/* Auto Close Bar */}
+            {/* <div className="w-full bg-gray-200 rounded-full h-1 mb-5 overflow-hidden">
+              <motion.div
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 3.4, ease: "linear" }}
+                className={`h-full ${style.bar}`}
+              />
+            </div> */}
 
-              {/* Action button */}
+            {/* CTA Button */}
+            <div className="flex justify-center">
               <button
                 onClick={onClose}
-                className={`px-8 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg ${styles.button}`}
+                className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all shadow-sm"
               >
-                Got it
+                Okay
               </button>
             </div>
           </motion.div>
