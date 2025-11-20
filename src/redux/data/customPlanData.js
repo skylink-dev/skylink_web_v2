@@ -391,7 +391,7 @@ export const customPlans = {
       amount: [2000, 0, 0, 0],
     },
     {
-      speed: "20 Mbps",
+      speed: "200 Mbps",
       validity: [1, 3, 6, 12],
       amount: [2000, 0, 0, 0],
     },

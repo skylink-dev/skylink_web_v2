@@ -69,15 +69,14 @@ export default function Footer() {
   ]);
 
   const [footerBottomMenu, setFooterBottomMenu] = useState([
-    { title: "Site Map", url: "/" },
-    { title: "Coverage Map", url: "/" },
+      {title: "Site Map", url: "/sitemap"},
+    { title: "About Us", url: "/about" },
      { title: "Privacy Policy", url: "/policy" },
         { title: "Refund Policy", url: "/refund" },
         { title: "Subscription Contract", url: "/subscription-contract" },
         { title: "Whistleblower Policy", url: "/whistleblower-policy" },
-    { title: "Terms of Use", url: "/" },
-    { title: "Broadband Details", url: "/" },
-    { title: "Legal Policy Center", url: "/" },
+    { title: "Terms of Use", url: "/terms" },
+    { title: "Broadband Details", url: "/plans" },
     { title: "Cybersecurity", url: "/" },
     { title: "FCC Public Files", url: "/" },
   ]);

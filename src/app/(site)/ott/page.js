@@ -43,7 +43,7 @@ export default function Page() {
       <RectangleBanner
         backgroundImage="/assets/skyplay-map.jpg"
         eyebrow="Introducing the Skylink Guarantee"
-        heading={`Connectivity, refined for real life.`}
+        heading={`Connectivity, Refined for Real Life.`}
         description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
         subDescription = {`Available at no extra cost for eligible customers across India.`}
         buttonText="Learn More"

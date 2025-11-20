@@ -82,16 +82,12 @@ export default function page() {
       </div>
       <div className="container" id="main">
         <div style={{ marginTop: "-30px" }}>
-          <SimpleTestimonial></SimpleTestimonial>
+          {/*<SimpleTestimonial></SimpleTestimonial>*/}
         </div>
         <div style={{ marginTop: "35px" }}>
           <HeroTitleBanner></HeroTitleBanner>
         </div>
         <Counter></Counter>
-        <DynamicCarousel
-          title="Let's get you connected"
-          slidesData={dynamicSlidesData}
-        />
       </div>
     </>
   );

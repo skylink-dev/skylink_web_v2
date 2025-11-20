@@ -152,7 +152,7 @@ export default function SmartSection({city = "Coimbatore"}) {
   }, []);
 
   return (
-    <section style={{ backgroundColor: "#ffffff", padding: "80px 20px" }}>
+    <section style={{ backgroundColor: "#ffffff", padding: "20px 20px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "60px" }}>

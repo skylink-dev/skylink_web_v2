@@ -34,9 +34,8 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
               >
                 {/* ⭐ ONLY IMAGE HAS DEPTH BACKGROUND */}
                 <div
-                  className="w-14 h-14 p-1 flex items-center justify-center 
-                  bg-white/60 backdrop-blur-md 
-                  shadow-[0_4px_15px_rgba(0,0,0,0.12)]
+                  className="w-18 h-18 p-2 flex items-center justify-center 
+                  bg-white/60 
                   rounded-2xl border border-gray-200
                 "
                 >
@@ -64,8 +63,8 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
             <li
               key={item.id}
               onClick={() => onSelect?.(item.id)}
-              className={`w-32 lg:w-36 p-3 flex flex-col items-center text-center cursor-pointer
-                transition-all duration-300 hover:-translate-y-1
+              className={`group w-32 lg:w-36 p-3 flex flex-col items-center text-center cursor-pointer
+                transition-all duration-300 hover:-translate-y-2
                 ${activeId === item.id ? "text-red-600" : "text-gray-800"}
               `}
             >
@@ -76,14 +75,14 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
                 {/* ⭐ ONLY IMAGE BACKGROUND WITH DEPTH */}
                 <div
                   className="w-14 h-14 flex items-center justify-center
-               bg-white/80 backdrop-blur-lg
-               shadow-[0_6px_20px_rgba(0,0,0,0.1)]
-               rounded-2xl 
-               border border-gray-200
-               border-t-white/90 border-l-white/90
-               transition-all duration-300
-               hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)]
-               hover:-translate-y-1"
+  bg-white/90 backdrop-blur-md
+  rounded-2xl
+  border border-white/60
+  shadow-[0_0_0_1px_rgba(255,255,255,0.8),0_4px_20px_rgba(0,0,0,0.1)]
+  group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.9),0_8px_40px_rgba(0,0,0,0.15),0_0_40px_rgba(59,130,246,0.1)]
+  hover:-translate-y-1
+  transition-all duration-500 ease-out
+  group"
                 >
                   <Image
                     src={item.icon}

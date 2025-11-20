@@ -1,0 +1,515 @@
+[33mcommit 0df9837cc35a429d6ca313a9594ddf4d5799b37b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 19 12:48:40 2025 +0530
+
+    Footer pages and home page rectangular banner
+
+[33mcommit 991d68b591f967fe44f663cc01ab425b12d08b80[m
+Merge: 0a165cc ba8244b
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 19 09:55:31 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 0a165cc37cef9cfc1e6101cca0c0022b23e5113d[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 19 09:55:22 2025 +0530
+
+     Site map page and about us
+
+[33mcommit ba8244bea4ecd8c327ff6dec4f18de4ccff63581[m
+Merge: dbc1120 c93a541
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 18:27:55 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit dbc11203757121fcc3daa72d2c2372de4438bb0c[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 18:27:45 2025 +0530
+
+    Modified Custom Plan
+
+[33mcommit c93a5415f556899dba2911878d112f19768b458b[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Tue Nov 18 17:58:32 2025 +0530
+
+     Site map page and about us
+
+[33mcommit 1b20ac0a4b31eca16d818a12505ca466a79db0e3[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Tue Nov 18 17:46:13 2025 +0530
+
+     Site map page and about us
+
+[33mcommit b9d11e82bea3185ac23933d9934a7096feeb8a9f[m
+Merge: 862f5be 05cb965
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Tue Nov 18 13:47:26 2025 +0530
+
+     Site map page and contact form content change
+
+[33mcommit 862f5be0a37e1484aa7f4e86d68b1a4e8caac59b[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Tue Nov 18 13:43:38 2025 +0530
+
+     Site map page and contact form content change
+
+[33mcommit 05cb96547b9d689107a19971b0c4d39476ad4d6d[m
+Author: Praveen G V <gvpraveen1812@gmail.com>
+Date:   Tue Nov 18 12:28:51 2025 +0530
+
+    Delete .env
+
+[33mcommit 03416728bccbcc65719b8b4a6d7ac085763d0dc3[m
+Author: Praveen G V <gvpraveen1812@gmail.com>
+Date:   Tue Nov 18 12:25:07 2025 +0530
+
+    Obscure API keys in .env fileremoving some values
+    
+    Replaced sensitive API keys with placeholders.
+
+[33mcommit b955f67cd50bd33b5f88efa145a32ca92bef9cbf[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 12:21:35 2025 +0530
+
+    Changes in plan page added meta
+
+[33mcommit da19265959e7df5ae863f92df903f2ebdcc6e062[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 12:06:17 2025 +0530
+
+    Adding meta tags for plan page
+
+[33mcommit beabb2b3ba4810573593da842605e3ae2b27071f[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 11:06:14 2025 +0530
+
+    Changed the custom plan
+
+[33mcommit 921cfcf76cb2378ecf77e0be76fb75c14faa29c9[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 10:52:21 2025 +0530
+
+    Changed plan summary
+
+[33mcommit 127e9e80b0ca53ebbebf76f1aa34030fc4018b1a[m
+Merge: c2f7c9a aed10d5
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 10:32:42 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit c2f7c9ada43d6836b906237ac41cbd8579e4c42d[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 10:32:29 2025 +0530
+
+    Changed the custom plan
+
+[33mcommit aed10d5d19f7e42f588f7f85bd4844831b2958a9[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Tue Nov 18 10:10:09 2025 +0530
+
+     Changes added for speed test
+
+[33mcommit b475b67c138d70aa848d2e5402924f1e18bf8bc5[m
+Merge: b178427 9b4877e
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 09:56:42 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit b17842733566f4e6842d1a6015d6feb7e8fdcf13[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Tue Nov 18 09:56:36 2025 +0530
+
+    Changes in custom plan
+
+[33mcommit 9b4877e652198c8aac4b081a4ae629f695f5e8de[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Mon Nov 17 18:28:58 2025 +0530
+
+     Changes added for herobanner design
+
+[33mcommit 7dac1e1f49c00dd97ba56ba2c28a371b5234b0e3[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Mon Nov 17 17:34:06 2025 +0530
+
+     Changes added for herobanner in erode coimbatore and tiruppur page
+
+[33mcommit 8af6c55e7f430003d4efb714235d7f6d935c5eb9[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Mon Nov 17 17:22:48 2025 +0530
+
+     Changes added for speed test banner
+
+[33mcommit ebb7961363a0bd03c15e227fdef4f5cb1836ce38[m
+Merge: b9d8f41 7e635cb
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Mon Nov 17 16:43:14 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit b9d8f41ae7eb1fe5cb8d33a3526568912262f897[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Mon Nov 17 16:43:06 2025 +0530
+
+     Changes added for speed test banner
+
+[33mcommit 7e635cb0d04d5e53bf7e5952e96b1698a0863662[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Mon Nov 17 16:34:48 2025 +0530
+
+    Removed log statement
+
+[33mcommit fa9112a82bac1f696bae06db167d77cc4f94e9d1[m
+Merge: 2a48d7d 83e70bf
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Mon Nov 17 16:25:11 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 83e70bf5b36acd070c7105a9959aee264954ea50[m
+Merge: 6408b58 f0c0c39
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Mon Nov 17 16:27:17 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 6408b58f18e2323ad3b6186640735a7bf6fae7af[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Mon Nov 17 16:27:09 2025 +0530
+
+    added
+
+[33mcommit 2a48d7daebfcf9eb10e14786259961b07ed0d0cd[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Mon Nov 17 16:24:48 2025 +0530
+
+    Changed Custom Icons
+
+[33mcommit f0c0c39590039bf80cc82498b73ca8f8c590bc65[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Mon Nov 17 12:22:18 2025 +0530
+
+     Changes added as prop for erode tiruppur and coimbatore page
+
+[33mcommit 9508200e7032cdaf2b23376665aa8dc8ab8c6de2[m
+Merge: b99ab93 4c1582e
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Mon Nov 17 10:48:49 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit b99ab93f179336d7516eea22ec423db0df418e97[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Mon Nov 17 10:48:40 2025 +0530
+
+    Plan Summary
+
+[33mcommit 4c1582e08c1d1692001e32af1c6b108adf95fb6b[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Mon Nov 17 10:48:07 2025 +0530
+
+    Button Problem fixed
+
+[33mcommit 0c58fd81633b029448d95c0c427bac74cee01977[m
+Author: praveen-g-v <gvpraveen1812@gmail.com>
+Date:   Mon Nov 17 07:59:53 2025 +0530
+
+    Fixed bug in Custom Plan
+
+[33mcommit 55a6ec520d2e90de7736d82b8a67602f34dd294b[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Sat Nov 15 18:37:46 2025 +0530
+
+    Changed the icons
+
+[33mcommit 1235ef7f196c1702e08f7a74d7452cd00dc0a1ed[m
+Author: praveen-g-v <gvpraveen1812@gmail.com>
+Date:   Sat Nov 15 08:03:31 2025 +0530
+
+    Workde on Plan  summary
+
+[33mcommit d6a3e5646cd2fe6a17bb54d0f8b5af70bdacbcd3[m
+Merge: c001c39 b05526e
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Fri Nov 14 18:30:58 2025 +0530
+
+    Changed custom Plan
+
+[33mcommit c001c39bbce36ad9ea858d0fd4768aca2310b95c[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Fri Nov 14 18:30:10 2025 +0530
+
+    Changed
+
+[33mcommit b05526e1d8d7a04456e4457181b19f055a46b137[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 17:30:27 2025 +0530
+
+    Map component
+
+[33mcommit f579d5771fe57efaebc76a6036c9fa4309d23223[m
+Merge: 62f1c22 ef68a1d
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 17:25:18 2025 +0530
+
+    Map component
+
+[33mcommit 62f1c2296cacecbbc1b26c056924134b17d4fd7f[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 17:19:49 2025 +0530
+
+    Map component
+
+[33mcommit ae7d1c190aa91cf3a7df4ed3fb9de15b0450e63d[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 17:09:56 2025 +0530
+
+    Map component
+
+[33mcommit ef68a1d472aacc6b7879bfd83ad5f3b30c7b0307[m
+Author: Praveen G V <gvpraveen1812@gmail.com>
+Date:   Fri Nov 14 16:31:56 2025 +0530
+
+    Delete .env
+    
+    deleted
+
+[33mcommit 35ea51c42dbfbeb97cfff65c4502aeb9b5d6a5e2[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Fri Nov 14 16:28:42 2025 +0530
+
+    added
+
+[33mcommit 6800d2873dbe045df0e627e60e38d5449b9f464e[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 16:00:40 2025 +0530
+
+    Landing page worked
+
+[33mcommit 2b5c6a1f064cdde2af53b4bb33b193db96e22f62[m
+Merge: 02e703f 8d3ba67
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 15:52:04 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 02e703fdd930ba34e9c97c2db751f99de843c084[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 15:51:56 2025 +0530
+
+    Landing page worked
+
+[33mcommit 8d3ba67369e6f7cd2dd2b32ed90d8641cb6203b7[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Fri Nov 14 14:08:10 2025 +0530
+
+    Custom Plan Changes
+
+[33mcommit 26d1b6ab9e8200b7e3ef4640313f9f3b24f2c6c2[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Fri Nov 14 11:57:01 2025 +0530
+
+    URl changes and component changes
+
+[33mcommit d90e33e6c5a26881f342c87e09848527a819e2fb[m
+Author: praveen-g-v <gvpraveen1812@gmail.com>
+Date:   Fri Nov 14 08:16:51 2025 +0530
+
+    Working in Custom Plans
+
+[33mcommit bd4ff724eac5d6ec4339de12f9f2a254dab44eb5[m
+Author: praveen-g-v <gvpraveen1812@gmail.com>
+Date:   Fri Nov 14 08:11:24 2025 +0530
+
+    Working in Custom Plans
+
+[33mcommit 0877205b23aacffc8e0f46a97c39ad1178f7db68[m
+Author: praveen-g-v <gvpraveen1812@gmail.com>
+Date:   Fri Nov 14 00:12:22 2025 +0530
+
+    Worked on billing grid and speed grid
+
+[33mcommit a6f41d4eb25a81a8b03aab4d687c075c7db13a5e[m
+Merge: 88c48a5 3f29117
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Thu Nov 13 18:32:07 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 88c48a54cc35e031aa1965b4e7cf0352e9b66dd2[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Thu Nov 13 18:32:03 2025 +0530
+
+    Changes in custom Plan
+
+[33mcommit 3f291170eaa8016fe38cf8b957caaae944735bed[m
+Merge: 5ecf42d dbeef87
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Thu Nov 13 18:24:32 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 5ecf42da477242ce8d9d3d8dd8c540dbb75f037b[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Thu Nov 13 18:24:25 2025 +0530
+
+    Changes in url
+
+[33mcommit dbeef870bd4705aacb83e44be94c1a7fbce8acab[m
+Merge: 0c2bb07 47cfbc0
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Thu Nov 13 18:23:04 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 0c2bb07c8fc959fb5c92e8602725d04e2f1e3ce9[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Thu Nov 13 18:22:57 2025 +0530
+
+    Changes in custom Plan
+
+[33mcommit 47cfbc07d7d554ee064c081345bc6dfa7826db0f[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Thu Nov 13 16:25:51 2025 +0530
+
+    Content changes in tv and ott, Home page icon move to right and also responsive
+
+[33mcommit 527ea8188feb52908e22c83114492a0cde78fee2[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Thu Nov 13 15:45:58 2025 +0530
+
+    Content changes in tv and ott, Home page icon move to right and also responsive
+
+[33mcommit f230bf3152f59dcaabcaf9602af24b3fb2829b66[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Thu Nov 13 15:13:01 2025 +0530
+
+    Content changes in tv and ott, Home page icon move to right and also responsive
+
+[33mcommit d6e22b90979b24f964dc014d9c9a46fb5ff65577[m
+Merge: eec36a1 b4d1bc1
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Thu Nov 13 13:25:30 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit eec36a1d8f4815628556df4e44e4f294ad97c581[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Thu Nov 13 13:25:18 2025 +0530
+
+    Content changes in tv and ott, Home page icon move to right and also responsive
+
+[33mcommit b4d1bc1fd0b073c4f9aea680070af66a177823cd[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Thu Nov 13 12:44:02 2025 +0530
+
+    added
+
+[33mcommit 60ac4c6a8cc51dba49c06d302f38e3c1e92beadc[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Thu Nov 13 12:39:39 2025 +0530
+
+    added
+
+[33mcommit 386d83ad27bb778ae92147080ae4e0746ab7c5a3[m
+Merge: 9a2bff3 0f61445
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Thu Nov 13 11:56:54 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 9a2bff349d6fa2b999f45848519d6a63bbb1c6f5[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Thu Nov 13 11:56:49 2025 +0530
+
+    Added
+
+[33mcommit 0f61445e788312bad1a6792df318a7e91b866b4a[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Thu Nov 13 11:55:32 2025 +0530
+
+    added
+
+[33mcommit 7523c66a934df473ab75e4eed2d034f1fc68f1c3[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Thu Nov 13 11:52:19 2025 +0530
+
+    added
+
+[33mcommit 346014796e186a5dbd82520d6b62d33ad7c0678f[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Thu Nov 13 11:38:24 2025 +0530
+
+    added
+
+[33mcommit 76b98cf14772f2d07ffb514db49105b3e9613e52[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Thu Nov 13 11:27:42 2025 +0530
+
+    Remove .env files from repository history
+
+[33mcommit b4bfd4954a7c2d27171c48a8417d330b310c49c5[m
+Author: Arulraj <jarulraj2@gmail.com>
+Date:   Thu Nov 13 11:25:03 2025 +0530
+
+    added
+
+[33mcommit 5f97116241cb54e37d5e0d22b98c3f6e58b19615[m
+Merge: 7b68360 19f7015
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Wed Nov 12 18:35:47 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit 7b6836029c6d0f4062d317acba5ae92ac4c74fb0[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Wed Nov 12 18:35:42 2025 +0530
+
+    Changes pending in custome Plan
+
+[33mcommit 19f7015d147d419f09804bfafb10c857fdff858d[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 12 18:34:22 2025 +0530
+
+    Contact form design
+
+[33mcommit 52a4d2b09e0aed67fbe82422ed87bab181c7a5a0[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 12 18:07:29 2025 +0530
+
+    Contact form design
+
+[33mcommit f28b6c0595151faad7ad31a38584270736814e5c[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 12 18:07:01 2025 +0530
+
+    Toast message changes in contact form and slider mobile responsive
+
+[33mcommit 17976ff452803e9a460ee024baeb6f1b098db8fa[m
+Merge: eaefa00 86e5ff6
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 12 17:30:29 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2
+
+[33mcommit eaefa00e230cedbadc3f681b983e89a9119bf64d[m
+Author: Bharanikumar-Skylink <swd-intern01@skylinkfibernet.com>
+Date:   Wed Nov 12 17:30:09 2025 +0530
+
+    Contact form design
+
+[33mcommit 86e5ff660d9aa99b8d62dd6e392506ba6ded48b3[m
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Wed Nov 12 17:25:13 2025 +0530
+
+    Customize plan changs
+
+[33mcommit fb9a53a0a878e505fc1967e236c40dee8e40b177[m
+Merge: 42cc07c db7720a
+Author: GowthamSelvaraj123 <gowthamdesigner94@gmail.com>
+Date:   Wed Nov 12 17:21:01 2025 +0530
+
+    Merge branch 'main' of https://github.com/skylink-dev/skylink_web_v2

@@ -811,7 +811,7 @@ export default function CustomPlan({
       /> */}
 
       <div className="relative w-full bg-gray-50 rounded-2xl p-6 shadow-md">
-        {activeTab !== "Custom Plan" && (
+        {/* {activeTab !== "Custom Plan" && (
           <motion.div
             initial={{ x: 180, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -823,9 +823,7 @@ export default function CustomPlan({
                  text-white text-xl font-semibold 
                  shadow-xl border-l border-white/10 px-4"
           >
-            {/* Pulsating Left Arrow */}
-
-            {/* Text with subtle scale animation */}
+            
             <motion.span
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -848,7 +846,8 @@ export default function CustomPlan({
               <AiOutlineArrowLeft className="text-white text-3xl" />
             </motion.div>
           </motion.div>
-        )}
+        )} */}
+
         <h2
           className={`text-center text-2xl font-semibold mb-6 ${
             activeTab == "Custom Plan"
