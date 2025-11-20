@@ -208,7 +208,7 @@ export default function FixedPlan({
 
         <div
           className={` ${
-            activeTab == "Fixed Plan" ? "bg-gray-100 " : "bg-gray-100 "
+            activeTab == "Fixed Plan" ? "bg-gray-50" : "bg-gray-100 "
           }  border border-red-100  m-0 p-4 rounded-xl`}
         >
           <h3
