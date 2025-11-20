@@ -1,7 +1,7 @@
-import PlanTabs from "./component/planTabs";
+import React from "react";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL || "http://stage.skylink.net.in:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://skylinkfiber.com";
+
 export const metadata = {
   title: "Plans & Pricing | Skylink",
   description:
@@ -37,16 +37,6 @@ export const metadata = {
   },
 };
 
-export default function Page() {
-  return (
-    <section className="px-4 py-2 bg-gray-50 min-h-screen">
-      <div className="container mx-auto text-center">
-        <h1 className="text-3xl md:text-4xl m-auto font-bold  mb-5 text-red-600">
-          Broadband + TV + OTT
-        </h1>
-
-        <PlanTabs />
-      </div>
-    </section>
-  );
+export default function PlansLayout({ children }) {
+  return children;
 }

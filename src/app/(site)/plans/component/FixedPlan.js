@@ -124,7 +124,7 @@ export default function FixedPlan({
                 whileTap={{ scale: 0.95 }}
                 className="whitespace-nowrap lg:text-2xl text-center tracking-wide"
               >
-                Choose Our <br /> Standard Plans
+                Explore Our <br /> Standard Plans
               </motion.span>
 
               <motion.div

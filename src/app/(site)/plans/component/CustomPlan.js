@@ -546,7 +546,10 @@ export default function CustomPlan({
           count
         )} gap-2`;
       }
-      return `grid ${gridCols} gap-2 auto-rows-fr   auto-cols-fr`;
+      return `grid ${gridCols} gap-2  auto-rows-fr
+    gap-3 
+    w-full
+    items-stretch  `;
     };
 
     return (
@@ -597,7 +600,12 @@ export default function CustomPlan({
 
         {type == "validity" ? (
           <>
-            <div className={`${getGridCols(options.length, type)} w-full`}>
+            <div
+              className={`${getGridCols(
+                options.length,
+                type
+              )}  items-stretch w-full`}
+            >
               {[...options].reverse().map((opt) => {
                 let discount = 0;
                 //console.log(discountMap);
@@ -616,7 +624,7 @@ export default function CustomPlan({
                           <></>
                         ) : (
                           <span
-                            className={`pt-2
+                            className={`pt-4
     relative -top-3 left-0 flex items-start justify-center font-semibold
     ${selected === opt ? "text-red-600" : "text-white"}
 
@@ -635,7 +643,7 @@ export default function CustomPlan({
                               backgroundRepeat: "no-repeat",
                               backgroundSize: "contain",
                               backgroundPosition: "center",
-                              paddingTop: "10px",
+                              paddingTop: "13px",
                               filter:
                                 activeTab !== "Custom Plan"
                                   ? "grayscale(100%)"
@@ -653,13 +661,13 @@ export default function CustomPlan({
                       onClick={() => {
                         setSelected(opt);
                       }}
-                      className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                      className={`relative h-full cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
                         selected === opt
                           ? colorMap[color].active
                           : colorMap[color].base
                       }`}
                     >
-                      {selected?.name === opt.name &&
+                      {selected === opt &&
                         (isMobile ? (
                           <></>
                         ) : (
@@ -679,6 +687,7 @@ export default function CustomPlan({
                             ? "Quaterly"
                             : "Monthly"}
                         </span>
+
                         {isMobile ? (
                           <>
                             {discount > 0 && (
@@ -719,7 +728,10 @@ export default function CustomPlan({
               }
 
               return (
-                <div key={type + opt.name + idx} className="relative w-full">
+                <div
+                  key={type + opt.name + idx}
+                  className="relative w-full h-full"
+                >
                   <button
                     disabled={isDisabled}
                     onClick={() => {
@@ -891,7 +903,7 @@ export default function CustomPlan({
                 whileTap={{ scale: 0.95 }}
                 className="whitespace-nowrap lg:text-2xl text-center tracking-wide"
               >
-                Customize Your <br /> Own Plans
+                Customize Your <br /> Own Plan
               </motion.span>
 
               <motion.div

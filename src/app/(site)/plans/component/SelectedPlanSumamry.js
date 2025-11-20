@@ -117,7 +117,7 @@ export default function SelectedPlanSummary({
         <div
           className={`flex flex-col sm:flex-row gap-4 p-5 sm:p-6 border-b border-gray-100`}
         >
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-3 items-stretch gap-4 auto-rows-fr">
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-stretch gap-4 auto-rows-fr">
             <Highlight label="Speed" value={speed.name} />
             <Highlight
               label="TV Channels"
@@ -129,19 +129,18 @@ export default function SelectedPlanSummary({
               value={`${ott.name}+`}
               imageList={ottImage}
             />
-          </div>
-
-          {/* Billing cycle summary */}
-          <div className="sm:w-56 flex items-center justify-center sm:justify-end">
-            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-xl border border-indigo-100 text-center w-full shadow-sm">
-              <div className="text-xs text-gray-600 font-medium">
-                Billing Cycle
-              </div>
-              <div className="mt-1 font-bold text-gray-900 text-lg">
-                {validity} months
-              </div>
-              <div className="text-xs text-gray-600 mt-1">
-                {billingCycleStr}
+            {/* Billing cycle summary */}
+            <div className="sm:w-56 md:w-full flex items-center justify-center sm:justify-end">
+              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-xl border border-indigo-100 text-center w-full shadow-sm">
+                <div className="text-xs text-gray-600 font-medium">
+                  Billing Cycle
+                </div>
+                <div className="mt-1 font-bold text-gray-900 text-lg">
+                  {validity} months
+                </div>
+                <div className="text-xs text-gray-600 mt-1">
+                  {billingCycleStr}
+                </div>
               </div>
             </div>
           </div>
@@ -322,13 +321,7 @@ function Highlight({ label, value, imageList = [] }) {
     <div className="bg-white border border-gray-200 rounded-xl px-4 py-3 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all duration-200 hover:border-gray-300">
       <>
         {imageList?.length > 0 ? (
-          <div
-            className={` grid grid-cols-${
-              Math.ceil(imageList?.length / 2) <= 1 && imageList?.length > 1
-                ? 2
-                : Math.ceil(imageList?.length / 2)
-            } lg:grid-cols-${imageList?.length} gap-1`}
-          >
+          <div className={`flex flex-ssl gap-1`}>
             {imageList.map((currimage) => {
               return (
                 <Image

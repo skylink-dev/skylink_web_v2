@@ -137,7 +137,7 @@ export default function RootLayout({ children }) {
           <Providers>
             <Header />
             <SocialSidebar />
-            <main className="min-h-screen mt-15 lg:mt-0">{children}</main>
+            <main className="min-h-screen mt-33 lg:mt-15">{children}</main>
             {/*<BeforeFooter />*/}
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />

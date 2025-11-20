@@ -126,7 +126,7 @@ export default function PlansTabs() {
                 >
                   {tab.key === "Fixed Plan"
                     ? "Explore Our Standard Plans"
-                    : "Customize Your Own Plans"}
+                    : "Customize Your Own Plan"}
                 </button>
                 {i === 0 && (
                   <span className="text-gray-500 font-medium text-sm">or</span>
@@ -149,21 +149,21 @@ export default function PlansTabs() {
                 >
                   <div
                     className={`absolute -top-2  z-4  ${
-                      i === 0 ? "-right-15" : "-left-15"
+                      i === 0 ? "-right-12" : "-left-12"
                     }`}
                   >
                     {i == 0 ? (
                       <Image
                         src={"/newassets/plan/mascot.png"}
-                        width={100}
-                        height={100}
+                        width={80}
+                        height={80}
                         alt=" "
                       />
                     ) : (
                       <Image
                         src={"/newassets/plan/mascot.png"}
-                        width={100}
-                        height={100}
+                        width={80}
+                        height={80}
                         alt=" "
                         className="scale-x-[-1]"
                       />
@@ -182,7 +182,7 @@ export default function PlansTabs() {
                   >
                     {tab.key === "Fixed Plan"
                       ? "Explore Our Standard Plans"
-                      : "Customize Your Own Plans"}
+                      : "Customize Your Own Plan"}
                   </span>
                 </button>
                 {i === 0 && (
