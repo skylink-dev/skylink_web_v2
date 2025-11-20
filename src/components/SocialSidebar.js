@@ -162,7 +162,7 @@ export default function SocialSidebar() {
       </div>
 
       {/* 📞 Fixed Call Button */}
-      <motion.button
+      {/* <motion.button
         onClick={() => setShowChat(true)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -185,10 +185,10 @@ export default function SocialSidebar() {
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
         <FiPhoneCall size={28} className="text-white relative drop-shadow-lg" />
-      </motion.button>
+      </motion.button> */}
 
       {/* 💬 Chat Popup */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {showChat && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -218,7 +218,12 @@ export default function SocialSidebar() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
+
+        {/* <call-us-selector
+          phonesystem-url="https://skylink.3cx.in"
+          party="LiveChat226943"
+        ></call-us-selector> */}
     </>
   );
 }

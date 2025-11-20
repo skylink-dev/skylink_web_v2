@@ -6,6 +6,8 @@ import PageLoaderWrapper from "@/components/PageLoaderWrapper";
 import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
 import SocialSidebar from "@/components/SocialSidebar";
+import ChatPopup from "@/components/ChatPopup";
+
 import Script from "next/script";
 import GlobalStructuredData from "@/components/GlobalStructuredData";
 // Import default metadata from our centralized metadata module
@@ -61,6 +63,16 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
         />
 
+          {/* 3CX Live Chat Script */}
+        <Script
+  src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
+  id="tcx-callus-js"
+  strategy="afterInteractive"
+   charSet="utf-8"
+  defer
+/>
+
+
         {/* ✅ Google Tag Manager (with fallback) */}
         <Script
           id="gtm-script"
@@ -94,13 +106,43 @@ export default function RootLayout({ children }) {
           ></iframe>
         </noscript>
 
+              {/* ⭐ 3CX LIVE CHAT CODE — REQUIRED ⭐ */}
+    {/* Automatically Loads 3CX Bubble */}
+        <call-us-selector
+          phonesystem-url="https://skylink.3cx.in"
+          party="LiveChat226943"
+        ></call-us-selector>
+<call-us
+          phonesystem-url="https://skylink.3cx.in"
+          class="fixed text-[16px] leading-[17px] z-[99999] right-20 bottom-20 bg-blue-200"
+          id="wp-live-chat-by-3CX"
+          minimized="false"
+          animation-style="slidefromside"
+          party="LiveChat226943"
+          minimized-style="bubbleright"
+          allow-call="true"
+          allow-video="false"
+          allow-soundnotifications="true"
+          enable-mute="true"
+          enable-onmobile="true"
+          offline-enabled="true"
+          enable="true"
+          ignore-queueownership="true"
+          authentication="both"
+          operator-name="Angel Juliet"
+          show-operator-actual-name="true"
+          aknowledge-received="true"
+        ></call-us>
+
         {/* Global Structured Data */}
         <GlobalStructuredData/>
 
-        <PageLoaderWrapper>
+      <PageLoaderWrapper>
           <Providers>
             <Header />
             <SocialSidebar />
+                 {/* CHAT POPUP ADDED BACK */}
+            {/* <ChatPopup /> */}
             <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
