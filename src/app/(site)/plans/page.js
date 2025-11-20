@@ -38,9 +38,9 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <section className="py-10 px-4 bg-gray-50 min-h-screen">
+    <section className="px-4 py-2 bg-gray-50 min-h-screen">
       <div className="container mx-auto text-center">
-        <h1 className="text-4xl font-bold m-4 text-red-600">
+        <h1 className="text-3xl md:text-4xl m-auto font-bold  mb-5 text-red-600">
           Broadband + TV + OTT
         </h1>
 

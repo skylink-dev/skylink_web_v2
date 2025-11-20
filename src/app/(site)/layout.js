@@ -29,8 +29,7 @@ export default function RootLayout({ children }) {
   // ✅ Get env values or fallback to “xxxx”
   const googleMapsKey =
     process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "xxxxtest";
-  const googleTagKey =
-    process.env.NEXT_PUBLIC_GOOGLE_TAG_KEY || "GTM-xxxxtest";
+  const googleTagKey = process.env.NEXT_PUBLIC_GOOGLE_TAG_KEY || "GTM-xxxxtest";
 
   return (
     <html lang="en" className="scroll-smooth">
@@ -92,13 +91,13 @@ export default function RootLayout({ children }) {
         </noscript>
 
         {/* Global Structured Data */}
-        <GlobalStructuredData/>
+        <GlobalStructuredData />
 
         <PageLoaderWrapper>
           <Providers>
             <Header />
             <SocialSidebar />
-            <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
+            <main className="min-h-screen mt-15 lg:mt-0">{children}</main>
             {/*<BeforeFooter />*/}
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />

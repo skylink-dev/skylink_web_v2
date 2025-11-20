@@ -120,7 +120,7 @@ export default function PlansTabs() {
                   onClick={() => setActiveTab(tab.key)}
                   className={`flex-1 w-60 py-2 px-3 rounded-md font-semibold border transition-all duration-300 ${
                     activeTab === tab.key
-                      ? "bg-red-600 text-white border-red-600 scale-105"
+                      ? "bg-red-600 text-white border-red-600 "
                       : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
@@ -135,7 +135,7 @@ export default function PlansTabs() {
             ))}
           </div>
         ) : (
-          <div className="flex justify-center items-center gap-4 sm:gap-6 w-full max-w-2xl mx-auto">
+          <div className="flex justify-center items-center gap-15 w-full max-w-2xl mx-auto">
             {tabs.map((tab, i) => (
               <>
                 <button
@@ -149,22 +149,32 @@ export default function PlansTabs() {
                 >
                   <div
                     className={`absolute -top-2  z-4  ${
-                      i === 0 ? "-left-20" : "-right-20"
+                      i === 0 ? "-right-15" : "-left-15"
                     }`}
                   >
-                    <Image
-                      src={"/newassets/plan/mascot.png"}
-                      width={100}
-                      height={100}
-                      alt=" "
-                    />
+                    {i == 0 ? (
+                      <Image
+                        src={"/newassets/plan/mascot.png"}
+                        width={100}
+                        height={100}
+                        alt=" "
+                      />
+                    ) : (
+                      <Image
+                        src={"/newassets/plan/mascot.png"}
+                        width={100}
+                        height={100}
+                        alt=" "
+                        className="scale-x-[-1]"
+                      />
+                    )}
                   </div>
                   <span
                     className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
                   ></span>
 
                   <span
-                    className={`relative z-10 transition-colors duration-300 ${
+                    className={`relative z-10 p-2 transition-colors duration-300 ${
                       activeTab === tab.key
                         ? "text-white"
                         : "group-hover:text-white group-hover:font-semibold"

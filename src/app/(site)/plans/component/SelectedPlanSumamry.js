@@ -117,7 +117,7 @@ export default function SelectedPlanSummary({
         <div
           className={`flex flex-col sm:flex-row gap-4 p-5 sm:p-6 border-b border-gray-100`}
         >
-          <div className="flex-1 grid grid-cols-3 gap-4">
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-3 items-stretch gap-4 auto-rows-fr">
             <Highlight label="Speed" value={speed.name} />
             <Highlight
               label="TV Channels"

@@ -6,6 +6,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import GlareHover from "@/styleReactBits/GlassHover";
 // Dynamic import of Hyperspeed component to avoid SSR issues
 const Hyperspeed = dynamic(() => import("@/components/Hyperspeed"), {
   ssr: false,
@@ -95,42 +96,54 @@ export default function FixedPlan({
   return (
     <>
       <div className=" relative w-full min-w-80 mt-4  py-6 px-4 flex flex-col gap-6 border border-gray-200 rounded-xl shadow-sm">
-        {/* {activeTab !== "Fixed Plan" && (
+        {activeTab !== "Fixed Plan" && (
           <motion.div
             initial={{ x: -120, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute z-[999] w-3/8 h-full left-0 top-0 flex flex-col items-center justify-center gap-4
-               cursor-pointer select-none
-               bg-gradient-to-b from-red-600 via-red-300 to-blue-600 
-               text-white text-xl font-semibold 
-               shadow-xl border-l border-white/10 px-4 "
+            className="absolute z-[999] w-3/8 h-full rounded-xl left-0 top-0 bottom-0
+           lg:text-2xl flex items-center flex-col justify-start gap-4
+           cursor-pointer select-none
+           bg-black/30
+           text-white text-xl font-semibold 
+           shadow-xl border-l border-white/10 "
           >
-            <Hyperspeed effectOptions={hyperspeedPreset} />
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="whitespace-nowrap lg:text-2xl text-center tracking-wide"
+            <GlareHover
+              width="100%"
+              height="100%"
+              background="rgba(0,0,0,0.5)" // keep same black background
+              borderRadius="12px"
+              glareColor="#ffffff"
+              glareOpacity={0.6}
+              glareAngle={-45}
+              glareSize={250}
+              className="w-full h-full py-40 px-10 m-0 flex content-start space-y-10"
             >
-              Choose Our <br /> Fixed Plans
-            </motion.span>
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="whitespace-nowrap lg:text-2xl text-center tracking-wide"
+              >
+                Choose Our <br /> Standard Plans
+              </motion.span>
 
-            <motion.div
-              className="rounded-full border-2 border-white flex items-center justify-center p-2"
-              animate={{
-                scale: [1, 1.2, 1],
-                borderWidth: ["2px", "4px", "2px"],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.2,
-                ease: "easeInOut",
-              }}
-            >
-              <AiOutlineArrowRight className="text-white text-3xl" />
-            </motion.div>
+              <motion.div
+                className="rounded-full border-2 border-white flex items-center justify-center p-2"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  borderWidth: ["2px", "4px", "2px"],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.2,
+                  ease: "easeInOut",
+                }}
+              >
+                <AiOutlineArrowRight className="text-white text-7xl" />
+              </motion.div>
+            </GlareHover>
           </motion.div>
-        )} */}
+        )}
         <div className="w-full  m-0">
           <h2
             className={`w-full h-full p-3 mt-0 text-center rounded-xs text-2xl text-gray-100 ${
@@ -146,7 +159,7 @@ export default function FixedPlan({
         {/* ⚡ Speed Selection */}
         <div
           className={`  ${
-            activeTab == "Fixed Plan" ? "bg-red-50  " : "bg-gray-100  "
+            activeTab == "Fixed Plan" ? "bg-gray-50  " : "bg-gray-100  "
           } border border-red-100 m-0 p-2 rounded-xl`}
         >
           <h3
@@ -195,8 +208,8 @@ export default function FixedPlan({
 
         <div
           className={` ${
-            activeTab == "Fixed Plan" ? "bg-red-50 " : "bg-gray-100 "
-          }  border border-red-100  m-0 p-2 rounded-xl`}
+            activeTab == "Fixed Plan" ? "bg-gray-100 " : "bg-gray-100 "
+          }  border border-red-100  m-0 p-4 rounded-xl`}
         >
           <h3
             className={`w-full text-start  ${
@@ -205,7 +218,7 @@ export default function FixedPlan({
           >
             Choose Your Billing Cycle
           </h3>
-          <div className="grid grid-cols-4 sm:grid-cols-4 gap-2 md:gap-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-10">
             {[...validityOptions].reverse().map((v) => {
               const labelMap = {
                 1: "Monthly",
