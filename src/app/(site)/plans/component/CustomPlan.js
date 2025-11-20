@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import SelectedPlanSummary from "./SelectedPlanSumamry";
+import GlareHover from "@/styleReactBits/GlassHover";
 
 const PlanSummary = ({
   activePlan,
@@ -534,17 +535,32 @@ export default function CustomPlan({
       },
     };
 
-    const getGridCols = (count) =>
-      `grid grid-cols-${Math.ceil(count / 2)} md:grid-cols-${Math.min(
-        count
-      )} gap-2`;
+    const getGridCols = (count, type) => {
+      let gridCols = "";
+      if (type == "speed") {
+        gridCols = `grid-cols-${Math.ceil(count / 2)} md:grid-cols-${Math.min(
+          count
+        )} gap-2`;
+      } else {
+        gridCols = `grid-cols-${Math.ceil(count / 2)} md:grid-cols-${Math.min(
+          count
+        )} gap-2`;
+      }
+      return `grid ${gridCols} gap-2  auto-rows-fr
+    gap-3 
+    w-full
+    items-stretch  `;
+    };
 
     return (
       <>
         {type == "speed" ? (
           <>
             <div
-              className={`${getGridCols(options.length)} w-full items-stretch`}
+              className={`${getGridCols(
+                options.length,
+                type
+              )} w-full items-stretch`}
             >
               {options.map((opt, idx) => {
                 return (
@@ -564,13 +580,16 @@ export default function CustomPlan({
                       <p> {opt?.name?.replace(/mbps/i, "").trim()}</p>
                       <p>Mbps</p>
 
-                      {selected?.name === opt.name && (
-                        <Check
-                          size={18}
-                          strokeWidth={4}
-                          className="absolute top-1 right-1 text-white rounded-full p-[1px]"
-                        />
-                      )}
+                      {selected?.name === opt.name &&
+                        (isMobile ? (
+                          <></>
+                        ) : (
+                          <Check
+                            size={18}
+                            strokeWidth={4}
+                            className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                          />
+                        ))}
                     </button>
                   </div>
                 );
@@ -581,7 +600,12 @@ export default function CustomPlan({
 
         {type == "validity" ? (
           <>
-            <div className={`${getGridCols(options.length)} w-full`}>
+            <div
+              className={`${getGridCols(
+                options.length,
+                type
+              )}  items-stretch w-full`}
+            >
               {[...options].reverse().map((opt) => {
                 let discount = 0;
                 //console.log(discountMap);
@@ -595,31 +619,41 @@ export default function CustomPlan({
                   <div key={"validity" + opt} className="relative w-full">
                     {/* 🏷️ Discount ribbon */}
                     {discount > 0 && (
-                      <div className="absolute -top-[1px] left-2 z-10 flex flex-col items-center">
-                        <span
-                          className={`absolute top-0 left-0 flex items-start justify-center font-semibold text-[13px] 
-                      ${selected === opt ? "text-red-600" : "text-white"}`}
-                          style={{
-                            backgroundImage: `url(${
-                              selected === opt
-                                ? "/newassets/plan/offer-badge-white.png"
-                                : "/newassets/plan/offer-badge.png"
-                            })`,
-                            backgroundPosition: "-4px -8px",
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "50px 50px",
-                            width: "43px",
-                            height: "50px",
-                            lineHeight: "7px",
-                            padding: "11px 4px 0",
-                            filter:
-                              activeTab !== "Custom Plan"
-                                ? "grayscale(100%)"
-                                : "none",
-                          }}
-                        >
-                          {discount}%
-                        </span>
+                      <div className="absolute -top-[1px] md:top-0 left-1 md:left-2  z-10 flex flex-col items-center overflow-hidden">
+                        {isMobile ? (
+                          <></>
+                        ) : (
+                          <span
+                            className={`pt-4
+    relative -top-3 left-0 flex items-start justify-center font-semibold
+    ${selected === opt ? "text-red-600" : "text-white"}
+
+    /* text responsiveness */
+    text-[7px] xs:text-[8px] sm:text-[10px] md:text-xs
+
+    /* responsive container */
+    w-8 h-10 xs:w-9 xs:h-11 sm:w-10 sm:h-12 md:w-11 md:h-14
+  `}
+                            style={{
+                              backgroundImage: `url(${
+                                selected === opt
+                                  ? "/newassets/plan/offer-badge-white.png"
+                                  : "/newassets/plan/offer-badge.png"
+                              })`,
+                              backgroundRepeat: "no-repeat",
+                              backgroundSize: "contain",
+                              backgroundPosition: "center",
+                              paddingTop: "13px",
+                              filter:
+                                activeTab !== "Custom Plan"
+                                  ? "grayscale(100%)"
+                                  : "none",
+                            }}
+                          >
+                            {discount}% <br />
+                            off
+                          </span>
+                        )}
                       </div>
                     )}
 
@@ -627,19 +661,22 @@ export default function CustomPlan({
                       onClick={() => {
                         setSelected(opt);
                       }}
-                      className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                      className={`relative h-full cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
                         selected === opt
                           ? colorMap[color].active
                           : colorMap[color].base
                       }`}
                     >
-                      {selected === opt && (
-                        <Check
-                          size={18}
-                          strokeWidth={4}
-                          className="absolute top-1 right-1 text-white rounded-full p-[1px]"
-                        />
-                      )}
+                      {selected === opt &&
+                        (isMobile ? (
+                          <></>
+                        ) : (
+                          <Check
+                            size={18}
+                            strokeWidth={4}
+                            className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                          />
+                        ))}
                       <div className="flex flex-col items-center">
                         <span>
                           {opt == 12
@@ -650,6 +687,18 @@ export default function CustomPlan({
                             ? "Quaterly"
                             : "Monthly"}
                         </span>
+
+                        {isMobile ? (
+                          <>
+                            {discount > 0 && (
+                              <span className="text-xs rounded-2xl p-1">
+                                ({discount}% off)
+                              </span>
+                            )}
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </div>
                     </button>
                   </div>
@@ -660,7 +709,7 @@ export default function CustomPlan({
         ) : null}
 
         {type == "channels" || type == "ott" ? (
-          <div className={`${getGridCols(options.length)} w-full`}>
+          <div className={`${getGridCols(options.length, type)} w-full   `}>
             {options.map((opt, idx) => {
               var isDisabled = false;
               var isextraCharge = false;
@@ -679,7 +728,10 @@ export default function CustomPlan({
               }
 
               return (
-                <div key={type + opt.name + idx} className="relative w-full">
+                <div
+                  key={type + opt.name + idx}
+                  className="relative w-full h-full"
+                >
                   <button
                     disabled={isDisabled}
                     onClick={() => {
@@ -694,23 +746,28 @@ export default function CustomPlan({
                         : colorMap[color].base
                     }`}
                   >
-                    {selected?.name === opt.name && (
-                      <Check
-                        size={18}
-                        strokeWidth={4}
-                        className="absolute top-1 right-1 text-white rounded-full p-[1px]"
-                      />
-                    )}
+                    {selected?.name === opt.name &&
+                      (isMobile ? (
+                        <></>
+                      ) : (
+                        <Check
+                          size={18}
+                          strokeWidth={4}
+                          className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                        />
+                      ))}
                     <div className="flex flex-col items-center">
                       <span>
                         {opt.name}
                         {` + ${type == "channels" ? "Channels" : "OTTs"} `}
                         <span
                           className={`text-[11px] font-medium ${
-                            isDisabled ? "hidden" : ""
+                            isMobile ? "" : isDisabled ? "hidden" : ""
                           } `}
                         >
-                          {isextraCharge ? `(Addon)` : "(Free)"}
+                          {isDisabled
+                            ? `(None)`
+                            : ` ${isextraCharge ? `(Addon)` : "(Free)"}`}
                         </span>
                       </span>
                     </div>
@@ -721,7 +778,7 @@ export default function CustomPlan({
           </div>
         ) : null}
         {type == "syper" ? (
-          <div className={`${getGridCols(options.length)} w-full`}>
+          <div className={`${getGridCols(options.length, type)} w-full`}>
             {options.map((opt) => {
               const isDisabled = disabledLogic ? disabledLogic(opt) : false;
               const discount = discountMap[opt] || 0;
@@ -772,19 +829,26 @@ export default function CustomPlan({
                         : colorMap[color].base
                     }`}
                   >
-                    {selected.name === opt.name && (
-                      <Check
-                        size={18}
-                        strokeWidth={4}
-                        className="absolute top-1 right-1 text-white rounded-full p-[1px]"
-                      />
-                    )}
+                    {selected?.name === opt.name &&
+                      (isMobile ? (
+                        <></>
+                      ) : (
+                        <Check
+                          size={18}
+                          strokeWidth={4}
+                          className="absolute top-1 right-1 text-white rounded-full p-[1px]"
+                        />
+                      ))}
                     <div className="flex flex-col items-center">
                       <span>
                         {opt}{" "}
-                        {extraCharge !== null && (
+                        {extraCharge !== null ? (
                           <span className={`text-[11px] font-medium `}>
                             {extraCharge > 0 ? `(Addon)` : "(Free)"}
+                          </span>
+                        ) : (
+                          <span className={`text-[11px] font-medium `}>
+                            None
                           </span>
                         )}
                       </span>
@@ -811,42 +875,54 @@ export default function CustomPlan({
       /> */}
 
       <div className="relative w-full bg-gray-50 rounded-2xl p-6 shadow-md">
-        {/* {activeTab !== "Custom Plan" && (
+        {activeTab !== "Custom Plan" && (
           <motion.div
-            initial={{ x: 180, opacity: 0 }}
+            initial={{ x: -120, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute z-[999] w-1/4 h-full rounded-xl right-0 top-0 bottom-0 lg:text-2xl 
-                 flex items-center flex-col justify-start gap-4
-                 cursor-pointer select-none
-                 bg-gradient-to-b from-blue-600 via-red-300 to-red-600 
-                 text-white text-xl font-semibold 
-                 shadow-xl border-l border-white/10 px-4"
+            className="absolute z-[999] w-3/8 h-full rounded-xl right-0 top-0 bottom-0
+           lg:text-2xl flex items-center flex-col justify-start gap-4
+           cursor-pointer select-none
+           bg-black/30
+           text-white text-xl font-semibold 
+           shadow-xl border-l border-white/10 "
           >
-            
-            <motion.span
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="whitespace-nowrap tracking-wide mt-60"
+            <GlareHover
+              width="100%"
+              height="100%"
+              background="rgba(0,0,0,0.5)" // keep same black background
+              borderRadius="12px"
+              glareColor="#ffffff"
+              glareOpacity={0.6}
+              glareAngle={-45}
+              glareSize={250}
+              className="w-full h-full py-40  px-10 m-0 flex content-start space-y-10"
             >
-              Choose Your <br /> Custom Plan
-            </motion.span>
-            <motion.div
-              className="rounded-full border-2  mt-10 border-white flex items-center justify-center p-2"
-              animate={{
-                scale: [1, 1.2, 1],
-                borderWidth: ["2px", "4px", "2px"],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.2,
-                ease: "easeInOut",
-              }}
-            >
-              <AiOutlineArrowLeft className="text-white text-3xl" />
-            </motion.div>
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="whitespace-nowrap lg:text-2xl text-center tracking-wide"
+              >
+                Customize Your <br /> Own Plan
+              </motion.span>
+
+              <motion.div
+                className="rounded-full border-2 border-white flex items-center justify-center p-2"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  borderWidth: ["2px", "4px", "2px"],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.2,
+                  ease: "easeInOut",
+                }}
+              >
+                <AiOutlineArrowLeft className="text-white text-7xl" />
+              </motion.div>
+            </GlareHover>
           </motion.div>
-        )} */}
+        )}
 
         <h2
           className={`text-center text-2xl font-semibold mb-6 ${

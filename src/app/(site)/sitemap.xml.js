@@ -2,7 +2,7 @@ import {MetadataRoute} from 'next';
 
 // Generate the sitemap
 export default function sitemap() {
-    const baseUrl = 'https://skylinkfiber.com';
+    const baseUrl = 'http://stage.skylink.net.in:3000';
 
     // Core static pages
     const staticPages = [

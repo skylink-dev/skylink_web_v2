@@ -3,20 +3,20 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://skylinkfiber.com
+Host: http://stage.skylink.net.in:3000/
 
 # Sitemaps
-Sitemap: https://skylinkfiber.com/sitemap.xml
-Sitemap: https://skylinkfiber.com/sitemap
-Sitemap: https://skylinkfiber.com/api/sitemap
-Sitemap: https://skylinkfiber.com/api/sitemap/services
-Sitemap: https://skylinkfiber.com/api/sitemap/plans
-Sitemap: https://skylinkfiber.com/api/sitemap/products
-Sitemap: https://skylinkfiber.com/api/sitemap/locations
-Sitemap: https://skylinkfiber.com/api/sitemap/support
-Sitemap: https://skylinkfiber.com/api/sitemap/company
-Sitemap: https://skylinkfiber.com/api/sitemap/blog
-Sitemap: https://skylinkfiber.com/api/sitemap/legal
+Sitemap: http://stage.skylink.net.in:3000/sitemap.xml
+Sitemap: http://stage.skylink.net.in:3000/sitemap
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/services
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/plans
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/products
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/locations
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/support
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/company
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/blog
+Sitemap: http://stage.skylink.net.in:3000/api/sitemap/legal
 
 # Disallow
 Disallow: /api/

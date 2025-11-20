@@ -14,8 +14,8 @@ export const getOrganizationStructuredData = () => {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Skylink Fiber",
-        "url": "https://skylinkfiber.com",
-        "logo": "https://skylinkfiber.com/assets/skylink logo.png",
+        "url": "http://stage.skylink.net.in:3000",
+        "logo": "http://stage.skylink.net.in:3000/assets/skylink logo.png",
         "sameAs": [
             "https://www.facebook.com/skylinkfiber",
             "https://twitter.com/skylinkfiber",
@@ -50,7 +50,7 @@ export const getServiceStructuredData = (options = {}) => {
         provider = "Skylink Fiber",
         serviceType = "BroadbandService",
         areaServed = "Coimbatore, Erode, Tiruppur",
-        url = "https://skylinkfiber.com/internet"
+        url = "http://172.21.21.150:3000/internet"
     } = options;
 
     return {
@@ -62,7 +62,7 @@ export const getServiceStructuredData = (options = {}) => {
         "provider": {
             "@type": "Organization",
             "name": provider,
-            "url": "https://skylinkfiber.com"
+            "url": "http://172.21.21.150:3000/"
         },
         "areaServed": {
             "@type": "GeoCircle",
@@ -81,13 +81,13 @@ export const getProductStructuredData = (options = {}) => {
     const {
         name = "Internet Plan",
         description = "High-speed internet plan with unlimited data",
-        image = "https://skylinkfiber.com/assets/1gbps.jpg",
+        image = "http://172.21.21.150:3000/assets/1gbps.jpg",
         price = "999",
         priceCurrency = "INR",
         availability = "https://schema.org/InStock",
         sku = "INT-FIBER-1GBPS",
         brand = "Skylink Fiber",
-        url = "https://skylinkfiber.com/plans"
+        url = "http://172.21.21.150:3000/plans"
     } = options;
 
     return {
@@ -121,7 +121,7 @@ export const getSpeedTestStructuredData = () => {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Skylink Fiber Speed Test",
-        "url": "https://skylinkfiber.com/speedtest",
+        "url": "http://172.21.21.150:3000/speedtest",
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "All",
         "offers": {
@@ -133,9 +133,9 @@ export const getSpeedTestStructuredData = () => {
         "publisher": {
             "@type": "Organization",
             "name": "Skylink Fiber",
-            "url": "https://skylinkfiber.com"
+            "url": "http://172.21.21.150:3000/"
         },
-        "screenshot": "https://skylinkfiber.com/assets/speedtest-screenshot.jpg",
+        "screenshot": "http://172.21.21.150:3000/assets/speedtest-screenshot.jpg",
         "softwareVersion": "1.0"
     };
 };
@@ -169,8 +169,8 @@ export const getBlogStructuredData = (options = {}) => {
     const {
         title = "Blog Title",
         description = "Blog description",
-        url = "https://skylinkfiber.com/blogs/sample-blog",
-        imageUrl = "https://skylinkfiber.com/assets/blogs-01.png",
+        url = "http://172.21.21.150:3000/blogs/sample-blog",
+        imageUrl = "http://172.21.21.150:3000/assets/blogs-01.png",
         datePublished = new Date().toISOString(),
         dateModified = new Date().toISOString(),
         authorName = "Skylink Team"
@@ -194,7 +194,7 @@ export const getBlogStructuredData = (options = {}) => {
             "name": "Skylink Fiber",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://skylinkfiber.com/assets/skylink logo.png"
+                "url": "http://172.21.21.150:3000/assets/skylink logo.png"
             }
         },
         "mainEntityOfPage": {

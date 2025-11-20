@@ -149,22 +149,26 @@ export default function ContactPopup({
       });
       setIsAlertOpen(true);
     } catch (err) {
-      let message = "Something went wrong. Please try again.";
+      let title = "Something went wrong.";
+      let message = "Please try again.";
 
       // Server is DOWN or no network
       // When server is DOWN
       if (err.code === "ERR_NETWORK" || !err.response) {
-        message = "Server is down. Please try again later.";
+        title = "Server is down.";
+        message = "Please try again later.";
       }
       // Optional: Handle specific status codes
       else if (err.response.status === 500) {
-        message = "Server error. Please try again after some time.";
+        title = "Server error.";
+        message = "Please try again after some time.";
       } else if (err.response.status === 400) {
-        message = "Invalid input. Please check your details.";
+        title = "Invalid input.";
+        message = "Please check your details.";
       }
 
       setAlertInfo({
-        title: "Error!",
+        title,
         message,
         type: "error",
       });

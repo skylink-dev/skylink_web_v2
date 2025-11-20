@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/layout/Header";
 import Footer from "@/layout/Footer";
-import BeforeFooter from "@/components/BeforeFooter";
 import PageLoaderWrapper from "@/components/PageLoaderWrapper";
 import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
@@ -11,6 +10,8 @@ import ChatPopup from "@/components/ChatPopup";
 
 import Script from "next/script";
 import GlobalStructuredData from "@/components/GlobalStructuredData";
+// Import default metadata from our centralized metadata module
+import { defaultMetadata } from "@/lib/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,91 +23,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-    // Basic metadata
-    metadataBase: new URL('https://skylinkfiber.com'),
-    title: {
-        default: "Skylink - High-Speed Internet & TV Services",
-        template: "%s | Skylink"
-    },
-    description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink. Discover plans for your home and business.",
-    applicationName: "Skylink Fiber",
-    authors: [{name: "Skylink"}],
-    generator: "Next.js",
-    keywords: [
-        'high speed internet',
-        'fiber internet',
-        'fiber broadband',
-        'internet provider',
-        'tv subscription',
-        'entertainment packages',
-        'OTT services',
-        'Skylink Fiber',
-        'broadband',
-        'internet plans'
-    ],
-    referrer: 'origin-when-cross-origin',
-    creator: "Skylink",
-    publisher: "Skylink",
-    formatDetection: {
-        email: true,
-        address: true,
-        telephone: true,
-    },
-
-    // Open Graph metadata
-    openGraph: {
-        type: "website",
-        locale: "en_IN",
-        url: "https://skylinkfiber.com",
-        title: "Skylink - High-Speed Internet & TV Services",
-        description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
-        siteName: "Skylink",
-        images: [
-            {
-                url: "/opengraph-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Skylink - High-Speed Internet & TV Services",
-            },
-        ],
-    },
-
-    // Twitter metadata
-    twitter: {
-        card: "summary_large_image",
-        title: "Skylink - High-Speed Internet & TV Services",
-        description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
-        images: ["/opengraph-image.jpg"],
-        creator: "@skylinkfiber",
-        site: "@skylinkfiber",
-    },
-
-    // Additional metadata
-    category: "technology",
-    robots: {
-        index: true,
-        follow: true,
-        nocache: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            noimageindex: false,
-        },
-    },
-};
+/**
+ * Export the default metadata for the entire site
+ * This metadata will be used as the base for all pages
+ * Individual pages can override specific values through their own metadata.js files
+ */
+export const metadata = defaultMetadata;
 
 export default function RootLayout({ children }) {
-  // ✅ Get env values or fallback to “xxxx”
   const googleMapsKey =
     process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "xxxxtest";
-  const googleTagKey =
-    process.env.NEXT_PUBLIC_GOOGLE_TAG_KEY || "GTM-xxxxtest";
+  const googleTagKey = process.env.NEXT_PUBLIC_GOOGLE_TAG_KEY || "GTM-xxxxtest";
 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* ✅ Font preconnects */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -129,15 +60,14 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
         />
 
-          {/* 3CX Live Chat Script */}
+        {/* 3CX Live Chat Script */}
         <Script
-  src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
-  id="tcx-callus-js"
-  strategy="afterInteractive"
-   charSet="utf-8"
-  defer
-/>
-
+          src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
+          id="tcx-callus-js"
+          strategy="afterInteractive"
+          charSet="utf-8"
+          defer
+        />
 
         {/* ✅ Google Tag Manager (with fallback) */}
         <Script
@@ -172,13 +102,13 @@ export default function RootLayout({ children }) {
           ></iframe>
         </noscript>
 
-              {/* ⭐ 3CX LIVE CHAT CODE — REQUIRED ⭐ */}
-    {/* Automatically Loads 3CX Bubble */}
+        {/* ⭐ 3CX LIVE CHAT CODE — REQUIRED ⭐ */}
+        {/* Automatically Loads 3CX Bubble */}
         <call-us-selector
           phonesystem-url="https://skylink.3cx.in"
           party="LiveChat226943"
         ></call-us-selector>
-<call-us
+        <call-us
           phonesystem-url="https://skylink.3cx.in"
           class="fixed text-[16px] leading-[17px] z-[99999] right-20 bottom-20 bg-blue-200"
           id="wp-live-chat-by-3CX"
@@ -201,15 +131,14 @@ export default function RootLayout({ children }) {
         ></call-us>
 
         {/* Global Structured Data */}
-        <GlobalStructuredData/>
+        <GlobalStructuredData />
 
-      <PageLoaderWrapper>
+        <PageLoaderWrapper>
           <Providers>
             <Header />
             <SocialSidebar />
-                 {/* CHAT POPUP ADDED BACK */}
-            {/* <ChatPopup /> */}
-            <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
+            <main className="min-h-screen mt-33 lg:mt-15">{children}</main>
+            {/*<BeforeFooter />*/}
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>

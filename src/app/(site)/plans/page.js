@@ -1,7 +1,8 @@
 import PlanTabs from "./component/planTabs";
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://skylink.net.in";
 
-/* export const metadata = {
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "http://stage.skylink.net.in:3000";
+export const metadata = {
   title: "Plans & Pricing | Skylink",
   description:
     "Explore Skylink's flexible plans with transparent pricing, GST included. Choose a plan that fits your needs perfectly.",
@@ -14,7 +15,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://skylink.net.in";
     "Skylink monthly plan",
     "Skylink yearly plan",
     "best subscription plans",
-    "customize plans",
+    "customize plan",
     "internet plans",
   ],
   openGraph: {
@@ -34,13 +35,13 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://skylink.net.in";
   alternates: {
     canonical: `${BASE_URL}/plans`,
   },
-}; */
+};
 
 export default function Page() {
   return (
-    <section className="py-10 px-4 bg-gray-50 min-h-screen">
+    <section className="px-4 py-2 bg-gray-50 min-h-screen">
       <div className="container mx-auto text-center">
-        <h1 className="text-4xl font-bold m-4 text-red-600">
+        <h1 className="text-3xl md:text-4xl m-auto font-bold  mb-5 text-red-600">
           Broadband + TV + OTT
         </h1>
 

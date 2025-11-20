@@ -6,6 +6,7 @@ import CustomPlan from "./CustomPlan";
 import ContactPopup from "./ContactPopup";
 import AlertModal from "@/components/alert/AlertModal";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 export default function PlansTabs() {
   const plans = useSelector((state) => state.newPlans);
@@ -50,6 +51,11 @@ export default function PlansTabs() {
       key: "Fixed Plan",
     },
   ];
+  /**
+   *
+   * Left and righ will adjust the component of lecct and right descrease will move closer the middle
+   *
+   */
   const variants = {
     left: { x: "-30%", scale: 0.9, opacity: 0.8 },
     centerright: { x: "40%", scale: 1, opacity: 1 },
@@ -114,13 +120,13 @@ export default function PlansTabs() {
                   onClick={() => setActiveTab(tab.key)}
                   className={`flex-1 w-60 py-2 px-3 rounded-md font-semibold border transition-all duration-300 ${
                     activeTab === tab.key
-                      ? "bg-red-600 text-white border-red-600 scale-105"
+                      ? "bg-red-600 text-white border-red-600 "
                       : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
                   {tab.key === "Fixed Plan"
                     ? "Explore Our Standard Plans"
-                    : "Customize Your Own Plans"}
+                    : "Customize Your Own Plan"}
                 </button>
                 {i === 0 && (
                   <span className="text-gray-500 font-medium text-sm">or</span>
@@ -129,24 +135,46 @@ export default function PlansTabs() {
             ))}
           </div>
         ) : (
-          <div className="flex justify-center items-center gap-4 sm:gap-6 w-full max-w-2xl mx-auto">
+          <div className="flex justify-center items-center gap-15 w-full max-w-2xl mx-auto">
             {tabs.map((tab, i) => (
               <>
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key)}
-                  className={`w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative overflow-hidden transition-all duration-300 ${
+                  className={`  w-60 h-15 text-base sm:text-md font-semibold rounded-full shadow-md text-center relative transition-all duration-300 ${
                     activeTab === tab.key
                       ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md"
                       : "bg-white text-gray-700 border border-gray-300"
                   } group`}
                 >
+                  <div
+                    className={`absolute -top-2  z-4  ${
+                      i === 0 ? "-right-12" : "-left-12"
+                    }`}
+                  >
+                    {i == 0 ? (
+                      <Image
+                        src={"/newassets/plan/mascot.png"}
+                        width={80}
+                        height={80}
+                        alt=" "
+                      />
+                    ) : (
+                      <Image
+                        src={"/newassets/plan/mascot.png"}
+                        width={80}
+                        height={80}
+                        alt=" "
+                        className="scale-x-[-1]"
+                      />
+                    )}
+                  </div>
                   <span
                     className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
                   ></span>
 
                   <span
-                    className={`relative z-10 transition-colors duration-300 ${
+                    className={`relative z-10 p-2 transition-colors duration-300 ${
                       activeTab === tab.key
                         ? "text-white"
                         : "group-hover:text-white group-hover:font-semibold"
@@ -154,7 +182,7 @@ export default function PlansTabs() {
                   >
                     {tab.key === "Fixed Plan"
                       ? "Explore Our Standard Plans"
-                      : "Customize Your Own Plans"}
+                      : "Customize Your Own Plan"}
                   </span>
                 </button>
                 {i === 0 && (

@@ -3,24 +3,24 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import {
-  bannerContent,
-  iconMenuData,
-  flexCardData,
-  rightContentFlexData,
-  dynamicSlidesData,
-  contentBaseBanner2,
-  flexCardDataNorth,
-  rightContentFlexDataNorth,
+    bannerContent,
+    iconMenuData,
+    flexCardData,
+    rightContentFlexData,
+    dynamicSlidesData,
+    contentBaseBanner2,
+    flexCardDataNorth,
+    rightContentFlexDataNorth,
 } from "../../../data/ott";
 
 // Lazy load components
 const Banner = dynamic(() => import("@/components/Banner"));
 const IconMenu = dynamic(() => import("@/components/IconMenu"));
-const FlexCard = dynamic(() => import("@/components/FlexCard"));
+const FlexCard = dynamic(() => import("@/components/FlexCard"), {ssr: false});
 const RectangleBanner = dynamic(() => import("@/components/RectangleBanner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
 const ContentBaseBanner = dynamic(() =>
-  import("@/components/ContentBaseBanner")
+    import("@/components/ContentBaseBanner")
 );
 
 export default function Page() {

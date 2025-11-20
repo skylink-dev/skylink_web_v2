@@ -1382,7 +1382,7 @@ export default async function BlogPost({ params }) {
     const blogStructuredData = post ? getBlogStructuredData({
         title: post.title,
         description: post.description,
-        url: `https://skylinkfiber.com/blogs/${slug}`,
+        url: `http://stage.skylink.net.in:3000/blogs/${slug}`,
         imageUrl: post.image,
         datePublished: new Date().toISOString(),
         dateModified: new Date().toISOString(),
