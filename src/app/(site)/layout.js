@@ -129,13 +129,14 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
         />
 
-          {/* load 3CX Live Chat script client-side only */}
-      <Script
-        src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
-        id="tcx-callus-js"
-        strategy="afterInteractive"
-        defer
-      />
+          {/* 3CX Live Chat Script */}
+        <Script
+          src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
+          id="tcx-callus-js"
+          strategy="afterInteractive"
+          defer
+        />
+
 
         {/* ✅ Google Tag Manager (with fallback) */}
         <Script
@@ -170,16 +171,21 @@ export default function RootLayout({ children }) {
           ></iframe>
         </noscript>
 
+              {/* ⭐ 3CX LIVE CHAT CODE — REQUIRED ⭐ */}
+        <call-us-selector
+          phonesystem-url="https://skylink.3cx.in"
+          party="LiveChat226943"
+        ></call-us-selector>
+
         {/* Global Structured Data */}
         <GlobalStructuredData/>
 
-        <PageLoaderWrapper>
+      <PageLoaderWrapper>
           <Providers>
             <Header />
             <SocialSidebar />
-             <ChatPopup />
+            {/* <ChatPopup /> */}
             <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
-            {/*<BeforeFooter />*/}
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>
