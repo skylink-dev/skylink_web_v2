@@ -1,4 +1,6 @@
-import SpeedTest from "@/app/(site)/speedtest/SpeedTest";
+
+
+import SpeedTestPage from "@/app/(site)/speedtest/SpeedTest";
 
 // Speed Test page metadata
 export const metadata = {
@@ -37,7 +39,7 @@ export const metadata = {
 export default function Page(){
     return(
         <>
-            <SpeedTest/>
+            <SpeedTestPage/>
         </>
     )
 }

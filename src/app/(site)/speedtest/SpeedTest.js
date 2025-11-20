@@ -1,4 +1,6 @@
-import SpeedTest from '@/components/SpeedTest'
+"use client";
+
+import SpeedTestComponent from '@/components/SpeedTest'
 import React from 'react'
 import {getSpeedTestStructuredData, getOrganizationStructuredData} from '@/lib/structuredData'
 import StructuredData from '@/components/StructuredData'
@@ -9,7 +11,7 @@ import StructuredData from '@/components/StructuredData'
     description: 'Check your internet connection speed with Skylink\'s free speed test tool. Measure download and upload speeds accurately in real-time.',
 }; */
 
-export default function SpeedTest() {
+export default function SpeedTestPage() {
     // Get structured data
     const speedTestData = getSpeedTestStructuredData();
     const organizationData = getOrganizationStructuredData();
@@ -21,7 +23,7 @@ export default function SpeedTest() {
             <StructuredData data={organizationData}/>
 
             {/* Render the SpeedTest component */}
-            <SpeedTest/>
+            <SpeedTestComponent/>
         </>
     )
 }
