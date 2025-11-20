@@ -237,7 +237,17 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
   if (!product) return { title: "Product Not Found" };
-  return { title: product.title };
+
+    // Return metadata that will use the template from root layout.js
+    return {
+        title: product.title,
+        description: `Explore ${product.title} at Skylink. Find detailed information, pricing, and specifications.`,
+        openGraph: {
+            title: product.title,
+            description: `Explore ${product.title} at Skylink. Find detailed information, pricing, and specifications.`,
+            images: [product.image],
+        }
+    };
 }
 
 export default async function ProductPage({ params }) {

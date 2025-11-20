@@ -1,0 +1,47 @@
+// Example of dynamic metadata for blog posts
+
+// This function fetches blog post data
+async function getBlogPost(slug) {
+  // In a real app, fetch from your API or database
+  // For example: return await fetch(`/api/blogs/${slug}`).then(res => res.json())
+  
+  // Example data
+  return {
+    title: `Blog Post about ${slug}`,
+    description: `This is a detailed article about ${slug}`,
+    content: "Full article content here...",
+    author: "John Doe",
+    publishDate: "2023-11-15T09:00:00Z",
+    tags: ["fiber", "internet", "technology"]
+  };
+}
+
+// Generate metadata dynamically based on the blog post data
+export async function generateMetadata({ params }) {
+  const post = await getBlogPost(params.slug);
+  
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      authors: [post.author],
+      publishedTime: post.publishDate,
+    }
+  };
+}
+
+// The actual page component
+export default async function BlogPost({ params }) {
+  const post = await getBlogPost(params.slug);
+  
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <p>By {post.author} • {new Date(post.publishDate).toLocaleDateString()}</p>
+      <div>{post.content}</div>
+    </article>
+  );
+}

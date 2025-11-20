@@ -4,7 +4,7 @@
  *
  * Usage examples:
  * 1. Generate a complete sitemap:
- *    const baseUrl = 'https://skylinkfiber.com';
+ *    const baseUrl = 'http://stage.skylink.net.in:3000';
  *    const xml = generateFullSitemap(baseUrl, routes);
  *
  * 2. Generate a sitemap for a specific category:

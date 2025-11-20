@@ -1,4 +1,5 @@
 "use client";
+
 import dynamic from "next/dynamic";
 import {
   cardData,
@@ -28,7 +29,7 @@ import SpeedTestBanner from "@/components/SpeedTest";
 import NewIconMenu from "@/components/home/NewIconMenu";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
-const FlexCard = dynamic(() => import("@/components/FlexCard"));
+const FlexCard = dynamic(() => import("@/components/FlexCard"), {ssr: false});
 const HalfColumnCard = dynamic(() => import("@/components/HalfColumnCard"));
 const HeroSlider = dynamic(() => import("@/components/HeroSlider"));
 const IconCard = dynamic(() => import("@/components/IconCard"));

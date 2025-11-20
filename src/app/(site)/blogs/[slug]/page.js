@@ -1360,7 +1360,17 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return { title: "Post Not Found" };
-  return { title: post.title };
+
+    // Return metadata that will use the template from root layout.js
+    return {
+        title: post.title,
+        description: post.content.substring(0, 160) + "...",
+        openGraph: {
+            title: post.title,
+            description: post.content.substring(0, 160) + "...",
+            images: [post.image],
+        }
+    };
 }
 
 export default async function BlogPost({ params }) {
@@ -1372,7 +1382,7 @@ export default async function BlogPost({ params }) {
     const blogStructuredData = post ? getBlogStructuredData({
         title: post.title,
         description: post.description,
-        url: `https://skylinkfiber.com/blogs/${slug}`,
+        url: `http://stage.skylink.net.in:3000/blogs/${slug}`,
         imageUrl: post.image,
         datePublished: new Date().toISOString(),
         dateModified: new Date().toISOString(),
