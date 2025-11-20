@@ -7,6 +7,8 @@ import PageLoaderWrapper from "@/components/PageLoaderWrapper";
 import { Providers } from "./Providers";
 import AutoContactLauncher from "@/components/contact/AutoContactLauncher";
 import SocialSidebar from "@/components/SocialSidebar";
+import ChatPopup from "@/components/ChatPopup";
+
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -57,6 +59,14 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
         />
 
+          {/* load 3CX Live Chat script client-side only */}
+      <Script
+        src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
+        id="tcx-callus-js"
+        strategy="afterInteractive"
+        defer
+      />
+
         {/* ✅ Google Tag Manager (with fallback) */}
         <Script
           id="gtm-script"
@@ -94,6 +104,7 @@ export default function RootLayout({ children }) {
           <Providers>
             <Header />
             <SocialSidebar />
+             <ChatPopup />
             <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
             <BeforeFooter />
             <Footer />
