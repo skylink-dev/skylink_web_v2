@@ -131,11 +131,12 @@ export default function RootLayout({ children }) {
 
           {/* 3CX Live Chat Script */}
         <Script
-          src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
-          id="tcx-callus-js"
-          strategy="afterInteractive"
-          defer
-        />
+  src="https://downloads-global.3cx.com/downloads/livechatandtalk/v1/callus.js"
+  id="tcx-callus-js"
+  strategy="afterInteractive"
+   charSet="utf-8"
+  defer
+/>
 
 
         {/* ✅ Google Tag Manager (with fallback) */}
@@ -172,10 +173,32 @@ export default function RootLayout({ children }) {
         </noscript>
 
               {/* ⭐ 3CX LIVE CHAT CODE — REQUIRED ⭐ */}
+    {/* Automatically Loads 3CX Bubble */}
         <call-us-selector
           phonesystem-url="https://skylink.3cx.in"
           party="LiveChat226943"
         ></call-us-selector>
+<call-us
+          phonesystem-url="https://skylink.3cx.in"
+          class="fixed text-[16px] leading-[17px] z-[99999] right-20 bottom-20 bg-blue-200"
+          id="wp-live-chat-by-3CX"
+          minimized="false"
+          animation-style="slidefromside"
+          party="LiveChat226943"
+          minimized-style="bubbleright"
+          allow-call="true"
+          allow-video="false"
+          allow-soundnotifications="true"
+          enable-mute="true"
+          enable-onmobile="true"
+          offline-enabled="true"
+          enable="true"
+          ignore-queueownership="true"
+          authentication="both"
+          operator-name="Angel Juliet"
+          show-operator-actual-name="true"
+          aknowledge-received="true"
+        ></call-us>
 
         {/* Global Structured Data */}
         <GlobalStructuredData/>
@@ -184,6 +207,7 @@ export default function RootLayout({ children }) {
           <Providers>
             <Header />
             <SocialSidebar />
+                 {/* CHAT POPUP ADDED BACK */}
             {/* <ChatPopup /> */}
             <main className="min-h-screen mt-33 lg:mt-18">{children}</main>
             <Footer />
