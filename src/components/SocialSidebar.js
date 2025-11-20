@@ -188,7 +188,7 @@ export default function SocialSidebar() {
       </motion.button>
 
       {/* 💬 Chat Popup */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {showChat && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -218,7 +218,7 @@ export default function SocialSidebar() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </>
   );
 }
