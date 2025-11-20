@@ -12,44 +12,45 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
     );
   }
 
-  const mobileItems = content.slice(0, 4);
+    // Show all icons on mobile in a scrollable container
+    const mobileItems = content;
 
   return (
     <div className="w-full py-2">
-      <div className="container mx-auto px-3 sm:px-6">
+      <div className="container mx-auto px-2 sm:px-6">
         {/* 🌟 Mobile Layout */}
-        <ul className="flex sm:hidden justify-between gap-3">
-          {mobileItems.map((item) => (
-            <li
-              key={item.id}
-              onClick={() => onSelect?.(item.id)}
-              className={`w-1/4 p-3 flex flex-col items-center
+        <ul className="flex sm:hidden justify-start overflow-x-auto gap-2 pb-2">
+            {mobileItems.map((item) => (
+                <li
+                    key={item.id}
+                    onClick={() => onSelect?.(item.id)}
+                    className={`min-w-[22%] xs:min-w-[80px] p-2 flex flex-col items-center
                 transition-all duration-300 cursor-pointer hover:-translate-y-1
                 ${activeId === item.id ? "text-red-600" : "text-gray-700"}
               `}
-            >
-              <Link
-                href={item.linkdata || "#"}
-                className="flex flex-col items-center"
-              >
-                {/* ⭐ ONLY IMAGE HAS DEPTH BACKGROUND */}
-                <div
-                  className="w-18 h-18 p-2 flex items-center justify-center 
+                >
+                    <Link
+                        href={item.linkdata || "#"}
+                        className="flex flex-col items-center w-full"
+                    >
+                        {/* ⭐ ONLY IMAGE HAS DEPTH BACKGROUND */}
+                        <div
+                            className="w-14 h-14 xs:w-16 xs:h-16 p-2 flex items-center justify-center
                   bg-white/60 
                   rounded-2xl border border-gray-200
                 "
-                >
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    width={52}
-                    height={52}
-                    className="object-contain"
-                    unoptimized
-                  />
-                </div>
+                        >
+                            <Image
+                                src={item.icon}
+                                alt={item.title}
+                                width={46}
+                                height={46}
+                                className="object-contain"
+                                unoptimized
+                            />
+                        </div>
 
-                <span className="text-[11px] mt-2 font-medium text-center">
+                        <span className="text-[10px] xs:text-[11px] mt-1 xs:mt-2 font-medium text-center w-full truncate">
                   {item.title}
                 </span>
               </Link>

@@ -162,7 +162,7 @@ export default function Home() {
         slidesData={dynamicSlidesData}
       />
       <RightImageLeftContent
-        title="The Tripleplay difference"
+        title="Everything Works Better Together"
         Content={dynamicImageContent}
       />
       <SpeedTestBanner />
