@@ -113,7 +113,7 @@ export default function PlansTabs() {
           </div>
         </div> */}
         {isMobile || isMediumSize ? (
-          <div className="flex items-center justify-center gap-1 w-full max-w-md">
+          <div className="flex items-center justify-center gap-4 w-full max-w-md">
             {tabs.map((tab, i) => (
               <React.Fragment key={tab.key}>
                 <button
@@ -135,7 +135,7 @@ export default function PlansTabs() {
             ))}
           </div>
         ) : (
-          <div className="flex justify-center items-center gap-15 w-full max-w-2xl mx-auto">
+          <div className="flex justify-center items-center gap-5 w-full max-w-2xl mx-auto">
             {tabs.map((tab, i) => (
               <>
                 <button
@@ -147,7 +147,7 @@ export default function PlansTabs() {
                       : "bg-white text-gray-700 border border-gray-300"
                   } group`}
                 >
-                  <div
+                  {/* <div
                     className={`absolute -top-2  z-4  ${
                       i === 0 ? "-right-12" : "-left-12"
                     }`}
@@ -168,7 +168,7 @@ export default function PlansTabs() {
                         className="scale-x-[-1]"
                       />
                     )}
-                  </div>
+                  </div> */}
                   <span
                     className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-700 transform scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100 rounded-full`}
                   ></span>

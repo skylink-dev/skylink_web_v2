@@ -78,17 +78,10 @@ export default function About() {
     return (
         <>
             <div style={{ marginTop: "10px" }}>
-                <CEOBanner></CEOBanner>
+                <CEOBanner/>
             </div>
-            <div className="container" id="main">
-                <div style={{ marginTop: "-30px" }}>
-                    {/*<SimpleTestimonial></SimpleTestimonial>*/}
-                </div>
-                <div style={{ marginTop: "35px" }}>
-                    <HeroTitleBanner></HeroTitleBanner>
-                </div>
-                <Counter></Counter>
-            </div>
+            <HeroTitleBanner/>
+            <Counter/>
         </>
     );
 }

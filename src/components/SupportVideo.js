@@ -4,17 +4,10 @@ import { motion } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, Maximize2 } from "lucide-react";
 
 export default function SupportVideos() {
-    // For debugging video issues
+    // Video info helper (logging removed)
     const logVideoInfo = (video) => {
+        // Function kept but logs removed
         if (!video) return;
-        console.log('Video info:', {
-            readyState: video.readyState,
-            networkState: video.networkState,
-            error: video.error,
-            src: video.src,
-            currentSrc: video.currentSrc,
-            paused: video.paused,
-        });
     };
   const [activeCategory, setActiveCategory] = useState("Internet");
   const [activeSub, setActiveSub] = useState("Activate IPTV");
@@ -55,10 +48,10 @@ export default function SupportVideos() {
             try {
                 const response = await fetch(url, {method: 'HEAD'});
                 if (!response.ok) {
-                    console.error(`Video file not found: ${url}`);
+                    // Video file not found
                 }
             } catch (error) {
-                console.error(`Error checking video: ${url}`, error);
+                // Error checking video
             }
         };
 
@@ -153,8 +146,7 @@ export default function SupportVideos() {
 
       // Handle error while keeping video visible
       const handleError = (e) => {
-          console.error('Video error:', e);
-          // Don't hide the video even on error
+          // Error handling without logging
       };
 
       v.addEventListener("timeupdate", updateProgress);
@@ -176,10 +168,10 @@ export default function SupportVideos() {
             v.play()
                 .then(() => {
                     setIsPlaying(true);
-                    console.log('Video playing successfully');
+                    // Video playing successfully
                 })
                 .catch(err => {
-                    console.error('Error playing video:', err);
+                    // Error playing video
                     // Still show the video even if there's an error playing
                     setIsLoaded(true);
                 });

@@ -107,31 +107,22 @@ export default function Home() {
   // ];
   const [activeId, setActiveId] = useState(1);
   const dummy = () => {
-    console.log("test");
+      // Empty function for placeholder purposes
   };
 
   // ← Define this function
   const handleFormSubmit = (data) => {
-    console.log("Form submitted:", data);
+      // Process form submission
     // Here you can call your API or show a message
   };
   return (
     <>
       {/* <SkylinkQuickPayPage /> */}
 
-      <NewIconMenu content={newIconiconList} />
-
-      {/* <IconMenu onSelect={dummy} content={homeIconiconList} /> */}
-      {/* <ThreeDIconMenu
-        content={testiconMenuData}
-        activeId={activeId}
-        onSelect={(id) => setActiveId(id)}
-      /> */}
-
-      {/* <Banner content={bannerContent} /> */}
-      {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
-
-      <ThreeBannerModern />
+      <div className="bg-white">
+          <NewIconMenu content={newIconiconList}/>
+          <ThreeBannerModern/>
+      </div>
       <AvailabilityComponents />
       <FlexCard
         title="For Every Age. Every Stage. Every Connection."

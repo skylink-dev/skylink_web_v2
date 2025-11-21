@@ -17,13 +17,13 @@ const DynamicCarousel = dynamic(() => import('@/components/DynamicCarousel'));
 
 export default function Page() {
     const dummy = () => {
-    console.log('test');
+        // Initialize page
    }
   return (
     <>
-      <IconDetails title="Accessories by category?" iconslist={IconContent} />
+
       {/*<Slider title="Accessories you love. Deals you want." slides={slidesData} color="bg-att-blue-000" />*/}
-      <ProductCard title="Designed by skyplay" products={productsData} />
+      <ProductCard title="Accessories by category?" products={productsData} />
       <DynamicCarousel slidesData={dynamicSlidesData} color="bg-white" />
     </>
   );

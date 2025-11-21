@@ -124,8 +124,8 @@ export default function ThreeBannerModern() {
   // Don't render until mounted to avoid hydration issues
   if (!isMounted) {
     return (
-      <div className="w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 my-2 xs:my-3 sm:my-6 md:my-8">
-        <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] bg-gray-200 animate-pulse rounded-none sm:rounded-2xl"></div>
+      <div className="w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 mt-0">
+        <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] bg-gray-200 animate-pulse rounded-none sm:rounded-2xl border-t-0"></div>
       </div>
     );
   }
@@ -137,10 +137,10 @@ export default function ThreeBannerModern() {
         ref={sliderRef}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="relative w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 my-2 xs:my-3 sm:my-6 md:my-8"
+        className="relative w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 mt-0" style={{marginTop: 0}}
       >
         {/* ===== Slider Track ===== */}
-        <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden rounded-none sm:rounded-2xl bg-black shadow-lg sm:shadow-xl shadow-black/40">
+        <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden rounded-none sm:rounded-2xl bg-black shadow-lg sm:shadow-xl shadow-black/40 border-t-0">
           <div
             className="absolute inset-0 flex h-full transition-transform duration-700 ease-out will-change-transform"
             style={{

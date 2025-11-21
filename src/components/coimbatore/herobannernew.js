@@ -48,9 +48,8 @@ export default function HeroBanner({ city = "Coimbatore" }) {
                 {/* Enhanced Description */}
                 <div className="relative mb-12 max-w-3xl mx-auto">
                     <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed relative z-10 bg-white/30 backdrop-blur-sm rounded-2xl p-6 border border-red-100/50 shadow-sm">
-                        Experience lightning-fast, reliable, and unlimited internet for homes
-                        and businesses in {city}. Stay connected with seamless performance
-                        and unmatched support.
+                        With a carefully engineered fiber network, we deliver stable, uninterrupted broadband connectivity
+                        throughout {city}, backed by fast and reliable local support.
                     </p>
                     {/* Description background glow */}
                     <div className="absolute inset-0 bg-red-100/20 rounded-2xl blur-md -z-10 transform scale-105" />

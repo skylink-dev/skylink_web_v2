@@ -40,9 +40,6 @@ const faqItems = [
 ];
 
 export default function Support() {
-    // Add console logging to debug FAQ items
-    console.log('FAQ items for UI:', faqItems);
-
     // Create a version of the FAQ items for structured data
     const faqItemsForSchema = faqItems.map(item => ({
         question: item.title,
@@ -51,7 +48,6 @@ export default function Support() {
 
     // Generate FAQ structured data
     const faqStructuredData = getFAQStructuredData(faqItemsForSchema);
-    console.log('FAQ structured data:', faqStructuredData);
 
     return (
         <>

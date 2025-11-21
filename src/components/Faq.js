@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 
 export default function Faq({ title, content = [] }) {
-    // Debug logging
-    console.log('Faq component received:', {title, contentLength: content.length, firstItem: content[0]});
   const [openItems, setOpenItems] = useState([]);
 
   const toggleFaq = (index) => {

@@ -22,7 +22,7 @@ export default function HeroTitleBanner() {
 
             {/* Mission Section with Image Grid */}
             <section className="w-full bg-gray-100 py-12 md:py-16 lg:py-20 overflow-hidden">
-                <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
                     {/* Grid Layout */}
                     <div
                         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-screen-2xl mx-auto">

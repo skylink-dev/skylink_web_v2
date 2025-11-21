@@ -1,22 +1,7 @@
 "use client";
-import React from 'react'
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import React from 'react';
 
-const Loader = dynamic(() => import("@/components/Loader"));
-export default function PageLoaderWrapper({ children }) {
-   const pathname = usePathname();
-  const [loading, setLoading] = useState(false);
-    useEffect(() => {
-    setLoading(true);
-    const timeout = setTimeout(() => setLoading(false), 10); // fake delay
-    return () => clearTimeout(timeout);
-  }, [pathname]);   
-  return (
-    <>
-      {loading && <Loader />}
-      {!loading && children}
-    </>
-  )
+export default function PageLoaderWrapper({children}) {
+    // Simply return children directly without any loading logic
+    return children;
 }
