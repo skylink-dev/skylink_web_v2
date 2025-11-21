@@ -96,13 +96,13 @@ const productListData = [
   },
   {
     id: 11,
-    title: "Gigabit Fiber Router",
+    title: "Gigabye Fiber Router",
     price: "₹2799",
     rating: 4.4,
     reviews: 35,
     image: "/assets/firestick-product-1.jpg",
     category: "Broadband",
-    link: "/gigabit-fiber-router",
+    link: "/gigabyte-fiber-router",
   },
   {
     id: 12,

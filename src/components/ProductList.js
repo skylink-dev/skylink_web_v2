@@ -91,7 +91,7 @@ const productListData = [
   },
   {
     id: 11,
-    title: "Gigabit Fiber Router",
+    title: "Gigabyte Fiber Router",
     brand: "D-Link",
     category: "Broadband",
     price: "₹2799",
