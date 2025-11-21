@@ -3,8 +3,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <!-- Home Page -->
-    xml +=  ` <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}</loc>
+    <url>
+        <loc>https://skylink.net.in/</loc>
         <lastmod>2025-11-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -12,28 +12,28 @@
 
     <!-- Main Service Pages -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/internet</loc>
+        <loc>https://skylink.net.in/internet</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/tv</loc>
+        <loc>https://skylink.net.in/tv</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/ott</loc>
+        <loc>https://skylink.net.in/ott</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/firestick</loc>
+        <loc>https://skylink.net.in/firestick</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -41,28 +41,28 @@
 
     <!-- Plans & Packages Pages -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/plans</loc>
+        <loc>https://skylink.net.in/plans</loc>
         <lastmod>2025-11-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/plans</loc>
+        <loc>https://skylink.net.in/plans</loc>
         <lastmod>2025-11-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/deals</loc>
+        <loc>https://skylink.net.in/deals</loc>
         <lastmod>2025-11-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/packages</loc>
+        <loc>https://skylink.net.in/packages</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -70,14 +70,14 @@
 
     <!-- Products & Accessories -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/accessories</loc>
+        <loc>https://skylink.net.in/accessories</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/products</loc>
+        <loc>https://skylink.net.in/products</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -85,21 +85,21 @@
 
     <!-- Location Pages -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/coimbatore</loc>
+        <loc>https://skylink.net.in/coimbatore</loc>
         <lastmod>2025-11-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/erode</loc>
+        <loc>https://skylink.net.in/erode</loc>
         <lastmod>2025-11-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/tiruppur</loc>
+        <loc>https://skylink.net.in/tiruppur</loc>
         <lastmod>2025-11-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -107,49 +107,49 @@
 
     <!-- Service & Support Pages -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/support</loc>
+        <loc>https://skylink.net.in/support</loc>
         <lastmod>2025-11-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/services</loc>
+        <loc>https://skylink.net.in/services</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/services/home-automation</loc>
+        <loc>https://skylink.net.in/services/home-automation</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/speedtest</loc>
+        <loc>https://skylink.net.in/speedtest</loc>
         <lastmod>2025-11-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/installation-guide</loc>
+        <loc>https://skylink.net.in/installation-guide</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/moving</loc>
+        <loc>https://skylink.net.in/moving</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/download-channel-list</loc>
+        <loc>https://skylink.net.in/download-channel-list</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -157,7 +157,7 @@
 
     <!-- Business & Partnership -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/partner</loc>
+        <loc>https://skylink.net.in/partner</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -165,14 +165,14 @@
 
     <!-- Company & About -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/about</loc>
+        <loc>https://skylink.net.in/about</loc>
         <lastmod>2025-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/contact-us</loc>
+        <loc>https://skylink.net.in/contact-us</loc>
         <lastmod>2025-11-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -180,7 +180,7 @@
 
     <!-- Blog & Content -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs</loc>
+        <loc>https://skylink.net.in/blogs</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -188,49 +188,49 @@
 
     <!-- Featured Blog Posts Based on Your Data -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs/skylink-fiber-broadband</loc>
+        <loc>https://skylink.net.in/blogs/skylink-fiber-broadband</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs/skylink-ott-universe</loc>
+        <loc>https://skylink.net.in/blogs/skylink-ott-universe</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs/skylink-iptv</loc>
+        <loc>https://skylink.net.in/blogs/skylink-iptv</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs/hd-tv-no-setup-boxes</loc>
+        <loc>https://skylink.net.in/blogs/hd-tv-no-setup-boxes</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs/entertainment-bundles-tailored-for-india</loc>
+        <loc>https://skylink.net.in/blogs/entertainment-bundles-tailored-for-india</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs/next-gen-wifi-everywhere</loc>
+        <loc>https://skylink.net.in/blogs/next-gen-wifi-everywhere</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/blogs/parental-controls-for-safe-surfing</loc>
+        <loc>https://skylink.net.in/blogs/parental-controls-for-safe-surfing</loc>
         <lastmod>2025-11-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -238,35 +238,35 @@
 
     <!-- Legal Pages -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/terms</loc>
+        <loc>https://skylink.net.in/terms</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/policy</loc>
+        <loc>https://skylink.net.in/policy</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/refund</loc>
+        <loc>https://skylink.net.in/refund</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/subscription-contract</loc>
+        <loc>https://skylink.net.in/subscription-contract</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/whistleblower-policy</loc>
+        <loc>https://skylink.net.in/whistleblower-policy</loc>
         <lastmod>2025-10-13</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
@@ -274,21 +274,21 @@
 
     <!-- Products Based on Data File -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/products/smart-remote-control</loc>
+        <loc>https://skylink.net.in/products/smart-remote-control</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/products/skylink-fire-tv</loc>
+        <loc>https://skylink.net.in/products/skylink-fire-tv</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/products/high-speed-dual-band-router</loc>
+        <loc>https://skylink.net.in/products/high-speed-dual-band-router</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -296,30 +296,30 @@
 
     <!-- Service Package Pages Based on Data -->
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/services/triple-play</loc>
+        <loc>https://skylink.net.in/services/triple-play</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/services/skylink-tv</loc>
+        <loc>https://skylink.net.in/services/skylink-tv</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/services/customizable-wifi</loc>
+        <loc>https://skylink.net.in/services/customizable-wifi</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
-        <loc>${process.env.NEXT_PUBLIC_BASE_URL}/services/stream-ott-apps</loc>
+        <loc>https://skylink.net.in/services/stream-ott-apps</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-    </url>`
+    </url>
 </urlset>
