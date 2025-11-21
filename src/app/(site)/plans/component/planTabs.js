@@ -135,7 +135,7 @@ export default function PlansTabs() {
             ))}
           </div>
         ) : (
-          <div className="flex justify-center items-center gap-15 w-full max-w-2xl mx-auto">
+          <div className="flex justify-center items-center gap-5 w-full max-w-2xl mx-auto">
             {tabs.map((tab, i) => (
               <>
                 <button
