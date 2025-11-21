@@ -71,7 +71,7 @@ export const metadata = {
     openGraph: {
         title: "TV Packages & Channels | Skylink",
         description: "Discover our premium TV packages with hundreds of channels, 4K content, and flexible plans for the whole family.",
-        url: "http://stage.skylink.net.in:3000/tv",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/tv`,
         type: "website",
         images: [
             {
@@ -94,7 +94,7 @@ export default function Page() {
     <>
       <Banner content={bannerContent} />
       <ThreeColumnLayout columnCount={4} content={threeColumnData} />
-      <IconDetails title="Explore Skylink IPTV" iconslist={IconContent} />
+      <IconDetails title="Explore Skylink IPTV" iconslist={IconContent} page="tv" />
       <SimpleColumnSection
         title="IPTV Built with You in Mind"
         columns={simplecolumncontent}

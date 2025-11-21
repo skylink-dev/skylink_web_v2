@@ -24,7 +24,7 @@ export const metadata = {
     openGraph: {
         title: "Contact Us | Skylink",
         description: "Get in touch with our support team. We're available 24/7 to assist with any questions about our services.",
-        url: "http://stage.skylink.net.in:3000/contact-us",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/contact-us`,
         type: "website",
         images: [
             {

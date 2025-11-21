@@ -188,6 +188,8 @@ export default function FlexCard({
                     <button
                       className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2.5 px-6 rounded-lg shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-sm w-fit"
                       onClick={() => {
+                          // We only change the behavior for the right container
+                          // The left container always navigates to /plans
                         const targetPath = "/plans";
                           // Navigation event
                           if (targetPath === "#") {
@@ -289,25 +291,60 @@ export default function FlexCard({
                         <button
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2 min-[375px]:py-2.5 px-5 min-[375px]:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-xs min-[375px]:text-sm"
                             onClick={() => {
-                                const targetPath = "/plans";
-                                // Navigation event
-                    handleNavigation(targetPath);
-                  }}
+                                // Check if this is the OTT section by looking at the current URL path
+                                const isOTTSection = typeof window !== 'undefined' &&
+                                    (window.location.pathname.includes('/ott') ||
+                                        window.location.pathname.includes('/tv'));
+
+                                if (isOTTSection) {
+                                    // For OTT section, make a phone call
+                                    window.location.href = "tel:+919944199445";
+                                } else {
+                                    // For other sections (like internet), navigate to plans
+                                    const targetPath = "/plans";
+                                    handleNavigation(targetPath);
+                                }
+                            }}
                 >
-                  <span>{rightSelected?.mainCta}</span>
-                  <svg
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
+                  <span>
+                    {/* Show different button text based on section */}
+                      {(typeof window !== 'undefined' &&
+                          (window.location.pathname.includes('/ott') ||
+                              window.location.pathname.includes('/tv')))
+                          ? "Call Now" : rightSelected?.mainCta}
+                  </span>
+                            {/* Show different icon based on section */}
+                            {(typeof window !== 'undefined' &&
+                                (window.location.pathname.includes('/ott') ||
+                                    window.location.pathname.includes('/tv'))) ? (
+                                <svg
+                                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                    />
+                                </svg>
+                            ) : (
+                                <svg
+                                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    />
+                                </svg>
+                            )}
                 </button>
               </motion.div>
             </motion.div>

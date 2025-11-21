@@ -254,14 +254,14 @@ export default function Firetv() {
         name: "Skylink Firestick Streaming Services",
         description: "Stream content from thousands of apps like Netflix, Prime Video, Hotstar, and more with Skylink's Firestick service. 4K streaming quality available.",
         serviceType: "StreamingService",
-        url: "http://stage.skylink.net.in:3000/firestick"
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/firestick`
     });
 
     // Generate breadcrumb structured data
     const breadcrumbData = getBreadcrumbStructuredData([
-        {name: "Home", url: "http://stage.skylink.net.in:3000"},
-        {name: "Products", url: "http://stage.skylink.net.in:3000/products"},
-        {name: "Firestick", url: "http://stage.skylink.net.in:3000/firestick"}
+        {name: "Home", url: `${process.env.NEXT_PUBLIC_BASE_URL}`},
+        {name: "Products", url: `${process.env.NEXT_PUBLIC_BASE_URL}/products`},
+        {name: "Firestick", url: `${process.env.NEXT_PUBLIC_BASE_URL}/firestick`}
     ]);
 
     return (

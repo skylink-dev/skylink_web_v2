@@ -47,8 +47,6 @@ export default function SpeedTestBanner() {
     };
 
     const handleOpen = () => {
-        setShowPopup(true);
-
         // Calculate center position
         const width = 1000;
         const height = 700;
@@ -57,7 +55,7 @@ export default function SpeedTestBanner() {
 
         // Open with minimal browser chrome - this hides as much as possible
         const popup = window.open(
-            "https://skylinkfiber.speedtestcustom.com/result/edef1540-f364-11eb-a95f-853cd1c871f8",
+            "https://skylinkfiber.speedtestcustom.com/",
             "SpeedTest",
             `width=${width},height=${height},left=${left},top=${top},toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes`
         );
@@ -66,8 +64,6 @@ export default function SpeedTestBanner() {
             alert("Please allow popups for this site to run the speed test");
         }
     };
-
-    const handleClose = () => setShowPopup(false);
 
     // Using static date in development to prevent hydration mismatch
     //const currentDate = typeof window !== 'undefined' ? new Date().toString() : 'Loading...';
@@ -155,6 +151,8 @@ export default function SpeedTestBanner() {
                     </button>
                 </motion.div>
             </div>
+
+            {/* No iframe modal - using popup window instead */}
         </section>
     );
 }

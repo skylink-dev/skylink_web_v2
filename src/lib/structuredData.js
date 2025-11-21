@@ -5,6 +5,8 @@
  * for various pages and components across the Skylink website.
  */
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 /**
  * Generate Organization structured data
  * @returns {Object} JSON-LD structured data for the organization
@@ -14,8 +16,8 @@ export const getOrganizationStructuredData = () => {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Skylink Fiber",
-        "url": "http://stage.skylink.net.in:3000",
-        "logo": "http://stage.skylink.net.in:3000/assets/skylink logo.png",
+        "url": BASE_URL,
+        "logo": `${BASE_URL}/assets/skylink logo.png`,
         "sameAs": [
             "https://www.facebook.com/skylinkfiber",
             "https://twitter.com/skylinkfiber",
@@ -50,7 +52,7 @@ export const getServiceStructuredData = (options = {}) => {
         provider = "Skylink Fiber",
         serviceType = "BroadbandService",
         areaServed = "Coimbatore, Erode, Tiruppur",
-        url = "http://172.21.21.150:3000/internet"
+        url = `${BASE_URL}/internet`
     } = options;
 
     return {
@@ -62,7 +64,7 @@ export const getServiceStructuredData = (options = {}) => {
         "provider": {
             "@type": "Organization",
             "name": provider,
-            "url": "http://172.21.21.150:3000/"
+            "url": BASE_URL
         },
         "areaServed": {
             "@type": "GeoCircle",
@@ -81,13 +83,13 @@ export const getProductStructuredData = (options = {}) => {
     const {
         name = "Internet Plan",
         description = "High-speed internet plan with unlimited data",
-        image = "http://172.21.21.150:3000/assets/1gbps.jpg",
+        image = `${BASE_URL}/assets/1gbps.jpg`,
         price = "999",
         priceCurrency = "INR",
         availability = "https://schema.org/InStock",
         sku = "INT-FIBER-1GBPS",
         brand = "Skylink Fiber",
-        url = "http://172.21.21.150:3000/plans"
+        url = `${BASE_URL}/plans`
     } = options;
 
     return {
@@ -121,7 +123,7 @@ export const getSpeedTestStructuredData = () => {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Skylink Fiber Speed Test",
-        "url": "http://172.21.21.150:3000/speedtest",
+        "url": `${BASE_URL}/speedtest`,
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "All",
         "offers": {
@@ -133,9 +135,9 @@ export const getSpeedTestStructuredData = () => {
         "publisher": {
             "@type": "Organization",
             "name": "Skylink Fiber",
-            "url": "http://172.21.21.150:3000/"
+            "url": BASE_URL
         },
-        "screenshot": "http://172.21.21.150:3000/assets/speedtest-screenshot.jpg",
+        "screenshot": `${BASE_URL}/assets/speedtest-screenshot.jpg`,
         "softwareVersion": "1.0"
     };
 };
@@ -169,8 +171,8 @@ export const getBlogStructuredData = (options = {}) => {
     const {
         title = "Blog Title",
         description = "Blog description",
-        url = "http://172.21.21.150:3000/blogs/sample-blog",
-        imageUrl = "http://172.21.21.150:3000/assets/blogs-01.png",
+        url = `${BASE_URL}/blogs/sample-blog`,
+        imageUrl = `${BASE_URL}/assets/blogs-01.png`,
         datePublished = new Date().toISOString(),
         dateModified = new Date().toISOString(),
         authorName = "Skylink Team"
@@ -194,7 +196,7 @@ export const getBlogStructuredData = (options = {}) => {
             "name": "Skylink Fiber",
             "logo": {
                 "@type": "ImageObject",
-                "url": "http://172.21.21.150:3000/assets/skylink logo.png"
+                "url": `${BASE_URL}/assets/skylink logo.png`
             }
         },
         "mainEntityOfPage": {

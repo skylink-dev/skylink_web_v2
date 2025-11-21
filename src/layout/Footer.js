@@ -77,8 +77,6 @@ export default function Footer() {
         { title: "Whistleblower Policy", url: "/whistleblower-policy" },
     { title: "Terms of Use", url: "/terms" },
     { title: "Broadband Details", url: "/plans" },
-    { title: "Cybersecurity", url: "/" },
-    { title: "FCC Public Files", url: "/" },
   ]);
 
   const [openIndex, setOpenIndex] = useState(null);

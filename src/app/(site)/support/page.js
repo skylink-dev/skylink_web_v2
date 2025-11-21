@@ -16,7 +16,7 @@ export const metadata = {
     openGraph: {
         title: "Customer Support | Skylink",
         description: "Get help with your Skylink internet, TV, or OTT services.",
-        url: "http://stage.skylink.net.in:3000/support",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/support`,
         type: "website",
         images: [
             {

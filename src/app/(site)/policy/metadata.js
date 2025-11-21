@@ -14,7 +14,7 @@ export const metadata = {
     openGraph: {
         title: "Privacy Policy | Skylink",
         description: "Learn how Skylink collects, uses, and protects your personal information.",
-        url: "http://stage.skylink.net.in:3000/policy",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/policy`,
         type: "website",
         images: [
             {

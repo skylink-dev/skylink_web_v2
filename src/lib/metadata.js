@@ -5,7 +5,7 @@
  */
 
 // Base URL for the website
-const SITE_URL = 'http://stage.skylink.net.in:3000';
+const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL ;
 
 // Global keywords that apply to the entire site
 export const GLOBAL_KEYWORDS = [
@@ -134,7 +134,7 @@ export function generateMetadata(options = {}) {
             ],
         },
 
-        // Update Twitter metadata
+        // Twitter metadata
         twitter: {
             ...defaultMetadata.twitter,
             title: title || defaultMetadata.twitter.title,

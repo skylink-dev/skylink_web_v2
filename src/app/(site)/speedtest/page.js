@@ -18,7 +18,7 @@ export const metadata = {
     openGraph: {
         title: "Internet Speed Test | Skylink",
         description: "Test your current internet connection speed with our free online tool.",
-        url: "http://stage.skylink.net.in:3000/speedtest",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/speedtest`,
         type: "website",
         images: [
             {

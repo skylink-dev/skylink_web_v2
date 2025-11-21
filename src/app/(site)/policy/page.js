@@ -15,12 +15,12 @@ export default function Page() {
         {
             title: 'Purpose',
             content: (<>
-                <p className="mb-4">Skylink IPTV Services Pvt. Ltd. is committed to protecting any personal information
+                <p className="mb-4">Skylink Fibernet Private Limited, is committed to protecting any personal information
                     that we may receive while you access our online and mobile website www.stage.skylink.net.in. In
                     particular, we believe it is important for you to know how we treat information about you that we
                     may receive from this website. This Privacy Policy is devised to help you feel more confident about
                     the privacy and security of your personal details.</p>
-                <p className="mb-0">When you leave your contact details, please note that we are not bound to reply. You shall mean you, the user of the website, and yourself interpreted accordingly. We / Us means Skylink IPTV Services Pvt. Ltd. and Our interpreted accordingly. Users means the users of the website collectively and/or individually as the context allows.</p></>)
+                <p className="mb-0">When you leave your contact details, please note that we are not bound to reply. You shall mean you, the user of the website, and yourself interpreted accordingly. We / Us means Skylink Fibernet Private Limited, and Our interpreted accordingly. Users means the users of the website collectively and/or individually as the context allows.</p></>)
         },
            {
             title: 'Eligibility',

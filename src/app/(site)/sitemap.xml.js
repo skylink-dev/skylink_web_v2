@@ -2,7 +2,7 @@ import {MetadataRoute} from 'next';
 
 // Generate the sitemap
 export default function sitemap() {
-    const baseUrl = 'http://stage.skylink.net.in:3000';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     // Core static pages
     const staticPages = [

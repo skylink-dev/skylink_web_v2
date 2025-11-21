@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function IconDetails({ iconslist, title }) {
+export default function IconDetails({ iconslist, title, page }) {
   // Animation variants
   const listVariants = {
     hidden: {},
@@ -39,12 +39,19 @@ export default function IconDetails({ iconslist, title }) {
       >
         {iconslist.map((item, index) => (
           <Link
-              href={index === 0 ? "/support" :
-                  index === 1 ? "/tv" :
-                      index === 2 ? "/accessories" :
-                          index === 3 ? "/plans" :
-                              index === 4 ? "/internet" :
-                                  "/contact-us"}
+              href={page === 'tv' ?
+                  (index === 0 ? "/support" :
+                      index === 1 ? "/internet" :
+                          index === 2 ? "/accessories" :
+                              index === 3 ? "/plans" :
+                                  index === 4 ? "/plans" :
+                                      "/contact-us") :
+                  (index === 0 ? "/support" :
+                      index === 1 ? "/tv" :
+                          index === 2 ? "/accessories" :
+                              index === 3 ? "/plans" :
+                                  index === 4 ? "/internet" :
+                                      "/contact-us")}
               key={index}
               className="block"
               aria-label={item.cta}

@@ -4,7 +4,7 @@
  *
  * Usage examples:
  * 1. Generate a complete sitemap:
- *    const baseUrl = 'http://stage.skylink.net.in:3000';
+ *    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://stage.skylink.net.in:3000';
  *    const xml = generateFullSitemap(baseUrl, routes);
  *
  * 2. Generate a sitemap for a specific category:

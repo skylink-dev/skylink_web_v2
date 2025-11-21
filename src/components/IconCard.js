@@ -22,7 +22,7 @@ export default function IconCard({ titleData, cardData }) {
             {titleData.links.map((listItem, index) => (
               <Link
                 key={index}
-                href={listItem.url}
+                href="/plans"
                 className="relative overflow-hidden inline-block bg-red-600 text-white font-semibold px-8 py-3 rounded-full group transition-all duration-500"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500"></span>

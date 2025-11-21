@@ -1,4 +1,6 @@
 // Home page metadata
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 export const metadata = {
     title: "Skylink - High-Speed Internet & TV Services",
     description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink. Discover plans for your home and business.",
@@ -22,7 +24,7 @@ export const metadata = {
     openGraph: {
         title: "Skylink - High-Speed Internet & TV Services",
         description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
-        url: "http://stage.skylink.net.in:3000/",
+        url: `${BASE_URL}/`,
         type: "website",
         images: [
             {
