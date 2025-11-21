@@ -189,28 +189,28 @@ export default function FlexCard({
                       className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2.5 px-6 rounded-lg shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-sm w-fit"
                       onClick={() => {
                         const targetPath = "/plans";
-                        console.log("Navigating to:", targetPath);
-                        if (targetPath === "#") {
-                          // Do nothing for anchor links
-                          return;
-                        }
-                        handleNavigation(targetPath);
+                          // Navigation event
+                          if (targetPath === "#") {
+                              // Do nothing for anchor links
+                              return;
+                          }
+                          handleNavigation(targetPath);
                       }}
                     >
-                      <span>Subscribe now</span>
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        />
-                      </svg>
+                        <span>Subscribe now</span>
+                        <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                        </svg>
                     </button>
                   </motion.div>
                 </div>
@@ -218,79 +218,79 @@ export default function FlexCard({
             </motion.div>
           </motion.div>
 
-          {/* RIGHT CARD - PORTRAIT (Image visible, content at top) */}
-          <motion.div
-            className="lg:flex-1 bg-cover bg-center relative rounded-2xl sm:rounded-3xl overflow-hidden h-[420px] min-[375px]:h-[450px] sm:h-[480px] md:h-[500px] shadow-xl sm:shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={rightBg}
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${rightBg})` }}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.02 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              />
-            </AnimatePresence>
-
-            {/* Gradient Overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent z-[1]" />
-
-            {/* Content at top */}
+            {/* RIGHT CARD - PORTRAIT (Image visible, content at top) */}
             <motion.div
-              className={`relative z-10 p-5 min-[375px]:p-6 sm:p-8 md:p-10 text-white h-full flex flex-col justify-start rounded-2xl sm:rounded-3xl ${optionalColor}`}
-              key={rightSelected?.heading}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+                className="lg:flex-1 bg-cover bg-center relative rounded-2xl sm:rounded-3xl overflow-hidden h-[420px] min-[375px]:h-[450px] sm:h-[480px] md:h-[500px] shadow-xl sm:shadow-2xl hover:shadow-red-500/20 transition-shadow duration-300"
+                initial={{opacity: 0, x: 30}}
+                animate={{opacity: 1, x: 0}}
+                transition={{duration: 0.8}}
             >
-              <motion.p
-                className="uppercase text-red-300 text-xs min-[375px]:text-sm mb-1.5 sm:mb-2 font-semibold tracking-wider sm:tracking-widest drop-shadow-lg"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                {rightSelected?.subheading}
-              </motion.p>
-              <motion.h3
-                className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-white leading-tight drop-shadow-lg"
-                dangerouslySetInnerHTML={{ __html: rightSelected?.heading }}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-              />
-              <motion.p
-                className="text-gray-100 mb-2 sm:mb-3 text-xs min-[375px]:text-sm leading-relaxed drop-shadow-lg"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                {rightSelected?.description}
-              </motion.p>
-              <motion.p
-                className="text-xs text-gray-200 mb-3 sm:mb-4 drop-shadow-lg"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                {rightSelected?.legal}
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <button
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2 min-[375px]:py-2.5 px-5 min-[375px]:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-xs min-[375px]:text-sm"
-                  onClick={() => {
-                    const targetPath = "/plans";
-                      console.log("Navigating to:", targetPath);
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={rightBg}
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{backgroundImage: `url(${rightBg})`}}
+                        initial={{opacity: 0, scale: 1.05}}
+                        animate={{opacity: 1, scale: 1}}
+                        exit={{opacity: 0, scale: 1.02}}
+                        transition={{duration: 0.8, ease: "easeOut"}}
+                    />
+                </AnimatePresence>
+
+                {/* Gradient Overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent z-[1]"/>
+
+                {/* Content at top */}
+                <motion.div
+                    className={`relative z-10 p-5 min-[375px]:p-6 sm:p-8 md:p-10 text-white h-full flex flex-col justify-start rounded-2xl sm:rounded-3xl ${optionalColor}`}
+                    key={rightSelected?.heading}
+                    initial={{opacity: 0, y: 30}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.8}}
+                >
+                    <motion.p
+                        className="uppercase text-red-300 text-xs min-[375px]:text-sm mb-1.5 sm:mb-2 font-semibold tracking-wider sm:tracking-widest drop-shadow-lg"
+                        initial={{opacity: 0, x: 20}}
+                        animate={{opacity: 1, x: 0}}
+                        transition={{delay: 0.2}}
+                    >
+                        {rightSelected?.subheading}
+                    </motion.p>
+                    <motion.h3
+                        className="text-base min-[375px]:text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-white leading-tight drop-shadow-lg"
+                        dangerouslySetInnerHTML={{__html: rightSelected?.heading}}
+                        initial={{opacity: 0, x: 20}}
+                        animate={{opacity: 1, x: 0}}
+                        transition={{delay: 0.3}}
+                    />
+                    <motion.p
+                        className="text-gray-100 mb-2 sm:mb-3 text-xs min-[375px]:text-sm leading-relaxed drop-shadow-lg"
+                        initial={{opacity: 0, x: 20}}
+                        animate={{opacity: 1, x: 0}}
+                        transition={{delay: 0.4}}
+                    >
+                        {rightSelected?.description}
+                    </motion.p>
+                    <motion.p
+                        className="text-xs text-gray-200 mb-3 sm:mb-4 drop-shadow-lg"
+                        initial={{opacity: 0, x: 20}}
+                        animate={{opacity: 1, x: 0}}
+                        transition={{delay: 0.5}}
+                    >
+                        {rightSelected?.legal}
+                    </motion.p>
+                    <motion.div
+                        initial={{opacity: 0, y: 20}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{delay: 0.6}}
+                        whileHover={{scale: 1.05, y: -2}}
+                        whileTap={{scale: 0.98}}
+                    >
+                        <button
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2 min-[375px]:py-2.5 px-5 min-[375px]:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-xs min-[375px]:text-sm"
+                            onClick={() => {
+                                const targetPath = "/plans";
+                                // Navigation event
                     handleNavigation(targetPath);
                   }}
                 >

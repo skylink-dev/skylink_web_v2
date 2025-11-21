@@ -25,7 +25,7 @@ const ContentBaseBanner = dynamic(() =>
 
 export default function Page() {
   const dummy = () => {
-    console.log("test");
+      // Empty function for placeholder purposes
   };
   return (
     <>

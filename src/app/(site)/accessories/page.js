@@ -17,7 +17,7 @@ const DynamicCarousel = dynamic(() => import('@/components/DynamicCarousel'));
 
 export default function Page() {
     const dummy = () => {
-    console.log('test');
+        // Initialize page
    }
   return (
     <>

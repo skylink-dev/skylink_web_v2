@@ -107,12 +107,12 @@ export default function Home() {
   // ];
   const [activeId, setActiveId] = useState(1);
   const dummy = () => {
-    console.log("test");
+      // Empty function for placeholder purposes
   };
 
   // ← Define this function
   const handleFormSubmit = (data) => {
-    console.log("Form submitted:", data);
+      // Process form submission
     // Here you can call your API or show a message
   };
   return (
