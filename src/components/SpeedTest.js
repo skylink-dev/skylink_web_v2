@@ -70,7 +70,7 @@ export default function SpeedTestBanner() {
     const handleClose = () => setShowPopup(false);
 
     // Using static date in development to prevent hydration mismatch
-    const currentDate = typeof window !== 'undefined' ? new Date().toString() : 'Loading...';
+    //const currentDate = typeof window !== 'undefined' ? new Date().toString() : 'Loading...';
     const [ip] = useState("103.130.90.103");
 
     return (
@@ -100,7 +100,7 @@ export default function SpeedTestBanner() {
                     </p>
 
                     <p className="text-xs text-gray-400 mb-1">
-                        {currentDate.toUpperCase()}
+                        {/* {currentDate.toUpperCase()} */}
                     </p>
                     <p className="text-xs text-gray-400">Your IP: {ip}</p>
                 </div>

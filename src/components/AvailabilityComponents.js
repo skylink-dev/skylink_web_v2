@@ -35,7 +35,7 @@ export default function AvailabilityChecker() {
       name: "Coimbatore",
       color: "#94b894ff",
       subAreas: [
-        { name: "Ganthipuram", center: { lat: 11.0103, lng: 76.9511 }, radius: 15 },
+        { name: "Ganthipuram", center: { lat: 11.0103, lng: 76.9511 }, radius: 10 },
         { name: "Sulur", center: { lat: 11.0243, lng: 77.1257 }, radius: 4 },
         { name: "Kinathu Kadavu", center: { lat: 10.822477, lng: 77.016144 }, radius: 5 },        
         { name: "Annur", center: { lat: 11.2320952, lng: 77.1050488 }, radius: 5 }
@@ -272,7 +272,7 @@ export default function AvailabilityChecker() {
         <CheckCircle className="text-green-500 w-14 h-14 mb-3" />
         <h2 className="text-2xl font-bold text-green-600 mb-2">🎉 You’re Covered!</h2>
         <p className="text-gray-700 mb-3 text-sm">
-          Our service is available in <b>{availableArea || "your area"}</b>. Connect now instantly.
+          Our service is available in <b>Your Location</b>. Connect now instantly.
         </p>
 
         {/* Quick Contact Buttons */}
