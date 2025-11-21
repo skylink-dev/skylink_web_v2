@@ -4,15 +4,16 @@ import React from 'react'
 export default function CEOBanner() {
     return (
         <section className="w-full bg-gray-100 py-8 md:py-12 lg:py-16">
-            <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden">
                     {/* Content Section - Left side on desktop, top on mobile */}
-                    <div className="w-full md:w-1/2 lg:w-2/5 order-2 md:order-1 space-y-6">
+                    <div className="w-full md:w-1/2 lg:w-1/2 order-2 md:order-1 space-y-6">
                         <div className="space-y-4 max-w-xl">
                             <div className="flex flex-col space-y-3">
-                                <div className="flex items-start">
+                                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 mr-2">
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         className="flex-shrink-0 mb-2 sm:mb-0 sm:mr-2">
                                         <path fillRule="evenodd" clipRule="evenodd"
                                               d="M11.5587 2.23872C4.6935 6.64773 0.879569 11.7793 0.116914 17.6336C-1.07037 26.7474 7.07992 31.2084 11.2096 27.2002C15.3392 23.1922 12.8638 18.1046 9.87347 16.714C6.88318 15.3233 5.05451 15.8077 5.3735 13.9494C5.69248 12.091 9.94677 6.93854 13.6843 4.539C13.9323 4.32813 14.0267 3.91899 13.7879 3.60866C13.6308 3.40446 13.3228 3.00412 12.8638 2.40752C12.4624 1.88582 12.0778 1.90534 11.5587 2.23872Z"
                                               fill="#ff0000"></path>
@@ -29,11 +30,11 @@ export default function CEOBanner() {
                                         </p>
                                     </blockquote>
                                 </div>
-                                <div className="text-gray-700 font-medium mt-2 pl-8">Senthil.K, MD, Skylink Private
-                                    Limited
+                                <div className="text-gray-700 font-medium mt-2 pl-0 sm:pl-8 text-center sm:text-left">Senthil.K,
+                                    MD, Skylink Private Limited
                                 </div>
                             </div>
-                            <div className="pt-4 pl-8">
+                            <div className="pt-4 pl-0 sm:pl-8 text-center sm:text-left">
                                 <a
                                     href="/"
                                     target="_blank"
@@ -47,14 +48,14 @@ export default function CEOBanner() {
                     </div>
 
                     {/* Image Section - Right side on desktop, bottom on mobile */}
-                    <div className="w-full md:w-1/2 lg:w-3/5 order-1 md:order-2 flex justify-center md:justify-end">
-                        <div className="relative h-80 sm:h-96 md:h-[500px] lg:h-[550px] w-full">
+                    <div className="w-full md:w-1/2 lg:w-1/2 order-1 md:order-2 flex justify-center md:justify-end">
+                        <div className="relative h-80 sm:h-96 md:h-[420px] lg:h-[520px] w-full max-w-xl md:max-w-none">
                             <Image
                                 src="/assets/mdsir.png"
                                 alt="CEO of Skylink"
                                 fill
-                                className="object-contain object-center md:object-right scale-110 md:scale-125 lg:scale-130"
-                                sizes="(max-width: 768px) 100vw, 60vw"
+                                className="object-contain object-center md:object-contain scale-120 md:scale-160 sm: scale-170 ml-8"
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 priority
                             />
                         </div>
