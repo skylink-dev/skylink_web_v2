@@ -111,7 +111,7 @@ export default function AlertModal({
                 animate={{ width: "0%" }}
                 transition={{ duration: 3.4, ease: "linear" }}
                 className={`h-full ${style.bar}`}
-              />
+              />fdfd
             </div> */}
 
             {/* CTA Button */}
