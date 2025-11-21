@@ -58,78 +58,98 @@ export default function AvailabilityChecker() {
     },
   ];
 
-  useEffect(() => {
-    if (!window.google) return;
 
-    const gMap = new window.google.maps.Map(mapRef.current, {
-      center: { lat: 11.1, lng: 77.1 },
-      zoom: 7,
-      streetViewControl: false,
-      mapTypeControl: false,
-    });
-    setMap(gMap);
+    const loadGoogleMaps = () => {
+        return new Promise((resolve) => {
+            if (window.google) return resolve();
 
-    // Fit bounds
-    const bounds = new window.google.maps.LatLngBounds();
-    serviceAreas.forEach(city => city.subAreas.forEach(area => bounds.extend(area.center)));
-    gMap.fitBounds(bounds);
+            const script = document.createElement("script");
+            script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places,geometry`;
+            script.async = true;
+            document.head.appendChild(script);
 
-    // Draw service area polygons
-    serviceAreas.forEach(city =>
-      city.subAreas.forEach(area => {
-        const circlePath = createCircle(area.center, area.radius);
-        new window.google.maps.Polygon({
-          paths: circlePath,
-          strokeColor: city.color,
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: city.color,
-          fillOpacity: 0.25,
-          map: gMap,
+            script.onload = resolve;
         });
-      })
-    );
+    };
+    useEffect(() => {
+        const initMap = async () => {
+            await loadGoogleMaps();
 
-    // Google autocomplete
-    const input = document.getElementById("autocomplete");
-    const autocomplete = new window.google.maps.places.Autocomplete(input);
-    autocomplete.bindTo("bounds", gMap);
+            const gMap = new window.google.maps.Map(mapRef.current, {
+                center: { lat: 11.1, lng: 77.1 },
+                zoom: 7,
+                streetViewControl: false,
+                mapTypeControl: false,
+            });
 
-    autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
-      if (!place.geometry || !place.geometry.location) return;
+            setMap(gMap);
 
-      const location = place.geometry.location;
-      gMap.setCenter(location);
-      gMap.setZoom(18);
+            // fit bounds
+            const bounds = new window.google.maps.LatLngBounds();
+            serviceAreas.forEach(city =>
+                city.subAreas.forEach(area => bounds.extend(area.center))
+            );
+            gMap.fitBounds(bounds);
 
-      if (marker) marker.setMap(null);
+            // Draw polygons
+            serviceAreas.forEach(city =>
+                city.subAreas.forEach(area => {
+                    const circlePath = createCircle(area.center, area.radius);
+                    new window.google.maps.Polygon({
+                        paths: circlePath,
+                        strokeColor: city.color,
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: city.color,
+                        fillOpacity: 0.25,
+                        map: gMap,
+                    });
+                })
+            );
 
-      const newMarker = new window.google.maps.Marker({
-        position: location,
-        map: gMap,
-        draggable: true,
-      });
+            // Autocomplete
+            const input = document.getElementById("autocomplete");
+            const autocomplete = new window.google.maps.places.Autocomplete(input);
+            autocomplete.bindTo("bounds", gMap);
 
-      newMarker.addListener("dragend", () => {
-        setShowButton(true);
-        const pos = newMarker.getPosition();
-        new window.google.maps.Geocoder().geocode({ location: pos }, (results, status) => {
-          if (status === "OK" && results[0]) setAddress(results[0].formatted_address);
-        });
-      });
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
+                if (!place.geometry || !place.geometry.location) return;
 
-      setMarker(newMarker);
-      setAddress(place.formatted_address);
-      setShowButton(true);
-      setIsAvailable(null);
-      setAvailableArea("");
-      setShowModal(false);
-      setWarning("");
-    });
-  }, []);
+                const location = place.geometry.location;
 
-  const checkAvailability = () => {
+                gMap.setCenter(location);
+                gMap.setZoom(18);
+
+                if (marker) marker.setMap(null);
+
+                const newMarker = new window.google.maps.Marker({
+                    position: location,
+                    map: gMap,
+                    draggable: true,
+                });
+
+                newMarker.addListener("dragend", () => {
+                    setShowButton(true);
+                    const pos = newMarker.getPosition();
+                    new window.google.maps.Geocoder().geocode({ location: pos }, (results, status) => {
+                        if (status === "OK" && results[0]) {
+                            setAddress(results[0].formatted_address);
+                        }
+                    });
+                });
+
+                setMarker(newMarker);
+                setAddress(place.formatted_address);
+                setShowButton(true);
+            });
+        };
+
+        initMap();
+    }, []);
+
+
+    const checkAvailability = () => {
     if (!address.trim()) {
       setWarning("⚠️ Please enter an address before checking availability.");
       return;

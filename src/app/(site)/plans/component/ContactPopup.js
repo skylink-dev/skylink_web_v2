@@ -144,7 +144,7 @@ export default function ContactPopup({
 
       setAlertInfo({
         title: "Thank you!",
-        message: "We will contact you soon",
+        message: "We have received your information and will contact you soon.",
         type: "success",
       });
       setIsAlertOpen(true);

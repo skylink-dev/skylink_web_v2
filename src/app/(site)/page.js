@@ -29,7 +29,7 @@ import SpeedTestBanner from "@/components/SpeedTest";
 import NewIconMenu from "@/components/home/NewIconMenu";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
-const FlexCard = dynamic(() => import("@/components/FlexCard"), {ssr: false});
+const FlexCard = dynamic(() => import("@/components/FlexCard"), { ssr: false });
 const HalfColumnCard = dynamic(() => import("@/components/HalfColumnCard"));
 const HeroSlider = dynamic(() => import("@/components/HeroSlider"));
 const IconCard = dynamic(() => import("@/components/IconCard"));
@@ -132,7 +132,7 @@ export default function Home() {
       {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
 
       <ThreeBannerModern />
-        <AvailabilityComponents />
+      <AvailabilityComponents />
       <FlexCard
         title="For Every Age. Every Stage. Every Connection."
         rightImage="/assets/skyplay-card-right.jpg"
@@ -149,20 +149,20 @@ export default function Home() {
       <RectangleBanner
         backgroundImage="/assets/skyplay-map.jpg"
         eyebrow="Your Day, Powered by Skylink"
-        heading={`Connectivity, Refined for Real Life.`}
-        description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
-        subDescription={`Available at no extra cost for eligible customers across India.`}
-        buttonText="Learn More"
-        buttonLink="/internet"
+        heading={`Connectivity, Refined for Real Life.`}
+        description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
+        subDescription={`Available at no extra cost for eligible customers across India.`}
+        buttonText="Explore Our Plans"
+        buttonLink="/plans"
       />
-    
+
       <HalfColumnCard items={cardData} />
       <DynamicCarousel
         title="Let's get you connected"
         slidesData={dynamicSlidesData}
       />
       <RightImageLeftContent
-        title="The Tripleplay difference"
+        title="Everything Works Better Together"
         Content={dynamicImageContent}
       />
       <SpeedTestBanner />

@@ -69,30 +69,31 @@ export default function SpeedTestBanner() {
 
     const handleClose = () => setShowPopup(false);
 
-    const currentDate = new Date().toString();
+    // Using static date in development to prevent hydration mismatch
+    const currentDate = typeof window !== 'undefined' ? new Date().toString() : 'Loading...';
     const [ip] = useState("103.130.90.103");
 
     return (
-        <section className="w-full py-8 px-4 sm:px-6 lg:px-8" id="SpeedTest">
+        <section className="w-full py-10 px-4 sm:px-6 lg:px-8" id="SpeedTest">
             <div
-                className="max-w-7xl mx-auto bg-gradient-to-r from-gray-900 to-black text-white rounded-3xl overflow-hidden flex items-center justify-between px-8 sm:px-16 h-[480px] relative">
+                className="max-w-7xl mx-auto bg-gradient-to-r from-gray-900 to-black text-white rounded-3xl overflow-hidden flex flex-col md:flex-row items-center justify-between px-6 sm:px-8 md:px-12 lg:px-16 py-10 md:py-0 min-h-[400px] md:h-[480px] relative gap-8 md:gap-4">
                 {/* Hyperspeed animation background */}
                 <div className="absolute inset-0 z-0 rounded-3xl overflow-hidden">
                     <Hyperspeed effectOptions={hyperspeedPreset}/>
                 </div>
 
                 {/* Overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-0 rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent md:to-transparent z-0 rounded-3xl"></div>
 
                 {/* Text Section */}
-                <div className="max-w-2xl z-10 relative">
-                    <p className="uppercase tracking-[4px] text-sm text-gray-300 mb-3">
+                <div className="max-w-2xl z-10 relative w-full text-center md:text-left px-4 md:px-0">
+                    <p className="uppercase tracking-[4px] text-xs sm:text-sm text-gray-300 mb-3">
                         Speed Test
                     </p>
-                    <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-white">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
                         Check Your Connection in a Minute
                     </h1>
-                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6">
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6 max-w-md mx-auto md:mx-0">
                         Run a quick test to measure your current download and upload speeds with our tool. See if your
                         connection can handle streaming, gaming, and video calls smoothly. Accurate result in seconds, no login
                         needed
@@ -106,15 +107,15 @@ export default function SpeedTestBanner() {
 
                 {/* Button Section */}
                 <motion.div
-                    className="flex flex-col items-center justify-center z-10 relative"
+                    className="flex flex-col items-center justify-center z-10 relative w-full md:w-auto"
                     whileHover={{scale: 1.05}}
                     whileTap={{scale: 0.95}}
                 >
                     <button
                         onClick={handleOpen}
-                        className="flex flex-col items-center text-center transition-all duration-300"
+                        className="flex flex-col items-center text-center transition-all duration-300 w-full"
                     >
-                        <div className="relative w-32 h-32 sm:w-40 sm:h-40">
+                        <div className="relative w-28 h-28 xs:w-32 xs:h-32 sm:w-36 sm:h-36 md:w-40 md:h-40">
                             {/* Outer glow pulse */}
                             <div className="absolute inset-0 rounded-full bg-red-500/20 animate-pulse"></div>
 
@@ -138,13 +139,13 @@ export default function SpeedTestBanner() {
                                         ease: "easeInOut"
                                     }}
                                 >
-                                    <span className="text-5xl sm:text-6xl">⚡</span>
+                                    <span className="text-4xl xs:text-5xl sm:text-6xl">⚡</span>
                                 </motion.div>
                             </div>
                         </div>
 
                         <motion.p
-                            className="mt-6 text-sm sm:text-base text-white font-semibold tracking-wide"
+                            className="mt-4 sm:mt-6 text-sm sm:text-base text-white font-semibold tracking-wide"
                             initial={{opacity: 0.8}}
                             animate={{opacity: [0.8, 1, 0.8]}}
                             transition={{duration: 2, repeat: Infinity, ease: "easeInOut"}}
