@@ -16,15 +16,15 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
     const mobileItems = content;
 
   return (
-    <div className="w-full py-2">
-      <div className="container mx-auto px-2 sm:px-6">
-        {/* 🌟 Mobile Layout */}
-        <ul className="flex sm:hidden justify-start overflow-x-auto gap-2 pb-2">
+    <div className="w-full bg-white" style={{marginBottom: '-1px'}}>
+        <div className="container mx-auto px-4 sm:pt-6 md:pt-8">
+            {/* 🌟 Mobile Layout */}
+            <ul className="flex sm:hidden justify-evenly overflow-x-auto gap-3 py-3 border-b-0">
             {mobileItems.map((item) => (
                 <li
                     key={item.id}
                     onClick={() => onSelect?.(item.id)}
-                    className={`min-w-[22%] xs:min-w-[80px] p-2 flex flex-col items-center
+                    className={`flex-1 p-2 flex flex-col items-center
                 transition-all duration-300 cursor-pointer hover:-translate-y-1
                 ${activeId === item.id ? "text-red-600" : "text-gray-700"}
               `}
@@ -35,9 +35,9 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
                     >
                         {/* ⭐ ONLY IMAGE HAS DEPTH BACKGROUND */}
                         <div
-                            className="w-14 h-14 xs:w-16 xs:h-16 p-2 flex items-center justify-center
-                  bg-white/60 
-                  rounded-2xl border border-gray-200
+                            className="w-14 h-14 p-2 flex items-center justify-center
+                  bg-white 
+                  rounded-2xl shadow-sm
                 "
                         >
                             <Image
@@ -50,7 +50,7 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
                             />
                         </div>
 
-                        <span className="text-[10px] xs:text-[11px] mt-1 xs:mt-2 font-medium text-center w-full truncate">
+                        <span className="text-xs mt-2 font-medium text-center w-full truncate">
                   {item.title}
                 </span>
               </Link>
@@ -59,7 +59,7 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
         </ul>
 
         {/* 🖥 Desktop Layout */}
-        <ul className="hidden sm:flex flex-wrap justify-center gap-6 mt-4">
+        <ul className="hidden sm:flex flex-wrap justify-center gap-6 mt-0 mb-0 pb-2">
           {content.map((item) => (
             <li
               key={item.id}

@@ -119,19 +119,10 @@ export default function Home() {
     <>
       {/* <SkylinkQuickPayPage /> */}
 
-      <NewIconMenu content={newIconiconList} />
-
-      {/* <IconMenu onSelect={dummy} content={homeIconiconList} /> */}
-      {/* <ThreeDIconMenu
-        content={testiconMenuData}
-        activeId={activeId}
-        onSelect={(id) => setActiveId(id)}
-      /> */}
-
-      {/* <Banner content={bannerContent} /> */}
-      {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
-
-      <ThreeBannerModern />
+      <div className="bg-white">
+          <NewIconMenu content={newIconiconList}/>
+          <ThreeBannerModern/>
+      </div>
       <AvailabilityComponents />
       <FlexCard
         title="For Every Age. Every Stage. Every Connection."
