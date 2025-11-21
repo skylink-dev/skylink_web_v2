@@ -50,7 +50,12 @@ export default function IconDetails({ iconslist, title }) {
           >
             <div className="text-red-600 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3">{item.icon}</div>
             <Link
-              href="/support/"
+              href={index === 0 ? "/support" :
+                  index === 1 ? "/tv" :
+                      index === 2 ? "/accessories" :
+                          index === 3 ? "/plans" :
+                              index === 4 ? "/internet" :
+                                  "/contact-us"}
               aria-label={item.cta}
               className="relative font-semibold text-gray-800 text-xs group-hover:text-red-600 transition-colors duration-300 text-center"
             >

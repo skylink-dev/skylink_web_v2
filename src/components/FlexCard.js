@@ -289,12 +289,8 @@ export default function FlexCard({
                 <button
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2 min-[375px]:py-2.5 px-5 min-[375px]:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-xs min-[375px]:text-sm"
                   onClick={() => {
-                    const targetPath = rightSelected?.href || "#";
-                    console.log("Navigating to:", targetPath);
-                    if (targetPath === "#") {
-                      // Do nothing for anchor links
-                      return;
-                    }
+                    const targetPath = "/plans";
+                      console.log("Navigating to:", targetPath);
                     handleNavigation(targetPath);
                   }}
                 >

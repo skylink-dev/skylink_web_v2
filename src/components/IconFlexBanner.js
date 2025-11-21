@@ -195,10 +195,12 @@ export default function IconFlexBanner() {
 
                             {/* Button with black-gradient sweep */}
                             <div className="mt-4 lg:ml-26">
-                                <button className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-red-500 px-8 py-3 text-white font-semibold transition-all duration-300">
-                                    <span className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
+                                <Link href="/plans"
+                                      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-red-500 px-8 py-3 text-white font-semibold transition-all duration-300">
+                                    <span
+                                        className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
                                     <span className="relative z-10 flex items-center gap-2">
-                    Buy Now
+                    Choose Your Plan
                     <svg
                         className="w-4 h-4"
                         fill="none"
@@ -214,7 +216,7 @@ export default function IconFlexBanner() {
                       />
                     </svg>
                   </span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
