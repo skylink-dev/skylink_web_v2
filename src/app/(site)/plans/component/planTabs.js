@@ -113,7 +113,7 @@ export default function PlansTabs() {
           </div>
         </div> */}
         {isMobile || isMediumSize ? (
-          <div className="flex items-center justify-center gap-1 w-full max-w-md">
+          <div className="flex items-center justify-center gap-4 w-full max-w-md">
             {tabs.map((tab, i) => (
               <React.Fragment key={tab.key}>
                 <button
