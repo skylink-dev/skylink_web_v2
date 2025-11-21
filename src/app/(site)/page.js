@@ -29,7 +29,7 @@ import SpeedTestBanner from "@/components/SpeedTest";
 import NewIconMenu from "@/components/home/NewIconMenu";
 const Banner = dynamic(() => import("@/components/Banner"));
 const DynamicCarousel = dynamic(() => import("@/components/DynamicCarousel"));
-const FlexCard = dynamic(() => import("@/components/FlexCard"), {ssr: false});
+const FlexCard = dynamic(() => import("@/components/FlexCard"), { ssr: false });
 const HalfColumnCard = dynamic(() => import("@/components/HalfColumnCard"));
 const HeroSlider = dynamic(() => import("@/components/HeroSlider"));
 const IconCard = dynamic(() => import("@/components/IconCard"));
@@ -107,32 +107,23 @@ export default function Home() {
   // ];
   const [activeId, setActiveId] = useState(1);
   const dummy = () => {
-    console.log("test");
+      // Empty function for placeholder purposes
   };
 
   // ← Define this function
   const handleFormSubmit = (data) => {
-    console.log("Form submitted:", data);
+      // Process form submission
     // Here you can call your API or show a message
   };
   return (
     <>
       {/* <SkylinkQuickPayPage /> */}
 
-      <NewIconMenu content={newIconiconList} />
-
-      {/* <IconMenu onSelect={dummy} content={homeIconiconList} /> */}
-      {/* <ThreeDIconMenu
-        content={testiconMenuData}
-        activeId={activeId}
-        onSelect={(id) => setActiveId(id)}
-      /> */}
-
-      {/* <Banner content={bannerContent} /> */}
-      {/* <HomeContactForm onSubmit={handleFormSubmit} /> */}
-
-      <ThreeBannerModern />
-        <AvailabilityComponents />
+      <div className="bg-white">
+          <NewIconMenu content={newIconiconList}/>
+          <ThreeBannerModern/>
+      </div>
+      <AvailabilityComponents />
       <FlexCard
         title="For Every Age. Every Stage. Every Connection."
         rightImage="/assets/skyplay-card-right.jpg"
@@ -149,20 +140,20 @@ export default function Home() {
       <RectangleBanner
         backgroundImage="/assets/skyplay-map.jpg"
         eyebrow="Your Day, Powered by Skylink"
-        heading={`Connectivity, Refined for Real Life.`}
-        description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
-        subDescription={`Available at no extra cost for eligible customers across India.`}
-        buttonText="Learn More"
-        buttonLink="/internet"
+        heading={`Connectivity, Refined for Real Life.`}
+        description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
+        subDescription={`Available at no extra cost for eligible customers across India.`}
+        buttonText="Explore Our Plans"
+        buttonLink="/plans"
       />
-    
+
       <HalfColumnCard items={cardData} />
       <DynamicCarousel
         title="Let's get you connected"
         slidesData={dynamicSlidesData}
       />
       <RightImageLeftContent
-        title="The Tripleplay difference"
+        title="Everything Works Better Together"
         Content={dynamicImageContent}
       />
       <SpeedTestBanner />

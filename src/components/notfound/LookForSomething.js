@@ -7,7 +7,7 @@ export default function LookForSomething() {
         e.preventDefault();
         // Handle search here if needed
         const searchTerm = e.target.elements["search-field"].value;
-        console.log("Search term:", searchTerm);
+        // Process search term
     };
 
     return (

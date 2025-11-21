@@ -35,7 +35,7 @@ export default function AvailabilityChecker() {
       name: "Coimbatore",
       color: "#94b894ff",
       subAreas: [
-        { name: "Ganthipuram", center: { lat: 11.0103, lng: 76.9511 }, radius: 15 },
+        { name: "Ganthipuram", center: { lat: 11.0103, lng: 76.9511 }, radius: 10 },
         { name: "Sulur", center: { lat: 11.0243, lng: 77.1257 }, radius: 4 },
         { name: "Kinathu Kadavu", center: { lat: 10.822477, lng: 77.016144 }, radius: 5 },        
         { name: "Annur", center: { lat: 11.2320952, lng: 77.1050488 }, radius: 5 }
@@ -58,78 +58,98 @@ export default function AvailabilityChecker() {
     },
   ];
 
-  useEffect(() => {
-    if (!window.google) return;
 
-    const gMap = new window.google.maps.Map(mapRef.current, {
-      center: { lat: 11.1, lng: 77.1 },
-      zoom: 7,
-      streetViewControl: false,
-      mapTypeControl: false,
-    });
-    setMap(gMap);
+    const loadGoogleMaps = () => {
+        return new Promise((resolve) => {
+            if (window.google) return resolve();
 
-    // Fit bounds
-    const bounds = new window.google.maps.LatLngBounds();
-    serviceAreas.forEach(city => city.subAreas.forEach(area => bounds.extend(area.center)));
-    gMap.fitBounds(bounds);
+            const script = document.createElement("script");
+            script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places,geometry`;
+            script.async = true;
+            document.head.appendChild(script);
 
-    // Draw service area polygons
-    serviceAreas.forEach(city =>
-      city.subAreas.forEach(area => {
-        const circlePath = createCircle(area.center, area.radius);
-        new window.google.maps.Polygon({
-          paths: circlePath,
-          strokeColor: city.color,
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: city.color,
-          fillOpacity: 0.25,
-          map: gMap,
+            script.onload = resolve;
         });
-      })
-    );
+    };
+    useEffect(() => {
+        const initMap = async () => {
+            await loadGoogleMaps();
 
-    // Google autocomplete
-    const input = document.getElementById("autocomplete");
-    const autocomplete = new window.google.maps.places.Autocomplete(input);
-    autocomplete.bindTo("bounds", gMap);
+            const gMap = new window.google.maps.Map(mapRef.current, {
+                center: { lat: 11.1, lng: 77.1 },
+                zoom: 7,
+                streetViewControl: false,
+                mapTypeControl: false,
+            });
 
-    autocomplete.addListener("place_changed", () => {
-      const place = autocomplete.getPlace();
-      if (!place.geometry || !place.geometry.location) return;
+            setMap(gMap);
 
-      const location = place.geometry.location;
-      gMap.setCenter(location);
-      gMap.setZoom(18);
+            // fit bounds
+            const bounds = new window.google.maps.LatLngBounds();
+            serviceAreas.forEach(city =>
+                city.subAreas.forEach(area => bounds.extend(area.center))
+            );
+            gMap.fitBounds(bounds);
 
-      if (marker) marker.setMap(null);
+            // Draw polygons
+            serviceAreas.forEach(city =>
+                city.subAreas.forEach(area => {
+                    const circlePath = createCircle(area.center, area.radius);
+                    new window.google.maps.Polygon({
+                        paths: circlePath,
+                        strokeColor: city.color,
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: city.color,
+                        fillOpacity: 0.25,
+                        map: gMap,
+                    });
+                })
+            );
 
-      const newMarker = new window.google.maps.Marker({
-        position: location,
-        map: gMap,
-        draggable: true,
-      });
+            // Autocomplete
+            const input = document.getElementById("autocomplete");
+            const autocomplete = new window.google.maps.places.Autocomplete(input);
+            autocomplete.bindTo("bounds", gMap);
 
-      newMarker.addListener("dragend", () => {
-        setShowButton(true);
-        const pos = newMarker.getPosition();
-        new window.google.maps.Geocoder().geocode({ location: pos }, (results, status) => {
-          if (status === "OK" && results[0]) setAddress(results[0].formatted_address);
-        });
-      });
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
+                if (!place.geometry || !place.geometry.location) return;
 
-      setMarker(newMarker);
-      setAddress(place.formatted_address);
-      setShowButton(true);
-      setIsAvailable(null);
-      setAvailableArea("");
-      setShowModal(false);
-      setWarning("");
-    });
-  }, []);
+                const location = place.geometry.location;
 
-  const checkAvailability = () => {
+                gMap.setCenter(location);
+                gMap.setZoom(18);
+
+                if (marker) marker.setMap(null);
+
+                const newMarker = new window.google.maps.Marker({
+                    position: location,
+                    map: gMap,
+                    draggable: true,
+                });
+
+                newMarker.addListener("dragend", () => {
+                    setShowButton(true);
+                    const pos = newMarker.getPosition();
+                    new window.google.maps.Geocoder().geocode({ location: pos }, (results, status) => {
+                        if (status === "OK" && results[0]) {
+                            setAddress(results[0].formatted_address);
+                        }
+                    });
+                });
+
+                setMarker(newMarker);
+                setAddress(place.formatted_address);
+                setShowButton(true);
+            });
+        };
+
+        initMap();
+    }, []);
+
+
+    const checkAvailability = () => {
     if (!address.trim()) {
       setWarning("⚠️ Please enter an address before checking availability.");
       return;
@@ -252,7 +272,7 @@ export default function AvailabilityChecker() {
         <CheckCircle className="text-green-500 w-14 h-14 mb-3" />
         <h2 className="text-2xl font-bold text-green-600 mb-2">🎉 You’re Covered!</h2>
         <p className="text-gray-700 mb-3 text-sm">
-          Our service is available in <b>{availableArea || "your area"}</b>. Connect now instantly.
+          Our service is available in <b>Your Location</b>. Connect now instantly.
         </p>
 
         {/* Quick Contact Buttons */}

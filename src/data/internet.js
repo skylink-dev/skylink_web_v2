@@ -365,6 +365,7 @@ export const rightContentFlexData = {
   legal: "Available in select regions. Conditions apply.",
   smaallcta: "See combo details.",
   mainCta: "Choose Your Plan",
+    href: "/plans",
 };
 export const contentData = {
   subtitle: "Reliable Internet for Small Businesses",

@@ -468,13 +468,13 @@ export default function CustomPlan({
       blue: {
         base: ` ${
           activeTab == "Custom Plan"
-            ? " border-blue-300 text-blue-700 hover:bg-blue-500 hover:text-white"
+            ? " border-blue-400 bg-white/80 shadow-[0_0_5px_1px_#93c5fd] text-blue-700 hover:bg-blue-500 hover:text-white"
             : " border-gray-200 text-gary-300 hover:bg-gray-400 hover:text-white"
         } `,
         active: ` ${
           activeTab == "Custom Plan"
             ? " bg-blue-600 text-white border-blue-600"
-            : " bg-gray-300 text-black/80 border-gray-400"
+            : " bg-gray-300  text-black/80 border-gray-400"
         }`,
         disabled: ` ${
           activeTab == "Custom Plan"
@@ -485,7 +485,7 @@ export default function CustomPlan({
       red: {
         base: ` ${
           activeTab == "Custom Plan"
-            ? " border-red-300 text-red-700 hover:bg-red-500 hover:text-white"
+            ? " border-red-400 bg-white/80 shadow-[0_0_5px_1px_#f87171] text-red-700 hover:bg-red-500 hover:text-white"
             : " border-gray-200 text-gary-300 hover:bg-gray-400 hover:text-white"
         }`,
         active: ` ${
@@ -502,7 +502,7 @@ export default function CustomPlan({
       yellow: {
         base: ` ${
           activeTab == "Custom Plan"
-            ? " border-yellow-300 text-yellow-700 hover:bg-yellow-500 hover:text-white"
+            ? " border-yellow-400 bg-white/80 shadow-[0_0_5px_1px_#facc15] text-yellow-700 hover:bg-yellow-500 hover:text-white"
             : " border-gray-200 text-gary-300 hover:bg-gray-400 hover:text-white"
         }`,
         active: ` ${
@@ -519,7 +519,7 @@ export default function CustomPlan({
       green: {
         base: ` ${
           activeTab == "Custom Plan"
-            ? " border-green-300 text-green-700 hover:bg-green-500 hover:text-white"
+            ? " border-green-400 bg-white/80 shadow-[0_0_5px_1px_#4ade80] text-green-700 hover:bg-green-500 hover:text-white"
             : " border-gray-200 text-gary-300 hover:bg-gray-400 hover:text-white"
         }`,
         active: ` ${
@@ -738,7 +738,7 @@ export default function CustomPlan({
                       if (isDisabled) return;
                       setSelected(opt);
                     }}
-                    className={`relative cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
+                    className={`relative h-full cursor-pointer w-full py-3 rounded-md font-medium border transition-all duration-200 flex items-center justify-center gap-2 ${
                       isDisabled
                         ? colorMap[color].disabled
                         : selected?.name === opt.name
@@ -759,7 +759,7 @@ export default function CustomPlan({
                     <div className="flex flex-col items-center">
                       <span>
                         {opt.name}
-                        {` + ${type == "channels" ? "Channels" : "OTTs"} `}
+                        {`+ ${type == "channels" ? "Channels" : "OTTs"} `}
                         <span
                           className={`text-[11px] font-medium ${
                             isMobile ? "" : isDisabled ? "hidden" : ""
