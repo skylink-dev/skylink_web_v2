@@ -38,31 +38,35 @@ export default function IconDetails({ iconslist, title }) {
         viewport={{ once: true, amount: 0.2 }}
       >
         {iconslist.map((item, index) => (
-          <motion.div
-            key={index}
-            variants={itemVariants}
-            whileHover={{
-              scale: 1.1,
-              y: -5,
-              boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-            }}
-            className="group bg-white border border-gray-100 hover:border-red-400 transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center"
-          >
-            <div className="text-red-600 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3">{item.icon}</div>
-            <Link
+          <Link
               href={index === 0 ? "/support" :
                   index === 1 ? "/tv" :
                       index === 2 ? "/accessories" :
                           index === 3 ? "/plans" :
                               index === 4 ? "/internet" :
                                   "/contact-us"}
+              key={index}
+              className="block"
               aria-label={item.cta}
-              className="relative font-semibold text-gray-800 text-xs group-hover:text-red-600 transition-colors duration-300 text-center"
-            >
-              <span className="relative z-10">{item.cta}</span>
-              <span className="absolute inset-x-0 bottom-0 h-0.5 bg-red-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></span>
-            </Link>
-          </motion.div>
+          >
+              <motion.div
+                  variants={itemVariants}
+                  whileHover={{
+                      scale: 1.1,
+                      y: -5,
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+                  }}
+                  className="group bg-white border border-gray-100 hover:border-red-400 transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center cursor-pointer"
+              >
+                  <div className="text-red-600 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3">{item.icon}</div>
+                  <div
+                      className="relative font-semibold text-gray-800 text-xs group-hover:text-red-600 transition-colors duration-300 text-center">
+                      <span className="relative z-10">{item.cta}</span>
+                      <span
+                          className="absolute inset-x-0 bottom-0 h-0.5 bg-red-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></span>
+                  </div>
+              </motion.div>
+          </Link>
         ))}
       </motion.div>
     </section>
