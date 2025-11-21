@@ -52,7 +52,7 @@ const internetServiceData = getServiceStructuredData({
     name: "Skylink Fiber Internet",
     description: "High-speed fiber internet with unlimited data, low latency, and no throttling. Perfect for streaming, gaming, and working from home.",
     serviceType: "BroadbandService",
-    url: "http://stage.skylink.net.in:3000/internet"
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/internet`
 });
 
 export default function Internet() {

@@ -25,7 +25,7 @@ export const metadata = {
     openGraph: {
         title: "Skylink Fire TV Stick | Stream TV & OTT Content",
         description: "Get the Skylink Fire TV Stick for seamless streaming of your favorite shows, movies, and OTT content. Easy setup and voice control included.",
-        url: "http://stage.skylink.net.in:3000/firestick",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/firestick`,
         type: "website",
         images: [
             {

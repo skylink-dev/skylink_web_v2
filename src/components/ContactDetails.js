@@ -46,48 +46,48 @@ const getIcon = (type) => {
       <svg
         aria-hidden="false"
         focusable="false"
-        height="48"
-        width="48"
+        height="60"
+        width="60"
         viewBox="0 0 96 96"
         className="text-red-500"
       >
-        <path
-          className="fill-red-500"
-          d="M69.18 84.12a11.8 11.8 0 01-3.73-.61 84.14 84.14 0 01-53-53 11.67 11.67 0 012.83-12l4.8-4.8a6.37 6.37 0 019 0l8.82 8.82a6.34 6.34 0 011.35 7l-4.11 9.59a35.18 35.18 0 0021.69 21.7l9.59-4.11a6.34 6.34 0 017 1.35l8.82 8.82a6.37 6.37 0 010 9l-4.8 4.8a11.67 11.67 0 01-8.26 3.44z"
-        />
+          <path
+              className="fill-red-500"
+              d="M66.69,83A13.94,13.94,0,0,1,56,78.5L21.49,44a14,14,0,0,1,0-19.8l4.8-4.8a8,8,0,0,1,11.31,0l8.83,8.83a8,8,0,0,1,0,11.31L41.32,44.6a31.28,31.28,0,0,0,10.08,10.08l5.07-5.07a8,8,0,0,1,11.31,0L76.6,58.4a8,8,0,0,1,0,11.31l-4.8,4.79A13.94,13.94,0,0,1,66.69,83ZM32.25,20a6,6,0,0,0-4.25,1.76l-4.8,4.8A12,12,0,0,0,23.2,46.9l34.9,34.9a12,12,0,0,0,20.34,0l4.8-4.8a6,6,0,0,0,0-8.48L74.41,59.69a6,6,0,0,0-8.48,0L60,65.66,59,65.31a33.94,33.94,0,0,1-15.4-12.91,33.94,33.94,0,0,1-3.9-7.49L39,43.47l5.93-5.93a6,6,0,0,0,0-8.48L36.5,20.23A6,6,0,0,0,32.25,20Z"
+          />
       </svg>
     );
 
-  if (type === "video")
-    return (
-      <svg
-        aria-hidden="false"
-        focusable="false"
-        height="48"
-        width="48"
-        viewBox="0 0 96 96"
-        className="text-red-500"
-      >
-        <path
-          className="fill-red-500"
-          d="M34 72.5v-37L58.72 54zm2-33v29L55.38 54z"
-        ></path>
-      </svg>
-    );
+    if (type === "video")
+        return (
+            <svg
+                aria-hidden="false"
+                focusable="false"
+                height="60"
+                width="60"
+                viewBox="0 0 96 96"
+                className="text-red-500"
+            >
+                <path
+                    className="fill-red-500"
+                    d="M73,73H23V23H73Zm-48-2H71V25H25ZM55,48L41,38.5v19Zm-12-5,8,5-8,5Z"
+                ></path>
+            </svg>
+        );
 
-  if (type === "home")
-    return (
-      <svg
-        aria-hidden="false"
-        focusable="false"
-        height="48"
-        width="48"
-        viewBox="0 0 96 96"
-        className="text-red-500"
-      >
-        <path
-          className="fill-red-500"
-          d="M75 67H50V51h25zm-23-2h21V53H52z"
+    if (type === "home")
+        return (
+            <svg
+                aria-hidden="false"
+                focusable="false"
+                height="60"
+                width="60"
+                viewBox="0 0 96 96"
+                className="text-red-500"
+            >
+                <path
+                    className="fill-red-500"
+                    d="M83,36.28,48,12.07,13,36.28V83H83ZM15,81V37.72L48,14.93,81,37.72V81ZM73,67H50V51H73ZM52,65H71V53H52Z"
         ></path>
       </svg>
     );
@@ -103,11 +103,11 @@ export default function ContactDetails() {
           {contactSections.map((section, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl shadow-md border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="bg-white rounded-2xl shadow-md border border-gray-200 p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-4 mb-6">
                 {getIcon(section.iconType)}
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-xl font-semibold text-gray-900">
                   {section.title}
                 </h2>
               </div>

@@ -23,7 +23,7 @@ export const metadata = {
     openGraph: {
         title: "High-Speed Fiber Internet | Skylink",
         description: "Get ultra-fast, reliable fiber internet with unlimited data. Perfect for streaming, gaming, and working from home.",
-        url: "http://stage.skylink.net.in:3000/internet",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/internet`,
         type: "website",
         images: [
             {

@@ -17,7 +17,7 @@ export const metadata = {
     openGraph: {
         title: "Special Offers & Deals | Skylink",
         description: "Explore Skylink's latest offers and save with our bundle deals.",
-        url: "http://stage.skylink.net.in:3000/deals",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/deals`,
         type: "website",
         images: [
             {

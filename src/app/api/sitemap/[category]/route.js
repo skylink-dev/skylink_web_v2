@@ -8,7 +8,7 @@ import {routes, generateFullSitemap, groupRoutesByCategory} from '../../../../li
  */
 export async function GET(request, {params}) {
     // Define your website URL
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://stage.skylink.net.in:3000';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ;
 
     // Get the requested category from the URL
     const category = params.category;

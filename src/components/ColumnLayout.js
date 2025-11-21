@@ -5,12 +5,12 @@ import Image from "next/image";
 export default function ThreeColumnLayout({ content }) {
   return (
     <div className="bg-gray-50 py-16 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row gap-6 justify-center items-stretch">
         {content &&
-          content.map((item, index) => (
+          content.slice(0, 3).map((item, index) => (
             <div
               key={index}
-              className="relative rounded-2xl overflow-hidden shadow-lg group h-[480px]"
+              className="relative rounded-2xl overflow-hidden shadow-lg group h-[480px] w-full sm:w-1/3 flex-1"
               style={{
                 backgroundImage: `url(${item.image})`,
                 backgroundSize: "cover",
@@ -32,7 +32,7 @@ export default function ThreeColumnLayout({ content }) {
                 <p className="text-xs opacity-80 mb-3">{item.subdescription}</p>
 
                 {/* Buttons */}
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 md:flex-row md:gap-2 md:flex-wrap">
                   {/* CTA button */}
                   <Link
                     href="/plans"

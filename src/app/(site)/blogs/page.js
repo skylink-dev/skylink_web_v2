@@ -16,7 +16,7 @@ export const metadata = {
     openGraph: {
         title: "Blogs & Articles | Skylink",
         description: "Explore our latest articles on internet technology and digital lifestyle.",
-        url: "http://stage.skylink.net.in:3000/blogs",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/blogs`,
         type: "website",
         images: [
             {

@@ -82,6 +82,18 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
+  <Script id="zoho-salesiq-init">
+        {`
+          window.$zoho = window.$zoho || {};
+          $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
+        `}
+      </Script>
+
+      <Script
+        id="zoho-salesiq-widget"
+        src="https://salesiq.zohopublic.in/widget?wc=siqbdda86c3d9e9a43109361009ec27a042d71012303c9e09290ffe296ea82f528da6c9964a88a94049e676b7dca65c700c"
+        strategy="afterInteractive"
+      />
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-slate-900`}
@@ -110,6 +122,7 @@ export default function RootLayout({ children }) {
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>
         </PageLoaderWrapper>
+
       </body>
     </html>
   );

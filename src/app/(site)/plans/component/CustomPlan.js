@@ -245,7 +245,7 @@ export default function CustomPlan({
   const [selectedValidity, setSelectedValidity] = useState(12);
   const channelsList = basePlans.channels;
   const [selectedChannel, setSelectedChannel] = useState({
-    name: 350,
+    name: 450,
     packValidity: [
       {
         speed: "30 Mbps",
@@ -577,7 +577,7 @@ export default function CustomPlan({
                           : colorMap[color].base
                       }`}
                     >
-                      <p> {opt?.name?.replace(/mbps/i, "").trim()}</p>
+                      <p> {opt?.name?.replace(/mbps/i, "").trim()} </p>
                       <p>Mbps</p>
 
                       {selected?.name === opt.name &&

@@ -23,7 +23,7 @@ export const metadata = {
     openGraph: {
         title: "Internet & TV Services in Erode | Skylink",
         description: "Get connected with Skylink's high-speed fiber internet and TV services in Erode. Check coverage and plans.",
-        url: "http://stage.skylink.net.in:3000/erode",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/erode`,
         type: "website",
         images: [
             {

@@ -24,7 +24,7 @@ export const metadata = {
     openGraph: {
         title: "About Skylink | Our Story",
         description: "Learn about Skylink's mission to provide cutting-edge internet and TV services across India.",
-        url: "http://stage.skylink.net.in:3000/about",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/about`,
         type: "website",
         images: [
             {

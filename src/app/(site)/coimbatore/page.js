@@ -25,7 +25,7 @@ export const metadata = {
     openGraph: {
         title: "Internet & TV Services in Coimbatore | Skylink",
         description: "Skylink offers high-speed fiber internet and TV services in Coimbatore. Check availability in your area today.",
-        url: "http://stage.skylink.net.in:3000/coimbatore",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/coimbatore`,
         type: "website",
         images: [
             {

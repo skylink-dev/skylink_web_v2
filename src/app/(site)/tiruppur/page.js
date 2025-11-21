@@ -24,7 +24,7 @@ export const metadata = {
     openGraph: {
         title: "Internet & TV Services in Tiruppur | Skylink",
         description: "Skylink offers reliable high-speed fiber internet and TV services throughout Tiruppur. Check availability now.",
-        url: "http://stage.skylink.net.in:3000/tiruppur",
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/tiruppur`,
         type: "website",
         images: [
             {
