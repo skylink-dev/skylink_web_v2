@@ -577,7 +577,7 @@ export default function CustomPlan({
                           : colorMap[color].base
                       }`}
                     >
-                      <p> {opt?.name?.replace(/mbps/i, "").trim()}</p>
+                      <p> {opt?.name?.replace(/mbps/i, "").trim()} </p>
                       <p>Mbps</p>
 
                       {selected?.name === opt.name &&

@@ -32,7 +32,7 @@ export const customPlans = {
   validity: [1, 3, 6, 12],
   channels: [
     {
-      name: 350,
+      name: 450,
       /**
        * If you  want to disable remove from the plan list
        * If you want to add additional charges and make thenm add on or free make changes in additional charges
