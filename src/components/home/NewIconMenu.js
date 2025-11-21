@@ -12,44 +12,45 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
     );
   }
 
-  const mobileItems = content.slice(0, 4);
+    // Show all icons on mobile in a scrollable container
+    const mobileItems = content;
 
   return (
-    <div className="w-full py-2">
-      <div className="container mx-auto px-3 sm:px-6">
-        {/* 🌟 Mobile Layout */}
-        <ul className="flex sm:hidden justify-between gap-3">
-          {mobileItems.map((item) => (
-            <li
-              key={item.id}
-              onClick={() => onSelect?.(item.id)}
-              className={`w-1/4 p-3 flex flex-col items-center
+    <div className="w-full bg-white" style={{marginBottom: '-1px'}}>
+        <div className="container mx-auto px-4 sm:pt-6 md:pt-8">
+            {/* 🌟 Mobile Layout */}
+            <ul className="flex sm:hidden justify-evenly overflow-x-auto gap-3 py-3 border-b-0">
+            {mobileItems.map((item) => (
+                <li
+                    key={item.id}
+                    onClick={() => onSelect?.(item.id)}
+                    className={`flex-1 p-2 flex flex-col items-center
                 transition-all duration-300 cursor-pointer hover:-translate-y-1
                 ${activeId === item.id ? "text-red-600" : "text-gray-700"}
               `}
-            >
-              <Link
-                href={item.linkdata || "#"}
-                className="flex flex-col items-center"
-              >
-                {/* ⭐ ONLY IMAGE HAS DEPTH BACKGROUND */}
-                <div
-                  className="w-18 h-18 p-2 flex items-center justify-center 
-                  bg-white/60 
-                  rounded-2xl border border-gray-200
-                "
                 >
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    width={52}
-                    height={52}
-                    className="object-contain"
-                    unoptimized
-                  />
-                </div>
+                    <Link
+                        href={item.linkdata || "#"}
+                        className="flex flex-col items-center w-full"
+                    >
+                        {/* ⭐ ONLY IMAGE HAS DEPTH BACKGROUND */}
+                        <div
+                            className="w-14 h-14 p-2 flex items-center justify-center
+                  bg-white 
+                  rounded-2xl shadow-sm
+                "
+                        >
+                            <Image
+                                src={item.icon}
+                                alt={item.title}
+                                width={46}
+                                height={46}
+                                className="object-contain"
+                                unoptimized
+                            />
+                        </div>
 
-                <span className="text-[11px] mt-2 font-medium text-center">
+                        <span className="text-xs mt-2 font-medium text-center w-full truncate">
                   {item.title}
                 </span>
               </Link>
@@ -58,7 +59,7 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
         </ul>
 
         {/* 🖥 Desktop Layout */}
-        <ul className="hidden sm:flex flex-wrap justify-center gap-6 mt-4">
+        <ul className="hidden sm:flex flex-wrap justify-center gap-6 mt-0 mb-0 pb-2">
           {content.map((item) => (
             <li
               key={item.id}
