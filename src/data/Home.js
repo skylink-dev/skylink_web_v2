@@ -56,11 +56,11 @@ export const slides = [
 export const slidesData = [
   {
     id: "slide-3",
-    heading: "Skylink OTT Basic @ ₹599/month",
+    heading: "Skylink Red @ ₹499/month",
     eyebrow: "Movies. Music. More",
     description:
-      "Stream 550+ free and regional channels along with 19 OTT apps through the Skylink OTTs Basic Plan.",
-    legal: "Speed varies. Fair usage applies.",
+      "50 Mbps, 450+ channels, 16 OTT apps. Your new excuse for “one more episode.”\n",
+    legal: "Smart Entertainment Made Simple",
     ctaLabel: "Get the Plan",
     ctaHref: "/ott",
     image: "/newassets/home/slider/skylink-second.png",
@@ -70,10 +70,11 @@ export const slidesData = [
   },
   {
     id: "slide-2",
-    heading: "Stream ₹599/m",
-    eyebrow: "Movies & More",
+    heading: "Skylink Red @ ₹699/month",
+    eyebrow: "More Content. More Joy",
     description:
-      "550+ FTA & PLC channels at zero cost, plus 19 OTT apps free with Skylink & OTTs Basic Plan.",
+      "50 Mbps with 550+ channels and 19 OTT apps. Basically, unlimited reasons to\n" +
+        "procrastinate.",
     legal: "No hardware. Internet only.",
     ctaLabel: "Explore OTT",
     ctaHref: "/ott",
@@ -84,10 +85,11 @@ export const slidesData = [
   },
   {
     id: "slide-1",
-    heading: "Skylink Home Combo @ ₹799/month",
-    eyebrow: "The Everyday Essential.",
+    heading: "Skylink Red @ ₹899/month (100 Mbps)",
+    eyebrow: "Speed That Feels Right\n",
     description:
-      "Enjoy fast broadband and 750+ live TV channels, including Sun TV, Vijay TV, and Zee5 - all in one plan.",
+      "100 Mbps, 550+ channels and 19 OTT apps. Your binge-watching stamina is the only\n" +
+        "limit.",
     legal: "Free installation available across Tamil Nadu, Telangana, and Karnataka.",
     ctaLabel: "Get the Plan",
     ctaHref: "/",
@@ -98,9 +100,9 @@ export const slidesData = [
   },
   {
     id: "slide-4",
-    heading: "Skylink Fiber Max @ ₹899/month",
-    eyebrow: "The Ultimate Skylink Experience.",
-    description: "Access high-speed broadband, 1000+ live TV channels, and premium OTT apps like JioCinema, SonyLIV, and Zee5.",
+    heading: "Skylink Red @ ₹999/month (200 Mbps)",
+    eyebrow: "Premium Speed, Premium Living",
+    description: "200 Mbps with 550+ channels and 20 OTT apps. For homes that expect a bit more.\n",
     legal: "No extra setup or device required. Your connection handles it all.",
     ctaLabel: "Get the Plan",
     ctaHref: "/",
@@ -111,10 +113,11 @@ export const slidesData = [
   },
   {
     id: "slide-5",
-    heading: "Unlimited OTT ₹999/m",
-    eyebrow: "Hindi Hits & Series",
+    heading: "Skylink Red @ ₹3999/month (1 Gbps)\n",
+    eyebrow: "Gigabit. Can You Handle This?",
     description:
-      "Addon -Jio Hotstar, Zee5 - streaming redefined. Mega Max 29 OTT pack worth ₹299/- Free.",
+      "1 Gbps with 750+ channels and 20 OTT apps. This is peak entertainment, no elevator\n" +
+        "needed.",
     legal:
       "If Mega Max pack is claimed as free, then IPTV Premium Pack can’t be claimed by customer. Internet required. No set-top box.",
     ctaLabel: "Explore OTT",

@@ -102,7 +102,7 @@ const productListData = [
     reviews: 35,
     image: "/assets/firestick-product-1.jpg",
     category: "Broadband",
-    link: "/gigabyte-fiber-router",
+    link: "/gigabit-fiber-router",
   },
   {
     id: 12,

@@ -578,7 +578,7 @@ export default function CustomPlan({
                       }`}
                     >
                       <p> {opt?.name?.replace(/mbps/i, "").trim()} </p>
-                      <p>Mbps</p>
+                      <p>&nbsp;Mbps</p>
 
                       {selected?.name === opt.name &&
                         (isMobile ? (

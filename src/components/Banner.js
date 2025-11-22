@@ -44,7 +44,7 @@ export default function Banner({ content }) {
             transition={{ duration: 0.3 }}
           >
             <Link
-              href="/"
+              href="/plans"
               className="underline underline-offset-4 decoration-black hover:text-gray-800 transition"
             >
               {content.firstcta}
