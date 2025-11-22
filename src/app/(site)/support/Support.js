@@ -10,10 +10,10 @@ import StructuredData from "@/components/StructuredData";
 import {getFAQStructuredData} from "@/lib/structuredData";
 import {IconContent} from "@/data/Home";
 import IconDetails from "@/components/IconDetails";
+import SupportContactDetails from "@/components/SupportContactDetails";
 
 const SliderBanner = dynamic(() => import("@/components/SliderBanner"));
 const CustomSearch = dynamic(() => import("@/components/CustomSearch"));
-const ContactDetails = dynamic(() => import("@/components/ContactDetails"));
 const SupportVideos = dynamic(() => import("@/components/SupportVideo"));
 
 
@@ -58,7 +58,7 @@ export default function Support() {
             <SliderBanner />
             <SupportVideos />
             <IconDetails title="How can we help you today?" iconslist={IconContent} page="support" />
-            <ContactDetails />
+            <SupportContactDetails />
             <Faq title="You've asked. We've answered." content={faqItems}/>
         </>
     );

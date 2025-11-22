@@ -5,7 +5,7 @@ export const tablecontent = [
     option2: "no",
     option3: "no",
   },
-  { title: "Gigabyte Speeds", option1: "yes", option2: "no", option3: "no" },
+  { title: "Gigabit Speeds", option1: "yes", option2: "no", option3: "no" },
   { title: "Fiber to Home", option1: "yes", option2: "yes", option3: "yes" },
   {
     title: "Symmetric Upload/Download",

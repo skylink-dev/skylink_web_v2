@@ -77,6 +77,9 @@ export default function Footer() {
         { title: "Whistleblower Policy", url: "/whistleblower-policy" },
     { title: "Terms of Use", url: "/terms" },
     { title: "Broadband Details", url: "/plans" },
+      {title: "Coimbatore", url: "/coimbatore"},
+      {title: "Erode", url: "/erode"},
+      {title: "Tiruppur", url: "/tiruppur" },
   ]);
 
   const [openIndex, setOpenIndex] = useState(null);

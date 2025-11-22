@@ -291,12 +291,17 @@ export default function FlexCard({
                         <button
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold py-2 min-[375px]:py-2.5 px-5 min-[375px]:px-6 rounded-lg sm:rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300 text-xs min-[375px]:text-sm"
                             onClick={() => {
-                                // Check if this is the OTT section by looking at the current URL path
+                                // Check the current page path
+                                const isHomePage = typeof window !== 'undefined' &&
+                                    (window.location.pathname === '/' || window.location.pathname === '');
                                 const isOTTSection = typeof window !== 'undefined' &&
                                     (window.location.pathname.includes('/ott') ||
                                         window.location.pathname.includes('/tv'));
 
-                                if (isOTTSection) {
+                                if (isHomePage) {
+                                    // For home page, make a phone call
+                                    window.location.href = "tel:+919944199445";
+                                } else if (isOTTSection) {
                                     // For OTT section, make a phone call
                                     window.location.href = "tel:+919944199445";
                                 } else {
@@ -310,13 +315,17 @@ export default function FlexCard({
                     {/* Show different button text based on section */}
                       {(typeof window !== 'undefined' &&
                           (window.location.pathname.includes('/ott') ||
-                              window.location.pathname.includes('/tv')))
+                              window.location.pathname.includes('/tv') ||
+                              window.location.pathname === '/' ||
+                              window.location.pathname === ''))
                           ? "Call Now" : rightSelected?.mainCta}
                   </span>
                             {/* Show different icon based on section */}
                             {(typeof window !== 'undefined' &&
                                 (window.location.pathname.includes('/ott') ||
-                                    window.location.pathname.includes('/tv'))) ? (
+                                    window.location.pathname.includes('/tv') ||
+                                    window.location.pathname === '/' ||
+                                    window.location.pathname === '')) ? (
                                 <svg
                                     className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                                     fill="none"
