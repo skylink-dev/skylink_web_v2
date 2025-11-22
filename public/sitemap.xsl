@@ -315,7 +315,7 @@
                                         <xsl:if test="contains(sitemap:loc, '/plans') or contains(sitemap:loc, '/packages') or contains(sitemap:loc, '/deals')">
                                             <span class="category">Plans</span>
                                         </xsl:if>
-                                        <xsl:if test="contains(sitemap:loc, '/products') or contains(sitemap:loc, '/accessories')">
+                                        <xsl:if test="contains(sitemap:loc, '/products')"> <!-- Changed from: contains(sitemap:loc, '/products') or contains(sitemap:loc, '/accessories') -->
                                             <span class="category">Products</span>
                                         </xsl:if>
                                         <xsl:if test="contains(sitemap:loc, '/blogs')">

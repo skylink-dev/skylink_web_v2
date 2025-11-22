@@ -41,10 +41,11 @@ export const homeIconiconList = [
     title: "Relocating ",
     linkdata: "/moving",
   },
-  {
-    id: 8,
-    icon: "/newassets/home/icons/Broadband.png",
-    title: "Accessories",
-    linkdata: "/accessories",
-  },
+    // Accessories icon commented out as requested
+    // {
+    //   id: 8,
+    //   icon: "/newassets/home/icons/Broadband.png",
+    //   title: "Accessories",
+    //   linkdata: "/accessories",
+    // },
 ];
