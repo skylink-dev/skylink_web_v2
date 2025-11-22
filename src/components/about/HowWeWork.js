@@ -1,10 +1,11 @@
 import React from 'react';
 import {motion} from 'framer-motion';
+import Link from 'next/link';
 
 export default function HowWeWork() {
     const workProcesses = [
         {
-            title: "Smooth installation",
+            title: "Smooth Installation",
             description: "Our technicians handle setups neatly and explain everything in simple terms so you know exactly how your connection works.",
             icon: (
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -12,10 +13,10 @@ export default function HowWeWork() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                           d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
                 </svg>
-            )
+            ),
         },
         {
-            title: "Proactive network care",
+            title: "Proactive Network Care",
             description: "We monitor performance daily across regions. When we spot something unusual, we act before it becomes a problem for you.",
             icon: (
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -23,10 +24,10 @@ export default function HowWeWork() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                           d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                 </svg>
-            )
+            ),
         },
         {
-            title: "Fast issue resolution",
+            title: "Fast Issue Resolution",
             description: "Local support means quick responses. When something needs attention, our teams are nearby and ready to help.",
             icon: (
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -34,7 +35,7 @@ export default function HowWeWork() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                           d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
-            )
+            ),
         }
     ];
 
