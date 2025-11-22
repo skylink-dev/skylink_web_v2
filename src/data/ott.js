@@ -314,7 +314,7 @@ export const rightContentFlexData = {
   heading: "Stream your favorite OTT platforms seamlessly",
   description: "Access Zee5, Prime, Jio Hotstar & more in one OTT bundle.",
   legal:
-    "Get Playbox Mega Max 29 OTT pack (₹199 value) free. If claimed free, IPTV Premium Pack is unavailable.",
+    "Get Playbox Mega Max 20+ OTT pack (₹199 value) free. If claimed free, IPTV Premium Pack is unavailable.",
   smaallcta: "Explore OTT packages.",
   mainCta: "Call +91 9944199445",
 };
