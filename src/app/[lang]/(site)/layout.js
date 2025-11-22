@@ -12,6 +12,7 @@ import Script from "next/script";
 import GlobalStructuredData from "@/components/GlobalStructuredData";
 // Import default metadata from our centralized metadata module
 import { defaultMetadata } from "@/lib/metadata";
+import LanguageSwitcher from "@/layout/LanguageSwitcher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,7 +62,6 @@ export default function RootLayout({ children }) {
         />
 
         {/* 3CX Live Chat Script */}
-       
 
         {/* ✅ Google Tag Manager (with fallback) */}
         <Script
@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-  <Script id="zoho-salesiq-init">
+      <Script id="zoho-salesiq-init">
         {`
           window.$zoho = window.$zoho || {};
           $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
@@ -108,7 +108,6 @@ export default function RootLayout({ children }) {
           ></iframe>
         </noscript>
 
-      
         {/* Global Structured Data */}
         <GlobalStructuredData />
 
@@ -116,13 +115,13 @@ export default function RootLayout({ children }) {
           <Providers>
             <Header />
             <SocialSidebar />
+            <LanguageSwitcher />
             <main className="min-h-screen mt-33 lg:mt-15">{children}</main>
             {/*<BeforeFooter />*/}
             <Footer />
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>
         </PageLoaderWrapper>
-
       </body>
     </html>
   );
