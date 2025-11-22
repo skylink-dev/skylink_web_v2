@@ -27,7 +27,7 @@ export default function SelectedPlanSummary({
   setShowInfo,
   onSubscribe = () => {},
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const ottImage =
     ott?.ottList?.map((ottName) => {
@@ -202,7 +202,7 @@ export default function SelectedPlanSummary({
                 <></>
               ) : (
                 <Row
-                  label={`${channel.name} + Channels `}
+                  label={`${channel.name}+ Channels `}
                   value={`₹ ${channel.name}`}
                 />
               )}
@@ -211,7 +211,7 @@ export default function SelectedPlanSummary({
                 <></>
               ) : (
                 <Row
-                  label={`${ott.name} + OTTs `}
+                  label={`${ott.name}+ OTTs `}
                   value={`₹ ${ottExtraCharge}`}
                 />
               )}
@@ -230,9 +230,9 @@ export default function SelectedPlanSummary({
                       activeTab == "Custom Plan"
                         ? " bg-green-500"
                         : " bg-gray-500 "
-                    }  rounded-full`}
+                    }   rounded-full`}
                   ></div>
-                  Discount applied: - ₹
+                  Discount applied: - ₹{"  "}{" "}
                   {speed?.price * validity * discount * 0.01}
                 </div>
               )}

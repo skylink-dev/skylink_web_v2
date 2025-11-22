@@ -75,9 +75,9 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
               >
                 {/* ⭐ ONLY IMAGE BACKGROUND WITH DEPTH */}
                 <div
-                  className="w-14 h-14 flex items-center justify-center
+                  className="w-25 h-25 flex items-center justify-center
   bg-white/90 backdrop-blur-md
-  rounded-2xl
+  rounded-2xl p-0
   border border-white/60
   shadow-[0_0_0_1px_rgba(255,255,255,0.8),0_4px_20px_rgba(0,0,0,0.1)]
   group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.9),0_8px_40px_rgba(0,0,0,0.15),0_0_40px_rgba(59,130,246,0.1)]
@@ -88,9 +88,9 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
                   <Image
                     src={item.icon}
                     alt={item.title}
-                    width={56}
-                    height={56}
-                    className="object-contain"
+                    width={100}
+                    height={100}
+                    className="object-fill"
                     unoptimized
                   />
                 </div>
