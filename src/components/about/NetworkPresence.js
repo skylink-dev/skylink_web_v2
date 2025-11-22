@@ -1,12 +1,13 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function NetworkPresence() {
     const cities = [
-        {name: "Coimbatore", highlight: true},
-        {name: "Tiruppur", highlight: true},
-        {name: "Erode", highlight: true}
+        {name: "Coimbatore", highlight: true, url: "/coimbatore"},
+        {name: "Tiruppur", highlight: true, url: "/tiruppur"},
+        {name: "Erode", highlight: true, url: "/erode"}
     ];
 
     return (
@@ -35,24 +36,30 @@ export default function NetworkPresence() {
                                 <div
                                     className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-red-900/30"></div>
 
-                                {/* City badges - positioned over the image */}
-                                <div
-                                    className="absolute top-6 left-6 bg-white/90 rounded-xl shadow-lg px-4 py-2 flex items-center">
-                                    <span className="w-3 h-3 bg-red-600 rounded-full mr-3 animate-pulse"></span>
-                                    <span className="font-bold text-gray-800">Coimbatore</span>
-                                </div>
+                                {/* City badges - positioned over the image - Now clickable */}
+                                <Link href="/coimbatore" className="cursor-pointer">
+                                    <div
+                                        className="absolute top-6 left-6 bg-white/90 rounded-xl shadow-lg px-4 py-2 flex items-center hover:bg-red-50/90 transition-colors duration-300 hover:shadow-xl">
+                                        <span className="w-3 h-3 bg-red-600 rounded-full mr-3 animate-pulse"></span>
+                                        <span className="font-bold text-gray-800">Coimbatore</span>
+                                    </div>
+                                </Link>
 
-                                <div
-                                    className="absolute top-6 right-6 bg-white/90 rounded-xl shadow-lg px-4 py-2 flex items-center">
-                                    <span className="w-3 h-3 bg-red-600 rounded-full mr-3 animate-pulse"></span>
-                                    <span className="font-bold text-gray-800">Tiruppur</span>
-                                </div>
+                                <Link href="/tiruppur" className="cursor-pointer">
+                                    <div
+                                        className="absolute top-6 right-6 bg-white/90 rounded-xl shadow-lg px-4 py-2 flex items-center hover:bg-red-50/90 transition-colors duration-300 hover:shadow-xl">
+                                        <span className="w-3 h-3 bg-red-600 rounded-full mr-3 animate-pulse"></span>
+                                        <span className="font-bold text-gray-800">Tiruppur</span>
+                                    </div>
+                                </Link>
 
-                                <div
-                                    className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/90 rounded-xl shadow-lg px-4 py-2 flex items-center">
-                                    <span className="w-3 h-3 bg-red-600 rounded-full mr-3 animate-pulse"></span>
-                                    <span className="font-bold text-gray-800">Erode</span>
-                                </div>
+                                <Link href="/erode" className="cursor-pointer">
+                                    <div
+                                        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/90 rounded-xl shadow-lg px-4 py-2 flex items-center hover:bg-red-50/90 transition-colors duration-300 hover:shadow-xl">
+                                        <span className="w-3 h-3 bg-red-600 rounded-full mr-3 animate-pulse"></span>
+                                        <span className="font-bold text-gray-800">Erode</span>
+                                    </div>
+                                </Link>
 
                                 {/* Decorative ring element */}
                                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -82,7 +89,7 @@ export default function NetworkPresence() {
                             matters most.
                         </p>
 
-                        {/* City tags */}
+                        {/* City tags - Now clickable */}
                         <div className="flex flex-wrap gap-5 mt-8">
                             {cities.map((city, index) => (
                                 <motion.div
@@ -93,13 +100,16 @@ export default function NetworkPresence() {
                                     viewport={{once: true}}
                                     className="flex flex-col items-center"
                                 >
-                                    <div
-                                        className={`inline-flex items-center px-6 py-3 rounded-full text-base font-semibold ${city.highlight ? 'bg-red-600 text-white shadow-md shadow-red-600/20' : 'bg-white text-gray-700 border border-gray-200'}`}>
-                                        {city.highlight && (
-                                            <span className="w-3 h-3 bg-white rounded-full mr-3 animate-pulse"></span>
-                                        )}
-                                        {city.name}
-                                    </div>
+                                    <Link href={city.url}>
+                                        <div
+                                            className={`inline-flex items-center px-6 py-3 rounded-full text-base font-semibold cursor-pointer transform transition-all duration-300 hover:scale-105 ${city.highlight ? 'bg-red-600 text-white shadow-md shadow-red-600/20 hover:bg-red-700 hover:shadow-lg' : 'bg-white text-gray-700 border border-gray-200 hover:border-red-300'}`}>
+                                            {city.highlight && (
+                                                <span
+                                                    className="w-3 h-3 bg-white rounded-full mr-3 animate-pulse"></span>
+                                            )}
+                                            {city.name}
+                                        </div>
+                                    </Link>
                                 </motion.div>
                             ))}
                         </div>

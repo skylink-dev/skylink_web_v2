@@ -195,13 +195,24 @@ export default function Footer() {
 
         {/* Bottom Links */}
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs text-gray-400">
-          {footerBottomMenu.map((item, index) => (
-            <li key={index}>
-              <Link href={item.url} className="hover:text-white transition">
-                {item.title}
-              </Link>
+            {/* Careers link to Zoho Recruit - placed at the beginning */}
+            <li>
+                <a
+                    href="https://skylinkfibernet.zohorecruit.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-medium hover:text-white transition"
+                >
+                    Careers
+                </a>
             </li>
-          ))}
+            {footerBottomMenu.map((item, index) => (
+                <li key={index}>
+                    <Link href={item.url} className="hover:text-white transition">
+                        {item.title}
+                    </Link>
+                </li>
+            ))}
             {/* Separate Speed Test link with custom click handler */}
             <li>
                 <button
