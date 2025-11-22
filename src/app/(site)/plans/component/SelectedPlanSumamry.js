@@ -92,8 +92,8 @@ export default function SelectedPlanSummary({
       channelExtraCharge +
       -(speed?.price * validity * discount * 0.01)
   );
-  const gst = Math.round(subtotal * 0.18);
-  const total = subtotal + gst;
+  const gst = Math.round(subtotal * 0.18 * 100) / 100;
+  const total = Math.round((subtotal + gst) * 100) / 100;
 
   const billingCycleStr = `₹${Math.round(speed?.price)} / month`;
 
@@ -215,6 +215,27 @@ export default function SelectedPlanSummary({
                   value={`₹ ${ottExtraCharge}`}
                 />
               )}
+              <Row label="GST" value={`₹ ${gst}`} />
+
+              {discount > 0 && (
+                <div
+                  className={` w-full h-full flex items-center gap-2 text-sm font-medium ${
+                    activeTab == "Custom Plan"
+                      ? "text-green-600 bg-green-50  border-green-100"
+                      : " text-gray-600 bg-gray-50  border-gray-100 "
+                  }  rounded-lg p-3 border `}
+                >
+                  <div
+                    className={`w-2 h-2 ${
+                      activeTab == "Custom Plan"
+                        ? " bg-green-500"
+                        : " bg-gray-500 "
+                    }  rounded-full`}
+                  ></div>
+                  Discount applied: - ₹
+                  {speed?.price * validity * discount * 0.01}
+                </div>
+              )}
 
               {/* <div className="sm:col-span-2">
                 <div className="text-sm text-gray-600 bg-gray-50 rounded-lg p-3 border border-gray-100">
@@ -226,24 +247,6 @@ export default function SelectedPlanSummary({
             </div>
 
             {/* Discount line inside details (if any) */}
-            {discount > 0 && (
-              <div
-                className={`mt-4 flex items-center gap-2 text-sm font-medium ${
-                  activeTab == "Custom Plan"
-                    ? "text-green-600 bg-green-50  border-green-100"
-                    : " text-gray-600 bg-gray-50  border-gray-100 "
-                }  rounded-lg p-3 border `}
-              >
-                <div
-                  className={`w-2 h-2 ${
-                    activeTab == "Custom Plan"
-                      ? " bg-green-500"
-                      : " bg-gray-500 "
-                  }  rounded-full`}
-                ></div>
-                Discount applied: - ₹{speed?.price * validity * discount * 0.01}
-              </div>
-            )}
           </div>
         )}
 

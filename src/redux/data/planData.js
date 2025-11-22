@@ -167,11 +167,7 @@ export const basePlans = [
     price: 699,
     internetSpeed: "100 Mbps",
     dataLimit: "Unlimited",
-<<<<<<< HEAD
     tvChannels: 450,
-=======
-    tvChannels:450,
->>>>>>> 6c5b082644f7399a0a657ac848d0f6a290d11c9d
     validity: [1, 3, 6, 12],
     discount: [0, 0, 7.5, 15],
     installationCharges: [2000, 0, 0, 0],
