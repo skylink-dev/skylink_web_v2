@@ -114,7 +114,7 @@ export const slidesData = [
     heading: "Unlimited OTT ₹999/m",
     eyebrow: "Hindi Hits & Series",
     description:
-      "Addon -Jio Hotstar, Zee5 - streaming redefined. Mega Max 29 OTT pack worth ₹299/- Free.",
+      "Addon -Jio Hotstar, Zee5 - streaming redefined. Mega Max 20+ OTT pack worth ₹299/- Free.",
     legal:
       "If Mega Max pack is claimed as free, then IPTV Premium Pack can’t be claimed by customer. Internet required. No set-top box.",
     ctaLabel: "Explore OTT",

@@ -1,6 +1,6 @@
 export const bannerContent = {
   subtitle: "Claim your free TV today!",
-  title: "Enjoy 350+ live TV channels when you subscribe to a new plan.",
+  title: "Enjoy 450+ live TV channels when you subscribe to a new plan.",
   firstcta: "",
   offercontent:
     "Limited Time Offer – Get a free TV with your subscription. Terms apply.",
