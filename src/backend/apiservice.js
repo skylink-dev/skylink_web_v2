@@ -47,4 +47,10 @@ export const apiService = {
   deleteContact: (id) => {
     return axiosApi.delete(`contacts/${id}/`);
   },
+
+  checkFesability: (formData) => {
+    console.log("Testint the application dsd");
+    console.log(formData);
+    return axiosApi.post("fisability/check/", formData);
+  },
 };

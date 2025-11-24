@@ -25,7 +25,7 @@ export default function ProductCategories() {
         },
         {
             label: 'Accessories',
-            href: '/buy/accessories/browse/all',
+            href: '/internet',  // Changed from '/buy/accessories/browse/all' to '/internet'
             active: true,
         },
     ];

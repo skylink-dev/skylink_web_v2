@@ -75,7 +75,7 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
               >
                 {/* ⭐ ONLY IMAGE BACKGROUND WITH DEPTH */}
                 <div
-                  className="w-14 h-14 flex items-center justify-center
+                  className="w-16 h-16 flex items-center justify-center 
   bg-white/90 backdrop-blur-md
   rounded-2xl
   border border-white/60
@@ -88,9 +88,9 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
                   <Image
                     src={item.icon}
                     alt={item.title}
-                    width={56}
-                    height={56}
-                    className="object-contain"
+                    width={80}
+                    height={80}
+                    className="object-cover rounded-2xl w-full h-full"
                     unoptimized
                   />
                 </div>

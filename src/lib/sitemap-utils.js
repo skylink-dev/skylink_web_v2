@@ -34,7 +34,8 @@ export const routes = [
     {route: '/packages', priority: 0.8, changefreq: 'weekly'},
 
     // Products & Accessories
-    {route: '/accessories', priority: 0.8, changefreq: 'weekly'},
+    // Accessories route changed to internet
+    // {route: '/accessories', priority: 0.8, changefreq: 'weekly'},
     {route: '/products', priority: 0.8, changefreq: 'weekly'},
 
     // Location Pages
@@ -157,7 +158,7 @@ export const groupRoutesByCategory = (routes) => {
             categories.services.push(route);
         } else if (path.includes('/plans') || path.includes('/deals') || path.includes('/packages')) {
             categories.plans.push(route);
-        } else if (path.includes('/products') || path.includes('/accessories') || path.includes('/firestick')) {
+        } else if (path.includes('/products') || /* path.includes('/accessories') || */ path.includes('/firestick')) {
             categories.products.push(route);
         } else if (path.includes('/coimbatore') || path.includes('/erode') || path.includes('/tiruppur')) {
             categories.locations.push(route);

@@ -69,12 +69,14 @@
     </url>
 
     <!-- Products & Accessories -->
+    <!-- Accessories page commented out and redirected to /internet
     <url>
         <loc>https://skylink.net.in/accessories</loc>
         <lastmod>2025-11-14</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    -->
 
     <url>
         <loc>https://skylink.net.in/products</loc>

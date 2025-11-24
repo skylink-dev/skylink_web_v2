@@ -137,7 +137,7 @@ export default function PlansTabs() {
         ) : (
           <div className="flex justify-center items-center gap-5 w-full max-w-2xl mx-auto">
             {tabs.map((tab, i) => (
-              <>
+                <React.Fragment key={tab.key}>
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key)}
@@ -188,7 +188,7 @@ export default function PlansTabs() {
                 {i === 0 && (
                   <span className="text-gray-500 font-medium text-sm">or</span>
                 )}
-              </>
+                </React.Fragment>
             ))}
           </div>
         )}
