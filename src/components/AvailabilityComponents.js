@@ -172,17 +172,34 @@ export default function AvailabilityChecker() {
   }, []);
 
   const checkAvailability = async () => {
+    if (!address.trim()) {
+      setWarning("⚠️ Please enter an address before checking availability.");
+      return;
+    }
+    if (warning) setWarning("");
+
+    if (!marker) return;
+    const point = new window.google.maps.LatLng(
+      marker.getPosition().lat(),
+      marker.getPosition().lng()
+    );
+    let foundArea = null;
     const formData = {
       address: address,
     };
-
+    console.log("Inside Check Availability Component");
     await apiService
-      .submitContactForm(formData)
+      .checkFesability(formData)
       .then((res) => {
-        setIsAvailable(true);
-        setAvailableArea(foundArea);
-        setShowModal(true);
         console.log(res);
+        if (res?.isAvailable) {
+          setIsAvailable(true);
+          setAvailableArea(foundArea);
+          setShowModal(true);
+        } else {
+          setIsAvailable(false);
+          setShowButton(false);
+        }
       })
       .catch((err) => {
         setIsAvailable(false);
@@ -190,16 +207,6 @@ export default function AvailabilityChecker() {
         console.log(err);
       });
   };
-
-  // if (!address.trim()) {
-  //   setWarning("⚠️ Please enter an address before checking availability.");
-  //   return;
-  // }
-  // if (warning) setWarning("");
-
-  // if (!marker) return;
-  // const point = new window.google.maps.LatLng(marker.getPosition().lat(), marker.getPosition().lng());
-  // let foundArea = null;
 
   // serviceAreas.forEach(city => {
   //   city.subAreas.forEach(area => {
