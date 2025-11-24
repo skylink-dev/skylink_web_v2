@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { Mail, Phone, CheckCircle, X } from "lucide-react";
-import { apiService } from "@/backend/apiservice";
 
 export default function AvailabilityChecker() {
   const mapRef = useRef(null);
@@ -13,7 +12,6 @@ export default function AvailabilityChecker() {
   const [showButton, setShowButton] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [warning, setWarning] = useState("");
-  const checkFesability = apiService.checkFesability;
 
   const createCircle = (center, radius) => {
     const points = [];
@@ -62,7 +60,7 @@ export default function AvailabilityChecker() {
         {
           name: "Erode Area 1",
           center: { lat: 11.34, lng: 77.7172 },
-          radius: 15,
+          radius: 10,
         },
       ],
     },
@@ -73,7 +71,7 @@ export default function AvailabilityChecker() {
         {
           name: "Tiruppur Area 1",
           center: { lat: 11.1085, lng: 77.3411 },
-          radius: 15,
+          radius: 10,
         },
       ],
     },
@@ -121,7 +119,7 @@ export default function AvailabilityChecker() {
             strokeOpacity: 0.8,
             strokeWeight: 2,
             fillColor: city.color,
-            fillOpacity: 0.25,
+            fillOpacity: 0.1,
             map: gMap,
           });
         })
@@ -171,7 +169,7 @@ export default function AvailabilityChecker() {
     initMap();
   }, []);
 
-  const checkAvailability = async () => {
+  const checkAvailability = () => {
     if (!address.trim()) {
       setWarning("⚠️ Please enter an address before checking availability.");
       return;
@@ -184,36 +182,24 @@ export default function AvailabilityChecker() {
       marker.getPosition().lng()
     );
     let foundArea = null;
-    const formData = {
-      address: address,
-    };
-    console.log("Inside Check Availability Component");
-    await apiService
-      .checkFesability(formData)
-      .then((res) => {
-        console.log(res);
-        if (res?.isAvailable) {
-          setIsAvailable(true);
-          setAvailableArea(foundArea);
-          setShowModal(true);
-        } else {
-          setIsAvailable(false);
-          setShowButton(false);
-        }
-      })
-      .catch((err) => {
-        setIsAvailable(false);
-        setShowButton(false);
-        console.log(err);
-      });
-  };
 
-  // serviceAreas.forEach(city => {
-  //   city.subAreas.forEach(area => {
-  //     const polygon = new window.google.maps.Polygon({ paths: createCircle(area.center, area.radius) });
-  //     if (window.google.maps.geometry.poly.containsLocation(point, polygon)) foundArea = area.name;
-  //   });
-  // });
+    serviceAreas.forEach((city) => {
+      city.subAreas.forEach((area) => {
+        const polygon = new window.google.maps.Polygon({
+          paths: createCircle(area.center, area.radius),
+        });
+        if (window.google.maps.geometry.poly.containsLocation(point, polygon))
+          foundArea = area.name;
+      });
+    });
+
+    if (foundArea) {
+      setIsAvailable(true);
+      setAvailableArea(foundArea);
+      setShowModal(true);
+    } else setIsAvailable(false);
+    setShowButton(false);
+  };
 
   const setMapView = (type) => {
     if (!map) return;
