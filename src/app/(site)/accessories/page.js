@@ -1,30 +1,7 @@
-    'use client';
-import React from 'react';
-import dynamic from 'next/dynamic';
-import {
-  iconMenuData,
-  IconContent,
-  slidesData,
-  dynamicSlidesData,
-  productsData
-} from "../../../data/accessories";
+import {notFound} from 'next/navigation';
 
-const IconMenu = dynamic(() => import('@/components/IconMenu'));
-const IconDetails = dynamic(() => import('@/components/IconDetails'));
-const Slider = dynamic(() => import('@/components/Slider'));
-const ProductCard = dynamic(() => import('@/components/ProductCard'));
-const DynamicCarousel = dynamic(() => import('@/components/DynamicCarousel'));
-
+// This page will trigger a 404 Not Found error
 export default function Page() {
-    const dummy = () => {
-        // Initialize page
-   }
-  return (
-    <>
-
-      {/*<Slider title="Accessories you love. Deals you want." slides={slidesData} color="bg-att-blue-000" />*/}
-      <ProductCard title="Accessories by category?" products={productsData} />
-      <DynamicCarousel slidesData={dynamicSlidesData} color="bg-white" />
-    </>
-  );
+    // Call Next.js notFound function to trigger the 404 page
+    notFound();
 }

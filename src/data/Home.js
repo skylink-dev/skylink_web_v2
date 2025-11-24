@@ -288,7 +288,7 @@ export const IconContent = [
         <path className="svg-accent" d="M56 15H40v-2h16z"></path>
       </svg>
     ),
-    cta: "Accessories",
+    cta: "Internet",
   },
   {
     icon: (

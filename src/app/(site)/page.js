@@ -81,12 +81,13 @@ export const newIconiconList = [
     linkdata: "/deals",
   },
 
-  {
-    id: 8,
-    icon: "/newassets/home/new_icons/accessories.gif",
-    title: "Accessories",
-    linkdata: "/accessories",
-  },
+    // Accessories icon commented out as requested
+    // {
+    //   id: 8,
+    //   icon: "/newassets/home/new_icons/accessories.gif",
+    //   title: "Accessories",
+    //   linkdata: "/accessories",
+    // },
 ];
 
 export default function Home() {
