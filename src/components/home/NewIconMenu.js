@@ -35,7 +35,7 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
               >
                 {/* ⭐ ONLY IMAGE HAS DEPTH BACKGROUND */}
                 <div
-                  className="w-12 h-12 p-1.5 flex items-center justify-center
+                  className="w-16 h-16  flex items-center justify-center
                                 bg-white 
                                 rounded-xl shadow-sm
                             "
@@ -45,7 +45,7 @@ export default function NewIconMenu({ content = [], onSelect, activeId }) {
                     alt={item.title}
                     width={36}
                     height={36}
-                    className="object-contain"
+                    className="object-contain w-full h-full rounded-2xl"
                     unoptimized
                   />
                 </div>
