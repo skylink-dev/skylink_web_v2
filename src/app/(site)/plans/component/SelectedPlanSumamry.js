@@ -27,7 +27,7 @@ export default function SelectedPlanSummary({
   setShowInfo,
   onSubscribe = () => {},
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const ottImage =
     ott?.ottList?.map((ottName) => {
