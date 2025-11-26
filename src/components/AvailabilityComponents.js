@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Mail, Phone, CheckCircle, X } from "lucide-react";
+import { Mail, Phone, CheckCircle, X, AlertTriangle } from "lucide-react";
 import { apiService } from "@/backend/apiservice";
 
 export default function AvailabilityChecker() {
