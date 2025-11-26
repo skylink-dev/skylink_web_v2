@@ -526,7 +526,7 @@ export default function AvailabilityChecker() {
         console.log(res);
         if (res?.available) {
           setIsAvailable(true);
-          setAvailableArea(foundArea);
+          setAvailableArea(res?.area_name);
           setShowModal(true);
         } else {
           setIsAvailable(false);
@@ -596,11 +596,11 @@ export default function AvailabilityChecker() {
               Check Availability
             </button>
           )}
-          {isAvailable === false && (
+          {isAvailable === false ? (
             <p className="mt-3 text-lg font-semibold text-red-600">
               ❌ Sorry, service not available here.
             </p>
-          )}
+          ) : null}
         </div>
 
         {/* Map */}
