@@ -67,22 +67,20 @@ export default function ThreeColumnLayout({ content, columnCount }) {
                         ></div>
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40 z-1"></div>
 
-                        <div className="relative z-10 p-4 text-white flex flex-col h-full">
-                            <div className="flex-1">
-                                <p className="text-sm uppercase tracking-wide opacity-90">
-                                    {item.subtitle}
-                                </p>
-                                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                                <p className="text-xs leading-relaxed opacity-95 mb-2">
-                                    {item.description}
-                                </p>
-                                <p className="text-xs opacity-80 mb-2">{item.subdescription}</p>
-                            </div>
+                        <div className="relative z-10 p-4 text-white">
+                            <p className="text-sm uppercase tracking-wide opacity-90">
+                                {item.subtitle}
+                            </p>
+                            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                            <p className="text-xs leading-relaxed opacity-95 mb-2">
+                                {item.description}
+                            </p>
+                            <p className="text-xs opacity-80 mb-2">{item.subdescription}</p>
 
-                            <div className="mt-auto">
+                            <div className="mt-3">
                                 <Link
                                     href="/plans"
-                                    className="block bg-red-600 text-white text-sm px-4 py-2 rounded-md font-medium text-center"
+                                    className="inline-block bg-red-600 text-white text-sm px-4 py-2 rounded-md font-medium"
                                 >
                                     {item.cta}
                                 </Link>
