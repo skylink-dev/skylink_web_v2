@@ -220,7 +220,7 @@ export default function AvailabilityChecker() {
               setAddress(e.target.value);
               if (warning) setWarning("");
             }}
-            className="w-full md:w-3/4 p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-red-500 bg-white text-center"
+            className="w-full md:w-3/4 p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-gray-500 bg-white text-center"
           />
 
           {warning && <p className="text-sm text-yellow-600 mt-1">{warning}</p>}
@@ -256,10 +256,17 @@ export default function AvailabilityChecker() {
         </div>
       </div>
 
-      {/* Success Modal */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn z-50">
-          <div className="bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-green-500 animate-scaleIn">
+          <div className="relative bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-green-500 animate-scaleIn">
+            {/* Close button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+            >
+              <X size={22} />
+            </button>
+
             <div className="text-center flex flex-col items-center">
               <CheckCircle className="text-green-600 w-16 h-16 animate-bounceSlow" />
               <h2 className="text-2xl font-bold text-green-700 mt-2">
@@ -272,24 +279,17 @@ export default function AvailabilityChecker() {
               <div className="flex flex-col gap-3 mt-5 w-full">
                 <a
                   href="tel:+919944199445"
-                  className="bg-green-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
+                  className="bg-green-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
                 >
                   <Phone size={18} /> Call: +91 99441 99445
                 </a>
 
                 <a
                   href="mailto:info@skylink.net.in"
-                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
+                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
                 >
                   <Mail size={18} /> info@skylink.net.in
                 </a>
-
-                <button
-                  className="w-full py-2 text-gray-700 font-medium"
-                  onClick={() => setShowModal(false)}
-                >
-                  Close
-                </button>
               </div>
             </div>
           </div>
@@ -299,26 +299,34 @@ export default function AvailabilityChecker() {
       {/* Error Modal */}
       {showErrorModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn z-50">
-          <div className="bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-red-600 animate-scaleIn">
+          <div className="relative bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-red-600 animate-scaleIn">
+            {/* Close button */}
+            <button
+              onClick={() => setShowErrorModal(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+            >
+              <X size={22} />
+            </button>
+
             <div className="text-center flex flex-col items-center">
-              <X className="text-red-600 w-16 h-16 animate-bounceSlow" />
+              <AlertTriangle className="text-red-600 w-16 h-16 animate-pulse" />
               <h2 className="text-2xl font-bold text-red-700 mt-2">
                 Not Available
               </h2>
               <p className="text-gray-700 mt-2 text-sm">
-                Contact us for future service expansion updates.
+                Contact us for future expansion updates.
               </p>
 
               <div className="flex flex-col gap-3 mt-5 w-full">
                 <a
                   href="tel:+919944199445"
-                  className="bg-red-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
+                  className="bg-red-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
                 >
                   <Phone size={18} /> Call Support
                 </a>
                 <a
                   href="mailto:info@skylink.net.in"
-                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
+                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
                 >
                   <Mail size={18} /> Email Us
                 </a>
