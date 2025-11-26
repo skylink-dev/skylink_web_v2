@@ -524,7 +524,7 @@ export default function AvailabilityChecker() {
       .checkFesability(formData)
       .then((res) => {
         console.log(res);
-        if (res?.isAvailable) {
+        if (res?.available) {
           setIsAvailable(true);
           setAvailableArea(foundArea);
           setShowModal(true);
