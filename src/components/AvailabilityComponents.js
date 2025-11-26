@@ -524,10 +524,11 @@ export default function AvailabilityChecker() {
       .checkFesability(formData)
       .then((res) => {
         console.log(res);
-        if (res?.available) {
+        if (res?.data?.available) {
           setIsAvailable(true);
-          setAvailableArea(res?.area_name);
+          setAvailableArea(res.data.area_name);
           setShowModal(true);
+          setShowButton(false);
         } else {
           setIsAvailable(false);
           setShowButton(false);
