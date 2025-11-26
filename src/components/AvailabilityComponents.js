@@ -596,11 +596,11 @@ export default function AvailabilityChecker() {
               Check Availability
             </button>
           )}
-          {isAvailable === false ? (
+          {isAvailable === false && !showModal && (
             <p className="mt-3 text-lg font-semibold text-red-600">
               ❌ Sorry, service not available here.
             </p>
-          ) : null}
+          )}
         </div>
 
         {/* Map */}
