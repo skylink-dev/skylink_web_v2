@@ -371,18 +371,7 @@ export default function AvailabilityChecker() {
         {
           name: "Ganthipuram",
           center: { lat: 11.0103, lng: 76.9511 },
-          radius: 10,
-        },
-        { name: "Sulur", center: { lat: 11.0243, lng: 77.1257 }, radius: 4 },
-        {
-          name: "Kinathu Kadavu",
-          center: { lat: 10.822477, lng: 77.016144 },
-          radius: 5,
-        },
-        {
-          name: "Annur",
-          center: { lat: 11.2320952, lng: 77.1050488 },
-          radius: 5,
+          radius: 15,
         },
       ],
     },
