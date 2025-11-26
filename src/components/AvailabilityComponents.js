@@ -199,7 +199,7 @@ export default function AvailabilityChecker() {
   };
 
   return (
-    <div className="flex flex-col items-center p-8 bg-gray-50 min-h-screen">
+    <div className="flex flex-col items-center p-8 bg-gray-50 min-h-full">
       <div className="w-full max-w-6xl backdrop-blur-lg bg-white/70 shadow-2xl rounded-3xl border border-gray-200 p-8">
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-gray-900">
@@ -258,73 +258,69 @@ export default function AvailabilityChecker() {
 
       {/* Success Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 backdrop-blur-sm">
-          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border-t-4 border-green-500 relative">
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-3 right-3"
-            >
-              <X size={22} />
-            </button>
-
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn z-50">
+          <div className="bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-green-500 animate-scaleIn">
             <div className="text-center flex flex-col items-center">
-              <CheckCircle className="text-green-600 w-16 h-16 mb-3" />
-              <h2 className="text-3xl font-bold text-green-600">
-                🎉 Available
+              <CheckCircle className="text-green-600 w-16 h-16 animate-bounceSlow" />
+              <h2 className="text-2xl font-bold text-green-700 mt-2">
+                Service Available
               </h2>
-              <p className="mt-2 text-gray-700">
-                Service is available in your area. Contact us instantly!
+              <p className="text-gray-700 mt-2 text-sm">
+                Great news! We provide service in your area.
               </p>
 
-              <div className="flex gap-3 mt-5 w-full">
+              <div className="flex flex-col gap-3 mt-5 w-full">
                 <a
                   href="tel:+919944199445"
-                  className="flex-1 bg-green-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow hover:scale-105"
+                  className="bg-green-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
                 >
-                  <Phone size={18} /> Call
+                  <Phone size={18} /> Call: +91 99441 99445
                 </a>
+
                 <a
                   href="mailto:info@skylink.net.in"
-                  className="flex-1 bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow hover:scale-105"
+                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
                 >
-                  <Mail size={18} /> Email
+                  <Mail size={18} /> info@skylink.net.in
                 </a>
+
+                <button
+                  className="w-full py-2 text-gray-700 font-medium"
+                  onClick={() => setShowModal(false)}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Not Available */}
+      {/* Error Modal */}
       {showErrorModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 backdrop-blur-sm">
-          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border-t-4 border-red-600 relative">
-            <button
-              onClick={() => setShowErrorModal(false)}
-              className="absolute top-3 right-3"
-            >
-              <X size={22} />
-            </button>
-
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn z-50">
+          <div className="bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-red-600 animate-scaleIn">
             <div className="text-center flex flex-col items-center">
-              <X className="text-red-600 w-16 h-16 mb-3" />
-              <h2 className="text-3xl font-bold text-red-600">Not Available</h2>
-              <p className="mt-2 text-gray-700">
-                Contact us to get future updates.
+              <X className="text-red-600 w-16 h-16 animate-bounceSlow" />
+              <h2 className="text-2xl font-bold text-red-700 mt-2">
+                Not Available
+              </h2>
+              <p className="text-gray-700 mt-2 text-sm">
+                Contact us for future service expansion updates.
               </p>
 
-              <div className="flex gap-3 mt-5 w-full">
+              <div className="flex flex-col gap-3 mt-5 w-full">
                 <a
                   href="tel:+919944199445"
-                  className="flex-1 bg-red-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow"
+                  className="bg-red-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
                 >
-                  <Phone size={18} /> Call
+                  <Phone size={18} /> Call Support
                 </a>
                 <a
                   href="mailto:info@skylink.net.in"
-                  className="flex-1 bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow"
+                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold"
                 >
-                  <Mail size={18} /> Email
+                  <Mail size={18} /> Email Us
                 </a>
               </div>
             </div>
