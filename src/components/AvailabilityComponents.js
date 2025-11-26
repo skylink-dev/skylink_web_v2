@@ -14,6 +14,60 @@ export default function AvailabilityChecker() {
   const [showModal, setShowModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [warning, setWarning] = useState("");
+  const checkFesability = apiService.checkFesability;
+
+  const createCircle = (center, radius) => {
+    const points = [];
+    const EARTH_RADIUS = 6371;
+    for (let i = 0; i < 360; i++) {
+      const angle = (i * Math.PI) / 180;
+      const dx = radius * Math.cos(angle);
+      const dy = radius * Math.sin(angle);
+      const newLat = center.lat + (dy / EARTH_RADIUS) * (180 / Math.PI);
+      const newLng =
+        center.lng +
+        (dx / (EARTH_RADIUS * Math.cos((center.lat * Math.PI) / 180))) *
+          (180 / Math.PI);
+      points.push({ lat: newLat, lng: newLng });
+    }
+    return points;
+  };
+
+  const serviceAreas = [
+    {
+      name: "Coimbatore",
+      color: "#94b894ff",
+      subAreas: [
+        {
+          name: "Ganthipuram",
+          center: { lat: 11.0103, lng: 76.9511 },
+          radius: 25,
+        },
+      ],
+    },
+    {
+      name: "Erode",
+      color: "#b68686ff",
+      subAreas: [
+        {
+          name: "Erode Area 1",
+          center: { lat: 11.34, lng: 77.7172 },
+          radius: 15,
+        },
+      ],
+    },
+    {
+      name: "Tiruppur",
+      color: "#7f7fadff",
+      subAreas: [
+        {
+          name: "Tiruppur Area 1",
+          center: { lat: 11.1085, lng: 77.3411 },
+          radius: 15,
+        },
+      ],
+    },
+  ];
 
   const loadGoogleMaps = () => {
     return new Promise((resolve) => {
@@ -35,45 +89,70 @@ export default function AvailabilityChecker() {
         streetViewControl: false,
         mapTypeControl: false,
       });
+
       setMap(gMap);
 
       const bounds = new window.google.maps.LatLngBounds();
-      bounds.extend({ lat: 11.0103, lng: 76.9511 });
+      serviceAreas.forEach((city) =>
+        city.subAreas.forEach((area) => bounds.extend(area.center))
+      );
       gMap.fitBounds(bounds);
+
+      // Draw polygons
+      serviceAreas.forEach((city) =>
+        city.subAreas.forEach((area) => {
+          const circlePath = createCircle(area.center, area.radius);
+          new window.google.maps.Polygon({
+            paths: circlePath,
+            strokeColor: city.color,
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: city.color,
+            fillOpacity: 0.25,
+            map: gMap,
+          });
+        })
+      );
 
       const input = document.getElementById("autocomplete");
       const autocomplete = new window.google.maps.places.Autocomplete(input);
+      autocomplete.bindTo("bounds", gMap);
 
       autocomplete.addListener("place_changed", () => {
         const place = autocomplete.getPlace();
         if (!place.geometry || !place.geometry.location) return;
 
+        const location = place.geometry.location;
+        gMap.setCenter(location);
+        gMap.setZoom(18);
+
+        if (marker) marker.setMap(null);
+
         const newMarker = new window.google.maps.Marker({
-          position: place.geometry.location,
+          position: location,
           map: gMap,
           draggable: true,
         });
 
-        if (marker) marker.setMap(null);
-
         newMarker.addListener("dragend", () => {
+          setShowButton(true);
           const pos = newMarker.getPosition();
           new window.google.maps.Geocoder().geocode(
             { location: pos },
             (results, status) => {
-              if (status === "OK" && results[0])
+              if (status === "OK" && results[0]) {
                 setAddress(results[0].formatted_address);
+              }
             }
           );
         });
 
-        gMap.setCenter(place.geometry.location);
-        gMap.setZoom(18);
         setMarker(newMarker);
         setAddress(place.formatted_address);
         setShowButton(true);
       });
     };
+
     initMap();
   }, []);
 
@@ -82,45 +161,52 @@ export default function AvailabilityChecker() {
       setWarning("⚠️ Please enter an address before checking availability.");
       return;
     }
-    setWarning("");
+    if (warning) setWarning("");
 
-    try {
-      const res = await apiService.checkFesability({
-        lat: marker.getPosition().lat(),
-        lng: marker.getPosition().lng(),
-      });
+    if (!marker) return;
 
-      if (res?.data?.available) {
+    const formData = {
+      lat: marker.getPosition().lat(),
+      lng: marker.getPosition().lng(),
+    };
+
+    await apiService
+      .checkFesability(formData)
+      .then((res) => {
+        if (res?.data?.available) {
+          setIsAvailable(true);
+          setAvailableArea(res.data.area_name);
+          setShowModal(true);
+          setShowButton(false);
+          setShowErrorModal(false);
+        } else {
+          setIsAvailable(true);
+          setShowErrorModal(true);
+          setShowButton(true);
+        }
+      })
+      .catch(() => {
         setIsAvailable(true);
-        setAvailableArea(res.data.area_name);
-        setShowModal(true);
-        setShowErrorModal(false);
-      } else {
-        setIsAvailable(false);
         setShowErrorModal(true);
-      }
-    } catch (err) {
-      console.error(err);
-      setIsAvailable(false);
-      setShowErrorModal(true);
-    }
+        setShowButton(false);
+      });
   };
 
-  const setMapView = (type) => {
+  const setMapView = (t) => {
     if (!map) return;
-    map.setMapTypeId(type === "roadmap" ? "roadmap" : "satellite");
-    map.setTilt(type === "3d" ? 45 : 0);
+    map.setMapTypeId(t === "roadmap" ? "roadmap" : "satellite");
+    map.setTilt(t === "3d" ? 45 : 0);
   };
 
   return (
-    <div className="flex flex-col items-center justify-start p-6 bg-gray-50">
-      <div className="w-full max-w-6xl bg-gray-100 rounded-3xl border shadow-2xl p-6 mb-0">
-        <div className="text-center mb-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
-            Check Your Availability
+    <div className="flex flex-col items-center p-8 bg-gray-50 min-h-screen">
+      <div className="w-full max-w-6xl backdrop-blur-lg bg-white/70 shadow-2xl rounded-3xl border border-gray-200 p-8">
+        <div className="text-center mb-8">
+          <h1 className="text-5xl font-bold text-gray-900">
+            Check Availability
           </h1>
-          <p className="text-gray-600 text-lg md:text-xl">
-            Enter your address to see if our service covers your area
+          <p className="text-lg text-gray-600 mt-2">
+            Enter your address to see if our internet service is available
           </p>
         </div>
 
@@ -128,17 +214,21 @@ export default function AvailabilityChecker() {
           <input
             id="autocomplete"
             type="text"
-            placeholder="Enter your address..."
+            placeholder="Search your exact location..."
             value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="w-full md:w-3/4 border p-3 rounded-xl mb-2 text-center"
+            onChange={(e) => {
+              setAddress(e.target.value);
+              if (warning) setWarning("");
+            }}
+            className="w-full md:w-3/4 p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-red-500 bg-white text-center"
           />
-          {warning && <p className="text-sm text-yellow-600 mb-1">{warning}</p>}
+
+          {warning && <p className="text-sm text-yellow-600 mt-1">{warning}</p>}
 
           {showButton && (
             <button
               onClick={checkAvailability}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-xl shadow-md"
+              className="mt-3 bg-red-600 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:scale-105 transition-all"
             >
               Check Availability
             </button>
@@ -147,18 +237,18 @@ export default function AvailabilityChecker() {
 
         <div
           ref={mapRef}
-          className="w-full h-[350px] md:h-[500px] mt-2 rounded-2xl shadow-lg border"
+          className="w-full h-[400px] mt-6 rounded-2xl shadow-xl overflow-hidden border border-gray-300"
         />
 
-        <div className="flex justify-center mt-4 gap-2">
+        <div className="flex justify-center mt-5 gap-3">
           <button
-            className="px-4 py-2 bg-red-500 text-white rounded-xl"
+            className="px-5 py-2 bg-gray-800 text-white rounded-xl shadow hover:bg-black"
             onClick={() => setMapView("roadmap")}
           >
             Roadmap
           </button>
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-xl"
+            className="px-5 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
             onClick={() => setMapView("satellite")}
           >
             Satellite
@@ -166,55 +256,81 @@ export default function AvailabilityChecker() {
         </div>
       </div>
 
+      {/* Success Modal */}
       {showModal && (
-        <SuccessModal setShowModal={setShowModal} area={availableArea} />
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 backdrop-blur-sm">
+          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border-t-4 border-green-500 relative">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3"
+            >
+              <X size={22} />
+            </button>
+
+            <div className="text-center flex flex-col items-center">
+              <CheckCircle className="text-green-600 w-16 h-16 mb-3" />
+              <h2 className="text-3xl font-bold text-green-600">
+                🎉 Available
+              </h2>
+              <p className="mt-2 text-gray-700">
+                Service is available in your area. Contact us instantly!
+              </p>
+
+              <div className="flex gap-3 mt-5 w-full">
+                <a
+                  href="tel:+919944199445"
+                  className="flex-1 bg-green-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow hover:scale-105"
+                >
+                  <Phone size={18} /> Call
+                </a>
+                <a
+                  href="mailto:info@skylink.net.in"
+                  className="flex-1 bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow hover:scale-105"
+                >
+                  <Mail size={18} /> Email
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
-      {showErrorModal && <ErrorModal setShowErrorModal={setShowErrorModal} />}
-    </div>
-  );
-}
 
-function SuccessModal({ setShowModal, area }) {
-  return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-sm relative border-t-4 border-green-500">
-        <button
-          onClick={() => setShowModal(false)}
-          className="absolute top-3 right-3"
-        >
-          <X size={22} />
-        </button>
-        <div className="flex flex-col items-center">
-          <CheckCircle className="text-green-500 w-14 h-14 mb-3" />
-          <h2 className="text-2xl font-bold text-green-600">
-            🎉 You’re Covered!
-          </h2>
-          <p className="text-gray-700 mt-2 text-sm">
-            Our service is available in <b>{area}</b>.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
+      {/* Not Available */}
+      {showErrorModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 backdrop-blur-sm">
+          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border-t-4 border-red-600 relative">
+            <button
+              onClick={() => setShowErrorModal(false)}
+              className="absolute top-3 right-3"
+            >
+              <X size={22} />
+            </button>
 
-function ErrorModal({ setShowErrorModal }) {
-  return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-sm relative border-t-4 border-red-500">
-        <button
-          onClick={() => setShowErrorModal(false)}
-          className="absolute top-3 right-3"
-        >
-          <X size={22} />
-        </button>
-        <div className="flex flex-col items-center">
-          <CheckCircle className="text-red-500 w-14 h-14 mb-3" />
-          <h2 className="text-2xl font-bold text-red-600">
-            ❌ Service Not Available
-          </h2>
+            <div className="text-center flex flex-col items-center">
+              <X className="text-red-600 w-16 h-16 mb-3" />
+              <h2 className="text-3xl font-bold text-red-600">Not Available</h2>
+              <p className="mt-2 text-gray-700">
+                Contact us to get future updates.
+              </p>
+
+              <div className="flex gap-3 mt-5 w-full">
+                <a
+                  href="tel:+919944199445"
+                  className="flex-1 bg-red-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow"
+                >
+                  <Phone size={18} /> Call
+                </a>
+                <a
+                  href="mailto:info@skylink.net.in"
+                  className="flex-1 bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 shadow"
+                >
+                  <Mail size={18} /> Email
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
