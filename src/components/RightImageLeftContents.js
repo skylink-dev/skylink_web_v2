@@ -89,10 +89,10 @@ export default function LeftImageRightContent({ title, Content, order }) {
   };
 
   return (
-    <section className="bg-gradient-to-br from-white to-gray-50/30 py-8 sm:py-10 lg:py-12">
+    <section className="bg-gradient-to-br from-white to-gray-50/30 py-8 sm:py-10 lg:py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Heading */}
-        <div className="text-center mb-10 sm:mb-14 lg:mb-16">
+        <div className="text-center mb-10 sm:mb-14 lg:mb-20">
           <motion.h2
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-2"
             initial={{ opacity: 0, y: 20 }}
@@ -112,7 +112,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentImage}
-                  className="relative w-full h-full min-h-[500px] overflow-hidden rounded-xl lg:rounded-2xl shadow-lg"
+                  className="relative w-full h-full min-h-[600px] overflow-hidden rounded-xl lg:rounded-2xl shadow-lg"
                   variants={imageVariants}
                   initial="hidden"
                   animate="visible"
@@ -143,7 +143,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
 
             {/* Content Section - Now on RIGHT with equal height */}
             <motion.div
-              className="w-full lg:w-1/2 flex flex-col space-y-3 lg:space-y-4"
+              className="w-full lg:w-1/2 flex flex-col space-y-3 lg:space-y-5 min-h-[600px] justify-center"
               initial="hidden"
               animate="visible"
               variants={contentVariants}
@@ -151,7 +151,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
               {Content.map((item, index) => (
                 <motion.div
                   key={index}
-                  className={`group relative rounded-lg lg:rounded-xl p-4 lg:p-5 transition-all duration-500 cursor-pointer border-2 flex-1 ${
+                  className={`group relative rounded-lg lg:rounded-xl p-4 lg:p-7 transition-all duration-500 cursor-pointer border-2 flex-1 ${
                     currentImage === index
                       ? "bg-red-600 border-red-600 shadow-lg scale-105 text-white"
                       : "bg-white/80 border-transparent hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-md"
@@ -182,7 +182,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
                         width={32}
                         height={32}
                         alt={item.title}
-                        className={`w-6 h-6 lg:w-8 lg:h-8 object-contain transition-all duration-300 ${
+                        className={`w-6 h-6 lg:w-10 lg:h-10 object-contain transition-all duration-300 ${
                           currentImage === index
                             ? "filter brightness-0 invert"
                             : ""
@@ -191,7 +191,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
                     </motion.div>
                     <div className="flex-1 min-w-0 flex flex-col justify-center">
                       <h3
-                        className={`text-base lg:text-lg font-bold mb-1 lg:mb-2 transition-colors duration-300 ${
+                        className={`text-base lg:text-xl font-bold mb-1 lg:mb-2 transition-colors duration-300 ${
                           currentImage === index
                             ? "text-white"
                             : "text-gray-900 group-hover:text-white"
@@ -200,7 +200,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
                         {item.title}
                       </h3>
                       <p
-                        className={`leading-relaxed text-sm transition-colors duration-300 ${
+                        className={`leading-relaxed text-sm lg:text-base transition-colors duration-300 ${
                           currentImage === index
                             ? "text-white/90"
                             : "text-gray-600 group-hover:text-white/90"
@@ -229,16 +229,17 @@ export default function LeftImageRightContent({ title, Content, order }) {
                     className="px-1 sm:px-2 pb-2"
                   >
                     {/* Consistent container for all slides */}
-                    <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-[380px] sm:h-[420px] flex flex-col">
+                    <div className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-gray-100 h-[550px] sm:h-[450px] flex flex-col">
                       {/* Image Section - Fixed height that fits container */}
-                      <div className="relative w-full h-48 sm:h-48 flex-shrink-0">
+                      <div className="relative w-full h-[380px] sm:h-60 flex-shrink-0">
                         <Image
                           src={item.img || "/assets/default-image.webp"}
                           alt={item.title}
                           fill
-                          className="object-cover w-full h-full"
+                          className="object-cover w-full h-full object-center"
                           priority
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 60vw"
+                          quality={90}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
@@ -251,7 +252,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
                       </div>
 
                       {/* Content Section - Fixed height for consistency */}
-                      <div className="flex-1 p-4 sm:p-5 flex flex-col">
+                      <div className="flex-1 p-4 sm:p-5 flex flex-col justify-between">
                         <div className="flex items-start gap-3 sm:gap-4 mb-3 flex-1">
                           <div className="bg-red-100 p-2 rounded-lg flex-shrink-0">
                             <Image
@@ -267,7 +268,7 @@ export default function LeftImageRightContent({ title, Content, order }) {
                             <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1 line-clamp-2">
                               {item.title}
                             </h3>
-                            <p className="text-gray-600 leading-relaxed text-xs sm:text-sm line-clamp-3">
+                            <p className="text-gray-600 leading-relaxed text-xs sm:text-sm line-clamp-4">
                               {item.description}
                             </p>
                           </div>

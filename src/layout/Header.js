@@ -84,11 +84,20 @@ export default function Header() {
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
   useEffect(() => {
-    const checkWidth = () => setIsMobile(window.innerWidth < 1024);
-    checkWidth();
-    window.addEventListener("resize", checkWidth);
-    return () => window.removeEventListener("resize", checkWidth);
-  }, []);
+    const checkWidth = () => {
+        const isMobileView = window.innerWidth < 1024;
+        setIsMobile(isMobileView);
+
+        // Close drawer when switching to desktop view
+        if (!isMobileView && isDrawerOpen) {
+            setIsDrawerOpen(false);
+        }
+    };
+
+      checkWidth();
+      window.addEventListener("resize", checkWidth);
+      return () => window.removeEventListener("resize", checkWidth);
+  }, [isDrawerOpen]);  // Add isDrawerOpen as dependency
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -235,7 +244,7 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed top-0 left-0 h-full w-72 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-72 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-[-100%] ${
           isDrawerOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -317,12 +326,10 @@ export default function Header() {
       </div>
 
       {/* Overlay for Drawer */}
-      {isDrawerOpen && (
         <div
-          onClick={toggleDrawer}
-          className="fixed inset-0 bg-black/30 z-40 lg:hidden"
+            onClick={toggleDrawer}
+            className={`fixed inset-0 bg-black/30 z-40 transition-opacity duration-300 ${isDrawerOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} lg:hidden`}
         ></div>
-      )}
 
       {/* Floating Action Buttons - Hidden on Mobile */}
       <div className="fixed right-4 bottom-36 lg:right-8 lg:top-52 h-32 w-[230px] z-40 hidden lg:block pointer-events-none">

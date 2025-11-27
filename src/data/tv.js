@@ -416,21 +416,21 @@ export const dynamicImageContent = [
     icon: "/assets/redefinition-tv.png",
     title: "Redefining Television Access",
     description:
-      "Skylink IPTV is changing how the world watches TV — no dish, no cable, just seamless streaming on your Smart TV. We're making premium content accessible to all.",
+      "Skylink IPTV is changing how the world watches TV. No dish, No cable, just seamless streaming on your Smart TV. We're making premium content accessible to all.",
   },
   {
     img: "/assets/streaming-the-future.jpg",
     icon: "/assets/streaming-future.png",
     title: "Streaming the Future",
     description:
-      "From local to international channels, enjoy over 1000+ live TV options with a stable internet connection. IPTV is the future of entertainment — and it's here today.",
+      "From local to international channels, enjoy over 1000+ live TV options with a stable internet connection. IPTV is the future of entertainment.",
   },
   {
     img: "/assets/safe-smart-family-viewing.jpg",
     icon: "/assets/safe-family-view.png",
     title: "Safe & Smart Family Viewing",
     description:
-      "Our IPTV services come with built-in parental controls and curated kids' zones — so your family can watch safely and responsiblyEnjoy everything you need for streaming — all in one simple package. across all screens.",
+      "Our IPTV services come with built-in parental controls and curated kids' zones, so your family can watch safely and responsibly enjoy everything you need for streaming. All in one simple package. Across all screens.",
   },
 ];
 export const columnSaveContent = [
