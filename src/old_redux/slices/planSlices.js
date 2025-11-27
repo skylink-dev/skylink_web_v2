@@ -115,22 +115,22 @@ const createBillingCyclePlans = (
 //   price, dataLimit, channels, otts, billingCycle, installationFee,
 //   routerCost, speed, duration,  categories, tax1, tax2, planName,
 //  ottaddon, iptvaddon, hot, simultaneousUsers, basePrice
-        // "399": createBillingCyclePlans(399, "500GB", "350+ Channels", "21+ OTTs", "Monthly", 1499, 1499, "30 Mbps", "1 Month",  ["All", "Popular"],  "Skylink399", 179, 211,"", "",  "", "3 - 5",),
+        // "399": createBillingCyclePlans(399, "500GB", "450+ Channels", "21+ OTTs", "Monthly", 1499, 1499, "30 Mbps", "1 Month",  ["All", "Popular"],  "Skylink399", 179, 211,"", "",  "", "3 - 5",),
 const pricingByZone = {
   "Tamil Nadu": {
     "Fixed Plan": {
       "30mbps": {
-        "399": createBillingCyclePlans(399, "Unlimited", "350+ Channels", "21+ OTTs", "Monthly", 1000, 1499, "30 Mbps", "1 Month", ["All", "Popular"],179,  211, "Skylink399", "ottaddon", "350+ Channels", "", "3-5"),
+        "399": createBillingCyclePlans(399, "Unlimited", "450+ Channels", "21+ OTTs", "Monthly", 1000, 1499, "30 Mbps", "1 Month", ["All", "Popular"],179,  211, "Skylink399", "ottaddon", "450+ Channels", "", "3-5"),
         "599": createBillingCyclePlans(599, "Unlimited", "550+ Channels", "24+ OTTs", "Monthly", "Free", 1499, "30 Mbps", "1 Month", ["All"],  240, 283, "Skylink599", "", "550+ Channels", "yes", "3 - 5"),
         "799": createBillingCyclePlans(799, "Unlimited", "750+ Channels", "27+ OTTs", "Monthly", "Free" , 1499, "30 Mbps", "1 Month",["All", "Popular"],  240, 283, "Skylink799", "", "750+ Channels", "", "4 - 7")
       },
       "50mbps": {
-        "499": createBillingCyclePlans(499, "Unlimited", "350+ Channels", "21+ OTTs", "Monthly", "Free" , 1499, "50 Mbps", "1 Month",  ["All", "Popular"],179, 211,  "Skylink499", "", "350+ Channels", "", "3 - 5"),
+        "499": createBillingCyclePlans(499, "Unlimited", "450+ Channels", "21+ OTTs", "Monthly", "Free" , 1499, "50 Mbps", "1 Month",  ["All", "Popular"],179, 211,  "Skylink499", "", "450+ Channels", "", "3 - 5"),
         "699": createBillingCyclePlans(699, "Unlimited", "550+ Channels", "24+ OTTs", "Monthly", "Free", 1499, "50 Mbps", "1 Month", ["All"], 240, 283,  "Skylink699", "", "550+ Channels", "yes", "3 - 5"),
         "899": createBillingCyclePlans(899, "Unlimited", "750+ Channels", "27+ OTTs", "Monthly", "Free", 1499, "50 Mbps", "1 Month", ["All", "Popular"], 240, 283,  "Skylink899", "", "750+ Channels", "", "4 - 7")
       },
       "100mbps": {
-        "699": createBillingCyclePlans(699, "Unlimited", "350+ Channels", "21+ OTTs", "Broadband", "Free", 1499, "100 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink699", "", "350+ Channels", "", "3 - 5"),
+        "699": createBillingCyclePlans(699, "Unlimited", "450+ Channels", "21+ OTTs", "Broadband", "Free", 1499, "100 Mbps", "1 Month", 179, 211, ["All", "Popular"], "Skylink699", "", "450+ Channels", "", "3 - 5"),
         "899": createBillingCyclePlans(899, "Unlimited", "550+ Channels", "24+ OTTs", "Broadband", "Free" , 1499, "100 Mbps", "1 Month", 240, 283, ["All"], "Skylink899", "", "550+ Channels", "yes", "3 - 5"),
         "1099": createBillingCyclePlans(1099, "Unlimited", "750+ Channels", "27+ OTTs", "Broadband", "Free", 1499, "100 Mbps", "1 Month", 240, 283, ["All", "Popular"], "Skylink1099", "", "750+ Channels", "", "4 - 7")
       },

@@ -46,9 +46,7 @@ export default function SkyplayTestimonialCarousel({ slidesData }) {
               key={currentIndex}
               className="transition-all duration-700 ease-in-out"
             >
-              <p className="text-sm md:text-base font-medium mb-3 opacity-90">
-                What our customers are saying
-              </p>
+
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-5">
                 {slidesData[currentIndex].title}
               </h2>

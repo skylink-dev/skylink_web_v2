@@ -64,20 +64,23 @@ export default function HalfColumnCard({ titlecontent, items }) {
               transition={{ duration: 0.7, delay: index * 0.15, ease: "easeOut" }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.03 }}
-              className="relative rounded-3xl overflow-hidden shadow-lg bg-gray-900 text-white min-h-[420px] md:min-h-[500px] group"
+              className="relative rounded-3xl overflow-hidden shadow-lg bg-gray-900 text-white min-h-[420px] md:min-h-[500px] h-full w-full group"
               style={{
-                backgroundImage: `url(${
-                  isMobile && item.mobileimage ? item.mobileimage : item.image
-                })`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                  backgroundImage: `url(${
+                      isMobile && item.mobileimage ? item.mobileimage : item.image
+                  })`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "left center",
+                  backgroundColor: "#1a202c", /* Dark background for loading state */
+                  backgroundRepeat: "no-repeat",
+                  height: "100%",
               }}
             >
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-500 ease-in-out"></div>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col justify-between h-full p-8 sm:p-10">
+              <div className="relative z-10 flex flex-col justify-between h-full p-6 sm:p-10">
                 <div>
                   <p className="text-xs uppercase tracking-widest text-red-300 font-semibold mb-2">
                     {item.subtitle}

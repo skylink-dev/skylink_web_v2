@@ -26,7 +26,7 @@ export default function CurrentChannel({ activeChannel }) {
             {baseImages.map((src, index) => (
                 <img key={index} src={src} alt="TV Channel" />
             ))}
-            {selectedPackage.label !== "350+ Channels" &&
+            {selectedPackage.label !== "450+ Channels" &&
                 extendedImages.map((src, index) => (
                     <img key={index} src={src} alt="TV Channel" />
                 ))}

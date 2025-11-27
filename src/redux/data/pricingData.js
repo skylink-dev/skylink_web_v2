@@ -152,7 +152,7 @@ export const pricingByZone = {
         399: createBillingCyclePlans(
           399,
           "Unlimited",
-          "350+ Channels",
+          "450+ Channels",
           "21+ OTTs",
           "Monthly",
           1000,
@@ -164,7 +164,7 @@ export const pricingByZone = {
           211,
           "Skylink399",
           "ottaddon",
-          "350+ Channels",
+          "450+ Channels",
           "",
           "3-5"
         ),

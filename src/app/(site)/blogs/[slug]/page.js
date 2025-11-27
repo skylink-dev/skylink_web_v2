@@ -419,11 +419,11 @@ const blogData = [
   {
     imgSrc: "/assets/skyplaynextup.jpg",
     title: "Learn more",
-    subtitle: "Skylink Next Up AnytimeSM",
+    subtitle: "Skylink Next Up Anytime",
     description: `
 <h2>Next Up: Fiber Simplicity</h2>
 <p>
-  Whether you're switching ISPs or moving into a new home, <strong>Skylink Next Up AnytimeSM</strong> makes getting fiber internet installed a breeze.
+  Whether you're switching ISPs or moving into a new home, <strong>Skylink Next Up Anytime</strong> makes getting fiber internet installed a breeze.
 </p>
 
 <h2>Zero Waiting, Maximum Convenience</h2>

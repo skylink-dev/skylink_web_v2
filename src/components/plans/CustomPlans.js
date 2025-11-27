@@ -130,9 +130,9 @@ export default function CustomPlans() {
   const isDisabledChannel = (option) => {
     const activePricing = pricing[activeTab]?.[activeNestedTab]?.tv;
     return (
-      (activePricing === "550+ Channels" && option === "350+ Channels") ||
+      (activePricing === "550+ Channels" && option === "450+ Channels") ||
       (activePricing === "650+ Channels" &&
-        ["550+ Channels", "350+ Channels"].includes(option)) ||
+        ["550+ Channels", "450+ Channels"].includes(option)) ||
       (activePricing === "950+ Channels" && option !== "950+ Channels")
     );
   };
@@ -317,7 +317,7 @@ export default function CustomPlans() {
                   />
                   <a
                     href={`https://skylink.net.in/wp-content/uploads/pdf/${
-                      activeChannel === "350+ Channels"
+                      activeChannel === "450+ Channels"
                         ? "skylink-mini.pdf"
                         : activeChannel === "550+ Channels"
                         ? "skylink-pro.pdf"

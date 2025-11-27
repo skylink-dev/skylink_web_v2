@@ -147,7 +147,7 @@ const createBillingCyclePlans = (
 //   price, dataLimit, channels, otts, billingCycle, installationFee,
 //   routerCost, speed, duration,  categories, tax1, tax2, planName,
 //  ottaddon, iptvaddon, hot, simultaneousUsers, basePrice
-// "399": createBillingCyclePlans(399, "500GB", "350+ Channels", "21+ OTTs", "Monthly", 1499, 1499, "30 Mbps", "1 Month",  ["All", "Popular"],  "Skylink399", 179, 211,"", "",  "", "3 - 5",),
+// "399": createBillingCyclePlans(399, "500GB", "450+ Channels", "21+ OTTs", "Monthly", 1499, 1499, "30 Mbps", "1 Month",  ["All", "Popular"],  "Skylink399", 179, 211,"", "",  "", "3 - 5",),
 const pricingByZone = {
   "Tamil Nadu": {
     "Fixed Plan": {
@@ -155,7 +155,7 @@ const pricingByZone = {
         399: createBillingCyclePlans(
           399,
           "Unlimited",
-          "350+ Channels",
+          "450+ Channels",
           "21+ OTTs",
           "Monthly",
           1000,
@@ -167,7 +167,7 @@ const pricingByZone = {
           211,
           "Skylink399",
           "ottaddon",
-          "350+ Channels",
+          "450+ Channels",
           "",
           "3-5"
         ),
@@ -214,7 +214,7 @@ const pricingByZone = {
         499: createBillingCyclePlans(
           499,
           "Unlimited",
-          "350+ Channels",
+          "450+ Channels",
           "21+ OTTs",
           "Monthly",
           "Free",
@@ -226,7 +226,7 @@ const pricingByZone = {
           211,
           "Skylink499",
           "",
-          "350+ Channels",
+          "450+ Channels",
           "",
           "3 - 5"
         ),
@@ -273,7 +273,7 @@ const pricingByZone = {
         699: createBillingCyclePlans(
           699,
           "Unlimited",
-          "350+ Channels",
+          "450+ Channels",
           "21+ OTTs",
           "Broadband",
           "Free",
@@ -285,7 +285,7 @@ const pricingByZone = {
           ["All", "Popular"],
           "Skylink699",
           "",
-          "350+ Channels",
+          "450+ Channels",
           "",
           "3 - 5"
         ),

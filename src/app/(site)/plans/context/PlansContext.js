@@ -4,7 +4,7 @@ const PlansContext = createContext();
 export const PlanProvider = ({ children }) => {
   const [planOptions, setPlanOptions] = useState({
     benefitOptions: [
-      { name: "TV Channels", lite: "350+" },
+      { name: "TV Channels", lite: "450+" },
       { name: "OTT", lite: "Yes" },
     ],
     speeds: [
@@ -19,7 +19,7 @@ export const PlanProvider = ({ children }) => {
     ],
     ottOptions: ["21+ OTTs", "22+ OTTs", "29+ OTTs", "30+ OTTs"],
     tvChannel: [
-      "350+ Channels",
+      "450+ Channels",
       "550+ Channels",
       "650+ Channels",
       "950+ Channels",
@@ -29,7 +29,7 @@ export const PlanProvider = ({ children }) => {
       "30 Mbps": generatePricing(
         399,
         "Unlimited",
-        "350+ Channels",
+        "450+ Channels",
         "21+ OTTs",
         "30 Mbps",
         1500
@@ -37,7 +37,7 @@ export const PlanProvider = ({ children }) => {
       "50 Mbps": generatePricing(
         499,
         "Unlimited",
-        "350+ Channels",
+        "450+ Channels",
         "22+ OTTs",
         "50 Mbps",
         1000
@@ -45,7 +45,7 @@ export const PlanProvider = ({ children }) => {
       "100 Mbps": generatePricing(
         699,
         "Unlimited",
-        "350+ Channels",
+        "450+ Channels",
         "22+ OTTs",
         "100 Mbps",
         1000

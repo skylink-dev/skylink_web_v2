@@ -165,7 +165,7 @@ const NewPlanCard = ({
               <div className="border-t ">
                 <div className="flex items-center gap-2 my-2 relative">
                   <div className="flex -space-x-1">
-                    {planInfo?.channels === "350+ Channels" && (
+                    {planInfo?.channels === "450+ Channels" && (
                       <>
                         <Image
                           alt="suntv"
@@ -543,7 +543,7 @@ const PlanCard = ({
                     >
                       <div className="info-details tv-container">
                         <div className="image-wrap w-100 flex gap-2 my-2">
-                          {planInfo?.channels === "350+ Channels" && (
+                          {planInfo?.channels === "450+ Channels" && (
                             <>
                               <Image
                                 alt="news7"

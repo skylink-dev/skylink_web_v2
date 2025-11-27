@@ -1,11 +1,11 @@
 export const bannerContent = {
   subtitle:
-    "Get access to 20+ premium OTT platforms included with select Skylink plans.\n",
+    "Entertainment, Without the Extra Steps",
   title:
-    "No multiple logins, no juggling. Everything you already watch in one place.",
+    "Get access to 18+ premium OTT platforms included with select Skylink plans.",
   firstcta: "Claim OTT Access",
   offercontent:
-    "Limited Time Offer — Stream blockbuster movies, binge-hit series, live sports, and more on 20+ top OTT platforms. Terms apply.",
+    "No multiple logins, no juggling. Everything you already watch in one place.",
   offercta: "",
   secondcta: "Call +91 99441 99445",
   href: "tel:(+91)9944199445",
@@ -208,15 +208,7 @@ export const flexCardData = [
     leftImage: "/assets/skyplay-south-india-movie.jpg",
     link: "/buy/services/south-ott-bundle.html",
   },
-  {
-    id: 7,
-    title: "Cinema South.",
-    subtitle: "Blockbusters. Subtitles. Binge.",
-    description: "Stream premium South movies with flexible plans.",
-    details: "Updated weekly with fresh content.",
-    leftImage: "/assets/skyplay-south-india-movie.jpg",
-    link: "/buy/bundles/south-ott-premium.html",
-  },
+
   {
     id: 8,
     title: "In Your Pocket.",

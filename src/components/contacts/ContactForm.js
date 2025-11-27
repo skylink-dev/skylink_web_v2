@@ -112,17 +112,18 @@ export default function ContactForm() {
           {/* Header */}
           <div>
             <span className="inline-block text-sm font-semibold uppercase tracking-wide text-red-600 bg-red-100 px-4 py-2 rounded-full mb-4">
-              Adaptive Connectivity.
+              Dynamic Network
             </span>
             <h1 className="text-4xl font-bold text-gray-900 leading-tight">
-              We Offer The{" "}
+                Internet That Stays{" "}
               <span className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 bg-clip-text text-transparent">
-                Highest-Quality
+               Steady, Always
               </span>{" "}
-              <span className="text-red-600">Network Connections</span>
+
             </h1>
             <p className="text-gray-600 mt-4 text-lg">
-                Our network ecosystem ensures uninterrupted performance, delivering consistent speed and security across every device and moment.
+                Our fiber-backed infrastructure ensures continuous performance, fast responsiveness, and
+                dependable stability throughout your day.
             </p>
           </div>
 
