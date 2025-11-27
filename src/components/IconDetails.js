@@ -54,66 +54,68 @@ export default function IconDetails({iconslist, title, page}) {
                 <div className="mt-3 md:mt-4 h-1 w-20 md:w-24 mx-auto bg-red-600 rounded-full"></div>
             </div>
 
-            {/* Icon Grid - Updated for 3 columns on mobile */}
-            <motion.div
-                className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 px-4 md:px-6"
-                variants={listVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{once: true, amount: 0.2}}
-            >
-                {filteredIconsList.map((item, index) => {
-                    // Calculate the correct link based on the item's label and page context
-                    let linkPath;
+            {/* Icon Grid - Using flexbox with proper wrapping for mobile */}
+            <div className="px-4 md:px-6 max-w-6xl mx-auto">
+                <motion.div
+                    className="flex flex-wrap justify-center"
+                    variants={listVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{once: true, amount: 0.2}}
+                >
+                    {filteredIconsList.map((item, index) => {
+                        // Calculate the correct link based on the item's label and page context
+                        let linkPath;
 
-                    if (page === 'tv') {
-                        // TV page routing - update according to requirements
-                        if (item.cta === "IPTV Support") linkPath = "/support";
-                        else if (item.cta === "High-Speed Broadband") linkPath = "/internet";
-                        else if (item.cta === "Upgrade Your Plan") linkPath = "/plans";
-                        else if (item.cta === "New Broadband Connection") linkPath = "/plans";
-                        else if (item.cta === "Locate Service Center") linkPath = "/contact-us";
-                        else linkPath = "/internet"; // Default fallback
-                    } else {
-                        // Default routing for other pages
-                        if (item.cta === "Get help online") linkPath = "/support";
-                        else if (item.cta === "TV") linkPath = "/tv";
-                        else if (item.cta === "Internet") linkPath = "/internet";
-                        else if (item.cta === "Upgrade / Downgrade") linkPath = "/plans";
-                        else if (item.cta === "Explore internet") linkPath = "/internet";
-                        else if (item.cta === "Visit a store") linkPath = "/contact-us";
-                        else linkPath = "/internet"; // Default fallback
-                    }
+                        if (page === 'tv') {
+                            // TV page routing - update according to requirements
+                            if (item.cta === "IPTV Support") linkPath = "/support";
+                            else if (item.cta === "High-Speed Broadband") linkPath = "/internet";
+                            else if (item.cta === "Upgrade Your Plan") linkPath = "/plans";
+                            else if (item.cta === "New Broadband Connection") linkPath = "/plans";
+                            else if (item.cta === "Locate Service Center") linkPath = "/contact-us";
+                            else linkPath = "/internet"; // Default fallback
+                        } else {
+                            // Default routing for other pages
+                            if (item.cta === "Get help online") linkPath = "/support";
+                            else if (item.cta === "TV") linkPath = "/tv";
+                            else if (item.cta === "Internet") linkPath = "/internet";
+                            else if (item.cta === "Upgrade / Downgrade") linkPath = "/plans";
+                            else if (item.cta === "Explore internet") linkPath = "/internet";
+                            else if (item.cta === "Visit a store") linkPath = "/contact-us";
+                            else linkPath = "/internet"; // Default fallback
+                        }
 
-                    return (
-                        <Link
-                            href={linkPath}
-                            key={index}
-                            className="block"
-                            aria-label={item.cta}
-                        >
-                            <motion.div
-                                variants={itemVariants}
-                                whileHover={{
-                                    scale: 1.1,
-                                    y: -5,
-                                    boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
-                                }}
-                                className="group bg-white border border-gray-100 hover:border-red-400 transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center cursor-pointer"
+                        return (
+                            <Link
+                                href={linkPath}
+                                key={index}
+                                className="block w-1/3 sm:w-auto px-2 py-2 sm:px-3 md:px-4"
+                                aria-label={item.cta}
                             >
-                                <div
-                                    className="text-red-600 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3">{item.icon}</div>
-                                <div
-                                    className="relative font-semibold text-gray-800 text-xs group-hover:text-red-600 transition-colors duration-300 text-center">
-                                    <span className="relative z-10">{item.cta}</span>
-                                    <span
-                                        className="absolute inset-x-0 bottom-0 h-0.5 bg-red-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></span>
-                                </div>
-                            </motion.div>
-                        </Link>
-                    );
-                })}
-            </motion.div>
+                                <motion.div
+                                    variants={itemVariants}
+                                    whileHover={{
+                                        scale: 1.1,
+                                        y: -5,
+                                        boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+                                    }}
+                                    className="group bg-white border border-gray-100 hover:border-red-400 transition-all duration-300 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center cursor-pointer h-full"
+                                >
+                                    <div
+                                        className="text-red-600 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3">{item.icon}</div>
+                                    <div
+                                        className="relative font-semibold text-gray-800 text-xs group-hover:text-red-600 transition-colors duration-300 text-center">
+                                        <span className="relative z-10">{item.cta}</span>
+                                        <span
+                                            className="absolute inset-x-0 bottom-0 h-0.5 bg-red-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out"></span>
+                                    </div>
+                                </motion.div>
+                            </Link>
+                        );
+                    })}
+                </motion.div>
+            </div>
         </section>
     );
 }
