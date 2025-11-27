@@ -273,7 +273,7 @@ export default function AvailabilityChecker() {
                 Service Available
               </h2>
               <p className="text-gray-700 mt-2 text-sm">
-                Great news! We provide service in your area.
+                Great news! We provide service in your location.
               </p>
 
               <div className="flex flex-col gap-3 mt-5 w-full">
