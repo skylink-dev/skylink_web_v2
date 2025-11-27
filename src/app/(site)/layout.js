@@ -28,36 +28,36 @@ const geistMono = Geist_Mono({
  * This metadata will be used as the base for all pages
  * Individual pages can override specific values through their own metadata.js files
  */
-//export const metadata = defaultMetadata;
+export const metadata = defaultMetadata;
 // app/layout.js
-export const metadata = {
-  title: "Skylink",
-  description: "Reliable connectivity and smart internet solutions.",
-  metadataBase: new URL("https://www.skylink.net.in"),
-  openGraph: {
-    title: "Skylink",
-    description: "Reliable connectivity and smart internet solutions.",
-    url: "https://www.skylink.net.in",
-    siteName: "Skylink",
-    images: [
-      {
-        url: "https://www.skylink.net.in/favicon.png",
-        width: 1200,
-        height: 630,
-        alt: "Skylink",
-      },
-    ],
-    locale: "en_IN",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Skylink",
-    description: "Reliable connectivity and smart solutions.",
-    images: ["https://www.skylink.net.in/favicon.png"],
-    creator: "@skylink",
-  },
-};
+// export const metadata = {
+//   title: "Skylink",
+//   description: "Reliable connectivity and smart internet solutions.",
+//   metadataBase: new URL("https://www.skylink.net.in"),
+//   openGraph: {
+//     title: "Skylink",
+//     description: "Reliable connectivity and smart internet solutions.",
+//     url: "https://www.skylink.net.in",
+//     siteName: "Skylink",
+//     images: [
+//       {
+//         url: "https://www.skylink.net.in/favicon.png",
+//         width: 1200,
+//         height: 630,
+//         alt: "Skylink",
+//       },
+//     ],
+//     locale: "en_IN",
+//     type: "website",
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "Skylink",
+//     description: "Reliable connectivity and smart solutions.",
+//     images: ["https://www.skylink.net.in/favicon.png"],
+//     creator: "@skylink",
+//   },
+// };
 
 export default function RootLayout({ children }) {
   const googleMapsKey =
@@ -90,7 +90,6 @@ export default function RootLayout({ children }) {
         />
 
         {/* 3CX Live Chat Script */}
-       
 
         {/* ✅ Google Tag Manager (with fallback) */}
         <Script
@@ -111,7 +110,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-  <Script id="zoho-salesiq-init">
+      <Script id="zoho-salesiq-init">
         {`
           window.$zoho = window.$zoho || {};
           $zoho.salesiq = $zoho.salesiq || { ready: function() {} };
@@ -137,7 +136,6 @@ export default function RootLayout({ children }) {
           ></iframe>
         </noscript>
 
-      
         {/* Global Structured Data */}
         <GlobalStructuredData />
 
@@ -151,7 +149,6 @@ export default function RootLayout({ children }) {
             <AutoContactLauncher delay={3000} cookieExpiry={7} />
           </Providers>
         </PageLoaderWrapper>
-
       </body>
     </html>
   );

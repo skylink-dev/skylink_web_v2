@@ -1,33 +1,36 @@
 // Policy page metadata
 export const metadata = {
+  title: "Privacy Policy | Skylink",
+  description:
+    "Learn how Skylink collects, uses, and protects your personal information when you use our services.",
+  keywords: [
+    "privacy policy",
+    "data protection",
+    "personal information",
+    "user privacy",
+    "skylink privacy",
+    "information collection",
+    "data security",
+  ],
+  openGraph: {
     title: "Privacy Policy | Skylink",
-    description: "Learn how Skylink collects, uses, and protects your personal information when you use our services.",
-    keywords: [
-        'privacy policy',
-        'data protection',
-        'personal information',
-        'user privacy',
-        'skylink privacy',
-        'information collection',
-        'data security'
+    description:
+      "Learn how Skylink collects, uses, and protects your personal information.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/policy`,
+    type: "website",
+    images: [
+      {
+        url: "/newassets/metaImage/skylink_opengraph.png",
+        width: 1200,
+        height: 630,
+        alt: "Privacy Policy | Skylink",
+      },
     ],
-    openGraph: {
-        title: "Privacy Policy | Skylink",
-        description: "Learn how Skylink collects, uses, and protects your personal information.",
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/policy`,
-        type: "website",
-        images: [
-            {
-                url: "/opengraph-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Privacy Policy | Skylink",
-            },
-        ],
-    },
-    twitter: {
-        title: "Privacy Policy | Skylink",
-        description: "Learn how Skylink collects, uses, and protects your personal information.",
-        images: ["/opengraph-image.jpg"],
-    },
+  },
+  twitter: {
+    title: "Privacy Policy | Skylink",
+    description:
+      "Learn how Skylink collects, uses, and protects your personal information.",
+    images: ["/newassets/metaImage/skylink_opengraph.png"],
+  },
 };
