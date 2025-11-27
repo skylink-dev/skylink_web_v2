@@ -26,26 +26,22 @@ export default function ImageBanner() {
                 <sup className="text-xs ml-1">SM</sup>
               </p>
               <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
-                Best Broadband & IPTV Offers — No Credit Needed
+                  Premium Broadband and IPTV with no credit check.
               </h2>
             </div>
 
             {/* Description */}
             <div className="mb-3">
               <p className="text-gray-600 text-base leading-relaxed">
-                Enjoy blazing-fast internet and premium TV with zero down
-                payment and no credit checks. Just pay on time for 6 months to
-                unlock even more benefits.
+                  Enjoy fast internet and top TV with zero down payment. Pay on time for six months to unlock extra benefits.
               </p>
-              <sup className="text-xs text-gray-500">SM postpaid plan.</sup>
+              <sup className="text-xs text-gray-500">Postpaid plan.</sup>
             </div>
 
             {/* Legal Text */}
             <div className="mb-5">
               <p className="text-gray-500 text-xs leading-relaxed">
-                After 1000GB, speeds may reduce during peak times. IPTV features
-                require active subscription. Single connection per home. Taxes &
-                fees extra. Terms & conditions apply.
+                  After 1000 GB, speeds may slow during peak hours. IPTV needs an active subscription. Terms apply.
               </p>
             </div>
 

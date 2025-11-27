@@ -70,7 +70,6 @@ export default function Deals() {
             <ColumnsWithImageComponent />
             <NewsLetter content={contentNewsletter} />
             <Faq title="Frequently asked questions" content={faqContent} />
-            <SingleFaq content={faqData} />
         </>
     );
 }

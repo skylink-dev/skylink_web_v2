@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const slidesData = [
   {
-    title: "Skyplay Business Fiber",
+    title: "Skylink Business Fiber",
     subtitle: "Get up to 3 months* free",
     description:
       "Plus, we will cover your early termination fee up to ₹750** when switching from another provider.",
@@ -18,12 +18,12 @@ const slidesData = [
     link: "/plans?customer_type=smallbusiness",
   },
   {
-    title: "₹699 Triple Play Bundle",
+    title: "₹699 Skylink Red Bundle",
     subtitle: "IPTV + OTT + Internet + WiFi",
     description:
-      "Enjoy seamless entertainment and connectivity with Skyplay's ₹699 combo plan. Includes high-speed internet, IPTV with HD channels, premium OTT apps, and easy home WiFi setup.",
+      "Enjoy uninterrupted entertainment and connectivity with Skylink's ₹699 combo plan. Includes high-speed internet, IPTV with HD channels, premium OTT apps, and easy home WiFi setup.",
     legal:
-      "Offer valid in select cities only. Internet speed and OTT availability may vary by location and network conditions. Installation charges may apply. Fair usage policy applies. Terms and conditions apply.",
+      "Offer valid in select cities only. Internet speed and OTT availability may vary by location and network conditions. Installation charges may apply.",
     imgSrc: "/assets/skyplay-business-fiber-connection-2.jpg",
     link: "/plans?customer_type=smallbusiness",
   },
@@ -87,7 +87,7 @@ export default function ColumnsWithImageComponent() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Enjoy big savings on business essentials
+              Essential Tools, Exceptional Savings
           </h2>
           <div className="w-20 h-1 bg-red-600 mx-auto rounded-full"></div>
         </div>
