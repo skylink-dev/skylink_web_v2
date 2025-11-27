@@ -684,7 +684,7 @@ export default function CustomPlan({
                             : opt == 6
                             ? "Half Yearly"
                             : opt == 3
-                            ? "Quaterly"
+                            ? "Quarterly"
                             : "Monthly"}
                         </span>
 

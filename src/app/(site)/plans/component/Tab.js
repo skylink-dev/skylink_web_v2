@@ -617,7 +617,7 @@ const PlanCard = ({
 
                               <Image
                                 alt="zee5"
-                                src="/newassets/plan/channels/zee5.png"
+                                src="/newassets/plan/channels/ZEE5.jpg"
                                 width={35}
                                 height={35}
                                 className="object-contain rounded-md"
@@ -636,7 +636,7 @@ const PlanCard = ({
 
                               <Image
                                 alt="zee5"
-                                src="/newassets/plan/channels/zee5.png"
+                                src="/newassets/plan/channels/ZEE5.jpg"
                                 width={35}
                                 height={35}
                                 className="object-contain rounded-md"
