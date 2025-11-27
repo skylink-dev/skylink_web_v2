@@ -767,7 +767,7 @@ export default function CustomPlan({
                         >
                           {isDisabled
                             ? `(None)`
-                            : ` ${isextraCharge ? `(Addon)` : "(Free)"}`}
+                            : ` ${isextraCharge ? `(Add-on)` : "(Free)"}`}
                         </span>
                       </span>
                     </div>
