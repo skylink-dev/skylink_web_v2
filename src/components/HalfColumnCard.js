@@ -71,7 +71,7 @@ export default function HalfColumnCard({ titlecontent, items }) {
                   })`,
                   backgroundSize: "cover",
                   backgroundPosition: "left center",
-                  backgroundColor: "#1a202c", /* Dark background for loading state */
+                  backgroundColxor: "#1a202c", /* Dark background for loading state */
                   backgroundRepeat: "no-repeat",
                   height: "100%",
               }}

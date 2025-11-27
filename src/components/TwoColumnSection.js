@@ -4,10 +4,10 @@ import React from 'react'
 
 export default function TwoColumnSection({title, promoCards}) {
     return (
-        <div className="py-10 md:py-14 lg:py-18 bg-gradient-to-br from-gray-50 to-white relative">
+        <div className="py-6 md:py-14 lg:py-18 bg-gradient-to-br from-gray-50 to-white relative">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
                 {/* Header Section */}
-                <div className="text-center mb-12 lg:mb-16">
+                <div className="text-center mb-8 lg:mb-16">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
                         {title}
                     </h2>
@@ -19,13 +19,13 @@ export default function TwoColumnSection({title, promoCards}) {
                     {promoCards.map((card) => (
                         <div key={card.id} className="group">
                             <div 
-                                className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 min-h-[580px] group-hover:scale-[1.02] bg-cover bg-center"
+                                className="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 min-h-[420px] md:min-h-[580px] group-hover:scale-[1.02] bg-cover bg-center"
                                 style={{
                                     backgroundImage: `url('${card.image}')`,
                                 }}
                             >
                                 {/* Content - No Overlay */}
-                                <div className="relative h-full flex flex-col justify-end p-8">
+                                <div className="relative h-full flex flex-col justify-end p-5 md:p-8">
                                     {/* Eyebrow */}
                                     <p className="text-sm font-semibold tracking-wider text-red-600 uppercase mb-3">
                                         {card.eyebrow}

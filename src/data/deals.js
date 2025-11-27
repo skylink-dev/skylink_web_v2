@@ -159,9 +159,9 @@ export const promoCardsData = [
         heading: "Earn up to ₹440 back",
         description:
             "Get ₹200 credit after spending ₹1000 in the first three months. Skylink Wireless users get ₹20 credit each month when spending ₹1000 or more.",
-        legal: `Offer not available if you received a Skylink Points Plus Card bonus in the last 48 months. Terms apply.`,
+        legal: `Offer not available if you got a bonus<br>in the last 48 months. Terms apply.`,
         buttonLabel: "See offer details",
-        image: "/assets/the-Skylink-points-plus.jpg",
+        image: "/assets/save-big-with-iptv-3d-virtual.jpg",
         ctaHref: "/plans",
         ctaText: "Shop now",
         color: "color-white",

@@ -3,8 +3,8 @@ import React from "react";
 export default function SimpleBanner({ color = "text-white", content }) {
   return (
     <section
-      className="relative w-full max-w-7xl mx-auto mt-10 rounded-2xl overflow-hidden shadow-xl bg-cover bg-center flex flex-col md:flex-row items-center justify-between 
-                 min-h-[340px] md:min-h-[360px] lg:min-h-[380px] px-5 md:px-10 lg:px-14 group"
+      className="relative w-full max-w-7xl mx-auto mt-6 md:mt-10 rounded-2xl overflow-hidden shadow-xl bg-cover bg-center flex flex-col md:flex-row items-start md:items-center justify-between 
+                 h-auto min-h-fit md:min-h-[360px] lg:min-h-[380px] px-5 md:px-10 lg:px-14 group"
       style={{
         backgroundImage: `url(${content.backgroundImage})`,
       }}
@@ -13,25 +13,25 @@ export default function SimpleBanner({ color = "text-white", content }) {
       <div className="absolute inset-0 bg-gradient-to-r from-[#b70000]/90 via-[#cc0000]/70 to-transparent group-hover:from-[#990000]/95 transition-all duration-700"></div>
 
       {/* Left Text Section */}
-      <div className="relative z-10 text-left max-w-2xl text-white py-6 md:py-8">
+      <div className="relative z-10 text-left max-w-2xl text-white py-4 md:py-8">
         {/* Eyebrow */}
         <p className="uppercase tracking-widest text-sm font-semibold text-gray-200 mb-1">
           {content.eyebrowText}
         </p>
 
         {/* Heading */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-snug mb-3">
+        <h2 className="text-xl md:text-3xl lg:text-4xl font-bold leading-tight mb-2 md:mb-3">
           {content.heading}
         </h2>
 
         {/* Subtext */}
-        <p className="text-sm md:text-base leading-relaxed mb-3 text-gray-100">
+        <p className="text-sm md:text-base leading-tight sm:leading-relaxed mb-2 md:mb-3 text-gray-100">
           {content.subText}
         </p>
 
         {/* Legal Note */}
         {content.legalNote && (
-          <p className="text-xs text-gray-200 mb-4 opacity-80">
+          <p className="text-xs text-gray-200 mb-2 md:mb-4 opacity-80">
             {content.legalNote}
           </p>
         )}
