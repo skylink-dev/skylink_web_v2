@@ -28,7 +28,7 @@ export const metadata = {
         type: "website",
         images: [
             {
-                url: "/opengraph-image.jpg",
+                url: "/favicon.png",
                 width: 1200,
                 height: 630,
                 alt: "Skylink - High-Speed Internet & TV Services",
@@ -38,6 +38,6 @@ export const metadata = {
     twitter: {
         title: "Skylink - High-Speed Internet & TV Services",
         description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
-        images: ["/opengraph-image.jpg"],
+        images: ["/favicon.png"],
     },
 };
