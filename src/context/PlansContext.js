@@ -115,7 +115,7 @@ const initialPlanOptions = {
     { name: "Installation", lite: "1499" },
     { name: "Billing Cycle", lite: "1" },
     { name: "24/7 Elite Support", lite: "Yes" },
-    { name: "TV Channels", lite: "350+" },
+    { name: "TV Channels", lite: "450+" },
     { name: "OTT", lite: "Yes" },
   ],
   zones: [

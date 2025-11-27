@@ -37,6 +37,7 @@
     "react-redux": "^9.2.0",
     "react-select": "^5.10.1",
     "react-slick": "^0.30.3",
+    "redis": "^5.9.0",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^4.1.14",
     "three": "^0.181.2"

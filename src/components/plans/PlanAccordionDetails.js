@@ -159,7 +159,7 @@ export default function PlanAccordionDetails({ open, plan, planindex, isSelected
                     <h2 className="mt-4 font-semibold">
                       {plan.channels} <strong style={{ color: isSelected(planindex) ? 'white' : 'red' }}></strong>
                     </h2>
-                    {plan?.channels === "350+ Channels" && (
+                    {plan?.channels === "450+ Channels" && (
                       <>
                         <div className="image-wrap w-100 flex gap-2 my-2">
                           <img alt="polimer" src="https://www.skylink.net.in/wp-content/uploads/2025/06/519-POLIMER-TV.png" width="35" height="35" />
@@ -228,7 +228,7 @@ export default function PlanAccordionDetails({ open, plan, planindex, isSelected
                     <span className="channel-label">TV Channels</span>
                   </span> <strong style={{ color: isSelected(planindex) ? 'white' : 'red' }}></strong>
                 </h2>
-                {plan?.channels === "350+ Channels" && (
+                {plan?.channels === "450+ Channels" && (
                   <>
                     <div className="image-wrap w-100 flex gap-2 my-2">
                       <img alt="news7" src="https://www.skylink.net.in/wp-content/uploads/2025/06/Logo_of_News7_Tamil_Logo.jpg" width="35" height="35" />

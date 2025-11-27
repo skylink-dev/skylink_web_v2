@@ -29,6 +29,7 @@ const GlareHover = ({
   const overlayStyle = {
     position: "absolute",
     inset: 0,
+    marginBottom: 0,
     background: `linear-gradient(${glareAngle}deg,
         hsla(0,0%,0%,0) 60%,
         ${rgba} 70%,

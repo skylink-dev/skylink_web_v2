@@ -61,7 +61,7 @@ export default function Firetv() {
             id: 1,
             eyebrow: 'High-def? Def.',
             heading: 'Maximize your TV’s potential',
-            description: 'Enjoy Full HD streaming and fast performance. Lose yourself in the scene with crisp clarity and vibrant detail — powered by Skyplay.',
+            description: 'Enjoy Full HD streaming and fast performance. Lose yourself in the scene with crisp clarity and vibrant detail, powered by Skyplay.',
             legal: 'HD availability depends on your TV and streaming service. Internet speed affects performance.',
             buttonLabel: '',
             image: '/assets/skyplay-iptv-hd-channels.jpg',
@@ -88,7 +88,7 @@ export default function Firetv() {
             image: "/assets/consistent-speed-reliable.jpg",
             subtitle: "Instant Entertainment",
             title: "Start Streaming in Seconds",
-            description: `"Unbox, plug in, and dive into your favorite shows within minutes. No technical skills required—just pure entertainment."`,
+            description: `"Unbox, plug in, and dive into your favorite shows within minutes. No technical skills required, just pure entertainment."`,
             company: "",
             customer: "",
             cta: "See for yourself"
@@ -97,7 +97,7 @@ export default function Firetv() {
             image: "/assets/slider-image-1.jpg",
             subtitle: "Smarter Than a Remote",
             title: "Voice That Gets You",
-            description: `"Say it, and it's done. Alexa on Fire TV understands your commands—no more endless scrolling or typing."`,
+            description: `"Say it, and it's done. Alexa on Fire TV understands your commands, no more endless scrolling or typing."`,
             company: "",
             customer: "",
             cta: "See for yourself"
@@ -181,7 +181,7 @@ export default function Firetv() {
         },
         {
             title: "What kind of content is available through Skylink Fire TV?",
-            content: "Skylink Fire TV offers a mix of live TV, OTT movies and series, kids content, news, regional channels, and international entertainment — all accessible from a single interface."
+            content: "Skylink Fire TV offers a mix of live TV, OTT movies and series, kids content, news, regional channels, and international entertainment. All accessible from a single interface."
         },
         {
             title: "Is there any monthly fee for using Skylink Fire TV?",
@@ -276,13 +276,13 @@ export default function Firetv() {
             {/*}} content={iconMoreDetailcontent} />*/}
             <ComparisonTable
                 heading="Zero Touch Installation"
-                subtitle="Streaming starts with the Skylink Fire TV — just plug, play, and dive into a world of entertainment. It's the simplest way to turn any TV into a smart experience powered by Skyplay."
+                subtitle="Get started with the Skylink Fire TV. Just plug, play, and dive into the world of unlimited entertainment. Turn any TV into a smart experience powered by Skyplay."
                 providers={providersData}
                 content={tablecontent}
             />
             <NormalTabs></NormalTabs>
             <TwoColumnSection title="Experience the Skylink Promise" promoCards={promoCardsData} />
-            <TitleComponent title={'See how the Skylink Fire TV <br /> makes your entertainment seamless'} ></TitleComponent>
+            <TitleComponent title={'What our customers are saying'} ></TitleComponent>
             <ContentandImageCarousel slidesData={CotentImageCarouselData} />
             <Faq title="You’ve asked. We’ve answered." content={faqContent} />
             {/* <SingleFaq content={faqData} /> */}

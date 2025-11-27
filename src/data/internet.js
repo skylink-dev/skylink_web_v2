@@ -285,7 +285,7 @@ export const dynamicSlidesData = [
   {
     imgSrc: "/assets/skyplaynextup.jpg",
     title: "Learn more",
-    subtitle: "Skylink Next Up AnytimeSM",
+    subtitle: "Skylink Next Up Anytime",
     description:
       "If you’re shopping for new internet service or looking to upgrade your home internet plan, having fiber internet installed at your home is simple.",
     normaltext: "",

@@ -45,7 +45,7 @@ export const faqContent = [
   {
     title: "What are Skylink’s best deals for existing customers?",
     content:
-      "Skylink customers can get our best deals on great new devices, like Samsung Galaxy S25 Ultra and iPhone 16. Check out the latest deals available online and in Skylink retail stores. And, with Skylink Next Up AnytimeSM,1 you can get the newest cell phone every year. If you’re considering bundling your Skylink Wireless and Internet service, we have great offers. If you already have Skylink Wireless service, you can add Skylink Fiber service and save 20% per month on your internet bill. If you already have Skylink Fiber and add Skylink Wireless, you could be eligible to save 20% per month on your wire plan. Learn more about bundling your Skylink services 1Early upgrade elig. with qual. turn in. Offers may not be available on latest iPhone. Next Up Anytime feature may be discontinued at any time. Limits & restr’s apply.",
+      "Skylink customers can get our best deals on great new devices, like Samsung Galaxy S25 Ultra and iPhone 16. Check out the latest deals available online and in Skylink retail stores. And, with Skylink Next Up Anytime,1 you can get the newest cell phone every year. If you’re considering bundling your Skylink Wireless and Internet service, we have great offers. If you already have Skylink Wireless service, you can add Skylink Fiber service and save 20% per month on your internet bill. If you already have Skylink Fiber and add Skylink Wireless, you could be eligible to save 20% per month on your wire plan. Learn more about bundling your Skylink services 1Early upgrade elig. with qual. turn in. Offers may not be available on latest iPhone. Next Up Anytime feature may be discontinued at any time. Limits & restr’s apply.",
   },
   {
     title: "What are the best deals if I switch to Skylink Internet service?",
@@ -78,7 +78,7 @@ export const bannerContent = {
   href: "",
 };
 export const bgImageContent = {
-  subtitle: "Skylink Next Up AnytimeSM",
+  subtitle: "Skylink Next Up Anytime",
   title: "Get the latest smartphone every year with your choice of plan",
   description:
     "With Skylink Next Up Anytime, upgrade early without worrying about the remaining balance of your installment plan, guaranteed.",
