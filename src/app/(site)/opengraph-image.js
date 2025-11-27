@@ -119,6 +119,9 @@ export const contentType = "image/png";
 
 export default async function Image() {
   // Load your asset from /public folder
+  const image = await fetch(
+    "https://www.skylink.net.in/newassets/metaImage/skylink_opengraph.png"
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
@@ -132,15 +135,13 @@ export default async function Image() {
           background: "#000",
         }}
       >
-        {/* <img
-          src={
-            "https://www.skylink.net.in/newassets/metaImage/skylink_opengraph.png"
-          }
+        <img
+          src={image}
           alt="OG Image"
           width={1200}
           height={630}
           style={{ objectFit: "cover" }}
-        /> */}
+        />
       </div>
     ),
     size
