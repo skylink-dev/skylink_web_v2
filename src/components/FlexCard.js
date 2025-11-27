@@ -159,18 +159,32 @@ export default function FlexCard({
                       {selected.title}
                     </motion.h3>
                     <motion.p
-                      className="text-sm min-[375px]:text-base sm:text-lg mb-2 sm:mb-3 text-gray-100 leading-relaxed max-w-2xl"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 }}
+                      className="text-sm min-[375px]:text-base sm:text-lg mb-2 sm:mb-3 text-gray-100 leading-relaxed max-w-2xl break-words whitespace-pre-wrap"
+                      initial={{opacity: 0, x: -20}}
+                      animate={{opacity: 1, x: 0}}
+                      transition={{delay: 0.4}}
+                      style={{
+                          display: '-webkit-box',
+                          WebkitLineClamp: isMobile ? 4 : 'unset',
+                          WebkitBoxOrient: 'vertical',
+                          overflow: isMobile ? 'hidden' : 'visible',
+                          textOverflow: isMobile ? 'ellipsis' : 'clip',
+                          maxHeight: isMobile ? '6.5rem' : 'none'
+                      }}
+                      dangerouslySetInnerHTML={{__html: selected.description}}
                     >
-                      {selected.description}
                     </motion.p>
                     <motion.p
-                      className="text-xs min-[375px]:text-sm opacity-90 text-gray-200 max-w-2xl mb-4 sm:mb-5 md:mb-6"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 }}
+                      className="text-xs min-[375px]:text-sm opacity-90 text-gray-200 max-w-2xl mb-4 sm:mb-5 md:mb-6 break-words whitespace-pre-wrap"
+                      initial={{opacity: 0, x: -20}}
+                      animate={{opacity: 1, x: 0}}
+                      transition={{delay: 0.5}}
+                      style={{
+                          display: isMobile ? '-webkit-box' : 'block',
+                          WebkitLineClamp: isMobile ? 2 : 'unset',
+                          WebkitBoxOrient: 'vertical',
+                          overflow: isMobile ? 'hidden' : 'visible'
+                      }}
                     >
                       {selected.details}
                     </motion.p>
@@ -266,18 +280,32 @@ export default function FlexCard({
                         transition={{delay: 0.3}}
                     />
                     <motion.p
-                        className="text-gray-100 mb-2 sm:mb-3 text-xs min-[375px]:text-sm leading-relaxed drop-shadow-lg"
+                        className="text-gray-100 mb-2 sm:mb-3 text-xs min-[375px]:text-sm leading-relaxed drop-shadow-lg break-words whitespace-pre-wrap"
                         initial={{opacity: 0, x: 20}}
                         animate={{opacity: 1, x: 0}}
                         transition={{delay: 0.4}}
+                        style={{
+                            display: '-webkit-box',
+                            WebkitLineClamp: isMobile ? 3 : 'unset',
+                            WebkitBoxOrient: 'vertical',
+                            overflow: isMobile ? 'hidden' : 'visible',
+                            textOverflow: isMobile ? 'ellipsis' : 'clip',
+                            maxHeight: isMobile ? '4.5rem' : 'none'
+                        }}
+                        dangerouslySetInnerHTML={{__html: rightSelected?.description}}
                     >
-                        {rightSelected?.description}
                     </motion.p>
                     <motion.p
-                        className="text-xs text-gray-200 mb-3 sm:mb-4 drop-shadow-lg"
+                        className="text-xs text-gray-200 mb-3 sm:mb-4 drop-shadow-lg break-words whitespace-pre-wrap"
                         initial={{opacity: 0, x: 20}}
                         animate={{opacity: 1, x: 0}}
                         transition={{delay: 0.5}}
+                        style={{
+                            display: isMobile ? '-webkit-box' : 'block',
+                            WebkitLineClamp: isMobile ? 2 : 'unset',
+                            WebkitBoxOrient: 'vertical',
+                            overflow: isMobile ? 'hidden' : 'visible'
+                        }}
                     >
                         {rightSelected?.legal}
                     </motion.p>

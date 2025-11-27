@@ -32,10 +32,7 @@ export default function HeroTitleBanner() {
                                 className="bg-white p-6 sm:p-8 md:p-10 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">Our Mission</h2>
                                 <p className="text-gray-700 text-lg leading-relaxed">
-                                    By 2030, Skylink empowered team and channel partners will connect
-                                    1 million Indians with next‑gen IPTV, broadband, and OTT—powered by
-                                    5G, fiber, AI, and edge—to enrich lives, empower businesses, and
-                                    inspire communities.
+                                    We build connectivity that stays strong when people need it most, supporting the way communities learn, work, create and move forward. Our focus is simple: internet that holds its promise, grows with tomorrow and earns trust every single day.
                                 </p>
                             </div>
                         </div>

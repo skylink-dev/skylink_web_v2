@@ -14,7 +14,7 @@ export const cardData = [
     subtitle: "Already Have a Smart TV? You’re Set",
     title: "Just tap. Stream everything.",
     description:
-      "Access 350+ channels and 19 OTT apps for ₹399/month directly on your TV.",
+      "Access 450+ channels and 19 OTT apps for ₹399/month directly on your TV.",
     legalText:
       "Works with any internet connection. Offer available across South India.",
     link: "/contact-us",
@@ -34,7 +34,7 @@ export const slides = [
   },
   {
     id: 2,
-    title: "We Offer The Highest-Quality Network Connections",
+    title: "Internet That Stays Steady, Always\n",
     description:
       "Choose us for the highest-quality connections that support your digital lifestyle.",
     buttonText: "Register for FREE",
