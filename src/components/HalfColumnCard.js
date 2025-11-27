@@ -70,8 +70,8 @@ export default function HalfColumnCard({ titlecontent, items }) {
                       isMobile && item.mobileimage ? item.mobileimage : item.image
                   })`,
                   backgroundSize: "cover",
-                  backgroundPosition: "left center",
-                  backgroundColxor: "#1a202c", /* Dark background for loading state */
+                  backgroundPosition: isMobile ? "right center" : "left center",
+                  backgroundColor: "#1a202c", /* Dark background for loading state */
                   backgroundRepeat: "no-repeat",
                   height: "100%",
               }}
