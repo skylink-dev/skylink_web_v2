@@ -53,7 +53,7 @@ export const defaultMetadata = {
         siteName: "Skylink",
         images: [
             {
-                url: "/opengraph-image.jpg",
+                url: "/favicon.png",
                 width: 1200,
                 height: 630,
                 alt: "Skylink - High-Speed Internet & TV Services",
@@ -66,7 +66,7 @@ export const defaultMetadata = {
         card: "summary_large_image",
         title: "Skylink - High-Speed Internet & TV Services",
         description: "Experience the best in high-speed fiber internet, TV services, and entertainment packages with Skylink.",
-        images: ["/opengraph-image.jpg"],
+        images: ["/favicon.png"],
         creator: "@skylinkfiber",
         site: "@skylinkfiber",
     },
@@ -102,7 +102,7 @@ export function generateMetadata(options = {}) {
         description,
         additionalKeywords = [],
         pageUrl = '',
-        imageUrl = '/opengraph-image.jpg'
+        imageUrl = '/favicon.png'
     } = options;
 
     // Combine global keywords with page-specific keywords

@@ -1,0 +1,12 @@
+
+> skyplayapp@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.5.4 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://103.183.241.235:3000
+
+ ✓ Starting...
+ ✓ Compiled middleware in 233ms
+ ✓ Ready in 1297ms
+[?25h

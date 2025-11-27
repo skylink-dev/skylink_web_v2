@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Mail, Phone, CheckCircle, X } from "lucide-react";
+import { Mail, Phone, CheckCircle, X, AlertTriangle } from "lucide-react";
+import { apiService } from "@/backend/apiservice";
 
 export default function AvailabilityChecker() {
   const mapRef = useRef(null);
@@ -11,7 +12,9 @@ export default function AvailabilityChecker() {
   const [availableArea, setAvailableArea] = useState("");
   const [showButton, setShowButton] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const [warning, setWarning] = useState("");
+  const checkFesability = apiService.checkFesability;
 
   const createCircle = (center, radius) => {
     const points = [];
@@ -38,18 +41,7 @@ export default function AvailabilityChecker() {
         {
           name: "Ganthipuram",
           center: { lat: 11.0103, lng: 76.9511 },
-          radius: 10,
-        },
-        { name: "Sulur", center: { lat: 11.0243, lng: 77.1257 }, radius: 4 },
-        {
-          name: "Kinathu Kadavu",
-          center: { lat: 10.822477, lng: 77.016144 },
-          radius: 5,
-        },
-        {
-          name: "Annur",
-          center: { lat: 11.2320952, lng: 77.1050488 },
-          radius: 5,
+          radius: 25,
         },
       ],
     },
@@ -60,7 +52,7 @@ export default function AvailabilityChecker() {
         {
           name: "Erode Area 1",
           center: { lat: 11.34, lng: 77.7172 },
-          radius: 10,
+          radius: 15,
         },
       ],
     },
@@ -71,7 +63,7 @@ export default function AvailabilityChecker() {
         {
           name: "Tiruppur Area 1",
           center: { lat: 11.1085, lng: 77.3411 },
-          radius: 10,
+          radius: 15,
         },
       ],
     },
@@ -80,19 +72,17 @@ export default function AvailabilityChecker() {
   const loadGoogleMaps = () => {
     return new Promise((resolve) => {
       if (window.google) return resolve();
-
       const script = document.createElement("script");
       script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places,geometry`;
       script.async = true;
       document.head.appendChild(script);
-
       script.onload = resolve;
     });
   };
+
   useEffect(() => {
     const initMap = async () => {
       await loadGoogleMaps();
-
       const gMap = new window.google.maps.Map(mapRef.current, {
         center: { lat: 11.1, lng: 77.1 },
         zoom: 7,
@@ -102,7 +92,6 @@ export default function AvailabilityChecker() {
 
       setMap(gMap);
 
-      // fit bounds
       const bounds = new window.google.maps.LatLngBounds();
       serviceAreas.forEach((city) =>
         city.subAreas.forEach((area) => bounds.extend(area.center))
@@ -119,13 +108,12 @@ export default function AvailabilityChecker() {
             strokeOpacity: 0.8,
             strokeWeight: 2,
             fillColor: city.color,
-            fillOpacity: 0.1,
+            fillOpacity: 0.25,
             map: gMap,
           });
         })
       );
 
-      // Autocomplete
       const input = document.getElementById("autocomplete");
       const autocomplete = new window.google.maps.places.Autocomplete(input);
       autocomplete.bindTo("bounds", gMap);
@@ -135,7 +123,6 @@ export default function AvailabilityChecker() {
         if (!place.geometry || !place.geometry.location) return;
 
         const location = place.geometry.location;
-
         gMap.setCenter(location);
         gMap.setZoom(18);
 
@@ -169,7 +156,7 @@ export default function AvailabilityChecker() {
     initMap();
   }, []);
 
-  const checkAvailability = () => {
+  const checkAvailability = async () => {
     if (!address.trim()) {
       setWarning("⚠️ Please enter an address before checking availability.");
       return;
@@ -177,55 +164,49 @@ export default function AvailabilityChecker() {
     if (warning) setWarning("");
 
     if (!marker) return;
-    const point = new window.google.maps.LatLng(
-      marker.getPosition().lat(),
-      marker.getPosition().lng()
-    );
-    let foundArea = null;
 
-    serviceAreas.forEach((city) => {
-      city.subAreas.forEach((area) => {
-        const polygon = new window.google.maps.Polygon({
-          paths: createCircle(area.center, area.radius),
-        });
-        if (window.google.maps.geometry.poly.containsLocation(point, polygon))
-          foundArea = area.name;
+    const formData = {
+      lat: marker.getPosition().lat(),
+      lng: marker.getPosition().lng(),
+    };
+
+    await apiService
+      .checkFesability(formData)
+      .then((res) => {
+        if (res?.data?.available) {
+          setIsAvailable(true);
+          setAvailableArea(res.data.area_name);
+          setShowModal(true);
+          setShowButton(false);
+          setShowErrorModal(false);
+        } else {
+          setIsAvailable(true);
+          setShowErrorModal(true);
+          setShowButton(true);
+        }
+      })
+      .catch(() => {
+        setIsAvailable(true);
+        setShowErrorModal(true);
+        setShowButton(false);
       });
-    });
-
-    if (foundArea) {
-      setIsAvailable(true);
-      setAvailableArea(foundArea);
-      setShowModal(true);
-    } else setIsAvailable(false);
-    setShowButton(false);
   };
 
-  const setMapView = (type) => {
+  const setMapView = (t) => {
     if (!map) return;
-    if (type === "roadmap") {
-      map.setMapTypeId("roadmap");
-      map.setTilt(0);
-    } else if (type === "satellite") {
-      map.setMapTypeId("satellite");
-      map.setTilt(0);
-    } else if (type === "3d") {
-      map.setMapTypeId("satellite");
-      map.setTilt(45);
-    }
+    map.setMapTypeId(t === "roadmap" ? "roadmap" : "satellite");
+    map.setTilt(t === "3d" ? 45 : 0);
   };
 
   return (
-    <div className="flex flex-col items-center justify-start p-6 bg-gray-50">
-      {/* Map Card with 3D effect */}
-      <div className="w-full max-w-6xl bg-gray-100 rounded-3xl border border-gray-200 shadow-2xl p-6 mb-0 transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-3xl">
-        {/* Animated Title & Subtitle */}
-        <div className="text-center mb-6 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2 animate-slide-down">
-            Check Your Availability
+    <div className="flex flex-col items-center p-8 bg-gray-50 min-h-full">
+      <div className="w-full max-w-6xl backdrop-blur-lg bg-white/70 shadow-2xl rounded-3xl border border-gray-200 p-8">
+        <div className="text-center mb-8">
+          <h1 className="text-5xl font-bold text-gray-900">
+            Check Availability
           </h1>
-          <p className="text-gray-600 text-lg md:text-xl animate-slide-up">
-            Enter your address to see if our service covers your area
+          <p className="text-lg text-gray-600 mt-2">
+            Enter your address to see if our internet service is available
           </p>
         </div>
 
@@ -233,49 +214,41 @@ export default function AvailabilityChecker() {
           <input
             id="autocomplete"
             type="text"
-            placeholder="Enter your address..."
+            placeholder="Search your exact location..."
             value={address}
             onChange={(e) => {
               setAddress(e.target.value);
               if (warning) setWarning("");
             }}
-            className="w-full md:w-3/4 border border-gray-300 p-3 rounded-xl mb-2 focus:outline-none focus:ring-2 focus:ring-red-500 text-center bg-white"
+            className="w-full md:w-3/4 p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-gray-500 bg-white text-center"
           />
-          {warning && <p className="text-sm text-yellow-600 mb-1">{warning}</p>}
+
+          {warning && <p className="text-sm text-yellow-600 mt-1">{warning}</p>}
+
           {showButton && (
             <button
               onClick={checkAvailability}
-              className="bg-red-600 hover:bg-red-700 mb-2 text-white font-semibold py-2 px-6 rounded-xl shadow-md transition-all duration-200 hover:scale-105"
+              className="mt-3 bg-red-600 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:scale-105 transition-all"
             >
               Check Availability
             </button>
           )}
-          {isAvailable === false && (
-            <p className="mt-3 text-lg font-semibold text-red-600">
-              ❌ Sorry, service not available here.
-            </p>
-          )}
         </div>
 
-        {/* Map */}
         <div
           ref={mapRef}
-          className="w-full h-[350px] md:h-[500px] mt-0 rounded-2xl shadow-lg border border-gray-200"
+          className="w-full h-[400px] mt-6 rounded-2xl shadow-xl overflow-hidden border border-gray-300"
         />
 
-        {/* Map View Buttons */}
-        {/* Map View Buttons */}
-        <div className="flex justify-center mt-4 gap-1">
-          {" "}
-          {/* reduced gap from 2 -> 1 */}
+        <div className="flex justify-center mt-5 gap-3">
           <button
-            className="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 shadow-md transition-colors duration-200"
+            className="px-5 py-2 bg-gray-800 text-white rounded-xl shadow hover:bg-black"
             onClick={() => setMapView("roadmap")}
           >
             Roadmap
           </button>
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 shadow-md transition-colors duration-200"
+            className="px-5 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
             onClick={() => setMapView("satellite")}
           >
             Satellite
@@ -283,42 +256,79 @@ export default function AvailabilityChecker() {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50 px-3">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm scale-105 relative border-t-4 border-green-500">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn z-50">
+          <div className="relative bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-green-500 animate-scaleIn">
+            {/* Close button */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-3 right-3"
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
             >
               <X size={22} />
             </button>
-            <div className="flex flex-col items-center text-center">
-              <CheckCircle className="text-green-500 w-14 h-14 mb-3" />
-              <h2 className="text-2xl font-bold text-green-600 mb-2">
-                🎉 You’re Covered!
+
+            <div className="text-center flex flex-col items-center">
+              <CheckCircle className="text-green-600 w-16 h-16 animate-bounceSlow" />
+              <h2 className="text-2xl font-bold text-green-700 mt-2">
+                Service Available
               </h2>
-              <p className="text-gray-700 mb-3 text-sm">
-                Our service is available in <b>Your Location</b>. Connect now
-                instantly.
+              <p className="text-gray-700 mt-2 text-sm">
+                Great news! We provide service in your area.
               </p>
 
-              {/* Quick Contact Buttons */}
-              <div className="flex w-full gap-3">
-                {/* Call Button */}
+              <div className="flex flex-col gap-3 mt-5 w-full">
                 <a
                   href="tel:+919944199445"
-                  className="flex-1 bg-green-500 text-white py-3 rounded-xl flex justify-center items-center gap-2 transition-transform duration-200 hover:scale-105 shadow-md"
+                  className="bg-green-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
                 >
-                  <Phone size={18} /> Call
+                  <Phone size={18} /> Call: +91 99441 99445
                 </a>
 
-                {/* Email Button */}
                 <a
                   href="mailto:info@skylink.net.in"
-                  className="flex-1 bg-blue-500 text-white py-3 rounded-xl flex justify-center items-center gap-2 transition-transform duration-200 hover:bg-blue-600 shadow-md"
+                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
                 >
-                  <Mail size={18} /> Email
+                  <Mail size={18} /> info@skylink.net.in
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Modal */}
+      {showErrorModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn z-50">
+          <div className="relative bg-white p-6 rounded-2xl max-w-xs w-full shadow-xl border-t-4 border-red-600 animate-scaleIn">
+            {/* Close button */}
+            <button
+              onClick={() => setShowErrorModal(false)}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800"
+            >
+              <X size={22} />
+            </button>
+
+            <div className="text-center flex flex-col items-center">
+              <AlertTriangle className="text-red-600 w-16 h-16 animate-pulse" />
+              <h2 className="text-2xl font-bold text-red-700 mt-2">
+                Not Available
+              </h2>
+              <p className="text-gray-700 mt-2 text-sm">
+                Contact us for future expansion updates.
+              </p>
+
+              <div className="flex flex-col gap-3 mt-5 w-full">
+                <a
+                  href="tel:+919944199445"
+                  className="bg-red-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
+                >
+                  <Phone size={18} /> Call Support
+                </a>
+                <a
+                  href="mailto:info@skylink.net.in"
+                  className="bg-blue-600 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-semibold shadow hover:scale-105 transition"
+                >
+                  <Mail size={18} /> Email Us
                 </a>
               </div>
             </div>

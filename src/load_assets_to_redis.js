@@ -19,9 +19,9 @@ async function loadAssets() {
   console.log("🔍 Reading files from:", ASSET_DIR);
 
   // 📄 Get only files (skip directories)
-  const files = fs
-    .readdirSync(ASSET_DIR)
-    .filter((f) => fs.lstatSync(path.join(ASSET_DIR, f)).isFile());
+  const files = fs.readdirSync(ASSET_DIR).filter((f) =>
+    fs.lstatSync(path.join(ASSET_DIR, f)).isFile()
+  );
 
   const pipeline = redis.multi();
   const fileList = [];
