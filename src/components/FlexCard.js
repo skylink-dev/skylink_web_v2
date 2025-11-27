@@ -171,8 +171,8 @@ export default function FlexCard({
                           textOverflow: isMobile ? 'ellipsis' : 'clip',
                           maxHeight: isMobile ? '6.5rem' : 'none'
                       }}
+                      dangerouslySetInnerHTML={{__html: selected.description}}
                     >
-                      {selected.description}
                     </motion.p>
                     <motion.p
                       className="text-xs min-[375px]:text-sm opacity-90 text-gray-200 max-w-2xl mb-4 sm:mb-5 md:mb-6 break-words whitespace-pre-wrap"
@@ -292,8 +292,8 @@ export default function FlexCard({
                             textOverflow: isMobile ? 'ellipsis' : 'clip',
                             maxHeight: isMobile ? '4.5rem' : 'none'
                         }}
+                        dangerouslySetInnerHTML={{__html: rightSelected?.description}}
                     >
-                        {rightSelected?.description}
                     </motion.p>
                     <motion.p
                         className="text-xs text-gray-200 mb-3 sm:mb-4 drop-shadow-lg break-words whitespace-pre-wrap"

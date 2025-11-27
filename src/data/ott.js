@@ -2,8 +2,8 @@ export const bannerContent = {
   subtitle:
     "Entertainment, Without the Extra Steps",
   title:
-    "Get access to 18+ premium OTT platforms included with select Skylink plans.",
-  firstcta: "Claim OTT Access",
+    "Get access to 20+ premium OTT platforms included with select Skylink plans.",
+  firstcta: "See our plans",
   offercontent:
     "No multiple logins, no juggling. Everything you already watch in one place.",
   offercta: "",
@@ -192,9 +192,9 @@ export const flexCardData = [
   {
     id: 2,
     title: "Stories from the South.",
-    subtitle: "Take Tamil, Telugu, and Malayalam shows wherever you go.\n",
+    subtitle: "Tamil, Telugu, Malayalam shows anywhere.",
     description:
-      "HD playback, offline viewing, and regional picks that travel with you",
+      "HD playback, offline viewing,<br>and regional picks that<br>travel with you",
     details: "Simple, seamless, yours",
     leftImage: "/assets/skyplay-south-india-movie.jpg",
     link: "/buy/bundles/south-indian-ott-bundle.html",
@@ -203,7 +203,7 @@ export const flexCardData = [
     id: 3,
     title: "Smarter TV. Regional Ready.",
     subtitle: "4K + Voice + South OTTs",
-    description: "Built-in OTT apps with voice control for regional streaming.",
+    description: "Built-in OTT apps with voice<br>control for regional streaming.",
     details: "Free delivery & setup.",
     leftImage: "/assets/skyplay-south-india-movie.jpg",
     link: "/buy/services/south-ott-bundle.html",
@@ -213,7 +213,7 @@ export const flexCardData = [
     id: 8,
     title: "In Your Pocket.",
     subtitle: "South Stories. Anywhere.",
-    description: "Watch Tamil, Telugu & Malayalam shows on the go.",
+    description: "Watch Tamil, Telugu & Malayalam<br>shows on the go.",
     details: "Offline-ready. HD quality.",
     leftImage: "/assets/skyplay-south-india-movie.jpg",
     link: "/buy/bundles/south-ott-mobile-pass.html",
@@ -222,7 +222,7 @@ export const flexCardData = [
     id: 9,
     title: "For the Whole Home.",
     subtitle: "Family, Kids, Culture.",
-    description: "Ad-free South Indian content with parental controls.",
+    description: "Ad-free South Indian content<br>with parental controls.",
     details: "Multi-user support included.",
     leftImage: "/assets/skyplay-south-india-movie.jpg",
     link: "/buy/bundles/south-ott-family-pack.html",
@@ -231,7 +231,7 @@ export const flexCardData = [
     id: 10,
     title: "Live. Local. Loud.",
     subtitle: "Matches, Fests, Moments.",
-    description: "Watch South Indian sports and cultural events live.",
+    description: "Watch South Indian sports and<br>cultural events live.",
     details: "Multi-language audio. Instant replays.",
     leftImage: "/assets/skyplay-south-india-movie.jpg",
     link: "/buy/bundles/south-ott-live-sports.html",
@@ -244,7 +244,7 @@ export const flexCardDataNorth = [
     title: "All North. One Bundle.",
     subtitle: "Hindi, Punjabi, Bhojpuri. Together.",
     description:
-      "Top North Indian OTT platforms and regional content in one subscription.",
+      "Top North Indian OTT platforms and<br>regional content in one subscription.",
     details: "Simple. Seamless. Affordable.",
     leftImage: "/assets/skyplay-north-india-movie.jpg",
     link: "/buy/bundles/north-indian-ott-bundle.html",
@@ -254,7 +254,7 @@ export const flexCardDataNorth = [
     title: "Smarter TV. Hindi Inside.",
     subtitle: "4K + Voice + Local Apps",
     description:
-      "Enjoy built-in access to popular North Indian OTT apps on your smart TV.",
+      "Enjoy built-in access to popular<br>North Indian OTT apps<br>on your smart TV.",
     details: "Includes setup & support.",
     leftImage: "/assets/skyplay-north-india-movie.jpg",
     link: "/buy/services/north-ott-bundle.html",
@@ -264,7 +264,7 @@ export const flexCardDataNorth = [
     title: "Bollywood & Beyond.",
     subtitle: "New. Nostalgic. Nonstop.",
     description:
-      "Stream the latest Hindi blockbusters and timeless classics anytime.",
+      "Stream the latest Hindi blockbusters<br>and timeless classics anytime.",
     details: "Flexible monthly plans.",
     leftImage: "/assets/skyplay-north-india-movie.jpg",
     link: "/buy/bundles/north-ott-premium.html",
@@ -274,7 +274,7 @@ export const flexCardDataNorth = [
     title: "Carry Culture.",
     subtitle: "On the go. In your language.",
     description:
-      "Binge regional content in Hindi, Punjabi, Bengali & more — from your mobile.",
+      "Binge regional content in Hindi,<br>Punjabi, Bengali & more — from your mobile.",
     details: "Downloadable. Portable. Personal.",
     leftImage: "/assets/skyplay-north-india-movie.jpg",
     link: "/buy/bundles/north-ott-mobile-pass.html",
@@ -284,7 +284,7 @@ export const flexCardDataNorth = [
     title: "Family First.",
     subtitle: "Laughter. Learning. Love.",
     description:
-      "Curated family-friendly OTT with content for every age group.",
+      "Curated family-friendly OTT with<br>content for every age group.",
     details: "Profiles, controls & no ads.",
     leftImage: "/assets/skyplay-north-india-movie.jpg",
     link: "/buy/bundles/north-ott-family-pack.html",
@@ -294,7 +294,7 @@ export const flexCardDataNorth = [
     title: "Game Day. Desi Style.",
     subtitle: "Live Sports. Local Voices.",
     description:
-      "Watch cricket, kabaddi, and more with North Indian language commentary.",
+      "Watch cricket, kabaddi, and more<br>with North Indian language commentary.",
     details: "Instant replays. Event alerts.",
     leftImage: "/assets/skyplay-north-india-movie.jpg",
     link: "/buy/bundles/north-ott-live-sports.html",
