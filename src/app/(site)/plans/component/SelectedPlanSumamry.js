@@ -215,7 +215,7 @@ export default function SelectedPlanSummary({
                   value={`₹ ${ottExtraCharge}`}
                 />
               )}
-              <Row label="GST" value={`₹ ${gst}`} />
+              <Row label="GST (18%)" value={`₹ ${gst}`} />
 
               {discount > 0 && (
                 <div

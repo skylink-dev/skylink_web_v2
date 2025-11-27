@@ -137,7 +137,8 @@ export default function ThreeBannerModern() {
         ref={sliderRef}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="relative w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 mt-0" style={{marginTop: 0}}
+        className="relative w-full max-w-[1400px] mx-auto px-0 sm:px-3 md:px-6 mt-0"
+        style={{ marginTop: 0 }}
       >
         {/* ===== Slider Track ===== */}
         <div className="relative w-full h-[400px] xs:h-[450px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden rounded-none sm:rounded-2xl bg-black shadow-lg sm:shadow-xl shadow-black/40 border-t-0">
@@ -168,24 +169,24 @@ export default function ThreeBannerModern() {
                     />
                   </div>
                   {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/15"/>
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-black/0" />
                 </div>
 
                 {/* Portrait Image Container - Mobile */}
                 <div className="absolute inset-0 sm:hidden">
-                    <div className="relative w-full h-full overflow-hidden">
+                  <div className="relative w-full h-full overflow-hidden">
                     <Image
                       src={slide.imagePortrait}
                       alt={slide.title}
                       fill
                       className="object-cover w-full h-full"
-                      style={{objectPosition: 'center 65%'}}
+                      style={{ objectPosition: "center 65%" }}
                       priority={index === 0}
                       sizes="100vw"
                     />
                   </div>
                   {/* Gradient overlay for mobile */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/35"/>
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/0 to-black/0" />
                 </div>
 
                 {/* ===== Content ===== */}
@@ -193,7 +194,7 @@ export default function ThreeBannerModern() {
                   <div className="w-full max-w-2xl text-white text-left">
                     {/* Title */}
                     <h1
-                      className={`text-base xs:text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 xs:mb-2.5 sm:mb-5 leading-tight ${
+                      className={`text-base xs:text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 xs:mb-2.5 sm:mb-5 leading-tight text-shadow-lg/10  ${
                         index === currentSlide ||
                         index === currentSlide % slides.length
                           ? "animate-fade-in-up"
@@ -205,7 +206,7 @@ export default function ThreeBannerModern() {
 
                     {/* Description */}
                     <p
-                      className={`text-xs xs:text-xs sm:text-lg md:text-xl mb-2.5 xs:mb-3 sm:mb-6 font-normal opacity-90 leading-snug sm:leading-relaxed max-w-lg ${
+                      className={`text-xs xs:text-xs sm:text-lg md:text-xl mb-2.5 xs:mb-3 sm:mb-6 font-normal opacity-90 leading-snug sm:leading-relaxed  text-shadow-lg/10 max-w-lg ${
                         index === currentSlide ||
                         index === currentSlide % slides.length
                           ? "animate-fade-in-up animation-delay-150"

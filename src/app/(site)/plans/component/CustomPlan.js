@@ -684,7 +684,7 @@ export default function CustomPlan({
                             : opt == 6
                             ? "Half Yearly"
                             : opt == 3
-                            ? "Quaterly"
+                            ? "Quarterly"
                             : "Monthly"}
                         </span>
 
@@ -767,7 +767,7 @@ export default function CustomPlan({
                         >
                           {isDisabled
                             ? `(None)`
-                            : ` ${isextraCharge ? `(Addon)` : "(Free)"}`}
+                            : ` ${isextraCharge ? `(Add-on)` : "(Free)"}`}
                         </span>
                       </span>
                     </div>
