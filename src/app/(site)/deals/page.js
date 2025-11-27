@@ -2,43 +2,46 @@ import Deals from "@/app/(site)/deals/Deals";
 
 // Deals page metadata
 export const metadata = {
+  title: "Special Offers & Deals | Skylink",
+  description:
+    "Explore Skylink's latest offers, promotions and bundle deals on internet, TV and OTT services. Save with our limited-time special packages.",
+  keywords: [
+    "skylink deals",
+    "internet offers",
+    "tv promotions",
+    "bundle offers",
+    "discount packages",
+    "special promotions",
+    "savings on internet",
+    "broadband deals",
+  ],
+  openGraph: {
     title: "Special Offers & Deals | Skylink",
-    description: "Explore Skylink's latest offers, promotions and bundle deals on internet, TV and OTT services. Save with our limited-time special packages.",
-    keywords: [
-        'skylink deals',
-        'internet offers',
-        'tv promotions',
-        'bundle offers',
-        'discount packages',
-        'special promotions',
-        'savings on internet',
-        'broadband deals'
+    description:
+      "Explore Skylink's latest offers and save with our bundle deals.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/deals`,
+    type: "website",
+    images: [
+      {
+        url: "/newassets/metaImage/skylink_opengraph.png",
+        width: 1200,
+        height: 630,
+        alt: "Special Offers & Deals | Skylink",
+      },
     ],
-    openGraph: {
-        title: "Special Offers & Deals | Skylink",
-        description: "Explore Skylink's latest offers and save with our bundle deals.",
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/deals`,
-        type: "website",
-        images: [
-            {
-                url: "/opengraph-image.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Special Offers & Deals | Skylink",
-            },
-        ],
-    },
-    twitter: {
-        title: "Special Offers & Deals | Skylink",
-        description: "Explore Skylink's latest offers and save with our bundle deals.",
-        images: ["/opengraph-image.jpg"],
-    },
+  },
+  twitter: {
+    title: "Special Offers & Deals | Skylink",
+    description:
+      "Explore Skylink's latest offers and save with our bundle deals.",
+    images: ["/newassets/metaImage/skylink_opengraph.png"],
+  },
 };
 
 export default function Page() {
   return (
     <>
-      <Deals/>
+      <Deals />
     </>
   );
 }
