@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function LeftImageRightContent({ title, Content, order }) {
@@ -275,9 +276,13 @@ export default function LeftImageRightContent({ title, Content, order }) {
                         </div>
 
                         {/* Mobile CTA Button - Fixed at bottom */}
-                        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 active:scale-95 mt-auto text-sm">
-                          Learn More
-                        </button>
+                        <Link href={index === 0 ? '/internet' : index === 1 ? '/plans' : '/contact-us'}
+                              className="w-full">
+                            <button
+                                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 active:scale-95 mt-auto text-sm">
+                                Learn More
+                            </button>
+                        </Link>
                       </div>
                     </div>
                   </motion.div>
