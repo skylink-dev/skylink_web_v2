@@ -26,6 +26,7 @@ public/assets/**/cache/
 # Ignore video assets
 /public/assets/
 /public/newassets/support/
+/public/apkfile/
 
 # Mac and system files
 .DS_Store
