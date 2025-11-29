@@ -378,12 +378,12 @@ export const customPlans = {
     {
       speed: "30 Mbps",
       validity: [1, 3, 6, 12],
-      amount: [2000, 0, 0, 0],
+      amount: [2000, 2000, 2000, 2000],
     },
     {
       speed: "50 Mbps",
       validity: [1, 3, 6, 12],
-      amount: [2000, 0, 0, 0],
+      amount: [2000, 1000, 0, 0],
     },
     {
       speed: "100 Mbps",
