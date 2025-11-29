@@ -23,7 +23,7 @@ export default function Header() {
   const buttons = [
     {
       label: "Download IPTV App",
-      href: "https://www.skylink.net.in/wp-content/uploads/large-files/skyplaytv.apk",
+      href: `${process.env.NEXT_PUBLIC_BASE_URL}/apkfile/skyplaytv.apk`,
       color: "bg-gradient-to-r from-[#E91A2F] to-[#E91A2F]",
       download: true,
       icon: (
@@ -85,19 +85,19 @@ export default function Header() {
 
   useEffect(() => {
     const checkWidth = () => {
-        const isMobileView = window.innerWidth < 1024;
-        setIsMobile(isMobileView);
+      const isMobileView = window.innerWidth < 1024;
+      setIsMobile(isMobileView);
 
-        // Close drawer when switching to desktop view
-        if (!isMobileView && isDrawerOpen) {
-            setIsDrawerOpen(false);
-        }
+      // Close drawer when switching to desktop view
+      if (!isMobileView && isDrawerOpen) {
+        setIsDrawerOpen(false);
+      }
     };
 
-      checkWidth();
-      window.addEventListener("resize", checkWidth);
-      return () => window.removeEventListener("resize", checkWidth);
-  }, [isDrawerOpen]);  // Add isDrawerOpen as dependency
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, [isDrawerOpen]); // Add isDrawerOpen as dependency
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -216,26 +216,24 @@ export default function Header() {
                 target={isInternal || btn.download ? undefined : "_blank"}
                 className={`${btn.color} text-white text-sm font-medium rounded-[1rem] px-3 py-1.5 transition-all duration-300 hover:brightness-95 hover:-translate-y-[1px] hover:shadow-lg h-[36px] min-w-[126px] flex items-center justify-center group overflow-hidden relative border border-white/10 backdrop-blur-sm`}
               >
-                  <>
-                      {btn.icon ? (
-                          <div className="flex items-center justify-center z-10">
+                <>
+                  {btn.icon ? (
+                    <div className="flex items-center justify-center z-10">
                       <span className="flex-shrink-0 w-4 h-4 flex items-center justify-center">
                         {btn.icon}
                       </span>
-                              <span className="ml-2 text-sm text-shadow">
+                      <span className="ml-2 text-sm text-shadow">
                         {btn.label}
                       </span>
-                          </div>
-                      ) : (
-                          <span className="text-center text-sm text-shadow z-10">
+                    </div>
+                  ) : (
+                    <span className="text-center text-sm text-shadow z-10">
                       {btn.label}
                     </span>
-                      )}
-                      <div
-                          className="absolute inset-0 bg-gradient-to-b from-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-[1rem]"></div>
-                      <div
-                          className="absolute inset-x-0 top-0 h-[1px] bg-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                  </>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-[1rem]"></div>
+                  <div className="absolute inset-x-0 top-0 h-[1px] bg-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                </>
               </Link>
             );
           })}
@@ -326,10 +324,12 @@ export default function Header() {
       </div>
 
       {/* Overlay for Drawer */}
-        <div
-            onClick={toggleDrawer}
-            className={`fixed inset-0 bg-black/30 z-40 transition-opacity duration-300 ${isDrawerOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} lg:hidden`}
-        ></div>
+      <div
+        onClick={toggleDrawer}
+        className={`fixed inset-0 bg-black/30 z-40 transition-opacity duration-300 ${
+          isDrawerOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        } lg:hidden`}
+      ></div>
 
       {/* Floating Action Buttons - Hidden on Mobile */}
       <div className="fixed right-4 bottom-36 lg:right-8 lg:top-52 h-32 w-[230px] z-40 hidden lg:block pointer-events-none">
@@ -342,30 +342,29 @@ export default function Header() {
             className={`${buttons[0].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-12 h-12 lg:hover:w-[210px] lg:hover:pl-3 lg:hover:pr-1 overflow-hidden transition-all duration-300`}
             title={buttons[0].label}
           >
-              <div className="flex items-center w-full">
-                  <div className="flex-shrink-0">
-                      <Image
-                          src="/newassets/navbar/icons/play.png"
-                          alt="Play Icon"
-                          width={26}
-                          height={26}
-                          className="w-6 h-6"
-                      />
-                  </div>
-                  <span
-                      className="ml-3 mr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium text-shadow">
+            <div className="flex items-center w-full">
+              <div className="flex-shrink-0">
+                <Image
+                  src="/newassets/navbar/icons/play.png"
+                  alt="Play Icon"
+                  width={26}
+                  height={26}
+                  className="w-6 h-6"
+                />
+              </div>
+              <span className="ml-3 mr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-medium text-shadow">
                 {buttons[0].label}
               </span>
-              </div>
+            </div>
           </Link>
         </div>
 
-          {/* Claim Your TV/OTT Button */}
-          <div className="absolute top-16 right-0 z-10 group pointer-events-auto">
-              <Link
-                  href={buttons[1].href}
-                  target="_blank"
-                  className={`${buttons[1].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-12 h-12 lg:hover:w-[210px] lg:hover:pl-3 lg:hover:pr-1 overflow-hidden transition-all duration-300`}
+        {/* Claim Your TV/OTT Button */}
+        <div className="absolute top-16 right-0 z-10 group pointer-events-auto">
+          <Link
+            href={buttons[1].href}
+            target="_blank"
+            className={`${buttons[1].color} text-white p-2.5 rounded-full shadow-lg flex items-center w-12 h-12 lg:hover:w-[210px] lg:hover:pl-3 lg:hover:pr-1 overflow-hidden transition-all duration-300`}
             title={buttons[1].label}
           >
             <div className="flex items-center w-full">
