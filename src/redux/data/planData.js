@@ -30,7 +30,7 @@ export const basePlans = [
     tvChannels: 550,
     validity: [1, 3, 6, 12],
     discount: [0, 0, 7.5, 15],
-    installationCharges: [2000, 1000, 0, 0],
+    installationCharges: [2000, 0, 0, 0],
     mainChannels: ["Sun Tv", "Zee Tamil", "Vijay Tv"],
 
     ottMainPack: [
@@ -84,7 +84,7 @@ export const basePlans = [
     tvChannels: 450,
     validity: [1, 3, 6, 12],
     discount: [0, 0, 7.5, 15],
-    installationCharges: [2000, 0, 0, 0],
+    installationCharges: [2000, 1000, 0, 0],
     mainChannels: ["Vijay Tv", "Zee Tamil", "News 7"],
 
     ottMainPack: [
