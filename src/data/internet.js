@@ -198,7 +198,8 @@ export const faqContent = [
   {
     title: "Can I use my own router with Skylink?",
     content:
-      "Absolutely. If your router supports high-speed fiber, it’ll work just fine. For the best stability and full technical support, we recommend our certified Skylink gateways.",
+      "Only Skylink-certified gateways are built for our high-speed fiber. Using our gateway\n" +
+        "gives you full support and the best, most stable experience.",
   },
   {
     title: "Is Skylink available in my area?",

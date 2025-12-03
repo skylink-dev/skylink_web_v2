@@ -160,8 +160,10 @@ export default function Firetv() {
             content: "All you need is a TV with an HDMI port and a stable internet connection. Simply plug in the Skylink Fire TV, connect to Wi-Fi, and start streaming your favorite content right away."
         },
         {
-            title: "Does Skylink Fire TV come preloaded with OTT apps?",
-            content: "Yes, it comes with a wide range of preloaded OTT apps including Netflix, Prime Video, Jio Hotstar, Zee5, Sony LIV, and many others. Some apps may require separate subscriptions."
+            title: "Does Skylink Fire TV come with OTT apps?",
+            content: "Skylink Fire TV gives you access to the Amazon Appstore where you can easily\n" +
+                "download popular OTT apps like Netflix, Prime Video, Hotstar, Zee5, and Sony LIV.\n" +
+                "Some apps may require separate subscriptions."
         },
         {
             title: "Can I use voice control on Skylink Fire TV?",
@@ -174,10 +176,6 @@ export default function Firetv() {
         {
             title: "Do I need a Skylink subscription to use the Fire TV?",
             content: "While the device works with popular OTT platforms, subscribing to Skylink's bundled plans gives you access to premium content, live channels, and additional app benefits without multiple logins."
-        },
-        {
-            title: "Can I take my Skylink Fire TV while traveling?",
-            content: "Yes, it's portable and can be used anywhere with a TV and internet connection. It remembers your login and settings, making it ideal for travel."
         },
         {
             title: "What kind of content is available through Skylink Fire TV?",

@@ -31,7 +31,7 @@ export default function Ott() {
         <>
             <Banner content={bannerContent} />
             <FlexCard
-                title="Stream Smarter with OTT"
+                title="A Whole Universe, Shrunk Into Your Screen."
                 rightImage="/assets/favorite-ott.png"
                 leftImage="/assets/ott-banner.jpeg"
                 mobileleftImage="/assets/skyplay-ott-hills-image.jpg"

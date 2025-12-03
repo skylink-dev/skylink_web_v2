@@ -186,13 +186,15 @@ export default function ContactForm() {
                     <p className="text-gray-600 leading-relaxed">
                       Skylink Fibernet Private Limited,
                       <br />
-                      B6, II Floor, Vue Grande,
+                        A1, Vue Grande, 339,
+
+
                       <br />
-                      339 Chinnaswamy Road,
-                      <br />
-                      Siddha Pudhur,
+                      Siddhapudhur,
                       <br />
                       Coimbatore - 641044
+                        <br />
+                        Tamil Nadu
                     </p>
                   </div>
                 </div>

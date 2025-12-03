@@ -22,14 +22,15 @@ export const threeColumnData = [
   },
   {
     image: "/assets/watch-anywhere-anytime-on-any-device.jpg",
-    subtitle: "Next-Gen IPTV",
-    title: "TV That Travels With You",
+    subtitle: "Cloud Convenience",
+    title: "Never Miss What Matters.",
     description:
-      "Watch your favorite shows and channels anywhere - on your TV, phone, or\n" +
-      "laptop. Your entertainment moves with you.\n",
-    subdescription: "(Internet connection required.)\n",
+      "With cloud-based features, pick up shows from where you left off and keep your\n" +
+        "viewing history synced and tidy.",
+
+    subdescription: "(Feature availability varies.)\n",
     smallcta: "",
-    cta: "See Where You Can Watch\n",
+    cta: "See Cloud Features\n",
   },
   {
     image: "/assets/smart-recommendationersonalizedviewing.jpg",

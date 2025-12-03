@@ -16,7 +16,7 @@ export const cardData = [
     description:
       "Access 450+ channels and 19 OTT apps for ₹399/month directly on your TV.",
     legalText:
-      "Works with any internet connection. Offer available across South India.",
+      "Offer available across South India.",
     link: "/contact-us",
   },
 ];
@@ -609,7 +609,8 @@ export const rightContentFlexData = {
   subheading: "Stronger Connections. Stronger India",
   heading: "Share the Connection. Share the Reward.",
   description:
-    "Invite friends, earn ₹200, and join the Skylink family - stronger, together. Reward credited after activation.",
+    "Invite a friend, and when they join Skylink, you get a special reward from us. Easy,\n" +
+      "friendly, and a nice extra for sharing.",
   legal: "T&Cs apply. Referral credited post activation.",
   smaallcta: "View full offer details",
   mainCta: "Call Now: +91  99441 99445",

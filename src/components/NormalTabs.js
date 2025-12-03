@@ -81,8 +81,9 @@ export default function NormalTabs() {
             iconPath1: "/assets/upgrade-instantly.png"
           },
           {
-            heading: "Powerful Specs",
-            description: "Quad-core 1.7 GHz processor, 8 GB storage, and IMG GE8300 GPU for smooth experience.",
+            heading: "High-Performance Hardware",
+            description: "Fast processor, ample storage, and a powerful GPU to keep your streaming smooth and\n" +
+                "lag-free.",
             iconPath1: "/assets/powerful-specs.png"
           },
           {
