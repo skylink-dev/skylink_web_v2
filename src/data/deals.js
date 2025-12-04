@@ -24,7 +24,8 @@ export const threeColumnData = [
         subtitle: "Skylink Bundle",
         title: "Save more with Broadband and IPTV combos",
         description:
-            "Pair services and save up to ₹40 a month. Great for homes and businesses.",
+            "Pair services and enjoy added savings every month. A smarter choice for both\n" +
+            "homes & businesses.",
         subdescription: "Offer valid for a limited time. Availability varies by region.",
         smallcta: "",
         cta: "Explore Bundles",
@@ -32,29 +33,29 @@ export const threeColumnData = [
 ];
 export const contentBaseData = {
     subtitle: "Break Your Contract",
-    title: "Switch to Skylink and get up to ₹399 back per line",
+    title: "Switch to Skylink and get a special welcome benefit for each line you bring over    ",
     description:
-        "We help cover your phone balance with a reward card for up to 10 lines.",
+        "We make moving your service easier with support for up to 10 lines.",
     policy:
-        "Get up to ₹800 through a reward card. Redemption required. Restrictions apply.",
+        "Additional benefits may require redemption. Terms apply.",
     cta: "Call +91 99441 99445",
     href: "/",
 };
 export const faqContent = [
     {
-        title: "What are the best deals for existing Skylink customers",
+        title: "What perks do Skylink customers get?",
         content:
-            "Existing Skylink customers can save 20 percent per month by bundling Fiber and Wireless services and accessing exclusive offers on the latest devices.",
+            "Skylink customers can access exclusive deals, promotions, and bundle savings on internet and wireless services.",
     },
     {
-        title: "What deals are available when switching to Skylink Internet",
+        title: "Are there offers for new Skylink subscribers?",
         content:
-            "New customers can enjoy faster, reliable home internet with special savings and promotions when switching to Skylink.",
+            "New customers enjoy special promotions, seamless setup, and access to Skylink's fast, reliable internet services.",
     },
     {
-        title: "How can I save by bundling Skylink services",
+        title: "How can I save by bundling Skylink services?",
         content:
-            "Combine Fiber and Wireless plans to get 20 percent off one service. Fiber offers unlimited data and 99 percent uptime, while Internet Air provides high speed connectivity in select areas.",
+            "Bundling Skylink plans unlocks exclusive savings, simplifies billing, and keeps your home or business connected efficiently.",
     },
 ];
 export const contentNewsletter = {
@@ -95,7 +96,8 @@ export const simpleContent = {
     eyebrowText: "Skylink TV",
     heading: "Premium TV from ₹399",
     subText:
-        "Watch shows, movies, and sports with no compromise. Your first device is included and your price is locked for two years in eligible areas.",
+        "Watch shows, movies, and sports with no compromise. Get started easily with Skylink\n" +
+        "and enjoy stable pricing for two years in eligible areas.",
     legalNote: `Limited availability. Terms apply.`,
 };
 export const dynamicImageContent = [
@@ -155,11 +157,12 @@ export const promoCardsData = [
     },
     {
         id: 2,
-        eyebrow: "Skylink Points Plus Card",
-        heading: "Earn up to ₹440 back",
+        eyebrow: "Skylink Care",
+        heading: "Extra support for long-time users.",
         description:
-            "Get ₹200 credit after spending ₹1000 in the first three months. Skylink Wireless users get ₹20 credit each month when spending ₹1000 or more.",
-        legal: `Offer not available if you got a bonus<br>in the last 48 months. Terms apply.`,
+            "Get quicker assistance, personalized recommendations, and timely service updates\n" +
+            "that help you get the most out of your connection.",
+        legal: `Service features vary. Terms apply.`,
         buttonLabel: "See offer details",
         image: "/assets/save-big-with-iptv-3d-virtual.jpg",
         ctaHref: "/plans",

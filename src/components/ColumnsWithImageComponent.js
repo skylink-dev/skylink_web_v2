@@ -9,11 +9,12 @@ import Link from "next/link";
 const slidesData = [
   {
     title: "Skylink Business Fiber",
-    subtitle: "Get up to 3 months* free",
+    subtitle: "Choose better. Choose Skylink.",
     description:
-      "Plus, we will cover your early termination fee up to ₹750** when switching from another provider.",
+      "Ready for Skylink? Smooth setup, zero downtime, full support, so your business can\n" +
+        "reach its full potential.",
     legal:
-      "*1 month with 300M; 2 months with 500M; 3 months with 1 GIG+. Fees extra. **Card redemption & proof of eligibility required. Ltd availability/areas.",
+      "Eligibility and standard terms apply.",
     imgSrc: "/assets/skyplay-business-fiber-connection-1.jpg",
     link: "/plans?customer_type=smallbusiness",
   },

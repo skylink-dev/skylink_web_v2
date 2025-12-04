@@ -63,7 +63,7 @@ export default function Slider({ slides = [] }) {
         {/* Header */}
         <div className="flex justify-between items-center mb-4 sm:mb-6 md:mb-8 px-1 sm:px-2 text-center">
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 w-full">
-            Accessories you love. Deals you want.
+            Accessories You Love. Deals You Want.
           </h2>
         </div>
 

@@ -16,7 +16,7 @@ export default function page() {
       <NotFoundBanner />
       <LookForSomething />
       <DynamicCarousel
-        title="Let's get you connected"
+        title="Let's Get You Connected"
         slidesData={dynamicSlidesData}
       />
       <IconDetails title="How can we help you today?" iconslist={IconContent} />

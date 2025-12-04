@@ -327,7 +327,7 @@ export const CotentImageCarouselData = [
   {
     image: "/assets/slider-image-1.jpg",
     subtitle: "What our customers are saying",
-    title: "Seamless streaming & smart home integration",
+    title: "Seamless Streaming & Smart Home Integration",
     description: `"Skylink Fiber works perfectly with all our smart devices. From 4K streaming to video calls, everything runs smoothly without interruptions."`,
     company: "Meena, Chennai",
     customer: "Verified customer",
@@ -360,7 +360,7 @@ export const flexCardData = [
 ];
 export const rightContentFlexData = {
   subheading: "Combo Plan: Broadband + Live TV + OTT",
-  heading: "Smarter bundles. Bigger savings.",
+  heading: "Smarter Bundles. Bigger Savings.",
   description:
     "Save up to 15% when you combine high-speed internet, live TV, and OTT entertainment in one Skylink Combo Plan.",
   legal: "Available in select regions. Conditions apply.",
@@ -434,7 +434,7 @@ export const simpleContent = {
   backgroundImage: "/assets/speed-lines.jpg",
   eyebrowText: "Next-Gen Fiber Internet",
   heading:
-    "Skylink Fiber - steady, responsive, and built for how you live online",
+    "Skylink Fiber - Steady, Responsive, and Built for How You Live Online",
   subText:
     "Perfect for streaming, gaming, and powering every smart device in your home.",
   legalNote: "(Actual speeds depend on your plan and location.)",

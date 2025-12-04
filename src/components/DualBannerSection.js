@@ -64,51 +64,51 @@ export default function DualBannerSection() {
       <div className="h-4"></div>
 
       {/* Bottom Reward Section */}
-      <div className="relative mx-auto max-w-7xl">
-        <div className="bg-gray-300 rounded-xl shadow-lg text-black">
-          <div className="mx-auto px-4 py-6 lg:py-7">
-            <div className="text-center lg:text-left">
-              <div className="max-w-3xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center">
-                  {/* Text Content */}
-                  <div className="lg:col-span-2 space-y-3">
-                    <h2 className="text-xl lg:text-2xl font-bold text-black">
-                      Get up to a ₹150 reward card
-                    </h2>
-                    <p className="text-gray-600 text-base">
-                      When you buy both Skylink Fiber and an eligible wire plan.
-                    </p>
+      {/*<div className="relative mx-auto max-w-7xl">*/}
+      {/*  <div className="bg-gray-300 rounded-xl shadow-lg text-black">*/}
+      {/*    <div className="mx-auto px-4 py-6 lg:py-7">*/}
+      {/*      <div className="text-center lg:text-left">*/}
+      {/*        <div className="max-w-3xl mx-auto">*/}
+      {/*          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center">*/}
+      {/*            /!* Text Content *!/*/}
+      {/*            <div className="lg:col-span-2 space-y-3">*/}
+      {/*              <h2 className="text-xl lg:text-2xl font-bold text-black">*/}
+      {/*                Get up to a ₹150 reward card*/}
+      {/*              </h2>*/}
+      {/*              <p className="text-gray-600 text-base">*/}
+      {/*                When you buy both Skylink Fiber and an eligible wire plan.*/}
+      {/*              </p>*/}
 
-                    {/* Legal Text */}
-                    <div className="text-gray-600 text-xs space-y-1">
-                      <p>
-                        ₹50 with 300Mbps; ₹100 with 500Mpbs; ₹150 with 1 GIG+.
-                        Redemption reqd. Skylink Fiber: Limited availability in
-                        select areas.
-                      </p>
-                      <button className="text-gray-600 hover:text-red-600 font-medium underline transition-colors text-xs">
-                        See offer details
-                      </button>
-                    </div>
-                  </div>
+      {/*              /!* Legal Text *!/*/}
+      {/*              <div className="text-gray-600 text-xs space-y-1">*/}
+      {/*                <p>*/}
+      {/*                  ₹50 with 300Mbps; ₹100 with 500Mpbs; ₹150 with 1 GIG+.*/}
+      {/*                  Redemption reqd. Skylink Fiber: Limited availability in*/}
+      {/*                  select areas.*/}
+      {/*                </p>*/}
+      {/*                <button className="text-gray-600 hover:text-red-600 font-medium underline transition-colors text-xs">*/}
+      {/*                  See offer details*/}
+      {/*                </button>*/}
+      {/*              </div>*/}
+      {/*            </div>*/}
 
-                  {/* Reward Image - Hidden on mobile as per original */}
-                  <div className="hidden lg:flex justify-center">
-                    <div className="relative w-24 h-24">
-                      <Image
-                        src="/assets/at-t-absolute-image.webp"
-                        alt="Reward card offer"
-                        fill
-                        className="object-contain transform hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/*            /!* Reward Image - Hidden on mobile as per original *!/*/}
+      {/*            <div className="hidden lg:flex justify-center">*/}
+      {/*              <div className="relative w-24 h-24">*/}
+      {/*                <Image*/}
+      {/*                  src="/assets/at-t-absolute-image.webp"*/}
+      {/*                  alt="Reward card offer"*/}
+      {/*                  fill*/}
+      {/*                  className="object-contain transform hover:scale-110 transition-transform duration-300"*/}
+      {/*                />*/}
+      {/*              </div>*/}
+      {/*            </div>*/}
+      {/*          </div>*/}
+      {/*        </div>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </>
   );
 }

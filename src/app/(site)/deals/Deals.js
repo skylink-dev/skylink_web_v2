@@ -62,7 +62,7 @@ export default function Deals() {
             <ImageBanner />
             <TwoColumnSection title="More ways to save" promoCards={promoCardsData} />
             <RightImageLeftContent
-                title="Top unlimited plans with exclusive savings"
+                title="Top Unlimited Plans With Exclusive Savings"
                 Content={dynamicImageContent}
                 order="row-reverse justify-end"
             />

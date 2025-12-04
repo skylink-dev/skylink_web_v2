@@ -81,7 +81,7 @@ export default function Internet() {
             <SimpleBanner color="color-white" content={simpleContent} />
             <IconCard titleData={IcontitleData} cardData={iconCard} />
             <PricingPlans
-                heading="The choice is simple"
+                heading="The Choice is Simple"
                 subtitle="There’s never been a better time to switch! See how Skylink stacks up against the competition."
                 providers={providersData}
                 content={tablecontent}
@@ -98,13 +98,13 @@ export default function Internet() {
             <ContentandImageCarousel slidesData={CotentImageCarouselData} />
             {/*<IconMoreDetails content={iconMoreDetailcontent} />*/}
             <DynamicCarousel
-                title="Got a few minutes to learn more?"
+                title="Got a Few Minutes to Learn More?"
                 slidesData={dynamicSlidesData}
                 color="bg-white"
             />
 
             <Faq
-                title="More reasons to love Skylink"
+                title="More Reasons To Love Skylink"
                 content={faqSecondContent}
             />
             <Faq title="You’ve asked. We’ve answered." content={faqContent} />

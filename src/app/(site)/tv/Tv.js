@@ -79,7 +79,7 @@ export default function Tv() {
                 color="color-white"
             />
             <CardColumn
-                title="Get the device that gets you"
+                title="Get the Device That Gets You"
                 repeatcontent={cartcontent}
             />
             <PricingPlans
@@ -91,7 +91,7 @@ everyone watches comfortably and safely.
                 content={tablecontent}
             />
             <RightImageLeftContent
-                title="Top unlimited plans with exclusive savings"
+                title="Top Unlimited Plans With Exclusive Savings"
                 order="row-reverse justify-end"
                 Content={dynamicImageContent}
             />
@@ -106,7 +106,7 @@ everyone watches comfortably and safely.
                 slidesData={dynamicSlidesData}
                 color="bg-gray-200"
             />
-            <Faq title="More reasons to love Skylink" content={faqSecondContent} />
+            <Faq title="More Reasons to Love Skylink" content={faqSecondContent} />
             {/* <SingleFaq content={faqData} /> */}
         </>
     );

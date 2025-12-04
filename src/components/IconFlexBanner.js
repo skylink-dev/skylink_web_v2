@@ -80,7 +80,7 @@ export default function IconFlexBanner() {
                                     {/* Text */}
                                     <div className="flex-1">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                                            Check device speed
+                                            Check Device Speed
                                         </h3>
                                         <p className="text-gray-600 mb-4 leading-relaxed">
                                             Run a speed test to measure your devices download and

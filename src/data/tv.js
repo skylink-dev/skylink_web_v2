@@ -1,5 +1,5 @@
 export const bannerContent = {
-  subtitle: "Claim your free TV today!",
+  subtitle: "Claim Your Free TV Today!",
   title: "Enjoy 450+ live TV channels when you subscribe to a new plan.",
   firstcta: "",
   offercontent:
@@ -408,7 +408,7 @@ export const cardData = [
 ];
 export const titlecontentData = {
   sub: "Phones & devices",
-  title: "Need a new device?",
+  title: "Need a New Device?",
   cta: "Shop now",
 };
 export const dynamicImageContent = [
@@ -581,7 +581,7 @@ export const contentBaseBanner2 = {
   href: "/",
 };
 export const contentNewsletter = {
-  title: "Want to stay in the loop?",
+  title: "Want to Stay in the Loop?",
   description:
     "Sign up for the latest deals, product news, and more from Skylink.",
   terms:
