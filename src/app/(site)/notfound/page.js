@@ -66,7 +66,7 @@ export default function page() {
             <NotFoundBanner></NotFoundBanner>
             <LookForSomething></LookForSomething>
             <DynamicCarousel slidesData={dynamicSlidesData}></DynamicCarousel>
-            <IconDetails title="How can we help you today?" iconslist={IconContent}></IconDetails>
+            <IconDetails title="How Can We Help You Today?" iconslist={IconContent}></IconDetails>
         </>
     )
 }

@@ -65,12 +65,6 @@ const TabContent = ({ videoSrc, title, description, legalText }) => (
                   <span className="text-xs text-gray-500 flex-1 leading-relaxed">
                     {legalText}
                   </span>
-                  <button
-                    className="text-sm font-semibold text-red-600 hover:text-red-700 whitespace-nowrap transition-colors duration-200"
-                    aria-label="See network interruption details"
-                  >
-                    See details
-                  </button>
                 </div>
               </motion.div>
             )}
@@ -138,7 +132,7 @@ export default function VideoTabs() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            The Skylink Guarantee
+            The Skylink Guarantee.
           </h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Experience unparalleled service with our comprehensive guarantee

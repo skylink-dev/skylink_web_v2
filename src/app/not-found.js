@@ -13,7 +13,7 @@ export default function NotFound() {
                 title="Let's Get You Connected"
                 slidesData={dynamicSlidesData}
             />
-            <IconDetails title="How can we help you today?" iconslist={IconContent}/>
+            <IconDetails title="How Can We Help You Today?" iconslist={IconContent}/>
         </>
     );
 }

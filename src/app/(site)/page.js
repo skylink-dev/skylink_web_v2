@@ -158,7 +158,7 @@ export default function Home() {
         Content={dynamicImageContent}
       />
       <SpeedTestBanner />
-      <IconDetails title="How can we help you today?" iconslist={IconContent} />
+      <IconDetails title="How Can We Help You Today?" iconslist={IconContent} />
       <NewsLetter content={contentNewsletter} />
 
       {/* <IconCard titleData={IcontitleData} cardData={iconCard} />

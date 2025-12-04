@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import SiteImg from "../assets/skylink logo.png";
+import SiteImg from "../../public/newassets/Footer/SkylinkLogo.png";
 
 export default function SiteLogo() {
   return (

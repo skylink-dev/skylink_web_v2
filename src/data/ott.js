@@ -383,7 +383,7 @@ export const dynamicSlidesData = [
 ];
 export const contentBaseBanner2 = {
   subtitle: "Explore Skylink OTT",
-  title: "A single connection that simplifies how India watches",
+  title: "A Single Connection that Simplifies How India Watches",
   description:
     "From global blockbusters to local stories, explore the future of streaming. All in one\n" +
     "space.",

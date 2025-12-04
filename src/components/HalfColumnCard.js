@@ -29,12 +29,13 @@ export default function HalfColumnCard({ titlecontent, items }) {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <p className="text-sm uppercase tracking-wide text-red-500 font-semibold">
-              {titlecontent.sub}
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
+            {/*<p className="text-sm uppercase tracking-wide text-red-500 font-semibold">*/}
+            {/*  {titlecontent.sub}*/}
+            {/*</p>*/}
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
               {titlecontent.title}
             </h2>
+              <div className="mt-3 md:mt-4 h-1 w-20 md:w-24 mx-auto bg-red-600 rounded-full mb-4"></div>
               <button
                   onClick={() => {
                       console.log("Button clicked:", titlecontent.cta);

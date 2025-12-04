@@ -24,7 +24,9 @@ import {
     threeColumnData,
     bannerContent,
     faqData,
+    faqContent
 } from "../../../data/tv";
+
 
 const Banner = dynamic(() => import("@/components/Banner"));
 const CardColumn = dynamic(() => import("@/components/CardColumn"));
@@ -65,7 +67,7 @@ export default function Tv() {
             />
             <RectangleBanner
                 backgroundImage="/assets/skyplay-map.jpg"
-                eyebrow="Introducing the Skylink Guarantee"
+                eyebrow="Introducing the Skylink Guarantee."
                 heading={`Connectivity, Refined for Real Life.`}
                 description={`Fiber that keeps up with your day, built for dependable performance and everyday comfort`}
                 subDescription={`Available at no extra cost for eligible customers across India.`}
@@ -106,8 +108,9 @@ everyone watches comfortably and safely.
                 slidesData={dynamicSlidesData}
                 color="bg-gray-200"
             />
-            <Faq title="More Reasons to Love Skylink" content={faqSecondContent} />
-            {/* <SingleFaq content={faqData} /> */}
+            {/*<Faq title="More Reasons to Love Skylink" content={faqSecondContent} />*/}
+            {/* <SingleFaq content={faqData} />*/}
+            <Faq title="You’ve asked. We’ve answered." content={faqContent} />
         </>
     );
 }

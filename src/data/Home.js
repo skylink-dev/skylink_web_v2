@@ -360,7 +360,7 @@ export const IconContent = [
   },
 ];
 export const contentNewsletter = {
-  title: "Want to stay in the loop?",
+  title: "Want to Stay in the Loop?",
   description:
     "Sign up for the latest deals, product news, and more from Skylink.",
   terms:

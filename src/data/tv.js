@@ -3,7 +3,7 @@ export const bannerContent = {
   title: "Enjoy 450+ live TV channels when you subscribe to a new plan.",
   firstcta: "",
   offercontent:
-    "Limited Time Offer – Get a free TV with your subscription. Terms apply.",
+    "Get a free TV with your subscription. Limited Time Offer*. T&C apply.",
   offercta: "",
   secondcta: "Call (+91)  99441 99445",
   href: "/",
@@ -21,7 +21,7 @@ export const threeColumnData = [
     cta: "View IPTV Plans\n",
   },
   {
-    image: "/assets/watch-anywhere-anytime-on-any-device.jpg",
+    image: "/newassets/tv/Cloud-Convenience.jpg",
     subtitle: "Cloud Convenience",
     title: "Never Miss What Matters.",
     description:
@@ -390,7 +390,7 @@ export const cardData = [
     image: "/assets/skyplay-tv-8.jpg",
     mobileimage: "/assets/mobile-save-big-with-iptv-right.jpg",
     subtitle: "Cut the cord, keep the fun",
-    title: "950+ Live Channels & 21+ OTT Apps for ₹399/month.",
+    title: "450+ Live Channels & 21+ OTT Apps for ₹399/month.",
     description:
       "All your TV and OTT in one place with dependable quality and controls that feel natural.",
     legalText: "No setup box - just your Smart TV and an internet connection.",
@@ -400,9 +400,9 @@ export const cardData = [
     image: "/assets/skyplay-tv-9.jpg",
     mobileimage: "/assets/save-big-with-iptv-3d-virtual.jpg",
     subtitle: "Your Smart TV Is Ready for Skylink.\n",
-    title: "Watch on Smart TVs using the Skyline app or supported devices.",
-    description: "Just connect your broadband, no dish or setup fuss.",
-    legalText: "Enjoy HD clarity, tuned to your connection and device\n",
+    title: "Watch IPTV on Compatible Devices via the Skylink App",
+      description: <>Connect your broadband & access live TV<br/>without any complex setup.</>,
+      legalText: "Reliable HD streaming, based on your connection & device support.",
     link: "/plans",
   },
 ];
@@ -537,6 +537,29 @@ export const columnSaveContent = [
     cta: "Enable Safety",
   },
 ];
+
+export const faqContent = [
+    {
+        title: "What is the way to watch live television on my Smart TV using Skylink?",
+        content: "Live channels Skylink offers the IPTV service to allow access to live channels with a compatible Smart TV, a Skylink 4K set-top box, or a streaming device compatible with it. It can be connected to your Skylink broadband, and then you are free to watch.",
+    },
+    {
+        title: "Do I require an additional set-top box for the Skylink broadband?",
+        content: "Not always. In case your Smart TV is capable of running the Skylink TV app or any other compatible streaming app, then you can watch it directly. The previous TVsthath are unable to use the app will require a Skylink 4K set-top box to be used in order to have full access.",
+    },
+    {
+        title: "What is the internet speed required to have a smooth Skylink IPTV streaming?",
+        content: "You require a Skylink fiber broadband. Plans with 50Mbps or greater will tend to offer a consistent, clear viewing experience to the majority of households.",
+    },
+    {
+        title: "Which equipment is compatible with Skylink IPTV, and how do I install it?",
+        content: "Skylink IPTV is compatible with Smart televisions, Skylink set-top box, and select streaming devices. All one has to do is connect the device to your Skylink broadband, install the Skylink TV app (or the device app), and begin watching.",
+    },
+    {
+        title: "Is it possible to regulate what my children watch on Skylink IPTV?",
+        content: "Yes. Skylink provides parental controls, which are built in, and allow parents to control their access, block channels, and provide a safer watching environment for the children.",
+    },
+];
 export const contentData = {
   subtitle: "",
   title: "A bundle for your home entertainment",
@@ -560,7 +583,7 @@ export const contentData2 = {
   ],
 };
 export const contentBaseBanner = {
-  subtitle: "Choice is yours, guaranteed",
+  subtitle: "Choice is yours, guaranteed!",
   title: "Get more with Skylink Unlimited Your Way",
   description:
     "Mix and match any of our best unlimited plans and get our best deals on any smartphone.* Starting at ₹399/mo. per line",

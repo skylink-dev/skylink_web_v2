@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import SiteImg from "../assets/skylink logo.png";
+import SiteImg from "../../public/assets/skylink.png";
 
 export default function Header() {
   const pathname = usePathname();

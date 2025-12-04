@@ -57,7 +57,7 @@ export default function Support() {
             <StructuredData data={faqStructuredData}/>
             <SliderBanner />
             <SupportVideos />
-            <IconDetails title="How can we help you today?" iconslist={IconContent} page="support" />
+            <IconDetails title="How Can We Help You Today?" iconslist={IconContent} page="support" />
             <SupportContactDetails />
             <Faq title="You've asked. We've answered." content={faqItems}/>
         </>
