@@ -82,6 +82,17 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.png" sizes="any" />
+          {/**
+              Zoho Ma tags
+           */}
+
+          <Script
+              id="zoho-pagesense"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                  __html: `(function(w,s){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="https://cdn-in.pagesense.io/js/60027033317/dd6bd2610adf44aaabb29a6b7421c813.js";var x=document.getElementsByTagName("script")[0];x.parentNode.insertBefore(e,x);})(window,"script");`
+              }}
+          />
 
         {/* ✅ Google Maps API (with fallback) */}
         <Script
@@ -92,6 +103,8 @@ export default function RootLayout({ children }) {
         {/* 3CX Live Chat Script */}
 
         {/* ✅ Google Tag Manager (with fallback) */}
+
+
         <Script
           id="gtm-script"
           strategy="afterInteractive"

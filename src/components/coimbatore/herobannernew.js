@@ -2,6 +2,11 @@
 import { useState } from "react";
 import ContactForm from "../contact/ContactForm";
 
+// Import location-specific data
+import CoimbatoreData from "../../data/Coimbatore";
+import TiruppurData from "../../data/Tiruppur";
+import ErodeData from "../../data/Erode";
+
 /**
  * @typedef {Object} HeroBannerProps
  * @property {string} [city="Coimbatore"] - The name of the city
@@ -12,8 +17,45 @@ import ContactForm from "../contact/ContactForm";
  * @param {HeroBannerProps} props - Component props
  * @returns {JSX.Element}
  */
-export default function HeroBanner({ city = "Coimbatore" }) {
+export default function HeroBanner({city = "Coimbatore"}) {
     const [showContactForm, setShowContactForm] = useState(false);
+
+    // Select the appropriate data based on city
+    const getLocationData = () => {
+        switch (city) {
+            case "Tiruppur":
+                return TiruppurData.heroBanner;
+            case "Erode":
+                return ErodeData.heroBanner;
+            case "Coimbatore":
+            default:
+                return CoimbatoreData.heroBanner;
+        }
+    };
+
+    const locationData = getLocationData();
+
+    // Function to render the title with animated city name
+    const renderTitle = () => {
+        // Handle different title formats for each location
+        if (locationData.title.includes(city)) {
+            const parts = locationData.title.split(city);
+            return (
+                <>
+                    {parts[0]}
+                    <span
+                        className="inline-block animate-pulse-text bg-gradient-to-br from-red-600 to-red-500 bg-clip-text text-transparent relative">
+                        {city}
+                        <span
+                            className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-400 to-transparent animate-underline"/>
+                    </span>
+                    {parts[1]}
+                </>
+            );
+        }
+        // For titles that don't contain the exact city name
+        return locationData.title;
+    };
 
     return (
         <section className="relative bg-gradient-to-br from-red-50 to-red-200 text-slate-800 pt-32 pb-32 overflow-hidden text-center font-sans mt-8">
@@ -33,23 +75,16 @@ export default function HeroBanner({ city = "Coimbatore" }) {
                 {/* Enhanced Main Heading */}
                 <div className="relative inline-block mb-8">
                     <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-tight relative z-10">
-                        {city}&apos;s Premium{" "}
-                        <span className="inline-block animate-pulse-text bg-gradient-to-br from-red-600 to-red-500 bg-clip-text text-transparent relative">
-                            High-Speed Fibernet
-                            {/* Subtle underline effect */}
-                            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-400 to-transparent animate-underline" />
-                        </span>{" "}
-                        Broadband
+                        {renderTitle()}
                     </h1>
                     {/* Text shadow for better readability */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent blur-xl rounded-full transform scale-110 -z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent blur-xl rounded-full transform scale-110 -z-10"/>
                 </div>
 
                 {/* Enhanced Description */}
                 <div className="relative mb-12 max-w-3xl mx-auto">
                     <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed relative z-10 bg-white/30 backdrop-blur-sm rounded-2xl p-6 border border-red-100/50 shadow-sm">
-                        With a carefully engineered fiber network, we deliver stable, uninterrupted broadband connectivity
-                        throughout {city}, backed by fast and reliable local support.
+                        {locationData.description}
                     </p>
                     {/* Description background glow */}
                     <div className="absolute inset-0 bg-red-100/20 rounded-2xl blur-md -z-10 transform scale-105" />
@@ -57,12 +92,7 @@ export default function HeroBanner({ city = "Coimbatore" }) {
 
                 {/* Enhanced Stats Section */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
-                    {[
-                        { number: "1Gbps", label: "Max Speed" },
-                        { number: "99.9%", label: "Uptime" },
-                        { number: "24/7", label: "Support" },
-                        { number: "0", label: "Hidden Costs" },
-                    ].map((stat, index) => (
+                    {locationData.stats.map((stat, index) => (
                         <div
                             key={index}
                             className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-red-200/30 shadow-lg hover:shadow-xl hover:transform hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden"
