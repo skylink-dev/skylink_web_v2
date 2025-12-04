@@ -12,7 +12,7 @@ import SmartSection from "@/components/coimbatore/SmartSection";
 import TvOttPartners from "@/components/coimbatore/TvOttPartners";
 import TrustedPartners from "@/components/coimbatore/TrustPartners";
 import WhyProduct from "@/components/coimbatore/WhyProduct";
-import SkylinkFAQ from "@/components/coimbatore/SkylinkFAQ";
+import LocationFAQ from "@/components/LocationFAQ";
 
 const ContactSection = dynamic(() => import("@/components/ContactSection"));
 const ContactFormNew = dynamic(() => import("@/components/ContactFormNew"));
@@ -53,7 +53,7 @@ export default function Erode() {
                 </div>
             </div>
             <TrustedPartners />
-            <SkylinkFAQ city="Erode" />
+            <LocationFAQ city="Erode" />
         </>
     );
 }

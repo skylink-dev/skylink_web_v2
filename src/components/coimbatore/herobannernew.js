@@ -37,8 +37,24 @@ export default function HeroBanner({city = "Coimbatore"}) {
 
     // Function to render the title with animated city name
     const renderTitle = () => {
+        // Special case for Erode with line break
+        if (city === "Erode") {
+            const parts = locationData.title.split("\n");
+            return (
+                <>
+                    {parts[0]}<br/>
+                    <span
+                        className="inline-block animate-pulse-text bg-gradient-to-br from-red-600 to-red-500 bg-clip-text text-transparent relative">
+                        Erode
+                        <span
+                            className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-red-400 to-transparent animate-underline"/>
+                    </span>
+                    {"?"}
+                </>
+            );
+        }
         // Handle different title formats for each location
-        if (locationData.title.includes(city)) {
+        else if (locationData.title.includes(city)) {
             const parts = locationData.title.split(city);
             return (
                 <>

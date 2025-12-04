@@ -10,6 +10,7 @@ import TvOttPartners from "@/components/coimbatore/TvOttPartners";
 import FixedPlan from "@/app/(site)/plans/component/FixedPlan";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import LocationFAQ from "@/components/LocationFAQ";
 
 const ContactFormNew = dynamic(() => import("@/components/ContactFormNew"));
 const ContactDetails = dynamic(() => import("@/components/ContactDetails"));
@@ -53,7 +54,7 @@ export default function Covai() {
                 </div>
             </div>
             <TrustedPartners />
-            <SkylinkFAQ city={cityName} />
+            <LocationFAQ city={cityName} />
         </>
     );
 }

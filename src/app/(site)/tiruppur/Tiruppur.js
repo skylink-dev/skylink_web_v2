@@ -6,7 +6,7 @@ import LocationMap from "@/components/contacts/LocationMap";
 import HeroBanner from "@/components/HeroBanner";
 import HeroBannerNew from "@/components/coimbatore/herobannernew";
 import WhyProduct from "@/components/coimbatore/WhyProduct";
-import SkylinkFAQ from "@/components/coimbatore/SkylinkFAQ";
+import LocationFAQ from "@/components/LocationFAQ";
 import { useSelector } from "react-redux";
 import FixedPlan from "@/app/(site)/plans/component/FixedPlan";
 import SmartSection from "@/components/coimbatore/SmartSection";
@@ -52,7 +52,7 @@ export default function Tiruppur() {
                 </div>
             </div>
             <TrustedPartners />
-            <SkylinkFAQ city="Tiruppur" />
+            <LocationFAQ city="Tiruppur" />
         </>
     );
 }
