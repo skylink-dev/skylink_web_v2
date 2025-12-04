@@ -1,7 +1,7 @@
 // Content for Erode location
 const ErodeData = {
     heroBanner: {
-        title: "Tired of unstable internet around\nErode?",
+        title: "Tired of Unstable Internet Around\nErode?",
         description: "A steady, business-grade fiber network built for days that can't afford downtime and homes that refuse to buffer. With real support from a local team that cares.",
         stats: [
             {number: "1Gbps", label: "Max Speed"},
