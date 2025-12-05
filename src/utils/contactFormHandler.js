@@ -16,10 +16,10 @@ export async function handleContactFormSubmit(formData) {
     }
 
     const data = await response.json();
-    console.log('Form submitted successfully:', data);
+    // console.log('Form submitted successfully:', data);
     return data;
   } catch (error) {
-    console.error('Error submitting form:', error);
+    // console.error('Error submitting form:', error);
     throw error;
   }
 }

@@ -121,8 +121,8 @@ export default function InternetPlans() {
       },
     ],
     beforeChange: (current, next) => {
-      console.log("Current slide index:", current);
-      console.log("Next slide index:", next);
+      // console.log("Current slide index:", current);
+      // console.log("Next slide index:", next);
     },
   };
   return (

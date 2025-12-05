@@ -16,7 +16,7 @@ const ASSET_KEY_PREFIX = "nextjs:asset:";
 async function loadAssets() {
   await redis.connect();
 
-  console.log("🔍 Reading files from:", ASSET_DIR);
+  // console.log("🔍 Reading files from:", ASSET_DIR);
 
   // 📄 Get only files (skip directories)
   const files = fs.readdirSync(ASSET_DIR).filter((f) =>
@@ -43,12 +43,12 @@ async function loadAssets() {
   pipeline.set(ASSET_LIST_KEY, JSON.stringify(fileList));
   await pipeline.exec();
 
-  console.log(`✅ Loaded ${fileList.length} assets into Redis`);
+  // console.log(`✅ Loaded ${fileList.length} assets into Redis`);
   await redis.disconnect();
 }
 
 // 🏁 Execute
 loadAssets().catch((err) => {
-  console.error("❌ Error loading assets:", err);
+  // console.error("❌ Error loading assets:", err);
   process.exit(1);
 });

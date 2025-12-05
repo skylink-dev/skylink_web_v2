@@ -12,10 +12,9 @@ export const apiService = {
       service: "" || formData.service, // You're not collecting service in your form
       address: "" || formData.address, // You're not collecting address in your form
       location: "" || formData.location,
-      message: "" || formData.message,
     };
 
-    console.log("Sending payload:", payload); // Add this for debugging
+    // console.log("Sending payload:", payload); // Add this for debugging
 
     return axiosApi.post("contacts/", payload);
   },
@@ -49,8 +48,8 @@ export const apiService = {
   },
 
   checkFesability: (formData) => {
-    console.log("Testint the application dsd");
-    console.log(formData);
+    // console.log("Testint the application dsd");
+    // console.log(formData);
     return axiosApi.post("fisability/check/", formData);
   },
 };

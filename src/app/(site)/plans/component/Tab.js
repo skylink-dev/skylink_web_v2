@@ -658,7 +658,7 @@ const PlanCard = ({
                         setActiveCycle(planInfo.billingCycle);
                         setIsOpen(!isOpen);
                         setIsContactOpen(!isContactOpen);
-                        console.log("Clicked");
+                        // console.log("Clicked");
                       }}
                     >
                       {isSelected(key) ? (
@@ -776,7 +776,7 @@ const PlanCard = ({
                     setActiveInstallation(planInfo.installationFee);
                     setIsOpen(!isOpen);
                     setIsContactOpen(!isContactOpen);
-                    console.log("Clicked");
+                    // console.log("Clicked");
                   }}
                 >
                   {isSelected(key) ? (
