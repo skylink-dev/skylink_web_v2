@@ -84,17 +84,17 @@ export const customPlans = {
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 149,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 149,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 149,
         },
         {
           speed: "200 Mbps",
@@ -125,27 +125,27 @@ export const customPlans = {
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "500 Mbps",
@@ -253,12 +253,12 @@ export const customPlans = {
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 99,
+          additionalcost: 149,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 99,
+          additionalcost: 149,
         },
         {
           speed: "100 Mbps",
@@ -295,22 +295,22 @@ export const customPlans = {
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 199,
+          additionalcost: 249,
         },
         {
           speed: "300 Mbps",
@@ -337,37 +337,37 @@ export const customPlans = {
         {
           speed: "30 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 299,
+          additionalcost: 349,
         },
         {
           speed: "50 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 299,
+          additionalcost: 349,
         },
         {
           speed: "100 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 299,
+          additionalcost: 349,
         },
         {
           speed: "200 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 299,
+          additionalcost: 349,
         },
         {
           speed: "300 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 299,
+          additionalcost: 349,
         },
         {
           speed: "500 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 299,
+          additionalcost: 349,
         },
         {
           speed: "1000 Mbps",
           duration: [1, 3, 6, 12],
-          additionalcost: 299,
+          additionalcost: 349,
         },
       ],
       ottList: ["Amazon", "Jio Hotstar", "Sun NXT", "ZEE5", "aha Tamil"],

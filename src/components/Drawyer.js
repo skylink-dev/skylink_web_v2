@@ -28,7 +28,7 @@ export default function Drawer({ isOpen, onClose, planData }) {
         e.preventDefault();
         setIsFormOpen(true);
     }
-    console.log(planData)
+    // console.log(planData)
     if (!isOpen) return null;
     return (
         <AnimatePresence>

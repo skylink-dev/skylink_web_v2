@@ -40,7 +40,8 @@ export default function SelectedPlanSummary({
   function getExtraCharges(list) {
     for (let item of list?.packValidity) {
       if (item?.speed + "" == speed.name + "") {
-        return item.additionalcost;
+          //ottExtraCharge*12)+(ottExtraCharge*12*18/100)
+        return Math.round((item.additionalcost*validity)*100)/100;
       }
     }
   }
@@ -191,7 +192,7 @@ export default function SelectedPlanSummary({
               <Row label="Billing Cycle" value={`${validity} months`} /> */}
               <Row
                 label="Internet Charges"
-                value={`₹${speed?.price} x ${validity}`}
+                value={`₹${speed?.price}`}
               />
 
               <Row
@@ -203,7 +204,7 @@ export default function SelectedPlanSummary({
               ) : (
                 <Row
                   label={`${channel.name} + Channels `}
-                  value={`₹ ${channel.name}`}
+                  value={`₹ ${channelExtraCharge} `}
                 />
               )}
 
@@ -212,7 +213,7 @@ export default function SelectedPlanSummary({
               ) : (
                 <Row
                   label={`${ott.name} + OTTs `}
-                  value={`₹ ${ottExtraCharge}`}
+                  value={`₹ ${ottExtraCharge} `}
                 />
               )}
               <Row label="GST (18%)" value={`₹ ${gst}`} />

@@ -972,8 +972,7 @@ export default function Tab() {
               <div className="container-wrap">
                 <h1>Broadband + TV + OTT</h1>
                 <div className="this-or-that-image-wrap">
-                  {/* <Image style={{width:"250px", margin:"20px auto 0px auto", display:"block"}} src="https://www.skylink.net.in/wp-content/uploads/2025/07/or-character-with-no-space.png" /> */}
-                </div>
+              </div>
                 {isMobile ? (
                   <div
                     className="flex pricing-plan-innovative-tags-wrap"
