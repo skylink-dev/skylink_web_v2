@@ -1,6 +1,7 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image'
 
 export default function WhyChooseSkylink() {
     const features = [
@@ -167,7 +168,7 @@ export default function WhyChooseSkylink() {
                         </div>
                         <div className="col-span-2 hidden md:block h-full">
                             <div className="relative h-full">
-                                <img
+                                <Image
                                     src="/assets/about-company-image-3.JPG"
                                     alt="Skylink Customer Service"
                                     className="object-cover h-full w-full"

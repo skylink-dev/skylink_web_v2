@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Image from 'next/image'
 
 export default function Slider({ slides = [] }) {
   const router = useRouter();
@@ -172,13 +173,16 @@ export default function Slider({ slides = [] }) {
                             : "w-[45%] sm:w-[50%] h-[50%] sm:h-[55%]"
                         } flex justify-end items-end`}
                       >
-                        <img
+                        <Image
                           src={slide.image}
                           alt={slide.heading}
+                          width={500}
+                          height={300}
                           className="w-full h-full object-contain"
                           style={{
-                            maxHeight: isMobile ? "120px" : "180px",
+                              maxHeight: isMobile ? "120px" : "180px",
                           }}
+                          sizes="(max-width: 768px) 50vw, 33vw"
                           loading="lazy"
                         />
                       </div>

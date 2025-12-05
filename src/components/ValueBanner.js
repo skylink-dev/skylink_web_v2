@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 const bannerItems = [
   {
@@ -47,7 +48,7 @@ export default function ValueBanner() {
               </div>
             </div>
             <div className="background">
-              <img src={item.image} alt={item.title} />
+              <Image src={item.image} alt={item.title} />
             </div>
           </Link>
         ))}

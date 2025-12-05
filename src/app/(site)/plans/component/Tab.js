@@ -832,7 +832,7 @@ export default function Tab() {
     setActiveTab("Customize Plan");
 
     return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
+  }, [setActiveTab]);
 
   const togglePlanSelection = (key) => {
     setSelectedPlanIndices((prev) => {
@@ -852,7 +852,7 @@ export default function Tab() {
     if (isMobile) {
       setActiveCycle("Annual");
     }
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const zonePlans =

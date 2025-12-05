@@ -164,8 +164,9 @@ export default function DynamicCarousel({
                   <MotionImage
                     src={item.imgSrc}
                     alt={item.title}
-                    width={500} // ✅ Required by Next.js — adjust as needed
-                    height={500}
+                    width={500}
+                    height={300}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-full object-cover transition-transform duration-500"
                     whileHover={{ scale: 1.1 }}
                   />

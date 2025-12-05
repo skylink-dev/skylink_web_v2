@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
+import Image from 'next/image'
 
 export default function HeroSlider() {
         const [activeSlide, setActiveSlide] = useState(0);
@@ -33,24 +34,24 @@ export default function HeroSlider() {
             }
         ]
         
-            const prevSlide = () => {
+            const prevSlide = useCallback(() => {
                 setActiveSlide(prev => (prev === 0 ? slides.length - 1 : prev - 1))
-            }
-        
-            const nextSlide = () => {
-                setActiveSlide(prev => (prev === slides.length - 1 ? 0 : prev + 1))
-            }
-        
-            const goToSlide = index => {
-                setActiveSlide(index)
-            }
+            }, [slides.length])
+
+    const nextSlide = useCallback(() => {
+        setActiveSlide(prev => (prev === slides.length - 1 ? 0 : prev + 1))
+    }, [slides.length])
+
+    const goToSlide = useCallback(index => {
+        setActiveSlide(index)
+    }, [])
         
             useEffect(() => {
                 const interval = setInterval(() => {
                     nextSlide()
                 }, 10000)
                 return () => clearInterval(interval)
-            }, [activeSlide])
+            }, [nextSlide])
   return (
     <>
         <div className="slider-wrapper">
@@ -60,7 +61,7 @@ export default function HeroSlider() {
                         className={`slider-slide ${activeSlide === index ? 'active' : ''}`}
                     >
                         <div className="slider-bg-image glitch-tv top-to-bottom">
-                            <img decoding="async" src={slide.img} alt="Background Image" />
+                            <Image decoding="async" src={slide.img} alt="Background Image" />
                         </div>
 
                         <div

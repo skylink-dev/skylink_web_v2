@@ -1,5 +1,6 @@
 import React from 'react';
 import {motion} from 'framer-motion';
+import Image from 'next/image'
 
 export default function AboutIntro() {
     return (
@@ -79,7 +80,7 @@ export default function AboutIntro() {
                         <div className="relative">
                             {/* Main image with enhanced styling */}
                             <div className="rounded-2xl overflow-hidden shadow-2xl">
-                                <img
+                                <Image
                                     src="/assets/about-company-image-1.JPG"
                                     alt="Skylink Office"
                                     className="w-full h-auto object-cover"

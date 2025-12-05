@@ -1,6 +1,7 @@
 "use client";
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
+import Image from 'next/image'
 
 export default function NotFoundBanner() {
     const [windowWidth, setWindowWidth] = useState(0); // Initialized to 0 for SSR safety
@@ -71,7 +72,7 @@ export default function NotFoundBanner() {
 
                         {/* Image Section */}
                         <div className="w-full md:w-1/2 flex justify-center md:justify-end z-10">
-                            <img
+                            <Image
                                 src="/assets/error-stroy.webp"
                                 className="w-auto h-auto max-w-full max-h-[300px] rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
                                 alt="Page not found illustration"

@@ -33,41 +33,41 @@ export default function AvailabilityChecker() {
     return points;
   };
 
-  const serviceAreas = [
-    {
-      name: "Coimbatore",
-      color: "#94b894ff",
-      subAreas: [
-        {
-          name: "Ganthipuram",
-          center: { lat: 11.0103, lng: 76.9511 },
-          radius: 25,
-        },
-      ],
-    },
-    {
-      name: "Erode",
-      color: "#b68686ff",
-      subAreas: [
-        {
-          name: "Erode Area 1",
-          center: { lat: 11.34, lng: 77.7172 },
-          radius: 15,
-        },
-      ],
-    },
-    {
-      name: "Tiruppur",
-      color: "#7f7fadff",
-      subAreas: [
-        {
-          name: "Tiruppur Area 1",
-          center: { lat: 11.1085, lng: 77.3411 },
-          radius: 15,
-        },
-      ],
-    },
-  ];
+  const serviceAreas = React.useMemo(() => [
+      {
+          name: "Coimbatore",
+          color: "#94b894ff",
+          subAreas: [
+              {
+                  name: "Ganthipuram",
+                  center: {lat: 11.0103, lng: 76.9511},
+                  radius: 25,
+              },
+          ],
+      },
+      {
+          name: "Erode",
+          color: "#b68686ff",
+          subAreas: [
+              {
+                  name: "Erode Area 1",
+                  center: {lat: 11.34, lng: 77.7172},
+                  radius: 15,
+              },
+          ],
+      },
+      {
+          name: "Tiruppur",
+          color: "#7f7fadff",
+          subAreas: [
+              {
+                  name: "Tiruppur Area 1",
+                  center: {lat: 11.1085, lng: 77.3411},
+                  radius: 15,
+              },
+          ],
+      },
+  ], []);
 
   const loadGoogleMaps = () => {
     return new Promise((resolve) => {
@@ -154,7 +154,7 @@ export default function AvailabilityChecker() {
     };
 
     initMap();
-  }, []);
+  }, [marker, serviceAreas]);
 
   const checkAvailability = async () => {
     if (!address.trim()) {

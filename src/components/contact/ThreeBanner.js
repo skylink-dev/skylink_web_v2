@@ -27,44 +27,44 @@ export default function ThreeBannerModern() {
   const [displaySlides, setDisplaySlides] = useState([]);
   const [isMounted, setIsMounted] = useState(false);
 
-  const slides = [
-    {
-      id: 1,
-      title: "Entertainment in Sync, by Skylink",
-      description:
-        "From blockbusters to live matches, watch it all in one place with Skylink OTT Premium.",
-      buttonText: "Check Available OTTs",
-      buttonLink: "/ott",
-      imageLandscape: "/assets/banner1.jpg",
-      imagePortrait: "/assets/banner1mv.jpg",
-    },
-    {
-      id: 2,
-      title: "Internet That Fits Your Life.",
-      description:
-        "Work sharp. Play hard. Stream freely. A connection that moves as smoothly as you do.",
-      buttonText: "Register for FREE",
-      buttonLink: "#register",
-      imageLandscape: "/assets/banner2.jpg",
-      imagePortrait: "/assets/banner2mv.jpg",
-    },
-    {
-      id: 3,
-      title: "Connections That Keep Growing.",
-      description:
-        "From 9-to-5s to midnight streams, a connection that moves at your pace, wherever life takes you.",
-      buttonText: "Explore Plans",
-      buttonLink: "/plans",
-      imageLandscape: "/assets/banner3.jpg",
-      imagePortrait: "/assets/banner3mv.jpg",
-    },
-  ];
+  const slides = React.useMemo(() => [
+      {
+          id: 1,
+          title: "Entertainment in Sync, by Skylink",
+          description:
+              "From blockbusters to live matches, watch it all in one place with Skylink OTT Premium.",
+          buttonText: "Check Available OTTs",
+          buttonLink: "/ott",
+          imageLandscape: "/assets/banner1.jpg",
+          imagePortrait: "/assets/banner1mv.jpg",
+      },
+      {
+          id: 2,
+          title: "Internet That Fits Your Life.",
+          description:
+              "Work sharp. Play hard. Stream freely. A connection that moves as smoothly as you do.",
+          buttonText: "Register for FREE",
+          buttonLink: "#register",
+          imageLandscape: "/assets/banner2.jpg",
+          imagePortrait: "/assets/banner2mv.jpg",
+      },
+      {
+          id: 3,
+          title: "Connections That Keep Growing.",
+          description:
+              "From 9-to-5s to midnight streams, a connection that moves at your pace, wherever life takes you.",
+          buttonText: "Explore Plans",
+          buttonLink: "/plans",
+          imageLandscape: "/assets/banner3.jpg",
+          imagePortrait: "/assets/banner3mv.jpg",
+      },
+  ], []);
 
   // Initialize component
   useEffect(() => {
     setIsMounted(true);
     setDisplaySlides([...slides, slides[0]]);
-  }, []);
+  }, [slides]);
 
   const nextSlide = useCallback(() => {
     if (isTransitioning || !isMounted) return;

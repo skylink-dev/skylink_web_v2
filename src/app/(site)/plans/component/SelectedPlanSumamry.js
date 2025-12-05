@@ -192,7 +192,7 @@ export default function SelectedPlanSummary({
               <Row label="Billing Cycle" value={`${validity} months`} /> */}
               <Row
                 label="Internet Charges"
-                value={`₹${speed?.price}`}
+                value={`₹${speed?.price} X ${validity}`}
               />
 
               <Row

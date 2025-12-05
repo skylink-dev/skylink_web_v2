@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import StarRating from './ProductStar'
+import Image from 'next/image'
 
 export default function ProductSingle() {
     const handleChange = () => {
@@ -49,7 +50,8 @@ export default function ProductSingle() {
                                                     <div className="flex justify-center flex-centered pad-r-xxs pad-l-xxs pad-b-lg-sm pad-b-xs-md pad-b-xxs-lg fade">
                                                         <div className="jsx-83c201297fe97f38 width-full">
                                                             <div className="jsx-83c201297fe97f38">
-                                                                <img src="/assets/firestick-product-1.jpg" />
+                                                                <Image src="/assets/firestick-product-1.jpg"
+                                                                     alt="Skylink Fire TV device" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -112,7 +114,8 @@ export default function ProductSingle() {
                                                 <div className="jsx-3239c2f9467760f5 offerTile bg-ui-white radius-lg pad-xs flex-column flex-1 justify-between undefined">
                                                     <div className="jsx-3239c2f9467760f5 flex">
                                                         <div className="jsx-3239c2f9467760f5 offerIcon mar-r-xxs pad-t-xxxs">
-                                                            <img style={{ "width": "32px" }} src="/assets/credit-card.png" />
+                                                            <Image style={{ "width": "32px" }} src="/assets/credit-card.png"
+                                                                 alt="Credit card icon" />
                                                         </div>
                                                         <div className="jsx-3239c2f9467760f5 flex-column height-full">
                                                             <h2 className="jsx-3239c2f9467760f5 font-bold type-15">Earn up to $440 back</h2>

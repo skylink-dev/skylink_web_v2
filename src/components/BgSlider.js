@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from 'next/image'
 
 const slidesData = [
     {
@@ -174,7 +175,7 @@ export default function BgSlider() {
                                     <div className="bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center p-6 md:p-8 hover:shadow-xl transition-all mx-auto w-full max-w-xs h-full min-h-[380px] sm:min-h-[420px] md:min-h-0">
                                         {/* Icon */}
                                         <div className="mb-4 p-4 bg-gray-50 rounded-xl">
-                                            <img
+                                            <Image
                                                 src={slide.icon}
                                                 alt={slide.title}
                                                 className="w-16 h-16 md:w-20 md:h-20 object-contain"

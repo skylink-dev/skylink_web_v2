@@ -27,8 +27,7 @@ export default function LookForSomething() {
                                     type="search"
                                     autoComplete="off"
                                     className="w-full py-4 px-5 pr-14 rounded-full border border-gray-300 shadow-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all duration-200 text-gray-700 placeholder-gray-500"
-                                    aria-controls="Search our site"
-                                    aria-expanded="true"
+                                    aria-controls="search-results"
                                     aria-label="Search our site"
                                     placeholder="Search our site"
                                 />

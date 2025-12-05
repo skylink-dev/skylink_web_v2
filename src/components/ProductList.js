@@ -1,5 +1,6 @@
 import React from 'react';
 import StarRating from './ProductStar';
+import Image from 'next/image'
 
 const productListData = [
   {
@@ -247,7 +248,7 @@ export default function ProductList() {
             <div className="jsx-2200991819 card height-full rel z0 pad-sm-lg pad-md-md bgcolor theme-base-bg bg-white pad-xs-sm radius-lg">
               <div className="pad-xs-lg pad-xs-md pad-xxs-sm radius-lg bg-gray-100 top-section-height-fullbg">
                 <div className="top-section-mob-img flex flex-centered pad-b-xs">
-                  <img src={product.image} alt={product.title} />
+                  <Image src={product.image} alt={product.title} />
                 </div>
               </div>
               <div className="pad-xs-lg pad-xs-md pad-xxs-sm pad-b-none">

@@ -1,6 +1,7 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image'
 
 export default function OurCommitment() {
     // Values that we commit to
@@ -131,7 +132,7 @@ export default function OurCommitment() {
                             <div className="relative rounded-2xl overflow-hidden bg-white p-3">
                                 {/* Image with subtle overlay */}
                                 <div className="relative rounded-xl overflow-hidden">
-                                    <img
+                                    <Image
                                         src="/assets/about-company-image-2.JPG"
                                         alt="Skylink Customer Support"
                                         className="w-full h-auto object-cover"

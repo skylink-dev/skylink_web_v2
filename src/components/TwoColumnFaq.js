@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import Image from 'next/image'
 
 export default function TwoColumnFaq({
   rowclass = '',
@@ -55,7 +56,7 @@ export default function TwoColumnFaq({
       </div>
 
       <div className="image">
-        <img
+        <Image
           src={image}
           alt="Skylink Internet Connection"
           width="768"
